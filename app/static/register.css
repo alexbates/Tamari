@@ -1,0 +1,126 @@
+/* BLOCK 1 */
+#block1 {
+	background-color: #252525;
+	height: 100%;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+.block1box { 
+	height: 327px;
+	left: 50%;
+	margin-left: -170px;
+	margin-top: -164px;
+	position: absolute;
+	top: 50%;
+	width: 340px;
+}
+.block1top {
+	align-items: center;
+	background-color: #252525;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 54px;
+	justify-content: center;
+	width: 100%;
+}
+.block1top h1 {
+	color: #d1d1d1;
+	font-size: 28px;
+	line-height: 46px;
+}
+.b1logo {
+	background-image: url('/static/logo-dark-login.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 30px; 
+	width: 115px; 
+}
+.block1bottom {
+	background-color: #111111;
+	border-radius: 10px;
+	color: #d1d1d1;
+	height: 273px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.logregselector {
+	background-color: #111111;
+	border: none;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 42px;
+	margin-bottom: 12px;
+	margin-top: 3px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 50%;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.logregselector:active, .logregselector.active, .logregselector:hover, .logregselector:focus {outline: none;}
+.logregactive {border-bottom: 3px solid #2980b9;}
+.form-group {min-height: 54px; width: 100%;}
+.form-control {
+	background: #202020;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #d1d1d1;
+	float: right; 
+	font-size: 16px;
+	height: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	width: calc(100% - 20px);
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	-webkit-box-shadow: none;
+}
+.form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+#erroremail {
+	color: #ac3426;
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+#errorpassword1 {
+	color: #ac3426;
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+#errorpassword2 {
+	color: #ac3426;
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+
+.btn-default {
+	background-color: #2980b9;
+	border: none;
+	border-radius: 7px;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 40px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 140px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:hover {background: #2d87c4;}
+.btn-default:active, .btn-default.active {background: #ffffff; border: 1px solid #ffffff;}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px;}
+}

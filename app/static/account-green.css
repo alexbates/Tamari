@@ -1,0 +1,3 @@
+.btn-default {background-color: #218c74;}
+.btn-default:hover {background: #239179;}
+.btn-default:active, .btn-default.active {background: #218972;}

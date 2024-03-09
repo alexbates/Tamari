@@ -1,0 +1,15 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='home.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<h2>Not Found</h2>
+		<p>The page you requested was not found. <a href="{{ url_for('allRecipes') }}">Go home.</a></p>
+	</div>
+</main>
+{% endblock %}

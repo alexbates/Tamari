@@ -1,0 +1,28 @@
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+#block1 h2 {
+	padding-top: 12px;
+}
+.home-active {
+	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.home-active:hover {
+	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+}

@@ -1,0 +1,13 @@
+.search-btn {background-color: #218c74;}
+.search-btn:hover {background: #239179;} 
+.search-btn:active, .search-btn.active {background: #218972;}
+.seemore {background-color: #218c74;}
+.btn-next {background-color: #218c74;}
+.btn-next:hover {background: #239179;}
+.btn-next:active, .btn-next.active {background: #218972;}
+.btn-prev {background-color: #218c74;}
+.btn-prev:hover {background: #239179;}
+.btn-prev:active, .btn-prev.active {background: #218972;}
+.btn-default {background-color: #218c74;}
+.btn-default:hover {background: #239179;}
+.btn-default:active, .btn-default.active {background: #218972;}

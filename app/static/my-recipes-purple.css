@@ -1,0 +1,19 @@
+.recbtn-active {background-color: #7b00bb !important;}
+.btn-default {background-color: #7b00bb;}
+.btn-default:hover {background: #7e00c2;}
+.btn-default:active, .btn-default.active {background: #7800b8;}
+.btn3-default {background-color: #7b00bb;}
+.btn3-default:hover {background: #7e00c2;}
+.btn3-default:active, .btn3-default.active {background: #7800b8;}
+.btn-next {background-color: #7b00bb;}
+.btn-next:hover {background: #7e00c2;}
+.btn-next:active, .btn-next.active {background: #7800b8;}
+.btn-prev {background-color: #7b00bb;}
+.btn-prev:hover {background: #7e00c2;}
+.btn-prev:active, .btn-prev.active {background: #7800b8;}
+.btn-submit {background-color: #7b00bb;}
+.btn-submit:hover {background: #7e00c2;}
+.btn-submit:active, .btn-submit.active {background: #7800b8;}
+.btn-addtolist {background-color: #7b00bb;}
+.btn-addtolist:hover {background: #7e00c2;}
+.btn-addtolist:active, .btn-addtolist.active {background: #7800b8;}

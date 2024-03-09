@@ -1,0 +1,58 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='explore-group.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if current_user.pref_color == 0 %}
+	<link href="{{ url_for('static', filename='explore-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 1 %}
+	<link href="{{ url_for('static', filename='explore-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 2 %}
+	<link href="{{ url_for('static', filename='explore-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% else %}
+	<link href="{{ url_for('static', filename='explore-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% endif %}	
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% if recipes %}
+
+		<h2>Search</h2>
+		<p id="showing-msg">Showing {{ rec_first }} - {{ rec_last }} of {{ rec_count }} recipes.</p>
+		<div class="explorecont">
+			{% for recipe in recipes %}
+			<div class="exprecipe">
+				<div class="exprecinner">
+					<div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}">{{ recipe[0] }}</a></div>
+					<span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+			
+		{% if pagination.has_prev or pagination.has_next %}
+		<div class="prevnext">
+			{% if pagination.has_prev %}
+			<button class="btn-prev" onclick="window.location.href='{{ url_for('exploreSearch', page=curr_page - 1, query=query_string) }}';">
+				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+				<span class="btn-prev-text">Previous</span>
+			</button>
+			{% endif %}
+			{% if pagination.has_next %}
+			<button class="btn-next" onclick="window.location.href='{{ url_for('exploreSearch', page=curr_page + 1, query=query_string) }}';">
+				<span class="btn-next-text">Next</span>
+                                <span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+                        </button>
+			{% endif %}
+		</div>
+		{% endif %}
+
+		{% else %}
+		<h2>Search</h2>
+		<p id="showing-msg">No recipes were found.</p>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

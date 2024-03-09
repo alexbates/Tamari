@@ -1,0 +1,95 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+<link href="{{ url_for('static', filename='recipe-detail.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% for message in get_flashed_messages() %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% if recipe %}
+		{% if owner == current_user.id or recipe.public == 1 %}
+		<div id="r-detail">
+			<h2>{{ recipe.title }}</h2>
+			<span class="category">{{ recipe.category }}</span>
+			<div class="mobile-image-inner">
+				<div class="mobile-image" style="background-image: url({{ url_for('static', filename='recipe-placeholder.png', _external=True) }});"></div>
+			</div>
+			{% if recipe.description %}
+			<p>{{ recipe.description }}</p>
+			{% endif %}
+			{% if recipe.prep_time %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ recipe.prep_time }} min</span>{% endif %}
+			{% if recipe.cook_time %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ recipe.cook_time }} min</span>{% endif %}
+			{% if recipe.total_time %}<span class="timeouter"><span class="timebold">Total Time:</span> {{ recipe.total_time }} min</span>{% endif %}
+			{% if recipe.url %}
+			<p>{{ recipe.url }}</p>
+			{% endif %}
+			{% if current_user.is_authenticated and current_user.id == owner %}
+			<div class="btncontainer">
+				{% if recipe.favorite == 0 %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('favorite', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt="" /></span>
+					<span class="btn-text">Favorite</span>
+				</button>
+				{% else %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('unfavorite', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='unfavorite-recipe.png', _external=True) }}" alt="" /></span>
+					<span class="btn-text">Unfavorite</span>
+				</button>
+				{% endif %}
+				{% if recipe.public == 0 %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('makePublic', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt="" /></span>
+					<span class="btn-text">Make Public</span>
+				</button>
+				{% else %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('makePrivate', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt="" /></span>
+					<span class="btn-text">Make Private</span>
+				</button>
+				{% endif %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('editRecipe', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon2"><img src="{{ url_for('static', filename='edit-recipe.png', _external=True) }}" alt="" /></span>
+					<span class="btn-text">Edit</span>
+				</button>
+				<a href="{{ url_for('removeRecipe', hexid=recipe.hex_id) }}" onclick="return confirm('Are you sure you want to delete this recipe?');">
+					<button class="btn btn-default2">
+						<span class="btn-icon2"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt="" /></span>
+						<span class="btn-text">Delete</span>
+					</button>
+				</a>
+			</div>
+			{% endif %}
+		</div>
+		<div id="r-image" style="background-image: url({{ url_for('recipePhotos', filename=recipe.photo, _external=True) }});"></div>
+		<div id="ingredients">
+			<h3>Ingredients</h3>
+			{% for item in ingredients %}
+			<p>{{ item }}</p>
+			{% endfor %}
+		</div>
+		<div id="instructions">
+			<h3>Instructions</h3>
+			{% for item in instructions %}
+			<p>{{ item }}</p>
+			{% endfor %}
+		</div>
+		{% else %}
+		<h3>Error</h3>
+		<p>The requested recipe either cannot be found or you do not have permission to view it.</p>
+		{% endif %}
+		{% else %}
+		<h3>Error</h3>
+		<p>The requested recipe either cannot be found or you do not have permission to view it.</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

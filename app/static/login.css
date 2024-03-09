@@ -1,0 +1,183 @@
+/* BLOCK 1 */
+#block1 {
+	background-color: #252525;
+	height: 100%;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+.block1box { 
+	height: 304px;
+	left: 50%;
+	margin-left: -170px;
+	margin-top: -152px;
+	position: absolute;
+	top: 50%;
+	width: 340px;
+}
+.block1top {
+	align-items: center;
+	background-color: #252525;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 54px;
+	justify-content: center;
+	width: 100%;
+}
+.block1top h1 {
+	color: #d1d1d1;
+	font-size: 28px;
+	line-height: 46px;
+}
+.b1logo {
+	background-image: url('/static/logo-dark-login.png');
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 30px; 
+	width: 115px; 
+}
+.block1bottom {
+	background-color: #111111;
+	border-radius: 10px;
+	color: #d1d1d1;
+	height: 250px;
+	padding-left: 12px;
+	padding-right: 12px;
+}
+.logregselector {
+	background-color: #111111;
+	border: none;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 42px;
+	margin-bottom: 12px;
+	margin-top: 3px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 50%;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.logregselector:active, .logregselector.active, .logregselector:hover, .logregselector:focus {outline: none;}
+.logregactive {border-bottom: 3px solid #2980b9;}
+#errorlogin {
+	background: #ac3426; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+.form-group {min-height: 54px; width: 100%;}
+.form-control {
+	background: #202020;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #d1d1d1;
+	float: right; 
+	font-size: 16px;
+	height: 40px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	width: calc(100% - 20px);
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	-webkit-box-shadow: none;
+}
+.form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+#erroremail {
+	color: #ac3426;
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+#errorpassword {
+	color: #ac3426;
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+
+.check {height: 32px; width: 100%;}
+.checkbox {
+	position: relative;
+	padding-left: 30px;
+	margin-bottom: 12px;
+	margin-top: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.checkbox input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+}
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background-color: #202020;
+}
+.checkbox:hover input ~ .checkmark {background-color: #252525;}
+.checkbox input:checked ~ .checkmark {background-color: #2980b9;}
+.checkmark:after {content: ""; position: absolute; display: none;}
+.checkbox input:checked ~ .checkmark:after {display: block;}
+.checkbox .checkmark:after {
+	left: 6px;
+	top: 2px;
+	width: 5px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.signinreset {
+	height: 40%;
+	width: 100%;
+}
+.resetlink {
+	float: right;
+	line-height: 40px;
+	height: 40px;
+	text-align: right;
+	width: 150px;
+}
+.btn-default {
+	background-color: #2980b9;
+	border: none;
+	border-radius: 7px;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 40px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 140px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:hover {background: #2d87c4;}
+.btn-default:active, .btn-default.active {background: #ffffff; border: 1px solid #ffffff;}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px;}
+}

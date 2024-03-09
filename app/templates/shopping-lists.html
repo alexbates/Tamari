@@ -1,0 +1,108 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='shopping-lists.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if current_user.pref_color == 0 %}
+	<link href="{{ url_for('static', filename='shopping-lists-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 1 %}
+	<link href="{{ url_for('static', filename='shopping-lists-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 2 %}
+	<link href="{{ url_for('static', filename='shopping-lists-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% else %}
+	<link href="{{ url_for('static', filename='shopping-lists-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% for message in get_flashed_messages() %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		<div id="b1left">
+			<h2>Your Lists</h2>
+			<div class="b1leftinner">
+				<div>
+					<form method="post" novalidate>
+						{{ form.hidden_tag() }}
+						{{ form.newlist(class="form-control", placeholder="Add a List") }}
+						<button class="btn5-default" id="submitlist" name="submitlist" value="submitlist">
+							<span class="btn5-icon"><img src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
+						</button>
+					</form> 
+				</div>
+				{% if lists %}
+				{% for thing in lists %}
+				<div{% if query_string is none %}{% if thing.label == 'Miscellaneous' %} class="list-selected"{% endif %}{% else %}{% if thing.label == query_string %} class="list-selected"{% endif %}{% endif %}>
+					<span class="list-label"><a href="{{ url_for('shoppingLists', list=[thing.label]) }}">{{ thing.label }}</a></span>
+					<span class="list-label2"><a href="{{ url_for('mobileList', listname=thing.label) }}">{{ thing.label }}</a></span>
+				</div>
+				{% endfor %}
+				{% endif %}
+			</div>
+		</div>
+		<div id="b1right">
+			{% if list %}
+			<h2>'{{ list.label }}' List</h2>
+			{% if items %}
+			<p id="listhowto">Click an item to add or remove it from Completed.</p>
+			{% if items_tobuy %} 
+			<h3>To Buy</h3>
+			<div class="ingredinner">
+				{% for item in items_tobuy %}
+				<div>
+					<button class="btn4-default" onclick="window.location.href='{{ url_for('removeListitem', hexid=item.hex_id, mobile=0) }}';">
+						<span class="btn4-icon"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt=""></span>
+					</button>
+					<p class="label-inner">
+						<span class="ingred-label"><a href="{{ url_for('markItem', hexid=item.hex_id, mobile=0) }}">{{ item.item }}</a></span>
+						{% if item.rec_title %}<span class="ingred-recipe"><a href="{{ url_for('markItem', hexid=item.hex_id, mobile=0) }}">For recipe: {{ item.rec_title }}</a></span>{% endif %}
+					</p>
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			{% if items_comp %}
+			<h3>Completed</h3>
+			<div class="ingredinner">
+				{% for item in items_comp %}
+				<div>
+					<button class="btn4-default" onclick="window.location.href='{{ url_for('removeListitem', hexid=item.hex_id, mobile=0) }}';">
+						<span class="btn4-icon"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt=""></span>
+					</button>
+					<p class="label-inner">
+						<span class="ingred-label completed"><a href="{{ url_for('markItem', hexid=item.hex_id, mobile=0) }}">{{ item.item }}</a></span>
+						{% if item.rec_title %}<span class="ingred-recipe completed"><a href="{{ url_for('markItem', hexid=item.hex_id, mobile=0) }}">For recipe: {{ item.rec_title }}</a></span>{% endif %}
+					</p>
+				</div>
+				{% endfor %}
+			</div>
+			{% endif %}
+			{% else %}
+			<p id="listhowto">This list has no items saved. Add one below or from a Recipe Detail page.</p>
+			{% endif %}
+			<h3>Add an Item</h3>
+			<form method="post" class="form">
+				{{ form2.hidden_tag() }}
+				{{ form2.newitem(class="additem-input", placeholder="(4) yellow squash") }}
+				{{ form2.submititem(class="additem-btn") }}
+			</form>
+			<div class="deletelist">
+				<form style="display: inline;" action="{{ url_for('removeList', hexid=list.hex_id, mobile=0) }}" method="get" onsubmit="return confirm('Are you sure you want to delete the shopping list {{ list.label }}?');"> 
+					<button class="btn-delete">Delete This List</button>
+				</form>
+			</div>
+			{% else %}
+			<h2>List Not Found</h2>
+			<p id="listhowto">The requested shopping list does not exist.</p>
+			{% endif %}
+		</div>
+
+	</div>
+</main>
+{% endblock %}

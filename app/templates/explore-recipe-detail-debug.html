@@ -1,0 +1,24 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+<link href="{{ url_for('static', filename='about.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<p>Recipe Details</p>
+		<p>Title: {{ rec_title }}</p>
+		<p>URL: {{ rec_url }}</p>
+		<p>Photo:</p>
+		<img src="{{ photo }}" width="500" height="400">
+		<p>Prep Time: {{ preptime }}</p>
+		<p>Cook Time: {{ cooktime }}</p>
+		<p>Total Time: {{ totaltime }}</p>
+		<p>Description: {{ description }}</p>
+		<p>Ingredients: {{ ingredients }}</p>
+		<p>Instructions: {{ instructions }}</p>
+	</div>
+</div>
+{% endblock %}

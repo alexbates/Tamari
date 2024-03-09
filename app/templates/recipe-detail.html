@@ -1,0 +1,157 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='recipe-detail.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if current_user.pref_color == 0 %}
+	<link href="{{ url_for('static', filename='my-recipes-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 1 %}
+	<link href="{{ url_for('static', filename='my-recipes-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 2 %}
+	<link href="{{ url_for('static', filename='my-recipes-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% else %}
+	<link href="{{ url_for('static', filename='my-recipes-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+{% if recipe and owner == current_user.id %}
+<section id="addtolist" class="popupwindow">
+	<div class="popupwindow-content animate">
+        	<div class="closebutton">
+            		<span onclick="document.getElementById('addtolist').style.display='none'" class="close">&times;</span>
+        	</div>
+        	<h2>Add to List</h2>
+        	<p>Ingredients from this recipe will be added to the following shopping list.</p>
+        	<form method="post" novalidate>
+			{{ form.hidden_tag() }}
+			<div class="custom-select">
+				<div class="cust-select">
+					<label class="control-label" for="selectlist">Select Shopping List</label><br>
+					<select id="selectlist" name="selectlist" required><option value="" disabled hidden>Choose here</option>{% for choice in choices %}<option value="{{ choice }}">{{ choice }}</option>{% endfor %}</select>
+				</div>
+			</div>
+			{{ form.submit(class="btn-submit") }}
+		</form>
+	</div>
+</section>
+<section id="scheduler" class="popupwindow">
+	<div class="popupwindow-content animate">
+		<div class="closebutton">
+			<span onclick="document.getElementById('scheduler').style.display='none'" class="close">&times;</span>
+		</div>
+		<h2>Add to Meal Planner</h2>
+		<p>This recipe will be added to your Meal Plan for the following day.</p>
+		<form method="post" novalidate>
+			{{ form2.hidden_tag() }}
+			<div class="custom-select">
+				<div class="cust-select">
+					<label class="control-label" for="date">Select Date</label><br>
+					<select id="selectdate" name="selectdate" required><option value="" disabled hidden>Choose here</option>{% for m in month %}<option value="{{ m[0] }}">{{ m[1] }}</option>{% endfor %}</select>
+				</div>
+			</div>
+			{{ form2.submit(class="btn-submit") }}
+		</form>
+	</div>
+</section>
+{% endif %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% for message in get_flashed_messages() %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% if recipe %}
+		{% if owner == current_user.id or recipe.public == 1 %}
+		<div id="r-detail">
+			<h2>{{ recipe.title }}</h2>
+			<span class="category">{{ recipe.category }}</span>
+			<div class="mobile-image-inner">
+				<div class="mobile-image" style="background-image: url({{ url_for('recipePhotos', filename=recipe.photo, _external=True) }});"></div>
+			</div>
+			{% if recipe.description %}
+			<p>{{ recipe.description }}</p>
+			{% endif %}
+			<p>
+				{% if recipe.prep_time %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ recipe.prep_time }} min</span>{% endif %}
+				{% if recipe.cook_time %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ recipe.cook_time }} min</span>{% endif %}
+				{% if recipe.total_time %}<span class="timeouter"><span class="timebold">Total Time:</span> {{ recipe.total_time }} min</span>{% endif %}
+			</p>
+			{% if recipe.url %}
+			<p><a class="urla" href="{{ recipe.url }}" target="_blank">{{ recipe.url }}</a></p>
+			{% endif %}
+			{% if current_user.is_authenticated and current_user.id == owner %}
+			<div class="btncontainer">
+				{% if recipe.favorite == 0 %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('favorite', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt=""></span>
+					<span class="btn-text">Favorite</span>
+				</button>
+				{% else %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('unfavorite', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='unfavorite-recipe.png', _external=True) }}" alt=""></span>
+					<span class="btn-text">Unfavorite</span>
+				</button>
+				{% endif %}
+				{% if recipe.public == 0 %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('makePublic', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
+					<span class="btn-text">Make Public</span>
+				</button>
+				{% else %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('makePrivate', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon"><img src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
+					<span class="btn-text">Make Private</span>
+				</button>
+				{% endif %}
+				<button class="btn btn-default" onclick="document.getElementById('scheduler').style.display='block'">
+					<span class="btn-icon3"><img src="{{ url_for('static', filename='schedule.png', _external=True) }}" alt=""></span>
+					<span class="btn-text">Schedule</span>
+				</button>
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('editRecipe', hexid=recipe.hex_id) }}';">
+					<span class="btn-icon3"><img src="{{ url_for('static', filename='edit-recipe.png', _external=True) }}" alt=""></span>
+					<span class="btn-text">Edit</span>
+				</button>
+				<form style="display: inline;" action="{{ url_for('removeRecipe', hexid=recipe.hex_id) }}" method="get" onsubmit="return confirm('Are you sure you want to delete this recipe?');">
+					<button class="btn btn-default2">
+						<span class="btn-icon2"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt=""></span>
+						<span class="btn-text">Delete</span>
+					</button>
+				</form>
+			</div>
+			{% endif %}
+		</div>
+		<div id="r-image" style="background-image: url({{ url_for('recipePhotos', filename=recipe.photo, _external=True) }});"></div>
+		<div id="ingredients">
+			<h3>Ingredients</h3>
+			<div id="inginner" class="inginner">
+				{% for item in ingredients %}
+				<div><p class="ing">{{ item }}</p></div>
+				{% endfor %}
+				{% if current_user.is_authenticated and current_user.id == owner %}
+				<div>
+					<button class="btn-addtolist" onclick="document.getElementById('addtolist').style.display='block'">Add Items to Shopping List</button>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		<div id="instructions">
+			<h3>Instructions</h3>
+			{% for item in instructions %}
+			<div class="steps"><b>Step {{ loop.index }}</b><p>{{ item }}</p></div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<h3>Error</h3>
+		<p>The requested recipe either cannot be found or you do not have permission to view it.</p>
+		{% endif %}
+		{% else %}
+		<h3>Error</h3>
+		<p>The requested recipe either cannot be found or you do not have permission to view it.</p>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

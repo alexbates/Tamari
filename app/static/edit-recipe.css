@@ -1,0 +1,134 @@
+.myrecipes-active {
+        background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.myrecipes-active:hover {
+        background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+}
+.mt-myrecipes {display: block !important;}
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+#flashed-err {
+	background: #ac3426; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+.form-group {margin-bottom: 10px;}
+.form-group label {line-height: 36px;}
+.form-group2 {margin-bottom: 10px; min-height: 270px; width: 100%;}
+.form-group2 label {line-height: 36px;}
+.form-group2 div {
+	float: left;
+	width: 48.75%;
+}
+.form-group2 div:nth-child(1) {margin-right: 2.5%;}
+.form-group3 {margin-bottom: 10px; min-height: 76px; width: 100%;}
+.form-group3 label {line-height: 36px;}
+.form-group3 div {
+	float: left;
+	width: 31.666%;
+}
+.form-group3 div:nth-child(1) {margin-right: 2.5%;}
+.form-group3 div:nth-child(2) {margin-right: 2.5%;}
+.form-control {
+	background: #1c1c1c;
+	border: none;
+	box-shadow: none;
+	color: #d1d1d1;
+	font-size: 18px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: calc(100% - 20px);
+	-webkit-box-shadow: none;
+}
+.form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+.form-control::placeholder {color: #545454;}
+.fc1 {height: 38px;}
+.fc2 {height: 43px; resize: none; padding-bottom: 10px; padding-top: 10px;}
+.fc3 {height: 213px; resize: none; padding-bottom: 10px; padding-top: 10px;}
+#errorrequired {
+	color: #ac3426;
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 10px;
+}
+.btn-default {
+	background-color: #2980b9;
+	border: none;
+	border-radius: 7px;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 40px;
+	margin-bottom: 26px;
+	margin-top: 10px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 90px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:hover {background: #2d87c4;}
+.btn-default:active, .btn-default.active {background: #ffffff; border: 1px solid #ffffff;}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
+.submitdiv {float: left; height: 90px; width: 100%;}
+
+.custom-select {margin-bottom: 12px; margin-top: 20px;}
+.cust-select select {
+	background: #1c1c1c;
+	border: none;
+	box-shadow: none;
+	color: #d1d1d1;
+	height: 38px;
+	margin-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 170px;
+	-moz-appearance:none; /* Firefox */
+    	-webkit-appearance:none; /* Safari and Chrome */
+	appearance:none;
+}
+/*style the arrow inside the select element:*/
+.cust-select:after {
+	position: relative;
+	content: "";
+	top: 14px;
+	right: 22px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-color: #fff transparent transparent transparent;
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}
+	#block1 p {padding-left: 10px;}
+}
+@media screen and (max-width: 780px) { 
+	.form-group2 div {float: none; width: 100%;}
+	.form-group2 div:nth-child(1) {margin-right: 0;}
+	.form-group3 div {float: none; width: 100%;}
+	.form-group3 div:nth-child(1) {margin-right: 0;}
+	.form-group3 div:nth-child(2) {margin-right: 0;}
+}

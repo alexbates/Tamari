@@ -1,0 +1,93 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='meal-planner.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if current_user.pref_color == 0 %}
+	<link href="{{ url_for('static', filename='shopping-lists-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 1 %}
+	<link href="{{ url_for('static', filename='shopping-lists-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 2 %}
+	<link href="{{ url_for('static', filename='shopping-lists-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% else %}
+	<link href="{{ url_for('static', filename='shopping-lists-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% for message in get_flashed_messages() %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		<div id="b1left">
+			<div class="b1leftinner">
+				<div{% if query_string is none%} class="list-selected"{% endif %}{% if query_string == 'All' %} class="list-selected"{% endif %}>
+					<span class="day-label"><a href="{{ url_for('mealPlanner', day='All') }}">All Upcoming Days</a></span>
+				</div>
+				{% for m in month %}
+				<div{% if query_string == m[0] %} class="list-selected"{% endif %}>
+					<span class="day-label"><a href="{{ url_for('mealPlanner', day=m[0]) }}">{{ m[1] }}</a></span>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div id="b1right">
+			{% if query_string is none or query_string == 'All' %}
+			<h2>All Planned Recipes</h2>
+			{% if plannedmeals %} 
+			{% for day in month %}
+			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
+			<div class="planinner">
+				{% for meal in plannedmeals %}
+				{% if meal.date == day[0] %}
+				<div>
+					<button class="btn4-default" onclick="window.location.href='{{ url_for('removePlan', hexid=meal.hex_id) }}';">
+						<span class="btn4-icon"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt=""></span>
+					</button>
+					<p class="label-inner">
+						<span class="plan-label"><a href="{{ url_for('recipeDetail', hexid=recdetails[loop.index0][2]) }}">{{ recdetails[loop.index0][0] }}</a></span>
+						<span class="plan-category">{{ recdetails[loop.index0][1] }}</span>
+					</p>
+				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+			{% endfor %}
+			{% else %}
+			<p id="mealmessage">You have no recipes saved to the meal planner.</p>
+			{% endif %}
+			{% else %}
+			{% if query_string in compactmonth %}
+			<h2>{{ query_string_full }}</h2>
+			{% if query_count == 0 %}<p id="mealmessage">There are no meals planned for the selected day.</p>{% endif %}
+			<div class="planinner">
+				{% for meal in plannedmeals %}
+				{% if meal.date == query_string %}
+				<div>
+					<button class="btn4-default" onclick="window.location.href='{{ url_for('removePlan', hexid=meal.hex_id) }}';">
+						<span class="btn4-icon"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt=""></span>
+					</button>
+					<p class="label-inner">
+						<span class="plan-label"><a href="{{ url_for('recipeDetail', hexid=recdetails[loop.index0][2]) }}">{{ recdetails[loop.index0][0] }}</a></span>
+						<span class="plan-category">{{ recdetails[loop.index0][1] }}</span>
+					</p>
+				</div>
+				{% endif %}
+				{% endfor %}
+			</div>
+			{% else %}
+			<h2>Invalid Date</h2>
+			<p id="mealmessage">The requested date is invalid or cannot be searched.</p>
+			{% endif %}
+			{% endif %}
+
+		</div>
+
+	</div>
+</main>
+{% endblock %}

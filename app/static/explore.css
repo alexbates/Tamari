@@ -1,0 +1,151 @@
+.explore-active {
+	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.explore-active:hover {
+	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+}
+.mt-explore {display: block !important;}
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+#block1 h2 {padding: 12px 5px 16px 5px;}
+.errorh2 {padding-left: 0px !important; padding-bottom: 0px !important;}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: #ac3426; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+/* IF NO SAVED RECIPES */
+#norecipes {
+	background: #111111;
+	margin-top: 0px;
+	padding: 10px;
+}
+/* SEARCH */
+.searchform {
+	margin: 0 auto; 
+	margin-top: 20px; 
+	margin-bottom: 10px; 
+	width: calc(100% - 10px);
+}
+.search-input {
+	background: #1c1c1c;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #d1d1d1;
+	font-size: 18px;
+	height: 38px;
+	margin-right: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: calc(100% - 122px);
+	-webkit-box-shadow: none;
+}
+.search-input:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+.search-input::placeholder {color: #545454;}
+.search-btn {
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	float: right;
+	height: 38px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 90px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.search-btn:active, .search-btn.active, .search-btn:hover, .search-btn:focus {outline: none;}
+.searchbtn-icon {display: block; height: 20px; padding-left: 34px; width: 20px;}
+.searchbtn-icon img {height: 100%; width: 100%;}
+/* RECIPE LIST */
+.explorecont {width: 100%;}
+.explorecont:after {clear: both; content: ""; display: table;}
+.exprecipe {
+	align-items: center;
+	background-color: #111111;
+	border-radius: 15px;
+	display: flex;
+	float: left;
+	height: 70px;
+	justify-content: center;
+	padding-top: 0;
+	margin: 0px 5px 10px 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 10px;
+	width: calc(33.33% - 30px);
+}
+.exprecinner {width: 100%;}
+.exprecinner div {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	font-size: 18px;
+	margin: 0;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-height: 40px;
+}
+.exprecinner div a:hover {color: #ebebeb; text-decoration: none;}
+.exprecinner div a:active {color: #ebebeb; text-decoration: none;}
+.exprecinner span {color: #aeaeae; font-size: 14px; margin: 0; padding: 0;}
+.exprecinner span a:hover {color: #a7a7a7; text-decoration: none;}
+.exprecinner span a:active {color: #a7a7a7; text-decoration: none;}
+.seemore {
+	align-items: center;
+	border-radius: 15px;
+	display: flex;
+	font-size: 18px;
+	float: left;
+	height: 80px;
+	justify-content: center;
+	margin: 0px 5px 10px 5px;
+	width: calc(33.33% - 10px);
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	.errorh2 {padding-left: 10px !important;}
+	.searchform {margin: 0 auto; margin-top: 20px; margin-bottom: 10px; width: calc(100% - 20px);}
+	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
+	.explorecont {margin: 0 auto; width: calc(100% - 10px);}
+}
+@media screen and (max-width: 770px) { 
+	.exprecipe {width: calc(50% - 30px);}
+	.seemore {width: calc(50% - 10px);}
+}
+@media screen and (max-width: 530px) { 
+	.exprecipe {width: calc(100% - 30px);}
+	.seemore {width: calc(100% - 10px);}
+}

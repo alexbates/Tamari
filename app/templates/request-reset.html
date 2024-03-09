@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='request-reset.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='request-reset.js', _external=True) }}"></script>
+{% endblock %}
+
+{% block content %}
+<main id="block1">
+	<div id="b1box" class="block1box">
+		<div class="block1top">
+			<div class="b1logo"></div>
+		</div>
+		<div id="b1bottom" class="block1bottom">
+			<h3>Reset Password</h3>
+			<form method="post" novalidate>
+				{{ form.hidden_tag() }}
+				<div class="form-group  required">
+					{{ form.email(class="form-control", placeholder="Email") }}
+					{% for error in form.email.errors %}
+					<span id="erroremail">{{ error }}</span>
+					{% endfor %}
+				</div>
+				{{ form.submit(class="btn btn-default") }}
+			</form>
+		</div>
+	</div>
+</main>
+{% endblock %}

@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+<script src="{{ url_for('static', filename='jquery-3.7.0.min.js', _external=True) }}"></script>
+<script>
+	function toggleDropdown() {
+		document.getElementById("myDropdown").classList.toggle("showdrop");
+    	}
+    	function closeDropdown() {
+		document.getElementById("myDropdown").classList.remove("showdrop");
+    	}
+	function toggleSettings() {
+		document.getElementById("settingsDrop").classList.toggle("showsettings");
+	}
+	$(function(){
+		var $curParent, Content;
+		$(document).delegate(".ing","click", function(){
+			if($(this).closest("s").length) {
+				Content = $(this).parent("s").html();
+				$curParent = $(this).closest("s");
+				$(Content).insertAfter($curParent);
+				$(this).closest("s").remove();
+			}
+			else {
+				$(this).wrapAll("<s />");
+			}
+		});
+	});
+	$(function(){
+		var $curParent, Content;
+		$(document).delegate(".steps","click", function(){
+			if($(this).closest("s").length) {
+				Content = $(this).parent("s").html();
+				$curParent = $(this).closest("s");
+				$(Content).insertAfter($curParent);
+				$(this).closest("s").remove();
+			}
+			else {
+				$(this).wrapAll("<s />");
+			}
+		});
+	});
+	$("#search").keyup(function() {
+		var filter = $(this).val(), // get text from input field
+		count = 0; // reset count to zero
+		$('#recipecont a').each(function() { // loop through recipes
+			if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+				$(this).hide();  // hide recipe if does not match search
+			} else {
+				$(this).show(); // show recipe if matches search
+				count++; // increase count by 1
+			}
+		});
+	});
+
+	if ('IntersectionObserver' in window) { // if IntersectionObserver support in browser
+		document.addEventListener("DOMContentLoaded", function() {
+			function handleIntersection(entries) {
+				entries.map((entry) => {
+					if (entry.isIntersecting) {
+          				// Item has crossed our observation
+          				// threshold - load src from data-src
+          				entry.target.style.backgroundImage = "url('"+entry.target.dataset.bgimage+"')";
+          				// Job done for this item - no need to watch it!
+          				observer.unobserve(entry.target);
+        			}
+      			});
+    		}
+    		const headers = document.querySelectorAll('.recipe1');
+    		const observer = new IntersectionObserver(
+      			handleIntersection,
+      			{ rootMargin: "{{ dynrootmargin }}" }
+    		);
+    		headers.forEach(header => observer.observe(header));
+		});
+	} else { // else load all images at once
+		const headers = document.querySelectorAll('.recipe1');
+		headers.forEach(header => {
+    		header.style.backgroundImage = "url('"+header.dataset.bgimage+"')";
+  		});
+	}
+
+	if ('IntersectionObserver' in window) { // if IntersectionObserver support in browser
+		document.addEventListener("DOMContentLoaded", function() {
+			function handleIntersection(entries) {
+				entries.map((entry) => {
+					if (entry.isIntersecting) {
+          				// Item has crossed our observation
+          				// threshold - load src from data-src
+          				entry.target.style.backgroundImage = "url('"+entry.target.dataset.bgimage+"')";
+          				// Job done for this item - no need to watch it!
+          				observer.unobserve(entry.target);
+        			}
+      			});
+    		}
+    		const headers = document.querySelectorAll('.r2top');
+    		const observer = new IntersectionObserver(
+      			handleIntersection,
+      			{ rootMargin: "{{ dynrootmargin }}" }
+    		);
+    		headers.forEach(header => observer.observe(header));
+		});
+	} else { // else load all images at once
+		const headers = document.querySelectorAll('.r2top');
+		headers.forEach(header => {
+    		header.style.backgroundImage = "url('"+header.dataset.bgimage+"')";
+  		});
+	}
+</script>
+{% endblock %}
+
+{% block title %}{% if title %}{{ title }} - Tamari{% else %}Tamari{% endif %}{% endblock %}
+
+{% block extrastyles %}
+	<style>{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-blue.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-blue.png') }});}
+		{% elif current_user.pref_picture == 0 and current_user.pref_color == 1 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-green.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-green.png') }});}
+		{% elif current_user.pref_picture == 0 and current_user.pref_color == 2 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-purple.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-purple.png') }});}
+		{% elif current_user.pref_picture == 0 and current_user.pref_color == 3 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-pink.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-pink.png') }});}
+		{% elif current_user.pref_picture == 1 and current_user.pref_color == 0 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-blue.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-blue.png') }});}
+		{% elif current_user.pref_picture == 1 and current_user.pref_color == 1 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-green.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-green.png') }});}
+		{% elif current_user.pref_picture == 1 and current_user.pref_color == 2 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-purple.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-purple.png') }});}
+		{% elif current_user.pref_picture == 1 and current_user.pref_color == 3 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-pink.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-pink.png') }});}
+		{% elif current_user.pref_picture == 2 and current_user.pref_color == 0 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-blue.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-blue.png') }});}
+		{% elif current_user.pref_picture == 2 and current_user.pref_color == 1 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-green.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-green.png') }});}
+		{% elif current_user.pref_picture == 2 and current_user.pref_color == 2 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-purple.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-purple.png') }});}
+		{% elif current_user.pref_picture == 2 and current_user.pref_color == 3 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-pink.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-pink.png') }});}
+		{% elif current_user.pref_picture == 3 and current_user.pref_color == 0 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-blue.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-blue.png') }});}
+		{% elif current_user.pref_picture == 3 and current_user.pref_color == 1 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-green.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-green.png') }});}
+		{% elif current_user.pref_picture == 3 and current_user.pref_color == 2 %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-purple.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-purple.png') }});}
+		{% else %}
+		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-pink.png') }});}
+		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-pink.png') }});}{% endif %}
+	</style>{% endblock %}
+
+{% block navbar %}
+<header id="navbar">
+	<div class="navbarinner">
+		<div class="navlogo"></div>
+		<div class="mobile-title">
+			{% if current_user.is_authenticated %}
+			<h1 class="mt-myrecipes">My Recipes</h1>
+			<h1 class="mt-explore">Explore</h1>
+			<h1 class="mt-lists">Shopping Lists</h1>
+			<h1 class="mt-mealplanner">Meal Planner</h1>
+			<h1 class="mt-about">About</h1>
+			<h1 class="mt-myaccount">My Account</h1>
+			{% else %}
+			<h1 class="mt-tamari">Tamari</h1>
+			{% endif %}
+		</div>
+		{% if current_user.is_authenticated %}
+		<ul class="navleft">
+			<li class="myrecipes-active"><a href="{{ url_for('allRecipes') }}"><span>My Recipes</span></a></li
+			><li class="explore-active"><a href="{{ url_for('explore') }}"><span>Explore</span></a></li
+			><li class="shoplist-active"><a href="{{ url_for('shoppingLists') }}"><span><span class="linkcollapse">Shopping </span>Lists</span></a></li
+			><li class="mealplanner-active"><a href="{{ url_for('mealPlanner') }}"><span><span class="linkcollapse">Meal </span>Planner</span></a></li
+			><li class="about-active"><a href="{{ url_for('about') }}"><span>About</span></a></li>
+		</ul>
+		<nav class="navright" onclick="toggleDropdown()">
+			<div class="navrighticon"></div>
+			<div class="dropdown-content" id="myDropdown">
+				<a href="{{ url_for('user') }}">My Account</a>
+				<a href="{{ url_for('logout') }}">Sign Out</a>
+			</div>
+		</nav>
+		{% else %}
+		<ul class="navnoauth">
+			<li><a href="{{ url_for('login') }}"><span>Login</span></a></li
+			><li><a href="{{ url_for('register') }}"><span>Register</span></a></li>
+		</ul>
+		{% endif %}
+		<div class="mobile-dropdown">
+			<input type="checkbox" id="checkbox_toggle">
+			<label for="checkbox_toggle" class="hamburger">
+				<span class="line line-1"></span>
+				<span class="line line-2"></span>
+				<span class="line line-3"></span>
+			</label>
+			<div class="mobilebg">
+				<section>
+					{% if current_user.is_authenticated %}
+					<ul class="mobilebg-top">
+						<li><a href="{{ url_for('allRecipes') }}">My Recipes</a></li>
+						<li><a href="{{ url_for('explore') }}">Explore</a></li>
+						<li><a href="{{ url_for('shoppingLists') }}">Shopping Lists</a></li>
+						<li><a href="{{ url_for('mealPlanner') }}">Meal Planner</a></li>
+						<li><a href="{{ url_for('about') }}">About Tamari</a></li>
+					</ul>
+					<hr>
+					<ul class="mobilebg-bottom">
+						<li><a href="{{ url_for('user') }}">My Account</a></li>
+						<li><a href="{{ url_for('logout') }}">Sign Out</a></li>
+					</ul>
+					<div class="drop-profile">&nbsp;</div>
+					{% else %}
+					<ul>
+						<li><a href="{{ url_for('login') }}">Login</a></li>
+						<li><a href="{{ url_for('register') }}">Register</a></li>
+					</ul>
+					{% endif %}
+				</section>
+			</div>
+		</div>
+	</div>
+</header>
+{% endblock %}
+

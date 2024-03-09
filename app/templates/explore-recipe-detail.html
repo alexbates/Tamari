@@ -1,0 +1,79 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='explore-recipe-detail.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if current_user.pref_color == 0 %}
+	<link href="{{ url_for('static', filename='explore-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 1 %}
+	<link href="{{ url_for('static', filename='explore-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 2 %}
+	<link href="{{ url_for('static', filename='explore-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% else %}
+	<link href="{{ url_for('static', filename='explore-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% for message in get_flashed_messages() %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% if rec_title and rec_url %}
+		{% if ingredients and instructions %}
+		<div id="r-detail">
+			<h2>{{ rec_title }}</h2>
+			<div class="mobile-image-inner">
+				<div class="mobile-image" style="background-image: url({{ photo }});"></div>
+			</div>
+			{% if description %}
+			<p>{{ description }}</p>
+			{% endif %}
+			<p>
+				{% if preptime %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ preptime }} min</span>{% endif %}
+				{% if cooktime %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ cooktime }} min</span>{% endif %}
+				{% if totaltime %}<span class="timeouter"><span class="timebold">Total Time:</span> {{ totaltime }} min</span>{% endif %}
+			</p>
+			{% if rec_url %}
+			<p><a class="urla" href="{{ rec_url }}" target="_blank">{{ rec_url }}</a></p>
+			{% endif %}
+			<form method="post" novalidate>
+				{{ form.hidden_tag() }}
+				<button class="btn btn-default" name="submit" type="submit">
+                                        <span class="btn-icon"><img src="{{ url_for('static', filename='save.png', _external=True) }}" alt=""></span>
+                                        <span class="btn-text">Save Recipe</span>
+                                </button>
+			</form>
+		</div>
+		<div id="r-image" style="background-image: url({{ photo }});"></div>
+		<div id="ingredients">
+			<h3>Ingredients</h3>
+			<div id="inginner" class="inginner">
+				{% for item in ingredients %}
+				<div><p class="ing">{{ item }}</p></div>
+				{% endfor %}
+			</div>
+		</div>
+		<div id="instructions">
+			<h3>Instructions</h3>
+			{% for item in instructions %}
+			<div class="steps"><b>Step {{ loop.index }}</b><p>{{ item }}</p></div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<h2>Error</h2>
+		<p>The retrieval or parsing of data for the requested recipe failed.</p>
+		<p>If you see this error frequently, opening an Issue Report on Github may help get it resolved.</p>
+		{% endif %}
+		{% else %}
+		<h2>Error</h2>
+		<p>The requested recipe cannot be found.</p>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

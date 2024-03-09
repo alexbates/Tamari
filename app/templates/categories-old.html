@@ -1,0 +1,54 @@
+{% extends "navbar.html" %}
+{% import "wtf.html" as wtf %}
+
+{% block styles %}
+<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+<link href="{{ url_for('static', filename='categories.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<div id="recipenav">
+			<div class="recipenavleft">
+				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('allRecipes') }}';" value="All Recipes"
+				><input type="button" class="recbtn recbtn2" onclick="window.location.href='{{ url_for('favorites') }}';" value="Favorites"
+				><input type="button" class="recbtn recbtn3 recbtn-active" onclick="window.location.href='{{ url_for('categories') }}';" value="Categories">
+			</div>
+		</div>
+		{% for message in get_flashed_messages() %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% if categories %}
+		<table class="myTable myTable-rounded">
+			<tbody>
+				{% for item in categories %}
+				<tr>
+					<td class="tdwidth">{{ item.label }}</td>
+					<td>
+						<a href="{{ url_for('removeCategory', catid=item.id) }}" onclick="return confirm('Are you sure you want to delete the category {{ item.label }}?');" title="Delete Category">
+							<img src="{{ url_for('static', filename='trash.png', _external=True) }}" width="20" height="20">
+						</a>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{% else %}
+		<p>There are no categories to display.</p>
+		{% endif %}
+		<form action="" method="post" novalidate>
+			{{ form.hidden_tag() }}
+			<div class="form-group required">
+				<label class="control-label">Add a Category</label><br>
+				{{ form.category(class="form-control", placeholder="Desserts") }}
+			</div>
+			{{ form.submit(class="btn btn-default") }}
+		</form>
+	</div>
+</div>
+{% endblock %}

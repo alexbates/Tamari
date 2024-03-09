@@ -1,0 +1,187 @@
+.mealplanner-active {
+	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.mealplanner-active:hover {
+	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+} 
+.mt-mealplanner {display: block !important;}
+/* BLOCK 1 */ 
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: #ac3426;
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 0px;
+	margin-top: 16px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45;
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 0px;
+	margin-top: 16px;
+	padding: 6px;
+}
+
+#b1left {
+	float: left;
+	width: 310px;
+}
+#b1left h2 {padding-top: 14px;}
+.b1leftinner {margin-bottom: 20px; margin-top: 20px;}
+.b1leftinner div {
+	height: 40px;
+	text-align: left;
+	width: 298px;
+}
+.b1leftinner div:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.b1leftinner div:last-child {
+	border-bottom: none !important;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.day-label {
+	color: #ffffff;
+	display: inline-block;
+	font-size: 18px;
+	line-height: 40px;
+	margin: 0;
+	overflow: hidden;
+	padding-left: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 278px;
+}
+.day-label:hover {color: #f1f1f1;}
+.day-label a:hover {text-decoration: none;}
+.day-label2 {
+	color: #ffffff;
+	display: none;
+	font-size: 18px;
+	line-height: 50px;
+	margin: 0;
+	overflow: hidden;
+	padding-left: 10px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	width: 278px;
+}
+.day-label2:hover {color: #f1f1f1;}
+.day-label2 a:hover {text-decoration: none;}
+
+#b1right {
+	float: left;
+	width: calc(100% - 310px);
+}
+#b1right h2 {padding-top: 16px; padding-bottom: 4px;}
+#b1right h3 {padding-bottom: 0px; padding-top: 16px;}
+#mealmessage {
+	background: #111111; 
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 2px;
+	margin-top: 10px;
+	padding: 6px;
+}
+.planinner {margin-top: 10px;}
+.planinner div {
+	background: #111111;
+	border-bottom: solid 1px #202020;
+	min-height: 50px;
+	position: relative;
+	text-align: left;
+	width: 100%;
+}
+.planinner div:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.planinner div:last-child {
+	border-bottom: none !important;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.label-inner {
+	padding-top: 13px;
+	padding-bottom: 13px;
+	margin: 0px;
+}
+.plan-label {
+	color: #ffffff;
+	display: inline-block;
+	font-size: 18px;
+	margin: 0;
+	padding-left: 10px;
+	width: calc(100% - 62px);
+}
+.plan-label a:hover {color: #f1f1f1; text-decoration: none;}
+.plan-label a:active {color: #f1f1f1; text-decoration: none;}
+.plan-category {
+	color: #b0b0b0;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0;
+	padding-left: 10px;
+	padding-top: 6px;
+	width: calc(100% - 62px);
+}
+.plan-category a:hover {color: #f1f1f1; text-decoration: none;}
+.plan-category a:active {color: #f1f1f1; text-decoration: none;}
+.btn4-default {
+	background: none;
+	border: none;
+	cursor: pointer;
+	float: none;
+	position: absolute;
+	right: 0;
+	height: 100%;
+	margin-right: 6px;
+	padding-left: 0px;
+	padding-right: 0px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 38px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn4-default:active, .btn4-default.active, .btn4-default:hover, .btn4-default:focus {outline: none;}
+.btn4-icon {display: block; height: 20px; padding-left: 9px; width: 20px;}
+.btn4-icon img {height: 100%; width: 100%;}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}
+	#block1 p {padding-left: 10px;}
+	.plan-label {padding-left: 0px;}
+	.plan-category {padding-left: 0px;}
+}
+@media screen and (max-width: 880px) {
+	#b1left {width: 280px;}
+	.b1leftinner div {width: 268px;}
+	.day-label {width: 248px;}
+	.day-label2 {width: 248px;}
+	#b1right {width: calc(100% - 280px);}
+}
+@media screen and (max-width: 700px) {
+	#b1left h2 {display: none;}
+	.b1leftinner {margin-top: 15px;}
+}
+@media screen and (max-width: 620px) { 
+	#b1left {display: none;}
+	#b1right {width: 100%;}
+}

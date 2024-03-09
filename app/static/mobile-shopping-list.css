@@ -1,0 +1,184 @@
+.shoplist-active {
+	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.shoplist-active:hover {
+	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+}
+.mt-lists {display: block !important;} 
+/* BLOCK 1 */ 
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: #ac3426;
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 0px;
+	margin-top: 16px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45;
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 0px;
+	margin-top: 16px;
+	padding: 6px;
+}
+
+#b1right {
+	float: none;
+	width: 100%;
+}
+#b1right h2 {padding-top: 14px;}
+#b1right h3 {padding-bottom: 0px; padding-top: 16px;}
+#listhowto {
+	background: #111111; 
+	font-size: 14px;
+	min-height: 17px;
+	margin: 0;
+	padding: 6px;
+}
+.ingredinner {margin-top: 10px;}
+.ingredinner div {
+	background: #111111;
+	border-bottom: solid 1px #202020;
+	min-height: 50px;
+	position: relative;
+	text-align: left;
+	width: 100%;
+}
+.ingredinner div:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.ingredinner div:last-child {
+	border-bottom: none !important;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.label-inner {
+	padding-top: 13px;
+	padding-bottom: 13px;
+	margin: 0px;
+}
+.ingred-label {
+	color: #ffffff;
+	display: inline-block;
+	font-size: 18px;
+	margin: 0;
+	padding-left: 10px;
+	width: calc(100% - 62px);
+}
+.ingred-label a:hover {color: #f1f1f1; text-decoration: none;}
+.ingred-label a:active {color: #f1f1f1; text-decoration: none;}
+.ingred-recipe {
+	color: #b0b0b0;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0;
+	padding-left: 10px;
+	padding-top: 6px;
+	width: calc(100% - 62px);
+}
+.ingred-recipe a:hover {color: #f1f1f1; text-decoration: none;}
+.ingred-recipe a:active {color: #f1f1f1; text-decoration: none;}
+.btn4-default {
+	background: none;
+	border: none;
+	cursor: pointer;
+	float: none;
+	position: absolute;
+	right: 0;
+	height: 100%;
+	margin-right: 6px;
+	padding-left: 0px;
+	padding-right: 0px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 38px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn4-default:active, .btn4-default.active, .btn4-default:hover, .btn4-default:focus {outline: none;}
+.btn4-icon {display: block; height: 20px; padding-left: 9px; width: 20px;}
+.btn4-icon img {height: 100%; width: 100%;}
+.completed {text-decoration: line-through;}
+.additem-input {
+	background: #1c1c1c;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #d1d1d1;
+	font-size: 18px;
+	height: 44px;
+	margin-right: 5px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: calc(100% - 122px);
+	-webkit-box-shadow: none;
+}
+.additem-input:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+.additem-input::placeholder {color: #545454;}
+.additem-btn {
+	border: none;
+	border-radius: 0;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 44px;
+	margin-bottom: 26px;
+	margin-top: 10px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 90px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.additem-btn:active, .additem-btn.active, .additem-btn:hover, .additem-btn:focus {outline: none;}
+.deletelist {
+	height: 66px;
+	margin: 0 auto;
+	width: 136px;
+}
+.deletelist a:hover {text-decoration: none;}
+.deletelist a:active {text-decoration: none;}
+.btn-delete {
+	background-color: #ac3426;
+	border: none;
+	border-radius: 7px;
+	color: #d1d1d1;
+	cursor: pointer;
+	display: block;
+	font-size: 16px;
+	height: 40px;
+	margin-bottom: 26px;
+	padding-left: 10px;
+	padding-right: 10px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 142px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-delete:hover {background: #b23426;}
+.btn-delete:active, .btn-delete.active {background: #a53426;}
+.btn-delete:active, .btn-delete.active, .btn-delete:hover, .btn-delete:focus {outline: none;}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}
+	#block1 p {padding-left: 10px;}
+	.ingred-label {padding-left: 0px;}
+	.ingred-recipe {padding-left: 0px;}
+}

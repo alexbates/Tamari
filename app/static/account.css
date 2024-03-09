@@ -1,0 +1,204 @@
+.mt-myaccount {display: block !important;}
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner h3 {line-height: 46px; padding-left: 12px;}
+.userstats {
+	background-color: #111111;
+	border-radius: 10px;
+	color: #d1d1d1;
+	float: left;
+	width: calc(50% - 10px);
+}
+.us-left {float: left; margin-bottom: 8px; width: 110px;}
+.us-right {float: left; margin-bottom: 8px; padding-top: 4px; width: calc(100% - 110px);}
+.us-avatar {height: 90px; padding-left: 12px; padding-top: 20px; width: 90px;}
+.userstats p {padding-left: 12px;}
+.userstats h4 {font-size: 18px; padding-left: 12px; padding-right: 12px; padding-bottom: 12px;}
+.profileselector {
+	margin-bottom: 12px;
+	margin-left: 12px;
+	margin-right: 12px;
+	width: calc(100% - 24px);
+}
+.colorselector {
+	margin-bottom: 0px;
+	margin-left: 12px;
+	margin-right: 12px;
+	width: calc(100% - 24px);
+}
+.profileselector img {border-radius: 50%; height: 40px; width: 40px; margin-right: 5px;}
+.colorselector img {border-radius: 50%; height: 40px; width: 40px; margin-right: 5px;}
+.input-hidden {position: absolute; left: -9999px;}  
+input[type=radio]:checked + label>img {
+	border: 3px solid #fff;
+	width: 57px;
+	height: 57px;
+}
+input[type=radio] + label>img {width: 60px; height: 60px;}
+
+.updatedetails {
+	background-color: #111111;
+	border-radius: 10px;
+	color: #d1d1d1;
+	float: left;
+	margin-left: 20px;
+	width: calc(50% - 10px);
+}
+#flashed-err {
+	background: #ac3426; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 6px;
+}
+.boxdivider {
+	background: #d1d1d1;
+	height: 1px;
+	margin-left: 12px;
+	width: calc(100% - 24px);
+}
+.form-group {padding-top: 14px;}
+.form-group label {padding-left: 12px; line-height: 36px;}
+.form-control {
+	background: #202020;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: #d1d1d1;
+	float: right; 
+	font-size: 16px;
+	height: 34px;
+	margin-right: 12px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	width: 250px;
+	-webkit-box-shadow: none;
+}
+.form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+.fielderror {
+	width: 100%;
+}
+.fielderror::after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+}
+#errorpassword {
+	color: #ac3426;
+	float: right;
+	font-size: 14px;
+	margin-bottom: 0px;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-top: 6px;
+	right: 0;
+	width: 270px;
+}
+.btn-default {
+	border: none;
+	border-radius: 7px;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 34px;
+	margin-bottom: 14px;
+	margin-left: 12px;
+	margin-top: 16px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 130px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
+.btn-default2-a:hover {text-decoration: none;}
+.btn-default2 {
+	background-color: #ac3426;
+	border: none;
+	border-radius: 7px;
+	color: #d1d1d1;
+	cursor: pointer;
+	font-size: 16px;
+	height: 34px;
+	margin-left: 7px;
+	margin-top: 16px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 136px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default2:hover {background: #b23426;}
+.btn-default2:active, .btn-default2.active {background: #a53426;}
+.btn-default2:active, .btn-default2.active, .btn-default2:hover, .btn-default2:focus {outline: none;}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	#flashed-err {margin-left: 10px; margin-right: 10px;}
+	#flashed-norm {margin-left: 10px; margin-right: 10px;}
+	.userstats {margin-left: 10px; width: calc(50% - 15px);}
+	.updatedetails {margin-left: 10px; width: calc(50% - 15px);}
+	.form-control {width: 230px;}
+	#errorpassword {width: 250px;}
+}
+@media screen and (max-width: 900px) {
+	.us-left {float: none; margin-bottom: 0px; width: 100%;}
+	.us-right {float: none; margin-bottom: 20px; padding-top: 0px; width: 100%;}
+	.form-control {width: 180px;}
+	#errorpassword {width: 200px;}
+}
+@media screen and (max-width: 800px) { 
+	.userstats {float: none; width: 500px;}
+	.updatedetails {float: none; margin-top: 15px; width: 500px;}
+	.form-control {width: 250px;}
+	#errorpassword {width: 270px;}
+}
+@media screen and (max-width: 700px) {
+	.block1inner h2 {display: none;}
+	.userstats {margin-top: 15px;}
+}
+@media screen and (max-width: 520px) { 
+	.userstats {width: calc(100% - 20px);}
+	.updatedetails {width: calc(100% - 20px);}
+	.form-control {width: 230px;}
+	#errorpassword {width: 250px;}
+}
+@media screen and (max-width: 450px) { 
+	.form-control {width: 190px;}
+	#errorpassword {width: 210px;}
+}
+@media screen and (max-width: 425px) {
+	.form-control {width: 160px;}
+	#errorpassword {width: 180px;}
+}

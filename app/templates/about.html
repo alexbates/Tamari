@@ -1,0 +1,25 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='about.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<span class="version">Version 0.4</span>
+		<p>Tamari is open source software provided with GNU General Public License v3.0.</p>
+		<h3>Credits</h3>
+		<p>Developed by Alex Bates.</p>
+		<p>Profile picture icons designed by Arsyadi Yulian.</p>
+		<p>Icons used by buttons and default recipe photos are licensed via the Noun Project.</p>
+		<p>Inter font is licensed under the SIL Open Font License 1.1.</p>
+		<p>The jQuery library is licensed under the MIT License.</p>
+		<h3>Changelog</h3>
+		<p><b>Version 0.3:</b> Added ability to upload images.</p>
+		<p><b>Version 0.2:</b> Implemented functionality that is core to management of recipes. This includes viewing all recipes, viewing favorites, viewing categories, adding editing or deleting recipes, favoriting or unfavoriting recipes, making a recipe public or private, and adding or deleting categories.</p> 
+		<p><b>Version 0.1:</b> Designed core template including navbar, account page, login page, and register page. Implemented basic account functionality including the ability to register an account, login with email and password, reset password over email, and update email or password on user account page.</p>
+	</div>
+</main>
+{% endblock %}

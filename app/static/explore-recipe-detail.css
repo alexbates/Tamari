@@ -1,0 +1,191 @@
+.explore-active {
+	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.explore-active:hover {
+	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+}
+.mt-explore {display: block !important;}
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 20px;
+	width: 1000px;
+}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: #ac3426;
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 16px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45;
+	font-size: 14px;
+	min-height: 17px;
+	margin-bottom: 16px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#r-detail {
+	float: left;
+	padding-right: 20px;
+	width: calc(65% - 20px);
+}
+#r-detail h2 {
+	font-size: 28px;
+	margin-bottom: 12px;
+}
+.mobile-image-inner {margin-top: 20px; text-align: center; width: 100%;}
+.mobile-image {
+	aspect-ratio: 4 / 3;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 8px;
+	display: none;
+	width: 70%;
+}
+.timeouter {padding-right: 20px;}
+.urla:hover {color: #efefef; text-decoration: none;}
+.urla:active {color: #efefef; text-decoration: none;}
+.btncontainer {margin-top: 12px;}
+.btn-default {
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 16px;
+	height: 38px;
+	margin-right: 10px;
+	margin-top: 2px;
+	margin-bottom: 9px;
+	padding-left: 4px;
+	padding-right: 4px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
+.btn-default2 {
+	background-color: #ac3426;
+	border: none;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 16px;
+	height: 38px;
+	margin-right: 10px;
+	margin-top: 2px;
+	margin-bottom: 9px;
+	padding-left: 4px;
+	padding-right: 4px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default2:hover {background: #b23426;}
+.btn-default2:active, .btn-default2.active {background: #a53426;}
+.btn-default2:active, .btn-default2.active, .btn-default2:hover, .btn-default2:focus {outline: none;}
+.btn-text {float: left; padding-left: 7px; padding-right: 8px;}
+.btn-icon {display: block; float: left; height: 20px; padding-left: 5px; width: 20px;}
+.btn-icon img {height: 100%; width: 100%;}
+.btn-icon2 {display: block; float: left; height: 18px; padding-left: 5px; width: 18px;}
+.btn-icon2 img {height: 100%; width: 100%;}
+#r-image {
+	aspect-ratio: 4 / 3;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 8px;
+	float: left;
+	width: 35%;
+}
+#ingredients {
+	float: left;
+	padding-right: 20px;
+	width: calc(50% - 20px);
+}
+#ingredients h3 {
+	font-size: 22px;
+	margin-bottom: 16px;
+	margin-top: 34px;
+}
+.inginner {margin-bottom: 10px;}
+.inginner div {
+	background: #111111;
+	border-bottom: solid 1px #202020;
+	text-align: left;
+	width: 100%;
+}
+.inginner div:first-child {
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+.inginner div:last-child {
+	border-bottom: none !important;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+.ing {
+	padding: 10px; 
+	margin: 0;
+	width: calc(100% - 20px);
+}
+#instructions {
+	float: left;
+	width: 50%;
+}
+#instructions h3 {
+	font-size: 22px;
+	margin-bottom: 16px;
+	margin-top: 34px;
+}
+.steps {
+	background: #111111;
+	border-radius: 10px;
+	margin-bottom: 10px;
+	padding: 10px;
+	text-align: left;
+	width: calc(100% - 20px);
+}
+.steps b {color: #b0b0b0;}
+.steps p {margin-bottom: 0; margin-top: 6px;}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) {
+	#flashed-err {margin-left: 10px; margin-right: 10px;}
+	#flashed-norm {margin-left: 10px; margin-right: 10px;}
+	.block1inner {width: 100%;}
+	#r-detail {padding-left: 10px; width: calc(65% - 30px);}
+	#r-image {width: calc(35% - 10px);}
+	#ingredients {padding-left: 10px; width: calc(50% - 30px);}
+	#instructions {padding-right: 10px; width: calc(50% - 10px);}
+}
+@media screen and (max-width: 700px) { 
+	#r-detail {float: none; padding-right: 10px; width: calc(100% - 20px);}
+	#r-detail h2 {font-size: 24px;}
+	.mobile-image {display: inline-block;}
+	#r-image {display: none;}
+}
+@media screen and (max-width: 600px) { 
+	.timeouter {padding: 0;}
+	.timeouter::after {content: "\A"; white-space: pre;}
+	.mobile-image {width: 85%;}
+	#ingredients {float: none; padding-right: 10px; width: calc(100% - 20px);}
+	#instructions {
+		float: none; 
+		padding-bottom: 14px; 
+		padding-left: 10px; 
+		width: calc(100% - 20px);
+	}
+}
+@media screen and (max-width: 500px) { 
+	.mobile-image {width: 100%;}
+}

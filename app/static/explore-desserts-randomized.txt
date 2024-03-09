@@ -1,0 +1,888 @@
+https://www.justapinch.com/recipes/dessert/fruit-dessert/berry-cream-cheese-danish.html;Berry Cream Cheese Danish
+https://www.justapinch.com/recipes/dessert/cake/ellies-cranberry-cake-with-lemon-butter-sauce.html;Ellie's Cranberry Cake With Lemon Butter Sauce
+https://www.justapinch.com/recipes/dessert/dessert-pudding/vanilla-pudding-poppers.html;Vanilla Pudding Poppers
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-burritos-2.html;Apple Burritos
+https://www.justapinch.com/recipes/dessert/dessert-chocolate/caramelized-banana-bread.html;Caramelized Banana Bread
+https://www.justapinch.com/recipes/dessert/dessert-cake/coconut-brunch-bread.html;Coconut Brunch Bread
+https://www.justapinch.com/recipes/dessert/pie/fruit-pizza-2.html;Fruit Pizza
+https://www.justapinch.com/recipes/dessert/cake/coffee-cake-easy-cinnamon-brown-sugar.html;Easy Cinnamon Brown Sugar Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/easy-delicious-pull-apart-sticky-buns.html;Easy Delicious Pull-Apart Sticky Buns
+https://www.justapinch.com/recipes/dessert/cake/caramel-apple-coffee-cake.html;Caramel Apple Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/grandmas-secret-apple-brownies-3.html;Grandma's Secret Apple Brownies!
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-chip-pumpkin-muffins.html;Chocolate Chip Pumpkin Muffins
+https://www.justapinch.com/recipes/dessert/cake/moms-best-coffee-cake.html;Mom's Best Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/favorite-coffee-squares.html;Favorite Coffee Squares
+https://www.justapinch.com/recipes/dessert/cake/crushed-pineapple-upside-down-cake.html;Crushed Pineapple Upside-Down Cake
+https://www.justapinch.com/recipes/dessert/cake/cream-scones.html;Cream Scones
+https://www.justapinch.com/recipes/dessert/cake/baked-custard-pancake.html;Baked Custard Pancake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cranberry-cream-cheese-crescent-rolls-2.html;Cranberry Cream Cheese Crescent Rolls
+https://www.justapinch.com/recipes/dessert/chocolate/pams-rustic-caramel-pear-tart-with-a.html;Pam's Rustic Caramel Pear Tart
+https://www.justapinch.com/recipes/dessert/fruit-dessert/yeast-waffle-with-fresh-strawberry-rum-syrup.html;Yeast Waffle With Fresh Strawberry Rum Syrup
+https://www.justapinch.com/recipes/dessert/chocolate/shawns-chocolate-gravy.html;Shawn's Chocolate Gravy
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-and-butterscotch-stuffed-croissants.html;Chocolate and Butterscotch Stuffed Croissants
+https://www.justapinch.com/recipes/dessert/cake/dads-cake-doughnuts.html;Dad's Cake Doughnuts
+https://www.justapinch.com/recipes/dessert/cake/southern-banana-bread.html;Southern Banana Bread
+https://www.justapinch.com/recipes/dessert/cake/fruit-and-cream-cheese-coffeecake.html;Fruit and Cream Cheese Coffee Cake
+https://cookinglsl.com/chocolate-oat-bran-dessert/;Chocolate Oat Bran Dessert
+https://www.justapinch.com/recipes/bread/flatbread/3-kiddos-favorite-dessert-quesadillas.html;3 Kiddos Favorite \"Dessert\" Quesadillas
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cherry-clafouti.html;Skillet Flaugnarde or Clafoutis
+https://www.justapinch.com/recipes/dessert/cake/bangn-blueberry-coffee-cake-2.html;Bang'n Blueberry Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/cranberry-walnut-bread-pudding-ala-yumm.html;Cranberry Walnut Bread Pudding A La Yum!
+https://www.justapinch.com/recipes/dessert/pie/italian-christmas-quiche.html;Italian Christmas Quiche
+https://www.justapinch.com/recipes/dessert/cake/buttermilk-apple-pie-zucchini-bread.html;Buttermilk Apple Pie Zucchini Bread
+https://www.justapinch.com/recipes/dessert/cake/momma-sweet-biscuits.html;Momma Sweet Biscuits
+https://www.justapinch.com/recipes/dessert/cake/sour-cream-coffee-cake-my-favorite.html;Sour Cream Coffee Cake -My Favorite!
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/fruity-cream-cheese-delights.html;Fruity Cream Cheese Delights
+https://www.justapinch.com/recipes/dessert/fruit-dessert/caramel-apple-turnovers-with-mascarpone.html;Caramel Apple Turnovers With Mascarpone
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-roll-cake-5.html;Cinnamon Roll Cake
+https://www.justapinch.com/recipes/dessert/cake/apple-streusel-coffee-cake.html;Apple Streusel Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/beas-sweet-potato-jacks.html;Bea's Sweet Potato Jacks
+https://www.justapinch.com/recipes/dessert/cake/toffee-brown-sugar-pound-cake.html;Toffee & Brown Sugar Pound Cake
+https://www.justapinch.com/recipes/dessert/cake/blue-ribbon-blueberry-coffee-cake.html;Blue Ribbon Blueberry Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/janes-cheesy-pecan-cake.html;Jane's Cheesy Pecan Cake
+https://www.justapinch.com/recipes/dessert/cake/paleo-wow-coconut-bread.html;Paleo WOW Coconut Bread
+https://www.justapinch.com/recipes/dessert/chocolate/banana-pineapple-chocolate-chip-pancakes.html;Banana Pineapple Chocolate Chip Pancakes
+https://www.justapinch.com/recipes/dessert/cake/janets-pumpkin-nut-bread-3.html;Janet's Pumpkin Bread
+https://www.justapinch.com/recipes/dessert/cake/dark-chocolate-zucchini-muffins-with-white-chocolate.html;Dark Chocolate Zucchini Muffins With White Chocolate Ganache
+https://www.justapinch.com/recipes/dessert/other-dessert/torrijas-spanish-dessert.html;Torrijas (Spanish Dessert or Breakfast)
+https://www.justapinch.com/recipes/dessert/ice-cream/strawberry-pancake-puppys-with-cream-cheese.html;Strawberry Pancake Puppies With Cream Cheese Dip
+https://www.justapinch.com/recipes/dessert/fruit-dessert/grilled-stone-fruit.html;Grilled Stone Fruit
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fruit-stuffed-french-toast.html;Fruit Stuffed French Toast
+https://www.justapinch.com/recipes/dessert/other-dessert/berry-nutty-granola.html;Berry Nutty Granola
+https://www.justapinch.com/recipes/dessert/other-dessert/stuffed-french-toast.html;Stuffed French Toast
+https://www.justapinch.com/recipes/dessert/other-dessert/buttermilk-cake-doughnuts.html;Buttermilk Cake Doughnuts
+https://www.justapinch.com/recipes/dessert/cookies/peanut-butter-oat-bran-cookies.html;Peanut Butter Oat Bran Cookies
+https://www.justapinch.com/recipes/dessert/other-dessert/energy-bites.html;Energy Bites
+https://www.justapinch.com/recipes/dessert/cake/lovely-lemon-pound-cake.html;Lovely Lemon Pound Cake
+https://www.justapinch.com/recipes/dessert/pudding/sourdough-bread-pudding.html;Sourdough Bread Pudding
+https://www.justapinch.com/recipes/dessert/pudding/healthy-pumpkin-pudding.html;Healthy Pumpkin Pudding
+https://www.justapinch.com/recipes/dessert/cake/ricotta-breakfast-cake-with-berries.html;Ricotta Breakfast Cake with Berries
+https://www.justapinch.com/recipes/dessert/other-dessert/lucs-crepes.html;Luc's Crêpes
+https://www.justapinch.com/recipes/dessert/cookies/apple-walnut-oaties.html;Apple Walnut Oaties
+https://www.justapinch.com/recipes/dessert/other-dessert/butterscotch-apple-sauce.html;Butterscotch Apple Sauce
+https://www.justapinch.com/recipes/dessert/cake/blueberry-lemon-cream-scones.html;Blueberry Lemon Cream Scones
+https://www.justapinch.com/recipes/dessert/fruit-dessert/easy-apple-walnut-tarts.html;Easy Apple-Walnut Tarts
+https://www.justapinch.com/recipes/dessert/cookies/clints-hippie-cookies.html;Clint's Hippie Cookies
+https://www.justapinch.com/recipes/dessert/pudding/bread-pudding-20.html;Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/spring-hill-ranchs-apple-cake.html;Spring Hill Ranch's Apple Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/homemade-cinnamon-buns.html;Homemade Cinnamon Buns
+https://www.justapinch.com/recipes/dessert/fruit-dessert/blackberry-slump.html;BLACKBERRY SLUMP
+https://www.justapinch.com/recipes/dessert/other-dessert/vanilla-yogurt-machine.html;Vanilla Yogurt - Machine
+https://www.justapinch.com/recipes/dessert/fruit-dessert/blueberry-swirl-coffee-cake.html;Blueberry Swirl Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/ultimate-carrot-cake.html;Ultimate Carrot Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-cinnamon-rolls.html;Apple Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/pie/apple-danish.html;Apple Danish
+https://www.justapinch.com/recipes/dessert/cookies/old-fashioned-pumpkin-cookies.html;Old-Fashioned Pumpkin Cookies
+https://www.justapinch.com/recipes/dessert/cake/orange-sponge-cake-2.html;Orange Sponge Cake
+https://www.justapinch.com/recipes/dessert/cake/simply-deliscious-moist-pineapple-upside-down-cake.html;Simply deliscious moist pineapple upside down cake
+https://www.justapinch.com/recipes/dessert/other-dessert/cinnamon-apple-streusel-crepes.html;Cinnamon-Apple Streusel Crêpes
+https://www.justapinch.com/recipes/dessert/cake/fresh-peach-crumb-coffee-cake.html;Fresh Peach Crumb Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/summertime-leftover-dessert-parfait.html;Summertime Leftover Dessert Parfait
+https://www.justapinch.com/recipes/dessert/cake/pumpkin-strusel-brunch-cake.html;~ Pumpkin Streusel Brunch Cake ~
+https://www.justapinch.com/recipes/dessert/pudding/banana-bread-pudding-4.html;Banana Bread Pudding
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-kahlua-toffee-trifle.html;Chocolate Kahlua Toffee Trifle
+https://www.justapinch.com/recipes/dessert/ice-cream/coconut-pecan-granola.html;Coconut Pecan Granola
+https://www.justapinch.com/recipes/dessert/cake/pecan-pleasin-coffee-cake.html;Pecan Pleasin Coffee Cake ~
+https://www.justapinch.com/recipes/dessert/cake/blueberry-buckle-coffee-cake.html;Blueberry Buckle Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/banana-nut-coffee-cake.html;~ Banana Nut Coffee Cake ~
+https://www.justapinch.com/recipes/dessert/cake/pecan-crusted-pumpkin-loaf-with-rum.html;Pecan Crusted Pumpkin loaf (with Rum & Chocolate Chips)
+https://www.justapinch.com/recipes/dessert/other-dessert/healthy-baked-oatmeal-muffins.html;Healthy Baked Oatmeal Muffins
+https://www.justapinch.com/recipes/dessert/cake/gluten-free-baking-powder-by-eddie.html;GLUTEN FREE SELF RISING FLOUR BY EDDIE
+https://www.justapinch.com/recipes/dessert/cake/blueberry-snack-cake-with-streusel-topping.html;Blueberry Snack Cake with Streusel Topping
+https://www.justapinch.com/recipes/dessert/cake/big-daddys-coffee-cake.html;Big Daddy's Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/cherry-coffee-cake-3.html;Cherry Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/2-ingredient-pineapple-whip.html;2 Ingredient Pineapple Whip
+https://www.justapinch.com/recipes/dessert/cake/light-lemon-drop-muffins.html;~ Light Lemon Drop Muffins ~
+https://www.justapinch.com/recipes/dessert/cake/easy-blackberry-snacking-cake.html;~ Easy Blackberry Snacking Cake ~
+https://www.justapinch.com/recipes/dessert/other-dessert/crepes-2.html;Crepes
+https://www.justapinch.com/recipes/dessert/cake/tinas-rhubarb-cake.html;Tina's Rhubarb Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/grape-nuts-apple-crisp.html;Grape Nuts Apple Crisp
+https://www.justapinch.com/recipes/dessert/cake/halfway-healthy-banana-loaf.html;Halfway Healthy Banana Loaf
+https://www.justapinch.com/recipes/dessert/cake/biscoff-breakfast-cake.html;Biscoff Breakfast Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/rhubarb-crunch-6.html;~ Rhubarb Crunch ~
+https://www.justapinch.com/recipes/dessert/cake/glazed-jam-cake-a-coffee-cake.html;Glazed Jam Cake (a coffee cake)
+https://www.justapinch.com/recipes/dessert/cake/peanut-butter-jelly-poke-cake.html;Peanut Butter & Jelly Poke Cake
+https://www.justapinch.com/recipes/dessert/pudding/munnas-quick-egg-custard.html;Munna's Quick Egg Custard
+https://www.justapinch.com/recipes/dessert/cake/graham-streusel-coffee-cake.html;Graham-Streusel Coffee Cake
+https://www.justapinch.com/recipes/dessert/cookies/banana-apple-oatmeal-cookie-smash.html;Banana Apple Oatmeal Cookie Smash
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-applesauce-magic-cake.html;Cinnamon Applesauce Magic Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/pineapple-nut-crunch-coffee.html;~ Pineapple - Nut Crunch Coffee Cake ~
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/pumpkin-kringla.html;Pumpkin Kringla
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/strawberry-banana-custard.html;Strawberry banana custard
+https://www.justapinch.com/recipes/dessert/dessert-cake/pumpkin-pie-cream-cake.html;Pumpkin pie cream cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/tropical-lite-ambrosia.html;Tropical Lite Ambrosia
+https://www.justapinch.com/recipes/dessert/dessert-cake/lemon-blueberry-pound-cake-3.html;Lemon Blueberry Pound Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/old-fashioned-molasses-marble-cake.html;\"Old\"- fashioned molasses marble cake
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/pumpkin-cranberry-scones.html;~ Pumpkin Cranberry Scones ~
+https://www.justapinch.com/recipes/dessert/dessert-chocolate/breakfast-brownies.html;Breakfast Brownies
+https://www.justapinch.com/recipes/dessert/dessert-cake/october-cake-cider-spice.html;OCTOBER CAKE(cider&spice)
+https://www.justapinch.com/recipes/sauce-spread/sauce-spread-fruit-sauce/our-favorite-strawberry-pancake-or-dessert-syrup.html;Our Favorite Strawberry Pancake or Dessert Syrup
+https://www.justapinch.com/recipes/dessert/dessert-cake/true-belgian-waffles-recipe.html;True Belgian Waffles Recipe
+https://www.justapinch.com/recipes/dessert/cake/sweet-rolls-from-camarillo-ca.html;Sweet Rolls from Camarillo, CA
+https://www.justapinch.com/recipes/dessert/dessert-cake/pumpkin-cider-doughnuts.html;Pumpkin/cider doughnuts
+https://www.justapinch.com/recipes/dessert/dessert-cookies/applesauce-granola-cookies.html;Applesauce Granola Cookies
+https://www.justapinch.com/recipes/dessert/dessert-pudding/blueberry-bread-pudding-with-creamy-vanilla-glaze.html;Blueberry Bread Pudding with Creamy Vanilla Glaze
+https://www.justapinch.com/recipes/dessert/dessert-cake/impossibly-easy-banana-bread-coffee-cake.html;Impossibly Easy Banana Bread Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/cherry-sour-cream-coffee-cake.html;Cherry Sour Cream Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/swedish-crepes.html;Swedish Crepes
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/homemade-blackberry-syrup.html;Homemade Blackberry Syrup
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/apple-turnovers.html;Apple Turnovers
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/fried-apples.html;Fried Apples
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/strawberry-cream-cheese-cobbler-2.html;Strawberry Cream Cheese Cobbler
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/apple-pie-tacos.html;Apple Pie Tacos
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/baked-french-toast-for-a-crowd.html;Baked French Toast for a Crowd
+https://www.justapinch.com/recipes/dessert/dessert-cake/cinnamon-chocolate-chip-cake.html;Tracy Sander's Cinnamon Chocolate Chip Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/graham-streusel-coffee-cake.html;GRAHAM STREUSEL COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/dessert-cake/megs-blackberry-cream-cheese-coffeecake.html;Meg's Blackberry Cream Cheese Coffeecake
+https://www.justapinch.com/recipes/dessert/dessert-cake/kahlua-coffee-cake.html;Kahlua Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/coconut-pumpkin-quick-bread.html;Coconut Pumpkin Quick Bread
+https://www.justapinch.com/recipes/dessert/dessert-cake/pineapple-breakfast-cake.html;Pineapple Breakfast Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/baked-apples-with-cashew-cream-sauce.html;BAKED APPLES WITH CASHEW CREAM SAUCE
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/pumpkin-spice-streusel-bars.html;Pumpkin Spice Streusel Bars
+https://www.justapinch.com/recipes/dessert/dessert-cake/apple-awesomeness.html;~ Apple Awesomeness ~
+https://www.justapinch.com/recipes/dessert/dessert-cake/cinnamon-pretzel-swirl-pumpkin-bread.html;Pumpkin Cinnamon Swirl Bread w/Crunchy Pretzel Top
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/halloween-fruit-fest.html;HALLOWEEN FRUIT FEST
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/granny-schingos-apple-kuchen.html;Tina's Granny Schingo's Apple Kuchen
+https://www.justapinch.com/recipes/dessert/dessert-cake/apple-fritter-cake.html;Apple Fritter Cake
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/apple-pumpkin-butter-canning-recipe.html;Apple Pumpkin Butter - Canning Recipe
+https://www.justapinch.com/recipes/dessert/dessert-cake/poppy-seed-quick-bread.html;Poppy Seed Quick Bread
+https://www.justapinch.com/recipes/dessert/dessert-cake/cranberry-celebration-cake-cassie.html;~ Cranberry Celebration Cake ~ Cassie
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/easy-coconut-cranberry-granola.html;EASY COCONUT-CRANBERRY GRANOLA
+https://www.justapinch.com/recipes/dessert/dessert-cake/cinnamon-raisin-cake.html;CINNAMON RAISIN CAKE
+https://www.justapinch.com/recipes/dessert/dessert-cake/nutty-spaghetti-squash-quick-bread.html;Nutty Spaghetti Squash Quick Bread
+https://www.justapinch.com/recipes/dessert/dessert-cake/ol-kentucky-cinnamon-coffee-cake.html;Ol' Kentucky Cinnamon Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-pudding/pumpkin-pie-rice-pudding.html;Pumpkin Pie Rice Pudding
+https://www.justapinch.com/recipes/dessert/dessert-pudding/pumpkin-eggo-custard-pudding.html;Pumpkin Eggo Custard Pudding
+https://www.justapinch.com/recipes/dessert/dessert-cookies/orange-oatmeal-cranberry-cookies.html;Orange Oatmeal Cranberry Cookies
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/pnw-honeyed-yogurt-parfait.html;PNW Honeyed Yogurt Parfait
+https://www.justapinch.com/recipes/dessert/dessert-cake/cinnamon-swirl-sour-cream-coffee-cake.html;CINNAMON SWIRL SOUR CREAM COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/twice-fried-pancakes-german.html;Twice Fried Pancakes (German)
+https://www.justapinch.com/recipes/dessert/dessert-cake/banana-crumb-cake.html;Banana Crumb Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/easy-blender-crepes.html;Easy Blender Crêpes
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/sstrawberry-cream-cheese-pastries.html;Sstrawberry-Cream Cheese Pastries
+https://www.justapinch.com/recipes/dessert/dessert-pie/peaches-brie-hand-pies.html;Peaches & Brie Hand Pies
+https://www.justapinch.com/recipes/dessert/dessert-cake/yummy-strawberry-cake.html;YUMMY STRAWBERRY CAKE
+https://www.justapinch.com/recipes/dessert/dessert-cake/skinny-double-chocolate-banana-bread.html;Skinny Double Chocolate Banana Bread
+https://www.justapinch.com/recipes/dessert/dessert-cookies/maple-harvest-bars.html;Maple Harvest Bars
+https://www.justapinch.com/recipes/dessert/dessert-cookies/good-for-you-chocolate-chip-cookies.html;Healthy Chocolate Chip cookies
+https://www.justapinch.com/recipes/dessert/dessert-cake/coffee-butter-cream-filled-coffee-cake.html;Coffee Lovers Delight Cake - Cassie
+https://www.justapinch.com/recipes/dessert/dessert-cake/chocolate-black-forest-waffle-or-cake.html;Chocolate Black Forest Waffle, Or Cake
+https://www.justapinch.com/recipes/dessert/dessert-pudding/caramel-croissant-bread-pudding.html;Caramel Croissant Bread Pudding
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/blintzes-with-orange-cream-filling.html;Blintzes with Orange Cream Filling
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/banana-oats-apple-walnut-morsels.html;Banana Oats Apple Walnut Morsels
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/just-peachy-peach-doughnuts.html;JUST PEACHY PEACH DOUGHNUTS
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/doughnut-apple-cobbler.html;Doughnut Apple Cobbler
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/peachy-blueberry-fritters.html;Peachy Blueberry Fritters
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/dehydrated-strawberrys.html;Dehydrated Strawberrys
+https://www.justapinch.com/recipes/dessert/dessert-cake/moist-marbled-pumpkin-spice-bread.html;Moist & Marbled Pumpkin Spice Bread
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/blueberry-stuffed-french-toast.html;Blueberry Stuffed French Toast
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/rich-and-creamy-apple-crisp-heirloom-recipe.html;Rich and Creamy Apple Crisp (Heirloom Recipe)
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/patriotic-parfaits.html;Patriotic Parfaits
+https://www.justapinch.com/recipes/dessert/dessert-cake/cinnamon-coffee-cake.html;Cinnamon Coffee cake
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/overnight-cherry-danish.html;Overnight Cherry Danish
+https://www.justapinch.com/recipes/dessert/dessert-cake/moist-pecan-coffee-cake.html;Moist pecan coffee cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/banana-streusel-coffee-cake-with-maple-glaze.html;Banana Streusel Coffee Cake with Maple Glaze
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/lemon-poppy-seed-pancakes-toppings.html;Lemon Poppy Seed Pancakes & Toppings
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/pumpkin-pie-french-toast.html;Pumpkin Pie French Toast
+https://www.justapinch.com/recipes/dessert/dessert-cake/cobbler-coffee-cake.html;Cobbler Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/cherry-cottage-cake.html;Cherry Cottage Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/cherries-royale-crepes.html;Cherries Royale Crepes
+https://www.justapinch.com/recipes/dessert/dessert-pudding/apple-rum-pecan-maple-rice-pudding.html;Apple Rum Pecan Maple Rice Pudding
+https://www.justapinch.com/recipes/dessert/dessert-cake/catie-s-jewish-coffeecake.html;Catie’s Best Supreme Coffeecake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/strawberry-dream-cake.html;Strawberry Dream Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/ellens-smokin-blueberry-coffee-cake.html;ELLEN'S SMOKIN' BLUEBERRY COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/dessert-cake/cream-filled-raspberry-coffee-cake.html;Cream Filled Raspberry Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/easy-cake-mix-peach-cobbler.html;Easy cake mix peach cobbler
+https://www.justapinch.com/recipes/dessert/dessert-cake/lemony-blueberry-scones.html;LEMONY BLUEBERRY SCONES
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/fruited-muffin.html;Fruited Muffin
+https://www.justapinch.com/recipes/dessert/dessert-cake/healthy-fruit-cake.html;Healthy Fruit Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/strawberry-filled-puff-pastry-donuts.html;Strawberry Filled Puff Pastry Donuts
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/banana-crunch-muffins-ina-garten.html;Banana Crunch Muffins - Ina Garten
+https://www.justapinch.com/recipes/dessert/dessert-cake/lucky-charms-pancakes.html;Lucky Charms Pancakes
+https://www.justapinch.com/recipes/dessert/dessert-cake/dee-dees-sticky-bun-cinnamon-roll-cake.html;Dee Dee's Sticky Bun Cinnamon Roll Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/apple-cinnamon-coffee-cake.html;Apple Cinnamon Chip Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/my-apple-fritters.html;My Apple Fritters
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/bran-muffins.html;Bran Muffins
+https://www.justapinch.com/recipes/dessert/dessert-cake/blueberry-cupcakes.html;Blueberry Cupcakes
+https://www.justapinch.com/recipes/dessert/dessert-cookies/breakfast-cookie.html;Breakfast Cookie
+https://www.justapinch.com/recipes/dessert/dessert-cookies/stella-doro-style-anisette-toast-biscotti.html;Stella D'oro Style Anisette Toast Biscotti
+https://www.justapinch.com/recipes/dessert/dessert-cake/awesome-paleo-fruited-cake.html;Awesome Paleo Fruited Cake
+https://www.justapinch.com/recipes/dessert/dessert-chocolate/dark-choclate-waffles.html;Dark Choclate Waffles
+https://www.justapinch.com/recipes/dessert/dessert-pie/sour-cream-apple-pie-diabetic-connect.html;Sour Cream Apple Pie -Diabetic Connect
+https://www.justapinch.com/recipes/dessert/dessert-cookies/blackberry-walnut-cheesecake-squares.html;Blackberry Walnut Cheesecake Squares
+https://www.justapinch.com/recipes/dessert/dessert-cake/butterscotch-fruit-bread.html;Low Carb Butterscotch Fruit Bread
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/oatmeal-raisin-morning-muffin-gluten-free.html;Oatmeal Raisin Morning Muffin #Gluten free
+https://www.justapinch.com/recipes/dessert/dessert-cookies/peach-cobbler-crumb-bars.html;Peach Cobbler Crumb Bars
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/gradmas-best-pineapple-fritters.html;Gradma's Best Pineapple Fritters
+https://www.justapinch.com/recipes/dessert/dessert-cake/old-fashioned-butter-cake.html;Old Fashioned Butter Cake
+https://www.justapinch.com/recipes/dessert/dessert-cake/old-recipes-from-nantucket-island-cook-book.html;Old Recipes from: Nantucket Island Cook Book
+https://www.justapinch.com/recipes/dessert/dessert-cookies/tastee-high-fiber-no-sugar-breakfast-cookies.html;Tastee High Fiber-No Sugar Breakfast Cookies
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/apple-and-cinnamon-muffins.html;Apple and Cinnamon Muffins
+https://www.justapinch.com/recipes/dessert/dessert-pudding/crock-pot-rice-pudding.html;Crock Pot Rice Pudding
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/egg-sleds-or-nest-breakfast-lunch-or.html;egg sleds or nest, (breakfast, lunch or dinner)
+https://www.justapinch.com/recipes/dessert/dessert-cake/lemony-cream-cheese-buttermilk-loaf.html;Lemony Cream Cheese Buttermilk Loaf
+https://www.justapinch.com/recipes/dessert/dessert-pie/pecan-pie-from-marilyn.html;Pecan Pie From Marilyn
+https://www.justapinch.com/recipes/dessert/dessert-candy/dark-chocolate-brownies-with-a-secret-healthy-twis.html;Dark-Chocolate Brownies with a Secret Healthy Twis
+https://www.justapinch.com/recipes/dessert/dessert-cookies/italian-christmas-cookies-from-mr-food.html;Italian Christmas Cookies From Mr. Food
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/easy-cinnamon-rolls.html;Easy Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/dessert-cookies/italian-honey-balls.html;Italian Honey Balls
+https://www.justapinch.com/recipes/dessert/dessert-cake/peach-streusel-coffee-cake.html;Peach Streusel Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/apple-lasagna.html;Apple Lasagna
+https://www.justapinch.com/recipes/dessert/dessert-chocolate/overnight-cinna-toast-casserole.html;{Overnight} Cinna-Toast Casserole
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/cherry-nut-bread.html;Cherry Nut Bread
+https://www.justapinch.com/recipes/dessert/dessert-cookies/chubby-hubby-cookie-bars.html;Chubby Hubby Cookie Bars
+https://www.justapinch.com/recipes/dessert/dessert-cookies/cherry-drops.html;Cherry Drops
+https://www.justapinch.com/recipes/dessert/dessert-candy/chocolate-chip-cookie-bars.html;Chocolate Chip Cookie Bars
+https://www.justapinch.com/recipes/dessert/dessert-cake/hungarian-cheese-coffee-cake.html;Polish Cheese Babka Bread
+https://www.justapinch.com/recipes/dessert/dessert-cake/cranberry-pineapple-bread.html;Cranberry Pineapple Bread
+https://www.justapinch.com/recipes/dessert/dessert-pudding/pumpkin-praline-bread-pudding.html;Pumpkin Praline Bread Pudding
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/cheese-blintzes.html;Cheese Blintzes
+https://www.justapinch.com/recipes/dessert/dessert-cookies/brown-butter-salted-caramel-snickerdoodles.html;Brown Butter Salted Caramel Snickerdoodles
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/blueberry-cheese-rolls.html;BLUEBERRY CHEESE ROLLS
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/pumpkin-muffins-2-ingredients.html;Pumpkin Muffins ~ 2 Ingredients
+https://www.justapinch.com/recipes/dessert/dessert-cake/almond-coffee-cake.html;Almond Coffee Cake
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/spicy-brown-sugar-cinnamon-rolls.html;Spicy Brown Sugar Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/dessert-cake/nanettes-blueberry-buckle.html;Nanette's Blueberry Buckle
+https://www.justapinch.com/recipes/dessert/dessert-cake/grandmas-best-lazy-daisy-oatmeal-cake.html;Grandma's Best Lazy Daisy Oatmeal Cake
+https://www.justapinch.com/recipes/dessert/dessert-fruit-dessert/pineapple-fritters.html;Pineapple Fritters
+https://www.justapinch.com/recipes/dessert/dessert-cake/sugar-free-cheesecake.html;Sugar Free Cheesecake
+https://www.justapinch.com/recipes/dessert/dessert-pie/sugar-free-pecan-pie.html;Sugar-Free Pecan Pie
+https://www.justapinch.com/recipes/dessert/dessert-other-dessert/hot-cocoa-oatmeal-for-breakfast.html;Hot Cocoa oatmeal for breakfast
+https://www.justapinch.com/recipes/dessert/cookies/chocolate-chip-cookie-cheesecake-4.html;Chocolate Chip Cookie Cheesecake
+https://www.justapinch.com/recipes/dessert/other-dessert/yogurt-scones.html;Vanilla Yogurt Scones
+https://www.justapinch.com/recipes/dessert/cake/french-blueberry-almond-sour-cream-coffee-cake.html;Blueberry Sour Cream Bundt cake
+https://www.justapinch.com/recipes/dessert/cake/chocolate-caramel-cake-with-sea-salt.html;CHOCOLATE-CARAMEL CAKE WITH SEA SALT
+https://www.justapinch.com/recipes/dessert/cake/in-a-pinch-strudel.html;In a Pinch Strudel
+https://www.justapinch.com/recipes/dessert/cake/blueberry-lemon-delight.html;Blueberry Lemon Delight
+https://www.justapinch.com/recipes/dessert/cake/double-chocolate-bundt-cake-3.html;Double Chocolate Bundt Cake
+https://www.justapinch.com/recipes/dessert/cake/one-bowl-apple-cake.html;One Bowl Apple Cake
+https://www.justapinch.com/recipes/dessert/cake/marbled-pound-cake.html;Marbled Pound Cake
+https://www.justapinch.com/recipes/dessert/cake/cannoli-cheesecake.html;Cannoli Cheesecake
+https://www.justapinch.com/recipes/dessert/pie/old-fashioned-custard-pie-3.html;Old Fashioned Custard Pie
+https://www.justapinch.com/recipes/dessert/other-dessert/cheese-danish-2.html;Cheese Danish
+https://www.justapinch.com/recipes/dessert/cake/cranberry-coffeecake-2.html;Cranberry Coffeecake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-strudel.html;apple strudel
+https://www.justapinch.com/recipes/dessert/cake/cream-cheese-apple-brunch-cake.html;Cream Cheese Apple Brunch Cake - Cassies
+https://www.justapinch.com/recipes/dessert/cake/brunsviger-true-danish-pastry.html;Brunsviger - true Danish pastry
+https://www.justapinch.com/recipes/dessert/other-dessert/king-arthur-unbleached-all-purpose-flour-churros.html;King Arthur Unbleached All-Purpose Flour® Churros
+https://www.justapinch.com/recipes/dessert/fruit-dessert/halloween-oranges.html;Halloween oranges
+https://www.justapinch.com/recipes/dessert/cake/pumkin-banana-bread.html;Pumpkin Banana Bread
+https://www.justapinch.com/recipes/dessert/cake/cranberry-coffeecake.html;Cranberry Coffee Bundt Cake
+https://www.justapinch.com/recipes/dessert/cake/apple-cinnamon-monkey-bread.html;Apple Cinnamon Monkey Bread
+https://www.justapinch.com/recipes/dessert/cookies/autumn-oatmeal-cookies.html;Autumn Oatmeal Cookies
+https://www.justapinch.com/recipes/dessert/fruit-dessert/easy-pear-tart.html;Easy Pear Tart
+https://www.justapinch.com/recipes/dessert/other-dessert/biscuit-donuts.html;Biscuit Donuts
+https://www.justapinch.com/recipes/dessert/cookies/cinnamon-rolls.html;Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/cake/reethys-most-moist-banana-bread.html;Reethy's Most Moist Banana Bread
+https://www.justapinch.com/recipes/dessert/other-dessert/white-chocolate-praline-bread-pudding.html;White Chocolate Pecan Caramel Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/peachys-coffee-cake.html;Peachy's Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/banana-crumb-muffins.html;Banana Crumb Muffins
+https://www.justapinch.com/recipes/dessert/other-dessert/scones.html;Scones
+https://www.justapinch.com/recipes/dessert/cake/chocolate-peanut-butter-peach-breakfast-cake.html;Chocolate Peanut Butter Peach Breakfast Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/pecan-rolls.html;Pecan Rolls
+https://www.justapinch.com/recipes/dessert/cake/yummy-chocolate-chip-banana-pecan-bread.html;Yummy Chocolate Chip Banana Pecan Bread
+https://www.justapinch.com/recipes/dessert/cake/blueberry-spice-pudding-cake.html;Blueberry Spice Pudding Cake
+https://www.justapinch.com/recipes/dessert/cake/homemade-prune-cake.html;Homemade Prune Cake
+https://www.justapinch.com/recipes/dessert/cookies/crunchy-almond-biscotti.html;Crunchy Almond Biscotti
+https://www.justapinch.com/recipes/dessert/cake/chunky-monkey-pecan-banana-bars.html;Chunky Monkey nutty banana bars Noreen's
+https://www.justapinch.com/recipes/dessert/cookies/soft-plum-spice-cookie-biscuit.html;Soft Plum Spice Cookie/Biscuit
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-waffles.html;Chocolate Waffles
+https://www.justapinch.com/recipes/dessert/fruit-dessert/upside-down-strawberry-peach-muffins.html;Upside Down Strawberry Peach Muffins
+https://www.justapinch.com/recipes/dessert/fruit-dessert/rhubarb-butter-spread.html;Rhubarb butter spread
+https://www.justapinch.com/recipes/dessert/cookies/cream-cheese-chocolate-rugelach.html;Cream Cheese Chocolate Rugelach
+https://www.justapinch.com/recipes/dessert/cake/blueberry-crumb-coffee-cake.html;Blueberry Crumb Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/zucchini-coconut-bread-my-new-favorite.html;Zucchini Coconut Bread (My New Favorite)
+https://www.justapinch.com/recipes/dessert/cake/bananella-loaf.html;Bananella Loaf
+https://www.justapinch.com/recipes/dessert/cake/cherry-berry-streusel-loaf.html;Cherry-Berry Streusel Loaf
+https://www.justapinch.com/recipes/dessert/cake/easy-cherry-almond-coffee-cake.html;Easy Cherry-Almond Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-cinnamon-bombs.html;Apple Cinnamon Bombs
+https://www.justapinch.com/recipes/dessert/pie/homemade-hobo-poptarts.html;Homemade Hobo Poptarts
+https://www.justapinch.com/recipes/dessert/cake/cherry-cheese-coffee-cake-2.html;Cherry Cheese Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/blueberry-sour-cream-crumb-cake.html;Blueberry Sour Cream Crumb Cake
+https://www.justapinch.com/recipes/dessert/cake/fresh-blueberry-muffins.html;Fresh Blueberry Muffins
+https://www.justapinch.com/recipes/dessert/other-dessert/apple-fritters-2.html;Apple Fritters
+https://www.justapinch.com/recipes/dessert/fruit-dessert/amazing-fruit-dip.html;Amazing Fruit Dip
+https://www.justapinch.com/recipes/dessert/ice-cream/malted-milk-waffles.html;Malted Milk Waffles
+https://www.justapinch.com/recipes/dessert/other-dessert/easy-skillet-peach-cobbler.html;Easy Skillet Peach Cobbler
+https://www.justapinch.com/recipes/dessert/fruit-dessert/strawberry-banana-belgian-waffle-smores.html;Strawberry / Banana Belgian waffle smores
+https://www.justapinch.com/recipes/dessert/ice-cream/best-homemade-granola.html;Best homemade granola
+https://www.justapinch.com/recipes/dessert/fruit-dessert/stuffed-french-toast.html;Stuffed French Toast
+https://www.justapinch.com/recipes/dessert/cake/slow-cooker-turtle-monkey-bread.html;Slow Cooker TURTLE Monkey Bread
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fruit-n-granola-yogurt-parfait.html;FRUIT N GRANOLA YOGURT PARFAIT
+https://www.justapinch.com/recipes/dessert/other-dessert/pumpkin-spice-scones-with-white-chocolate-cips.html;Pumpkin Spice Scones with White Chocolate Chips
+https://www.justapinch.com/recipes/dessert/other-dessert/homemade-krispy-kremes-donut-holes.html;Homemade Krispy Kremes Donut Holes
+https://www.justapinch.com/recipes/dessert/cake/captain-jacks-coconut-muffins.html;Captain Jack's Coconut Muffins
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-roll-cake-9.html;Cinnamon Roll Cake
+https://www.justapinch.com/recipes/dessert/pie/chocolate-gravy-pie.html;Chocolate Gravy/Pie
+https://www.justapinch.com/recipes/dessert/fruit-dessert/strawberry-blueberry-parfait.html;Strawberry & Blueberry Parfait
+https://www.justapinch.com/recipes/dessert/cake/blueberry-breakfast-cake.html;Blueberry Breakfast Cake
+https://www.justapinch.com/recipes/dessert/cake/citrus-cinnamon-buns.html;Citrus Cinnamon Buns
+https://www.justapinch.com/recipes/dessert/cake/warm-apple-pancake.html;WARM APPLE PANCAKE
+https://www.justapinch.com/recipes/dessert/cake/sweet-cream-tea-cakes.html;Sweet Cream Tea Cakes
+https://www.justapinch.com/recipes/dessert/cookies/churros-bisquick-style.html;Churros- Bisquick Style
+https://www.justapinch.com/recipes/dessert/fruit-dessert/strawberry-pizza-9.html;Strawberry Pizza
+https://www.justapinch.com/recipes/dessert/other-dessert/mile-high-scones.html;Mile High Scones
+https://www.justapinch.com/recipes/dessert/fruit-dessert/pioneer-womans-apple-dumplings.html;Pioneer Woman's Apple Dumplings
+https://www.justapinch.com/recipes/dessert/cake/pineapple-coffee-cake-bisquick.html;Pineapple Coffee Cake - Bisquick
+https://www.justapinch.com/recipes/dessert/cake/1944-bake-off-winner-rhubarb-custard-bars.html;1944 Bake Off Winner Rhubarb Custard Bars
+https://www.justapinch.com/recipes/dessert/cake/dortheas-incredible-orange-cake-frosting.html;Dorthea's Incredible Orange Cake & Frosting
+https://www.justapinch.com/recipes/dessert/cake/newinghams-bakery-caramel-frosting.html;Newingham's Bakery Caramel Frosting
+https://www.justapinch.com/recipes/dessert/pudding/old-fashioned-rice-pudding-slow-cooker.html;Old Fashioned Rice Pudding (Slow Cooker)
+https://www.justapinch.com/recipes/dessert/other-dessert/prize-winning-granola-bars.html;Family Favorite Granola Bars
+https://www.justapinch.com/recipes/dessert/cake/lemon-berry-ricotta-pound-cake.html;Lemon-Berry Ricotta Pound Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/honey-lemon-fruit-parfaits.html;Honey-Lemon Fruit Parfaits
+https://www.justapinch.com/recipes/dessert/fruit-dessert/teachermans-fruit-pizza.html;Teacherman's Fruit Pizza
+https://www.justapinch.com/recipes/dessert/pie/real-men-do-eat-quiche.html;Manly Quiche/Omelet Pie (Real Men \"DO\" Eat Quiche)
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-betty.html;Apple Betty
+https://www.justapinch.com/recipes/dessert/cake/rhubarb-coffee-cake-scrumptious.html;Rhubarb Coffee Cake - Scrumptious
+https://www.justapinch.com/recipes/dessert/fruit-dessert/strawberry-scone.html;STRAWBERRY SCONE
+https://www.justapinch.com/recipes/dessert/cake/blueberry-buckle-2.html;Blueberry Buckle
+https://www.justapinch.com/recipes/dessert/other-dessert/peanut-butter-cereal-bars.html;Peanut Butter Cereal Bars
+https://www.justapinch.com/recipes/dessert/other-dessert/gooey-cinnamon-rolls.html;Gooey Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/other-dessert/dulce-de-leche-yeast-doughnuts.html;Dulce de Leche Yeast Doughnuts!
+https://www.justapinch.com/recipes/dessert/pudding/nancys-easy-custardy-bread-pudding.html;Nancy's Easy Custardy Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/mom-s-fresh-apple-love-letter-cakes-or.html;Mom’s Fresh Apple Love Letter Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/oven-or-stove-top-to-crock-pot.html;Oven or Stove Top To Crock Pot Conversion
+https://www.justapinch.com/recipes/dessert/other-dessert/cream-cheese-pancakes.html;Cream Cheese \"Pancakes\"
+https://www.justapinch.com/recipes/dessert/fruit-dessert/berry-oatmeal-crisp.html;Berry Oatmeal Crisp
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-roll-cheesecake.html;Cinnamon Roll Cheesecake
+https://www.justapinch.com/recipes/dessert/pudding/oatmeal-french-toast-bread-pudding.html;Oatmeal French Toast Bread Pudding
+https://www.justapinch.com/recipes/dessert/fruit-dessert/moes-apple-dumplings.html;Moe's REDD'S APPLE ALE APPLE DUMPLINGS
+https://www.justapinch.com/recipes/dessert/cake/orange-glazed-coffee-cake.html;Orange Glazed Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-roll-cake-8.html;Cinnamon Roll Cake
+https://www.justapinch.com/recipes/dessert/cake/oreo-waffles.html;Oreo Waffles
+https://www.justapinch.com/recipes/dessert/other-dessert/cressent-roll-cheesecake.html;Cressent Roll Cheesecake
+https://www.justapinch.com/recipes/dessert/cake/sour-cream-coffee-cake-12.html;Lite Sour Cream Coffee Cake
+https://www.justapinch.com/recipes/dessert/cookies/healthy-delicious-truly-no-bake-cookies.html;Healthy, Delicious, Truly No-Bake Cookies
+https://www.justapinch.com/recipes/dessert/cookies/breakfast-bars-2.html;Breakfast bars or Hobbit Seed Cakes
+https://www.justapinch.com/recipes/dessert/fruit-dessert/banana-with-peanut-butter-chocolate-syrup.html;Banana With Peanut Butter & Chocolate Syrup
+https://www.justapinch.com/recipes/dessert/chocolate/uber-chocolate-banana-bread.html;Uber Chocolate Banana Bread
+https://www.justapinch.com/recipes/dessert/pie/mountain-dew-apple-dumplings.html;Mountain Dew Apple Dumplings
+https://www.justapinch.com/recipes/dessert/cake/fresh-apple-cake-with-honey-glaze.html;FRESH APPLE CAKE WITH HONEY GLAZE
+https://www.justapinch.com/recipes/dessert/other-dessert/carrot-lemon-orange-caramel-muffins.html;Carrot, lemon, orange, caramel muffins
+https://www.justapinch.com/recipes/dessert/cake/a-five-star-diet.html;A FIVE STAR DIET *****
+https://www.justapinch.com/recipes/dessert/ice-cream/pecan-praline-sauce.html;Pecan Praline Sauce
+https://www.justapinch.com/recipes/dessert/other-dessert/gluten-free-french-bread-in-under.html;Gluten Free French Bread .. in under an hour!
+https://www.justapinch.com/recipes/dessert/pudding/bread-pudding-with-a-crumb.html;Bread Pudding with a Crumb
+https://www.justapinch.com/recipes/dessert/cake/strawberry-hot-cakes.html;Strawberry Hot Cakes
+https://www.justapinch.com/recipes/dessert/ice-cream/one-minute-peanut-butter-sauce.html;One Minute Peanut Butter Sauce
+https://www.justapinch.com/recipes/dessert/cake/french-toasted-angel-food-cake.html;FRENCH-TOASTED ANGEL FOOD CAKE
+https://www.justapinch.com/recipes/dessert/cookies/palm-sunday-cookies-lebanese-tradition.html;Palm Sunday Cookies - Lebanese Tradition
+https://www.justapinch.com/recipes/dessert/pudding/maja-blanca-with-sweet-corn.html;Maja Blanca with Sweet Corn
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fabulous-fruit-lasagna.html;Fabulous Fruit Lasagna
+https://www.justapinch.com/recipes/dessert/other-dessert/how-to-mini-pies.html;How To Mini Pies
+https://www.justapinch.com/recipes/dessert/cake/honey-cran-cranberry-topping.html;Honey Cran-Cranberry Topping
+https://www.justapinch.com/recipes/dessert/other-dessert/eggless-leche-flan-rich-creamy.html;Eggless Leche Flan (rich & creamy)
+https://www.justapinch.com/recipes/dessert/pie/strawberry-peach-cobbler.html;Strawberry - Peach Cobbler
+https://www.justapinch.com/recipes/dessert/cake/1930-carmel-nut-upside-down-skillet-coffeecake.html;1930 CARMEL-NUT,UPSIDE DOWN SKILLET COFFEECAKE
+https://www.justapinch.com/recipes/dessert/chocolate/delish-pumpkin-chocolate-chip-muffins.html;DELISH PUMPKIN CHOCOLATE CHIP MUFFINS
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-surprise-muffins.html;chocolate surprise muffins
+https://www.justapinch.com/recipes/dessert/fruit-dessert/phyllo-apple-rolls.html;Phyllo Apple Rolls
+https://www.justapinch.com/recipes/dessert/cake/braided-cinnamon-sugar-bread.html;Braided Cinnamon Sugar Bread
+https://www.justapinch.com/recipes/dessert/cake/strawberry-oatmeal-yogurt-cake.html;Strawberry Oatmeal Yogurt Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/raspberry-rolls.html;Raspberry Rolls
+https://www.justapinch.com/recipes/dessert/fruit-dessert/puff-pastry-apple-pie-turnovers-wapple-spice.html;Puff Pastry Apple Pie Turnovers wApple Spice Glaze
+https://www.justapinch.com/recipes/dessert/cake/pumpkin-bread-pudding-muffins.html;Pumpkin \"Bread-Pudding\" Muffins
+https://www.justapinch.com/recipes/dessert/cake/chocolate-black-bean-sweet-loaf.html;Chocolate Black Bean Sweet Loaf
+https://www.justapinch.com/recipes/dessert/chocolate/black-forest-french-toast.html;Black Forest French Toast
+https://www.justapinch.com/recipes/dessert/cake/chocolate-frangelico-coffee-cake-with-pecans.html;Chocolate Frangelico Coffee Cake with Pecans
+https://www.justapinch.com/recipes/dessert/cake/carmens-cinnamon-rolls.html;CARMENS CINNAMON ROLLS
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-coffeecake.html;Cinnamon Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/cranberry-jewel-cake-with-fluffy-sauce.html;CRANBERRY JEWEL CAKE WITH FLUFFY SAUCE
+https://www.justapinch.com/recipes/dessert/cake/the-famous-davenport-hotels-coffeecake-recipe.html;THE FAMOUS DAVENPORT HOTEL'S COFFEECAKE RECIPE
+https://www.justapinch.com/recipes/dessert/cake/coffee-cake-1952-yeast.html;Coffee Cake 1952 (yeast)
+https://www.justapinch.com/recipes/dessert/cake/coffee-cake-1930-number-2.html;Coffee Cake 1930 (Number 2)
+https://www.justapinch.com/recipes/dessert/cake/layered-coffee-cake-1930.html;Layered Coffee Cake 1930
+https://www.justapinch.com/recipes/dessert/other-dessert/almond-coconut-granola.html;Almond Coconut Granola
+https://www.justapinch.com/recipes/dessert/pie/really-easy-apple-fritters.html;REALLY EASY APPLE FRITTERS
+https://www.justapinch.com/recipes/dessert/cake/blueberry-coffee-cake-5.html;Blueberry Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/jordan-marsh-blueberry-muffin-cake.html;Jordan Marsh Blueberry Muffin Cake
+https://www.justapinch.com/recipes/dessert/pie/its-a-cinch-egg-custard-pie.html;It's A Cinch Egg Custard Pie
+https://www.justapinch.com/recipes/dessert/other-dessert/strawberry-crepe.html;Strawberry Crepe
+https://www.justapinch.com/recipes/dessert/other-dessert/banana-foster-crepe.html;Banana Foster Crepe
+https://www.justapinch.com/recipes/dessert/other-dessert/healthy-yogurt-banana-split.html;Healthy Yogurt Banana Split
+https://www.justapinch.com/recipes/dessert/cake/maple-jonuts.html;Janet's Jonuts, Maple Short Johns
+https://www.justapinch.com/recipes/dessert/fruit-dessert/breakfast-pineapple-sweetie-for-my-sweetie.html;Breakfast Pineapple Sweetie - for my Sweetie !!
+https://www.justapinch.com/recipes/dessert/other-dessert/easy-cheese-danish-cups.html;Easy cheese danish cups
+https://www.justapinch.com/recipes/dessert/chocolate/brownie-waffles.html;Brownie Waffles
+https://www.justapinch.com/recipes/dessert/cake/rustic-almond-streusel-swirl-coffee-cake.html;Rustic Almond Streusel Swirl Coffee Cake
+https://www.justapinch.com/recipes/dessert/cookies/rock-and-rise-ranger-cookies.html;Rock and Rise Ranger cookies
+https://www.justapinch.com/recipes/dessert/cake/salt-the-spice-of-life.html;Salt - The Spice of Life
+https://www.justapinch.com/recipes/dessert/other-dessert/wilmas-holiday-tree.html;Wilma's Holiday Tree
+https://www.justapinch.com/recipes/dessert/cake/dreamy-chocolate-streusel-coffee-cake.html;DREAMY CHOCOLATE STREUSEL COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/cake/gingerbread-apple-streusel-coffee-cake.html;GINGERBREAD-APPLE STREUSEL COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/pie/puffy-pancake-pie.html;Puffy Pancake Pie
+https://www.justapinch.com/recipes/dessert/cake/blueberry-sauce.html;Blueberry Sauce
+https://www.justapinch.com/recipes/dessert/pudding/lemon-souffle.html;Lemon Souffle
+https://www.justapinch.com/recipes/dessert/other-dessert/lauraa-swedish-kringler.html;Laura'a Swedish Kringler
+https://www.justapinch.com/recipes/dessert/other-dessert/nutty-date-stolen.html;Nutty Date Stolen
+https://www.justapinch.com/recipes/dessert/cake/easy-moist-spice-coffee-cake.html;Easy moist spice coffee cake
+https://www.justapinch.com/recipes/dessert/cookies/1700-scottish-oat-cakes-my-holiday-version-2012.html;1700-SCOTTISH OAT CAKES(my Holiday Version 2012)
+https://www.justapinch.com/recipes/dessert/cake/wonderful-blueberry-coffee-cake-cupcakes.html;Wonderful Blueberry Coffee Cake Cupcakes
+https://www.justapinch.com/recipes/dessert/other-dessert/fried-cake-doughnuts.html;Fried Cake Doughnuts
+https://www.justapinch.com/recipes/dessert/cake/coffee-crumb-cake-3.html;Coffee Crumb Cake
+https://www.justapinch.com/recipes/dessert/cake/golden-puffs-fried-cake.html;Golden Puffs (Fried Cake Doughnuts)
+https://www.justapinch.com/recipes/dessert/pudding/orange-breakfast-bread-pudding.html;Orange Breakfast Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/baked-pumpkin-donuts.html;Baked Pumpkin Donuts
+https://www.justapinch.com/recipes/dessert/cake/flours-and-meals.html;Flours and Meals
+https://www.justapinch.com/recipes/dessert/cake/the-difference-between-gluten-and-wheat.html;The Difference Between Gluten And Wheat
+https://www.justapinch.com/recipes/dessert/cake/egg-substitutes-for-baked-goods.html;Egg Substitutes for Baked Goods
+https://www.justapinch.com/recipes/dessert/cake/difference-between-baking-soda-baking-powder.html;Difference Between Baking Soda & Baking Powder
+https://www.justapinch.com/recipes/dessert/cake/how-to-read-a-baking-recipe.html;How to Read a Baking Recipe
+https://www.justapinch.com/recipes/dessert/cake/how-to-read-a-recipe.html;How to Read a Recipe
+https://www.justapinch.com/recipes/dessert/other-dessert/water-saving-tip.html;WATER SAVING TIP
+https://www.justapinch.com/recipes/dessert/other-dessert/grilled-pb-j.html;Grilled PB & J
+https://www.justapinch.com/recipes/dessert/cake/overnight-buttermilk-coffee-cake-no.html;OVERNIGHT, BREAKFAST OVEN BAKED COFFEE CAKE!
+https://www.justapinch.com/recipes/dessert/pie/apple-crisp-classic.html;Apple Crisp classic!
+https://www.justapinch.com/recipes/dessert/pie/easy-marshmallows-from-cool-whip.html;Easy Marshmallows from Cool Whip
+https://www.justapinch.com/recipes/dessert/cake/twinkie-twinki-twinki-little-star.html;TWINKIE, TWINKI, little star! & added news FLASH
+https://www.justapinch.com/recipes/dessert/other-dessert/30-minute-cinnamon-rolls.html;30 Minute Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/pudding/baked-custard-lyn.html;BAKED CUSTARD, Lyn*
+https://www.justapinch.com/recipes/dessert/cake/what-is-heavy-cream.html;What is Heavy Cream?
+https://www.justapinch.com/recipes/dessert/cake/french-toast-with-its-own-syrup.html;French Toast And Syrup
+https://www.justapinch.com/recipes/dessert/cake/raisin-spice-coffeecake-muffins.html;Raisin Spice Coffeecake Muffins
+https://www.justapinch.com/recipes/dessert/cake/jodies-3c-bread.html;Jodie's 3C Bread
+https://www.justapinch.com/recipes/dessert/cake/glazed-raised-donuts.html;Glazed Raised Donuts
+https://www.justapinch.com/recipes/dessert/cake/melt-in-your-mouth-banana-bread.html;Melt in Your Mouth Banana Bread
+https://www.justapinch.com/recipes/dessert/chocolate/coco-green-smoothie-supreme.html;Coco Green Smoothie Supreme
+https://www.justapinch.com/recipes/dessert/cake/peanut-butter-crumb-coffeecake.html;Peanut Butter Crumb Coffeecake
+https://www.justapinch.com/recipes/dessert/other-dessert/pancakes-strawberry-syrup-sweet-cream-cheese.html;Pancakes/Strawberry Syrup/Sweet Cream Cheese
+https://www.justapinch.com/recipes/dessert/cake/coconut-cream-filled-doughnuts.html;Coconut Cream Filled Doughnuts
+https://www.justapinch.com/recipes/dessert/cake/glorious-eggnog-bread.html;Glorious Eggnog Bread
+https://www.justapinch.com/recipes/dessert/fruit-dessert/buttery-applesauce-0r-sliced-apple-side.html;BUTTERY APPLESAUCE 0R SLICED APPLE SIDE
+https://www.justapinch.com/recipes/dessert/cake/easy-peasy-coffee-cake.html;Easy Peasy Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/apple-stuffed-cinnamon-rolls.html;Apple Stuffed Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/fruit-dessert/easy-fruit-and-cheese-danish.html;Easy Fruit and Cheese Danish(Crescent Roll Dough)
+https://www.justapinch.com/recipes/dessert/cake/sweet-potato-pancakes-with-cranberry-glaze.html;Sweet Potato Pancakes with Cranberry Glaze
+https://www.justapinch.com/recipes/dessert/cake/my-grandmas-homemade-coffee-cake.html;My grandma's homemade coffee cake
+https://www.justapinch.com/recipes/dessert/cake/spiced-apple-cinnamon-bars.html;Spiced Apple Cinnamon Bars
+https://www.justapinch.com/recipes/dessert/cake/remarkable-streusel-coffeecake.html;Remarkable Streusel Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/bisquick-homemade.html;Bisquick, Homemade
+https://www.justapinch.com/recipes/dessert/cake/german-chocolate-crumpets-with-sweet-cream-cheese.html;German Chocolate Crumpets with Sweet Cream Cheese
+https://www.justapinch.com/recipes/dessert/cake/old-fashion-coffee-cake-los-angeles-city.html;Old Fashion Coffee Cake- Los Angeles City Schools
+https://www.justapinch.com/recipes/dessert/other-dessert/orange-cranberry-granola.html;Orange Cranberry Granola
+https://www.justapinch.com/recipes/dessert/cake/brownstone-pineapple-cheese-bread.html;Pineapple/Cheese Bread
+https://www.justapinch.com/recipes/dessert/fruit-dessert/honey-vanilla-creme-french-toast.html;Honey Vanilla Creme French Toast
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-madeleine.html;Cinnamon Madeleine
+https://www.justapinch.com/recipes/dessert/cake/chocolate-madeleines.html;Chocolate madeleines
+https://www.justapinch.com/recipes/dessert/other-dessert/deborahs-surprise-banana-nut-bread.html;Deborah's Surprise Banana Nut Bread
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cream-cheese-pear-crisp.html;Cream Cheese Pear Crisp
+https://www.justapinch.com/recipes/dessert/fruit-dessert/peaches-and-cream-blintz-crepes.html;Peaches and cream blintz/ crepes
+https://www.justapinch.com/recipes/dessert/ice-cream/taras-fried-apples.html;TARA'S FRIED APPLES
+https://www.justapinch.com/recipes/dessert/pudding/yummiest-bread-pudding-ever.html;Yummiest Bread Pudding-Ever!
+https://www.justapinch.com/recipes/dessert/other-dessert/in-my-kitchen.html;In my Kitchen
+https://www.justapinch.com/recipes/dessert/cake/pumpkin-cake-bars-w-cream-cheese-frosting.html;Pumpkin Cake Bars w/ Cream Cheese Frosting
+https://www.justapinch.com/recipes/dessert/fruit-dessert/western-apple-betty.html;WESTERN APPLE BETTY
+https://www.justapinch.com/recipes/dessert/cake/mini-crumble-pumpkin-spice-muffins.html;Mini Crumble pumpkin spice muffins
+https://www.justapinch.com/recipes/dessert/cake/apple-shortcake.html;APPLE SHORTCAKE
+https://www.justapinch.com/recipes/dessert/cake/pennsylvania-dutch-breakfast-cake.html;Pennsylvania Dutch Breakfast Cake
+https://www.justapinch.com/recipes/dessert/cake/apple-cake-29.html;Apple Cake
+https://www.justapinch.com/recipes/dessert/cake/super-moist-zucchini-chocolate-chip-cake.html;Super moist zucchini chocolate chip cake / bread!
+https://www.justapinch.com/recipes/dessert/pie/plain-pastry-for-two-8-pie-crust.html;Plain Pastry for two 8\" Pie Crust
+https://www.justapinch.com/recipes/dessert/cake/pumpkin-mini-bites-muffins.html;Pumpkin Mini Bites/Muffins
+https://www.justapinch.com/recipes/dessert/cake/autumn-applebutter.html;Autumn Applebutter
+https://www.justapinch.com/recipes/dessert/pudding/my-savory-autumn-bread-pudding.html;My Savory Autumn Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/zucchini-nut-bread-cake.html;ZUCCHINI NUT BREAD/CAKE
+https://www.justapinch.com/recipes/dessert/chocolate/chunky-monkey-pancakes.html;Chunky Monkey Pancakes
+https://www.justapinch.com/recipes/dessert/cake/sweet-potato-pecan-coconut-cake.html;Sweet Potato Pecan Coconut Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-strudel-bake.html;Apple Strudel Bake/ apple crisp
+https://www.justapinch.com/recipes/dessert/cake/cherry-swirl-coffee-cake.html;Cherry Swirl Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fruity-fruit-salad.html;Fruity Fruit Salad
+https://www.justapinch.com/recipes/dessert/pudding/rhubarb-custard-dessert.html;Rhubarb Custard Dessert
+https://www.justapinch.com/recipes/dessert/cookies/banana-bread-breakfast-cookies.html;Banana Bread Breakfast Cookies
+https://www.justapinch.com/recipes/dessert/cake/cornbread-with-applesauce.html;Cornbread with Applesauce
+https://www.justapinch.com/recipes/dessert/cake/cherry-coffeecake.html;Cherry Coffeecake
+https://www.justapinch.com/recipes/dessert/other-dessert/heavenly-cinnamon-pecan-turnover.html;Heavenly Cinnamon Pecan Turnover
+https://www.justapinch.com/recipes/dessert/other-dessert/oaty-apple-almond-bars.html;Oaty Apple Almond Bars
+https://www.justapinch.com/recipes/dessert/cake/accent.html;Accent
+https://www.justapinch.com/recipes/dessert/cake/banana-sour-cream-bundt-cake.html;Banana Sour Cream Bundt Cake
+https://www.justapinch.com/recipes/dessert/pie/cherry-turnovers-2.html;Cherry Turnovers
+https://www.justapinch.com/recipes/dessert/fruit-dessert/pear-dumplings-2.html;Pear Dumplings
+https://www.justapinch.com/recipes/dessert/cake/pumpkin-ale-bread.html;Pumpkin Ale Bread
+https://www.justapinch.com/recipes/dessert/cookies/cranberry-bliss-bars-starbucks.html;Cranberry Bliss Bars / Starbuck's
+https://www.justapinch.com/recipes/dessert/pie/cranberry-apple-crisp.html;Cranberry Apple Crisp
+https://www.justapinch.com/recipes/dessert/other-dessert/swedish-kringler-or-almond-puff.html;Swedish Kringler or Almond Puff
+https://www.justapinch.com/recipes/dessert/cake/walnut-frahm-cracker-oatmeal-breakfast-bar.html;WALNUT GRAHAM CRACKER OATMEAL BREAKFAST BAR....
+https://www.justapinch.com/recipes/dessert/chocolate/kids-choice-waffled-sandwiches.html;Kid's Choice Waffled Sandwiches
+https://www.justapinch.com/recipes/dessert/cake/the-brownie-pan.html;The Brownie Pan
+https://www.justapinch.com/recipes/dessert/cake/spiced-pumpkin-biscotti-dipped-in-pumpkin-caramel.html;Spiced Pumpkin Biscotti dipped in Pumpkin Caramel
+https://www.justapinch.com/recipes/dessert/cookies/oat-bars.html;Oat Bars
+https://www.justapinch.com/recipes/dessert/chocolate/triple-fruit-scones.html;Triple Fruit Scones
+https://www.justapinch.com/recipes/dessert/pie/easy-mini-fruit-pockets.html;Easy Mini Fruit Pockets.......
+https://www.justapinch.com/recipes/dessert/cake/butternut-squash-and-pear-chocolate-bread-loaf.html;\"Butternut Squash and Pear\" Chocolate Bread Loaf
+https://www.justapinch.com/recipes/dessert/cake/bourbon-cherry-pie-pumpkin-butter.html;\"Bourbon Cherry Pie\" Pumpkin Butter
+https://www.justapinch.com/recipes/dessert/cookies/cookies-for-breakfast.html;\"COOKIES FOR BREAKFAST\"
+https://www.justapinch.com/recipes/dessert/pie/easy-triple-berry-pie.html;Easy Triple Berry Pie
+https://www.justapinch.com/recipes/dessert/other-dessert/aunt-bonnies-chocolate-syrup-for-pancakes.html;Aunt Bonnie's Chocolate Syrup for Pancakes
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-berry-baked-oatmeal.html;Apple-Berry Baked Oatmeal
+https://www.justapinch.com/recipes/dessert/cake/blueberry-sour-cream-coffee-cake-3.html;Blueberry Sour Cream Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/black-hills-hideaway-blueberry-coffee-cake.html;Black Hills Hideaway Blueberry Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/monkey-bread-for-two.html;Monkey Bread for Two
+https://www.justapinch.com/recipes/dessert/cookies/soft-molasses-sugar-cookies.html;Soft Molasses Sugar Cookies
+https://www.justapinch.com/recipes/dessert/cake/baked-cake-donuts-with-chocolate-glaze.html;Baked Cake Donuts with Chocolate Glaze
+https://www.justapinch.com/recipes/dessert/cake/sock-it-to-me-cake-pecan-free.html;Sock it to Me Cake- Pecan Free Version
+https://www.justapinch.com/recipes/dessert/cake/applesauce-filling-homemade.html;Applesauce Custard Filling-Homemade
+https://www.justapinch.com/recipes/dessert/cake/london-apple-sponge-cake.html;London Apple Sponge Cake
+https://www.justapinch.com/recipes/dessert/cake/corn-meal-griddle-cakes.html;Corn Meal Griddle Cakes
+https://www.justapinch.com/recipes/dessert/cake/my-favorite-banana-bread.html;My Favorite Banana Bread
+https://www.justapinch.com/recipes/dessert/cookies/maple-cranberry-pecan-cookies.html;Maple Cranberry Pecan Cookies
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-biscuits-to-go-with-my-chocolate.html;CHOCOLATE BISCUITS to go with my Chocolate Gravy
+https://www.justapinch.com/recipes/dessert/cake/banana-muffins.html;Banana Muffins
+https://www.justapinch.com/recipes/dessert/cake/mandarin-orange-coffee-cake.html;Mandarin Orange Coffee Cake
+https://www.justapinch.com/recipes/dessert/chocolate/dbl-choc-zucchini-bread-with-secret-ingredient.html;Dbl. Choc. Zucchini Bread {with secret ingredient}
+https://www.justapinch.com/recipes/dessert/pudding/shaabiyat.html;Shaabiyat
+https://www.justapinch.com/recipes/dessert/cake/blueberry-crunch-cake-2.html;Blueberry Crunch Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/crepe-variations.html;Crepe Variations
+https://www.justapinch.com/recipes/dessert/cake/peaches-n-crumb-cake.html;Peaches N Crumb Cake
+https://www.justapinch.com/recipes/dessert/cake/lemon-glazed-wild-blueberry-cake.html;Lemon Glazed Wild Blueberry Cake
+https://www.justapinch.com/recipes/dessert/cake/banana-nut-pound-cake-3.html;Banana Nut Pound Cake
+https://www.justapinch.com/recipes/dessert/chocolate/nonna-rosas-chocolate-strawberry-cheesecake-bites.html;Nonna Rosa's Chocolate Strawberry Cheesecake Bites
+https://www.justapinch.com/recipes/dessert/ice-cream/strawberry-banana-smoothie.html;Strawberry Banana Smoothie
+https://www.justapinch.com/recipes/dessert/cake/chocolatey-caramel-pancakes.html;Chocolatey Caramel Pancakes
+https://www.justapinch.com/recipes/dessert/cake/honey-gingerbread.html;Honey Gingerbread
+https://www.justapinch.com/recipes/dessert/pie/apricot-cream-cheese-egg-rolls.html;Apricot Cream Cheese Egg Rolls
+https://www.justapinch.com/recipes/dessert/other-dessert/red-velvet-pancakes.html;Red Velvet Pancakes
+https://www.justapinch.com/recipes/dessert/chocolate/martis-healthy-bran-muffins.html;Marti's Healthy Bran Muffins
+https://www.justapinch.com/recipes/dessert/cake/the-best-coffee-cake-2.html;The Best Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/apple-danish___bebita.html;Apple Danish___Bebita
+https://www.justapinch.com/recipes/dessert/cake/blueberry-crumb-coffeecake.html;Blueberry Crumb Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/molasses-buttermilk-cornbread-with-maple-white-dog.html;Molasses Buttermilk Cornbread with Maple White Dog
+https://www.justapinch.com/recipes/dessert/other-dessert/maple-bacon-cinnamon-rolls.html;Maple Bacon Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/other-dessert/microwave-energy-bars.html;Microwave Energy Bars
+https://www.justapinch.com/recipes/dessert/cookies/peanut-butter-trail-mix-bars.html;Peanut Butter Trail Mix Bars
+https://www.justapinch.com/recipes/dessert/chocolate/aunt-tumias-choclate-gravy.html;Aunt Tumia's Choclate Gravy
+https://www.justapinch.com/recipes/dessert/cake/super-hot-chocolate-cake.html;Super Hot Chocolate Cake
+https://www.justapinch.com/recipes/dessert/cake/janet-lees-coffee-cake.html;Janet Lee's Coffee Cake
+https://www.justapinch.com/recipes/dessert/cookies/unique-lizzys-pancake-cookies.html;Unique Lizzy's Pancake Cookies
+https://www.justapinch.com/recipes/dessert/cake/angel-food-cake-5.html;Angel Food Cake
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-chocolate-chip-banana-muffins.html;Chocolate- Chocolate Chip Banana Muffins
+https://www.justapinch.com/recipes/dessert/chocolate/german-chocolate-monkey-bread.html;German Chocolate Monkey Bread
+https://www.justapinch.com/recipes/dessert/cake/pull-apart-overnight-cinnamon-rolls.html;Monkey Bread pull apart cinnamon rolls
+https://www.justapinch.com/recipes/dessert/other-dessert/crepes.html;Crepes
+https://www.justapinch.com/recipes/dessert/fruit-dessert/baked-oatmeal-with-strawberries-banana-choco.html;Baked Oatmeal with Strawberries, Banana & Choco
+https://www.justapinch.com/recipes/dessert/cake/beyond-delicious.html;Beyond Delicious
+https://www.justapinch.com/recipes/dessert/cake/diabetic-oatmeal-cranberry-muffins.html;Diabetic Oatmeal/Cranberry Muffins
+https://www.justapinch.com/recipes/dessert/other-dessert/sweet-potato-mini-empanadas.html;sweet potato mini empanadas!
+https://www.justapinch.com/recipes/dessert/other-dessert/nonna-rosas-cream-muffins.html;Nonna Rosa's Cream Muffins
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-crunch-cobblestone-muffins.html;Cinnamon Crunch Cobblestone Muffins
+https://www.justapinch.com/recipes/dessert/cake/peachy-cheese-coffee-cake.html;Peachy Cheese Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/condensed-milk-cake.html;Condensed Milk Cake
+https://www.justapinch.com/recipes/dessert/chocolate/nonna-rosas-chocolate-chip-muffins.html;Nonna Rosa's Chocolate Chip Muffins
+https://www.justapinch.com/recipes/dessert/cake/chocolate-swirl-coffee-cake-2.html;Chocolate Swirl Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/hopping-easter-bunny-bread.html;Hopping Easter Bunny Bread
+https://www.justapinch.com/recipes/dessert/cake/brown-sugar-coffee-cake.html;Brown Sugar Coffee Cake
+https://www.justapinch.com/recipes/dessert/cookies/cinnamon-bun-scones.html;Cinnamon Bun Scones
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-sugar-apple-cake.html;Cinnamon Sugar Apple Cake
+https://www.justapinch.com/recipes/dessert/cake/mama-robins-coffee-cake.html;Mama Robin's Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/german-puffs-fett-kuckes.html;GERMAN PUFFS(FETT KUCKES)
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-cream-cheese-oh-my.html;CHOCOLATE CREAM CHEESE??? OH MY!!
+https://www.justapinch.com/recipes/dessert/fruit-dessert/blueberry-coffee-cake-with-crumble-topping.html;Blueberry Coffee Cake with Crumble Topping
+https://www.justapinch.com/recipes/dessert/cake/old-fashioned-peanut-butter-bread.html;Old Fashioned Peanut Butter Bread
+https://www.justapinch.com/recipes/dessert/pudding/creamy-raisin-rice-pudding.html;Creamy Raisin Rice Pudding
+https://www.justapinch.com/recipes/dessert/pie/mock-caramel-pie.html;Mock Caramel Pie
+https://www.justapinch.com/recipes/dessert/fruit-dessert/yogurt-fruit-parfaits.html;Yogurt & Fruit Parfaits
+https://www.justapinch.com/recipes/dessert/other-dessert/irish-cream-toffee-scones.html;Irish Cream Toffee Scones
+https://www.justapinch.com/recipes/dessert/ice-cream/delicious-frozen-fruit-dessert.html;Delicious Frozen Fruit Dessert
+https://www.justapinch.com/recipes/dessert/cake/monkey-bread-from-my-kitchen.html;Monkey bread from my kitchen
+https://www.justapinch.com/recipes/dessert/cake/lemon-berry-bread-pudding.html;Lemon Berry Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/cranberry-crunch-coffee-cake.html;Cranberry Crunch Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/crispy-fried-apple-pies.html;Crispy Fried Apple Pies
+https://www.justapinch.com/recipes/dessert/other-dessert/my-oh-so-good-banana-walnut-muffins.html;My Oh So Good Healthier Banana Walnut Muffins
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-chip-pancakes.html;Chocolate Chip Pancakes
+https://www.justapinch.com/recipes/dessert/cookies/tea-cakes-2.html;Tea Cakes
+https://www.justapinch.com/recipes/dessert/fruit-dessert/creamy-peach-cornbread-coffeecake.html;Creamy Peach Cornbread Coffeecake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/good-morning-blueberry-crepes.html;Good Morning Blueberry Crêpes
+https://www.justapinch.com/recipes/dessert/fruit-dessert/walnut-pineapple-goodie.html;Walnut Pineapple Goodie
+https://www.justapinch.com/recipes/dessert/cake/substitutions-chart-heart-healthy-by-freda.html;SUBSTITUTIONS CHART (Heart Healthy) by freda
+https://www.justapinch.com/recipes/dessert/other-dessert/dianas-dutch-oven-baby-pancake.html;Diana's Dutch Oven Baby Pancake
+https://www.justapinch.com/recipes/dessert/cake/nana-dotties-caramel-sauce.html;Nana Dottie's Caramel Sauce
+https://www.justapinch.com/recipes/dessert/other-dessert/danish-almond-puff.html;2 DANISH ALMOND PUFFS
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-roll-cake-with-cream-cheese-glaze.html;Cinnamon Roll cake with cream cheese glaze
+https://www.justapinch.com/recipes/dessert/cake/chocolate-chocolate-chip-coffee-cake.html;Chocolate, Chocolate Chip Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/copycat-ihop-cheesecake-pancakes.html;Copycat \"IHOP\" Cheesecake Pancakes
+https://www.justapinch.com/recipes/dessert/cake/cake-batter-pancakes.html;Cake Batter Pancakes
+https://www.justapinch.com/recipes/dessert/cookies/grand-marnier-cookie-w-berry-cream-kidney-friendly.html;Grand Marnier Cookie w/berry&Cream/Kidney Friendly
+https://www.justapinch.com/recipes/dessert/cookies/strawberry-tarts-kidney-friendly.html;Strawberry Tarts/Kidney Friendly
+https://www.justapinch.com/recipes/dessert/cookies/bacon-cookies-with-maple-and-cherries.html;Bacon Cookies with Maple and Cherries
+https://www.justapinch.com/recipes/dessert/cookies/banana-nut-waffle-cookies.html;Banana Nut Waffle Cookies
+https://www.justapinch.com/recipes/dessert/fruit-dessert/raspberry-panini.html;Raspberry Panini
+https://www.justapinch.com/recipes/dessert/cookies/reduced-fat-fresh-cranberry-scones.html;Reduced Fat Fresh Cranberry Scones
+https://www.justapinch.com/recipes/dessert/chocolate/orange-chocolate-chip-buttermilk-pancakes.html;Orange-Chocolate Chip Buttermilk Pancakes
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-gravy-biscuits.html;Chocolate Gravy & Biscuits
+https://www.justapinch.com/recipes/dessert/cake/blueberry-muffin-cake.html;Blueberry Muffin Cake
+https://www.justapinch.com/recipes/dessert/cake/soaked-orange-pound-cake.html;Soaked Orange Pound Cake
+https://www.justapinch.com/recipes/dessert/cake/aunt-marthas-spudnuts.html;Aunt Martha's Spudnuts
+https://www.justapinch.com/recipes/dessert/cake/mr-toms-blueberry-pound-cake.html;Blueberry Pound Cake, Mr Toms
+https://www.justapinch.com/recipes/dessert/cake/coffee-cake-pound-cake-southern-living.html;Coffee Cake Pound Cake - Southern Living
+https://www.justapinch.com/recipes/dessert/fruit-dessert/caramel-apple-egg-rolls.html;Caramel Apple Egg Rolls
+https://www.justapinch.com/recipes/dessert/cookies/cherry-almond-biscotti.html;Cherry Almond Biscotti
+https://www.justapinch.com/recipes/dessert/pie/mini-blueberry-pies.html;Mini Blueberry Pies
+https://www.justapinch.com/recipes/dessert/candy/aunt-mels-granola.html;Aunt Mel's Granola
+https://www.justapinch.com/recipes/dessert/cake/coffee-cake.html;Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/tiny-cinnamon-rolls.html;Tiny Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/pie/cracked-egg-mini-pie.html;Cracked Egg Mini Pie
+https://www.justapinch.com/recipes/dessert/cake/almond-apricot-coffee-cake.html;Almond-Apricot Coffee Cake
+https://www.justapinch.com/recipes/dessert/pudding/suzys-bread-pudding.html;Suzy's Bread Pudding
+https://www.justapinch.com/recipes/dessert/fruit-dessert/power-breakfast-bars.html;Power Breakfast Bars
+https://www.justapinch.com/recipes/dessert/pie/i-can-never-have-too-many.html;I can never have too many kitchen things!
+https://www.justapinch.com/recipes/dessert/pie/bacon-and-cheddar-quiche.html;Easy Breezy Bacon and Cheddar Quiche
+https://www.justapinch.com/recipes/dessert/cake/healthy-cinnamon-streusel-coffee-cake.html;Healthy Cinnamon Streusel Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/banana-oat-bars.html;Banana Oat Bars
+https://www.justapinch.com/recipes/dessert/pudding/heavenly-rice-hash-dessert.html;Heavenly Rice Hash Dessert
+https://www.justapinch.com/recipes/dessert/other-dessert/acorn-dough-nuts.html;Acorn Dough Nuts
+https://www.justapinch.com/recipes/dessert/cake/light-as-air-cranberry-almond-caramel-pancakes.html;Light as Air Cranberry Almond Caramel Pancakes
+https://www.justapinch.com/recipes/dessert/cake/blueberry-crumb-cake.html;Blueberry Crumb Cake
+https://www.justapinch.com/recipes/dessert/cake/almond-cherry-coffeecake.html;Almond Cherry Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/easy-donuts-from-white-bread-2-different.html;EASY donuts from white bread 2 different ways
+https://www.justapinch.com/recipes/dessert/other-dessert/favorite-cooks-books-pick-a-recipe.html;FAVORITE COOKS & BOOKS, PICK A RECIPE!
+https://www.justapinch.com/recipes/dessert/cake/coconut-crumb-cake.html;Coconut Crumb Cake
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-covered-apricot-coffee-creamer.html;Chocolate Covered Apricot Coffee Creamer
+https://www.justapinch.com/recipes/dessert/cake/general-lafayette-gingerbread.html;General Lafayette Gingerbread
+https://www.justapinch.com/recipes/dessert/other-dessert/malasadas-portuguese-donuts.html;Malasadas (Portuguese Donuts)
+https://www.justapinch.com/recipes/dessert/chocolate/choco-peanutty-banana-sammich.html;Chocó-Peanutty Banana Sammich
+https://www.justapinch.com/recipes/dessert/fruit-dessert/healthy-things-a-banana-can-do-for.html;Healthy Things a Banana Can Do for You
+https://www.justapinch.com/recipes/dessert/cake/farmstand-fruit-muffins.html;Farmstand Fruit Muffins
+https://www.justapinch.com/recipes/dessert/cake/the-perfect-pancake.html;The Perfect Pancake
+https://www.justapinch.com/recipes/dessert/cake/doughnut-pudding.html;Doughnut Pudding
+https://www.justapinch.com/recipes/dessert/cookies/barbaras-chewy-oatmeal-breakfast-treat-bars.html;Barbara's Chewy Oatmeal Breakfast Treat Bars
+https://www.justapinch.com/recipes/dessert/cake/bisquick-cranberry-nut-coffee-cake.html;Bisquick Cranberry-Nut Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/strawberry-cake-3.html;Strawberry Cake
+https://www.justapinch.com/recipes/dessert/pie/yogurt.html;Yogurt
+https://www.justapinch.com/recipes/dessert/cake/oats.html;Oats
+https://www.justapinch.com/recipes/dessert/cake/easy-breakfast-cake.html;Easy Breakfast Cake
+https://www.justapinch.com/recipes/dessert/pudding/susans-pumpkin-bread-pudding.html;Susan's Pumpkin Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/banana-walnut-bunt-cake__bebita.html;Banana Walnut Bunt Cake__Bebita
+https://www.justapinch.com/recipes/dessert/cake/macaroon-muffins.html;Macaroon Muffins
+https://www.justapinch.com/recipes/dessert/cake/banana-split-bread.html;Banana Split Bread
+https://www.justapinch.com/recipes/dessert/cookies/cranberry-raisin-oatmeal-spice-cookies.html;Cranberry Raisin Oatmeal Spice Cookies
+https://www.justapinch.com/recipes/dessert/cake/spiced-pumpkin-cake-with-cream-cheese-icing.html;Spiced Pumpkin Cake with Cream Cheese Icing
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cheesy-apple-empanadas.html;Cheesy Apple Empanadas
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fried-apple-pancake-rings.html;Fried Apple Pancake Rings
+https://www.justapinch.com/recipes/dessert/cake/apple-crisp-delight.html;Apple Crisp Delight
+https://www.justapinch.com/recipes/dessert/cake/beignet-recipe-from-cafe-du-monde.html;Beignet Recipe from Café du Monde
+https://www.justapinch.com/recipes/dessert/fruit-dessert/bacon-wrapped-peach-slices.html;Bacon Wrapped Peach Slices
+https://www.justapinch.com/recipes/dessert/chocolate/jap-kitchen-crew-ladies-breakfast-donuts.html;JAP Kitchen Crew Ladies BreakFAST Donuts
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-peanutbutter-waffles.html;Chocolate Peanutbutter Waffles
+https://www.justapinch.com/recipes/dessert/chocolate/eamon-raes-oatmeal-applesauce-muffins.html;Eamon & Rae's Oatmeal Applesauce Muffins
+https://www.justapinch.com/recipes/dessert/fruit-dessert/quick-apple-turnovers.html;Quick Apple Turnovers
+https://www.justapinch.com/recipes/dessert/chocolate/vegan-banana-chocolate-chip-millet-muffins.html;Vegan Banana Chocolate Chip Millet Muffins
+https://www.justapinch.com/recipes/dessert/pie/white-chocolate-pumpkin-pie-spice-muffins.html;White Chocolate Pumpkin Pie Spice Muffins
+https://www.justapinch.com/recipes/dessert/ice-cream/razanana-smushy.html;Raz'anana \"Smushy\"
+https://www.justapinch.com/recipes/dessert/fruit-dessert/aunt-marthas-peach-cobbler.html;Aunt Martha's Peach Cobbler
+https://www.justapinch.com/recipes/dessert/other-dessert/pecan-spice-scones.html;Pecan Spice Scones
+https://www.justapinch.com/recipes/dessert/chocolate/vanilla-banana-and-coffee-breakfast-power-smoothie.html;Vanilla Banana and Coffee Breakfast Power Smoothie
+https://www.justapinch.com/recipes/dessert/cake/almond-strawberry-cream-cheese-coffee-cake.html;Almond Strawberry Cream Cheese Coffee Cake
+https://www.justapinch.com/recipes/dessert/pudding/pumpkin-bread-pudding-2.html;Pumpkin Bread Pudding
+https://www.justapinch.com/recipes/dessert/cake/cream-cheese-coffee-cake.html;Cream Cheese Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/super-easy-coffee-cake-ring.html;Super Easy Coffee Cake Ring!
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cranberry-nut-granola.html;Cranberry Nut Granola
+https://www.justapinch.com/recipes/dessert/cake/mini-cream-cheese-pound-cakes-with-pumpkin.html;Mini Cream Cheese Pound Cakes with Pumpkin Glaze
+https://www.justapinch.com/recipes/dessert/other-dessert/dark-chocolate-pumpkin-spice-muffins.html;Dark Chocolate Pumpkin Spice muffins
+https://www.justapinch.com/recipes/dessert/cake/tender-apple-and-walnut-muffins.html;Tender apple and walnut muffins
+https://www.justapinch.com/recipes/dessert/chocolate/diabetic-dark-chocolate-chip-oat-bar.html;Diabetic Dark Chocolate Chip Oat Bar
+https://www.justapinch.com/recipes/dessert/ice-cream/cats-love-people-food-too.html;Cats LOVE people-food too!
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cinnamon-glazed-apple-dessert.html;Cinnamon Glazed Apple Dessert
+https://www.justapinch.com/recipes/dessert/cake/michigan-holiday-coffee-cake.html;Michigan Holiday Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/pats-merry-cherry-sweet-bread.html;Cherry Sweet Bread
+https://www.justapinch.com/recipes/dessert/chocolate/banana-anna-chocolate-peanut-butter-anna-smoothie.html;Banana 'anna Chocolate Peanut Butter 'anna Smoothie
+https://www.justapinch.com/recipes/dessert/cake/citrus-butter.html;Citrus Butter
+https://www.justapinch.com/recipes/dessert/pie/blueberry-lime-jam-in-bread-machine.html;Blueberry Lime Jam in Bread Machine
+https://www.justapinch.com/recipes/dessert/chocolate/low-fat-chocolate-muffins.html;Chocolate Muffins
+https://www.justapinch.com/recipes/dessert/fruit-dessert/country-apple-dumplings.html;country apple dumplings
+https://www.justapinch.com/recipes/dessert/cake/keebler-no-bake-fruitcake.html;Keebler No-Bake Fruitcake
+https://www.justapinch.com/recipes/dessert/cookies/kahlua-chocolate-almond-biscotti.html;Kahlua Chocolate Almond Biscotti
+https://www.justapinch.com/recipes/dessert/fruit-dessert/peaches-and-cream-coffee-cake.html;Peaches and Cream Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/moist-pumpkin-bread-or-muffins.html;Moist Pumpkin Bread OR Muffins
+https://www.justapinch.com/recipes/dessert/cake/orange-marmalade-using-bread-maker.html;Orange Marmalade using Bread Maker
+https://www.justapinch.com/recipes/dessert/pudding/hasty-pudding-a-very-old-cornmeal-recipe.html;HASTY PUDDING -a very old cornmeal recipe
+https://www.justapinch.com/recipes/dessert/pudding/pumpkin-bread-pudding-3.html;Pumpkin Bread Pudding
+https://www.justapinch.com/recipes/dessert/chocolate/pumpkin-muffins-with-chocolate-chips.html;Pumpkin Muffins with Chocolate Chips
+https://www.justapinch.com/recipes/dessert/cookies/cranberry-almond-biscotti.html;Cranberry Almond Biscotti
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-gravy.html;Chocolate Gravy
+https://www.justapinch.com/recipes/dessert/fruit-dessert/peanut-butter-and-banana-campfire-canape.html;Peanut Butter and Banana Campfire Canape'
+https://www.justapinch.com/recipes/dessert/cookies/cranberry-orange-almond-biscotti.html;Cranberry Orange Almond Biscotti
+https://www.justapinch.com/recipes/dessert/cake/pats-almond-coffeecake.html;Almond Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/kitchen-chatters-pineapple-coconut-yeast-coffeecake.html;Pineapple Coconut Yeast Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/choco_monkey-bread.html;Choco_Monkey Bread
+https://www.justapinch.com/recipes/dessert/chocolate/homemade-nutella-recipe.html;Homemade Nutella Recipe
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-dumplings-3.html;Apple Dumplings
+https://www.justapinch.com/recipes/dessert/fruit-dessert/gingerbread-waffles.html;Gingerbread Waffles
+https://www.justapinch.com/recipes/dessert/pudding/indian-pudding-from-old-sturbridge-village.html;Indian Pudding - From Old Sturbridge Village Cookbook
+https://www.justapinch.com/recipes/dessert/cookies/russian-jam-biscuits-for-tea-time.html;Russian Jam Biscuits for Tea Time
+https://www.justapinch.com/recipes/dessert/other-dessert/almond-and-cheese-braids.html;Almond and Cheese Braids
+https://www.justapinch.com/recipes/dessert/chocolate/cold-biscuit-pudding.html;Cold Biscuit Pudding
+https://www.justapinch.com/recipes/dessert/cake/french-holiday-fruit-pound-cake.html;French Holiday Fruit Pound Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-cobbler.html;Apple Cobbler
+https://www.justapinch.com/recipes/dessert/other-dessert/orange-cinnamon-roll-waffles-dee-dees.html;Orange Cinnamon Roll Waffles - Dee Dee's
+https://www.justapinch.com/recipes/dessert/pudding/apple-n-cranberry-bread-pudding-w-vanilla-glaze.html;apple n cranberry bread pudding w/vanilla glaze
+https://www.justapinch.com/recipes/dessert/cake/apple-cider-doughnuts.html;Apple Cider Doughnuts
+https://www.justapinch.com/recipes/dessert/cake/bountiful-harvest-dessert-sammie.html;Bountiful Harvest Dessert Sammie
+https://www.justapinch.com/recipes/dessert/cake/cranberry-cookie-strudel-2.html;Cranberry Cookie Strudel
+https://www.justapinch.com/recipes/dessert/candy/heavenly-sammie.html;Heavenly Sammie
+https://www.justapinch.com/recipes/dessert/cake/apple-brownies-2.html;Apple Brownies
+https://www.justapinch.com/recipes/dessert/fruit-dessert/going-bananas-over-strawberry-crepes.html;Going Banana's over strawberry crepes!
+https://www.justapinch.com/recipes/dessert/cake/apple-crisp-oven-pancake.html;Apple Crisp Oven Pancake
+https://www.justapinch.com/recipes/dessert/cake/fluffy-fall-harvest-apple-cinnamon-buns-using.html;Fluffy Fall Harvest Apple Cinnamon Buns using Bread Maker
+https://www.justapinch.com/recipes/dessert/fruit-dessert/blueberry-vanilla-wafer-cinnamon-rolls.html;Blueberry Vanilla Wafer Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-dumplings-5.html;Apple Dumplings
+https://www.justapinch.com/recipes/dessert/other-dessert/honey-vanilla-bars.html;Honey Vanilla Bars
+https://www.justapinch.com/recipes/dessert/other-dessert/ole-timey-pumpkin-bread.html;Ole Timey Pumpkin Bread
+https://www.justapinch.com/recipes/dessert/other-dessert/grandma-marie-minalls-zucchini-bread.html;Grandma Marie Minall's Zucchini Bread
+https://www.justapinch.com/recipes/dessert/other-dessert/pumpkin-apple-streusel-muffins.html;Pumpkin Apple Streusel Muffins
+https://www.justapinch.com/recipes/dessert/cake/morning-glory-coffeecake.html;Morning Glory Coffeecake
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-fruit-pancakes-with-lime-butter.html;Chocolate Fruit pancakes with Lime butter
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-fritters-and-friends.html;Apple fritters and friends
+https://www.justapinch.com/recipes/dessert/other-dessert/mock-cinnabon-rolls.html;Mock Cinnabon Rolls
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cranberry-buckle-with-vanilla-crumb-topping-by.html;Cranberry Buckle with Vanilla Crumb Topping by RR
+https://www.justapinch.com/recipes/dessert/cake/apple-fritters-dee-dees.html;Apple Fritters - Dee Dee's
+https://www.justapinch.com/recipes/dessert/cake/amazing-blueberry-muffins-with-cinnamon-sugar-streusel-topping.html;Amazing Blueberry Muffins, with cinnamon-sugar streusel topping
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-covered-craisin-sourdough-muffins.html;Chocolate Covered Craisin Sourdough Muffins
+https://www.justapinch.com/recipes/dessert/cake/my-kitchen-needs-to-be-organized.html;My kitchen needs to be organized!
+https://www.justapinch.com/recipes/dessert/fruit-dessert/pumpkin-pinwheels.html;Pumpkin PinWheels
+https://www.justapinch.com/recipes/dessert/cookies/nutella-palmiers.html;Nutella Palmiers
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-streusel-cake.html;CINNAMON STREUSEL CAKE
+https://www.justapinch.com/recipes/dessert/chocolate/pumpkin-chocolate-chip-muffins.html;Pumpkin Chocolate Chip Muffins
+https://www.justapinch.com/recipes/dessert/cake/peach-cinnamon-rolls.html;Peach Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/cake/danish-puff.html;Danish Puff
+https://www.justapinch.com/recipes/dessert/pudding/tangy-mango-rice-pudding.html;Tangy Mango Rice Pudding
+https://www.justapinch.com/recipes/dessert/cake/lemon-coconut-loaf.html;Lemon Coconut Loaf
+https://www.justapinch.com/recipes/dessert/cookies/homemade-bisquick-mix.html;Homemade Bisquick Mix
+https://www.justapinch.com/recipes/dessert/pudding/orange-cream-sticky-buns.html;Orange Cream Sticky Buns
+https://www.justapinch.com/recipes/dessert/fruit-dessert/black-cherry-mascarpone-turnovers-with-cherry.html;Black Cherry & Mascarpone Turnovers With Cherry Caramel Drizzle
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cranberry-apple-bake.html;Cranberry Apple Bake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fruit-cobbler-3.html;Fruit Cobbler
+https://www.justapinch.com/recipes/dessert/pie/bali-hi-afternoon-delight-apple-pie.html;Bali-Hi, Afternoon Delight Apple Pie
+https://www.justapinch.com/recipes/dessert/other-dessert/apple-cheddar-scones.html;Apple Cheddar Scones
+https://www.justapinch.com/recipes/dessert/other-dessert/whole-wheat-zucchini-bread.html;Whole Wheat Zucchini Bread
+https://www.justapinch.com/recipes/dessert/cake/home-made-cinnamon-rolls.html;HOME MADE CINNAMON ROLLS
+https://www.justapinch.com/recipes/dessert/pudding/citrus-curd.html;Citrus Curd
+https://www.justapinch.com/recipes/dessert/pudding/mor-mor-wallbergs-fruktsoppa-swedish-fruit-soup.html;Mor-Mor Wallberg's Fruktsoppa (Swedish Fruit Soup)
+https://www.justapinch.com/recipes/dessert/chocolate/elizabeths-quick-chocolate-chip-banana-bread.html;Elizabeth's Quick Chocolate Chip Banana Bread
+https://www.justapinch.com/recipes/dessert/cake/chocolate-chip-zucchini-muffins.html;Chocolate Chip Zucchini muffins
+https://www.justapinch.com/recipes/dessert/cake/homestyle-bread-pudding.html;Homestyle Bread Pudding
+https://www.justapinch.com/recipes/dessert/pudding/pumpkin-dessert.html;PUMPKIN DESSERT
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-fig-walnut-turnovers.html;Apple Fig Walnut Turnovers
+https://www.justapinch.com/recipes/dessert/chocolate/chocolate-gravy-the-best-recipe-ever.html;Chocolate Gravy (The Best Recipe Ever!)
+https://www.justapinch.com/recipes/dessert/fruit-dessert/strawberry-lemon-muffins.html;Strawberry Lemon Muffins
+https://www.justapinch.com/recipes/dessert/cake/witchs-bread.html;Witch's Bread
+https://www.justapinch.com/recipes/dessert/cake/funnel-fair-time-cakes-by-freda.html;Funnel Fair time Cakes By freda
+https://www.justapinch.com/recipes/dessert/cake/blueberry-buttermilk-coffee-cake.html;Blueberry Buttermilk Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/blueberry-scones.html;Blueberry Scones Low Cal
+https://www.justapinch.com/recipes/dessert/pie/4th-of-july-pie-patriotic-pie.html;4th of July Pie - Patriotic Pie
+https://www.justapinch.com/recipes/dessert/other-dessert/amish-friendship-cinnamon-rolls.html;Amish friendship Cinnamon Rolls
+https://www.justapinch.com/recipes/dessert/fruit-dessert/brown-betty-with-vanilla-marscapone.html;Brown Betty with Vanilla Marscapone
+https://www.justapinch.com/recipes/dessert/cake/gluten-free-chocolate-chocolate-chip-muffins.html;Gluten Free Chocolate Chocolate Chip Muffins
+https://www.justapinch.com/recipes/dessert/other-dessert/crumb-topped-banana-muffins.html;Crumb topped banana muffins
+https://www.justapinch.com/recipes/dessert/pie/oatmeal-pie-2.html;Oatmeal Pie
+https://www.justapinch.com/recipes/dessert/cake/fruit-coffee-cake.html;Fruit Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/rice-crust-for-casseroles.html;Rice Crust for casseroles!
+https://www.justapinch.com/recipes/dessert/fruit-dessert/cranberry-apple-crisp-2.html;Cranberry Apple Crisp
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-egg-roll-dessert.html;APPLE EGG ROLL DESSERT
+https://www.justapinch.com/recipes/dessert/pudding/apple-cinnamon-raisin-bagel-bread-pudding.html;Apple Cinnamon Raisin Bagel Bread Pudding
+https://www.justapinch.com/recipes/dessert/fruit-dessert/orange-julius-roll-ups.html;Orange Julius Roll-Ups
+https://www.justapinch.com/recipes/dessert/other-dessert/swedish-pancakes.html;Swedish Pancakes
+https://www.justapinch.com/recipes/dessert/cookies/apple-and-plum-bars.html;Apple and Plum Bars
+https://www.justapinch.com/recipes/dessert/cake/cranberry-nut-loaf.html;Cranberry Nut Loaf
+https://www.justapinch.com/recipes/dessert/pudding/nanas-rice-pudding.html;Nana's Rice Pudding
+https://www.justapinch.com/recipes/dessert/cake/banana-walnut-loaf-with-easy-banana-frosting.html;Banana Walnut Loaf with Easy Banana Frosting
+https://www.justapinch.com/recipes/dessert/cookies/fruity-bars-in-a-jar.html;Fruity bars in a jar
+https://www.justapinch.com/recipes/dessert/cake/heavenly-toffee-crunch-coffee-cake.html;Heavenly Toffee Crunch Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/berry-coffee-cake.html;Berry Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/blueberry-shortcake-bowls.html;Blueberry Shortcake Bowls
+https://www.justapinch.com/recipes/dessert/cake/blueberry-coffee-cake-2.html;Blueberry Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/5-step-easy-quiche.html;5-STEP Easy Quiche
+https://www.justapinch.com/recipes/dessert/cake/amazing-banana-nut-bread.html;Amazing Banana Nut Bread
+https://www.justapinch.com/recipes/dessert/cake/crumb-cake-muffins.html;Crumb Cake Muffins
+https://www.justapinch.com/recipes/dessert/fruit-dessert/mixed-berry-cream-parfaits.html;Mixed berry cream parfaits
+https://www.justapinch.com/recipes/dessert/other-dessert/rainbow-tied-dyed-waffles.html;Rainbow & Tied Dyed Waffles
+https://www.justapinch.com/recipes/dessert/cake/fresh-blueberries-and-sour-cream-pound-cake.html;Fresh Blueberries and Sour Cream Pound Cake by RR
+https://www.justapinch.com/recipes/dessert/fruit-dessert/pina-colada-yogurt.html;Piña Colada Yogurt
+https://www.justapinch.com/recipes/dessert/chocolate/rock-rolls.html;Rock & Rolls !
+https://www.justapinch.com/recipes/dessert/cake/double-berry-lemon-bundt-cake.html;Double Berry Lemon Bundt Cake
+https://www.justapinch.com/recipes/dessert/chocolate/scrumptious-chocolate-orange-scones.html;Scrumptious Chocolate Orange Scones
+https://www.justapinch.com/recipes/dessert/other-dessert/filled-donut-holes.html;Filled Donut Holes !
+https://www.justapinch.com/recipes/dessert/chocolate/vegan-chocolate-cream-of-wheat-with-ground.html;Vegan Chocolate Cream of Wheat with Ground Flax Seeds
+https://www.justapinch.com/recipes/dessert/pie/humble-peach-crumble.html;Humble Peach Crumble
+https://www.justapinch.com/recipes/dessert/cake/fresh-rhubarb-cake.html;Fresh Rhubarb Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/butterscotch-cornflake-bars.html;Butterscotch Cornflake Bars
+https://www.justapinch.com/recipes/dessert/pie/eggplant-quiche.html;Eggplant Quiche
+https://www.justapinch.com/recipes/dessert/other-dessert/delicious-crepes.html;Delicious Crepes
+https://www.justapinch.com/recipes/dessert/other-dessert/anna-maes-sticky-buns.html;Sticky Buns
+https://www.justapinch.com/recipes/dessert/other-dessert/blintzes-nalesniki.html;Blintzes (Nalesniki)
+https://www.justapinch.com/recipes/dessert/fruit-dessert/susans-fried-apples.html;Susan's Fried Apples
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-coffee-cake-ii.html;Cinnamon Coffee Cake II
+https://www.justapinch.com/recipes/dessert/fruit-dessert/impossibly-easy-french-apple-dessert-squares.html;Impossibly Easy French Apple Dessert Squares
+https://www.justapinch.com/recipes/dessert/pudding/cinnamon-apple-french-toast-pudding.html;Cinnamon Apple French Toast Pudding
+https://www.justapinch.com/recipes/dessert/fruit-dessert/banana-wraps.html;Banana Wraps
+https://www.justapinch.com/recipes/dessert/cake/tiramisu-pancakes.html;Tiramisu Pancakes
+https://www.justapinch.com/recipes/dessert/pudding/lovely-greek-yogurt.html;Lovely Greek Yogurt
+https://www.justapinch.com/recipes/dessert/cake/banana-and-peanut-butter-muffins.html;Banana and Peanut Butter Muffins
+https://www.justapinch.com/recipes/dessert/pudding/farmhouse-bread-pudding-by-freda.html;Farmhouse Bread Pudding by freda
+https://www.justapinch.com/recipes/dessert/cake/nana-lous-cinnamon-coffee-cake.html;Nana Lou's Cinnamon Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/fruit-filled-coffee-cake.html;FRUIT FILLED COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/pie/ham-potato-cheese-empanadas.html;Ham, Potato, Cheese Empanadas !
+https://www.justapinch.com/recipes/dessert/fruit-dessert/nanas-apple-fritters.html;Nanas Apple Fritters
+https://www.justapinch.com/recipes/dessert/cake/blueberry-cherry-mini-pound-cakes.html;Blueberry cherry mini pound cakes
+https://www.justapinch.com/recipes/dessert/cake/dried-cherry-scones-yummy.html;Dried Cherry Scones Yummy!!
+https://www.justapinch.com/recipes/dessert/cake/toffee-bar-coffee-cake.html;Toffee Bar Coffee Cake
+https://www.justapinch.com/recipes/dessert/other-dessert/lemon-almond-biscotti.html;Lemon Almond Biscotti
+https://www.justapinch.com/recipes/dessert/cake/on-the-grill-oatmeal-cookie-pancakes.html;On The Grill Oatmeal Cookie Pancakes!
+https://www.justapinch.com/recipes/dessert/cake/blueberry-marshmallow-topping.html;Blueberry - Marshmallow Topping !
+https://www.justapinch.com/recipes/dessert/pudding/banana-foster-cinnoman-roll-bread-pudding-with.html;banana foster/cinnoman roll bread pudding with cramel sauce
+https://www.justapinch.com/recipes/dessert/cookies/cinnamon-mexi-sticks.html;Cinnamon Mexi Sticks!
+https://www.justapinch.com/recipes/dessert/fruit-dessert/banana-breakfast-pierogies.html;Banana Breakfast Pierogies
+https://www.justapinch.com/recipes/dessert/fruit-dessert/kittys-triple-berry-breakfast-parfait.html;Triple Berry Breakfast Parfait
+https://www.justapinch.com/recipes/dessert/cake/butterscotch-coffee-cake.html;Butterscotch Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/light-and-fruity-mini-cakes.html;Light and Fruity Mini Cakes
+https://www.justapinch.com/recipes/dessert/pudding/baked-praline-french-toast-casserole-with-maple-2.html;Baked Praline French Toast Casserole with Maple Syrup
+https://www.justapinch.com/recipes/dessert/chocolate/white-chocolate-chip-macadamia-nut-pancakes.html;White Chocolate Chip Macadamia Nut Pancakes
+https://www.justapinch.com/recipes/dessert/fruit-dessert/white-chocolate-cherry-shortbread.html;White Chocolate Cherry Shortbread
+https://www.justapinch.com/recipes/dessert/cake/berts-coffee-cake.html;Bert's Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/apple-crispers.html;Apple Crispers
+https://www.justapinch.com/recipes/dessert/fruit-dessert/easy-apple-fritters.html;EASY APPLE FRITTERS
+https://www.justapinch.com/recipes/dessert/cookies/coconut-macaroons-4.html;Coconut Macaroon's
+https://www.justapinch.com/recipes/dessert/cake/fresh-apple-cake-11.html;Fresh Apple Cake
+https://www.justapinch.com/recipes/dessert/cake/strawberry-cream-cheese-coffee-cake.html;Strawberry Cream Cheese Coffee Cake
+https://www.justapinch.com/recipes/dessert/pie/sweedish-pop-tart-apple-pie.html;Sweedish \"pop tart\" Apple Pie
+https://www.justapinch.com/recipes/dessert/other-dessert/giant-danish-2.html;Giant Danish
+https://www.justapinch.com/recipes/dessert/cake/mamas-oh-so-sweet-sourdough-rolls.html;Mama's Oh So Sweet Sourdough Rolls
+https://www.justapinch.com/recipes/dessert/cake/cheaters-cimmamon-squares.html;cheaters cimmamon squares
+https://www.justapinch.com/recipes/dessert/cake/best-blueberry-coffeecake.html;Best Blueberry Coffeecake
+https://www.justapinch.com/recipes/dessert/cake/roses-cinnamon-coffee-cake.html;Rose's Cinnamon Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/coffee-cake-5.html;Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/blueberry-crescent-rolls.html;Blueberry Crescent Rolls
+https://www.justapinch.com/recipes/dessert/cake/blueberry-tea-cake-with-lemon-glaze.html;BLUEBERRY TEA CAKE WITH LEMON GLAZE
+https://www.justapinch.com/recipes/dessert/cake/sticky-cinnamon-pecan-rolls.html;Sticky Cinnamon Pecan Rolls
+https://www.justapinch.com/recipes/dessert/fruit-dessert/rhubarb-crunch-3.html;Rhubarb Crunch
+https://www.justapinch.com/recipes/dessert/cake/chocolate-chip-date-coffee-cake.html;CHOCOLATE CHIP DATE COFFEE CAKE
+https://www.justapinch.com/recipes/dessert/cake/cherry-go-round.html;Cherry-Go-Round
+https://www.justapinch.com/recipes/dessert/cake/plum-coffee-cake-with-brown-sugar.html;Plum Coffee Cake with Brown Sugar & Cardamom Streusel
+https://www.justapinch.com/recipes/dessert/cookies/koulourakia.html;Koulourakia
+https://www.justapinch.com/recipes/dessert/pie/maple-oatmeal-pie-dog-team-tavern.html;Maple Oatmeal Pie ( Dog Team Tavern )
+https://www.justapinch.com/recipes/dessert/cake/sticky-buns-dog-team-tavern-website.html;Sticky Buns ( Dog Team Tavern Website )
+https://www.justapinch.com/recipes/dessert/cake/cinnamon-pound-cake.html;Cinnamon Pound Cake
+https://www.justapinch.com/recipes/dessert/cake/charlenes-coffee-cake.html;Charlene's Coffee Cake
+https://www.justapinch.com/recipes/dessert/cake/coffee-crumb-cake.html;Coffee Crumb Cake
+https://www.justapinch.com/recipes/dessert/cake/maple-pumpkin-tea-loaf.html;Maple Pumpkin Tea Loaf
+https://www.justapinch.com/recipes/dessert/cake/the-bmc2-a-bacon-maple-cream-cheese.html;The BMC2: a bacon maple cream cheese frosted apple cinnamon french toast cupcake
+https://www.justapinch.com/recipes/dessert/chocolate/banana-and-nutella-crepes.html;Banana and Nutella Crepes
+https://www.justapinch.com/recipes/dessert/other-dessert/crepes-for-sweet-and-savory-applications.html;Crepes - for sweet and savory applications
+https://www.justapinch.com/recipes/dessert/cake/blueberry-cream-cheese-bundt.html;blueberry cream cheese bundt
+https://www.justapinch.com/recipes/dessert/fruit-dessert/mixed-berry-crepes.html;Mixed Berry Crepes
+https://www.justapinch.com/recipes/dessert/cake/donnas-east-coast-inspired-crumb-cake.html;Donna's East Coast Inspired Crumb Cake
+https://www.justapinch.com/recipes/dessert/cake/blueberry-crunch-coffee-cake.html;Blueberry Crunch Coffee Cake
+https://www.justapinch.com/recipes/dessert/fruit-dessert/fruit-parfait.html;Fruit Parfait
+https://www.justapinch.com/recipes/dessert/fruit-dessert/pineapple-oats-muffin-all-natural.html;Pineapple/Oats Muffin (All Natural)
+https://www.justapinch.com/recipes/dessert/other-dessert/burbara.html;\"Burbara\"
+https://www.justapinch.com/recipes/dessert/cake/quick-whole-wheat-banana-bread.html;Quick Whole Wheat Banana Bread
+https://www.justapinch.com/recipes/dessert/cake/cherry-coffee-cake-by-freda.html;Cherry Coffee Cake, By Freda
+https://www.justapinch.com/recipes/dessert/cake/banana-coffee-cake-with-chocolate-chip-streusel.html;BANANA COFFEE CAKE WITH CHOCOLATE CHIP STREUSEL
+https://www.justapinch.com/recipes/dessert/cake/earl-grey-tea-cake.html;Earl Grey Tea Cake
+https://www.justapinch.com/recipes/dessert/ice-cream/fruit-sorbet.html;Fruit Sorbet
+https://www.justapinch.com/recipes/dessert/pie/pear-sage-blue-cheese-tart.html;Pear, Sage & Blue Cheese Tart
+https://www.justapinch.com/recipes/dessert/other-dessert/danish-homemade-pastry-by-freda.html;Danish Homemade Pastry by Freda
+https://www.justapinch.com/recipes/dessert/other-dessert/cheese-blintzes.html;Cheese Blintzes
+https://www.justapinch.com/recipes/dessert/cake/chocolate-coconut-angel-cupcakes.html;CHOCOLATE-COCONUT ANGEL CUPCAKES
+https://www.justapinch.com/recipes/dessert/cookies/hearty-breakfast-cookies.html;Hearty Breakfast Cookies
+https://www.justapinch.com/recipes/dessert/other-dessert/gift-in-a-jar-gingerbread-syrup.html;Gift In A Jar: Gingerbread Syrup
+https://www.justapinch.com/recipes/dessert/other-dessert/christmas-morning-candy-cane-syrup.html;Christmas Morning Candy Cane Syrup!

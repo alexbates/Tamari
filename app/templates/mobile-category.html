@@ -1,0 +1,83 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='mobile-category.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if current_user.pref_color == 0 %}
+	<link href="{{ url_for('static', filename='my-recipes-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 1 %}
+	<link href="{{ url_for('static', filename='my-recipes-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% elif current_user.pref_color == 2 %}
+	<link href="{{ url_for('static', filename='my-recipes-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% else %}
+	<link href="{{ url_for('static', filename='my-recipes-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% endif %}
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% for message in messages %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+		<p id="recipecount">Showing {{ recipe_count }} recipes in '{{ catname }}' category.</p>
+		{% if recipes %}
+		{% if user.pref_size == 0 %}
+		<div id="recipecont" class="recipe1cont">
+		{% for item in recipes %}
+		<a href="{{ url_for('recipeDetail', hexid=item.hex_id) }}">
+		<div class="recipe1" data-bgimage="{{ url_for('recipePhotos', filename=item.photo, _external=True) }}">
+			<div class="r1bottom">
+				<div class="recipe1-text">
+					<div>{{ item.title }}</div>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		{% else %}
+		<div id="recipecont" class="recipe2cont">
+		{% for item in recipes %}
+		<a href="{{ url_for('recipeDetail', hexid=item.hex_id) }}">
+		<div class="recipe2">
+			<div class="recipe2inner">
+				<div class="r2top" data-bgimage="{{ url_for('recipePhotos', filename=item.photo, _external=True) }}"></div>
+				<div class="r2bottom">
+					<div>{{ item.title }}</div>
+					<span>{{ item.category }}</span>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		{% endif %}
+		{% endif %}
+		{% if prev_url or next_url %}
+		<div class="prevnext">
+			{% if prev_url %}
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';">
+				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+				<span class="btn-prev-text">Previous</span>
+			</button>
+			{% endif %}
+			{% if next_url %}
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';">
+				<span class="btn-next-text">Next</span>
+				<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+			</button>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}

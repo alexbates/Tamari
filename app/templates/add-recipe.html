@@ -1,0 +1,109 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='add-recipe.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<h2>Add a New Recipe</h2>
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% for message in messages %}
+		{% if 'Error' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+		<form method="post" enctype="multipart/form-data" novalidate>
+			{{ form.hidden_tag() }}
+			<div class="form-group ">
+				<label class="control-label" for="recipe_name">Recipe Name</label><br>
+				{{ form.recipe_name(class="form-control fc1", placeholder="Air Fryer Squash") }}
+				{% for error in form.recipe_name.errors %} 
+				<span id="errorrequired">{{ error }}</span>
+				{% endfor %}  
+			</div>
+			<div class="custom-select">
+				<div class="cust-select">
+					<label class="control-label" for="category">Select Category</label><br>
+					<select name="category" id="category">
+						<option value="" disabled hidden>Choose here</option>
+						{% for choice in choices %}
+						<option value="{{ choice }}">{{ choice }}</option>
+						{% endfor %}
+					</select>
+				</div>
+				{% for error in form.category.errors %}
+				<span id="errorrequired">{{ error }}</span>
+				{% endfor %}  
+			</div>
+			<div class="form-group">
+				<label>Attach Photo</label><br>
+				<input type="file" class="custom-file-input" name="image" id="image" accept=".png,.jpg,.jpeg">
+			</div>
+			<div class="form-group ">
+				<label class="control-label" for="description">Description</label><br>
+				{{ form.description(class="form-control fc2", placeholder="My crispy squash recipe.") }}
+				{% for error in form.description.errors %}
+				<span id="errorrequired">{{ error }}</span>
+				{% endfor %}
+			</div>
+			<div class="form-group ">
+				<label class="control-label" for="url">URL</label><br>
+				{{ form.url(class="form-control fc1", placeholder="https://www.example.com/recipes/air-fryer-squash") }}
+				{% for error in form.url.errors %}
+				<span id="errorrequired">{{ error }}</span>
+				{% endfor %}   
+			</div>
+			<div class="form-group3">
+				<div>
+					<label class="control-label" for="prep_time">Preparation Time (minutes)</label><br>
+					{{ form.prep_time(class="form-control fc1", placeholder="15") }}
+					{% for error in form.prep_time.errors %}
+					<span id="errorrequired">{{ error }}</span>
+					{% endfor %}   
+				</div>
+				<div>
+					<label class="control-label" for="cook_time">Cook Time (minutes)</label><br>
+					{{ form.cook_time(class="form-control fc1", placeholder="30") }}
+					{% for error in form.cook_time.errors %}
+					<span id="errorrequired">{{ error }}</span>
+					{% endfor %}   
+				</div>
+				<div>
+					<label class="control-label" for="total_time">Total Time (minutes)</label><br>
+					{{ form.total_time(class="form-control fc1", placeholder="45") }}
+					{% for error in form.total_time.errors %}
+					<span id="errorrequired">{{ error }}</span>
+					{% endfor %}
+				</div>
+			</div>
+			<div class="form-group2">
+				<div>
+					<label class="control-label" for="ingredients">Ingredients</label><br>
+					{{ form.ingredients(class="form-control fc3", placeholder="2 Tbsp olive oil") }}
+					{% for error in form.ingredients.errors %}
+					<span id="errorrequired">{{ error }}</span>
+					{% endfor %}  
+				</div>
+				<div>
+					<label class="control-label" for="instructions">Instructions</label><br>
+					{{ form.instructions(class="form-control fc3", placeholder="Wash squash in sink to prepare.") }}
+					{% for error in form.instructions.errors %}
+					<span id="errorrequired">{{ error }}</span>
+					{% endfor %}  
+				</div>
+			</div>
+			<div class="submitdiv">
+				{{ form.submit(class="btn btn-default") }}
+			</div>
+		</form>
+	</div>
+</main>
+{% endblock %}

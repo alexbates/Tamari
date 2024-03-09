@@ -1,0 +1,13 @@
+.search-btn {background-color: #ae0085;}
+.search-btn:hover {background: #b20189;} 
+.search-btn:active, .search-btn.active {background: #a90082;}
+.seemore {background-color: #ae0085;}
+.btn-next {background-color: #ae0085;}
+.btn-next:hover {background: #b20189;}
+.btn-next:active, .btn-next.active {background: #a90082;}
+.btn-prev {background-color: #ae0085;}
+.btn-prev:hover {background: #b20189;}
+.btn-prev:active, .btn-prev.active {background: #a90082;}
+.btn-default {background-color: #ae0085;}
+.btn-default:hover {background: #b20189;}
+.btn-default:active, .btn-default.active {background: #a90082;}

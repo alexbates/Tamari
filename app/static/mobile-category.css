@@ -1,0 +1,333 @@
+.myrecipes-active {
+	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+}
+.myrecipes-active:hover {
+	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+}
+.mt-myrecipes {display: block !important;}
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: #ffffff;
+	font-size: 16px;
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: #ac3426; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: #1c7e45; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+/* IF NO SAVED RECIPES */
+#norecipes {
+	background: #111111;
+	margin-top: 0px;
+	padding: 10px;
+}
+/* RECIPE LIST */
+#recipecount {
+	background: #111111; 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 12px;
+	padding: 6px;
+}
+.recipe1cont {margin-bottom: 20px;}
+.recipe1cont:after {clear: both; content: ""; display: table;}
+.recipe1 {
+	background-repeat: no-repeat;
+	background-size: cover;
+	float: left;
+	padding-top: 0%;
+	width: 33.333%;
+	aspect-ratio: 4 / 3;
+}
+.recipe01 {background-image: url(IMG_01.jpg);}
+.recipe02 {background-image: url(IMG_02.jpg);}
+.recipe03 {background-image: url(IMG_03.jpg);}
+.recipe04 {background-image: url(IMG_04.jpg);}
+.recipe05 {background-image: url(IMG_05.jpg);}
+.recipe06 {background-image: url(IMG_06.jpg);}
+.recipe07 {background-image: url(IMG_07.jpg);}
+.recipe08 {background-image: url(IMG_08.jpg);}
+.recipe09 {background-image: url(IMG_09.jpg);}
+.r1bottom {
+	background: linear-gradient(to bottom, transparent 0%, rgba(20, 20, 20, 0.82) 100%);
+	height: 40%;
+	margin-top: 45%;
+	width: 100%;
+}
+.recipe1-text {
+	height: 56px;
+	overflow: hidden;
+	font-size: 22px;
+	width: calc(100% - 30px);
+	line-height: 1.2;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 34px;
+}
+.recipe1-text:after {
+	content: "";
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+.recipe1-text div {
+	display: inline-block;
+	display: -webkit-inline-box;
+	max-height: 100%;
+	vertical-align: middle;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
+.recipe2cont:after {clear: both; content: ""; display: table;}
+.recipe2 {
+	float: left;
+	padding-top: 0;
+	width: calc(25% - 20px);
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 20px;
+}
+.recipe2inner {
+	background-color: #111111;
+	border-radius: 15px;
+}
+.r2top {
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 15px 15px 0px 0px;
+	aspect-ratio: 4 / 3;
+}
+.r2bottom {
+	height: 80px;
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: hidden;
+}
+.r2bottom div {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	font-size: 18px;
+	margin: 0;
+	padding-top: 7px;
+	padding-bottom: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-height: 40px;
+}
+.r2bottom span {color: #aeaeae; font-size: 14px;}
+/* PAGINATION BUTTONS */
+.prevnext {height: 54px; text-align: center; width: 100%;}
+.btn-next {
+	border: none;
+	border-radius: 7px;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 16px;
+	height: 34px;
+	margin-left: 6px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 76px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-next:active, .btn-next.active, .btn-next:hover, .btn-next:focus {outline: none;}
+.btn-next-text {float: left; padding-left: 8px;}
+.btn-next-icon {
+	display: block; 
+	float: right; 
+	height: 16px; 
+	padding-right: 8px; 
+	padding-top: 2px;
+	width: 10px;
+}
+.btn-next-icon img {height: 100%; width: 100%;}
+.btn-prev {
+	border: none;
+	border-radius: 7px;
+	color: #ffffff;
+	cursor: pointer;
+	font-size: 16px;
+	height: 34px;
+	margin-right: 6px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 107px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-prev:active, .btn-prev.active, .btn-prev:hover, .btn-prev:focus {outline: none;}
+.btn-prev-text {float: right; padding-right: 8px;}
+.btn-prev-icon {
+	display: block; 
+	float: left; 
+	height: 16px; 
+	padding-left: 8px; 
+	padding-top: 2px;
+	width: 10px;
+}
+.btn-prev-icon img {height: 100%; width: 100%;}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
+	#recipecount {margin-left: 10px; margin-right: 10px;}
+	.recipe1 {width: 33.33%;}
+}
+@media screen and (max-width: 960px) { 
+	.recipe1-text {padding-top: 27px;}
+}
+@media screen and (max-width: 910px) { 
+	.recipe1-text {font-size: 20px; height: 52px; padding-top: 23px;}
+}
+@media screen and (max-width: 860px) { 
+	.r2bottom {height: 75px;}
+	.r2bottom div {font-size: 16px; max-height: 36px;}
+	.r2bottom span {font-size: 12px;}
+}
+@media screen and (max-width: 800px) { 
+	.recipe1-text {padding-top: 17px;}
+}
+@media screen and (max-width: 770px) { 
+	.recipe2 {width: calc(33.33% - 20px);}
+	.r2bottom {height: 80px;}
+	.r2bottom div {font-size: 18px; max-height: 40px;}
+	.r2bottom span {font-size: 14px;}
+}
+@media screen and (max-width: 750px) { 
+	.recipe1-text {
+		padding-left: 12px; 
+		padding-right: 12px; 
+		padding-top: 13px; 
+		width: calc(100% - 24px);
+	}
+}
+@media screen and (max-width: 700px) { 
+	.recipe1 {width: 50%;}
+	.recipe1-text {
+		font-size: 22px; 
+		height: 56px; 
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 32px;
+		width: calc(100% - 30px);
+	}
+	.recipe2cont {width: calc(100% - 16px);}
+	.recipe2 {
+		width: calc(33.33% - 16px); 
+		padding-left: 8px; 
+		padding-right: 8px; 
+		padding-bottom: 16px;
+	}
+}
+@media screen and (max-width: 640px) { 
+	.recipe1-text {font-size: 20px; height: 52px; padding-top: 29px;}
+}
+@media screen and (max-width: 620px) { 
+	.r2bottom {height: 75px;}
+	.r2bottom div {font-size: 16px; max-height: 36px;}
+	.r2bottom span {font-size: 12px;}
+}
+@media screen and (max-width: 600px) { 
+	.recipe1-text {padding-top: 23px;}
+}
+@media screen and (max-width: 565px) { 
+	.recipe1-text {
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-top: 18px;
+		width: calc(100% - 24px);
+	}
+}
+@media screen and (max-width: 530px) { 
+	.recipe1-text {font-size: 18px; height: 46px;}
+	.recipe2 {width: calc(50% - 16px);}
+	.r2bottom {height: 80px;}
+	.r2bottom div {font-size: 18px; max-height: 40px;}
+	.r2bottom span {font-size: 14px;}
+}
+@media screen and (max-width: 500px) { 
+	.recipe1-text {padding-top: 14px;}
+}
+@media screen and (max-width: 470px) { 
+	.recipe1 {width: 100%;}
+	.recipe1-text {
+		font-size: 24px; 
+		height: 60px; 
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: 58px;
+		width: calc(100% - 30px);
+	}
+	.r2bottom {height: 75px;}
+	.r2bottom div {font-size: 16px; max-height: 36px;}
+	.r2bottom span {font-size: 12px;}
+}
+@media screen and (max-width: 440px) { 
+	.recipe1-text {padding-top: 50px;}
+}
+@media screen and (max-width: 410px) { 
+	.recipe1-text {font-size: 22px; height: 56px; }
+}
+@media screen and (max-width: 400px) { 
+	.recipe1-text {padding-top: 46px;}
+	.recipe2cont {width: calc(100% - 10px);}
+	.recipe2 {
+		width: calc(50% - 10px); 
+		padding-left: 5px;
+		padding-right: 5px;
+		padding-bottom: 10px;
+	}
+}
+@media screen and (max-width: 385px) { 
+	.recipe1-text {padding-top: 42px;}
+}
+@media screen and (max-width: 370px) { 
+	.recipe1-text {padding-top: 38px;}
+}
+@media screen and (max-width: 350px) { 
+	.recipe1-text {font-size: 18px; height: 46px;}
+}
+@media screen and (max-width: 330px) { 
+	.recipe1-text {padding-top: 32px;}
+	.r2bottom {height: 69px;}
+	.r2bottom div {font-size: 14px; max-height: 30px;}
+	.r2bottom span {font-size: 10px;}
+}
+@media screen and (max-width: 310px) { 
+	.recipe1-text {padding-top: 26px;}
+}
+@media screen and (max-width: 290px) { 
+	.recipe1-text {padding-top: 22px;}
+}
+@media screen and (max-width: 270px) { 
+	.recipe1-text {padding-top: 17px;}
+}
+@media screen and (max-width: 250px) { 
+	.recipe1-text {padding-top: 12px;}
+}

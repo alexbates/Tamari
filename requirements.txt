@@ -9,6 +9,7 @@ flask-moment==1.0.5
 flask-paginate
 flask-sqlalchemy==3.0.2
 flask-wtf==1.2.1
+gunicorn
 pillow
 pyjwt==2.6.0
 python-dotenv

@@ -1356,6 +1356,16 @@ def register():
                     hex_valid = 1
             new_cat = Category(hex_id=hex_string, label=cat, user=user)
             db.session.add(new_cat)
+        lists = ['Miscellaneous']
+        for list in lists:
+            hex_valid2 = 0
+            while hex_valid2 == 0:
+                hex_string2 = secrets.token_hex(4)
+                hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
+                if hex_exist2 is None:
+                    hex_valid2 = 1
+            new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
+            db.session.add(new_list)
         db.session.commit()
         flash('You have been registerd! Please sign in.')
         return redirect(url_for('login'))

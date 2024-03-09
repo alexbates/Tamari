@@ -7,7 +7,6 @@ from flask_mail import Mail
 from flask_moment import Moment
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
-from flask_bootstrap import Bootstrap
 from os.path import join, dirname, realpath
 import os
 
@@ -20,7 +19,6 @@ migrate = Migrate(app, db, render_as_batch=True)
 login = LoginManager(app)
 login.login_view = 'login'
 mail = Mail(app)
-bootstrap = Bootstrap(app)
 moment = Moment(app)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER

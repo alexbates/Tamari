@@ -306,7 +306,7 @@ def categories():
         user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('categories'))
-    if form2.submitcat.data and form2.validate_on_submit():
+    if form2.validate_on_submit():
         if form2.category.data in cats:
             flash('Error: the category you entered already exists.')
         elif len(cats) > 39:
@@ -1342,7 +1342,7 @@ def register():
         user.set_password(form.password.data)
         user.reg_time = datetime.utcnow()
         user.pref_size = 0
-        user.pref_sort = 1
+        user.pref_sort = 0
         user.pref_picture = 0
         user.pref_color = 0
         user.pref_theme = 0

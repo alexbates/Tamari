@@ -13,7 +13,7 @@ Tamari is a fully-featured recipe manager web application built using Python and
 
 Try it out at https://demo.tamariapp.com
 
-Some functionality is disabled and data is not saved on the demo.
+Some functionality is disabled and data is deleted every 20 minutes.
 
 ## Features
 - **Create User Accounts.** Login with an email and password. If configured on the instance, account passwords can be reset by sending a reset request to the email associated with your account.
@@ -29,7 +29,7 @@ Some functionality is disabled and data is not saved on the demo.
 
 ### Install on Debian 11
 ```
-sudo apt install python3 git
+sudo apt install python3 python3-venv git
 git clone https://github.com/alexbates/Tamari
 cd Tamari
 python3 -m venv venv
@@ -73,3 +73,31 @@ Start the Systemd service
 sudo systemctl enable tamari.service
 sudo systemctl start tamari.service
 ```
+
+### Access Tamari from behind a reverse proxy
+Here is a sample Nginx config (/etc/nginx/conf.d/default.conf).
+```
+server {
+	listen 80;
+	server_name tamari.example.com;
+	return 301 https://tamari.example.com$request_uri;
+}
+server {
+	listen 443 ssl;
+	server_name tamari.example.com;
+	ssl on;
+	
+	location / {
+		proxy_pass		http://127.0.0.1:4888;
+		proxy_set_header Host $http_host;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		add_header 'Content-Security-Policy' 'upgrade-insecure-requests';
+		proxy_redirect http://$http_host/ https://$http_host/;
+	}
+	ssl_certificate /etc/ssl/certs/tamari.example.com/fullchain.pem;
+	ssl_certificate_key /etc/ssl/certs/tamari.example.com/privkey.pem;
+}
+```
+This forces SSL, causes Flask url_for to build urls using subdomain instead of localhost, and prevents http resources from being blocked by browsers. An SSL certificate for your domain is required. 

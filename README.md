@@ -2,9 +2,10 @@
 
 Tamari is a fully-featured recipe manager web application built using Python and the Flask Framework. 
 
-![GitHub repo size](https://img.shields.io/github/repo-size/USER/REPOSITORY?style=plastic)
-![GitHub language count](https://img.shields.io/github/languages/count/USER/REPOSITORY?style=plastic)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) ![GitHub last commit](https://img.shields.io/github/last-commit/USER/REPOSITORY?color=red&style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/alexbates/Tamari?style=plastic)
+![GitHub language count](https://img.shields.io/github/languages/count/alexbates/Tamari?style=plastic)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
+![GitHub last commit](https://img.shields.io/github/last-commit/alexbates/Tamari?color=red&style=plastic)
 
 ![Tamari Screenshot](https://bates.gg/tamari-screenshot.jpg)
 

@@ -966,7 +966,7 @@ def exploreRecipeDetail(rec_group, recnum):
     if "cookinglsl.com" in rec_url:
         page = requests.get(rec_url)
         soup = BeautifulSoup(page.text, 'html.parser')
-        photo_1 = soup.find('div',class_='post single-post')
+        photo_1 = soup.find('div',class_='wprm-recipe-image')
         photo_2 = photo_1.find('img')
         photo = photo_2['data-lazy-src']
         preptime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-prep_time wprm-recipe-prep_time-minutes')
@@ -1029,6 +1029,7 @@ def exploreRecipeDetail(rec_group, recnum):
             for ingredient in ingredients_2:
                 ingred = ingredient.text
                 ingred = ingred.replace("\n"," ")
+                ingred = ingred.replace("▢","")
                 ingred = ingred.strip()
                 ingredients.append(ingred)
         instructions = []

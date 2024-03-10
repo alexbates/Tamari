@@ -1335,7 +1335,7 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('allRecipes'))
     form = RegistrationForm()
     if form.validate_on_submit():
         user = User(email=form.email.data)

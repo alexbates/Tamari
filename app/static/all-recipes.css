@@ -251,6 +251,7 @@
 .recipe1 {
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 	float: left;
 	padding-top: 0%;
 	width: 33.333%;
@@ -312,6 +313,7 @@
 .r2top {
 	background-repeat: no-repeat;
 	background-size: cover;
+	background-position: center;
 	border-radius: 15px 15px 0px 0px;
 	aspect-ratio: 4 / 3;
 }

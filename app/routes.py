@@ -438,6 +438,7 @@ def addRecipe():
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
             img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             img_width, img_height = img.size
+            # Resize image if larger than 1500px
             if img_width > img_height:
                 if img_width > 1500:
                     basewidth = 1500
@@ -450,6 +451,20 @@ def addRecipe():
                     hpercent = (baseheight/float(img.size[1]))
                     wsize = int((float(img.size[0])*float(hpercent)))
                     img = img.resize((wsize,baseheight), Image.Resampling.LANCZOS)
+            # Fix the orientation of image before saving to avoid unexpectedly rotated images
+            if hasattr(img, '_getexif'):
+                orientation = 0x0112
+                exifdata = img._getexif()
+                if exifdata is not None and orientation in exifdata:
+                    orientation = exifdata[orientation]
+                    rotations = {
+                        3: Image.ROTATE_180,
+                        6: Image.ROTATE_270,
+                        8: Image.ROTATE_90
+                    }
+                    if orientation in rotations:
+                        img = img.transpose(rotations[orientation])
+            # Save image to recipe-photos directory
             img.save(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             recipe = Recipe(hex_id=hex_string, title=form.recipe_name.data, category=form.category.data, photo=new_file,
                 description=form.description.data, url=form.url.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
@@ -518,6 +533,7 @@ def editRecipe(hexid):
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
             img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             img_width, img_height = img.size
+            # Resize image if larger than 1500px
             if img_width > img_height:
                 if img_width > 1500:
                     basewidth = 1500
@@ -530,6 +546,20 @@ def editRecipe(hexid):
                     hpercent = (baseheight/float(img.size[1]))
                     wsize = int((float(img.size[0])*float(hpercent)))
                     img = img.resize((wsize,baseheight), Image.Resampling.LANCZOS)
+            # Fix the orientation of image before saving to avoid unexpectedly rotated images
+            if hasattr(img, '_getexif'):
+                orientation = 0x0112
+                exifdata = img._getexif()
+                if exifdata is not None and orientation in exifdata:
+                    orientation = exifdata[orientation]
+                    rotations = {
+                        3: Image.ROTATE_180,
+                        6: Image.ROTATE_270,
+                        8: Image.ROTATE_90
+                    }
+                    if orientation in rotations:
+                        img = img.transpose(rotations[orientation])
+            # Save image to recipe-photos directory
             img.save(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             if recipe.photo not in defaults:
                 os.remove(old_path)

@@ -413,8 +413,8 @@ def addRecipe():
             'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
             'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
         rand_default = random.choice(defaults)
-        if request.files:
-            image = request.files['image']
+        image = request.files['image']
+        if request.files and image.filename != '':
             filename, file_extension = os.path.splitext(image.filename)
             hex_valid2 = 0
             while hex_valid2 == 0:
@@ -488,13 +488,13 @@ def editRecipe(hexid):
         recipe.total_time = form.total_time.data
         recipe.ingredients = form.ingredients.data
         recipe.instructions = form.instructions.data
-        if request.files:
+        image = request.files['image']
+        if request.files and image.filename != '':
             old_path = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo
             defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
                 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
                 'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
                 'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
-            image = request.files['image']
             filename, file_extension = os.path.splitext(image.filename)
             hex_valid = 0
             while hex_valid == 0:

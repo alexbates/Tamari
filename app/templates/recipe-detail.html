@@ -75,6 +75,9 @@
 			{% if recipe.description %}
 			<p>{{ recipe.description }}</p>
 			{% endif %}
+			{% if recipe.servings %}
+			<p>{{ recipe.servings }} Servings</p>
+			{% endif %}
 			<p>
 				{% if recipe.prep_time %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ recipe.prep_time }} min</span>{% endif %}
 				{% if recipe.cook_time %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ recipe.cook_time }} min</span>{% endif %}

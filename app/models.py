@@ -56,6 +56,7 @@ class Recipe(db.Model):
     photo = db.Column(db.String(100))
     description = db.Column(db.String(500))
     url = db.Column(db.String(200))
+    servings = db.Column(db.Integer)
     prep_time = db.Column(db.Integer)
     cook_time = db.Column(db.Integer)
     total_time = db.Column(db.Integer)

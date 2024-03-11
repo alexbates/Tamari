@@ -478,11 +478,11 @@ def addRecipe():
             # Save image to recipe-photos directory
             img.save(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             recipe = Recipe(hex_id=hex_string, title=form.recipe_name.data, category=form.category.data, photo=new_file,
-                description=form.description.data, url=form.url.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
+                description=form.description.data, url=form.url.data, servings=form.servings.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
                 total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, favorite=0, public=0, user_id=current_user.id)
         else:
             recipe = Recipe(hex_id=hex_string, title=form.recipe_name.data, category=form.category.data, photo=rand_default,
-                description=form.description.data, url=form.url.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
+                description=form.description.data, url=form.url.data, servings=form.servings.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
                 total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, favorite=0, public=0, user_id=current_user.id)
         db.session.add(recipe)
         db.session.commit()
@@ -509,6 +509,7 @@ def editRecipe(hexid):
         recipe.category = form.category.data
         recipe.description = form.description.data
         recipe.url = form.url.data
+        recipe.servings = form.servings.data
         recipe.prep_time = form.prep_time.data
         recipe.cook_time = form.cook_time.data
         recipe.total_time = form.total_time.data
@@ -1357,6 +1358,7 @@ def login():
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        # Check login
         if user is None or not user.check_password(form.password.data):
             flash('Invalid email or password')
             return redirect(url_for('login'))
@@ -1526,6 +1528,7 @@ def deleteAccount():
 
 @app.route('/request-reset', methods=['GET', 'POST'])
 def request_reset():
+    # Don't display page if user is signed in
     if current_user.is_authenticated:
         return redirect(url_for('allRecipes'))
     form = ResetPasswordRequestForm()
@@ -1539,7 +1542,9 @@ def request_reset():
 
 @app.route('/set-password/<token>', methods=['GET', 'POST'])
 def set_password(token):
+    # Don't display page if user is signed in
     if current_user.is_authenticated:
+        flash('Please sign out before setting a new password.')
         return redirect(url_for('allRecipes'))
     user = User.verify_reset_password_token(token)
     if not user:

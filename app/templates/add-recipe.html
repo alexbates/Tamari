@@ -22,7 +22,7 @@
 		{% endwith %}
 		<form method="post" enctype="multipart/form-data" novalidate>
 			{{ form.hidden_tag() }}
-			<div class="form-group ">
+			<div class="form-group">
 				<label class="control-label" for="recipe_name">Recipe Name</label><br>
 				{{ form.recipe_name(class="form-control fc1", placeholder="Air Fryer Squash") }}
 				{% for error in form.recipe_name.errors %} 
@@ -47,19 +47,26 @@
 				<label>Attach Photo</label><br>
 				<input type="file" class="custom-file-input" name="image" id="image" accept=".png,.jpg,.jpeg">
 			</div>
-			<div class="form-group ">
+			<div class="form-group">
 				<label class="control-label" for="description">Description</label><br>
 				{{ form.description(class="form-control fc2", placeholder="My crispy squash recipe.") }}
 				{% for error in form.description.errors %}
 				<span id="errorrequired">{{ error }}</span>
 				{% endfor %}
 			</div>
-			<div class="form-group ">
+			<div class="form-group">
 				<label class="control-label" for="url">URL</label><br>
 				{{ form.url(class="form-control fc1", placeholder="https://www.example.com/recipes/air-fryer-squash") }}
 				{% for error in form.url.errors %}
 				<span id="errorrequired">{{ error }}</span>
 				{% endfor %}   
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="servings">Servings</label><br>
+				{{ form.servings(class="form-control fc1", placeholder="2") }}
+				{% for error in form.servings.errors %}
+				<span id="errorrequired">{{ error }}</span>
+				{% endfor %}
 			</div>
 			<div class="form-group3">
 				<div>

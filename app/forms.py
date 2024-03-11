@@ -12,7 +12,7 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired(), Length(3,64)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(3,64,message='Must be 3-64 characters long.')])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
@@ -29,7 +29,7 @@ class DisplaySettingsForm(FlaskForm):
 
 class AccountForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('New Password', validators=[Length(3,64)])
+    password = PasswordField('New Password', validators=[Length(3,64,message='Must be 3-64 characters long.')])
     password2 = PasswordField('Confirm Password', validators=[EqualTo('password')])
     submit = SubmitField('Save Changes')
 
@@ -104,7 +104,7 @@ class ResetPasswordRequestForm(FlaskForm):
     submit = SubmitField('Request Reset')
 
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField('Password', validators=[DataRequired(), Length(3,64)])
+    password = PasswordField('Password', validators=[DataRequired(), Length(3,64,message='Must be 3-64 characters long.')])
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Set Password')

@@ -168,6 +168,7 @@ def recipeDetail(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     form = AddToListForm()
     form2 = AddToMealPlannerForm(prefix='a')
+    # Create 2D array that contains compact date and full date for Meal Planner scheduling
     w, h = 2, 30
     month = [[0 for x in range(w)] for y in range(h)]
     curr_dt = datetime.now()
@@ -186,8 +187,9 @@ def recipeDetail(hexid):
         d[0] = compactdate
         d[1] = fulldate
         timestamp += 86400
+    # Populate choices for AddToListForm
+    choices = []
     if current_user.is_authenticated:
-        choices = []
         user = User.query.filter_by(email=current_user.email).first_or_404()
         lists = user.shop_lists.all()
         select_length = 0
@@ -196,6 +198,7 @@ def recipeDetail(hexid):
             choices.append(curr_list)
             select_length += 1
         form.selectlist.choices = choices
+    # Initialize variables to prevent unexpected errors if recipe is not found
     if recipe is None:
         recipe_title = 'Error'
         owner = 0
@@ -208,52 +211,63 @@ def recipeDetail(hexid):
         ingredients = ingred.split('\n')
         instruc = recipe.instructions
         instructions = instruc.split('\n')
+    # AddToListForm
     if form.validate_on_submit():
-        list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
-        listitems = list.list_items.all()
-        a_listitems = []
-        for item in listitems:
-            curr_item = item.item
-            a_listitems.append(curr_item)
-        count = 0
-        for ingred_item in ingredients:
-            if ingred_item not in a_listitems:
-                hex_valid = 0
-                while hex_valid == 0:
-                    hex_string = secrets.token_hex(5)
-                    hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
-                    if hex_exist is None:
-                        hex_valid = 1
-                listitem = Listitem(hex_id=hex_string, item=ingred_item, rec_title=recipe.title, user_id=current_user.id, complete=0, list_id=list.id)
-                db.session.add(listitem)
-                count += 1
-        db.session.commit()
-        if count != 0:
-            message = str(count) + " items have been added to " + str(list.label) + " shopping list."
-            flash(message)
+        # Prevent form processing if hidden "Choose here" is selected
+        if form.selectlist.data == '':
+            flash('Error: please select a shopping list.')
         else:
-            flash('Error: all ingredients from this recipe are already on your shopping list.')
+            list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
+            listitems = list.list_items.all()
+            a_listitems = []
+            for item in listitems:
+                curr_item = item.item
+                a_listitems.append(curr_item)
+            count = 0
+            for ingred_item in ingredients:
+                if ingred_item not in a_listitems:
+                    hex_valid = 0
+                    while hex_valid == 0:
+                        hex_string = secrets.token_hex(5)
+                        hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
+                        if hex_exist is None:
+                            hex_valid = 1
+                    listitem = Listitem(hex_id=hex_string, item=ingred_item, rec_title=recipe.title, user_id=current_user.id, complete=0, list_id=list.id)
+                    db.session.add(listitem)
+                    count += 1
+            db.session.commit()
+            if count != 0:
+                message = str(count) + " items have been added to " + str(list.label) + " shopping list."
+                flash(message)
+            else:
+                flash('Error: all ingredients from this recipe are already on your shopping list.')
+    # AddToMealPlannerForm
     if form2.validate_on_submit():
         # Get value from select field which has name attribute of selectdate
         # This is needed since select field is written manually instead of using {{ form2.selectdate }} in template
         selectdate = request.form.get('selectdate')
-        hex_valid2 = 0
-        while hex_valid2 == 0:
-            hex_string2 = secrets.token_hex(5)
-            hex_exist2 = MealRecipe.query.filter_by(hex_id=hex_string2).first()
-            if hex_exist2 is None:
-                hex_valid2 = 1
-        newmealplan = MealRecipe(hex_id=hex_string2, date=selectdate, recipe_id=recipe.id, user_id=current_user.id)
-        planexist = MealRecipe.query.filter_by(user_id=current_user.id, recipe_id=recipe.id, date=selectdate).first()
-        if planexist is None:
-            if any(selectdate in sublist for sublist in month):
-                db.session.add(newmealplan)
-                db.session.commit()
-                flash('This recipe has been added to your meal plan.')
-            else:
-                flash('Error: ' + selectdate)
+        # Prevent form processing if hidden "Choose here" is selected
+        if selectdate == '':
+            flash('Error: please select a date.')
         else:
-            flash('Error: this recipe is already scheduled for the selected date.')
+            hex_valid2 = 0
+            while hex_valid2 == 0:
+                hex_string2 = secrets.token_hex(5)
+                hex_exist2 = MealRecipe.query.filter_by(hex_id=hex_string2).first()
+                if hex_exist2 is None:
+                    hex_valid2 = 1
+            newmealplan = MealRecipe(hex_id=hex_string2, date=selectdate, recipe_id=recipe.id, user_id=current_user.id)
+            # Verify that the recipe does not already exist in Meal Planner for selected day
+            planexist = MealRecipe.query.filter_by(user_id=current_user.id, recipe_id=recipe.id, date=selectdate).first()
+            if planexist is None:
+                if any(selectdate in sublist for sublist in month):
+                    db.session.add(newmealplan)
+                    db.session.commit()
+                    flash('This recipe has been added to your meal plan.')
+                else:
+                    flash('Error: the selected date in invalid.')
+            else:
+                flash('Error: this recipe is already scheduled for the selected date.')
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, ingredients=ingredients,
         instructions=instructions, form=form, form2=form2, month=month) 
 
@@ -297,11 +311,13 @@ def categories():
     for cat in categories:
         curr_cat = cat.label
         cats.append(curr_cat)
+    # DisplaySettingsForm
     if form.submit.data and form.validate_on_submit():
         user.pref_size = form.recipe_size.data
         user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('categories'))
+    # AddCategoryForm
     if form2.validate_on_submit():
         if form2.category.data in cats:
             flash('Error: the category you entered already exists.')

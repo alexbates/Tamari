@@ -187,6 +187,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 @media screen and (max-width: 700px) {
 	.block1inner h2 {display: none;}
 	.userstats {margin-top: 15px;}
+	#flashed-err {margin-top: 16px;}
+    #flashed-norm {margin-top: 16px;}
 }
 @media screen and (max-width: 520px) { 
 	.userstats {width: calc(100% - 20px);}

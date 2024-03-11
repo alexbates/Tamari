@@ -1436,14 +1436,17 @@ def user():
             if form.password.data == form.password2.data:
                 passwords_match = True
         # Validate email
-        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+        newemail = request.form.get('email')
+        regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
         emailisvalid = re.fullmatch(regex, form.email.data)
+        if emailisvalid is None:
+            emailisvalid = False
         # Check length of email
-        if len(form.email.data) < 3 or len(form.email.data) > 254:
+        if len(newemail) < 3 or len(newemail) > 254:
             emailisvalid = False
         # Check if new email exists in database
-        if emailisvalid and form.email.data != current_user.email:
-            checkuser = User.query.filter_by(email=form.email.data).first()
+        if emailisvalid and newemail != current_user.email:
+            checkuser = User.query.filter_by(email=newemail).first()
             if checkuser:
                 emailisvalid = False
         # Error if there are passwords and they do not match
@@ -1456,13 +1459,15 @@ def user():
         elif has_passwords and (len(form.password.data) < 3 or len(form.password.data) > 64):
             flash('Error: password must be between 3 and 64 characters.')
         # Process changes
-        elif has_passwords or form.email.data != current_user.email:
+        elif has_passwords or newemail != current_user.email:
             if has_passwords:
                 user.set_password(form.password.data)
-            if form.email.data != current_user.email:
-                current_user.email = form.email.data
+            if newemail != current_user.email:
+                current_user.email = newemail
             db.session.commit()
             flash('Your changes have been saved.')
+            # Redirect to current page so form email will be updated following change
+            return redirect(url_for('user'))
         # Notify if there are no errors or changes
         else:
             flash('No changes were made.')

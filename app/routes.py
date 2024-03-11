@@ -20,10 +20,6 @@ def before_request():
         current_user.last_time = datetime.utcnow()
         db.session.commit()
 
-@app.errorhandler(413)
-def photo_too_large(e):
-    return "The attached photo is too large.", 413
-
 @app.context_processor
 def inject_dynrootmargin():
     dynrootmargin = app.config['DYNAMIC_ROOT_MARGIN']

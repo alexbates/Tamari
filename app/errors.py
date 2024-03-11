@@ -5,6 +5,10 @@ from app import app, db
 def not_found_error(error):
     return render_template('404.html'), 404
 
+@app.errorhandler(413)
+def photo_too_large(error):
+    return "The attached photo is too large.", 413
+
 @app.errorhandler(500)
 def internal_error(error):
     db.session.rollback()

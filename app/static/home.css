@@ -19,7 +19,7 @@
 .home-active:hover {
 	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
 }
-.mt-tamari {display: block !important;}
+.mt-tam {display: block !important;}
 
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) { 

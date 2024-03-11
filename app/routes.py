@@ -1424,12 +1424,49 @@ def user():
     rec_count = 0
     for recipe in recipes:
         rec_count += 1
+    # AccountForm
     if form.validate_on_submit():
-        current_user.email = form.email.data
+        # Create variables that will be used for flashed messages
+        has_passwords = False
+        passwords_match = False
+        # Check if form has passwords
         if form.password.data or form.password2.data:
-            user.set_password(form.password.data)
-        db.session.commit()
-        flash('Your changes have been saved.')
+            has_passwords = True
+            # Verify that passwords match
+            if form.password.data == form.password2.data:
+                passwords_match = True
+        # Validate email
+        regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
+        emailisvalid = re.fullmatch(regex, form.email.data)
+        # Check length of email
+        if len(form.email.data) < 3 or len(form.email.data) > 254:
+            emailisvalid = False
+        # Check if new email exists in database
+        if emailisvalid and form.email.data != current_user.email:
+            checkuser = User.query.filter_by(email=form.email.data).first()
+            if checkuser:
+                emailisvalid = False
+        # Error if there are passwords and they do not match
+        if has_passwords and passwords_match == False:
+            flash('Error: passwords do not match.')
+        # Error if email is invalid for any reason
+        elif emailisvalid == False:
+            flash('Error: email is invalid.')
+        # Error if password length out of range
+        elif has_passwords and (len(form.password.data) < 3 or len(form.password.data) > 64):
+            flash('Error: password must be between 3 and 64 characters.')
+        # Process changes
+        elif has_passwords or form.email.data != current_user.email:
+            if has_passwords:
+                user.set_password(form.password.data)
+            if form.email.data != current_user.email:
+                current_user.email = form.email.data
+            db.session.commit()
+            flash('Your changes have been saved.')
+        # Notify if there are no errors or changes
+        else:
+            flash('No changes were made.')
+    # AccountPrefsForm
     if form2.validate_on_submit():
         propicture = int(request.form['propicture'])
         accentcolor = int(request.form['accentcolor'])

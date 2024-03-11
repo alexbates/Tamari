@@ -213,34 +213,33 @@ def recipeDetail(hexid):
         instructions = instruc.split('\n')
     # AddToListForm
     if form.validate_on_submit():
-        # Prevent form processing if hidden "Choose here" is selected
-        if form.selectlist.data is None or len(form.selectlist.data) < 1:
-            flash('Error: please select a shopping list.')
+        list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
+        listitems = list.list_items.all()
+        a_listitems = []
+        for item in listitems:
+            curr_item = item.item
+            a_listitems.append(curr_item)
+        count = 0
+        for ingred_item in ingredients:
+            if ingred_item not in a_listitems:
+                hex_valid = 0
+                while hex_valid == 0:
+                    hex_string = secrets.token_hex(5)
+                    hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
+                    if hex_exist is None:
+                        hex_valid = 1
+                listitem = Listitem(hex_id=hex_string, item=ingred_item, rec_title=recipe.title, user_id=current_user.id, complete=0, list_id=list.id)
+                db.session.add(listitem)
+                count += 1
+        db.session.commit()
+        if count != 0:
+            message = str(count) + " items have been added to " + str(list.label) + " shopping list."
+            flash(message)
         else:
-            list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
-            listitems = list.list_items.all()
-            a_listitems = []
-            for item in listitems:
-                curr_item = item.item
-                a_listitems.append(curr_item)
-            count = 0
-            for ingred_item in ingredients:
-                if ingred_item not in a_listitems:
-                    hex_valid = 0
-                    while hex_valid == 0:
-                        hex_string = secrets.token_hex(5)
-                        hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
-                        if hex_exist is None:
-                            hex_valid = 1
-                    listitem = Listitem(hex_id=hex_string, item=ingred_item, rec_title=recipe.title, user_id=current_user.id, complete=0, list_id=list.id)
-                    db.session.add(listitem)
-                    count += 1
-            db.session.commit()
-            if count != 0:
-                message = str(count) + " items have been added to " + str(list.label) + " shopping list."
-                flash(message)
-            else:
-                flash('Error: all ingredients from this recipe are already on your shopping list.')
+            flash('Error: all ingredients from this recipe are already on your shopping list.')
+    # If user selects hidden "Choose here" for AddToListForm
+    if form.errors:
+        flash('Error: please select a shopping list.')
     # AddToMealPlannerForm
     if form2.validate_on_submit():
         # Get value from select field which has name attribute of selectdate

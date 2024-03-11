@@ -214,7 +214,7 @@ def recipeDetail(hexid):
     # AddToListForm
     if form.validate_on_submit():
         # Prevent form processing if hidden "Choose here" is selected
-        if form.selectlist.data == '':
+        if form.selectlist.data is None or len(form.selectlist.data) < 1:
             flash('Error: please select a shopping list.')
         else:
             list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()

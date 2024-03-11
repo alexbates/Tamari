@@ -238,7 +238,7 @@ def recipeDetail(hexid):
         else:
             flash('Error: all ingredients from this recipe are already on your shopping list.')
     # If user selects hidden "Choose here" for AddToListForm
-    if form.errors:
+    if form.errors and not form2.validate_on_submit():
         flash('Error: please select a shopping list.')
     # AddToMealPlannerForm
     if form2.validate_on_submit():

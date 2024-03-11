@@ -1379,38 +1379,60 @@ def register():
         return redirect(url_for('allRecipes'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(email=form.email.data)
-        user.set_password(form.password.data)
-        user.reg_time = datetime.utcnow()
-        user.pref_size = 0
-        user.pref_sort = 0
-        user.pref_picture = 0
-        user.pref_color = 0
-        user.pref_theme = 0
-        db.session.add(user)
-        cats = ['Miscellaneous', 'Entrees', 'Sides']
-        for cat in cats:
-            hex_valid = 0
-            while hex_valid == 0:
-                hex_string = secrets.token_hex(4)
-                hex_exist = Category.query.filter_by(hex_id=hex_string).first()
-                if hex_exist is None:
-                    hex_valid = 1
-            new_cat = Category(hex_id=hex_string, label=cat, user=user)
-            db.session.add(new_cat)
-        lists = ['Miscellaneous']
-        for list in lists:
-            hex_valid2 = 0
-            while hex_valid2 == 0:
-                hex_string2 = secrets.token_hex(4)
-                hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
-                if hex_exist2 is None:
-                    hex_valid2 = 1
-            new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
-            db.session.add(new_list)
-        db.session.commit()
-        flash('You have been registerd! Please sign in.')
-        return redirect(url_for('login'))
+        # Check if email is already registered
+        checkemail = User.query.filter_by(email=form.email.data).first()
+        # Validate email
+        regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+        emailisvalid = re.fullmatch(regex, form.email.data)
+        # Check length of email
+        if len(form.email.data) < 3 or len(form.email.data) > 254:
+            emailisvalid = False        
+        # Error if email is registered
+        if checkemail:
+            flash('Error: email is already taken.')
+        # Error if email is invalid for any reason
+        elif emailisvalid is None or emailisvalid == False:
+            flash('Error: email is invalid.')
+        # Error if passwords do not match
+        elif form.password.data != form.password2.data:
+            flash('Error: passwords do not match.')
+        # Error if password length out of range
+        elif len(form.password.data) < 3 or len(form.password.data) > 64:
+            flash('Error: password must be 3-64 characters.')
+        # Process registration
+        else:
+            user = User(email=form.email.data)
+            user.set_password(form.password.data)
+            user.reg_time = datetime.utcnow()
+            user.pref_size = 0
+            user.pref_sort = 0
+            user.pref_picture = 0
+            user.pref_color = 0
+            user.pref_theme = 0
+            db.session.add(user)
+            cats = ['Miscellaneous', 'Entrees', 'Sides']
+            for cat in cats:
+                hex_valid = 0
+                while hex_valid == 0:
+                    hex_string = secrets.token_hex(4)
+                    hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                    if hex_exist is None:
+                        hex_valid = 1
+                new_cat = Category(hex_id=hex_string, label=cat, user=user)
+                db.session.add(new_cat)
+            lists = ['Miscellaneous']
+            for list in lists:
+                hex_valid2 = 0
+                while hex_valid2 == 0:
+                    hex_string2 = secrets.token_hex(4)
+                    hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
+                    if hex_exist2 is None:
+                        hex_valid2 = 1
+                new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
+                db.session.add(new_list)
+            db.session.commit()
+            flash('You have been registerd! Please sign in.')
+            return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/account', methods=['GET', 'POST'])
@@ -1475,6 +1497,7 @@ def user():
     if form2.validate_on_submit():
         propicture = int(request.form['propicture'])
         accentcolor = int(request.form['accentcolor'])
+        # Change profile picture and accent color if values are valid
         if propicture >= 0 and propicture <= 3 and accentcolor >= 0 and accentcolor <= 3:
             user.pref_picture = propicture
             user.pref_color = accentcolor
@@ -1488,11 +1511,14 @@ def user():
 @app.route('/account/process-delete')
 @login_required
 def deleteAccount():
+    # Get user and handle if user doesn't exist
     user = User.query.filter_by(email=current_user.email).first()
     if user is None:
         flash('Error: there was a problem deleting your account')
         return redirect(url_for('user'))
+    # Logout before delete
     logout_user()
+    # Delete account and redirect to login page
     db.session.delete(user)
     db.session.commit()
     flash('Your account has been deleted.')

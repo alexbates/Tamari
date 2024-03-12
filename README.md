@@ -25,9 +25,16 @@ Some functionality is disabled and data is deleted every 20 minutes.
 - **Customize.** Choose to display large photos to show off your recipes to friends, or smaller photos to fit more recipes on the screen. Sort recipes by title or by date added. Select between four account profile pictures. Set an accent color that applies to most buttons and many elements throughout the app. For a Tamari instance, some configuration options can be customized such as recipes per page and dynamic loading of images.
 - **Access on any Device.** Tamari is designed to function well on any desktop, laptop, tablet, or smartphone.
 
+## Installing with Docker 🐳
+```
+docker run -d --restart=always -p 4888:4888 --name tamari alexbates/tamari:0.4
+```
+Tamari is now running! Go to http://localhost:4888
+
 ## Manual Installation
 
 ### Install on Debian 11
+Use a virtual environment to ensure that dependencies don't interfere with other packages on your system.
 ```
 sudo apt install python3 python3-venv git
 git clone https://github.com/alexbates/Tamari
@@ -41,7 +48,7 @@ flask db upgrade
 export FLASK_APP=tamari.py
 gunicorn -b 0.0.0.0:4888 -w 4 app:app
 ```
-Then register an account at http://localhost:4888
+Tamari is now running! Go to http://localhost:4888
 
 ### Start Tamari Automatically at System Boot
 Make start script executable (must be in Tamari directory)
@@ -101,3 +108,12 @@ server {
 }
 ```
 This forces SSL, causes Flask url_for to build urls using subdomain instead of localhost, and prevents http resources from being blocked by browsers. An SSL certificate for your domain is required. 
+
+## Backups
+
+Please make backups of your data. All user data is stored in the following database file and directory.
+
+```
+Tamari/app.db
+Tamari/app/recipe-photos
+```

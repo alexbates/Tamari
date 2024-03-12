@@ -31,6 +31,12 @@ docker run -d --restart=always -p 4888:4888 --name tamari alexbates/tamari:0.4
 ```
 Tamari is now running! Go to http://localhost:4888
 
+### Alternative Command with Mail Settings
+Use this command instead if you wish to enable password reset requests via email. Replace variables with settings for an email account you control.
+```
+docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 --name tamari alexbates/tamari:0.4
+```
+
 ## Manual Installation
 
 ### Install on Debian 11
@@ -108,6 +114,17 @@ server {
 }
 ```
 This forces SSL, causes Flask url_for to build urls using subdomain instead of localhost, and prevents http resources from being blocked by browsers. An SSL certificate for your domain is required. 
+
+### Configure Mail Settings (Optional)
+Configure to enable password reset requests via email. 
+```
+source venv/bin/activate
+export MAIL_SERVER=mail.example.com
+export MAIL_PORT=587
+export MAIL_USE_TLS=1
+export MAIL_USERNAME=youremail@example.com
+export MAIL_PASSWORD=yourpassword
+```
 
 ## Backups
 

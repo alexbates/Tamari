@@ -11,7 +11,10 @@ class Config(object):
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    ADMINS = ['default@tamariapp.com']
+    # ADMIN is the sender email if mail is configured via environment variables
+    # If this is left blank, Tamari will use MAIL_USERNAME as the sender email
+    # Example: ADMIN = 'default@tamariapp.com'
+    ADMIN = ''
     # for my recipes > all recipes and my recipes > favorites
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50

@@ -26,7 +26,7 @@
 				<label class="control-label" for="recipe_name">Recipe Name</label><br>
 				{{ form.recipe_name(class="form-control fc1", placeholder="Air Fryer Squash", value=recipe.title) }}
 				{% for error in form.recipe_name.errors %} 
-				<span id="errorrequired">{{ error }}</span>
+				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}  
 			</div>
 			<div class="custom-select">
@@ -40,7 +40,7 @@
 					</select>
 				</div>
 				{% for error in form.category.errors %}
-				<span id="errorrequired">{{ error }}</span>
+				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}  
 			</div>
 			<div class="form-group">
@@ -52,21 +52,21 @@
 				<textarea class="form-control fc2" id="description" maxlength="500" minlength="0" name="description" placeholder="My crispy squash recipe.">
 {{ recipe.description }}</textarea>
 				{% for error in form.description.errors %}
-				<span id="errorrequired">{{ error }}</span>
+				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}
 			</div>
 			<div class="form-group ">
 				<label class="control-label" for="url">URL</label><br>
 				{{ form.url(class="form-control fc1", placeholder="https://www.example.com/recipes/air-fryer-squash", value=recipe.url) }}
 				{% for error in form.url.errors %}
-				<span id="errorrequired">{{ error }}</span>
+				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}   
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="servings">Servings</label><br>
 				{{ form.servings(class="form-control fc1", placeholder="2") }}
 				{% for error in form.servings.errors %}
-				<span id="errorrequired">{{ error }}</span>
+				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}
 			</div>
 			<div class="form-group3">
@@ -74,21 +74,21 @@
 					<label class="control-label" for="prep_time">Preparation Time (minutes)</label><br>
 					{{ form.prep_time(class="form-control fc1", placeholder="15", value=recipe.prep_time) }}
 					{% for error in form.prep_time.errors %}
-					<span id="errorrequired">{{ error }}</span>
+					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}   
 				</div>
 				<div>
 					<label class="control-label" for="cook_time">Cook Time (minutes)</label><br>
 					{{ form.cook_time(class="form-control fc1", placeholder="30", value=recipe.cook_time) }}
 					{% for error in form.cook_time.errors %}
-					<span id="errorrequired">{{ error }}</span>
+					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}   
 				</div>
 				<div>
 					<label class="control-label" for="total_time">Total Time (minutes)</label><br>
 					{{ form.total_time(class="form-control fc1", placeholder="45", value=recipe.total_time) }}
 					{% for error in form.total_time.errors %}
-					<span id="errorrequired">{{ error }}</span>
+					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}
 				</div>
 			</div>
@@ -98,7 +98,7 @@
 					<textarea class="form-control fc3" id="ingredients" maxlength="1100" minlength="1" name="ingredients" placeholder="2 Tbsp olive oil" required>
 {{ recipe.ingredients }}</textarea>
 					{% for error in form.ingredients.errors %}
-					<span id="errorrequired">{{ error }}</span>
+					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}  
 				</div>
 				<div>
@@ -106,7 +106,7 @@
 					<textarea class="form-control fc3" id="instructions" maxlength="2200" minlength="1" name="instructions" placeholder="Wash squash in sink to prepare." required>
 {{ recipe.instructions }}</textarea>
 					{% for error in form.instructions.errors %}
-					<span id="errorrequired">{{ error }}</span>
+					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}  
 				</div>
 			</div>

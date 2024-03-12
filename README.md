@@ -17,7 +17,7 @@ Some functionality is disabled and data is deleted every 20 minutes.
 
 ## Features
 - **Create User Accounts.** Login with an email and password. If configured on the instance, account passwords can be reset by sending a reset request to the email associated with your account.
-- **Store, View, Search, and Share Recipes.** For a single recipe, you can save a title, category, description, time estimates, URL, ingredients, instructions, and a photo. If you don’t upload a photo, Tamari will assign a random cooking-themed placeholder. On the detail page for a recipe, you can click to cross off completed ingredients and instruction steps while you are cooking. Search-as-you-type functionality enables you to find the recipe you are looking for as quickly as possible. Recipes are only visible while logged in by default, however you can make a recipe public and share the URL with anyone.
+- **Store, View, Search, and Share Recipes.** For a single recipe, you can save a title, category, description, time estimates, servings, URL, ingredients, instructions, and a photo. If you don’t upload a photo, Tamari will assign a random cooking-themed placeholder. On the detail page for a recipe, you can click to cross off completed ingredients and instruction steps while you are cooking. Search-as-you-type functionality enables you to find the recipe you are looking for as quickly as possible. Recipes are only visible while logged in by default, however you can make a recipe public and share the URL with anyone.
 - **Organize.** Mark recipes as Favorites for easy access. Assign categories to recipes and browse by category.
 - **Explore.** Browse and search a collection of over 36,000 recipes from three recipe sharing websites (more coming soon!). When you browse a recipe in Explore, Tamari will fetch and parse the relevant data from the URL without requiring you to visit the webpage. Import a recipe into My Recipes with the click of a button.
 - **Make Shopping Lists.** Make a shopping list for each store you shop at. Add all ingredients for a specific recipe to a shopping list with the click of a button. Click an item on a shopping list to mark it as completed.
@@ -34,7 +34,7 @@ Tamari is now running! Go to http://localhost:4888
 ## Manual Installation
 
 ### Install on Debian 11
-Use a virtual environment to ensure that dependencies don't interfere with other packages on your system.
+Use a virtual environment to ensure that dependencies don't interfere with other software on your system.
 ```
 sudo apt install python3 python3-venv git
 git clone https://github.com/alexbates/Tamari

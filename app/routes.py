@@ -808,7 +808,10 @@ def removePlan(hexid):
             flash('The meal plan has been deleted.')
         else:
             flash('Error: meal plan does not exist or you lack permission to remove it.')
-    return redirect(url_for('mealPlanner'))
+    if mealplan.date is not None:
+        return redirect(url_for('mealPlanner', day=mealplan.date))
+    else:
+        return redirect(url_for('mealPlanner'))
 
 @app.route('/explore', methods=['GET', 'POST'])
 @login_required
@@ -1354,7 +1357,7 @@ def exploreRecipeDetail(rec_group, recnum):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('allRecipes'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()

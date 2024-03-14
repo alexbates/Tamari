@@ -167,6 +167,7 @@
 	#r-image {width: calc(35% - 10px);}
 	#ingredients {padding-left: 10px; width: calc(50% - 30px);}
 	#instructions {padding-right: 10px; width: calc(50% - 10px);}
+	.recipe-error {padding-left: 10px; padding-right: 10px;}
 }
 @media screen and (max-width: 700px) { 
 	#r-detail {float: none; padding-right: 10px; width: calc(100% - 20px);}

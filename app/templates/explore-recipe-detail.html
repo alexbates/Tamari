@@ -66,13 +66,13 @@
 			{% endfor %}
 		</div>
 		{% else %}
-		<h2>Error</h2>
-		<p>The retrieval or parsing of data for the requested recipe failed.</p>
-		<p>If you see this error frequently, opening an Issue Report on Github may help get it resolved.</p>
+		<h2 class="recipe-error">Error</h2>
+		<p class="recipe-error">The retrieval or parsing of data for the requested recipe failed.</p>
+		<p class="recipe-error">If you see this error frequently, opening an Issue Report on Github may help get it resolved.</p>
 		{% endif %}
 		{% else %}
-		<h2>Error</h2>
-		<p>The requested recipe cannot be found.</p>
+		<h2 class="recipe-error">Error</h2>
+		<p class="recipe-error">The requested recipe cannot be found.</p>
 		{% endif %}
 	</div>
 </main>

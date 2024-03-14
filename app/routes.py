@@ -372,8 +372,8 @@ def removeCategory(catid):
     category = Category.query.filter_by(hex_id=catid).first()
     user = User.query.filter_by(email=current_user.email).first()
     recipes = user.recipes.all()
-    if category is None:
-        flash('Error: category does not exist.')
+    if category is None or category.user_id != current_user.id:
+        flash('Error: category does not exist or you do not have permission to remove it.')
     elif category.label == 'Miscellaneous':
         flash('Error: Miscellaneous cannot be deleted because it is the default category.')
     else:
@@ -392,8 +392,8 @@ def removeCategory(catid):
 @login_required
 def removeRecipe(hexid):
     delrecipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if delrecipe is None:
-        flash('Error: recipe does not exist')
+    if delrecipe is None or delrecipe.user_id != current_user.id:
+        flash('Error: recipe does not exist or you do not have permission to delete it.')
         return redirect(url_for('allRecipes'))
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',

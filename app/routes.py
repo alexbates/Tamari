@@ -348,9 +348,8 @@ def mobileCategory(catname):
     category = user.categories.filter_by(label=catname).first()
     invalidcat = False
     if category is None:
-        recipes = None
         invalidcat = True
-    elif user.pref_sort == 0:
+    if user.pref_sort == 0:
         recipes = user.recipes.filter_by(category=catname).order_by(Recipe.title).paginate(page=page,
             per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
     elif user.pref_sort == 1:

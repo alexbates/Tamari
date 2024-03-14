@@ -28,7 +28,11 @@
 		{% endfor %}
 		{% endif %}
 		{% endwith %}
+		{% if invalidcat == False %}
 		<p id="recipecount">Showing {{ recipe_count }} recipes in '{{ catname }}' category.</p>
+		{% else %}
+		<p id="recipecount">The requested category could not be found.</p>
+		{% endif %}
 		{% if recipes %}
 		{% if user.pref_size == 0 %}
 		<div id="recipecont" class="recipe1cont">

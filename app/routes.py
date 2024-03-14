@@ -119,8 +119,8 @@ def favorites():
 @login_required
 def favorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None:
-        flash('Error: recipe does not exist')
+    if recipe is None or recipe.id != current_user.id:
+        flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.favorite = 1
     db.session.commit()
@@ -131,8 +131,8 @@ def favorite(hexid):
 @login_required
 def unfavorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None:
-        flash('Error: recipe does not exist')
+    if recipe is None or recipe.id != current_user.id:
+        flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.favorite = 0
     db.session.commit()
@@ -143,8 +143,8 @@ def unfavorite(hexid):
 @login_required
 def makePublic(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None:
-        flash('Error: recipe does not exist')
+    if recipe is None or recipe.id != current_user.id:
+        flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.public = 1
     db.session.commit()
@@ -155,8 +155,8 @@ def makePublic(hexid):
 @login_required
 def makePrivate(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None:
-        flash('Error: recipe does not exist')
+    if recipe is None or recipe.id != current_user.id:
+        flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.public = 0
     db.session.commit()
@@ -343,7 +343,14 @@ def mobileCategory(catname):
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
     rec_count = user.recipes.filter_by(category=catname).all()
-    if user.pref_sort == 0:
+    # Check whether requested category exists
+    # If it doesn't set invalidcat to True, which is used by template to display error message
+    category = user.categories.filter_by(label=catname).first()
+    invalidcat = False
+    if category is None:
+        recipes = None
+        invalidcat = True
+    elif user.pref_sort == 0:
         recipes = user.recipes.filter_by(category=catname).order_by(Recipe.title).paginate(page=page,
             per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
     elif user.pref_sort == 1:
@@ -358,7 +365,7 @@ def mobileCategory(catname):
         if recipes.has_prev else None
     recipe_count = len(rec_count)
     return render_template('mobile-category.html', title=catname, user=user, recipes=recipes.items,
-        recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url)
+        recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url, invalidcat=invalidcat)
 
 @app.route('/remove-category/<catid>')
 @login_required

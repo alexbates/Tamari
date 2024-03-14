@@ -116,7 +116,7 @@ server {
 This forces SSL, causes Flask url_for to build urls using subdomain instead of localhost, and prevents http resources from being blocked by browsers. An SSL certificate for your domain is required. 
 
 ### Configure Mail Settings (Optional)
-Configure to enable password reset requests via email. 
+Configure to enable password reset requests via email. If login username is not the same as your email address, you need to configure 'ADMIN' in config.py.
 ```
 source venv/bin/activate
 export MAIL_SERVER=mail.example.com

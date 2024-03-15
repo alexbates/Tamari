@@ -26,15 +26,16 @@ Some functionality is disabled and data is deleted every 20 minutes.
 - **Access on any Device.** Tamari is designed to function well on any desktop, laptop, tablet, or smartphone.
 
 ## Installing with Docker 🐳
+This creates a 'tamaristorage' volume for persistent storage.
 ```
-docker run -d --restart=always -p 4888:4888 --name tamari alexbates/tamari:0.4
+docker run -d --restart=always -p 4888:4888 -v tamaristorage:/app --name tamari alexbates/tamari:0.4
 ```
 Tamari is now running! Go to http://localhost:4888
 
 ### Alternative Command with Mail Settings
 Use this command instead if you wish to enable password reset requests via email. Replace variables with settings for an email account you control.
 ```
-docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 --name tamari alexbates/tamari:0.4
+docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamaristorage:/app --name tamari alexbates/tamari:0.4
 ```
 
 ## Manual Installation
@@ -129,8 +130,12 @@ export MAIL_PASSWORD=yourpassword
 ## Backups
 
 Please make backups of your data. All user data is stored in the following database file and directory.
-
 ```
-Tamari/app.db
+Tamari/app/app.db
 Tamari/app/recipe-photos
+```
+For Docker, if using tamaristorage volume, files may be mounted at the following locations.
+```
+/var/lib/docker/volumes/tamaristorage/_data/app.db
+/var/lib/docker/volumes/tamaristorage/_data/recipe-photos
 ```

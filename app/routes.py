@@ -1412,6 +1412,7 @@ def register():
             flash('Error: password must be 3-64 characters.')
         # Process registration
         else:
+            logout_user()
             user = User(email=form.email.data)
             user.set_password(form.password.data)
             user.reg_time = datetime.utcnow()

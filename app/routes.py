@@ -208,9 +208,27 @@ def recipeDetail(hexid):
         recipe_title = recipe.title
         owner = recipe.user_id
         ingred = recipe.ingredients
-        ingredients = ingred.split('\n')
+        ingredientsdirty = ingred.split('\n')
+        # Remove all kinds of line breaks from ingredients
+        ingredients = []
+        for item in ingredientsdirty:
+            item = item.replace('\n','')
+            item = item.replace('\r','')
+            item = item.replace('\f','')
+            item = item.replace('\u2028','')
+            item = item.replace('\u2029','')
+            ingredients.append(item)
         instruc = recipe.instructions
-        instructions = instruc.split('\n')
+        instructionsdirty = instruc.split('\n')
+        # Remove all kinds of line breaks from instructions
+        instructions = []
+        for item in instructionsdirty:
+            item = item.replace('\n','')
+            item = item.replace('\r','')
+            item = item.replace('\f','')
+            item = item.replace('\u2028','')
+            item = item.replace('\u2029','')
+            instructions.append(item)
     # AddToListForm
     if form.validate_on_submit():
         list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()

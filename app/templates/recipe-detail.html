@@ -132,7 +132,9 @@
 			<h3>Ingredients</h3>
 			<div id="inginner" class="inginner">
 				{% for item in ingredients %}
+				{% if item | length > 0 %}
 				<div><p class="ing">{{ item }}</p></div>
+				{% endif %}
 				{% endfor %}
 				{% if current_user.is_authenticated and current_user.id == owner %}
 				<div>
@@ -144,7 +146,9 @@
 		<div id="instructions">
 			<h3>Instructions</h3>
 			{% for item in instructions %}
+			{% if item | length > 0 %}
 			<div class="steps"><b>Step {{ loop.index }}</b><p>{{ item }}</p></div>
+			{% endif %}
 			{% endfor %}
 		</div>
 		{% else %}

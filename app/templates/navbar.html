@@ -3,6 +3,7 @@
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
+<script src="{{ url_for('static', filename='navbar-theme.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='jquery-3.7.0.min.js', _external=True) }}"></script>
 <script>
 	function toggleDropdown() {
@@ -108,6 +109,12 @@
     		header.style.backgroundImage = "url('"+header.dataset.bgimage+"')";
   		});
 	}
+</script>
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('light', 'light-blue');
+		themeElements();
+	});
 </script>
 {% endblock %}
 

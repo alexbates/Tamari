@@ -3,15 +3,6 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='favorites.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% if current_user.pref_color == 0 %}
-	<link href="{{ url_for('static', filename='my-recipes-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 1 %}
-	<link href="{{ url_for('static', filename='my-recipes-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 2 %}
-	<link href="{{ url_for('static', filename='my-recipes-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% else %}
-	<link href="{{ url_for('static', filename='my-recipes-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -26,7 +17,7 @@
 			<div class="recipenavright">
 				<div class="settingsbtn">
 					<button class="btn2 btn2-default" onclick="toggleSettings()">
-						<span class="btn2-icon"><img src="{{ url_for('static', filename='settings.png', _external=True) }}" alt=""></span>
+						<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt=""></span>
 					</button>
 					<div class="settings-content" id="settingsDrop">
 						<h3>Display Settings</h3>
@@ -46,7 +37,7 @@
 				</div>
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('addRecipe') }}';">
                                         <span class="btn-text">Add Recipe</span>
-                                        <span class="btn-icon"><img src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
+                                        <span class="btn-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
 				</button>
 				<div class="search-cont">
 					<input class="search-box" id="search" name="search" placeholder="Search" value="">
@@ -92,14 +83,14 @@
 		<div class="prevnext">
 			{% if prev_url %}
 			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';">
-				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if next_url %}
 			<button class="btn-next" onclick="window.location.href='{{ next_url }}';">
 				<span class="btn-next-text">Next</span>
-				<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
 			</button>
 			{% endif %}
 		</div>

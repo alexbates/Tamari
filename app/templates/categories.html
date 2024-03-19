@@ -3,15 +3,6 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='categories.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% if current_user.pref_color == 0 %}
-	<link href="{{ url_for('static', filename='my-recipes-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 1 %}
-	<link href="{{ url_for('static', filename='my-recipes-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 2 %}
-	<link href="{{ url_for('static', filename='my-recipes-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% else %}
-	<link href="{{ url_for('static', filename='my-recipes-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -25,7 +16,7 @@
 			</div>
 			<div class="settingsbtn">
 				<button class="btn2 btn2-default" onclick="toggleSettings()">
-					<span class="btn2-icon"><img src="{{ url_for('static', filename='settings.png', _external=True) }}" alt=""></span>
+					<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt=""></span>
 				</button>
 				<div class="settings-content" id="settingsDrop">
 					<h3>Display Settings</h3>
@@ -58,7 +49,7 @@
 						{{ form2.hidden_tag() }}
 						{{ form2.category(class="form-control", placeholder="Add a Category") }}
 						<button class="btn5-default" id="submitcat" name="submitcat" value="submitcat">
-							<span class="btn5-icon"><img src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
+							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
 						</button>
 					</form> 
 				</div>
@@ -68,7 +59,7 @@
 					<span class="cat-label"><a href="{{ url_for('categories', c=[item.label]) }}">{{ item.label }}</a></span>
 					<span class="cat-label2"><a href="{{ url_for('mobileCategory', catname=item.label) }}">{{ item.label }}</a></span>
 					<a class="cat-trash" href="{{ url_for('removeCategory', catid=item.hex_id) }}" onclick="return confirm('Are you sure you want to delete the category {{ item.label }}?');" title="Delete Category">
-						<img src="{{ url_for('static', filename='trash2.png', _external=True) }}" width="20" height="20" alt="">
+						<img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" width="20" height="20" alt="">
 					</a>
 				</div>
 				{% endfor %}
@@ -122,14 +113,14 @@
                 	<div class="prevnext">
                         	{% if prev_url %}
                         	<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';">
-                                	<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+                                	<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
                                 	<span class="btn-prev-text">Previous</span>
                         	</button>
                         	{% endif %}
                         	{% if next_url %}
                         	<button class="btn-next" onclick="window.location.href='{{ next_url }}';">
                                 	<span class="btn-next-text">Next</span>
-                                	<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+                                	<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
                         	</button>
                         	{% endif %}
                 	</div>

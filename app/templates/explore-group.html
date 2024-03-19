@@ -3,15 +3,6 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='explore-group.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% if current_user.pref_color == 0 %}
-	<link href="{{ url_for('static', filename='explore-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 1 %}
-	<link href="{{ url_for('static', filename='explore-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 2 %}
-	<link href="{{ url_for('static', filename='explore-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% else %}
-	<link href="{{ url_for('static', filename='explore-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -36,14 +27,14 @@
 		<div class="prevnext">
 			{% if pagination.has_prev %}
 			<button class="btn-prev" onclick="window.location.href='{{ url_for('exploreGroup', page=curr_page - 1, group=group) }}';">
-				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if pagination.has_next %}
 			<button class="btn-next" onclick="window.location.href='{{ url_for('exploreGroup', page=curr_page + 1, group=group) }}';">
 				<span class="btn-next-text">Next</span>
-                                <span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+                                <span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
                         </button>
 			{% endif %}
 		</div>

@@ -3,15 +3,6 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='recipe-detail.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% if current_user.pref_color == 0 %}
-	<link href="{{ url_for('static', filename='my-recipes-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 1 %}
-	<link href="{{ url_for('static', filename='my-recipes-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 2 %}
-	<link href="{{ url_for('static', filename='my-recipes-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% else %}
-	<link href="{{ url_for('static', filename='my-recipes-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -90,37 +81,37 @@
 			<div class="btncontainer">
 				{% if recipe.favorite == 0 %}
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('favorite', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt=""></span>
+					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Favorite</span>
 				</button>
 				{% else %}
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('unfavorite', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img src="{{ url_for('static', filename='unfavorite-recipe.png', _external=True) }}" alt=""></span>
+					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='unfavorite-recipe.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Unfavorite</span>
 				</button>
 				{% endif %}
 				{% if recipe.public == 0 %}
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('makePublic', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
+					<span class="btn-icon"><img id="publicimg" src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Make Public</span>
 				</button>
 				{% else %}
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('makePrivate', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
+					<span class="btn-icon"><img id="publicimg" src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Make Private</span>
 				</button>
 				{% endif %}
 				<button class="btn btn-default" onclick="document.getElementById('scheduler').style.display='block'">
-					<span class="btn-icon3"><img src="{{ url_for('static', filename='schedule.png', _external=True) }}" alt=""></span>
+					<span class="btn-icon3"><img id="scheduleimg" src="{{ url_for('static', filename='schedule.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Schedule</span>
 				</button>
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('editRecipe', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon3"><img src="{{ url_for('static', filename='edit-recipe.png', _external=True) }}" alt=""></span>
+					<span class="btn-icon3"><img id="editimg" src="{{ url_for('static', filename='edit-recipe.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Edit</span>
 				</button>
 				<form style="display: inline;" action="{{ url_for('removeRecipe', hexid=recipe.hex_id) }}" method="get" onsubmit="return confirm('Are you sure you want to delete this recipe?');">
 					<button class="btn btn-default2">
-						<span class="btn-icon2"><img src="{{ url_for('static', filename='trash2.png', _external=True) }}" alt=""></span>
+						<span class="btn-icon2"><img id="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt=""></span>
 						<span class="btn-text">Delete</span>
 					</button>
 				</form>

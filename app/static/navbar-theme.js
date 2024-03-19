@@ -102,30 +102,45 @@ function themeAuth(usertheme, useraccentcolor) {
 }
 // This always runs, after "data-theme" attribute is set
 function themeElements() {
-    // Assign settings, add recipe, prev, next icon to constants
+    // Assign icons to constants
     const settingsImg = document.getElementById("settingsimg");
     const addRecipeImg = document.getElementById("addrecipeimg");
     const prevImg = document.getElementById("previmg");
     const nextImg = document.getElementById("nextimg");
+    const trashImg = document.getElementById("trashimg");
+    const favoriteImg = document.getElementById("favoriteimg");
+    const publicImg = document.getElementById("publicimg");
+    const scheduleImg = document.getElementById("scheduleimg");
+    const editImg = document.getElementById("editimg");
     var trashImages = document.querySelectorAll('img.trashimg');
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
-        // If light, switch settings, add recipe, prev, next icon
+        // If light, switch icons
         if (settingsImg !== null) {settingsImg.src = "/static/settings-light.png";}
         if (addRecipeImg !== null) {addRecipeImg.src = "/static/add-recipe-button-light.png";}
         if (prevImg !== null) {prevImg.src = "/static/prev-light.png";}
         if (nextImg !== null) {nextImg.src = "/static/next-light.png";}
+        if (trashImg !== null) {trashImg.src = "/static/trash-light.png";}
+        if (favoriteImg !== null) {favoriteImg.src = "/static/favorite-recipe-light.png";}
+        if (publicImg !== null) {publicImg.src = "/static/public-private-light.png";}
+        if (scheduleImg !== null) {scheduleImg.src = "/static/schedule-light.png";}
+        if (editImg !== null) {editImg.src = "/static/edit-recipe-light.png";}
         if (trashImages !== null) {
             trashImages.forEach(function(img) {img.src = "/static/trash-light.png";});
         }
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
-        // If dark, switch settings, add recipe, prev, next icon
+        // If dark, switch icons
         if (settingsImg !== null) {settingsImg.src = "/static/settings-dark.png";}
         if (addRecipeImg !== null) {addRecipeImg.src = "/static/add-recipe-button-dark.png";}
         if (prevImg !== null) {prevImg.src = "/static/prev-dark.png";}
         if (nextImg !== null) {nextImg.src = "/static/next-dark.png";}
+        if (trashImg !== null) {trashImg.src = "/static/trash-dark.png";}
+        if (favoriteImg !== null) {favoriteImg.src = "/static/favorite-recipe-dark.png";}
+        if (publicImg !== null) {publicImg.src = "/static/public-private-dark.png";}
+        if (scheduleImg !== null) {scheduleImg.src = "/static/schedule-dark.png";}
+        if (editImg !== null) {editImg.src = "/static/edit-recipe-dark.png";}
         if (trashImages !== null) {
             trashImages.forEach(function(img) {img.src = "/static/trash-dark.png";});
         }

@@ -113,6 +113,7 @@ function themeElements() {
     const scheduleImg = document.getElementById("scheduleimg");
     const editImg = document.getElementById("editimg");
 	const searchImg = document.getElementById("searchimg");
+	const saveImg = document.getElementById("saveimg");
     var trashImages = document.querySelectorAll('img.trashimg');
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
@@ -127,6 +128,7 @@ function themeElements() {
         if (scheduleImg !== null) {scheduleImg.src = "/static/schedule-light.png";}
         if (editImg !== null) {editImg.src = "/static/edit-recipe-light.png";}
 		if (searchImg !== null) {searchImg.src = "/static/search-light.png";}
+		if (saveImg !== null) {saveImg.src = "/static/save-light.png";}
         if (trashImages !== null) {
             trashImages.forEach(function(img) {img.src = "/static/trash-light.png";});
         }
@@ -144,6 +146,7 @@ function themeElements() {
         if (scheduleImg !== null) {scheduleImg.src = "/static/schedule-dark.png";}
         if (editImg !== null) {editImg.src = "/static/edit-recipe-dark.png";}
 		if (searchImg !== null) {searchImg.src = "/static/search-dark.png";}
+		if (saveImg !== null) {saveImg.src = "/static/save-dark.png";}
         if (trashImages !== null) {
             trashImages.forEach(function(img) {img.src = "/static/trash-dark.png";});
         }

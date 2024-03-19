@@ -1,8 +1,8 @@
 .explore-active {
-	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
 .explore-active:hover {
-	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 }
 .mt-explore {display: block !important;}
 /* THEMES */

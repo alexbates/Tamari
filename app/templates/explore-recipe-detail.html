@@ -36,7 +36,7 @@
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<button class="btn btn-default" name="submit" type="submit">
-                                        <span class="btn-icon"><img src="{{ url_for('static', filename='save.png', _external=True) }}" alt=""></span>
+                                        <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt=""></span>
                                         <span class="btn-text">Save Recipe</span>
                                 </button>
 			</form>

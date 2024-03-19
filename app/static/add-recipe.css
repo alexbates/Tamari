@@ -1,15 +1,52 @@
 .myrecipes-active {
-        background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
 .myrecipes-active:hover {
-        background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 }
 .mt-myrecipes {display: block !important;}
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-form-control-bg: #1c1c1c;
+	--color-form-control-font: #d1d1d1;
+	--color-form-control-placeholder: #545454;
+	--color-btn-default: #ffffff;
+	--color-cust-select-bg: #1c1c1c;
+	--color-cust-select-font: #d1d1d1;
+	--color-cust-select-after: #ffffff;
+}
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+	--color-form-control-bg: #e3e3e3;
+	--color-form-control-font: #2e2e2e;
+	--color-form-control-placeholder: #a4a4a4;
+	--color-btn-default: #000000;
+	--color-cust-select-bg: #e3e3e3;
+	--color-cust-select-font: #2e2e2e;
+	--color-cust-select-after: #000000;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+}
+/* ACCENT COLOR APPLICATION */
+.btn-default {background-color: var(--color);}
+.btn-default:hover {background: var(--color-lighter);}
+.btn-default:active, .btn-default.active {background: var(--color-darker);}
 /* BLOCK 1 */
 #block1 {
 	height: 100px;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1);
 	font-size: 16px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
@@ -19,7 +56,7 @@
 	width: 1000px;
 }
 #flashed-err {
-	background: #ac3426; 
+	background: var(--color-flashed-err); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -27,7 +64,7 @@
 	padding: 6px;
 }
 #flashed-norm {
-	background: #1c7e45; 
+	background: var(--color-flashed-norm); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -52,32 +89,31 @@
 .form-group3 div:nth-child(1) {margin-right: 2.5%;}
 .form-group3 div:nth-child(2) {margin-right: 2.5%;}
 .form-control {
-	background: #1c1c1c;
-	border: none;
-	box-shadow: none;
-	color: #d1d1d1;
-	font-size: 18px;
-	padding-left: 10px;
-	padding-right: 10px;
+	background: var(--color-form-control-bg);
+    border: none;
+    box-shadow: none;
+	color: var(--color-form-control-font);
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
 	width: calc(100% - 20px);
 	-webkit-box-shadow: none;
 }
 .form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
-.form-control::placeholder {color: #545454;}
+.form-control::placeholder {color: var(--color-form-control-placeholder);}
 .fc1 {height: 38px;}
 .fc2 {height: 43px; resize: none; padding-bottom: 10px; padding-top: 10px;}
 .fc3 {height: 213px; resize: none; padding-bottom: 10px; padding-top: 10px;}
 .errorrequired {
-	color: #ac3426;
+	color: var(--color-flashed-err);
 	font-size: 14px;
 	line-height: 28px;
 	margin-top: 10px;
 }
 .btn-default {
-	background-color: #2980b9;
 	border: none;
 	border-radius: 7px;
-	color: #d1d1d1;
+	color: var(--color-btn-default);
 	cursor: pointer;
 	font-size: 16px;
 	height: 40px;
@@ -88,25 +124,23 @@
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
-.btn-default:hover {background: #2d87c4;}
-.btn-default:active, .btn-default.active {background: #ffffff; border: 1px solid #ffffff;}
 .btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
 .submitdiv {float: left; height: 90px; width: 100%;}
 
 .custom-select {margin-bottom: 12px; margin-top: 20px;}
 .cust-select select {
-	background: #1c1c1c;
-	border: none;
-	box-shadow: none;
-	color: #d1d1d1;
+	background: var(--color-cust-select-bg);
+    border: none;
+    box-shadow: none;
+	color: var(--color-cust-select-font);
 	height: 38px;
 	margin-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
 	width: 170px;
-	-moz-appearance:none; /* Firefox */
-    	-webkit-appearance:none; /* Safari and Chrome */
-	appearance:none;
+	-moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
 }
 /*style the arrow inside the select element:*/
 .cust-select:after {
@@ -117,9 +151,9 @@
 	width: 0;
 	height: 0;
 	border: 6px solid transparent;
-	border-color: #fff transparent transparent transparent;
+	border-color: var(--color-cust-select-after) transparent transparent transparent;
 }
-
+ 
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) { 
 	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}

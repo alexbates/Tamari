@@ -82,6 +82,7 @@ div.column7 { background: inherit; display: inline-block; font-size: 1rem; width
 
 button:not(.logregselector) {font-family: Inter-Regular;}
 input {font-family: Inter-Regular;}
+textarea {font-family: Inter-Regular;}
 select {font-family: Inter-Regular;}
 
 #navbar {font-family: Inter-Regular;}

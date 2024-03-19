@@ -107,11 +107,13 @@ select {font-family: Inter-Regular;}
 :root {
 	--color-body-bg: #2b2b2b;
 	--color-flashed-err: #ac3426;
+	--color-flashed-err-lighter: #b1382b;
+	--color-flashed-err-darker: #a83123;
 	--color-flashed-norm: #1c7e45;
 	--color-navbar-bg: #111111;
 	--color-navbar-font: #ffffff;
 	--color-navbar-li-a-hover: #f1f1f1;
-	--background-navlogo: url('/static/logo-dark.png');
+	--background-navlogo: url(logo-dark.png);
 	--color-navleft-li-hover: #1a1a1a;
 	--color-active-bg: #111111;
 	--color-active-bg-hover: #1a1a1a;
@@ -128,11 +130,13 @@ select {font-family: Inter-Regular;}
 [data-theme="light"] {
 	--color-body-bg: #cfcfcf;
 	--color-flashed-err: #df7c71;
+	--color-flashed-err-lighter: #e28075;
+	--color-flashed-err-darker: #dc786d;
 	--color-flashed-norm: #68c08e;
 	--color-navbar-bg: #efefef;
 	--color-navbar-font: #000000;
 	--color-navbar-li-a-hover: #0e0e0e;
-	--background-navlogo: url('/static/logo-light.png');
+	--background-navlogo: url(logo-light.png);
 	--color-navleft-li-hover: #e5e5e5;
 	--color-active-bg: #efefef;
 	--color-active-bg-hover: #e5e5e5;
@@ -148,10 +152,14 @@ select {font-family: Inter-Regular;}
 }
 [data-theme="dark"] {
 	--color-body-bg: #2b2b2b;
+	--color-flashed-err: #ac3426;
+	--color-flashed-err-lighter: #b1382b;
+	--color-flashed-err-darker: #a83123;
+	--color-flashed-norm: #1c7e45;
 	--color-navbar-bg: #111111;
 	--color-navbar-font: #ffffff;
 	--color-navbar-li-a-hover: #f1f1f1;
-	--background-navlogo: url('/static/logo-dark.png');
+	--background-navlogo: url(logo-dark.png);
 	--color-navleft-li-hover: #1a1a1a;
 	--color-active-bg: #111111;
 	--color-active-bg-hover: #1a1a1a;
@@ -337,6 +345,7 @@ select {font-family: Inter-Regular;}
 	height: 1px;
 }
 .drop-profile {
+	background-image: url(icon-1-blue.png);
 	background-size: 57px 57px;
 	border-radius: 50%;
 	float: right;

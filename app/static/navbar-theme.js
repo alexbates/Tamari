@@ -107,20 +107,27 @@ function themeElements() {
     const addRecipeImg = document.getElementById("addrecipeimg");
     const prevImg = document.getElementById("previmg");
     const nextImg = document.getElementById("nextimg");
+    var trashImages = document.querySelectorAll('img.trashimg');
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
         // If light, switch settings, add recipe, prev, next icon
-        if (settingsImg !== null) {settingsImg.src = "/static/settings-light.png";}
-        if (addRecipeImg !== null) {addRecipeImg.src = "/static/add-recipe-button-light.png";}
-        if (prevImg !== null) {prevImg.src = "/static/prev-light.png";}
-        if (nextImg !== null) {nextImg.src = "/static/next-light.png";}
+        if (settingsImg !== null) {settingsImg.src = "settings-light.png";}
+        if (addRecipeImg !== null) {addRecipeImg.src = "add-recipe-button-light.png";}
+        if (prevImg !== null) {prevImg.src = "prev-light.png";}
+        if (nextImg !== null) {nextImg.src = "next-light.png";}
+        if (trashImages !== null) {
+            trashImages.forEach(function(img) {img.src = "trash-light.png";});
+        }
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
         // If dark, switch settings, add recipe, prev, next icon
-        if (settingsImg !== null) {settingsImg.src = "/static/settings-dark.png";}
-        if (addRecipeImg !== null) {addRecipeImg.src = "/static/add-recipe-button-dark.png";}
-        if (prevImg !== null) {prevImg.src = "/static/prev-dark.png";}
-        if (nextImg !== null) {nextImg.src = "/static/next-dark.png";}
+        if (settingsImg !== null) {settingsImg.src = "settings-dark.png";}
+        if (addRecipeImg !== null) {addRecipeImg.src = "add-recipe-button-dark.png";}
+        if (prevImg !== null) {prevImg.src = "prev-dark.png";}
+        if (nextImg !== null) {nextImg.src = "next-dark.png";}
+        if (trashImages !== null) {
+            trashImages.forEach(function(img) {img.src = "trash-dark.png";});
+        }
     }
 }

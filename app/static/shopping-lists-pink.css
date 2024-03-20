@@ -1,8 +1,0 @@
-.b1leftinner div {background: #ae0085; border-bottom: solid 1px #c50097;}
-.list-selected {background: #bc0090 !important;}
-.additem-btn {background-color: #ae0085;}
-.additem-btn:hover {background: #b20189;}
-.additem-btn:active, .additem-btn.active {background: #a90082;}
-@media screen and (max-width: 620px) { 
-	.list-selected {background: #ae0085 !important;}
-}

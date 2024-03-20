@@ -60,24 +60,24 @@ div.column7 { background: inherit; display: inline-block; font-size: 1rem; width
 
 @font-face {
     font-family: Inter-Regular;
-    src: url('fonts/Inter-Regular.otf'); /* IE9-IE11 */
-    src: url('fonts/Inter-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('fonts/Inter-Regular.woff') format('woff'), /* Most Browsers */
-         url('fonts/Inter-Regular.ttf')  format('truetype'); /* Most Except IE */
+    src: url('/static/fonts/Inter-Regular.otf'); /* IE9-IE11 */
+    src: url('/static/fonts/Inter-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/static/fonts/Inter-Regular.woff') format('woff'), /* Most Browsers */
+         url('/static/fonts/Inter-Regular.ttf')  format('truetype'); /* Most Except IE */
 }
 @font-face {
     font-family: Inter-Medium;
-    src: url('fonts/Inter-Medium.otf'); /* IE9-IE11 */
-    src: url('fonts/Inter-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('fonts/Inter-Medium.woff') format('woff'), /* Most Browsers */
-         url('fonts/Inter-Medium.ttf')  format('truetype'); /* Most Except IE */
+    src: url('/static/fonts/Inter-Medium.otf'); /* IE9-IE11 */
+    src: url('/static/fonts/Inter-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/static/fonts/Inter-Medium.woff') format('woff'), /* Most Browsers */
+         url('/static/fonts/Inter-Medium.ttf')  format('truetype'); /* Most Except IE */
 }
 @font-face {
     font-family: Inter-SemiBold;
-    src: url('fonts/Inter-SemiBold.otf'); /* IE9-IE11 */
-    src: url('fonts/Inter-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-         url('fonts/Inter-SemiBold.woff') format('woff'), /* Most Browsers */
-         url('fonts/Inter-SemiBold.ttf')  format('truetype'); /* Most Except IE */
+    src: url('/static/fonts/Inter-SemiBold.otf'); /* IE9-IE11 */
+    src: url('/static/fonts/Inter-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/static/fonts/Inter-SemiBold.woff') format('woff'), /* Most Browsers */
+         url('/static/fonts/Inter-SemiBold.ttf')  format('truetype'); /* Most Except IE */
 }
 
 button:not(.logregselector) {font-family: Inter-Regular;}
@@ -114,7 +114,7 @@ select {font-family: Inter-Regular;}
 	--color-navbar-bg: #111111;
 	--color-navbar-font: #ffffff;
 	--color-navbar-li-a-hover: #f1f1f1;
-	--background-navlogo: url(logo-dark.png);
+	--background-navlogo: url("/static/logo-dark.png");
 	--color-navleft-li-hover: #1a1a1a;
 	--color-active-bg: #111111;
 	--color-active-bg-hover: #1a1a1a;
@@ -137,7 +137,7 @@ select {font-family: Inter-Regular;}
 	--color-navbar-bg: #efefef;
 	--color-navbar-font: #000000;
 	--color-navbar-li-a-hover: #0e0e0e;
-	--background-navlogo: url(logo-light.png);
+	--background-navlogo: url("/static/logo-light.png");
 	--color-navleft-li-hover: #e5e5e5;
 	--color-active-bg: #efefef;
 	--color-active-bg-hover: #e5e5e5;
@@ -160,7 +160,7 @@ select {font-family: Inter-Regular;}
 	--color-navbar-bg: #111111;
 	--color-navbar-font: #ffffff;
 	--color-navbar-li-a-hover: #f1f1f1;
-	--background-navlogo: url(logo-dark.png);
+	--background-navlogo: url("/static/logo-dark.png");
 	--color-navleft-li-hover: #1a1a1a;
 	--color-active-bg: #111111;
 	--color-active-bg-hover: #1a1a1a;
@@ -179,46 +179,64 @@ select {font-family: Inter-Regular;}
 	--color: #2980b9;
 	--color-lighter: #2d87c4;
 	--color-darker: #2c81ba;
+	--color-alt1: #2f8ac7;
+	--color-alt2: #308fce;
 }
 [data-accentcolor="dark-blue"] {
 	--color: #2980b9;
 	--color-lighter: #2d87c4;
 	--color-darker: #2c81ba;
+	--color-alt1: #2f8ac7;
+	--color-alt2: #308fce;
 }
 [data-accentcolor="dark-green"] {
 	--color: #218c74;
 	--color-lighter: #239179;
 	--color-darker: #218972;
+	--color-alt1: #24937b;
+	--color-alt2: #269880;
 }
 [data-accentcolor="dark-purple"] {
 	--color: #7b00bb;
 	--color-lighter: #7e00c2;
 	--color-darker: #7800b8;
+	--color-alt1: #8800d2;
+	--color-alt2: #9300e2;
 }
 [data-accentcolor="dark-pink"] {
 	--color: #ae0085;
 	--color-lighter: #b20189;
 	--color-darker: #a90082;
+	--color-alt1: #bc0090;
+	--color-alt2: #c50097;
 }
 [data-accentcolor="light-blue"] {
 	--color: #81c7f5;
 	--color-lighter: #8acaf5;
 	--color-darker: #7ec3f2;
+	--color-alt1: #77beee;
+	--color-alt2: #71b9ea;
 }
 [data-accentcolor="light-green"] {
 	--color: #53cab0;
 	--color-lighter: #58cfb5;
 	--color-darker: #4cc5ab;
+	--color-alt1: #47bfa5;
+	--color-alt2: #3eb99e;
 }
 [data-accentcolor="light-purple"] {
 	--color: #c47aec;
 	--color-lighter: #ca83f0;
 	--color-darker: #c075e9;
+	--color-alt1: #be70e7;
+	--color-alt2: #bb6be7;
 }
 [data-accentcolor="light-pink"] {
 	--color: #e570ca;
 	--color-lighter: #ed7cd3;
 	--color-darker: #e16bc6;
+	--color-alt1: #df65c2;
+	--color-alt2: #db60be;
 }
 /* NAVBAR MENU */
 #navbar {

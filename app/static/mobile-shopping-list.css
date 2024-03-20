@@ -1,15 +1,76 @@
 .shoplist-active {
-	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
 .shoplist-active:hover {
-	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
+} 
+.mt-lists {display: block !important;}
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-listhowto: #111111;
+	--color-ingredinner-bg: #111111;
+	--color-ingredinner-border: #202020;
+	--color-ingred-label: #ffffff;
+	--color-ingred-label-a: #f1f1f1;
+	--color-ingred-recipe: #b0b0b0;
+	--color-ingred-recipe-a: #f1f1f1;
+	--color-additem-input-bg: #1c1c1c;
+	--color-additem-input-font: #d1d1d1;
+	--color-additem-input-placeholder: #545454;
+	--color-additem-btn: #ffffff;
 }
-.mt-lists {display: block !important;} 
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+	--color-listhowto: #efefef;
+	--color-ingredinner-bg: #efefef;
+	--color-ingredinner-border: #e3e3e3;
+	--color-ingred-label: #000000;
+	--color-ingred-label-a: #0e0e0e;
+	--color-ingred-recipe: #4f4f4f;
+	--color-ingred-recipe-a: #0e0e0e;
+	--color-additem-input-bg: #e3e3e3;
+	--color-additem-input-font: #2e2e2e;
+	--color-additem-input-placeholder: #a4a4a4;
+	--color-additem-btn: #000000;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-listhowto: #111111;
+	--color-ingredinner-bg: #111111;
+	--color-ingredinner-border: #202020;
+	--color-ingred-label: #ffffff;
+	--color-ingred-label-a: #f1f1f1;
+	--color-ingred-recipe: #b0b0b0;
+	--color-ingred-recipe-a: #f1f1f1;
+	--color-additem-input-bg: #1c1c1c;
+	--color-additem-input-font: #d1d1d1;
+	--color-additem-input-placeholder: #545454;
+	--color-additem-btn: #ffffff;
+}
+/* ACCENT COLOR APPLICATION */
+.b1leftinner div {background: var(--color); border-bottom: solid 1px var(--color-alt2);}
+.list-selected {background: var(--color-alt1) !important;}
+.additem-btn {background-color: var(--color);}
+.additem-btn:hover {background: var(--color-lighter);}
+.additem-btn:active, .additem-btn.active {background: var(--color-darker);}
+@media screen and (max-width: 620px) { 
+	.list-selected {background: var(--color) !important;}
+}
 /* BLOCK 1 */ 
 #block1 {
 	height: 100px;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1);
 	font-size: 16px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
@@ -20,7 +81,7 @@
 }
 /* FLASHED MESSAGES */
 #flashed-err {
-	background: #ac3426;
+	background: var(--color-flashed-err);
 	font-size: 14px;
 	min-height: 17px;
 	margin-bottom: 0px;
@@ -28,7 +89,7 @@
 	padding: 6px;
 }
 #flashed-norm {
-	background: #1c7e45;
+	background: var(--color-flashed-norm);
 	font-size: 14px;
 	min-height: 17px;
 	margin-bottom: 0px;
@@ -43,7 +104,7 @@
 #b1right h2 {padding-top: 14px;}
 #b1right h3 {padding-bottom: 0px; padding-top: 16px;}
 #listhowto {
-	background: #111111; 
+	background: var(--color-listhowto); 
 	font-size: 14px;
 	min-height: 17px;
 	margin: 0;
@@ -51,8 +112,8 @@
 }
 .ingredinner {margin-top: 10px;}
 .ingredinner div {
-	background: #111111;
-	border-bottom: solid 1px #202020;
+	background: var(--color-ingredinner-bg);
+	border-bottom: solid 1px var(--color-ingredinner-border);
 	min-height: 50px;
 	position: relative;
 	text-align: left;
@@ -73,17 +134,17 @@
 	margin: 0px;
 }
 .ingred-label {
-	color: #ffffff;
+	color: var(--color-ingred-label);
 	display: inline-block;
 	font-size: 18px;
 	margin: 0;
 	padding-left: 10px;
 	width: calc(100% - 62px);
 }
-.ingred-label a:hover {color: #f1f1f1; text-decoration: none;}
-.ingred-label a:active {color: #f1f1f1; text-decoration: none;}
+.ingred-label a:hover {color: var(--color-ingred-label-a); text-decoration: none;}
+.ingred-label a:active {color: var(--color-ingred-label-a); text-decoration: none;}
 .ingred-recipe {
-	color: #b0b0b0;
+	color: var(--color-ingred-recipe);
 	display: inline-block;
 	font-size: 12px;
 	margin: 0;
@@ -91,8 +152,8 @@
 	padding-top: 6px;
 	width: calc(100% - 62px);
 }
-.ingred-recipe a:hover {color: #f1f1f1; text-decoration: none;}
-.ingred-recipe a:active {color: #f1f1f1; text-decoration: none;}
+.ingred-recipe a:hover {color: var(--color-ingred-recipe-a); text-decoration: none;}
+.ingred-recipe a:active {color: var(--color-ingred-recipe-a); text-decoration: none;}
 .btn4-default {
 	background: none;
 	border: none;
@@ -114,11 +175,11 @@
 .btn4-icon img {height: 100%; width: 100%;}
 .completed {text-decoration: line-through;}
 .additem-input {
-	background: #1c1c1c;
+	background: var(--color-additem-input-bg);
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
-	color: #d1d1d1;
+	color: var(--color-additem-input-font);
 	font-size: 18px;
 	height: 44px;
 	margin-right: 5px;
@@ -130,11 +191,11 @@
 	-webkit-box-shadow: none;
 }
 .additem-input:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
-.additem-input::placeholder {color: #545454;}
+.additem-input::placeholder {color: var(--color-additem-input-placeholder);}
 .additem-btn {
 	border: none;
 	border-radius: 0;
-	color: #d1d1d1;
+	color: var(--color-additem-btn);
 	cursor: pointer;
 	font-size: 16px;
 	height: 44px;
@@ -155,10 +216,10 @@
 .deletelist a:hover {text-decoration: none;}
 .deletelist a:active {text-decoration: none;}
 .btn-delete {
-	background-color: #ac3426;
+	background-color: var(--color-flashed-err);
 	border: none;
 	border-radius: 7px;
-	color: #d1d1d1;
+	color: var(--color-additem-btn);
 	cursor: pointer;
 	display: block;
 	font-size: 16px;
@@ -171,8 +232,8 @@
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
-.btn-delete:hover {background: #b23426;}
-.btn-delete:active, .btn-delete.active {background: #a53426;}
+.btn-delete:hover {background: var(--color-flashed-err-lighter);}
+.btn-delete:active, .btn-delete.active {background: var(--color-flashed-err-darker);}
 .btn-delete:active, .btn-delete.active, .btn-delete:hover, .btn-delete:focus {outline: none;}
 
 /* RESPONSIVE */

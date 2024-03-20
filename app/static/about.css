@@ -1,15 +1,37 @@
 .about-active {
-	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
 .about-active:hover {
-	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 } 
 .mt-about {display: block !important;}
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-version: #111111;
+}
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+	--color-version: #efefef;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-version: #111111;
+}
 /* BLOCK 1 */
 #block1 {
 	height: 100px;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1);
 	font-size: 16px;
 }
 .block1inner {
@@ -17,15 +39,9 @@
 	margin: 0 auto;
 	width: 1000px;
 }
-.about-active {
-	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
-}
-.about-active:hover {
-	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
-}
 .block1inner h3 {padding-top: 8px; text-decoration: underline;}
 .version {
-	background: #111111;
+	background: var(--color-version);
 	border-radius: 15px;
 	display: inline-block;
 	margin-top: 15px;

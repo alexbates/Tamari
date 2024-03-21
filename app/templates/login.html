@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% import "wtf.html" as wtf %}
 
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
@@ -8,6 +7,13 @@
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='login.js', _external=True) }}"></script>
+<script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeNoAuth();
+		themeElements();
+	});
+</script>
 {% endblock %}
 
 {% block content %}

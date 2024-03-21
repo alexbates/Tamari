@@ -1,9 +1,55 @@
+/* THEMES */
+:root {
+	--color-block1-bg: #252525;
+	--color-block1-font: #ffffff;
+	--background-b1logo: url("/static/logo-dark.png");
+	--color-block1bottom-bg: #111111;
+	--color-block1bottom-font: #ffffff;
+	--color-logregselector-bg: #111111;
+	--color-logregselector-font: #ffffff;
+	--color-form-control-bg: #202020;
+	--color-form-control-font: #d1d1d1;
+	--color-checkmark-bg: #202020;
+	--color-checkbox-hover: #252525;
+	--color-checkbox-check: #ffffff;
+	--color-btn-default: #ffffff;
+}
+[data-theme="light"] {
+	--color-block1-bg: #d4d4d4;
+	--color-block1-font: #000000;
+	--background-b1logo: url("/static/logo-light.png");
+	--color-block1bottom-bg: #efefef;
+	--color-block1bottom-font: #000000;
+	--color-logregselector-bg: #efefef;
+	--color-logregselector-font: #000000;
+	--color-form-control-bg: #dfdfdf;
+	--color-form-control-font: #3e3e3e;
+	--color-checkmark-bg: #dfdfdf;
+	--color-checkbox-hover: #d4d4d4;
+	--color-checkbox-check: #000000;
+	--color-btn-default: #000000;
+}
+[data-theme="dark"] {
+	--color-block1-bg: #252525;
+	--color-block1-font: #ffffff;
+	--background-b1logo: url("/static/logo-dark.png");
+	--color-block1bottom-bg: #111111;
+	--color-block1bottom-font: #ffffff;
+	--color-logregselector-bg: #111111;
+	--color-logregselector-font: #ffffff;
+	--color-form-control-bg: #202020;
+	--color-form-control-font: #d1d1d1;
+	--color-checkmark-bg: #202020;
+	--color-checkbox-hover: #252525;
+	--color-checkbox-check: #ffffff;
+	--color-btn-default: #ffffff;
+}
 /* BLOCK 1 */
 #block1 {
-	background-color: #252525;
+	background-color: var(--color-block1-bg);
 	height: 100%;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1-font);
 	font-size: 16px;
 }
 .block1box { 
@@ -17,7 +63,6 @@
 }
 .block1top {
 	align-items: center;
-	background-color: #252525;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -25,30 +70,25 @@
 	justify-content: center;
 	width: 100%;
 }
-.block1top h1 {
-	color: #d1d1d1;
-	font-size: 28px;
-	line-height: 46px;
-}
 .b1logo {
-	background-image: url('/static/logo-dark-login.png');
+	background-image: var(--background-b1logo);
 	background-size: cover;
 	background-repeat: no-repeat;
 	height: 30px; 
 	width: 115px; 
 }
 .block1bottom {
-	background-color: #111111;
+	background-color: var(--color-block1bottom-bg);
 	border-radius: 10px;
-	color: #d1d1d1;
+	color: var(--color-block1bottom-font);
 	height: 273px;
 	padding-left: 12px;
 	padding-right: 12px;
 }
 .logregselector {
-	background-color: #111111;
+	background-color: var(--color-logregselector-bg);
 	border: none;
-	color: #d1d1d1;
+	color: var(--color-logregselector-font);
 	cursor: pointer;
 	font-size: 16px;
 	height: 42px;
@@ -60,21 +100,21 @@
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .logregselector:active, .logregselector.active, .logregselector:hover, .logregselector:focus {outline: none;}
-.logregactive {border-bottom: 3px solid #2980b9;}
+.logregactive {border-bottom: 3px solid var(--color);}
 .form-group {min-height: 54px; width: 100%;}
 .form-control {
-	background: #202020;
+	background: var(--color-form-control-bg);
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
-	color: #d1d1d1;
+	color: var(--color-form-control-font);
 	float: right; 
 	font-size: 16px;
 	height: 40px;
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 0 !important;
-	padding-bottom: 0 !important;
+    padding-bottom: 0 !important;
 	width: calc(100% - 20px);
 	-webkit-appearance: none;
 	-webkit-border-radius: 0;
@@ -82,29 +122,29 @@
 }
 .form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
 #erroremail {
-	color: #ac3426;
+	color: var(--color-flashed-err);
 	font-size: 14px;
 	line-height: 28px;
 	margin-top: 10px;
 }
 #errorpassword1 {
-	color: #ac3426;
+	color: var(--color-flashed-err);
 	font-size: 14px;
 	line-height: 28px;
 	margin-top: 10px;
 }
 #errorpassword2 {
-	color: #ac3426;
+	color: var(--color-flashed-err);
 	font-size: 14px;
 	line-height: 28px;
 	margin-top: 10px;
 }
 
 .btn-default {
-	background-color: #2980b9;
+	background-color: var(--color);
 	border: none;
 	border-radius: 7px;
-	color: #d1d1d1;
+	color: var(--color-btn-default);
 	cursor: pointer;
 	font-size: 16px;
 	height: 40px;
@@ -114,8 +154,7 @@
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
-.btn-default:hover {background: #2d87c4;}
-.btn-default:active, .btn-default.active {background: #ffffff; border: 1px solid #ffffff;}
+.btn-default:hover {background: var(--color-lighter);}
 .btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
 
 

@@ -3,7 +3,7 @@
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
-<script src="{{ url_for('static', filename='navbar-theme.js', _external=True) }}"></script>
+<script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='jquery-3.7.0.min.js', _external=True) }}"></script>
 <script>
 	function toggleDropdown() {

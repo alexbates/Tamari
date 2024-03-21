@@ -61,6 +61,15 @@
 			</div>
 			<form method="post" novalidate>
 				{{ form2.hidden_tag() }}
+				<h4>Select Theme</h4>
+				<div class="cust-select">
+					<select name="selecttheme">
+						<option value="" disabled hidden>Choose here</option>
+						<option value="0">System Default</option>
+						<option value="1">Light</option>
+						<option value="2">Dark</option>
+					</select>
+				</div>
 				<h4>Select Profile Picture</h4>
 				<div class="profileselector">
 					<input type="radio" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>

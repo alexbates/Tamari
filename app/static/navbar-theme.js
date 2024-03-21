@@ -112,9 +112,17 @@ function themeElements() {
     const publicImg = document.getElementById("publicimg");
     const scheduleImg = document.getElementById("scheduleimg");
     const editImg = document.getElementById("editimg");
-	const searchImg = document.getElementById("searchimg");
-	const saveImg = document.getElementById("saveimg");
+    const searchImg = document.getElementById("searchimg");
+    const saveImg = document.getElementById("saveimg");
     var trashImages = document.querySelectorAll('img.trashimg');
+    const accountPic1 = document.getElementById("account-pic1");
+    const accountPic2 = document.getElementById("account-pic2");
+    const accountPic3 = document.getElementById("account-pic3");
+    const accountPic4 = document.getElementById("account-pic4");
+    const accountBlue = document.getElementById("account-blue");
+    const accountGreen = document.getElementById("account-green");
+    const accountPurple = document.getElementById("account-purple");
+    const accountPink = document.getElementById("account-pink");
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
         // If light, switch icons
@@ -127,11 +135,19 @@ function themeElements() {
         if (publicImg !== null) {publicImg.src = "/static/public-private-light.png";}
         if (scheduleImg !== null) {scheduleImg.src = "/static/schedule-light.png";}
         if (editImg !== null) {editImg.src = "/static/edit-recipe-light.png";}
-		if (searchImg !== null) {searchImg.src = "/static/search-light.png";}
-		if (saveImg !== null) {saveImg.src = "/static/save-light.png";}
+        if (searchImg !== null) {searchImg.src = "/static/search-light.png";}
+        if (saveImg !== null) {saveImg.src = "/static/save-light.png";}
         if (trashImages !== null) {
             trashImages.forEach(function(img) {img.src = "/static/trash-light.png";});
         }
+        if (accountPic1 !== null) {accountPic1.src = "/static/account-pic1-light.png";}
+        if (accountPic2 !== null) {accountPic2.src = "/static/account-pic2-light.png";}
+        if (accountPic3 !== null) {accountPic3.src = "/static/account-pic3-light.png";}
+        if (accountPic4 !== null) {accountPic4.src = "/static/account-pic4-light.png";}
+        if (accountBlue !== null) {accountBlue.src = "/static/account-blue-light.png";}
+        if (accountGreen !== null) {accountGreen.src = "/static/account-green-light.png";}
+        if (accountPurple !== null) {accountPurple.src = "/static/account-purple-light.png";}
+        if (accountPink !== null) {accountPink.src = "/static/account-pink-light.png";}
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
@@ -145,10 +161,18 @@ function themeElements() {
         if (publicImg !== null) {publicImg.src = "/static/public-private-dark.png";}
         if (scheduleImg !== null) {scheduleImg.src = "/static/schedule-dark.png";}
         if (editImg !== null) {editImg.src = "/static/edit-recipe-dark.png";}
-		if (searchImg !== null) {searchImg.src = "/static/search-dark.png";}
-		if (saveImg !== null) {saveImg.src = "/static/save-dark.png";}
+        if (searchImg !== null) {searchImg.src = "/static/search-dark.png";}
+        if (saveImg !== null) {saveImg.src = "/static/save-dark.png";}
         if (trashImages !== null) {
             trashImages.forEach(function(img) {img.src = "/static/trash-dark.png";});
         }
+        if (accountPic1 !== null) {accountPic1.src = "/static/account-pic1-dark.png";}
+        if (accountPic2 !== null) {accountPic2.src = "/static/account-pic2-dark.png";}
+        if (accountPic3 !== null) {accountPic3.src = "/static/account-pic3-dark.png";}
+        if (accountPic4 !== null) {accountPic4.src = "/static/account-pic4-dark.png";}
+        if (accountBlue !== null) {accountBlue.src = "/static/account-blue-dark.png";}
+        if (accountGreen !== null) {accountGreen.src = "/static/account-green-dark.png";}
+        if (accountPurple !== null) {accountPurple.src = "/static/account-purple-dark.png";}
+        if (accountPink !== null) {accountPink.src = "/static/account-pink-dark.png";}
     }
 }

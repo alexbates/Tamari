@@ -121,55 +121,7 @@
 {% block title %}{% if title %}{{ title }} - Tamari{% else %}Tamari{% endif %}{% endblock %}
 
 {% block extrastyles %}
-	<style>{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-blue.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-blue.png') }});}
-		{% elif current_user.pref_picture == 0 and current_user.pref_color == 1 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-green.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-green.png') }});}
-		{% elif current_user.pref_picture == 0 and current_user.pref_color == 2 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-purple.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-purple.png') }});}
-		{% elif current_user.pref_picture == 0 and current_user.pref_color == 3 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-1-pink.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-1-pink.png') }});}
-		{% elif current_user.pref_picture == 1 and current_user.pref_color == 0 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-blue.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-blue.png') }});}
-		{% elif current_user.pref_picture == 1 and current_user.pref_color == 1 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-green.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-green.png') }});}
-		{% elif current_user.pref_picture == 1 and current_user.pref_color == 2 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-purple.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-purple.png') }});}
-		{% elif current_user.pref_picture == 1 and current_user.pref_color == 3 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-2-pink.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-2-pink.png') }});}
-		{% elif current_user.pref_picture == 2 and current_user.pref_color == 0 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-blue.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-blue.png') }});}
-		{% elif current_user.pref_picture == 2 and current_user.pref_color == 1 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-green.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-green.png') }});}
-		{% elif current_user.pref_picture == 2 and current_user.pref_color == 2 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-purple.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-purple.png') }});}
-		{% elif current_user.pref_picture == 2 and current_user.pref_color == 3 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-3-pink.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-3-pink.png') }});}
-		{% elif current_user.pref_picture == 3 and current_user.pref_color == 0 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-blue.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-blue.png') }});}
-		{% elif current_user.pref_picture == 3 and current_user.pref_color == 1 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-green.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-green.png') }});}
-		{% elif current_user.pref_picture == 3 and current_user.pref_color == 2 %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-purple.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-purple.png') }});}
-		{% else %}
-		.navrighticon {background-image: url({{ url_for('static', filename='icon-4-pink.png') }});}
-		.drop-profile {background-image: url({{ url_for('static', filename='icon-4-pink.png') }});}{% endif %}
-	</style>{% endblock %}
+{% endblock %}
 
 {% block navbar %}
 <header id="navbar">

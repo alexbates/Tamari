@@ -65,9 +65,9 @@
 				<div class="cust-select">
 					<select name="selecttheme">
 						<option value="" disabled hidden>Choose here</option>
-						<option value="0">System Default</option>
-						<option value="1">Light</option>
-						<option value="2">Dark</option>
+						<option value="0"{% if user.pref_theme == 0 %} selected{% endif %}>System Default</option>
+						<option value="1"{% if user.pref_theme == 1 %} selected{% endif %}>Light</option>
+						<option value="2"{% if user.pref_theme == 2 %} selected{% endif %}>Dark</option>
 					</select>
 				</div>
 				<h4>Select Profile Picture</h4>

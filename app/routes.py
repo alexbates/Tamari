@@ -1525,17 +1525,26 @@ def user():
             flash('No changes were made.')
     # AccountPrefsForm
     if form2.validate_on_submit():
-        propicture = int(request.form['propicture'])
-        accentcolor = int(request.form['accentcolor'])
-        # Change profile picture and accent color if values are valid
-        if propicture >= 0 and propicture <= 3 and accentcolor >= 0 and accentcolor <= 3:
-            user.pref_picture = propicture
-            user.pref_color = accentcolor
+        # Get value from select field which has name attribute of selecttheme
+        # This is needed since select field is written manually instead of using {{ form2.selecttheme }} in template
+        selecttheme = request.form.get('selecttheme')
+        # Prevent form processing if hidden "Choose here" is selected
+        if selecttheme == '':
+            flash('Error: please select a theme.')
         else:
-            user.pref_picture = 0
-            user.pref_color = 0
-        db.session.commit()
-        flash('Your changes have been saved.')
+            propicture = int(request.form['propicture'])
+            accentcolor = int(request.form['accentcolor'])
+            # Change profile picture and accent color if values are valid
+            if propicture >= 0 and propicture <= 3 and accentcolor >= 0 and accentcolor <= 3:
+                user.pref_picture = propicture
+                user.pref_color = accentcolor
+            else:
+                user.pref_picture = 0
+                user.pref_color = 0
+            if selecttheme >= 0 and selecttheme <= 2:
+                user.pref_theme = selecttheme
+            db.session.commit()
+            flash('Your changes have been saved.')
     return render_template('account.html', title='Account', user=user, form=form, form2=form2, rec_count=rec_count)
 
 @app.route('/account/process-delete')

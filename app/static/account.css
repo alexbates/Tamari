@@ -4,6 +4,9 @@
 	--color-block1: #ffffff;
 	--color-userstats-bg: #111111;
 	--color-userstats-font: #ffffff;
+	--color-cust-select-bg: #1c1c1c;
+	--color-cust-select-font: #d1d1d1;
+	--color-cust-select-after: #ffffff;
 	--color-input-border: #ffffff;
 	--color-updatedetails-bg: #111111;
 	--color-updatedetails-font: #ffffff;
@@ -16,6 +19,9 @@
 	--color-block1: #000000;
 	--color-userstats-bg: #efefef;
 	--color-userstats-font: #000000;
+	--color-cust-select-bg: #e3e3e3;
+	--color-cust-select-font: #2e2e2e;
+	--color-cust-select-after: #000000;
 	--color-input-border: #000000;
 	--color-updatedetails-bg: #efefef;
 	--color-updatedetails-font: #000000;
@@ -26,6 +32,18 @@
 }
 [data-theme="dark"] {
 	--color-block1: #ffffff;
+	--color-userstats-bg: #111111;
+	--color-userstats-font: #ffffff;
+	--color-cust-select-bg: #1c1c1c;
+	--color-cust-select-font: #d1d1d1;
+	--color-cust-select-after: #ffffff;
+	--color-input-border: #ffffff;
+	--color-updatedetails-bg: #111111;
+	--color-updatedetails-font: #ffffff;
+	--color-boxdivider: #ffffff;
+	--color-form-control-bg: #202020;
+	--color-form-control-font: #d1d1d1;
+	--color-btn-font: #ffffff;
 }
 /* ACCENT COLOR APPLICATION */
 .btn-default {background-color: var(--color);}
@@ -63,6 +81,32 @@
 }
 .userstats p {padding-left: 12px;}
 .userstats h4 {font-size: 18px; padding-left: 12px; padding-right: 12px; padding-bottom: 12px;}
+.cust-select {margin-bottom: 16px; margin-left: 12px;}
+.cust-select select {
+	background: var(--color-cust-select-bg);
+    border: none;
+    box-shadow: none;
+	color: var(--color-cust-select-font);
+	height: 38px;
+	margin-top: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 170px;
+	-moz-appearance: none; /* Firefox */
+    -webkit-appearance: none; /* Safari and Chrome */
+    appearance: none;
+}
+/*style the arrow inside the select element:*/
+.cust-select:after {
+	position: relative;
+	content: "";
+	top: 14px;
+	right: 22px;
+	width: 0;
+	height: 0;
+	border: 6px solid transparent;
+	border-color: var(--color-cust-select-after) transparent transparent transparent;
+}
 .profileselector {
 	margin-bottom: 12px;
 	margin-left: 12px;

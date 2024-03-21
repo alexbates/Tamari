@@ -110,12 +110,100 @@
   		});
 	}
 </script>
+{% if current_user.is_authenticated %}
+{% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('light', 'light-blue');
 		themeElements();
 	});
 </script>
+{% else if current_user.pref_theme == 1 and current_user.pref_color == 1 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('light', 'light-green');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 1 and current_user.pref_color == 2 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('light', 'light-purple');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 1 and current_user.pref_color == 3 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('light', 'light-pink');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 2 and current_user.pref_color == 0 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('dark', 'dark-blue');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 2 and current_user.pref_color == 1 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('dark', 'dark-green');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 2 and current_user.pref_color == 2 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('dark', 'dark-purple');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 2 and current_user.pref_color == 3 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth('dark', 'dark-pink');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 0 and current_user.pref_color == 0 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth(null, 'blue');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 0 and current_user.pref_color == 1 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth(null, 'green');
+		themeElements();
+	});
+</script>
+{% else if current_user.pref_theme == 0 and current_user.pref_color == 2 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth(null, 'purple');
+		themeElements();
+	});
+</script>
+{% else %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeAuth(null, 'pink');
+		themeElements();
+	});
+</script>
+{% endif %}
+{% else %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		themeNoAuth();
+		themeElements();
+	});
+</script>
+{% endif %}
 {% endblock %}
 
 {% block title %}{% if title %}{{ title }} - Tamari{% else %}Tamari{% endif %}{% endblock %}

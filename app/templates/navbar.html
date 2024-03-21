@@ -118,70 +118,70 @@
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 1 and current_user.pref_color == 1 %}
+{% elif current_user.pref_theme == 1 and current_user.pref_color == 1 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('light', 'light-green');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 1 and current_user.pref_color == 2 %}
+{% elif current_user.pref_theme == 1 and current_user.pref_color == 2 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('light', 'light-purple');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 1 and current_user.pref_color == 3 %}
+{% elif current_user.pref_theme == 1 and current_user.pref_color == 3 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('light', 'light-pink');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 2 and current_user.pref_color == 0 %}
+{% elif current_user.pref_theme == 2 and current_user.pref_color == 0 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('dark', 'dark-blue');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 2 and current_user.pref_color == 1 %}
+{% elif current_user.pref_theme == 2 and current_user.pref_color == 1 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('dark', 'dark-green');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 2 and current_user.pref_color == 2 %}
+{% elif current_user.pref_theme == 2 and current_user.pref_color == 2 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('dark', 'dark-purple');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 2 and current_user.pref_color == 3 %}
+{% elif current_user.pref_theme == 2 and current_user.pref_color == 3 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth('dark', 'dark-pink');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 0 and current_user.pref_color == 0 %}
+{% elif current_user.pref_theme == 0 and current_user.pref_color == 0 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth(null, 'blue');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 0 and current_user.pref_color == 1 %}
+{% elif current_user.pref_theme == 0 and current_user.pref_color == 1 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth(null, 'green');
 		themeElements();
 	});
 </script>
-{% else if current_user.pref_theme == 0 and current_user.pref_color == 2 %}
+{% elif current_user.pref_theme == 0 and current_user.pref_color == 2 %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeAuth(null, 'purple');

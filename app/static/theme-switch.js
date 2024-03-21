@@ -25,14 +25,24 @@ function themeNoAuth() {
 	else {document.documentElement.setAttribute("data-theme", "dark");}
 	// Check whether we have already used local storage to set accentcolor
     if(localStorage.getItem("accentcolor")){
-        if(localStorage.getItem("accentcolor") == "dark-green") {var accentcolor = "dark-green";}
-		if(localStorage.getItem("accentcolor") == "dark-purple") {var accentcolor = "dark-purple";}
-		if(localStorage.getItem("accentcolor") == "dark-pink") {var accentcolor = "dark-pink";}
-		if(localStorage.getItem("accentcolor") == "light-blue") {var accentcolor = "light-blue";}
-		if(localStorage.getItem("accentcolor") == "light-green") {var accentcolor = "light-green";}
-		if(localStorage.getItem("accentcolor") == "light-purple") {var accentcolor = "light-purple";}
-		if(localStorage.getItem("accentcolor") == "light-pink") {var accentcolor = "light-pink";}
+        var lsaccent = localStorage.getItem("accentcolor");
+        if(theme=="dark") {
+            if(lsaccent == "dark-blue" || lsaccent == "light-blue") {var accentcolor = "dark-blue";}
+            if(lsaccent == "dark-green" || lsaccent == "light-green") {var accentcolor = "dark-green";}
+            if(lsaccent == "dark-purple" || lsaccent == "light-purple") {var accentcolor = "dark-purple";}
+            if(lsaccent == "dark-pink" || lsaccent == "light-pink") {var accentcolor = "dark-pink";}
+        }
+        else {
+            if(lsaccent == "dark-blue" || lsaccent == "light-blue") {var accentcolor = "light-blue";}
+            if(lsaccent == "dark-green" || lsaccent == "light-green") {var accentcolor = "light-green";}
+            if(lsaccent == "dark-purple" || lsaccent == "light-purple") {var accentcolor = "light-purple";}
+            if(lsaccent == "dark-pink" || lsaccent == "light-pink") {var accentcolor = "light-pink";}
+        }
     } 
+    else {
+        if(theme=="dark") {var accentcolor = "dark-blue"}
+        if(theme=="light") {var accentcolor = "light-blue"}
+    }
 	// Set "data-accentcolor" attribute based on value of accentcolor variable
     if (accentcolor=="dark-green") {document.documentElement.setAttribute("data-accentcolor", "dark-green");}
 	else if (accentcolor=="dark-purple") {document.documentElement.setAttribute("data-accentcolor", "dark-purple");}

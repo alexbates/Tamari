@@ -78,35 +78,42 @@ function themeAuth(usertheme, useraccentcolor) {
         if (theme === "dark" && useraccentcolor === "blue") {
             document.documentElement.setAttribute("data-theme", "dark");
             document.documentElement.setAttribute("data-accentcolor", "dark-blue");
+            localStorage.setItem('accentcolor', 'dark-blue');
         }
         else if (theme === "dark" && useraccentcolor === "green") {
             document.documentElement.setAttribute("data-theme", "dark");
             document.documentElement.setAttribute("data-accentcolor", "dark-green");
+            localStorage.setItem('accentcolor', 'dark-green');
         }
         else if (theme === "dark" && useraccentcolor === "purple") {
             document.documentElement.setAttribute("data-theme", "dark");
             document.documentElement.setAttribute("data-accentcolor", "dark-purple");
+            localStorage.setItem('accentcolor', 'dark-purple');
         }
         else if (theme === "dark" && useraccentcolor === "pink") {
             document.documentElement.setAttribute("data-theme", "dark");
             document.documentElement.setAttribute("data-accentcolor", "dark-pink");
+            localStorage.setItem('accentcolor', 'dark-pink');
         }
         else if (theme === "light" && useraccentcolor === "blue") {
             document.documentElement.setAttribute("data-theme", "light");
             document.documentElement.setAttribute("data-accentcolor", "light-blue");
+            localStorage.setItem('accentcolor', 'light-blue');
         }
         else if (theme === "light" && useraccentcolor === "green") {
             document.documentElement.setAttribute("data-theme", "light");
             document.documentElement.setAttribute("data-accentcolor", "light-green");
-            console.log("test")
+            localStorage.setItem('accentcolor', 'light-green');
         }
         else if (theme === "light" && useraccentcolor === "purple") {
             document.documentElement.setAttribute("data-theme", "light");
             document.documentElement.setAttribute("data-accentcolor", "light-purple");
+            localStorage.setItem('accentcolor', 'light-purple');
         }
         else {
             document.documentElement.setAttribute("data-theme", "light");
             document.documentElement.setAttribute("data-accentcolor", "light-pink");
+            localStorage.setItem('accentcolor', 'light-pink');
         }
     }
 }

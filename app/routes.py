@@ -1527,7 +1527,7 @@ def user():
     if form2.validate_on_submit():
         # Get value from select field which has name attribute of selecttheme
         # This is needed since select field is written manually instead of using {{ form2.selecttheme }} in template
-        selecttheme = request.form.get('selecttheme')
+        selecttheme = int(request.form['selecttheme'])
         # Prevent form processing if hidden "Choose here" is selected
         if selecttheme == '':
             flash('Error: please select a theme.')

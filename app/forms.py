@@ -29,7 +29,7 @@ class DisplaySettingsForm(FlaskForm):
 
 class AccountForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
-    password = PasswordField('New Password', validators=[Length(3,64,message='Must be 3-64 characters long.')])
+    password = PasswordField('New Password')
     password2 = PasswordField('Confirm Password', validators=[EqualTo('password')])
     submit = SubmitField('Save Changes')
 

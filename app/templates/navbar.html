@@ -197,7 +197,39 @@
 			><li class="about-active"><a href="{{ url_for('about') }}"><span>About</span></a></li>
 		</ul>
 		<nav class="navright" onclick="toggleDropdown()">
-			<div class="navrighticon"></div>
+			{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
+			<div class="navrighticon icon-1-blue"></div>
+			{% elif current_user.pref_picture == 0 and current_user.pref_color == 1 %}
+			<div class="navrighticon icon-1-green"></div>
+			{% elif current_user.pref_picture == 0 and current_user.pref_color == 2 %}
+			<div class="navrighticon icon-1-purple"></div>
+			{% elif current_user.pref_picture == 0 and current_user.pref_color == 3 %}
+			<div class="navrighticon icon-1-pink"></div>
+			{% elif current_user.pref_picture == 1 and current_user.pref_color == 0 %}
+			<div class="navrighticon icon-2-blue"></div>
+			{% elif current_user.pref_picture == 1 and current_user.pref_color == 1 %}
+			<div class="navrighticon icon-2-green"></div>
+			{% elif current_user.pref_picture == 1 and current_user.pref_color == 2 %}
+			<div class="navrighticon icon-2-purple"></div>
+			{% elif current_user.pref_picture == 1 and current_user.pref_color == 3 %}
+			<div class="navrighticon icon-2-pink"></div>
+			{% elif current_user.pref_picture == 2 and current_user.pref_color == 0 %}
+			<div class="navrighticon icon-3-blue"></div>
+			{% elif current_user.pref_picture == 2 and current_user.pref_color == 1 %}
+			<div class="navrighticon icon-3-green"></div>
+			{% elif current_user.pref_picture == 2 and current_user.pref_color == 2 %}
+			<div class="navrighticon icon-3-purple"></div>
+			{% elif current_user.pref_picture == 2 and current_user.pref_color == 3 %}
+			<div class="navrighticon icon-3-pink"></div>
+			{% elif current_user.pref_picture == 3 and current_user.pref_color == 0 %}
+			<div class="navrighticon icon-4-blue"></div>
+			{% elif current_user.pref_picture == 3 and current_user.pref_color == 1 %}
+			<div class="navrighticon icon-4-green"></div>
+			{% elif current_user.pref_picture == 3 and current_user.pref_color == 2 %}
+			<div class="navrighticon icon-4-purple"></div>
+			{% else %}
+			<div class="navrighticon icon-4-pink"></div>
+			{% endif %}
 			<div class="dropdown-content" id="myDropdown">
 				<a href="{{ url_for('user') }}">My Account</a>
 				<a href="{{ url_for('logout') }}">Sign Out</a>
@@ -231,7 +263,39 @@
 						<li><a href="{{ url_for('user') }}">My Account</a></li>
 						<li><a href="{{ url_for('logout') }}">Sign Out</a></li>
 					</ul>
-					<div class="drop-profile">&nbsp;</div>
+					{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
+					<div class="drop-profile icon-1-blue">&nbsp;</div>
+					{% elif current_user.pref_picture == 0 and current_user.pref_color == 1 %}
+					<div class="drop-profile icon-1-green">&nbsp;</div>
+					{% elif current_user.pref_picture == 0 and current_user.pref_color == 2 %}
+					<div class="drop-profile icon-1-purple">&nbsp;</div>
+					{% elif current_user.pref_picture == 0 and current_user.pref_color == 3 %}
+					<div class="drop-profile icon-1-pink">&nbsp;</div>
+					{% elif current_user.pref_picture == 1 and current_user.pref_color == 0 %}
+					<div class="drop-profile icon-2-blue">&nbsp;</div>
+					{% elif current_user.pref_picture == 1 and current_user.pref_color == 1 %}
+					<div class="drop-profile icon-2-green">&nbsp;</div>
+					{% elif current_user.pref_picture == 1 and current_user.pref_color == 2 %}
+					<div class="drop-profile icon-2-purple">&nbsp;</div>
+					{% elif current_user.pref_picture == 1 and current_user.pref_color == 3 %}
+					<div class="drop-profile icon-2-pink">&nbsp;</div>
+					{% elif current_user.pref_picture == 2 and current_user.pref_color == 0 %}
+					<div class="drop-profile icon-3-blue">&nbsp;</div>
+					{% elif current_user.pref_picture == 2 and current_user.pref_color == 1 %}
+					<div class="drop-profile icon-3-green">&nbsp;</div>
+					{% elif current_user.pref_picture == 2 and current_user.pref_color == 2 %}
+					<div class="drop-profile icon-3-purple">&nbsp;</div>
+					{% elif current_user.pref_picture == 2 and current_user.pref_color == 3 %}
+					<div class="drop-profile icon-3-pink">&nbsp;</div>
+					{% elif current_user.pref_picture == 3 and current_user.pref_color == 0 %}
+					<div class="drop-profile icon-4-blue">&nbsp;</div>
+					{% elif current_user.pref_picture == 3 and current_user.pref_color == 1 %}
+					<div class="drop-profile icon-4-green">&nbsp;</div>
+					{% elif current_user.pref_picture == 3 and current_user.pref_color == 2 %}
+					<div class="drop-profile icon-4-purple">&nbsp;</div>
+					{% else %}
+					<div class="drop-profile icon-4-pink">&nbsp;</div>
+					{% endif %}
 					{% else %}
 					<ul>
 						<li><a href="{{ url_for('login') }}">Login</a></li>

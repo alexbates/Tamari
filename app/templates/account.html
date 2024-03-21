@@ -1,18 +1,8 @@
 {% extends "navbar.html" %}
-{% import "wtf.html" as wtf %}
 
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='account.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% if current_user.pref_color == 0 %}
-	<link href="{{ url_for('static', filename='account-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 1 %}
-	<link href="{{ url_for('static', filename='account-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 2 %}
-	<link href="{{ url_for('static', filename='account-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% else %}
-	<link href="{{ url_for('static', filename='account-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -31,37 +21,37 @@
 			<div class="boxdivider">&nbsp;</div>
 			<div class="us-left">
 				{% if user.pref_picture == 0 and user.pref_color == 0 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-1-blue.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-1-blue"></div>
 				{% elif user.pref_picture == 0 and user.pref_color == 1 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-1-green.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-1-green"></div>
 				{% elif user.pref_picture == 0 and user.pref_color == 2 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-1-purple.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-1-purple"></div>
 				{% elif user.pref_picture == 0 and user.pref_color == 3 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-1-pink.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-1-pink"></div>
 				{% elif user.pref_picture == 1 and user.pref_color == 0 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-2-blue.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-2-blue"></div>
 				{% elif user.pref_picture == 1 and user.pref_color == 1 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-2-green.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-2-green"></div>
 				{% elif user.pref_picture == 1 and user.pref_color == 2 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-2-purple.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-2-purple"></div>
 				{% elif user.pref_picture == 1 and user.pref_color == 3 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-2-pink.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-2-pink"></div>
 				{% elif user.pref_picture == 2 and user.pref_color == 0 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-3-blue.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-3-blue"></div>
 				{% elif user.pref_picture == 2 and user.pref_color == 1 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-3-green.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-3-green"></div>
 				{% elif user.pref_picture == 2 and user.pref_color == 2 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-3-purple.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-3-purple"></div>
 				{% elif user.pref_picture == 2 and user.pref_color == 3 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-3-pink.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-3-pink"></div>
 				{% elif user.pref_picture == 3 and user.pref_color == 0 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-4-blue.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-4-blue"></div>
 				{% elif user.pref_picture == 3 and user.pref_color == 1 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-4-green.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-4-green"></div>
 				{% elif user.pref_picture == 3 and user.pref_color == 2 %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-4-purple.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-4-purple"></div>
 				{% else %}
-				<img class="us-avatar" src="{{ url_for('static', filename='icon-4-pink.png', _external=True) }}" alt="Your Profile Picture">
+				<div class="us-avatar icon-4-pink"></div>
 				{% endif %}
 			</div>
 			<div class="us-right">
@@ -75,38 +65,38 @@
 				<div class="profileselector">
 					<input type="radio" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>
 					<label for="pro-1">
-						<img src="{{ url_for('static', filename='1-gray.png', _external=True) }}" alt="Profile Picture 1">
+						<img id="account-pic1" src="{{ url_for('static', filename='account-pic1.png', _external=True) }}" alt="Profile Picture 1">
 					</label>
 					<input type="radio" name="propicture" value="1" id="pro-2" class="input-hidden"{% if user.pref_picture == 1 %} checked{% endif %}>
 					<label for="pro-2">
-						<img src="{{ url_for('static', filename='2-gray.png', _external=True) }}" alt="Profile Picture 2">
+						<img id="account-pic2" src="{{ url_for('static', filename='account-pic2.png', _external=True) }}" alt="Profile Picture 2">
 					</label>
 					<input type="radio" name="propicture" value="2" id="pro-3" class="input-hidden"{% if user.pref_picture == 2 %} checked{% endif %}>
 					<label for="pro-3">
-						<img src="{{ url_for('static', filename='3-gray.png', _external=True) }}" alt="Profile Picture 3">
+						<img id="account-pic3" src="{{ url_for('static', filename='account-pic3.png', _external=True) }}" alt="Profile Picture 3">
 					</label>
 					<input type="radio" name="propicture" value="3" id="pro-4" class="input-hidden"{% if user.pref_picture == 3 %} checked{% endif %}>
 					<label for="pro-4">
-						<img src="{{ url_for('static', filename='4-gray.png', _external=True) }}" alt="Profile Picture 4">
+						<img id="account-pic4" src="{{ url_for('static', filename='account-pic4.png', _external=True) }}" alt="Profile Picture 4">
 					</label>
 				</div>
 				<h4>Select Accent Color</h4>
 				<div class="colorselector">
 					<input type="radio" name="accentcolor" value="0" id="color-1" class="input-hidden"{% if user.pref_color == 0 %} checked{% endif %}>
 					<label for="color-1">
-						<img src="{{ url_for('static', filename='1-blue.png', _external=True) }}" alt="Blue">
+						<img id="account-blue" src="{{ url_for('static', filename='account-blue.png', _external=True) }}" alt="Blue">
 					</label>
 					<input type="radio" name="accentcolor" value="1" id="color-2" class="input-hidden"{% if user.pref_color == 1 %} checked{% endif %}>
 					<label for="color-2">
-						<img src="{{ url_for('static', filename='2-green.png', _external=True) }}" alt="Green">
+						<img id="account-green" src="{{ url_for('static', filename='account-green.png', _external=True) }}" alt="Green">
 					</label>
 					<input type="radio" name="accentcolor" value="2" id="color-3" class="input-hidden"{% if user.pref_color == 2 %} checked{% endif %}>
 					<label for="color-3">
-						<img src="{{ url_for('static', filename='3-purple.png', _external=True) }}" alt="Purple">
+						<img id="account-purple" src="{{ url_for('static', filename='account-purple.png', _external=True) }}" alt="Purple">
 					</label>
 					<input type="radio" name="accentcolor" value="3" id="color-4" class="input-hidden"{% if user.pref_color == 3 %} checked{% endif %}>
 					<label for="color-4">
-						<img src="{{ url_for('static', filename='4-pink.png', _external=True) }}" alt="Pink">
+						<img id="account-pink" src="{{ url_for('static', filename='account-pink.png', _external=True) }}" alt="Pink">
 					</label>
 				</div>
 				{{ form2.submit2(class="btn btn-default") }}

@@ -1,9 +1,41 @@
 .mt-myaccount {display: block !important;}
+/* THEMES */
+:root {
+	--color-block1: #ffffff;
+	--color-userstats-bg: #111111;
+	--color-userstats-font: #ffffff;
+	--color-input-border: #ffffff;
+	--color-updatedetails-bg: #111111;
+	--color-updatedetails-font: #ffffff;
+	--color-boxdivider: #ffffff;
+	--color-form-control-bg: #202020;
+	--color-form-control-font: #d1d1d1;
+	--color-btn-font: #ffffff;
+}
+[data-theme="light"] {
+	--color-block1: #000000;
+	--color-userstats-bg: #efefef;
+	--color-userstats-font: #000000;
+	--color-input-border: #000000;
+	--color-updatedetails-bg: #efefef;
+	--color-updatedetails-font: #000000;
+	--color-boxdivider: #000000;
+	--color-form-control-bg: #dfdfdf;
+	--color-form-control-font: #3e3e3e;
+	--color-btn-font: #000000;
+}
+[data-theme="dark"] {
+	--color-block1: #ffffff;
+}
+/* ACCENT COLOR APPLICATION */
+.btn-default {background-color: var(--color);}
+.btn-default:hover {background: var(--color-lighter);}
+.btn-default:active, .btn-default.active {background: var(--color-darker);}
 /* BLOCK 1 */
 #block1 {
 	height: 100px;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1);
 	font-size: 16px;
 }
 .block1inner {
@@ -14,15 +46,21 @@
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner h3 {line-height: 46px; padding-left: 12px;}
 .userstats {
-	background-color: #111111;
+	background-color: var(--color-userstats-bg);
 	border-radius: 10px;
-	color: #d1d1d1;
+	color: var(--color-userstats-font);
 	float: left;
 	width: calc(50% - 10px);
 }
 .us-left {float: left; margin-bottom: 8px; width: 110px;}
 .us-right {float: left; margin-bottom: 8px; padding-top: 4px; width: calc(100% - 110px);}
-.us-avatar {height: 90px; padding-left: 12px; padding-top: 20px; width: 90px;}
+.us-avatar {
+	background-size: cover;
+	height: 90px; 
+	margin-left: 12px; 
+	margin-top: 20px; 
+	width: 90px;
+}
 .userstats p {padding-left: 12px;}
 .userstats h4 {font-size: 18px; padding-left: 12px; padding-right: 12px; padding-bottom: 12px;}
 .profileselector {
@@ -41,22 +79,22 @@
 .colorselector img {border-radius: 50%; height: 40px; width: 40px; margin-right: 5px;}
 .input-hidden {position: absolute; left: -9999px;}  
 input[type=radio]:checked + label>img {
-	border: 3px solid #fff;
+	border: 3px solid var(--color-input-border);
 	width: 57px;
 	height: 57px;
 }
 input[type=radio] + label>img {width: 60px; height: 60px;}
 
 .updatedetails {
-	background-color: #111111;
+	background-color: var(--color-updatedetails-bg);
 	border-radius: 10px;
-	color: #d1d1d1;
+	color: var(--color-updatedetails-font);
 	float: left;
 	margin-left: 20px;
 	width: calc(50% - 10px);
 }
 #flashed-err {
-	background: #ac3426; 
+	background: var(--color-flashed-err); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -66,7 +104,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	padding: 6px;
 }
 #flashed-norm {
-	background: #1c7e45; 
+	background: var(--color-flashed-norm); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -76,7 +114,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	padding: 6px;
 }
 .boxdivider {
-	background: #d1d1d1;
+	background: var(--color-boxdivider);
 	height: 1px;
 	margin-left: 12px;
 	width: calc(100% - 24px);
@@ -84,11 +122,11 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 .form-group {padding-top: 14px;}
 .form-group label {padding-left: 12px; line-height: 36px;}
 .form-control {
-	background: #202020;
+	background: var(--color-form-control-bg);
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
-	color: #d1d1d1;
+	color: var(--color-form-control-font);
 	float: right; 
 	font-size: 16px;
 	height: 34px;
@@ -111,7 +149,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	clear: both;
 }
 #errorpassword {
-	color: #ac3426;
+	color: var(--color-flashed-err);
 	float: right;
 	font-size: 14px;
 	margin-bottom: 0px;
@@ -124,7 +162,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 .btn-default {
 	border: none;
 	border-radius: 7px;
-	color: #d1d1d1;
+	color: var(--color-btn-font);
 	cursor: pointer;
 	font-size: 16px;
 	height: 34px;
@@ -140,10 +178,10 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 .btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
 .btn-default2-a:hover {text-decoration: none;}
 .btn-default2 {
-	background-color: #ac3426;
+	background-color: var(--color-flashed-err);
 	border: none;
 	border-radius: 7px;
-	color: #d1d1d1;
+	color: var(--color-btn-font);
 	cursor: pointer;
 	font-size: 16px;
 	height: 34px;
@@ -155,8 +193,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
-.btn-default2:hover {background: #b23426;}
-.btn-default2:active, .btn-default2.active {background: #a53426;}
+.btn-default2:hover {background: var(--color-flashed-err-lighter);}
+.btn-default2:active, .btn-default2.active {background: var(--color-flashed-err-darker);}
 .btn-default2:active, .btn-default2.active, .btn-default2:hover, .btn-default2:focus {outline: none;}
 
 

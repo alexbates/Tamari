@@ -106,6 +106,22 @@ select {font-family: Inter-Regular;}
 
 /* THEMES */
 :root {
+	--icon-1-blue: url("/static/icon-1-blue.png");
+	--icon-1-green: url("/static/icon-1-green.png");
+	--icon-1-purple: url("/static/icon-1-purple.png");
+	--icon-1-pink: url("/static/icon-1-pink.png");
+	--icon-2-blue: url("/static/icon-2-blue.png");
+	--icon-2-green: url("/static/icon-2-green.png");
+	--icon-2-purple: url("/static/icon-2-purple.png");
+	--icon-2-pink: url("/static/icon-2-pink.png");
+	--icon-3-blue: url("/static/icon-3-blue.png");
+	--icon-3-green: url("/static/icon-3-green.png");
+	--icon-3-purple: url("/static/icon-3-purple.png");
+	--icon-3-pink: url("/static/icon-3-pink.png");
+	--icon-4-blue: url("/static/icon-4-blue.png");
+	--icon-4-green: url("/static/icon-4-green.png");
+	--icon-4-purple: url("/static/icon-4-purple.png");
+	--icon-4-pink: url("/static/icon-4-pink.png");
 	--color-body-bg: #2b2b2b;
 	--color-flashed-err: #ac3426;
 	--color-flashed-err-lighter: #b1382b;
@@ -129,6 +145,22 @@ select {font-family: Inter-Regular;}
 	--color-hamburger-line: #d6d6d6;
 }
 [data-theme="light"] {
+	--icon-1-blue: url("/static/icon-1-blue-light.png");
+	--icon-1-green: url("/static/icon-1-green-light.png");
+	--icon-1-purple: url("/static/icon-1-purple-light.png");
+	--icon-1-pink: url("/static/icon-1-pink-light.png");
+	--icon-2-blue: url("/static/icon-2-blue-light.png");
+	--icon-2-green: url("/static/icon-2-green-light.png");
+	--icon-2-purple: url("/static/icon-2-purple-light.png");
+	--icon-2-pink: url("/static/icon-2-pink-light.png");
+	--icon-3-blue: url("/static/icon-3-blue-light.png");
+	--icon-3-green: url("/static/icon-3-green-light.png");
+	--icon-3-purple: url("/static/icon-3-purple-light.png");
+	--icon-3-pink: url("/static/icon-3-pink-light.png");
+	--icon-4-blue: url("/static/icon-4-blue-light.png");
+	--icon-4-green: url("/static/icon-4-green-light.png");
+	--icon-4-purple: url("/static/icon-4-purple-light.png");
+	--icon-4-pink: url("/static/icon-4-pink-light.png");
 	--color-body-bg: #cfcfcf;
 	--color-flashed-err: #df7c71;
 	--color-flashed-err-lighter: #e28075;
@@ -152,6 +184,22 @@ select {font-family: Inter-Regular;}
 	--color-hamburger-line: #222222;
 }
 [data-theme="dark"] {
+	--icon-1-blue: url("/static/icon-1-blue-dark.png");
+	--icon-1-green: url("/static/icon-1-green-dark.png");
+	--icon-1-purple: url("/static/icon-1-purple-dark.png");
+	--icon-1-pink: url("/static/icon-1-pink-dark.png");
+	--icon-2-blue: url("/static/icon-2-blue-dark.png");
+	--icon-2-green: url("/static/icon-2-green-dark.png");
+	--icon-2-purple: url("/static/icon-2-purple-dark.png");
+	--icon-2-pink: url("/static/icon-2-pink-dark.png");
+	--icon-3-blue: url("/static/icon-3-blue-dark.png");
+	--icon-3-green: url("/static/icon-3-green-dark.png");
+	--icon-3-purple: url("/static/icon-3-purple-dark.png");
+	--icon-3-pink: url("/static/icon-3-pink-dark.png");
+	--icon-4-blue: url("/static/icon-4-blue-dark.png");
+	--icon-4-green: url("/static/icon-4-green-dark.png");
+	--icon-4-purple: url("/static/icon-4-purple-dark.png");
+	--icon-4-pink: url("/static/icon-4-pink-dark.png");
 	--color-body-bg: #2b2b2b;
 	--color-flashed-err: #ac3426;
 	--color-flashed-err-lighter: #b1382b;
@@ -238,6 +286,23 @@ select {font-family: Inter-Regular;}
 	--color-alt1: #df65c2;
 	--color-alt2: #db60be;
 }
+/* PROFILE PICTURES */
+.icon-1-blue {background-image: var(--icon-1-blue);}
+.icon-1-green {background-image: var(--icon-1-green);}
+.icon-1-purple {background-image: var(--icon-1-purple);}
+.icon-1-pink {background-image: var(--icon-1-pink);}
+.icon-2-blue {background-image: var(--icon-2-blue);}
+.icon-2-green {background-image: var(--icon-2-green);}
+.icon-2-purple {background-image: var(--icon-2-purple);}
+.icon-2-pink {background-image: var(--icon-2-pink);}
+.icon-3-blue {background-image: var(--icon-3-blue);}
+.icon-3-green {background-image: var(--icon-3-green);}
+.icon-3-purple {background-image: var(--icon-3-purple);}
+.icon-3-pink {background-image: var(--icon-3-pink);}
+.icon-4-blue {background-image: var(--icon-4-blue);}
+.icon-4-green {background-image: var(--icon-4-green);}
+.icon-4-purple {background-image: var(--icon-4-purple);}
+.icon-4-pink {background-image: var(--icon-4-pink);}
 /* NAVBAR MENU */
 #navbar {
 	background-color: var(--color-navbar-bg);
@@ -291,7 +356,6 @@ select {font-family: Inter-Regular;}
 .navright:hover {background: var(--color-navright-hover);}
 .navrighticon {
 	border-radius: 50%;
-	background-image: url(icon-1-blue.png);
 	background-size: 38px 38px;
 	height: 38px;
 	margin-left: 13px;
@@ -364,7 +428,6 @@ select {font-family: Inter-Regular;}
 	height: 1px;
 }
 .drop-profile {
-	background-image: url(icon-1-blue.png);
 	background-size: 57px 57px;
 	border-radius: 50%;
 	float: right;

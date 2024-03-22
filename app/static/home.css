@@ -1,8 +1,27 @@
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+}
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+}
 /* BLOCK 1 */
 #block1 {
 	height: 100px;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1);
 	font-size: 16px;
 }
 .block1inner {
@@ -14,10 +33,10 @@
 	padding-top: 12px;
 }
 .home-active {
-	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
 .home-active:hover {
-	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 }
 .mt-tam {display: block !important;}
 

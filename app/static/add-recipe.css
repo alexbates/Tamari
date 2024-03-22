@@ -37,6 +37,13 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-form-control-bg: #1c1c1c;
+	--color-form-control-font: #d1d1d1;
+	--color-form-control-placeholder: #545454;
+	--color-btn-default: #ffffff;
+	--color-cust-select-bg: #1c1c1c;
+	--color-cust-select-font: #d1d1d1;
+	--color-cust-select-after: #ffffff;
 }
 /* ACCENT COLOR APPLICATION */
 .btn-default {background-color: var(--color);}

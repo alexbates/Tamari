@@ -35,6 +35,12 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-showing-msg: #1a1a1a;
+	--color-exprecipe: #111111;
+	--color-exprecipeinner-a: #ebebeb;
+	--color-exprecipeinner-span: #aeaeae;
+	--color-exprecipeinner-span-a: #a7a7a7;
+	--color-btn-paginate: #ffffff;
 }
 /* ACCENT COLOR APPLICATION */
 .search-btn {background-color: var(--color);}

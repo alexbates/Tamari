@@ -134,6 +134,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	border-radius: 10px;
 	color: var(--color-updatedetails-font);
 	float: left;
+	margin-bottom: 20px;
 	margin-left: 20px;
 	width: calc(50% - 10px);
 }

@@ -494,6 +494,7 @@ select {font-family: Inter-Regular;}
 	.navlogo h1 {font-size: 26px; line-height: 26px; padding-left: 40px; padding-top: 9px;}
 	.mobile-title {display: block;}
     .navbarinner { width: 100%;}
+	.navnoauth {display: none;}
 	.navleft {display: none;}
 	.navright {display: none;}
 	.mobile-dropdown {display: block;}

@@ -1,15 +1,59 @@
 .myrecipes-active {
-	background: linear-gradient(to bottom, #111111 calc(100% - 2px), #ffffff 5px) no-repeat left bottom;
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
 .myrecipes-active:hover {
-	background: linear-gradient(to bottom, rgb(26, 26, 26) calc(100% - 2px), #ffffff 5px) no-repeat left bottom !important;
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 }
 .mt-myrecipes {display: block !important;}
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-norecipes: #111111;
+	--color-recipecount: #111111;
+	--color-r1bottom: rgba(20, 20, 20, 0.82);
+	--color-recipe2inner: #111111;
+	--color-r2bottom-span: #aeaeae;
+	--color-btn-paginate: #ffffff;
+}
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+	--color-norecipes: #efefef;
+	--color-recipecount: #efefef;
+	--color-r1bottom: rgba(232, 232, 232, 0.86);
+	--color-recipe2inner: #efefef;
+	--color-r2bottom-span: #5c5c5c;
+	--color-btn-paginate: #000000;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-norecipes: #111111;
+	--color-recipecount: #111111;
+	--color-r1bottom: rgba(20, 20, 20, 0.82);
+	--color-recipe2inner: #111111;
+	--color-r2bottom-span: #aeaeae;
+	--color-btn-paginate: #ffffff;
+}
+/* ACCENT COLOR APPLICATION */
+.btn-next {background-color: var(--color);}
+.btn-next:hover {background: var(--color-lighter);}
+.btn-next:active, .btn-next.active {background: var(--color-darker);}
+.btn-prev {background-color: var(--color);}
+.btn-prev:hover {background: var(--color-lighter);}
+.btn-prev:active, .btn-prev.active {background: var(--color-darker);}
 /* BLOCK 1 */
 #block1 {
 	height: 100px;
 	width: 100%;
-	color: #ffffff;
+	color: var(--color-block1);
 	font-size: 16px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
@@ -20,7 +64,7 @@
 }
 /* FLASHED MESSAGES */
 #flashed-err {
-	background: #ac3426; 
+	background: var(--color-flashed-err); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -28,7 +72,7 @@
 	padding: 6px;
 }
 #flashed-norm {
-	background: #1c7e45; 
+	background: var(--color-flashed-norm); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -37,13 +81,13 @@
 }
 /* IF NO SAVED RECIPES */
 #norecipes {
-	background: #111111;
+	background: var(--color-norecipes);
 	margin-top: 0px;
 	padding: 10px;
 }
 /* RECIPE LIST */
 #recipecount {
-	background: #111111; 
+	background: var(--color-recipecount); 
 	font-size: 14px;
 	height: 17px;
 	margin-bottom: 12px;
@@ -60,17 +104,8 @@
 	width: 33.333%;
 	aspect-ratio: 4 / 3;
 }
-.recipe01 {background-image: url(IMG_01.jpg);}
-.recipe02 {background-image: url(IMG_02.jpg);}
-.recipe03 {background-image: url(IMG_03.jpg);}
-.recipe04 {background-image: url(IMG_04.jpg);}
-.recipe05 {background-image: url(IMG_05.jpg);}
-.recipe06 {background-image: url(IMG_06.jpg);}
-.recipe07 {background-image: url(IMG_07.jpg);}
-.recipe08 {background-image: url(IMG_08.jpg);}
-.recipe09 {background-image: url(IMG_09.jpg);}
 .r1bottom {
-	background: linear-gradient(to bottom, transparent 0%, rgba(20, 20, 20, 0.82) 100%);
+	background: linear-gradient(to bottom, transparent 0%, var(--color-r1bottom) 100%);
 	height: 40%;
 	margin-top: 45%;
 	width: 100%;
@@ -110,7 +145,7 @@
 	padding-bottom: 20px;
 }
 .recipe2inner {
-	background-color: #111111;
+	background-color: var(--color-recipe2inner);
 	border-radius: 15px;
 }
 .r2top {
@@ -137,13 +172,13 @@
 	overflow: hidden;
 	max-height: 40px;
 }
-.r2bottom span {color: #aeaeae; font-size: 14px;}
+.r2bottom span {color: var(--color-r2bottom-span); font-size: 14px;}
 /* PAGINATION BUTTONS */
 .prevnext {height: 54px; text-align: center; width: 100%;}
 .btn-next {
 	border: none;
 	border-radius: 7px;
-	color: #ffffff;
+	color: var(--color-btn-paginate);
 	cursor: pointer;
 	font-size: 16px;
 	height: 34px;
@@ -168,7 +203,7 @@
 .btn-prev {
 	border: none;
 	border-radius: 7px;
-	color: #ffffff;
+	color: var(--color-btn-paginate);
 	cursor: pointer;
 	font-size: 16px;
 	height: 34px;

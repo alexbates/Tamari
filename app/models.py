@@ -61,7 +61,7 @@ class Recipe(db.Model):
     cook_time = db.Column(db.Integer)
     total_time = db.Column(db.Integer)
     ingredients = db.Column(db.String(2200))
-    instructions = db.Column(db.String(4400))
+    instructions = db.Column(db.String(6600))
     time_created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     favorite = db.Column(db.Integer)
     public = db.Column(db.Integer)

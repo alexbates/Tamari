@@ -119,7 +119,7 @@ def favorites():
 @login_required
 def favorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None or recipe.id != current_user.id:
+    if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.favorite = 1
@@ -131,7 +131,7 @@ def favorite(hexid):
 @login_required
 def unfavorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None or recipe.id != current_user.id:
+    if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.favorite = 0
@@ -143,7 +143,7 @@ def unfavorite(hexid):
 @login_required
 def makePublic(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None or recipe.id != current_user.id:
+    if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.public = 1
@@ -155,7 +155,7 @@ def makePublic(hexid):
 @login_required
 def makePrivate(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is None or recipe.id != current_user.id:
+    if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
         return redirect(url_for('allRecipes'))
     recipe.public = 0

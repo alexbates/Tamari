@@ -24,6 +24,24 @@ app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg']
 
+from app.account import bp as account_bp
+app.register_blueprint(account_bp)
+
+from app.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
+
+from app.explore import bp as explore_bp
+app.register_blueprint(explore_bp)
+
+from app.mealplanner import bp as mealplanner_bp
+app.register_blueprint(mealplanner_bp)
+
+from app.myrecipes import bp as myrecipes_bp
+app.register_blueprint(myrecipes_bp)
+
+from app.shoplists import bp as shoplists_bp
+app.register_blueprint(shoplists_bp)
+
 if not app.debug:
     if app.config['MAIL_SERVER']:
         auth = None
@@ -55,4 +73,4 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Tamari startup')
 
-from app import routes, models, errors
+from app import routes, models

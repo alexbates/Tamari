@@ -73,4 +73,4 @@ if not app.debug:
     app.logger.setLevel(logging.INFO)
     app.logger.info('Tamari startup')
 
-from app import routes, models
+from app import models

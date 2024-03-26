@@ -46,7 +46,7 @@ def shoppingLists():
             db.session.add(sel_list)
             db.session.commit()
             flash('The shopping list has been added.')
-        return redirect(url_for('shoppingLists', list=list.label))
+        return redirect(url_for('shoplists.shoppingLists', list=list.label))
     if form2.submititem.data and form2.validate_on_submit():
         if form2.newitem.data in items_arr:
             flash('Error: the list item you entered already exists.')
@@ -63,7 +63,7 @@ def shoppingLists():
             db.session.add(sel_item)
             db.session.commit()
             flash('The item has been added.')
-        return redirect(url_for('shoppingLists', list=list.label))
+        return redirect(url_for('shoplists.shoppingLists', list=list.label))
     return render_template('shopping-lists.html', title='Shopping Lists', lists=lists, query_string=query_string, list=list,
         lists_arr=lists_arr, items=items, items_tobuy=items_tobuy, items_comp=items_comp, form=form, form2=form2)
 
@@ -98,7 +98,7 @@ def mobileList(listname):
             db.session.add(sel_item)
             db.session.commit()
             flash('The item has been added.')
-        return redirect(url_for('mobileList', listname=list.label))
+        return redirect(url_for('shoplists.mobileList', listname=list.label))
     return render_template('mobile-shopping-list.html', title=listname, list=list, items=items, items_tobuy=items_tobuy,
         items_comp=items_comp, form=form)
 
@@ -122,9 +122,9 @@ def removeList(hexid, mobile):
         else:
             flash('Error: shopping list does not exist.')
     if mobile == '0':
-        return redirect(url_for('shoppingLists'))
+        return redirect(url_for('shoplists.shoppingLists'))
     else:
-        return redirect(url_for('mobileList', listname='Miscellaneous'))
+        return redirect(url_for('shoplists.mobileList', listname='Miscellaneous'))
 
 @bp.route('/remove-item/<mobile>/<hexid>')
 @login_required
@@ -141,9 +141,9 @@ def removeListitem(hexid, mobile):
         else:
             flash('Error: item does not exist.')
     if mobile == '0':
-        return redirect(url_for('shoppingLists', list=list.label))
+        return redirect(url_for('shoplists.shoppingLists', list=list.label))
     else:
-        return redirect(url_for('mobileList', listname=list.label))
+        return redirect(url_for('shoplists.mobileList', listname=list.label))
 
 @bp.route('/mark-item/<mobile>/<hexid>')
 @login_required
@@ -163,6 +163,6 @@ def markItem(hexid, mobile):
         else:
             flash('Error: item does not exist.')
     if mobile == '0':
-        return redirect(url_for('shoppingLists', list=list.label))
+        return redirect(url_for('shoplists.shoppingLists', list=list.label))
     else:
-        return redirect(url_for('mobileList', listname=list.label))
+        return redirect(url_for('shoplists.mobileList', listname=list.label))

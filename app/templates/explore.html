@@ -24,96 +24,96 @@
 			{% for recipe in rec_all %}
 			<div class="exprecipe">
 				<div class="exprecinner">
-					<div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}">{{ recipe[0] }}</a></div>
+					<div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}">{{ recipe[0] }}</a></div>
 					<span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
 				</div>
 			</div>
 			{% endfor %}
-			<a href="{{ url_for('exploreGroup', group='all') }}"><div class="seemore">See More</div></a>
+			<a href="{{ url_for('explore.exploreGroup', group='all') }}"><div class="seemore">See More</div></a>
 		</div>
 		<h2>Beef Entrees 🥩</h2>
                 <div class="explorecont">
                         {% for recipe in rec_beef %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='beef-entrees') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='beef-entrees') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='beef-entrees') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='beef-entrees') }}"><div class="seemore">See More</div></a>
                 </div>
 		<h2>Breakfast 🥞</h2>
                 <div class="explorecont">
                         {% for recipe in rec_breakfast %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='breakfast') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='breakfast') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='breakfast') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='breakfast') }}"><div class="seemore">See More</div></a>
                 </div>
 		<h2>Chicken Entrees 🍗</h2>
                 <div class="explorecont">
                         {% for recipe in rec_chicken %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='chicken-entrees') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='chicken-entrees') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='chicken-entrees') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='chicken-entrees') }}"><div class="seemore">See More</div></a>
                 </div>
 		<h2>Desserts 🍰</h2>
                 <div class="explorecont">
                         {% for recipe in rec_desserts %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='desserts') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='desserts') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='desserts') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='desserts') }}"><div class="seemore">See More</div></a>
                 </div>
 		<h2>Salads 🥗</h2>
                 <div class="explorecont">
                         {% for recipe in rec_salads %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='salads') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='salads') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='salads') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='salads') }}"><div class="seemore">See More</div></a>
                 </div>
 		<h2>Seafood Entrees 🍤</h2>
                 <div class="explorecont">
                         {% for recipe in rec_seafood %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='seafood-entrees') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='seafood-entrees') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='seafood-entrees') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='seafood-entrees') }}"><div class="seemore">See More</div></a>
                 </div>
 		<h2>Side Dishes 🌽</h2>
                 <div class="explorecont" style="margin-bottom: 20px;">
                         {% for recipe in rec_sides %}
                         <div class="exprecipe">
                                 <div class="exprecinner">
-                                        <div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='side-dishes') }}">{{ recipe[0] }}</a></div>
+                                        <div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='side-dishes') }}">{{ recipe[0] }}</a></div>
                                         <span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
                                 </div>
                         </div>
                         {% endfor %}
-                        <a href="{{ url_for('exploreGroup', group='side-dishes') }}"><div class="seemore">See More</div></a>
+                        <a href="{{ url_for('explore.exploreGroup', group='side-dishes') }}"><div class="seemore">See More</div></a>
                 </div>
 	
 		{% else %}

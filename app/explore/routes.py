@@ -45,7 +45,7 @@ def explore():
     rec_sides = recipes[7]
     form = ExploreSearchForm()
     if form.validate_on_submit():
-        return redirect(url_for('exploreSearch', query=form.search.data))
+        return redirect(url_for('explore.exploreSearch', query=form.search.data))
     return render_template('explore.html', title='Explore', rec_all=rec_all, rec_beef=rec_beef, rec_breakfast=rec_breakfast,
         rec_chicken=rec_chicken, rec_desserts=rec_desserts, rec_salads=rec_salads, rec_seafood=rec_seafood, rec_sides=rec_sides, form=form)
 

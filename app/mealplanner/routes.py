@@ -75,6 +75,6 @@ def removePlan(hexid):
         else:
             flash('Error: meal plan does not exist or you lack permission to remove it.')
     if mealplan.date is not None:
-        return redirect(url_for('mealPlanner', day=mealplan.date))
+        return redirect(url_for('mealplanner.mealPlanner', day=mealplan.date))
     else:
-        return redirect(url_for('mealPlanner'))
+        return redirect(url_for('mealplanner.mealPlanner'))

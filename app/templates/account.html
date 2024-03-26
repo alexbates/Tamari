@@ -139,7 +139,7 @@
 				</div>
 				<div class="updatebuttons">
 					{{ form.submit(class="btn btn-default") }}
-					<button class="btn btn-default2" formaction="{{ url_for('deleteAccount') }}" formmethod="get" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">Delete Account</button>
+					<button class="btn btn-default2" formaction="{{ url_for('account.deleteAccount') }}" formmethod="get" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">Delete Account</button>
 				</div>
 			</form>
 		</div>

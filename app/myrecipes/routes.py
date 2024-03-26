@@ -45,16 +45,16 @@ def allRecipes():
     else:
         recipes = user.recipes.order_by(Recipe.time_created.desc()).paginate(page=page,
             per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
-    next_url = url_for('allRecipes', page=recipes.next_num) \
+    next_url = url_for('myrecipes.allRecipes', page=recipes.next_num) \
         if recipes.has_next else None
-    prev_url = url_for('allRecipes', page=recipes.prev_num) \
+    prev_url = url_for('myrecipes.allRecipes', page=recipes.prev_num) \
         if recipes.has_prev else None
     form = DisplaySettingsForm()
     if form.validate_on_submit():
         user.pref_size = form.recipe_size.data
         user.pref_sort = form.sort_by.data
         db.session.commit()
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     return render_template('all-recipes.html', title='All Recipes', user=user, recipes=recipes.items,
         form=form, next_url=next_url, prev_url=prev_url)
 
@@ -90,16 +90,16 @@ def favorites():
     else:
         recipes = user.recipes.filter_by(favorite=1).order_by(Recipe.time_created.desc()).paginate(page=page,
             per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
-    next_url = url_for('favorites', page=recipes.next_num) \
+    next_url = url_for('myrecipes.favorites', page=recipes.next_num) \
         if recipes.has_next else None
-    prev_url = url_for('favorites', page=recipes.prev_num) \
+    prev_url = url_for('myrecipes.favorites', page=recipes.prev_num) \
         if recipes.has_prev else None
     form = DisplaySettingsForm()
     if form.validate_on_submit():
         user.pref_size = form.recipe_size.data
         user.pref_sort = form.sort_by.data
         db.session.commit()
-        return redirect(url_for('favorites'))
+        return redirect(url_for('myrecipes.favorites'))
     return render_template('favorites.html', title='Favorites', user=user, recipes=recipes.items,
         form=form, next_url=next_url, prev_url=prev_url)
 
@@ -109,11 +109,11 @@ def favorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     recipe.favorite = 1
     db.session.commit()
     flash('This recipe has been added to your Favorites.')
-    return redirect(url_for('recipeDetail', hexid=hexid))
+    return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>/unfavorite')
 @login_required
@@ -121,11 +121,11 @@ def unfavorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     recipe.favorite = 0
     db.session.commit()
     flash('This recipe has been removed from your Favorites.')
-    return redirect(url_for('recipeDetail', hexid=hexid))
+    return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>/make-public')
 @login_required
@@ -133,11 +133,11 @@ def makePublic(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     recipe.public = 1
     db.session.commit()
     flash('You can now share the URL for this recipe.')
-    return redirect(url_for('recipeDetail', hexid=hexid))
+    return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>/make-private')
 @login_required
@@ -145,11 +145,11 @@ def makePrivate(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to modify it.')
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     recipe.public = 0
     db.session.commit()
     flash('The recipe URL can no longer be shared.')
-    return redirect(url_for('recipeDetail', hexid=hexid))
+    return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
 def recipeDetail(hexid):
@@ -305,9 +305,9 @@ def categories():
         else:
             recipes = user.recipes.filter_by(category=query_string).order_by(Recipe.time_created.desc()).paginate(page=page,
                 per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
-    next_url = url_for('categories', page=recipes.next_num, c=query_string) \
+    next_url = url_for('myrecipes.categories', page=recipes.next_num, c=query_string) \
         if recipes.has_next else None
-    prev_url = url_for('categories', page=recipes.prev_num, c=query_string) \
+    prev_url = url_for('myrecipes.categories', page=recipes.prev_num, c=query_string) \
         if recipes.has_prev else None
     recipe_count = len(rec_count)
     form = DisplaySettingsForm()
@@ -321,7 +321,7 @@ def categories():
         user.pref_size = form.recipe_size.data
         user.pref_sort = form.sort_by.data
         db.session.commit()
-        return redirect(url_for('categories'))
+        return redirect(url_for('myrecipes.categories'))
     # AddCategoryForm
     if form2.validate_on_submit():
         if form2.category.data in cats:
@@ -339,7 +339,7 @@ def categories():
             db.session.add(category)
             db.session.commit()
             flash('The category has been added.')
-        return redirect(url_for('categories'))
+        return redirect(url_for('myrecipes.categories'))
     return render_template('categories.html', title='Categories', user=user, categories=categories, query_string=query_string,
         recipes=recipes.items, recipe_count=recipe_count, form=form, form2=form2, cats=cats, next_url=next_url, prev_url=prev_url)
 
@@ -364,9 +364,9 @@ def mobileCategory(catname):
     else:
         recipes = user.recipes.filter_by(category=catname).order_by(Recipe.time_created.desc()).paginate(page=page,
             per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
-    next_url = url_for('mobileCategory', catname=catname, page=recipes.next_num) \
+    next_url = url_for('myrecipes.mobileCategory', catname=catname, page=recipes.next_num) \
         if recipes.has_next else None
-    prev_url = url_for('mobileCategory', catname=catname, page=recipes.prev_num) \
+    prev_url = url_for('myrecipes.mobileCategory', catname=catname, page=recipes.prev_num) \
         if recipes.has_prev else None
     recipe_count = len(rec_count)
     return render_template('mobile-category.html', title=catname, user=user, recipes=recipes.items,
@@ -392,7 +392,7 @@ def removeCategory(catid):
             flash('Category has been removed.')
         else:
             flash('Error: category does not exist.')
-    return redirect(url_for('categories'))
+    return redirect(url_for('myrecipes.categories'))
 
 @bp.route('/remove-recipe/<hexid>')
 @login_required
@@ -400,7 +400,7 @@ def removeRecipe(hexid):
     delrecipe = Recipe.query.filter_by(hex_id=hexid).first()
     if delrecipe is None or delrecipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to delete it.')
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
         'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
@@ -411,7 +411,7 @@ def removeRecipe(hexid):
     db.session.delete(delrecipe)
     db.session.commit()
     flash('Recipe has been removed.')
-    return redirect(url_for('allRecipes'))
+    return redirect(url_for('myrecipes.allRecipes'))
 
 @bp.route('/add-recipe', methods=['GET', 'POST'])
 @login_required
@@ -499,7 +499,7 @@ def addRecipe():
         db.session.add(recipe)
         db.session.commit()
         flash('The recipe has been added.')
-        return redirect(url_for('addRecipe'))
+        return redirect(url_for('myrecipes.addRecipe'))
     return render_template('add-recipe.html', title='Add a New Recipe', form=form, choices=choices)
 
 @bp.route('/edit-recipe/<hexid>', methods=['GET', 'POST'])
@@ -590,5 +590,5 @@ def editRecipe(hexid):
             recipe.photo = new_file
         db.session.commit()
         flash('The recipe has been updated.')
-        return redirect(url_for('recipeDetail', hexid=hexid))
+        return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
     return render_template('edit-recipe.html', title='Edit Recipe', form=form, recipe=recipe, choices=choices)

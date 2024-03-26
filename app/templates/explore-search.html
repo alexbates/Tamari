@@ -25,7 +25,7 @@
 			{% for recipe in recipes %}
 			<div class="exprecipe">
 				<div class="exprecinner">
-					<div><a href="{{ url_for('exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}">{{ recipe[0] }}</a></div>
+					<div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}">{{ recipe[0] }}</a></div>
 					<span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
 				</div>
 			</div>
@@ -35,13 +35,13 @@
 		{% if pagination.has_prev or pagination.has_next %}
 		<div class="prevnext">
 			{% if pagination.has_prev %}
-			<button class="btn-prev" onclick="window.location.href='{{ url_for('exploreSearch', page=curr_page - 1, query=query_string) }}';">
+			<button class="btn-prev" onclick="window.location.href='{{ url_for('explore.exploreSearch', page=curr_page - 1, query=query_string) }}';">
 				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if pagination.has_next %}
-			<button class="btn-next" onclick="window.location.href='{{ url_for('exploreSearch', page=curr_page + 1, query=query_string) }}';">
+			<button class="btn-next" onclick="window.location.href='{{ url_for('explore.exploreSearch', page=curr_page + 1, query=query_string) }}';">
 				<span class="btn-next-text">Next</span>
                                 <span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
                         </button>

@@ -23,8 +23,8 @@
 			<div class="b1logo"></div>
 		</div>
 		<div id="b1bottom" class="block1bottom">
-			<button class="logregselector logregactive" onclick="window.location.href='{{ url_for('login') }}';">Sign In</button
-			><button class="logregselector" onclick="window.location.href='{{ url_for('register') }}';">Register</button>
+			<button class="logregselector logregactive" onclick="window.location.href='{{ url_for('account.login') }}';">Sign In</button
+			><button class="logregselector" onclick="window.location.href='{{ url_for('account.register') }}';">Register</button>
 			{% with messages = get_flashed_messages() %}
 			{% if messages %}
 			{% for message in messages %}
@@ -54,7 +54,7 @@
 				</div>
 				<div class="signinreset">
 					{{ form.submit(class="btn btn-default") }}
-					<div class="resetlink"><a href=" {{ url_for('request_reset') }}">Reset Password?</a></div>
+					<div class="resetlink"><a href=" {{ url_for('account.request_reset') }}">Reset Password?</a></div>
 				</div>
 			</form>
 		</div>

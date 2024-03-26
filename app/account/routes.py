@@ -28,18 +28,18 @@ def about():
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         # Check login
         if user is None or not user.check_password(form.password.data):
             flash('Invalid email or password')
-            return redirect(url_for('login'))
+            return redirect(url_for('account.login'))
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('allRecipes')
+            next_page = url_for('myrecipes.allRecipes')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
@@ -47,12 +47,12 @@ def login():
 def logout():
     logout_user()
     flash('You have successfully signed out.')
-    return redirect(url_for('login'))
+    return redirect(url_for('account.login'))
 
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     form = RegistrationForm()
     if form.validate_on_submit():
         # Check if email is already registered
@@ -109,7 +109,7 @@ def register():
                 db.session.add(new_list)
             db.session.commit()
             flash('You have been registerd! Please sign in.')
-            return redirect(url_for('login'))
+            return redirect(url_for('account.login'))
     return render_template('register.html', title='Register', form=form)
 
 @bp.route('/account', methods=['GET', 'POST'])
@@ -166,7 +166,7 @@ def user():
             db.session.commit()
             flash('Your changes have been saved.')
             # Redirect to current page so form email will be updated following change
-            return redirect(url_for('user'))
+            return redirect(url_for('account.user'))
         # Notify if there are no errors or changes
         else:
             flash('No changes were made.')
@@ -201,27 +201,27 @@ def deleteAccount():
     user = User.query.filter_by(email=current_user.email).first()
     if user is None:
         flash('Error: there was a problem deleting your account')
-        return redirect(url_for('user'))
+        return redirect(url_for('account.user'))
     # Logout before delete
     logout_user()
     # Delete account and redirect to login page
     db.session.delete(user)
     db.session.commit()
     flash('Your account has been deleted.')
-    return redirect(url_for('login'))
+    return redirect(url_for('account.login'))
 
 @bp.route('/request-reset', methods=['GET', 'POST'])
 def request_reset():
     # Don't display page if user is signed in
     if current_user.is_authenticated:
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user:
             send_password_reset_email(user)
         flash('Check your email for instructions.')
-        return redirect(url_for('login'))
+        return redirect(url_for('account.login'))
     return render_template('request-reset.html', title='Reset Password', form=form)
 
 @bp.route('/set-password/<token>', methods=['GET', 'POST'])
@@ -229,15 +229,15 @@ def set_password(token):
     # Don't display page if user is signed in
     if current_user.is_authenticated:
         flash('Please sign out before setting a new password.')
-        return redirect(url_for('allRecipes'))
+        return redirect(url_for('myrecipes.allRecipes'))
     user = User.verify_reset_password_token(token)
     if not user:
         flash('Password reset token is invalid.')
-        return redirect(url_for('login'))
+        return redirect(url_for('account.login'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.set_password(form.password.data)
         db.session.commit()
         flash('Your new password has been set.')
-        return redirect(url_for('login'))
+        return redirect(url_for('account.login'))
     return render_template('set-password.html', title='Set Password', form=form)

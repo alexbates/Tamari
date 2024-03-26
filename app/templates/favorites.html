@@ -10,9 +10,9 @@
 	<div class="block1inner">
 		<div id="recipenav">
 			<div class="recipenavleft">
-				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('allRecipes') }}';" value="All Recipes"
-				><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('favorites') }}';" value="Favorites"
-				><input type="button" class="recbtn recbtn3" onclick="window.location.href='{{ url_for('categories') }}';" value="Categories">
+				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="All Recipes"
+				><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="Favorites"
+				><input type="button" class="recbtn recbtn3" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="Categories">
 			</div>
 			<div class="recipenavright">
 				<div class="settingsbtn">
@@ -35,7 +35,7 @@
 						</form>
 					</div>
 				</div>
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('addRecipe') }}';">
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.addRecipe') }}';">
                                         <span class="btn-text">Add Recipe</span>
                                         <span class="btn-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
 				</button>
@@ -48,8 +48,8 @@
 		{% if user.pref_size == 0 %}
 		<div id="recipecont" class="recipe1cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('recipeDetail', hexid=item.hex_id) }}">
-		<div class="recipe1" data-bgimage="{{ url_for('recipePhotos', filename=item.photo, _external=True) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
+		<div class="recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r1bottom">
 				<div class="recipe1-text">
 					<div>{{ item.title }}</div>
@@ -62,10 +62,10 @@
 		{% else %}
 		<div id="recipecont" class="recipe2cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('recipeDetail', hexid=item.hex_id) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
 		<div class="recipe2">
 			<div class="recipe2inner">
-				<div class="r2top" data-bgimage="{{ url_for('recipePhotos', filename=item.photo, _external=True) }}"></div>
+				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
 				<div class="r2bottom">
 					<div>{{ item.title }}</div>
 					<span>{{ item.category }}</span>

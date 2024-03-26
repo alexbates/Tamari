@@ -23,8 +23,8 @@
 			<div class="b1logo"></div>
 		</div>
 		<div id="b1bottom" class="block1bottom">
-			<button class="logregselector" onclick="window.location.href='{{ url_for('login') }}';">Sign In</button
-			><button class="logregselector logregactive" onclick="window.location.href='{{ url_for('register') }}';">Register</button>
+			<button class="logregselector" onclick="window.location.href='{{ url_for('account.login') }}';">Sign In</button
+			><button class="logregselector logregactive" onclick="window.location.href='{{ url_for('account.register') }}';">Register</button>
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<div class="form-group  required">

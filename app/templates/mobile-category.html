@@ -37,8 +37,8 @@
 		{% if user.pref_size == 0 %}
 		<div id="recipecont" class="recipe1cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('recipeDetail', hexid=item.hex_id) }}">
-		<div class="recipe1" data-bgimage="{{ url_for('recipePhotos', filename=item.photo, _external=True) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
+		<div class="recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r1bottom">
 				<div class="recipe1-text">
 					<div>{{ item.title }}</div>
@@ -51,10 +51,10 @@
 		{% else %}
 		<div id="recipecont" class="recipe2cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('recipeDetail', hexid=item.hex_id) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
 		<div class="recipe2">
 			<div class="recipe2inner">
-				<div class="r2top" data-bgimage="{{ url_for('recipePhotos', filename=item.photo, _external=True) }}"></div>
+				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
 				<div class="r2bottom">
 					<div>{{ item.title }}</div>
 					<span>{{ item.category }}</span>

@@ -3,6 +3,19 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='edit-recipe.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	{% if nutrition %}
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			toggleNutrition(true);
+		});
+	</script>
+	{% else %}
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			toggleNutrition(false);
+		});
+	</script>
+	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -98,56 +111,56 @@
 				<div class="form-group4">
 					<div>
 						<label class="control-label" for="n_calories">Calories (kcal)</label><br>
-						{{ form.n_calories(class="form-control fc1", placeholder="393") }}
+						{{ form.n_calories(class="form-control fc1", placeholder="393", value=nutrition.calories) }}
 						{% for error in form.n_calories.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_carbs">Carbs (g)</label><br>
-						{{ form.n_carbs(class="form-control fc1", placeholder="46") }}
+						{{ form.n_carbs(class="form-control fc1", placeholder="46", value=nutrition.carbs) }}
 						{% for error in form.n_carbs.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_protein">Protein (g)</label><br>
-						{{ form.n_protein(class="form-control fc1", placeholder="8") }}
+						{{ form.n_protein(class="form-control fc1", placeholder="8", value=nutrition.protein) }}
 						{% for error in form.n_protein.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_fat">Fat (g)</label><br>
-						{{ form.n_fat(class="form-control fc1", placeholder="17") }}
+						{{ form.n_fat(class="form-control fc1", placeholder="17", value=nutrition.fat) }}
 						{% for error in form.n_fat.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_sugar">Sugar (g)</label><br>
-						{{ form.n_sugar(class="form-control fc1", placeholder="2") }}
+						{{ form.n_sugar(class="form-control fc1", placeholder="2", value=nutrition.sugar) }}
 						{% for error in form.n_sugar.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_cholesterol">Cholesterol (mg)</label><br>
-						{{ form.n_cholesterol(class="form-control fc1", placeholder="7") }}
+						{{ form.n_cholesterol(class="form-control fc1", placeholder="7", value=nutrition.cholesterol) }}
 						{% for error in form.n_cholesterol.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_sodium">Sodium (mg)</label><br>
-						{{ form.n_sodium(class="form-control fc1", placeholder="122") }}
+						{{ form.n_sodium(class="form-control fc1", placeholder="122", value=nutrition.sodium) }}
 						{% for error in form.n_sodium.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_fiber">Fiber (g)</label><br>
-						{{ form.n_fiber(class="form-control fc1", placeholder="1") }}
+						{{ form.n_fiber(class="form-control fc1", placeholder="1", value=nutrition.fiber) }}
 						{% for error in form.n_fiber.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}

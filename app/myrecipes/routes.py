@@ -532,7 +532,9 @@ def addRecipe():
 @bp.route('/edit-recipe/<hexid>', methods=['GET', 'POST'])
 @login_required
 def editRecipe(hexid):
+    # Query the requested recipe as well as its nutritional info
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
     form = EditRecipeForm()
     choices = []
     user = User.query.filter_by(email=current_user.email).first_or_404()
@@ -615,6 +617,37 @@ def editRecipe(hexid):
             if recipe.photo not in defaults:
                 os.remove(old_path)
             recipe.photo = new_file
+        # Get value of Nutrition Checkbox
+        n_checkbox_value = request.form['n_checkbox']
+        # Check whether there is Nutritional Info
+        n_info = False
+        if request.form['n_calories'] or request.form['n_carbs'] or request.form['n_protein'] or request.form['n_fat']:
+            n_info = True
+        if request.form['n_sugar'] or request.form['n_cholesterol'] or request.form['n_sodium'] or request.form['n_fiber']:
+            n_info = True
+        # Update NutritionalInfo record if it exists and there is Nutrition info in submitted form
+        if n_checkbox_value == 'on' and n_info == True and nutrition is not None:
+            nutrition.calories = form.n_calories.data
+            nutrition.carbs = form.n_carbs.data
+            nutrition.protein = form.n_protein.data
+            nutrition.fat = form.n_fat.data
+            nutrition.sugar = form.n_sugar.data
+            nutrition.cholesterol = form.n_cholesterol.data
+            nutrition.sodium = form.n_sodium.data
+            nutrition.fiber = form.n_fiber.data
+        # Add NutritionalInfo record if it doesn't exist and there is Nutrition info in submitted form
+        elif n_checkbox_value == 'on' and n_info = True and nutrition is None:
+            new_nutrition = NutritionalInfo(recipe_id=recipe.id, user_id=current_user.id, calories=form.n_calories.data, carbs=form.n_carbs.data,
+                protein=form.n_protein.data, fat=form.n_fat.data, sugar=form.n_sugar.data, cholesterol=form.n_cholesterol.data, 
+                sodium=form.n_sodium.data, fiber=form.n_fiber.data)
+            db.session.add(new_nutrition)
+        # Remove NutritionalInfo record if it exists but there is NO Nutrition info in submitted form
+        elif nutrition is not None:
+            db.session.delete(nutrition)
+        # Do nothing if NutritionalInfo record doesn't exist and there is NO Nutrition info in submitted form
+        else:
+            pass
+        # Process database changes
         db.session.commit()
         flash('The recipe has been updated.')
         return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))

@@ -636,7 +636,7 @@ def editRecipe(hexid):
             nutrition.sodium = form.n_sodium.data
             nutrition.fiber = form.n_fiber.data
         # Add NutritionalInfo record if it doesn't exist and there is Nutrition info in submitted form
-        elif n_checkbox_value == 'on' and n_info = True and nutrition is None:
+        elif n_checkbox_value == 'on' and n_info == True and nutrition is None:
             new_nutrition = NutritionalInfo(recipe_id=recipe.id, user_id=current_user.id, calories=form.n_calories.data, carbs=form.n_carbs.data,
                 protein=form.n_protein.data, fat=form.n_fat.data, sugar=form.n_sugar.data, cholesterol=form.n_cholesterol.data, 
                 sodium=form.n_sodium.data, fiber=form.n_fiber.data)

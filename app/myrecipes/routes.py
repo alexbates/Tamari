@@ -651,4 +651,4 @@ def editRecipe(hexid):
         db.session.commit()
         flash('The recipe has been updated.')
         return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
-    return render_template('edit-recipe.html', title='Edit Recipe', form=form, recipe=recipe, choices=choices)
+    return render_template('edit-recipe.html', title='Edit Recipe', form=form, recipe=recipe, nutrition=nutrition, choices=choices)

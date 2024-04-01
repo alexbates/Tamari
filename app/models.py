@@ -66,6 +66,19 @@ class Recipe(db.Model):
     favorite = db.Column(db.Integer)
     public = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    
+class NutritionalInfo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    calories = db.Column(db.Integer)
+    carbs = db.Column(db.Integer)
+    protein = db.Column(db.Integer)
+    fat = db.Column(db.Integer)
+    sugar = db.Column(db.Integer)
+    cholesterol = db.Column(db.Integer)
+    sodium = db.Column(db.Integer)
+    fiber = db.Column(db.Integer)
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)

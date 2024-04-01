@@ -69,6 +69,56 @@
 			{% if recipe.servings %}
 			<p>{{ recipe.servings }} Servings</p>
 			{% endif %}
+			{% if nutrition %}
+			<table>
+				<tr>
+				  	<th>Nutrition (1 serv.)</th>
+				  	<th>Amount</th>
+				  	<th class="t-col-4">Nutrition (1 serv.)</th>
+				  	<th class="t-col-4">Amount</th>
+				</tr>
+				<tr>
+				  	<td>Calories</td>
+				  	<td>{% if nutrition.calories %}{{ nutrition.calories }} kcal{% else %}–{% endif %}</td>
+				  	<td class="t-col-4">Sugar</td>
+					<td class="t-col-4">{% if nutrition.sugar %}{{ nutrition.sugar }} g{% else %}–{% endif %}</td>
+				</tr>
+				<tr>
+				  	<td>Carbs</td>
+				  	<td>{% if nutrition.carbs %}{{ nutrition.carbs }} g{% else %}–{% endif %}</td>
+				  	<td class="t-col-4">Cholesterol</td>
+					<td class="t-col-4">{% if nutrition.cholesterol %}{{ nutrition.cholesterol }} mg{% else %}–{% endif %}</td>
+				</tr>
+				<tr>
+				  	<td>Protein</td>
+				  	<td>{% if nutrition.protein %}{{ nutrition.protein }} g{% else %}–{% endif %}</td>
+				  	<td class="t-col-4">Sodium</td>
+					<td class="t-col-4">{% if nutrition.sodium %}{{ nutrition.sodium }} mg{% else %}–{% endif %}</td>
+				</tr>
+				<tr>
+					<td>Fat</td>
+					<td>{% if nutrition.fat %}{{ nutrition.fat }} g{% else %}–{% endif %}</td>
+					<td class="t-col-4">Fiber</td>
+					<td class="t-col-4">{% if nutrition.fiber %}{{ nutrition.fiber }} g{% else %}–{% endif %}</td>
+				</tr>
+				<tr class="t-col-2">
+					<td>Sugar</td>
+				  	<td>{% if nutrition.sugar %}{{ nutrition.sugar }} g{% else %}–{% endif %}</td>
+			  	</tr>
+			  	<tr class="t-col-2">
+					<td>Cholesterol</td>
+				  	<td>{% if nutrition.cholesterol %}{{ nutrition.cholesterol }} mg{% else %}–{% endif %}</td>
+			  	</tr>
+			  	<tr class="t-col-2">
+					<td>Sodium</td>
+				  	<td>{% if nutrition.sodium %}{{ nutrition.sodium }} mg{% else %}–{% endif %}</td>
+			  	</tr>
+			  	<tr class="t-col-2">
+				  	<td>Fiber</td>
+				  	<td>{% if nutrition.fiber %}{{ nutrition.fiber }} g{% else %}–{% endif %}</td>
+			  	</tr>
+			</table>
+			{% endif %}
 			<p>
 				{% if recipe.prep_time %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ recipe.prep_time }} min</span>{% endif %}
 				{% if recipe.cook_time %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ recipe.cook_time }} min</span>{% endif %}

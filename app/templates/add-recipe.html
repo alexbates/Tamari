@@ -91,6 +91,68 @@
 					{% endfor %}
 				</div>
 			</div>
+			<input type="checkbox" id="nutrition_checkbox" name="n_checkbox" onchange="toggleNutrition('a')">
+			<label class="togglelabel" for="nutrition_checkbox">Add Nutrition Info</label>
+			<div id="nutrition">
+				<div class="form-group4">
+					<div>
+						<label class="control-label" for="n_calories">Calories (kcal)</label><br>
+						{{ form.n_calories(class="form-control fc1", placeholder="393") }}
+						{% for error in form.n_calories.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_carbs">Carbs (g)</label><br>
+						{{ form.n_carbs(class="form-control fc1", placeholder="46") }}
+						{% for error in form.n_carbs.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_protein">Protein (g)</label><br>
+						{{ form.n_protein(class="form-control fc1", placeholder="8") }}
+						{% for error in form.n_protein.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_fat">Fat (g)</label><br>
+						{{ form.n_fat(class="form-control fc1", placeholder="17") }}
+						{% for error in form.n_fat.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_sugar">Sugar (g)</label><br>
+						{{ form.n_sugar(class="form-control fc1", placeholder="2") }}
+						{% for error in form.n_sugar.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_cholesterol">Cholesterol (mg)</label><br>
+						{{ form.n_cholesterol(class="form-control fc1", placeholder="7") }}
+						{% for error in form.n_cholesterol.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_sodium">Sodium (mg)</label><br>
+						{{ form.n_sodium(class="form-control fc1", placeholder="122") }}
+						{% for error in form.n_sodium.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+					<div>
+						<label class="control-label" for="n_fiber">Fiber (g)</label><br>
+						{{ form.n_fiber(class="form-control fc1", placeholder="1") }}
+						{% for error in form.n_fiber.errors %}
+						<span class="errorrequired">{{ error }}</span>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
 			<div class="form-group2">
 				<div>
 					<label class="control-label" for="ingredients">Ingredients</label><br>

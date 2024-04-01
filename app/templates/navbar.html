@@ -109,6 +109,26 @@
     		header.style.backgroundImage = "url('"+header.dataset.bgimage+"')";
   		});
 	}
+	
+	// Add and Edit Recipe hidden div
+	function toggleNutrition(check) {
+		// Find nutrition_checkbox element
+    	var checkbox = document.getElementById("nutrition_checkbox");
+		// Set checkbox if passed argument is true or false
+		if (check === true) {checkbox.checked = true;}
+		if (check === false) {checkbox.checked = false;}
+		// Find togglelabel and nutrition div
+		var label = document.querySelector(".togglelabel");
+    	var div = document.getElementById("nutrition");
+		// Set nutrition div display and label text
+    	if (checkbox.checked) {
+			div.style.display = "block";
+			label.innerText = "Delete Nutrition Info";
+    	} else {
+        	div.style.display = "none";
+			label.innerText = "Add Nutrition Info";
+    	}
+	}
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}

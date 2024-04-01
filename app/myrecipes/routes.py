@@ -3,7 +3,7 @@ from app import app, db
 from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
-from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe
+from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe, NutritionalInfo
 from werkzeug.urls import url_parse
 from datetime import datetime
 from PIL import Image
@@ -154,6 +154,10 @@ def makePrivate(hexid):
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
 def recipeDetail(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    if recipe is not None:
+        nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+    else:
+        nutrition = None
     form = AddToListForm()
     form2 = AddToMealPlannerForm(prefix='a')
     # Create 2D array that contains compact date and full date for Meal Planner scheduling
@@ -274,7 +278,7 @@ def recipeDetail(hexid):
             else:
                 flash('Error: this recipe is already scheduled for the selected date.')
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, ingredients=ingredients,
-        instructions=instructions, form=form, form2=form2, month=month) 
+        instructions=instructions, form=form, form2=form2, month=month, nutrition=nutrition) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required
@@ -496,8 +500,25 @@ def addRecipe():
             recipe = Recipe(hex_id=hex_string, title=form.recipe_name.data, category=form.category.data, photo=rand_default,
                 description=form.description.data, url=form.url.data, servings=form.servings.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
                 total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, favorite=0, public=0, user_id=current_user.id)
+        # Add recipe to database
         db.session.add(recipe)
         db.session.commit()
+        # Get value of Nutrition Checkbox
+        n_checkbox_value = request.form['n_checkbox']
+        # Check whether there is Nutritional Info
+        n_info = False
+        if request.form['n_calories'] or request.form['n_carbs'] or request.form['n_protein'] or request.form['n_fat']:
+            n_info = True
+        if request.form['n_sugar'] or request.form['n_cholesterol'] or request.form['n_sodium'] or request.form['n_fiber']:
+            n_info = True
+        # If checkbox is checked and Nutritional Info provided create NutritionalInfo record in databse
+        if n_checkbox_value == 'on' and n_info == True:
+            curr_recipe = Recipe.query.filter_by(hex_id=hex_string).first()
+            nutrition = NutritionalInfo(recipe_id=curr_recipe.id, user_id=current_user.id, calories=form.n_calories.data, carbs=form.n_carbs.data,
+                protein=form.n_protein.data, fat=form.n_fat.data, sugar=form.n_sugar.data, cholesterol=form.n_cholesterol.data, 
+                sodium=form.n_sodium.data, fiber=form.n_fiber.data)
+            db.session.add(nutrition)
+            db.session.commit()
         flash('The recipe has been added.')
         return redirect(url_for('myrecipes.addRecipe'))
     return render_template('add-recipe.html', title='Add a New Recipe', form=form, choices=choices)

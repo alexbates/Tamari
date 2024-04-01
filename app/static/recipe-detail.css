@@ -21,6 +21,9 @@
 	--color-btn-submit: #000000;
 	--color-block1: #ffffff;
 	--color-category-bg: #111111;
+	--color-table-border: #111111;
+	--color-table-even: #111111;
+	--color-table-odd: #1c1c1c;
 	--color-urla: #cfcfcf;
 	--color-btn-default: #ffffff;
 	--color-inginner-bg: #111111;
@@ -43,6 +46,9 @@
 	--color-btn-submit: #000000;
 	--color-block1: #000000;
 	--color-category-bg: #efefef;
+	--color-table-border: #efefef;
+	--color-table-even: #efefef;
+	--color-table-odd: #e3e3e3;
 	--color-urla: #303030;
 	--color-btn-default: #000000;
 	--color-inginner-bg: #efefef;
@@ -65,6 +71,9 @@
 	--color-btn-submit: #000000;
 	--color-block1: #ffffff;
 	--color-category-bg: #111111;
+	--color-table-border: #111111;
+	--color-table-even: #111111;
+	--color-table-odd: #1c1c1c;
 	--color-urla: #cfcfcf;
 	--color-btn-default: #ffffff;
 	--color-inginner-bg: #111111;
@@ -246,6 +255,22 @@
 	width: 70%;
 }
 .timeouter {padding-right: 20px;}
+table { 
+	border-collapse: collapse; 
+	table-layout: fixed;
+	margin-bottom: 16px;
+	width: 100%;
+}
+.t-col-4 {display: table-cell;}
+.t-col-2 {display: none;}
+th, td {border: 1px solid var(--color-table-border); padding: 3px;}
+th {font-family: Inter-Medium; text-align: left;}
+tr:nth-child(even) {
+	background-color: var(--color-table-even);
+}
+tr:nth-child(odd) {
+	background-color: var(--color-table-odd);
+}
 .urla:hover {color: var(--color-urla); text-decoration: none;}
 .urla:active {color: var(--color-urla); text-decoration: none;}
 .btncontainer {margin-top: 12px;}
@@ -379,7 +404,13 @@
 	#instructions {padding-right: 10px; width: calc(50% - 10px);}
 	.recipe-error {padding-left: 10px; padding-right: 10px;}
 }
+@media screen and (max-width: 830px) {
+	.t-col-4 {display: none;}
+	.t-col-2 {display: table-row;}
+}
 @media screen and (max-width: 700px) { 
+	.t-col-4 {display: table-cell;}
+	.t-col-2 {display: none;}
 	#r-detail {float: none; padding-right: 10px; width: calc(100% - 20px);}
 	#r-detail h2 {font-size: 24px;}
 	.mobile-image {display: inline-block;}
@@ -398,5 +429,7 @@
 	}
 }
 @media screen and (max-width: 500px) { 
+	.t-col-4 {display: none;}
+	.t-col-2 {display: table-row;}
 	.mobile-image {width: 100%;}
 }

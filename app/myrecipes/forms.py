@@ -22,8 +22,16 @@ class AddRecipeForm(FlaskForm):
     prep_time = IntegerField(validators=[Optional()])
     cook_time = IntegerField(validators=[Optional()])
     total_time = IntegerField(validators=[Optional()])
+    n_calories = IntegerField(validators=[Optional()])
+    n_carbs = IntegerField(validators=[Optional()])
+    n_protein = IntegerField(validators=[Optional()])
+    n_fat = IntegerField(validators=[Optional()])
+    n_sugar = IntegerField(validators=[Optional()])
+    n_cholesterol = IntegerField(validators=[Optional()])
+    n_sodium = IntegerField(validators=[Optional()])
+    n_fiber = IntegerField(validators=[Optional()])
     ingredients = TextAreaField(validators=[DataRequired(),Length(1,2200)])
-    instructions = TextAreaField(validators=[DataRequired(),Length(1,4400)])
+    instructions = TextAreaField(validators=[DataRequired(),Length(1,6600)])
     submit = SubmitField('Submit')
 
 class EditRecipeForm(FlaskForm):
@@ -35,9 +43,16 @@ class EditRecipeForm(FlaskForm):
     prep_time = IntegerField(validators=[Optional()])
     cook_time = IntegerField(validators=[Optional()])
     total_time = IntegerField(validators=[Optional()])
-    servings
+    n_calories = IntegerField(validators=[Optional()])
+    n_carbs = IntegerField(validators=[Optional()])
+    n_protein = IntegerField(validators=[Optional()])
+    n_fat = IntegerField(validators=[Optional()])
+    n_sugar = IntegerField(validators=[Optional()])
+    n_cholesterol = IntegerField(validators=[Optional()])
+    n_sodium = IntegerField(validators=[Optional()])
+    n_fiber = IntegerField(validators=[Optional()])
     ingredients = TextAreaField(validators=[DataRequired(),Length(1,2200)])
-    instructions = TextAreaField(validators=[DataRequired(),Length(1,4400)])
+    instructions = TextAreaField(validators=[DataRequired(),Length(1,6600)])
     submit = SubmitField('Save')
 
 class AddToListForm(FlaskForm):

@@ -401,6 +401,7 @@ def removeCategory(catid):
 @bp.route('/remove-recipe/<hexid>')
 @login_required
 def removeRecipe(hexid):
+    # Query the recipe by hexid
     delrecipe = Recipe.query.filter_by(hex_id=hexid).first()
     if delrecipe is None or delrecipe.user_id != current_user.id:
         flash('Error: recipe does not exist or you do not have permission to delete it.')
@@ -412,7 +413,12 @@ def removeRecipe(hexid):
     fullpath = app.config['UPLOAD_FOLDER'] + '/' + delrecipe.photo
     if delrecipe.photo not in defaults:
         os.remove(fullpath)
+    # Query NutritionalInfo by id of recipe that is requested for deletion
+    delnutrition = NutritionalInfo.query.filterby(recipe_id=delrecipe.id).first()
     db.session.delete(delrecipe)
+    # Delete NutritionalInfo if it exists for the selected recipe
+    if delnutrition is not None:
+        db.session.delete(delnutrition)
     db.session.commit()
     flash('Recipe has been removed.')
     return redirect(url_for('myrecipes.allRecipes'))

@@ -25,6 +25,56 @@
 			{% if description %}
 			<p>{{ description }}</p>
 			{% endif %}
+			{% if nutrition %}
+			<table>
+				<tr>
+				  	<th>Nutrition (1 serv.)</th>
+				  	<th>Amount</th>
+				  	<th class="t-col-4">Nutrition (1 serv.)</th>
+				  	<th class="t-col-4">Amount</th>
+				</tr>
+				<tr>
+				  	<td>Calories</td>
+				  	<td>{% if calories %}{{ calories }} kcal{% else %}–{% endif %}</td>
+				  	<td class="t-col-4">Sugar</td>
+					<td class="t-col-4">{% if sugar %}{{ sugar }} g{% else %}–{% endif %}</td>
+				</tr>
+				<tr>
+				  	<td>Carbs</td>
+				  	<td>{% if carbs %}{{ carbs }} g{% else %}–{% endif %}</td>
+				  	<td class="t-col-4">Cholesterol</td>
+					<td class="t-col-4">{% if cholesterol %}{{ cholesterol }} mg{% else %}–{% endif %}</td>
+				</tr>
+				<tr>
+				  	<td>Protein</td>
+				  	<td>{% if protein %}{{ protein }} g{% else %}–{% endif %}</td>
+				  	<td class="t-col-4">Sodium</td>
+					<td class="t-col-4">{% if sodium %}{{ sodium }} mg{% else %}–{% endif %}</td>
+				</tr>
+				<tr>
+					<td>Fat</td>
+					<td>{% if fat %}{{ fat }} g{% else %}–{% endif %}</td>
+					<td class="t-col-4">Fiber</td>
+					<td class="t-col-4">{% if fiber %}{{ fiber }} g{% else %}–{% endif %}</td>
+				</tr>
+				<tr class="t-col-2">
+					<td>Sugar</td>
+				  	<td>{% if sugar %}{{ sugar }} g{% else %}–{% endif %}</td>
+			  	</tr>
+			  	<tr class="t-col-2">
+					<td>Cholesterol</td>
+				  	<td>{% if cholesterol %}{{ cholesterol }} mg{% else %}–{% endif %}</td>
+			  	</tr>
+			  	<tr class="t-col-2">
+					<td>Sodium</td>
+				  	<td>{% if sodium %}{{ sodium }} mg{% else %}–{% endif %}</td>
+			  	</tr>
+			  	<tr class="t-col-2">
+				  	<td>Fiber</td>
+				  	<td>{% if fiber %}{{ fiber }} g{% else %}–{% endif %}</td>
+			  	</tr>
+			</table>
+			{% endif %}
 			<p>
 				{% if preptime %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ preptime }} min</span>{% endif %}
 				{% if cooktime %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ cooktime }} min</span>{% endif %}

@@ -213,6 +213,86 @@ def exploreRecipeDetail(rec_group, recnum):
         photo_1 = soup.find('div',class_='wprm-recipe-image')
         photo_2 = photo_1.find('img')
         photo = photo_2['data-lazy-src']
+        calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
+        calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if calories_2:
+            calories = calories_2.get_text()
+            try:
+                calories = int(calories)
+            except ValueError:
+                calories = None
+        else:
+            calories = None
+        carbs_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-carbohydrates')
+        carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if carbs_2:
+            carbs = carbs_2.get_text()
+            try:
+                carbs = int(carbs)
+            except ValueError:
+                carbs = None
+        else:
+            carbs = None
+        protein_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-protein')
+        protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if protein_2:
+            protein = protein_2.get_text()
+            try:
+                protein = int(protein)
+            except ValueError:
+                protein = None
+        else:
+            protein = None
+        fat_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fat')
+        fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if fat_2:
+            fat = fat_2.get_text()
+            try:
+                fat = int(fat)
+            except ValueError:
+                fat = None
+        else:
+            fat = None
+        sugar_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sugar')
+        sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if sugar_2:
+            sugar = sugar_2.get_text()
+            try:
+                sugar = int(sugar)
+            except ValueError:
+                sugar = None
+        else:
+            sugar = None
+        cholesterol_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-cholesterol')
+        cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if cholesterol_2:
+            cholesterol = cholesterol_2.get_text()
+            try:
+                cholesterol = int(cholesterol)
+            except ValueError:
+                cholesterol = None
+        else:
+            cholesterol = None
+        sodium_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sodium')
+        sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if sodium_2:
+            sodium = sodium_2.get_text()
+            try:
+                sodium = int(sodium)
+            except ValueError:
+                sodium = None
+        else:
+            sodium = None
+        fiber_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fiber')
+        fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if fiber_2:
+            fiber = fiber_2.get_text()
+            try:
+                fiber = int(fiber)
+            except ValueError:
+                fiber = None
+        else:
+            fiber = None
         preptime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-prep_time wprm-recipe-prep_time-minutes')
         preptime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-prep_time wprm-recipe-prep_time-hours')
         if preptime_m or preptime_h:
@@ -296,6 +376,86 @@ def exploreRecipeDetail(rec_group, recnum):
             photo = photo_1['data-src']
         else:
             photo = ''
+        calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
+        calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if calories_2:
+            calories = calories_2.get_text()
+            try:
+                calories = int(calories)
+            except ValueError:
+                calories = None
+        else:
+            calories = None
+        carbs_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-carbohydrates')
+        carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if carbs_2:
+            carbs = carbs_2.get_text()
+            try:
+                carbs = int(carbs)
+            except ValueError:
+                carbs = None
+        else:
+            carbs = None
+        protein_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-protein')
+        protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if protein_2:
+            protein = protein_2.get_text()
+            try:
+                protein = int(protein)
+            except ValueError:
+                protein = None
+        else:
+            protein = None
+        fat_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fat')
+        fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if fat_2:
+            fat = fat_2.get_text()
+            try:
+                fat = int(fat)
+            except ValueError:
+                fat = None
+        else:
+            fat = None
+        sugar_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sugar')
+        sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if sugar_2:
+            sugar = sugar_2.get_text()
+            try:
+                sugar = int(sugar)
+            except ValueError:
+                sugar = None
+        else:
+            sugar = None
+        cholesterol_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-cholesterol')
+        cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if cholesterol_2:
+            cholesterol = cholesterol_2.get_text()
+            try:
+                cholesterol = int(cholesterol)
+            except ValueError:
+                cholesterol = None
+        else:
+            cholesterol = None
+        sodium_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sodium')
+        sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if sodium_2:
+            sodium = sodium_2.get_text()
+            try:
+                sodium = int(sodium)
+            except ValueError:
+                sodium = None
+        else:
+            sodium = None
+        fiber_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fiber')
+        fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        if fiber_2:
+            fiber = fiber_2.get_text()
+            try:
+                fiber = int(fiber)
+            except ValueError:
+                fiber = None
+        else:
+            fiber = None
         preptime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-prep_time wprm-recipe-prep_time-minutes')
         preptime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-prep_time wprm-recipe-prep_time-hours')
         if preptime_m or preptime_h:
@@ -380,6 +540,14 @@ def exploreRecipeDetail(rec_group, recnum):
             photo = photo_2['src']
         else:
             photo = ''
+        calories = None
+        carbs = None
+        protein = None
+        fat = None
+        sugar = None
+        cholesterol = None
+        sodium = None
+        fiber = None
         preptime_1 = soup.find('span', string='prep time')
         if preptime_1:
             preptime_2 = preptime_1.find_next_siblings('span')
@@ -457,8 +625,20 @@ def exploreRecipeDetail(rec_group, recnum):
         totaltime = ''
         description = ''
         photo = ''
+        calories = None
+        carbs = None
+        protein = None
+        fat = None
+        sugar = None
+        cholesterol = None
+        sodium = None
+        fiber = None
         ingredients = []
         instructions = []
+    if calories or carbs or protein or fat or sugar or cholesterol or sodium or fiber:
+        nutrition = True
+    else:
+        nutrition = False
     form = EmptyForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=current_user.email).first_or_404()
@@ -520,15 +700,15 @@ def exploreRecipeDetail(rec_group, recnum):
                 try:
                     preptime = int(preptime)
                 except:
-                    preptime = ''
+                    preptime = None
                 try:
                     cooktime = int(cooktime)
                 except:
-                    cooktime = ''
+                    cooktime = None
                 try:
                     totaltime = int(totaltime)
                 except:
-                    totaltime = ''
+                    totaltime = None
                 i_description = description[:500]
                 i_ingredients = ''
                 for i in ingredients:
@@ -545,10 +725,17 @@ def exploreRecipeDetail(rec_group, recnum):
                     favorite=0, public=0, user_id=current_user.id)
                 db.session.add(recipe)
                 db.session.commit()
+                if calories or carbs or protein or fat or sugar or cholesterol or sodium or fiber:
+                    curr_recipe = Recipe.query.filter_by(hex_id=hex_string).first()
+                    new_nutrition = NutritionalInfo(recipe_id=curr_recipe.id, user_id=current_user.id, calories=calories, 
+                        carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber)
+                    db.session.add(new_nutrition)
+                    db.session.commit()
                 flash('The recipe has been saved to My Recipes.')
             else:
                 flash('The recipe is missing ingredients or instructions and cannot be imported.')
         else:
             flash('Error: This recipe is already saved in My Recipes.')
     return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title, preptime=preptime,
-        cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients, instructions=instructions, form=form)
+        cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients, instructions=instructions, form=form,
+        calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition)

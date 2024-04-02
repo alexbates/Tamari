@@ -414,6 +414,8 @@ def removeRecipe(hexid):
     if delrecipe.photo not in defaults:
         try:
             os.remove(fullpath)
+        except:
+            pass
     # Query NutritionalInfo by id of recipe that is requested for deletion
     delnutrition = NutritionalInfo.query.filter_by(recipe_id=delrecipe.id).first()
     db.session.delete(delrecipe)

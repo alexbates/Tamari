@@ -412,7 +412,8 @@ def removeRecipe(hexid):
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
     fullpath = app.config['UPLOAD_FOLDER'] + '/' + delrecipe.photo
     if delrecipe.photo not in defaults:
-        os.remove(fullpath)
+        try:
+            os.remove(fullpath)
     # Query NutritionalInfo by id of recipe that is requested for deletion
     delnutrition = NutritionalInfo.query.filter_by(recipe_id=delrecipe.id).first()
     db.session.delete(delrecipe)

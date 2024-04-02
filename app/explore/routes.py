@@ -3,7 +3,7 @@ from app import app, db
 from app.explore.forms import ExploreSearchForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
-from app.models import User, Recipe
+from app.models import User, Recipe, NutritionalInfo
 from werkzeug.urls import url_parse
 from PIL import Image
 from urllib.parse import urlparse

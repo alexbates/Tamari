@@ -17,7 +17,7 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db, render_as_batch=True)
 login = LoginManager(app)
-login.login_view = 'login'
+login.login_view = 'account.login'
 mail = Mail(app)
 moment = Moment(app)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024

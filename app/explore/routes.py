@@ -214,7 +214,10 @@ def exploreRecipeDetail(rec_group, recnum):
         photo_2 = photo_1.find('img')
         photo = photo_2['data-lazy-src']
         calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
-        calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            calories_2 = None
         if calories_2:
             calories = calories_2.get_text()
             try:
@@ -224,7 +227,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             calories = None
         carbs_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-carbohydrates')
-        carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            carbs_2 = None
         if carbs_2:
             carbs = carbs_2.get_text()
             try:
@@ -234,7 +240,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             carbs = None
         protein_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-protein')
-        protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            protein_2 = None
         if protein_2:
             protein = protein_2.get_text()
             try:
@@ -244,7 +253,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             protein = None
         fat_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fat')
-        fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            fat_2 = None
         if fat_2:
             fat = fat_2.get_text()
             try:
@@ -254,7 +266,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             fat = None
         sugar_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sugar')
-        sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            sugar_2 = None
         if sugar_2:
             sugar = sugar_2.get_text()
             try:
@@ -264,7 +279,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             sugar = None
         cholesterol_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-cholesterol')
-        cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            cholesterol_2 = None
         if cholesterol_2:
             cholesterol = cholesterol_2.get_text()
             try:
@@ -274,7 +292,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             cholesterol = None
         sodium_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sodium')
-        sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            sodium_2 = None
         if sodium_2:
             sodium = sodium_2.get_text()
             try:
@@ -284,7 +305,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             sodium = None
         fiber_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fiber')
-        fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            fiber_2 = None
         if fiber_2:
             fiber = fiber_2.get_text()
             try:
@@ -377,7 +401,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             photo = ''
         calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
-        calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            calories_2 = None
         if calories_2:
             calories = calories_2.get_text()
             try:
@@ -387,7 +414,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             calories = None
         carbs_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-carbohydrates')
-        carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            carbs_2 = None
         if carbs_2:
             carbs = carbs_2.get_text()
             try:
@@ -397,7 +427,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             carbs = None
         protein_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-protein')
-        protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            protein_2 = None
         if protein_2:
             protein = protein_2.get_text()
             try:
@@ -407,7 +440,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             protein = None
         fat_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fat')
-        fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            fat_2 = None
         if fat_2:
             fat = fat_2.get_text()
             try:
@@ -417,7 +453,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             fat = None
         sugar_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sugar')
-        sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            sugar_2 = None
         if sugar_2:
             sugar = sugar_2.get_text()
             try:
@@ -427,7 +466,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             sugar = None
         cholesterol_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-cholesterol')
-        cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            cholesterol_2 = None
         if cholesterol_2:
             cholesterol = cholesterol_2.get_text()
             try:
@@ -437,7 +479,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             cholesterol = None
         sodium_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sodium')
-        sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            sodium_2 = None
         if sodium_2:
             sodium = sodium_2.get_text()
             try:
@@ -447,7 +492,10 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             sodium = None
         fiber_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fiber')
-        fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        try:
+            fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
+        except:
+            fiber_2 = None
         if fiber_2:
             fiber = fiber_2.get_text()
             try:

@@ -214,7 +214,7 @@ def exploreRecipeDetail(rec_group, recnum):
         photo_2 = photo_1.find('img')
         photo = photo_2['data-lazy-src']
         # Assign Servings to integer variable if it is listed on page
-        servings_1 = soup.find('span',class_='wprm-recipe-servings wprm-recipe-details wprm-recipe-servings-adjustable-tooltip')
+        servings_1 = soup.find('span',class_='wprm-recipe-servings-adjustable-tooltip')
         if servings_1:
             servings = servings_1.get_text()
             try:

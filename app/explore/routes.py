@@ -213,6 +213,17 @@ def exploreRecipeDetail(rec_group, recnum):
         photo_1 = soup.find('div',class_='wprm-recipe-image')
         photo_2 = photo_1.find('img')
         photo = photo_2['data-lazy-src']
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('span',class_='wprm-recipe-servings wprm-recipe-details wprm-recipe-servings-adjustable-tooltip')
+        if servings_1:
+            servings = servings_1.get_text()
+            try:
+                servings = int(servings)
+            except ValueError:
+                servings = None
+        else:
+            servings = None
+        # Assign Nutrition Facts to integer variables if listed on page
         calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
         try:
             calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
@@ -400,6 +411,21 @@ def exploreRecipeDetail(rec_group, recnum):
             photo = photo_1['data-src']
         else:
             photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('span',class_='wprm-recipe-servings-with-unit')
+        try:
+            servings_2 = servings_1.find('span',class_='wprm-recipe-servings')
+        except:
+            servings_2 = None
+        if servings_2:
+            servings = servings_2.get_text()
+            try:
+                servings = int(servings)
+            except ValueError:
+                servings = None
+        else:
+            servings = None
+        # Assign Nutrition Facts to integer variables if listed on page
         calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
         try:
             calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
@@ -588,6 +614,19 @@ def exploreRecipeDetail(rec_group, recnum):
             photo = photo_2['src']
         else:
             photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('span', class_='small text-uppercase', string='yield')
+        if servings_1:
+            servings_2 = servings_1.find_next_siblings('span')
+            servings_3 = servings_2.get_text()
+            servings = servings_3.replace(' serving(s)', '').replace('serving', '').strip()
+            try:
+                servings = int(servings)
+            except ValueError:
+                servings = None
+        else:
+            servings = None
+        # This site does not list Nutrition Facts so assign None to each variable
         calories = None
         carbs = None
         protein = None
@@ -673,6 +712,7 @@ def exploreRecipeDetail(rec_group, recnum):
         totaltime = ''
         description = ''
         photo = ''
+        servings = None
         calories = None
         carbs = None
         protein = None
@@ -769,8 +809,8 @@ def exploreRecipeDetail(rec_group, recnum):
                 i_instructions = i_instructions.strip()
                 i_instructions = i_instructions[:2200]
                 recipe = Recipe(hex_id=hex_string, title=rec_title, category='Miscellaneous', photo=i_photo, description=i_description, url=rec_url,
-                    prep_time=preptime, cook_time=cooktime, total_time=totaltime, ingredients=i_ingredients, instructions=i_instructions,
-                    favorite=0, public=0, user_id=current_user.id)
+                    servings=servings, prep_time=preptime, cook_time=cooktime, total_time=totaltime, ingredients=i_ingredients, 
+                    instructions=i_instructions, favorite=0, public=0, user_id=current_user.id)
                 db.session.add(recipe)
                 db.session.commit()
                 if calories or carbs or protein or fat or sugar or cholesterol or sodium or fiber:
@@ -786,4 +826,4 @@ def exploreRecipeDetail(rec_group, recnum):
             flash('Error: This recipe is already saved in My Recipes.')
     return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title, preptime=preptime,
         cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients, instructions=instructions, form=form,
-        calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition)
+        calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings)

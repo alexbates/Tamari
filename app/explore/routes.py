@@ -618,7 +618,7 @@ def exploreRecipeDetail(rec_group, recnum):
         servings_1 = soup.find('span', class_='small text-uppercase', string='yield')
         if servings_1:
             servings_2 = servings_1.find_next_siblings('span')
-            servings_3 = servings_2.get_text()
+            servings_3 = servings_2[0].text
             servings = servings_3.replace(' serving(s)', '').replace('serving', '').strip()
             try:
                 servings = int(servings)

@@ -513,7 +513,10 @@ def addRecipe():
         db.session.add(recipe)
         db.session.commit()
         # Get value of Nutrition Checkbox
-        n_checkbox_value = request.form['n_checkbox']
+        if 'n_checkbox' in request.form:
+            n_checkbox_value = request.form['n_checkbox']
+        else:
+            n_checkbox_value = 'off'
         # Check whether there is Nutritional Info
         n_info = False
         if request.form['n_calories'] or request.form['n_carbs'] or request.form['n_protein'] or request.form['n_fat']:
@@ -621,7 +624,10 @@ def editRecipe(hexid):
                 os.remove(old_path)
             recipe.photo = new_file
         # Get value of Nutrition Checkbox
-        n_checkbox_value = request.form['n_checkbox']
+        if 'n_checkbox' in request.form:
+            n_checkbox_value = request.form['n_checkbox']
+        else:
+            n_checkbox_value = 'off'
         # Check whether there is Nutritional Info
         n_info = False
         if request.form['n_calories'] or request.form['n_carbs'] or request.form['n_protein'] or request.form['n_fat']:

@@ -28,7 +28,7 @@ def validate_image(stream):
 
 @bp.route('/recipe-photos/<path:filename>')
 def recipePhotos(filename):
-    return send_from_directory(app.root_path + '/recipe-photos/', filename)
+    return send_from_directory(app.root_path + '/appdata/recipe-photos/', filename)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/my-recipes/all', methods=['GET', 'POST'])

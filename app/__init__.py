@@ -10,12 +10,12 @@ from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath
 import os
 
-UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'recipe-photos')
+UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'appdata', 'recipe-photos')
 
 app = Flask(__name__)
 app.config.from_object(Config)
 db = SQLAlchemy(app)
-migrate = Migrate(app, db, render_as_batch=True)
+migrate = Migrate(app, db, directory='app/appdata/migrations', render_as_batch=True)
 login = LoginManager(app)
 login.login_view = 'account.login'
 mail = Mail(app)

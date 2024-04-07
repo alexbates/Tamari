@@ -17,13 +17,14 @@ class RegistrationForm(FlaskForm):
         'Repeat Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Register')
 
+    # Automatically called for email field because matches pattern validate_fieldname
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise ValidationError('Please use a different email address.')
 
 class AccountForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('New Password')
     password2 = PasswordField('Confirm Password', validators=[EqualTo('password')])
     submit = SubmitField('Save Changes')
@@ -32,6 +33,7 @@ class AccountForm(FlaskForm):
         super(AccountForm, self).__init__(*args, **kwargs)
         self.original_email = original_email
 
+    # Automatically called for email field because matches pattern validate_fieldname
     def validate_email(self, email):
         if email.data != self.original_email:
             user = User.query.filter_by(email=email.data).first()

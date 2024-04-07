@@ -5,9 +5,9 @@ from wtforms.validators import ValidationError, DataRequired, Optional, Email, E
 from app.models import User
 
 def disallowed_chars(form, field):
-    dis_chars = {'<', '>', '{', '}'}
+    dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
     if any(char in dis_chars for char in field.data):
-        raise ValidationError('Cannot contain <, >, {, or }')
+        raise ValidationError('Cannot contain <, >, {, }, ;, or *')
 
 class DisplaySettingsForm(FlaskForm):
     recipe_size = RadioField('Recipe Size', choices=[(0, 'Large'),(1, 'Small')], default=lambda: current_user.pref_size)

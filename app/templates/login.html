@@ -27,8 +27,12 @@
 			><button class="logregselector" onclick="window.location.href='{{ url_for('account.register') }}';">Register</button>
 			{% with messages = get_flashed_messages() %}
 			{% if messages %}
-			{% for message in messages %}
+			{% for index, message in enumerate(messages) %}
+			{% if index == 0 %}
 			<p id="errorlogin">{{ message }}</p>
+			{% else %}
+			<p style="display: none;">{{ message }}</p>
+			{% endif %}
 			{% endfor %}
 			{% endif %}
 			{% endwith %}

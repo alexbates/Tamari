@@ -8,13 +8,21 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		{% for message in get_flashed_messages() %}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% for index, message in enumerate(messages) %}
+		{% if index == 0 %}
 		{% if 'Error' in message %}
 		<p id="flashed-err">{{ message }}</p>
 		{% else %}
 		<p id="flashed-norm">{{ message }}</p>
 		{% endif %}
+		{% else %}
+		<p style="display: none;">{{ message }}</p>
+		{% endif %}
 		{% endfor %}
+		{% endif %}
+		{% endwith %}
 		<div id="b1left">
 			<div class="b1leftinner">
 				<div{% if query_string is none%} class="list-selected"{% endif %}{% if query_string == 'All' %} class="list-selected"{% endif %}>

@@ -6,7 +6,7 @@ from app.models import User
 
 def disallowed_chars(form, field):
     dis_chars = {'<', '>', '{', '}'}
-    if any(char in disallowed_chars for char in field.data):
+    if any(char in dis_chars for char in field.data):
         raise ValidationError('Cannot contain <, >, {, or }')
 
 class DisplaySettingsForm(FlaskForm):

@@ -22,20 +22,20 @@ Some functionality is disabled and data is deleted every 20 minutes.
 - **Explore.** Browse and search a collection of over 36,000 recipes from three recipe sharing websites (more coming soon!). When you browse a recipe in Explore, Tamari will fetch and parse the relevant data from the URL without requiring you to visit the webpage. Import a recipe into My Recipes with the click of a button.
 - **Make Shopping Lists.** Make a shopping list for each store you shop at. Add all ingredients for a specific recipe to a shopping list with the click of a button. Click an item on a shopping list to mark it as completed.
 - **Plan Meals.** Use the Meal Planner to keep on top of what you plan to cook for the week. The Schedule button can assign a recipe being viewed to a date up to 30 days in advance.
-- **Customize.** Choose to display large photos to show off your recipes to friends, or smaller photos to fit more recipes on the screen. Sort recipes by title or by date added. Select between four account profile pictures. Set an accent color that applies to most buttons and many elements throughout the app. For a Tamari instance, some configuration options can be customized such as recipes per page and dynamic loading of images.
+- **Customize.** Choose to display large photos to show off your recipes to friends, or smaller photos to fit more recipes on the screen. Sort recipes by title or by date added. Use the light or dark theme. Select between four account profile pictures. Set an accent color that applies to most buttons and many elements throughout the app. For a Tamari instance, some configuration options can be customized such as recipes per page and dynamic loading of images.
 - **Access on any Device.** Tamari is designed to function well on any desktop, laptop, tablet, or smartphone.
 
 ## Installing with Docker 🐳
-This creates a 'tamaristorage' volume for persistent storage.
+This creates a 'tamariappdata' volume for persistent storage.
 ```
-docker run -d --restart=always -p 4888:4888 -v tamaristorage:/app --name tamari alexbates/tamari:0.4
+docker run -d --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:0.5
 ```
 Tamari is now running! Go to http://localhost:4888
 
 ### Alternative Command with Mail Settings
 Use this command instead if you wish to enable password reset requests via email. Replace variables with settings for an email account you control.
 ```
-docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamaristorage:/app --name tamari alexbates/tamari:0.4
+docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:0.5
 ```
 
 ## Manual Installation
@@ -88,7 +88,18 @@ sudo systemctl enable tamari.service
 sudo systemctl start tamari.service
 ```
 
-### Access Tamari from behind a reverse proxy
+### Configure Mail Settings (Optional)
+Configure to enable password reset requests via email. If login username is not the same as your email address, you need to configure 'ADMIN' in config.py.
+```
+source venv/bin/activate
+export MAIL_SERVER=mail.example.com
+export MAIL_PORT=587
+export MAIL_USE_TLS=1
+export MAIL_USERNAME=youremail@example.com
+export MAIL_PASSWORD=yourpassword
+```
+
+## Access Tamari from behind a reverse proxy
 Here is a sample Nginx config (/etc/nginx/conf.d/default.conf).
 ```
 server {
@@ -116,26 +127,19 @@ server {
 ```
 This forces SSL, causes Flask url_for to build urls using subdomain instead of localhost, and prevents http resources from being blocked by browsers. An SSL certificate for your domain is required. 
 
-### Configure Mail Settings (Optional)
-Configure to enable password reset requests via email. If login username is not the same as your email address, you need to configure 'ADMIN' in config.py.
-```
-source venv/bin/activate
-export MAIL_SERVER=mail.example.com
-export MAIL_PORT=587
-export MAIL_USE_TLS=1
-export MAIL_USERNAME=youremail@example.com
-export MAIL_PASSWORD=yourpassword
-```
-
 ## Backups
 
-Please make backups of your data. All user data is stored in the following database file and directory.
+Please make backups of your data. As of Version 0.5, all user data is stored in app/appdata. 
 ```
-Tamari/app/app.db
-Tamari/app/recipe-photos
+Tamari/app/appdata/app.db
+Tamari/app/appdata/migrations
+Tamari/app/appdata/recipe-photos
 ```
-For Docker, if using tamaristorage volume, files may be mounted at the following locations.
+With Version 0.4, migrations directory is located at "Tamari/migrations" and recipe-photos is located at "Tamari/app/recipe-photos". app.db is found in either the Tamari or app directory.
+
+For Docker, if using tamariappdata (previously tamaristorage) volume, files may be mounted at the following locations.
 ```
-/var/lib/docker/volumes/tamaristorage/_data/app.db
-/var/lib/docker/volumes/tamaristorage/_data/recipe-photos
+/var/lib/docker/volumes/tamariappdata/_data/app.db
+/var/lib/docker/volumes/tamariappdata/_data/migrations
+/var/lib/docker/volumes/tamariappdata/_data/recipe-photos
 ```

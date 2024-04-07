@@ -48,13 +48,24 @@
 {% endif %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		{% for message in get_flashed_messages() %}
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% set first_message = true %}
+		{% for message in messages %}
+		{% if first_message %}
 		{% if 'Error' in message %}
 		<p id="flashed-err">{{ message }}</p>
+		{% set first_message = false %}
 		{% else %}
 		<p id="flashed-norm">{{ message }}</p>
+		{% set first_message = false %}
+		{% endif %}
+		{% else %}
+		<p style="display: none;">{{ message }}</p>
 		{% endif %}
 		{% endfor %}
+		{% endif %}
+		{% endwith %}
 		{% if recipe %}
 		{% if owner == current_user.id or recipe.public == 1 %}
 		<div id="r-detail">

@@ -46,12 +46,15 @@
 		</div>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
-		{% for index, message in enumerate(messages) %}
-		{% if index == 0 %}
+		{% set first_message = true %}
+		{% for message in messages %}
+		{% if first_message %}
 		{% if 'Error' in message %}
 		<p id="flashed-err">{{ message }}</p>
+		{% set first_message = false %}
 		{% else %}
 		<p id="flashed-norm">{{ message }}</p>
+		{% set first_message = false %}
 		{% endif %}
 		{% else %}
 		<p style="display: none;">{{ message }}</p>

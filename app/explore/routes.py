@@ -101,13 +101,14 @@ def exploreSearch():
     # subset of recipes, recipes for current page
     recipes_page = recipes[i:i+PER_PAGE]
     # rec_first (x) and rec_last (y) are used for "showing x-y of z" in template
-    if len(recipes_page) > 2:
+    if len(recipes_page) > 0:
         # make rec_first the recipe count (5th item of recipe) for first recipe on page
         rec_first = recipes_page[0]
         rec_first = rec_first[4]
         # make rec_last the recipe count (5th item of recipe) for last recipe on page
         rec_last = recipes_page[len(recipes_page)-1]
         rec_last = rec_last[4]
+    # if no recipes on current page, set rec_first and rec_last to 0
     else:
         rec_first = 0
         rec_last = 0

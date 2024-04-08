@@ -15,7 +15,7 @@ def disallowed_chars(form, field):
 def validate_integer(form, field):
     try:
         int(field.data)
-    except ValueError:
+    except:
         raise ValidationError('Must be integer')
 
 class DisplaySettingsForm(FlaskForm):

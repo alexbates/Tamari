@@ -52,8 +52,13 @@ def explore():
 @bp.route('/explore/search')
 @login_required
 def exploreSearch():
+    # the query, example is search?query=garlic+shrimp which translates to "garlic shrimp"
     query_string = request.args.get('query')
+    # subset of all_recipes in which all parts of query string are present in title
+    # it has 5 items per recipe: title, shortened url, full url, all_recipes count, recipes count
     recipes = []
+    # 2D array of all recipes in explore-all-randomized.txt file
+    # it has 4 items per recipe: title, shortened url, full url, all_recipes count
     all_recipes = []
     count = 1
     if query_string:
@@ -68,6 +73,7 @@ def exploreSearch():
             count += 1
         readfile.close()
         query_items = query_string.split(" ")
+        # rec_count is number of recipes in recipes array
         rec_count = 1
         for recipe in all_recipes:
             is_good = True
@@ -76,22 +82,30 @@ def exploreSearch():
                     is_good = False
             if is_good == True:
                 new_rec = recipe
+                # append 5th item (index of 4) to recipes, recipes count
                 new_rec.append(rec_count)
                 recipes.append(new_rec)
                 rec_count += 1
     else:
         filelines = []
     PER_PAGE = app.config['EXPLORE_RECIPES_PER_PAGE']
+    # if page parameter not present in query string, it defaults to 1, also converted to int
     page = request.args.get('page', 1, type=int)
+    # curr_page is used to build urls for next and previous page in explore search template
     if page:
         curr_page = page
     else:
         curr_page = 1
+    # i is the starting index for slicing the recipes list
     i=(page-1)*PER_PAGE
+    # subset of recipes, recipes for current page
     recipes_page = recipes[i:i+PER_PAGE]
-    if len(filelines) > 2:
+    # rec_first (x) and rec_last (y) are used for "showing x-y of z" in template
+    if len(recipes_page) > 2:
+        # make rec_first the recipe count (5th item of recipe) for first recipe on page
         rec_first = recipes_page[0]
         rec_first = rec_first[4]
+        # make rec_last the recipe count (5th item of recipe) for last recipe on page
         rec_last = recipes_page[len(recipes_page)-1]
         rec_last = rec_last[4]
     else:

@@ -140,6 +140,7 @@ function themeElements() {
     const accountGreen = document.getElementById("account-green");
     const accountPurple = document.getElementById("account-purple");
     const accountPink = document.getElementById("account-pink");
+	var informationImages = document.querySelectorAll('img.inf-image');
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
         // If light, switch icons
@@ -165,6 +166,9 @@ function themeElements() {
         if (accountGreen !== null) {accountGreen.src = "/static/account-green-light.png";}
         if (accountPurple !== null) {accountPurple.src = "/static/account-purple-light.png";}
         if (accountPink !== null) {accountPink.src = "/static/account-pink-light.png";}
+		if (informationImages !== null) {
+            informationImages.forEach(function(img) {img.src = "/static/information-light.png";});
+        }
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
@@ -191,5 +195,8 @@ function themeElements() {
         if (accountGreen !== null) {accountGreen.src = "/static/account-green-dark.png";}
         if (accountPurple !== null) {accountPurple.src = "/static/account-purple-dark.png";}
         if (accountPink !== null) {accountPink.src = "/static/account-pink-dark.png";}
+		if (informationImages !== null) {
+            informationImages.forEach(function(img) {img.src = "/static/information-dark.png";});
+        }
     }
 }

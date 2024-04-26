@@ -154,12 +154,6 @@ def makePrivate(hexid):
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
 def recipeDetail(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    if recipe is not None:
-        nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
-        creationtime = recipe.time_created.strftime('%m/%d/%Y')
-    else:
-        nutrition = None
-        creationtime = None
     form = AddToListForm()
     form2 = AddToMealPlannerForm(prefix='a')
     # Create 2D array that contains compact date and full date for Meal Planner scheduling
@@ -198,6 +192,8 @@ def recipeDetail(hexid):
         owner = 0
         ingredients = ''
         instructions = ''
+        nutrition = None
+        creationtime = None
     else:
         recipe_title = recipe.title
         owner = recipe.user_id
@@ -223,6 +219,20 @@ def recipeDetail(hexid):
             item = item.replace('\u2028','')
             item = item.replace('\u2029','')
             instructions.append(item)
+        nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+        # creationtime is the date of recipe creation, used for Information modal
+        creationtime = recipe.time_created.strftime('%m/%d/%Y')
+        # query all meals of the current recipe, including future planned meals
+        all_meals = MealRecipe.query.query.filter_by(recipe_id=recipe.id).all()
+        # create array that will store meal dates, excluding future planned meals
+        meals_prepared = []
+        for meal in all_meals:
+            if meal.date not in month:
+                meals_prepared.append(meal.date)
+        if meals_prepared:
+            meal_count = len(meals_prepared)
+        else:
+            meal_count = None        
     # AddToListForm
     if form.validate_on_submit():
         list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()

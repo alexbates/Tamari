@@ -162,6 +162,8 @@ def recipeDetail(hexid):
     curr_dt = datetime.now()
     timestamp = int(time.mktime(curr_dt.timetuple()))
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    # Create array that is used for checking whether meal is past or future
+    days30 = []
     for d in month:
         date = datetime.fromtimestamp(timestamp)
         intDay = date.weekday()
@@ -174,6 +176,7 @@ def recipeDetail(hexid):
         fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
         d[0] = compactdate
         d[1] = fulldate
+        days30.append(compactdate)
         timestamp += 86400
     # Populate choices for AddToListForm
     choices = []
@@ -227,12 +230,17 @@ def recipeDetail(hexid):
         # create array that will store meal dates, excluding future planned meals
         meals_prepared = []
         for meal in all_meals:
-            if meal.date not in month:
+            if meal.date not in days30:
                 meals_prepared.append(meal.date)
         if meals_prepared:
             meal_count = len(meals_prepared)
+            # Get last element of meals_prepared array
+            last_date = meals_prepared[-1]
+            # Convert date of last prepared meal to preferred format
+            last_prepared = datetime.datetime.strptime(last_date, '%Y-%m-%d').strftime('%m/%d/%Y')
         else:
-            meal_count = None        
+            meal_count = None
+            last_prepared = None
     # AddToListForm
     if form.validate_on_submit():
         list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
@@ -291,7 +299,7 @@ def recipeDetail(hexid):
                 flash('Error: this recipe is already scheduled for the selected date.')
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
         ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
-        nutrition=nutrition, creationtime=creationtime, meal_count=meal_count) 
+        nutrition=nutrition, creationtime=creationtime, meal_count=meal_count, last_prepared=last_prepared) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required

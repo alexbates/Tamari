@@ -81,6 +81,9 @@
 						{% if meal_count %}
 						<p>Times Prepared: {{ meal_count }}</p>
 						{% endif %}
+						{% if last_prepared %}
+				        <p>Last Prepared: {{ last_prepared }}</p>
+				        {% endif %}
 					</div>
 				</div>
 			</div>
@@ -197,6 +200,9 @@
 				<p>Created: {{ creationtime }}</p>
 				{% if meal_count %}
 				<p>Times Prepared: {{ meal_count }}</p>
+				{% endif %}
+				{% if last_prepared %}
+				<p>Last Prepared: {{ last_prepared }}</p>
 				{% endif %}
 			</div>
 		</div>

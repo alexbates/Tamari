@@ -291,7 +291,7 @@ def recipeDetail(hexid):
                 flash('Error: this recipe is already scheduled for the selected date.')
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
         ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
-        nutrition=nutrition, creationtime=creationtime) 
+        nutrition=nutrition, creationtime=creationtime, meal_count=meal_count) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required

@@ -156,8 +156,10 @@ def recipeDetail(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is not None:
         nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+        creationtime = recipe.time_created.strftime('%m/%d/%Y')
     else:
         nutrition = None
+        creationtime = None
     form = AddToListForm()
     form2 = AddToMealPlannerForm(prefix='a')
     # Create 2D array that contains compact date and full date for Meal Planner scheduling
@@ -277,8 +279,9 @@ def recipeDetail(hexid):
                     flash('Error: the selected date in invalid.')
             else:
                 flash('Error: this recipe is already scheduled for the selected date.')
-    return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, ingredients=ingredients,
-        instructions=instructions, form=form, form2=form2, month=month, nutrition=nutrition) 
+    return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
+        ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
+        nutrition=nutrition, creationtime=creationtime) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required

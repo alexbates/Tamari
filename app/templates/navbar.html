@@ -6,12 +6,22 @@
 <script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='jquery-3.7.0.min.js', _external=True) }}"></script>
 <script>
+	// Navbar account dropdown, shown when viewing on desktop
 	function toggleDropdown() {
 		document.getElementById("myDropdown").classList.toggle("showdrop");
-    	}
-    	function closeDropdown() {
+    }
+    function closeDropdown() {
 		document.getElementById("myDropdown").classList.remove("showdrop");
-    	}
+    }
+	// Information "i" popup on recipe detail page, when viewing on desktop
+	function toggleInformation() {
+		document.getElementById("informationDrop").classList.toggle("showinformation");
+	}
+	// Information "i" popup on recipe detail page, when viewing on mobile
+	function toggleInformationMobile() {
+		document.getElementById("informationDropMobile").classList.toggle("showinformation");
+	}
+	// Display Settings in My Recipes
 	function toggleSettings() {
 		document.getElementById("settingsDrop").classList.toggle("showsettings");
 	}

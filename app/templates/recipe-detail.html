@@ -72,7 +72,14 @@
 			<h2>{{ recipe.title }}</h2>
 			<span class="category">{{ recipe.category }}</span>
 			<div class="mobile-image-inner">
-				<div class="mobile-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});"></div>
+				<div class="mobile-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});">
+					<button class="btn-information" onclick="toggleInformationMobile()">
+						<span class="btn-information-icon"><img class="inf-image" src="{{ url_for('static', filename='information.png', _external=True) }}" alt=""></span>
+					</button>
+					<div class="information-content" id="informationDropMobile">
+						<p>Created: {{ creationtime }}</p>
+					</div>
+				</div>
 			</div>
 			{% if recipe.description %}
 			<p>{{ recipe.description }}</p>
@@ -179,7 +186,14 @@
 			</div>
 			{% endif %}
 		</div>
-		<div id="r-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});"></div>
+		<div id="r-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});">
+			<button class="btn-information" id="infbutton" onclick="toggleInformation()">
+				<span class="btn-information-icon"><img class="inf-image" src="{{ url_for('static', filename='information.png', _external=True) }}" alt=""></span>
+			</button>
+			<div class="information-content" id="informationDrop">
+				<p>Created: {{ creationtime }}</p>
+			</div>
+		</div>
 		<div id="ingredients">
 			<h3>Ingredients</h3>
 			<div id="inginner" class="inginner">

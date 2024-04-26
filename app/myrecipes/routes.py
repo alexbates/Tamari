@@ -237,7 +237,7 @@ def recipeDetail(hexid):
             # Get last element of meals_prepared array
             last_date = meals_prepared[-1]
             # Convert date of last prepared meal to preferred format
-            last_prepared = datetime.datetime.strptime(last_date, '%Y-%m-%d').strftime('%m/%d/%Y')
+            last_prepared = datetime.strptime(last_date, '%Y-%m-%d').strftime('%m/%d/%Y')
         else:
             meal_count = None
             last_prepared = None

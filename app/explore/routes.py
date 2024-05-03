@@ -785,7 +785,7 @@ def exploreRecipeDetail(rec_group, recnum):
             description = ''
         # Extract ingredients and instructions
         ingredients = []
-        ingredients_1 = soup.find_all('li',class_='tr-ingredient-checkbox-container')
+        ingredients_1 = soup.find_all('li',attrs={'data-tr-ingredient-checkbox': True})
         if ingredients_1:
             for ingredient in ingredients_1:
                 ingred = ingredient.text

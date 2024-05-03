@@ -721,6 +721,84 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instr_1.text
                 instr = instr.strip()
                 instructions.append(instr)
+    elif "pinchofyum.com" in rec_url:
+        page = requests.get(rec_url)
+        soup = BeautifulSoup(page.text, 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('span',class_='tasty-recipes-yeild')
+        if servings_1:
+            servings_2 = servings_1.find('span', attrs={'data-amount': True})
+            servings = servings_2[0].text
+            try:
+                servings = int(servings)
+            except ValueError:
+                servings = None
+        else:
+            servings = None
+        # This site does lists Nutrition Facts as float (not int) with units in same span
+        # Too difficult to extract, so pass for this site
+        calories = None
+        carbs = None
+        protein = None
+        fat = None
+        sugar = None
+        cholesterol = None
+        sodium = None
+        fiber = None
+        # Extract prep time, cook time, total time
+        preptime_1 = soup.find('span', class_='tasty-recipes-prep-time')
+        if preptime_1:
+            preptime_2 = preptime_1.text
+            # Extract all numbers
+            preptime_3 = re.findall(r'\d+', preptime_2)
+            try:
+                preptime = int(numbers[0])
+            except:
+                preptime = ''
+        else:
+            preptime = ''
+        cooktime_1 = soup.find('span', class_='tasty-recipes-cook-time')
+        if cooktime_1:
+            cooktime_2 = cooktime_1.text
+            # Extract all numbers
+            cooktime_3 = re.findall(r'\d+', cooktime_2)
+            try:
+                cooktime = int(numbers[0])
+            except:
+                cooktime = ''
+        else:
+            cooktime = ''
+        if preptime and cooktime:
+            totaltime = preptime + cooktime
+        else:
+            totaltime = ''
+        # Extract description
+        description_1 = soup.find('meta',attrs={"property": "og:description"})
+        if description_1:
+            description = description_1['content']
+        else:
+            description = ''
+        # Extract ingredients and instructions
+        ingredients = []
+        ingredients_1 = soup.find_all('li',class_='tr-ingredient-checkbox-container')
+        if ingredients_1:
+            for ingredient in ingredients_1:
+                ingred = ingredient.text
+                ingred = ingred.strip()
+                ingredients.append(ingred)
+        instructions = []
+        instructions_1 = soup.find('div',class_='tasty-recipes-instructions')
+        if instructions_1:
+            instructions_2 = instructions_1.find_all('li')
+            for instruction in instructions_2:
+                instr = instruction.text
+                instr = instr.strip()
+                instructions.append(instr)
     else:
         preptime = ''
         cooktime = ''

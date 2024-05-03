@@ -799,6 +799,117 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
+    elif "tasty.co" in rec_url:
+        page = requests.get(rec_url)
+        soup = BeautifulSoup(page.text, 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('p',class_='servings-display')
+        if servings_1:
+            servings = servings_1.text
+            servings = servings.replace('for', '').replace('servings', '').replace('serving', '').replace(' ', '').strip()
+            try:
+                servings = int(servings)
+            except ValueError:
+                servings = None
+        else:
+            servings = None
+        # This site does not list Nutrition Facts so assign None to each variable
+        calories = None
+        carbs = None
+        protein = None
+        fat = None
+        sugar = None
+        cholesterol = None
+        sodium = None
+        fiber = None
+        # Extract prep time, cook time, total time
+        preptime_1 = soup.find('div', class_='recipe-time-container')
+        preptime_2 = preptime_1.find_all('div', class_='recipe-time')
+        if preptime_2:
+            try:
+                preptime_3 = preptime_2[1]
+            except:
+                preptime_3 = None
+            if preptime_3:
+                preptime = preptime_3.find('p', class_='md-block')
+                preptime = preptime.text
+                preptime = re.findall(r'\d+', preptime)
+                try:
+                    preptime = int(preptime)
+                except:
+                    preptime = ''
+            else:
+                preptime = ''
+        else:
+            preptime = ''
+        cooktime_1 = soup.find('div', class_='recipe-time-container')
+        cooktime_2 = cooktime_1.find_all('div', class_='recipe-time')
+        if cooktime_2:
+            try:
+                cooktime_3 = cooktime_2[2]
+            except:
+                cooktime_3 = None
+            if cooktime_3:
+                cooktime = cooktime_3.find('p', class_='md-block')
+                cooktime = cooktime.text
+                cooktime = re.findall(r'\d+', cooktime)
+                try:
+                    cooktime = int(cooktime)
+                except:
+                    cooktime = ''
+            else:
+                cooktime = ''
+        else:
+            cooktime = ''
+        totaltime_1 = soup.find('div', class_='recipe-time-container')
+        totaltime_2 = totaltime_1.find_all('div', class_='recipe-time')
+        if totaltime_2:
+            try:
+                totaltime_3 = totaltime_2[0]
+            except:
+                totaltime_3 = None
+            if cooktime_3:
+                totaltime = totaltime_3.find('p', class_='md-block')
+                totaltime = totaltime.text
+                totaltime = re.findall(r'\d+', totaltime)
+                try:
+                    totaltime = int(totaltime)
+                except:
+                    totaltime = ''
+            else:
+                totaltime = ''
+        else:
+            totaltime = ''
+        # Extract description
+        description_1 = soup.find('meta',attrs={"name": "description"})
+        if description_1:
+            description = description_1['content']
+            description = description[:500]
+            description = description.replace('&#x27;', '')
+        else:
+            description = ''
+        # Extract ingredients and instructions
+        ingredients = []
+        ingredients_1 = soup.find('div',class_='ingredients__section')
+        if ingredients_1:
+            ingredients_2 = ingredients_1.find_all('li',class_='ingredient')
+            for ingredient in ingredients_2:
+                ingred = ingredient.text
+                ingred = ingred.strip()
+                ingredients.append(ingred)
+        instructions = []
+        instructions_1 = soup.find('ol',class_='prep-steps')
+        if instructions_1:
+            instructions_2 = instructions_1.find_all('li')
+            for instruction in instructions_2:
+                instr = instruction.text
+                instr = instr.strip()
+                instructions.append(instr)
     else:
         preptime = ''
         cooktime = ''
@@ -895,7 +1006,7 @@ def exploreRecipeDetail(rec_group, recnum):
                 for i in ingredients:
                     i_ingredients = i_ingredients + i + '\n'
                 i_ingredients = i_ingredients.strip()
-                i_ingredients = i_ingredients[:4400]
+                i_ingredients = i_ingredients[:6600]
                 i_instructions = ''
                 for i in instructions:
                     i_instructions = i_instructions + i + '\n'

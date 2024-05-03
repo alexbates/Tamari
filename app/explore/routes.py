@@ -778,7 +778,7 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             totaltime = ''
         # Extract description
-        description_1 = soup.find('meta',attrs={"property": "og:description"})
+        description_1 = soup.find('meta',attrs={"name": "description"})
         if description_1:
             description = description_1['content']
         else:

@@ -103,11 +103,17 @@ def exploreSearch():
     # rec_first (x) and rec_last (y) are used for "showing x-y of z" in template
     if len(recipes_page) > 0:
         # make rec_first the recipe count (5th item of recipe) for first recipe on page
-        rec_first = recipes_page[0]
-        rec_first = rec_first[4]
+        try:
+            rec_first = recipes_page[0]
+            rec_first = rec_first[4]
+        except:
+            rec_first = 0
         # make rec_last the recipe count (5th item of recipe) for last recipe on page
-        rec_last = recipes_page[len(recipes_page)-1]
-        rec_last = rec_last[4]
+        try:
+            rec_last = recipes_page[len(recipes_page)-1]
+            rec_last = rec_last[4]
+        except:
+            rec_last = 0
     # if no recipes on current page, set rec_first and rec_last to 0
     else:
         rec_first = 0
@@ -168,10 +174,16 @@ def exploreGroup(group):
     i=(page-1)*PER_PAGE
     recipes_page = recipes[i:i+PER_PAGE]
     if len(filelines) > 2:
-        rec_first = recipes_page[0]
-        rec_first = rec_first[3]
-        rec_last = recipes_page[len(recipes_page)-1]
-        rec_last = rec_last[3]
+        try:
+            rec_first = recipes_page[0]
+            rec_first = rec_first[3]
+        except:
+            rec_first = 0
+        try:
+            rec_last = recipes_page[len(recipes_page)-1]
+            rec_last = rec_last[3]
+        except:
+            rec_last = 0
     else:
         rec_first = 0
         rec_last = 0

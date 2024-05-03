@@ -757,7 +757,7 @@ def exploreRecipeDetail(rec_group, recnum):
             # Extract all numbers
             preptime_3 = re.findall(r'\d+', preptime_2)
             try:
-                preptime = int(numbers[0])
+                preptime = int(preptime_3[0])
             except:
                 preptime = ''
         else:
@@ -768,7 +768,7 @@ def exploreRecipeDetail(rec_group, recnum):
             # Extract all numbers
             cooktime_3 = re.findall(r'\d+', cooktime_2)
             try:
-                cooktime = int(numbers[0])
+                cooktime = int(cooktime_3[0])
             except:
                 cooktime = ''
         else:

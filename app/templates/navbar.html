@@ -139,6 +139,21 @@
 			label.innerText = "Add Nutrition Info";
     	}
 	}
+	
+	// Dynamic loading of images on Explore Recipe Detail
+	document.addEventListener("DOMContentLoaded", function() {
+		const mobileImageDiv = document.querySelector('.mobile-image');
+		const imageUrl = mobileImageDiv.dataset.image;
+
+		if (imageUrl) {
+			const img = new Image();
+			img.crossOrigin = 'Anonymous';
+			img.onload = () => {
+				mobileImageDiv.style.backgroundImage = `url(${img.src})`;
+			};
+			img.src = imageUrl;
+		}
+	});
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}

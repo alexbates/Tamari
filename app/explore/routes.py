@@ -1096,6 +1096,36 @@ def exploreRecipeDetail(rec_group, recnum):
         nutrition = True
     else:
         nutrition = False
+    # Load recipe photo server side, compress it, base64 encode it, and assign to "photo_server" variable
+    # This avoids the issue of resource blocking when trying to load images client side (cross-site)
+    if photo:
+        try:
+            image_response = requests.get(photo)
+            image_response.raise_for_status()  # Raise an exception for non-2xx status codes
+            image_data = image_response.content
+
+            # Open the image data with Pillow to detect format
+            image_opened = Image.open(io.BytesIO(image_data))
+
+            # Determine image format
+            image_format = image_opened.format
+
+            # Compress the image
+            compressed_image_buffer = io.BytesIO()
+            image_opened.save(compressed_image_buffer, format=image_format, optimize=True, quality=70)
+            compressed_image_data = compressed_image_buffer.getvalue()
+
+            base64_image = base64.b64encode(compressed_image_data).decode('utf-8')
+            if image_format == 'JPEG':
+                photo_server = f"data:image/jpeg;base64,{base64_image}"
+            elif image_format == 'PNG':
+                photo_server = f"data:image/png;base64,{base64_image}"
+            else:
+                raise ValueError("Unsupported image format")
+        except:
+            photo_server = None
+    else:
+        photo_server = None
     form = EmptyForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=current_user.email).first_or_404()
@@ -1193,6 +1223,7 @@ def exploreRecipeDetail(rec_group, recnum):
                 flash('The recipe is missing ingredients or instructions and cannot be imported.')
         else:
             flash('Error: This recipe is already saved in My Recipes.')
-    return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title, preptime=preptime,
-        cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients, instructions=instructions, form=form,
-        calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings)
+    return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title,
+        preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients,
+        instructions=instructions, form=form, calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar,
+        cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings, photo_server=photo_server)

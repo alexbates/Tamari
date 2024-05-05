@@ -9,6 +9,7 @@ from PIL import Image
 from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
 import secrets, time, random, os, imghdr, requests, re, urllib.request, io, base64
 from app.explore import bp
 
@@ -758,7 +759,15 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instr.strip()
                 instructions.append(instr)
     elif "wellplated.com" in rec_url or "fedandfit.com" in rec_url:
-        page = requests.get(rec_url)
+        headers = {
+            'User-Agent': UserAgent().random,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        page = requests.get(rec_url, headers=headers)
         soup = BeautifulSoup(page.text, 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -938,4 +947,4 @@ def exploreRecipeDetail(rec_group, recnum):
     return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title,
         preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients,
         instructions=instructions, form=form, calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar,
-        cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings, photo_server=photo_server)
+        cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings, photo_server=photo_server, page=page)

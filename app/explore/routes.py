@@ -816,11 +816,24 @@ def exploreRecipeDetail(rec_group, recnum):
         nutrition = True
     else:
         nutrition = False
+    # Populate responsecode variable which is used with Explore Recipe Detail Debug template
+    if page:
+        responsecode = page
+    else:
+        responsecode = None
     # Load recipe photo server side, compress it, base64 encode it, and assign to "photo_server" variable
     # This avoids the issue of resource blocking when trying to load images client side (cross-site)
     if photo:
         try:
-            image_response = requests.get(photo)
+            headers = {
+                'User-Agent': UserAgent().random,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Accept-Encoding': 'gzip, deflate',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+            }
+            image_response = requests.get(photo, headers=headers)
             image_response.raise_for_status()  # Raise an exception for non-2xx status codes
             image_data = image_response.content
 
@@ -947,4 +960,5 @@ def exploreRecipeDetail(rec_group, recnum):
     return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title,
         preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients,
         instructions=instructions, form=form, calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar,
-        cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings, photo_server=photo_server, page=page)
+        cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings, photo_server=photo_server,
+        responsecode=responsecode)

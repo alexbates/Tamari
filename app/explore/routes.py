@@ -194,6 +194,21 @@ def exploreGroup(group):
 
 # Functions for parsing data from WP Recipe Maker Wordpress plugin
 # Used by exploreRecipeDetail route
+def get_wprm_servings(soup):
+    servings_1 = soup.find('span',class_='wprm-recipe-servings-with-unit')
+    try:
+        servings_2 = servings_1.find('span',class_='wprm-recipe-servings')
+    except:
+        servings_2 = None
+    if servings_2:
+        servings = servings_2.get_text()
+        try:
+            servings = int(servings)
+        except ValueError:
+            servings = None
+    else:
+        servings = None
+    return servings
 def get_wprm_calories(soup):
     calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
     try:
@@ -485,199 +500,27 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             photo = ''
         # Assign Servings to integer variable if it is listed on page
-        servings_1 = soup.find('span',class_='wprm-recipe-servings-with-unit')
-        try:
-            servings_2 = servings_1.find('span',class_='wprm-recipe-servings')
-        except:
-            servings_2 = None
-        if servings_2:
-            servings = servings_2.get_text()
-            try:
-                servings = int(servings)
-            except ValueError:
-                servings = None
-        else:
-            servings = None
+        servings = get_wprm_servings(soup)
         # Assign Nutrition Facts to integer variables if listed on page
-        calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
-        try:
-            calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            calories_2 = None
-        if calories_2:
-            calories = calories_2.get_text()
-            try:
-                calories = int(calories)
-            except ValueError:
-                calories = None
-        else:
-            calories = None
-        carbs_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-carbohydrates')
-        try:
-            carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            carbs_2 = None
-        if carbs_2:
-            carbs = carbs_2.get_text()
-            try:
-                carbs = int(carbs)
-            except ValueError:
-                carbs = None
-        else:
-            carbs = None
-        protein_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-protein')
-        try:
-            protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            protein_2 = None
-        if protein_2:
-            protein = protein_2.get_text()
-            try:
-                protein = int(protein)
-            except ValueError:
-                protein = None
-        else:
-            protein = None
-        fat_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fat')
-        try:
-            fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            fat_2 = None
-        if fat_2:
-            fat = fat_2.get_text()
-            try:
-                fat = int(fat)
-            except ValueError:
-                fat = None
-        else:
-            fat = None
-        sugar_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sugar')
-        try:
-            sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            sugar_2 = None
-        if sugar_2:
-            sugar = sugar_2.get_text()
-            try:
-                sugar = int(sugar)
-            except ValueError:
-                sugar = None
-        else:
-            sugar = None
-        cholesterol_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-cholesterol')
-        try:
-            cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            cholesterol_2 = None
-        if cholesterol_2:
-            cholesterol = cholesterol_2.get_text()
-            try:
-                cholesterol = int(cholesterol)
-            except ValueError:
-                cholesterol = None
-        else:
-            cholesterol = None
-        sodium_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sodium')
-        try:
-            sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            sodium_2 = None
-        if sodium_2:
-            sodium = sodium_2.get_text()
-            try:
-                sodium = int(sodium)
-            except ValueError:
-                sodium = None
-        else:
-            sodium = None
-        fiber_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fiber')
-        try:
-            fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            fiber_2 = None
-        if fiber_2:
-            fiber = fiber_2.get_text()
-            try:
-                fiber = int(fiber)
-            except ValueError:
-                fiber = None
-        else:
-            fiber = None
-        preptime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-prep_time wprm-recipe-prep_time-minutes')
-        preptime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-prep_time wprm-recipe-prep_time-hours')
-        if preptime_m or preptime_h:
-            if preptime_m:
-                pt_m = preptime_m.contents[0]
-                pt_m = int(pt_m)
-            else:
-                pt_m = 0
-            if preptime_h:
-                pt_h = preptime_h.contents[0]
-                pt_h = int(pt_h)
-            else:
-                pt_h = 0
-            preptime = pt_m + (pt_h * 60)
-        else:
-            preptime = ''
-        cooktime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-cook_time wprm-recipe-cook_time-minutes')
-        cooktime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-cook_time wprm-recipe-cook_time-hours')
-        if cooktime_m or cooktime_h:
-            if cooktime_m:
-                ct_m = cooktime_m.contents[0]
-                ct_m = int(ct_m)
-            else:
-                ct_m = 0
-            if cooktime_h:
-                ct_h = cooktime_h.contents[0]
-                ct_h = int(ct_h)
-            else:
-                ct_h = 0
-            cooktime = ct_m + (ct_h * 60)
-        else:
-            cooktime = ''
-        totaltime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-total_time wprm-recipe-total_time-minutes')
-        totaltime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-total_time wprm-recipe-total_time-hours')
-        if totaltime_m or totaltime_h:
-            if totaltime_m:
-                tt_m = totaltime_m.contents[0]
-                tt_m = int(tt_m)
-            else:
-                tt_m = 0
-            if totaltime_h:
-                tt_h = totaltime_h.contents[0]
-                tt_h = int(tt_h)
-            else:
-                tt_h = 0
-            totaltime = tt_m + (tt_h * 60)
-        else:
-            totaltime = ''
+        calories = get_wprm_calories(soup)
+        carbs = get_wprm_carbs(soup)
+        protein = get_wprm_protein(soup)
+        fat = get_wprm_fat(soup)
+        sugar = get_wprm_sugar(soup)
+        cholesterol = get_wprm_cholesterol(soup)
+        sodium = get_wprm_sodium(soup)
+        fiber = get_wprm_fiber(soup)
+        # Extract prep time, cook time, total time
+        preptime = get_wprm_preptime(soup)
+        cooktime = get_wprm_cooktime(soup)
+        totaltime = get_wprm_totaltime(soup)
         description_1 = soup.find('meta',attrs={"property": "og:description"})
         if description_1:
             description = description_1['content']
         else:
             description = ''
-        ingredients = []
-        ingredients_1 = soup.find('div',class_='wprm-recipe-ingredients-container')
-        if ingredients_1:
-            ingredients_2 = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
-            for ingredient in ingredients_2:
-                ingred = ingredient.text
-                ingred = ingred.replace("\n"," ")
-                ingred = ingred.replace("▢","")
-                ingred = ingred.strip()
-                ingredients.append(ingred)
-        instructions = []
-        instructions_1 = soup.find('div',class_='wprm-recipe-instructions-container')
-        if instructions_1:
-            instructions_2 = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
-            for group in instructions_2:
-                instructions_h4 = group.find('h4')
-                if instructions_h4:
-                    instructions.append(instructions_h4.contents[0])
-                inst_steps = group.find_all('div',class_='wprm-recipe-instruction-text')
-                for step in inst_steps:
-                    inst_step = step.text
-                    instructions.append(inst_step)
+        ingredients = get_wprm_ingredients(soup)
+        instructions = get_wprm_instructions(soup)
     elif "justapinch.com" in rec_url:
         page = requests.get(rec_url)
         soup = BeautifulSoup(page.text, 'html.parser')
@@ -914,7 +757,7 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
-    elif "wellplated.com" in rec_url:
+    elif "wellplated.com" in rec_url or "fedandfit.com" in rec_url:
         page = requests.get(rec_url)
         soup = BeautifulSoup(page.text, 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
@@ -923,204 +766,26 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             photo = ''
         # Assign Servings to integer variable if it is listed on page
-        servings_1 = soup.find('span',class_='wprm-recipe-servings-with-unit')
-        try:
-            servings_2 = servings_1.find('span',class_='wprm-recipe-servings')
-        except:
-            servings_2 = None
-        if servings_2:
-            servings = servings_2.get_text()
-            try:
-                servings = int(servings)
-            except ValueError:
-                servings = None
-        else:
-            servings = None
+        servings = get_wprm_servings(soup)
         # Assign Nutrition Facts to integer variables if listed on page
-        calories_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-calories')
-        try:
-            calories_2 = calories_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            calories_2 = None
-        if calories_2:
-            calories = calories_2.get_text()
-            try:
-                calories = int(calories)
-            except ValueError:
-                calories = None
-        else:
-            calories = None
-        carbs_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-carbohydrates')
-        try:
-            carbs_2 = carbs_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            carbs_2 = None
-        if carbs_2:
-            carbs = carbs_2.get_text()
-            try:
-                carbs = int(carbs)
-            except ValueError:
-                carbs = None
-        else:
-            carbs = None
-        protein_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-protein')
-        try:
-            protein_2 = protein_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            protein_2 = None
-        if protein_2:
-            protein = protein_2.get_text()
-            try:
-                protein = int(protein)
-            except ValueError:
-                protein = None
-        else:
-            protein = None
-        fat_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fat')
-        try:
-            fat_2 = fat_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            fat_2 = None
-        if fat_2:
-            fat = fat_2.get_text()
-            try:
-                fat = int(fat)
-            except ValueError:
-                fat = None
-        else:
-            fat = None
-        sugar_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sugar')
-        try:
-            sugar_2 = sugar_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            sugar_2 = None
-        if sugar_2:
-            sugar = sugar_2.get_text()
-            try:
-                sugar = int(sugar)
-            except ValueError:
-                sugar = None
-        else:
-            sugar = None
-        cholesterol_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-cholesterol')
-        try:
-            cholesterol_2 = cholesterol_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            cholesterol_2 = None
-        if cholesterol_2:
-            cholesterol = cholesterol_2.get_text()
-            try:
-                cholesterol = int(cholesterol)
-            except ValueError:
-                cholesterol = None
-        else:
-            cholesterol = None
-        sodium_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-sodium')
-        try:
-            sodium_2 = sodium_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            sodium_2 = None
-        if sodium_2:
-            sodium = sodium_2.get_text()
-            try:
-                sodium = int(sodium)
-            except ValueError:
-                sodium = None
-        else:
-            sodium = None
-        fiber_1 = soup.find('span',class_='wprm-nutrition-label-text-nutrition-container-fiber')
-        try:
-            fiber_2 = fiber_1.find('span',class_='wprm-nutrition-label-text-nutrition-value')
-        except:
-            fiber_2 = None
-        if fiber_2:
-            fiber = fiber_2.get_text()
-            try:
-                fiber = int(fiber)
-            except ValueError:
-                fiber = None
-        else:
-            fiber = None
+        calories = get_wprm_calories(soup)
+        carbs = get_wprm_carbs(soup)
+        protein = get_wprm_protein(soup)
+        fat = get_wprm_fat(soup)
+        sugar = get_wprm_sugar(soup)
+        cholesterol = get_wprm_cholesterol(soup)
+        sodium = get_wprm_sodium(soup)
+        fiber = get_wprm_fiber(soup)
         # Extract prep time, cook time, total time
-        preptime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-prep_time wprm-recipe-prep_time-minutes')
-        preptime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-prep_time wprm-recipe-prep_time-hours')
-        if preptime_m or preptime_h:
-            if preptime_m:
-                pt_m = preptime_m.contents[0]
-                pt_m = int(pt_m)
-            else:
-                pt_m = 0
-            if preptime_h:
-                pt_h = preptime_h.contents[0]
-                pt_h = int(pt_h)
-            else:
-                pt_h = 0
-            preptime = pt_m + (pt_h * 60)
-        else:
-            preptime = ''
-        cooktime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-cook_time wprm-recipe-cook_time-minutes')
-        cooktime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-cook_time wprm-recipe-cook_time-hours')
-        if cooktime_m or cooktime_h:
-            if cooktime_m:
-                ct_m = cooktime_m.contents[0]
-                ct_m = int(ct_m)
-            else:
-                ct_m = 0
-            if cooktime_h:
-                ct_h = cooktime_h.contents[0]
-                ct_h = int(ct_h)
-            else:
-                ct_h = 0
-            cooktime = ct_m + (ct_h * 60)
-        else:
-            cooktime = ''
-        totaltime_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-total_time wprm-recipe-total_time-minutes')
-        totaltime_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-total_time wprm-recipe-total_time-hours')
-        if totaltime_m or totaltime_h:
-            if totaltime_m:
-                tt_m = totaltime_m.contents[0]
-                tt_m = int(tt_m)
-            else:
-                tt_m = 0
-            if totaltime_h:
-                tt_h = totaltime_h.contents[0]
-                tt_h = int(tt_h)
-            else:
-                tt_h = 0
-            totaltime = tt_m + (tt_h * 60)
-        else:
-            totaltime = ''
+        preptime = get_wprm_preptime(soup)
+        cooktime = get_wprm_cooktime(soup)
+        totaltime = get_wprm_totaltime(soup)
         # Extract description
-        description_1 = soup.find('meta',attrs={"name": "description"})
-        if description_1:
-            description = description_1['content']
-            description = description[:500]
-            description = description.replace('&#x27;', '')
-        else:
-            description = ''
+        description = get_wprm_description(soup)
         # Extract ingredients and instructions
-        ingredients = []
-        ingredients_1 = soup.find('div',class_='wprm-recipe-ingredients-container')
-        if ingredients_1:
-            ingredients_2 = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
-            for ingredient in ingredients_2:
-                ingred = ingredient.text
-                ingred = ingred.replace("\n"," ")
-                ingred = ingred.replace("▢","")
-                ingred = ingred.strip()
-                ingredients.append(ingred)
-        instructions = []
-        instructions_1 = soup.find('div',class_='wprm-recipe-instructions-container')
-        if instructions_1:
-            instructions_2 = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
-            for group in instructions_2:
-                instructions_h4 = group.find('h4')
-                if instructions_h4:
-                    instructions.append(instructions_h4.contents[0])
-                inst_steps = group.find_all('div',class_='wprm-recipe-instruction-text')
-                for step in inst_steps:
-                    inst_step = step.text
-                    instructions.append(inst_step)
+        ingredients = get_wprm_ingredients(soup)
+        instructions = get_wprm_instructions(soup)
+    # If website is not implemented we will display parse failure error on page
     else:
         preptime = ''
         cooktime = ''
@@ -1173,6 +838,7 @@ def exploreRecipeDetail(rec_group, recnum):
     else:
         photo_server = None
     form = EmptyForm()
+    # Save recipe to My Recipes
     if form.validate_on_submit():
         user = User.query.filter_by(email=current_user.email).first_or_404()
         rec_exist = user.recipes.filter_by(url=rec_url).first()

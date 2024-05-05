@@ -758,7 +758,7 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
-    elif "wellplated.com" in rec_url or "fedandfit.com" in rec_url:
+    elif "wellplated.com" in rec_url or "fedandfit.com" in rec_url or "damndelicious.net" in rec_url:
         headers = {
             'User-Agent': UserAgent().random,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',

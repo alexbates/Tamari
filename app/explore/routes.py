@@ -461,7 +461,8 @@ def exploreRecipeDetail(rec_group, recnum):
             rec_url = rec_line[0]
             rec_title = rec_line[1].rstrip()
     # List of wprm sites that can be parsed using get_wprm functions, checked with elif statement below
-    wprm_sites = ["wellplated.com", "fedandfit.com", "damndelicious.net", "recipetineats.com", "skinnytaste.com"]
+    wprm_sites = ["wellplated.com", "fedandfit.com", "damndelicious.net", "recipetineats.com", "skinnytaste.com",
+        "therecipecritic.com", "spendwithpennies.com"]
     # Site specific parsing
     if "cookinglsl.com" in rec_url:
         page = requests.get(rec_url)

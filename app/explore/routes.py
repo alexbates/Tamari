@@ -460,6 +460,9 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             rec_url = rec_line[0]
             rec_title = rec_line[1].rstrip()
+    # List of wprm sites that can be parsed using get_wprm functions, checked with elif statement below
+    wprm_sites = ["wellplated.com", "fedandfit.com", "damndelicious.net"]
+    # Site specific parsing
     if "cookinglsl.com" in rec_url:
         page = requests.get(rec_url)
         soup = BeautifulSoup(page.text, 'html.parser')
@@ -758,7 +761,7 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
-    elif "wellplated.com" in rec_url or "fedandfit.com" in rec_url or "damndelicious.net" in rec_url:
+    elif any(link in rec_url for link in wprm_sites):
         headers = {
             'User-Agent': UserAgent().random,
             'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',

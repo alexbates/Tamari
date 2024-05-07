@@ -850,7 +850,15 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instr.strip()
                 instructions.append(instr)
     elif "tasteofhome.com" in rec_url:
-        page = requests.get(rec_url)
+        headers = {
+            'User-Agent': UserAgent().random,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        page = requests.get(rec_url, headers=headers)
         soup = BeautifulSoup(page.text, 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -858,7 +866,7 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             photo = ''
         # Assign Servings to integer variable if it is listed on page
-        servings_1 = soup.find('div',class_='makes', text='Makes')
+        servings_1 = soup.find('div',class_='makes')
         if servings_1:
             servings = servings_1.find('p')
             servings = servings.text

@@ -465,8 +465,11 @@ def exploreRecipeDetail(rec_group, recnum):
         "therecipecritic.com", "spendwithpennies.com"]
     # Site specific parsing
     if "cookinglsl.com" in rec_url:
-        page = requests.get(rec_url)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('div',class_='wprm-recipe-image')
         photo_2 = photo_1.find('img')
         photo = photo_2['data-lazy-src']
@@ -497,8 +500,11 @@ def exploreRecipeDetail(rec_group, recnum):
         ingredients = get_wprm_ingredients(soup)
         instructions = get_wprm_instructions(soup)
     elif "lanascooking.com" in rec_url:
-        page = requests.get(rec_url)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('img',class_='attachment-full size-full wp-post-image perfmatters-lazy')
         if photo_1:
             photo = photo_1['data-src']
@@ -527,8 +533,11 @@ def exploreRecipeDetail(rec_group, recnum):
         ingredients = get_wprm_ingredients(soup)
         instructions = get_wprm_instructions(soup)
     elif "justapinch.com" in rec_url:
-        page = requests.get(rec_url)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('div',class_='photo-aspect-container')
         if photo_1:
             photo_2 = photo_1.find('img')
@@ -628,8 +637,11 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instr.strip()
                 instructions.append(instr)
     elif "pinchofyum.com" in rec_url:
-        page = requests.get(rec_url)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
             photo = photo_1['content']
@@ -706,8 +718,11 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instr.strip()
                 instructions.append(instr)
     elif "tasty.co" in rec_url:
-        page = requests.get(rec_url)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
             photo = photo_1['content']
@@ -763,8 +778,11 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instr.strip()
                 instructions.append(instr)
     elif "food52.com" in rec_url:
-        page = requests.get(rec_url)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
             photo = photo_1['content']
@@ -858,8 +876,11 @@ def exploreRecipeDetail(rec_group, recnum):
             'Connection': 'keep-alive',
             'Upgrade-Insecure-Requests': '1',
         }
-        page = requests.get(rec_url, headers=headers)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16, headers=headers)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
             photo = photo_1['content']
@@ -975,8 +996,11 @@ def exploreRecipeDetail(rec_group, recnum):
             'Connection': 'keep-alive',
             'Upgrade-Insecure-Requests': '1',
         }
-        page = requests.get(rec_url, headers=headers)
-        soup = BeautifulSoup(page.text, 'html.parser')
+        try:
+            page = requests.get(rec_url, timeout=16, headers=headers)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
             photo = photo_1['content']

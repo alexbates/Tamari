@@ -776,10 +776,11 @@ def exploreRecipeDetail(rec_group, recnum):
             servings = servings_1.parent
             servings = servings.text
             servings = servings.replace('Serves', '').replace(' ', '').strip()
-            servings = re.match(r'\d+', servings).group()
+            servings = re.match(r'\d+', servings)
+            servings = servings.group() if servings else None
             try:
                 servings = int(servings)
-            except ValueError:
+            except:
                 servings = None
         else:
             servings = None
@@ -798,10 +799,11 @@ def exploreRecipeDetail(rec_group, recnum):
             preptime = preptime_1.parent
             preptime = preptime.text
             preptime = preptime.replace('Prep time', '').replace('minutes', '').replace('minute', '').replace(' ', '').strip()
-            preptime = re.match(r'\d+', preptime).group()
+            preptime = re.match(r'\d+', preptime)
+            preptime = preptime.group() if preptime else None
             try:
                 preptime = int(preptime)
-            except ValueError:
+            except:
                 preptime = ''
         else:
             preptime = ''
@@ -810,10 +812,11 @@ def exploreRecipeDetail(rec_group, recnum):
             cooktime = cooktime_1.parent
             cooktime = cooktime.text
             cooktime = cooktime.replace('Cook time', '').replace('minutes', '').replace('minute', '').replace(' ', '').strip()
-            cooktime = re.match(r'\d+', cooktime).group()
+            cooktime = re.match(r'\d+', cooktime)
+            cooktime = cooktime.group() if cooktime else None
             try:
                 cooktime = int(cooktime)
-            except ValueError:
+            except:
                 cooktime = ''
         else:
             cooktime = ''
@@ -825,15 +828,17 @@ def exploreRecipeDetail(rec_group, recnum):
         description_1 = soup.find('meta',attrs={"name": "description"})
         if description_1:
             description = description_1['content']
+            description = description[:500]
         else:
             description = ''
         # Extract ingredients and instructions
         ingredients = []
         ingredients_1 = soup.find('div',class_='recipe__list--ingredients')
         if ingredients_1:
-            ingredients_2 = ingredients_1.find_all('li',class_=lambda x: x and 'recipe__list-subheading' not in x.split())
+            ingredients_2 = ingredients_1.find_all('li')
             for ingredient in ingredients_2:
                 ingred = ingredient.text
+                ingred = ingred.replace('\n\n', ' ').replace('\n', ' ')
                 ingred = ingred.strip()
                 ingredients.append(ingred)
         instructions = []

@@ -849,6 +849,115 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
+    elif "tasteofhome.com" in rec_url:
+        page = requests.get(rec_url)
+        soup = BeautifulSoup(page.text, 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('div',class_='makes', text='Makes')
+        if servings_1:
+            servings = servings_1.find('p')
+            servings = servings.text
+            servings = servings.replace('servings', '').replace('serving', '').replace(' ', '').strip()
+            try:
+                servings = int(servings)
+            except:
+                servings = None
+        else:
+            servings = None
+        # Extract Nutrition Facts
+        nutrition_1 = soup.find('div',class_='recipe-nutrition-facts')
+        if nutrition_1:
+            nutrition_1 = nutrition_1.text
+            calories = re.search(r'(\d+) calories', nutrition_1)
+            calories = calories.group(1) if calories else None
+            try:
+                calories = int(calories)
+            except:
+                calories = None
+            carbs = re.search(r'(\d+)(?:g)? carbohydrate', nutrition_1)
+            carbs = carbs.group(1) if carbs else None
+            try:
+                carbs = int(carbs)
+            except:
+                carbs = None
+            protein = re.search(r'(\d+)(?:g)? protein', nutrition_1)
+            protein = protein.group(1) if protein else None
+            try:
+                protein = int(protein)
+            except:
+                protein = None
+            fat = re.search(r'(\d+)(?:g)? fat', nutrition_1)
+            fat = fat.group(1) if fat else None
+            try:
+                fat = int(fat)
+            except:
+                fat = None
+            sugar = re.search(r'(\d+)(?:g)? sugars', nutrition_1)
+            sugar = sugar.group(1) if sugar else None
+            try:
+                sugar = int(sugar)
+            except:
+                sugar = None
+            cholesterol = re.search(r'(\d+)(?:mg)? cholesterol', nutrition_1)
+            cholesterol = cholesterol.group(1) if cholesterol else None
+            try:
+                cholesterol = int(cholesterol)
+            except:
+                cholesterol = None
+            sodium = re.search(r'(\d+)(?:mg)? sodium', nutrition_1)
+            sodium = sodium.group(1) if sodium else None
+            try:
+                sodium = int(sodium)
+            except:
+                sodium = None
+            fiber = re.search(r'(\d+)(?:g)? fiber', nutrition_1)
+            fiber = fiber.group(1) if fiber else None
+            try:
+                fiber = int(fiber)
+            except:
+                fiber = None
+        else:
+            calories = None
+            carbs = None
+            protein = None
+            fat = None
+            sugar = None
+            cholesterol = None
+            sodium = None
+            fiber = None
+        # Only total time is listed and it is not consistent text, so pass on parsing times
+        preptime = ''
+        cooktime = ''
+        totaltime = ''
+        # Extract description
+        description_1 = soup.find('div',class_='recipe-tagline__text')
+        if description_1:
+            description = description_1.text
+            description = description[:500]
+        else:
+            description = ''
+        # Extract ingredients and instructions
+        ingredients = []
+        ingredients_1 = soup.find('ul',class_='recipe-ingredients__list')
+        if ingredients_1:
+            ingredients_2 = ingredients_1.find_all('li')
+            for ingredient in ingredients_2:
+                ingred = ingredient.text
+                ingred = ingred.strip()
+                ingredients.append(ingred)
+        instructions = []
+        instructions_1 = soup.find('ol',class_='recipe-directions__list')
+        if instructions_1:
+            instructions_2 = instructions_1.find_all('li')
+            for instruction in instructions_2:
+                instr = instruction.text
+                instr = instr.strip()
+                instructions.append(instr)
     elif any(link in rec_url for link in wprm_sites):
         headers = {
             'User-Agent': UserAgent().random,

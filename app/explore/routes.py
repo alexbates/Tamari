@@ -821,6 +821,12 @@ def exploreRecipeDetail(rec_group, recnum):
             totaltime = preptime + cooktime
         else:
             totaltime = ''
+        # Extract description
+        description_1 = soup.find('meta',attrs={"name": "description"})
+        if description_1:
+            description = description_1['content']
+        else:
+            description = ''
         # Extract ingredients and instructions
         ingredients = []
         ingredients_1 = soup.find('div',class_='recipe__list--ingredients')

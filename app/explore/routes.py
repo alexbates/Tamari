@@ -762,6 +762,82 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
+    elif "food52.com" in rec_url:
+        page = requests.get(rec_url)
+        soup = BeautifulSoup(page.text, 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('span',class_='recipe__details-heading', text='Serves')
+        if servings_1:
+            servings = servings_1.parent
+            servings = servings.text
+            servings = servings.replace('Serves', '').replace(' ', '').strip()
+            servings = re.match(r'\d+', servings).group()
+            try:
+                servings = int(servings)
+            except ValueError:
+                servings = None
+        else:
+            servings = None
+        # This site does not list Nutrition Facts so assign None to each variable
+        calories = None
+        carbs = None
+        protein = None
+        fat = None
+        sugar = None
+        cholesterol = None
+        sodium = None
+        fiber = None
+        # Extract prep time, cook time, total time
+        preptime_1 = soup.find('span',class_='recipe__details-heading', text='Prep time')
+        if preptime_1:
+            preptime = preptime_1.parent
+            preptime = preptime.text
+            preptime = preptime.replace('Prep time', '').replace('minutes', '').replace('minute', '').replace(' ', '').strip()
+            preptime = re.match(r'\d+', preptime).group()
+            try:
+                preptime = int(preptime)
+            except ValueError:
+                preptime = ''
+        else:
+            preptime = ''
+        cooktime_1 = soup.find('span',class_='recipe__details-heading', text='Cook time')
+        if cooktime_1:
+            cooktime = cooktime_1.parent
+            cooktime = cooktime.text
+            cooktime = cooktime.replace('Cook time', '').replace('minutes', '').replace('minute', '').replace(' ', '').strip()
+            cooktime = re.match(r'\d+', cooktime).group()
+            try:
+                cooktime = int(cooktime)
+            except ValueError:
+                cooktime = ''
+        else:
+            cooktime = ''
+        if preptime and cooktime:
+            totaltime = preptime + cooktime
+        else:
+            totaltime = ''
+        # Extract ingredients and instructions
+        ingredients = []
+        ingredients_1 = soup.find('div',class_='recipe__list--ingredients')
+        if ingredients_1:
+            ingredients_2 = ingredients_1.find_all('li',class_=lambda x: x and 'recipe__list-subheading' not in x.split())
+            for ingredient in ingredients_2:
+                ingred = ingredient.text
+                ingred = ingred.strip()
+                ingredients.append(ingred)
+        instructions = []
+        instructions_1 = soup.find('div',class_='recipe__list--steps')
+        if instructions_1:
+            instructions_2 = instructions_1.find_all('li',class_='recipe__list-step')
+            for instruction in instructions_2:
+                instr = instruction.text
+                instr = instr.strip()
+                instructions.append(instr)
     elif any(link in rec_url for link in wprm_sites):
         headers = {
             'User-Agent': UserAgent().random,

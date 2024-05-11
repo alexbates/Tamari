@@ -466,7 +466,9 @@ def exploreRecipeDetail(rec_group, recnum):
         "lifemadesweeter.com", "iambaker.net", "tastesoflizzyt.com", "thebestblogrecipes.com",
         "favfamilyrecipes.com", "feelgoodfoodie.net", "vegrecipesofindia.com", "theseasonedmom.com",
         "keviniscooking.com", "isabeleats.com", "bakerbynature.com", "minimalistbaker.com",
-        "dinneratthezoo.com", "lecremedelacrumb.com", "gonnawantseconds.com", "lilluna.com", "joyfoodsunshine.com"]
+        "dinneratthezoo.com", "lecremedelacrumb.com", "gonnawantseconds.com", "lilluna.com", "joyfoodsunshine.com",
+        "paleorunningmomma.com", "themediterraneandish.com", "deliciousasitlooks.com", "thestayathomechef.com",
+        "barefeetinthekitchen.com"]
     # Site specific parsing
     if "cookinglsl.com" in rec_url:
         try:

@@ -219,7 +219,7 @@ def get_wprm_calories(soup):
     if calories_2:
         calories = calories_2.get_text()
         try:
-            calories = int(calories)
+            calories = int(round(float(calories)))
         except ValueError:
             calories = None
     else:
@@ -234,7 +234,7 @@ def get_wprm_carbs(soup):
     if carbs_2:
         carbs = carbs_2.get_text()
         try:
-            carbs = int(carbs)
+            carbs = int(round(float(carbs)))
         except ValueError:
             carbs = None
     else:
@@ -249,7 +249,7 @@ def get_wprm_protein(soup):
     if protein_2:
         protein = protein_2.get_text()
         try:
-            protein = int(protein)
+            protein = int(round(float(protein)))
         except ValueError:
             protein = None
     else:
@@ -264,7 +264,7 @@ def get_wprm_fat(soup):
     if fat_2:
         fat = fat_2.get_text()
         try:
-            fat = int(fat)
+            fat = int(round(float(fat)))
         except ValueError:
             fat = None
     else:
@@ -279,7 +279,7 @@ def get_wprm_sugar(soup):
     if sugar_2:
         sugar = sugar_2.get_text()
         try:
-            sugar = int(sugar)
+            sugar = int(round(float(sugar)))
         except ValueError:
             sugar = None
     else:
@@ -294,7 +294,7 @@ def get_wprm_cholesterol(soup):
     if cholesterol_2:
         cholesterol = cholesterol_2.get_text()
         try:
-            cholesterol = int(cholesterol)
+            cholesterol = int(round(float(cholesterol)))
         except ValueError:
             cholesterol = None
     else:
@@ -309,7 +309,7 @@ def get_wprm_sodium(soup):
     if sodium_2:
         sodium = sodium_2.get_text()
         try:
-            sodium = int(sodium)
+            sodium = int(round(float(sodium)))
         except ValueError:
             sodium = None
     else:
@@ -324,7 +324,7 @@ def get_wprm_fiber(soup):
     if fiber_2:
         fiber = fiber_2.get_text()
         try:
-            fiber = int(fiber)
+            fiber = int(round(float(fiber)))
         except ValueError:
             fiber = None
     else:

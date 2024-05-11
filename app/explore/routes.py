@@ -464,7 +464,8 @@ def exploreRecipeDetail(rec_group, recnum):
     wprm_sites = ["wellplated.com", "fedandfit.com", "damndelicious.net", "recipetineats.com", "skinnytaste.com",
         "therecipecritic.com", "spendwithpennies.com", "bellyfull.net", "iheartnaptime.net", "daringgourmet.com",
         "lifemadesweeter.com", "iambaker.net", "tastesoflizzyt.com", "thebestblogrecipes.com",
-        "favfamilyrecipes.com", "feelgoodfoodie.net", "vegrecipesofindia.com"]
+        "favfamilyrecipes.com", "feelgoodfoodie.net", "vegrecipesofindia.com", "theseasonedmom.com",
+        "keviniscooking.com", "isabeleats.com", "bakerbynature.com", "minimalistbaker.com"]
     # Site specific parsing
     if "cookinglsl.com" in rec_url:
         try:

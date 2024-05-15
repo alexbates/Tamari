@@ -501,15 +501,18 @@
 	justify-content: flex-start;
 	flex-wrap: wrap;
 	margin: 0 auto; 
-	width: calc(100% - 20px);
+	width: 100%;
 }
 .recipe2cont:after {clear: both; content: ""; display: table;}
 .recipe2 {
-	flex-basis: calc(33.33% - 20px);
-	padding-top: 10px;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 10px;
+	flex-basis: calc(33.33% - 13.5px);
+	padding-top: 0;
+	margin-left: 0px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+    margin-right: 0; /* Remove margin-right from every 3rd item */
 }
 .recipe2inner {
 	background-color: var(--color-recipe2inner);
@@ -523,7 +526,10 @@
 	aspect-ratio: 4 / 3;
 }
 .r2bottom {
+	display: flex; /* Used for vertical centering */
+	flex-direction: column; /* Stacks the child elements vertically */
 	height: 80px;
+	justify-content: center; /* Vertically center the items */
 	padding-left: 10px;
 	padding-right: 10px;
 	overflow: hidden;
@@ -534,7 +540,6 @@
 	-webkit-box-orient: vertical;
 	font-size: 18px;
 	margin: 0;
-	padding-top: 7px;
 	padding-bottom: 5px;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -614,7 +619,13 @@
 	.recipe1-text {padding-top: 23px;}
 }
 @media screen and (max-width: 880px) { 
-	.recipe2 {flex-basis: calc(50% - 20px);}
+	.recipe2 {flex-basis: calc(50% - 10px);}
+	.recipe2cont .r2a:nth-of-type(2n) .recipe2 {
+		margin-right: 0; /* Remove margin-right from every 2nd item */
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 20px; /* Add margin-right to every 3rd item */
+	}
 	.r2bottom {height: 80px;}
 	.r2bottom div {font-size: 18px; max-height: 40px;}
 	.r2bottom span {font-size: 14px;}
@@ -624,6 +635,16 @@
 }
 @media screen and (max-width: 840px) { 
 	.recipe1-text {padding-top: 19px;}
+}
+@media screen and (max-width: 815px) { 
+	.recipe2 {
+		flex-basis: calc(50% - 5px);
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 10px; /* Adjust margin-right for every 3rd item */
+	}
 }
 @media screen and (max-width: 800px) { 
 	.recipe1 {width: 100%;}

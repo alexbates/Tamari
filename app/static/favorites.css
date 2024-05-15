@@ -403,15 +403,18 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 }
-.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
+.recipe2cont {margin: 0 auto; width: 100%;}
 .recipe2cont:after {clear: both; content: ""; display: table;}
 .recipe2 {
 	float: left;
 	padding-top: 0;
-	width: calc(25% - 20px);
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 20px;
+	width: 235px;
+	margin-left: 0px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+    margin-right: 0; /* Remove margin-right from every 4th item */
 }
 .recipe2inner {
 	background-color: var(--color-recipe2inner);
@@ -425,7 +428,10 @@
 	aspect-ratio: 4 / 3;
 }
 .r2bottom {
+	display: flex; /* Used for vertical centering */
+	flex-direction: column; /* Stacks the child elements vertically */
 	height: 80px;
+	justify-content: center; /* Vertically center the items */
 	padding-left: 10px;
 	padding-right: 10px;
 	overflow: hidden;
@@ -436,7 +442,6 @@
 	-webkit-box-orient: vertical;
 	font-size: 18px;
 	margin: 0;
-	padding-top: 7px;
 	padding-bottom: 5px;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -505,6 +510,15 @@
 	.settingsbtn {margin-right: 10px;}
 	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
 	.recipe1 {width: 33.33%;}
+	.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
+	.recipe2 {
+		width: calc(25% - 20px);
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 10px;
+	}
 }
 @media screen and (max-width: 960px) { 
 	.recipe1-text {padding-top: 27px;}
@@ -549,12 +563,15 @@
 		padding-top: 32px;
 		width: calc(100% - 30px);
 	}
-	#recipe2container {width: calc(100% - 16px);}
+	.recipe2cont {width: calc(100% - 16px);}
 	.recipe2 {
 		width: calc(33.33% - 16px); 
-		padding-left: 8px;
-		padding-right: 8px;
-		padding-bottom: 16px;
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-bottom: 16px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 8px;
 	}
 }
 @media screen and (max-width: 640px) { 
@@ -611,9 +628,12 @@
 	.recipe2cont {width: calc(100% - 10px);}
 	.recipe2 {
 		width: calc(50% - 10px); 
-		padding-left: 5px;
-		padding-right: 5px;
-		padding-bottom: 10px;
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-bottom: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 5px;
 	}
 }
 @media screen and (max-width: 385px) { 

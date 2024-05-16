@@ -38,6 +38,11 @@ def mealPlanner():
     compactmonth = []
     for d in month:
         compactmonth.append(d[0])
+    # Create array that contains all items from "plannedmeals" except those outside 30 day window
+    mealsinmonth = []
+    for meal in plannedmeals:
+        if meal.date in compactmonth:
+            mealsinmonth.append(meal)
     # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
     w2, h2 = 3, len(plannedmeals)
     recdetails = [[0 for x in range(w2)] for y in range(h2)]
@@ -59,7 +64,7 @@ def mealPlanner():
         if meal.date == query_string:
             query_count += 1
     return render_template('meal-planner.html', title='Meal Planner', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals,
-	month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, compactmonth=compactmonth)
+	month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, compactmonth=compactmonth, mealsinmonth=mealsinmonth)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

@@ -41,7 +41,7 @@
 		<div id="b1right">
 			{% if query_string is none or query_string == 'All' %}
 			<h2>All Planned Recipes</h2>
-			{% if plannedmeals %} 
+			{% if mealsinmonth %} 
 			{% for day in month %}
 			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
 			<div class="planinner">

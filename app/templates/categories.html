@@ -105,7 +105,7 @@
 			{% else %}
 			<div id="recipecont" class="recipe2cont">
 			{% for item in recipes %}
-			<a style="display: contents;" href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
+			<a style="display: contents;" href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a">
 			<div class="recipe2">
 				<div class="recipe2inner">
 					<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>

@@ -79,8 +79,10 @@ def exploreSearch():
         for recipe in all_recipes:
             is_good = True
             for item in query_items:
-                if item not in recipe[0]:
+                if item.lower() not in recipe[0].lower():
                     is_good = False
+                    # Break out of inner loop if any item not found in query string, more efficient
+                    break
             if is_good == True:
                 new_rec = recipe
                 # append 5th item (index of 4) to recipes, recipes count

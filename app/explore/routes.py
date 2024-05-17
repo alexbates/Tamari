@@ -1136,7 +1136,15 @@ def exploreRecipeDetail(rec_group, recnum):
                         if hex_exist2 is None:
                             hex_valid2 = 1
                     i_photo = hex_string2 + file_extension
-                    r = requests.get(photo)
+                    headers = {
+                        'User-Agent': UserAgent().random,
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                        'Accept-Language': 'en-US,en;q=0.5',
+                        'Accept-Encoding': 'gzip, deflate',
+                        'Connection': 'keep-alive',
+                        'Upgrade-Insecure-Requests': '1',
+                    }
+                    r = requests.get(photo, headers=headers)
                     with open(app.config['UPLOAD_FOLDER'] + '/' + i_photo, 'wb') as outfile:
                         outfile.write(r.content)
                     img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + i_photo)

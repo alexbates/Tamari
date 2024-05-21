@@ -1055,7 +1055,10 @@ def exploreRecipeDetail(rec_group, recnum):
             try:
                 description_1 = soup.find('div',class_='single-asset-description-block').find('div',class_='read-more').find('p')
             except:
-                description_1 = None
+                try:
+                    description_1 = soup.find('div',class_='single-asset-description-block').find('div',class_='read-more')
+                except:
+                    description_1 = None
         if description_1:
             description = description_1.text
             description = description[:500]

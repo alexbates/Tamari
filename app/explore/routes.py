@@ -479,6 +479,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('div',class_='wprm-recipe-image')
         photo_2 = photo_1.find('img')
@@ -514,6 +515,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('img',class_='attachment-full size-full wp-post-image perfmatters-lazy')
         if photo_1:
@@ -547,6 +549,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('div',class_='photo-aspect-container')
         if photo_1:
@@ -651,6 +654,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -732,6 +736,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -792,6 +797,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -890,6 +896,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16, headers=headers)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -1010,6 +1017,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16, headers=headers)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -1017,7 +1025,7 @@ def exploreRecipeDetail(rec_group, recnum):
         else:
             photo = ''
         # Assign Servings to integer variable if it is listed on page
-        servings_1 = soup.find('li', string=lambda text: "Serves" in text)
+        servings_1 = soup.find('li', text='Serves')
         if servings_1:
             servings = servings_1.find('span')
             servings = servings.text
@@ -1036,41 +1044,10 @@ def exploreRecipeDetail(rec_group, recnum):
         cholesterol = None
         sodium = None
         fiber = None
-        # Extract prep time, cook time, total time
-        preptime_1 = soup.find('li', string=lambda text: "Prep" in text)
-        if preptime_1:
-            preptime = preptime_1.find('span')
-            preptime = preptime.text
-            match = re.match(r"(\d+)h\s*(\d*m)?", preptime)
-            if match:
-                hours = int(match.group(1))
-                minutes = int(match.group(2)[:-1]) if match.group(2) else 0
-                preptime = hours * 60 + minutes
-            else:
-                preptime = ''
-        else:
-            preptime = ''
-        cooktime_1 = soup.find('li', string=lambda text: "Cook" in text)
-        if cooktime_1:
-            cooktime = cooktime_1.find('span')
-            cooktime = cooktime.text
-            match = re.match(r"(\d+)h\s*(\d*m)?", cooktime)
-            if match:
-                hours = int(match.group(1))
-                minutes = int(match.group(2)[:-1]) if match.group(2) else 0
-                cooktime = hours * 60 + minutes
-            else:
-                cooktime = ''
-        else:
-            cooktime = ''
-        if preptime and cooktime:
-            totaltime = preptime + cooktime
-        elif preptime:
-            totaltime = preptime
-        elif cooktime:
-            totaltime = cooktime
-        else:
-            totaltime = ''
+        # Times not extracted due to difficulty with finding lis with Beautiful Soup
+        preptime = ''
+        cooktime = ''
+        totaltime = ''
         # Extract description
         description_1 = soup.find('div',class_='single-asset-description-block').find('div',class_='ellipsis-applied').find('p')
         if description_1:
@@ -1108,6 +1085,7 @@ def exploreRecipeDetail(rec_group, recnum):
             page = requests.get(rec_url, timeout=16, headers=headers)
             soup = BeautifulSoup(page.text, 'html.parser')
         except:
+            page = None
             soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
         photo_1 = soup.find('meta',attrs={"property": "og:image"})
         if photo_1:
@@ -1136,6 +1114,7 @@ def exploreRecipeDetail(rec_group, recnum):
         instructions = get_wprm_instructions(soup)
     # If website is not implemented we will display parse failure error on page
     else:
+        page = None
         preptime = ''
         cooktime = ''
         totaltime = ''

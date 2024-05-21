@@ -997,6 +997,104 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
+    elif "taste.com.au" in rec_url:
+        headers = {
+            'User-Agent': UserAgent().random,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        try:
+            page = requests.get(rec_url, timeout=16, headers=headers)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings_1 = soup.find('li', string=lambda text: "Serves" in text)
+        if servings_1:
+            servings = servings_1.find('span')
+            servings = servings.text
+            try:
+                servings = int(servings)
+            except:
+                servings = None
+        else:
+            servings = None
+        # This site does not list Nutrition Facts so assign None to each variable
+        calories = None
+        carbs = None
+        protein = None
+        fat = None
+        sugar = None
+        cholesterol = None
+        sodium = None
+        fiber = None
+        # Extract prep time, cook time, total time
+        preptime_1 = soup.find('li', string=lambda text: "Prep" in text)
+        if preptime_1:
+            preptime = preptime_1.find('span')
+            preptime = preptime.text
+            match = re.match(r"(\d+)h\s*(\d*m)?", preptime)
+            if match:
+                hours = int(match.group(1))
+                minutes = int(match.group(2)[:-1]) if match.group(2) else 0
+                preptime = hours * 60 + minutes
+            except:
+                preptime = ''
+        else:
+            preptime = ''
+        cooktime_1 = soup.find('li', string=lambda text: "Cook" in text)
+        if cooktime_1:
+            cooktime = cooktime_1.find('span')
+            cooktime = cooktime.text
+            match = re.match(r"(\d+)h\s*(\d*m)?", cooktime)
+            if match:
+                hours = int(match.group(1))
+                minutes = int(match.group(2)[:-1]) if match.group(2) else 0
+                cooktime = hours * 60 + minutes
+            except:
+                cooktime = ''
+        else:
+            cooktime = ''
+        if preptime and cooktime:
+            totaltime = preptime + cooktime
+        elif preptime:
+            totaltime = preptime
+        elif cooktime:
+            totaltime = cooktime
+        else:
+            totaltime = ''
+        # Extract description
+        description_1 = soup.find('div',class_='single-asset-description-block').find('div',class_='ellipsis-applied').find('p')
+        if description_1:
+            description = description_1.text
+            description = description[:500]
+        else:
+            description = ''
+        # Extract ingredients and instructions
+        ingredients = []
+        ingredients_1 = soup.find('div',class_='recipe-ingredients-section')
+        if ingredients_1:
+            ingredients_2 = ingredients_1.find_all('div',class_='ingredient-description')
+            for ingredient in ingredients_2:
+                ingred = ingredient.text
+                ingred = ingred.strip()
+                ingredients.append(ingred)
+        instructions = []
+        instructions_1 = soup.find('ul',class_='recipe-method-steps')
+        if instructions_1:
+            instructions_2 = instructions_1.find_all('div',class_='recipe-method-step-content')
+            for instruction in instructions_2:
+                instr = instruction.text
+                instr = instr.strip()
+                instructions.append(instr)
     elif any(link in rec_url for link in wprm_sites):
         headers = {
             'User-Agent': UserAgent().random,

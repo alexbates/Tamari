@@ -1046,7 +1046,7 @@ def exploreRecipeDetail(rec_group, recnum):
                 hours = int(match.group(1))
                 minutes = int(match.group(2)[:-1]) if match.group(2) else 0
                 preptime = hours * 60 + minutes
-            except:
+            else:
                 preptime = ''
         else:
             preptime = ''

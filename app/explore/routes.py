@@ -50,8 +50,8 @@ def explore():
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
         'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
-    default_photos = random.shuffle(defaults)
-    default_photos = (default_photos * (100 // len(default_photos) + 1))[:100]
+    random.shuffle(defaults)
+    default_photos = (defaults * (100 // len(defaults) + 1))[:100]
     form = ExploreSearchForm()
     if form.validate_on_submit():
         return redirect(url_for('explore.exploreSearch', query=form.search.data))

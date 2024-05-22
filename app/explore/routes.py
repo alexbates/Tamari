@@ -27,6 +27,8 @@ def explore():
         count_all = 1
         for line in filelines_all:
             x_all = line.split(";")
+            if len(x_all) == 2:
+                x_all.append(" ")
             url_all = urlparse(x_all[0]).netloc
             new_url_all = url_all.replace("www.","")
             newline_all = [x_all[1], new_url_all, x_all[0], count_all, x_all[2]]

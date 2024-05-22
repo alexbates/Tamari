@@ -29,10 +29,10 @@ def explore():
             x_all = line.split(";")
             url_all = urlparse(x_all[0]).netloc
             new_url_all = url_all.replace("www.","")
-            newline_all = [x_all[1], new_url_all, x_all[0], count_all]
+            newline_all = [x_all[1], new_url_all, x_all[0], count_all, x_all[2]]
             recipes_all.append(newline_all)
             count_all += 1
-            if count_all > 11:
+            if count_all > 15:
                 break
         readfile_all.close()
         recipes.append(recipes_all)

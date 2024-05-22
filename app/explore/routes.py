@@ -56,7 +56,8 @@ def explore():
     if form.validate_on_submit():
         return redirect(url_for('explore.exploreSearch', query=form.search.data))
     return render_template('explore.html', title='Explore', rec_all=rec_all, rec_beef=rec_beef, rec_breakfast=rec_breakfast,
-        rec_chicken=rec_chicken, rec_desserts=rec_desserts, rec_salads=rec_salads, rec_seafood=rec_seafood, rec_sides=rec_sides, form=form)
+        rec_chicken=rec_chicken, rec_desserts=rec_desserts, rec_salads=rec_salads, rec_seafood=rec_seafood, rec_sides=rec_sides, form=form,
+        default_photos=default_photos)
 
 @bp.route('/explore/search')
 @login_required

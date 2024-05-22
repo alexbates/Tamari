@@ -154,10 +154,10 @@
 		<h2>All Recipes 🍽️</h2>
 		<div id="recipecont" class="recipe2cont">
 			{% for recipe in rec_all %}
-			<a href="{{ recipe[2] }}" class="r2a">
+			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}" class="r2a">
 			<div class="recipe2">
 				<div class="recipe2inner">
-					<div class="r2top" style="background-image: url(default19.png)" data-bgimage="{{ recipe[4] }}"></div>
+					<div class="r2top" style="background-image: url({{ url_for('static', filename=default_photos[(loop.index - 1) % default_photos|length], _external=True) }})" data-bgimage="{{ recipe[4] }}"></div>
 					<div class="r2bottom">
 						<div>{{ recipe[0] }}</div>
 						<span>{{ recipe[1] }}</span>

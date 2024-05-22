@@ -21,25 +21,17 @@ document.addEventListener("DOMContentLoaded", function() {
 					replaceBackgroundImage(index + 1);
 				}, 500); // 0.5 second delay
 			};
-			
+
 			// Add an onerror event listener
 			img.onerror = function() {
 				// If the image fails to load, move on to the next one
-				replaceBackgroundImage(index + 1);
+				setTimeout(() => {
+				  replaceBackgroundImage(index + 1);
+				}, 500); // 0.5 second delay
 			};
-
-			// Set a timeout to abort the image load after a certain time
-			const timeout = setTimeout(() => {
-				img.onerror();
-			}, 2500); // 2.5 second timeout
 
 			// Set the source of the Image object
 			img.src = newBgImage;
-			
-			// Clear the timeout if the image loads successfully
-			img.onload = () => {
-				clearTimeout(timeout);
-			};
 		}
 	}
 

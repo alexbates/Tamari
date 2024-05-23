@@ -16,9 +16,7 @@ from app.explore import bp
 @bp.route('/explore', methods=['GET', 'POST'])
 @login_required
 def explore():
-    files = ['/static/explore-all-randomized.txt', '/static/explore-beef-randomized.txt', '/static/explore-breakfast-randomized.txt',
-        '/static/explore-chicken-randomized.txt', '/static/explore-desserts-randomized.txt', '/static/explore-salads-randomized.txt',
-        '/static/explore-seafood-randomized.txt', '/static/explore-sides-randomized.txt']
+    files = ['/static/explore-all-randomized.txt']
     recipes = []
     for file in files:
         readfile_all = open(app.root_path + file, "r")
@@ -39,13 +37,6 @@ def explore():
         readfile_all.close()
         recipes.append(recipes_all)
     rec_all = recipes[0]
-    rec_beef = recipes[1]
-    rec_breakfast = recipes[2]
-    rec_chicken = recipes[3]
-    rec_desserts = recipes[4]
-    rec_salads = recipes[5]
-    rec_seafood = recipes[6]
-    rec_sides = recipes[7]
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
         'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
@@ -55,9 +46,7 @@ def explore():
     form = ExploreSearchForm()
     if form.validate_on_submit():
         return redirect(url_for('explore.exploreSearch', query=form.search.data))
-    return render_template('explore.html', title='Explore', rec_all=rec_all, rec_beef=rec_beef, rec_breakfast=rec_breakfast,
-        rec_chicken=rec_chicken, rec_desserts=rec_desserts, rec_salads=rec_salads, rec_seafood=rec_seafood, rec_sides=rec_sides, form=form,
-        default_photos=default_photos)
+    return render_template('explore.html', title='Explore', rec_all=rec_all, form=form, default_photos=default_photos)
 
 @bp.route('/explore/search')
 @login_required

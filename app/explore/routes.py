@@ -54,10 +54,10 @@ def exploreSearch():
     # the query, example is search?query=garlic+shrimp which translates to "garlic shrimp"
     query_string = request.args.get('query')
     # subset of all_recipes in which all parts of query string are present in title
-    # it has 5 items per recipe: title, shortened url, full url, all_recipes count, recipes count
+    # it has 6 items per recipe: title, shortened url, full url, all_recipes count, photo url, recipes count
     recipes = []
     # 2D array of all recipes in explore-all-randomized.txt file
-    # it has 4 items per recipe: title, shortened url, full url, all_recipes count
+    # it has 5 items per recipe: title, shortened url, full url, all_recipes count, photo url
     all_recipes = []
     count = 1
     if query_string:
@@ -85,7 +85,7 @@ def exploreSearch():
                     break
             if is_good == True:
                 new_rec = recipe
-                # append 5th item (index of 4) to recipes, recipes count
+                # append 6th item (index of 5) to recipes, recipes count
                 new_rec.append(rec_count)
                 recipes.append(new_rec)
                 rec_count += 1
@@ -105,16 +105,16 @@ def exploreSearch():
     recipes_page = recipes[i:i+PER_PAGE]
     # rec_first (x) and rec_last (y) are used for "showing x-y of z" in template
     if len(recipes_page) > 0:
-        # make rec_first the recipe count (5th item of recipe) for first recipe on page
+        # make rec_first the recipe count (6th item of recipe) for first recipe on page
         try:
             rec_first = recipes_page[0]
-            rec_first = rec_first[4]
+            rec_first = rec_first[5]
         except:
             rec_first = 0
-        # make rec_last the recipe count (5th item of recipe) for last recipe on page
+        # make rec_last the recipe count (6th item of recipe) for last recipe on page
         try:
             rec_last = recipes_page[len(recipes_page)-1]
-            rec_last = rec_last[4]
+            rec_last = rec_last[5]
         except:
             rec_last = 0
     # if no recipes on current page, set rec_first and rec_last to 0

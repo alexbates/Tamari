@@ -14,7 +14,7 @@
 		<div class="searchform">
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
-				{{ form.search(class="search-input", id="exploresearch" placeholder="Search 100,000+ Recipes") }}
+				{{ form.search(class="search-input", id="exploresearch", placeholder="Search 100,000+ Recipes") }}
 				<button class="search-btn" name="submit" type="submit">
 					<span class="searchbtn-icon"><img id="searchimg" src="{{ url_for('static', filename='search.png', _external=True) }}" alt=""></span>
 				</button>

@@ -33,14 +33,14 @@
 		<div class="prevnext">
 			{% if pagination.has_prev %}
 			<button class="btn-prev" onclick="window.location.href='{{ url_for('explore.exploreSearch', page=curr_page - 1, query=query_string) }}';">
-				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if pagination.has_next %}
 			<button class="btn-next" onclick="window.location.href='{{ url_for('explore.exploreSearch', page=curr_page + 1, query=query_string) }}';">
 				<span class="btn-next-text">Next</span>
-                                <span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+                                <span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
                         </button>
 			{% endif %}
 		</div>

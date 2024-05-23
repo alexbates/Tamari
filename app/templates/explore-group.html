@@ -3,6 +3,7 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='explore-group.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<script src="{{ url_for('static', filename='explore-image-loader.js', _external=True) }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -12,14 +13,19 @@
 
 		<h2>{{ group_title }}</h2>
 		<p id="showing-msg">Showing {{ rec_first }} - {{ rec_last }} of {{ rec_count }} recipes.</p>
-		<div class="explorecont">
+		<div id="recipecont" class="recipe2cont">
 			{% for recipe in recipes %}
-			<div class="exprecipe">
-				<div class="exprecinner">
-					<div><a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group=group) }}">{{ recipe[0] }}</a></div>
-					<span><a href="{{ recipe[2] }}">{{ recipe[1] }}</a></span>
+			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group=group) }}" class="r2a">
+			<div class="recipe2">
+				<div class="recipe2inner">
+					<div class="r2top" style="background-image: url('{{ url_for('myrecipes.recipePhotos', filename=default_photos[(loop.index - 1) % default_photos|length], _external=True) }}')" data-bgimage="{{ recipe[4] }}"></div>
+					<div class="r2bottom">
+						<div>{{ recipe[0] }}</div>
+						<span>{{ recipe[1] }}</span>
+					</div>
 				</div>
 			</div>
+			</a>
 			{% endfor %}
 		</div>
 			

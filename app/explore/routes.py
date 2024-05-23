@@ -76,9 +76,11 @@ def exploreSearch():
         filelines = readfile.readlines()
         for line in filelines:
             x = line.split(";")
+            if len(x) == 2:
+                x.append(" ")
             url = urlparse(x[0]).netloc
             new_url = url.replace("www.","")
-            newline = [x[1], new_url, x[0], count]
+            newline = [x[1], new_url, x[0], count, x[2]]
             all_recipes.append(newline)
             count += 1
         readfile.close()
@@ -141,27 +143,54 @@ def exploreGroup(group):
     if group == "all":
         group_title = "All Recipes 🍽️"
         readfile = open(app.root_path + "/static/explore-all-randomized.txt", "r")
-    elif group == "beef-entrees":
-        group_title = "Beef Entrees 🥩"
+    elif group == "30-minute":
+        group_title = "30 Minute"
+        readfile = open(app.root_path + "/static/explore-30minute-randomized.txt", "r")
+    elif group == "air-fryer":
+        group_title = "Air Fryer"
+        readfile = open(app.root_path + "/static/explore-airfryer-randomized.txt", "r")
+    elif group == "beef":
+        group_title = "Beef"
         readfile = open(app.root_path + "/static/explore-beef-randomized.txt", "r")
     elif group == "breakfast":
-        group_title = "Breakfast 🥞"
+        group_title = "Breakfast"
         readfile = open(app.root_path + "/static/explore-breakfast-randomized.txt", "r")
-    elif group == "chicken-entrees":
-        group_title = "Chicken Entrees 🍗"
+    elif group == "chicken":
+        group_title = "Chicken"
         readfile = open(app.root_path + "/static/explore-chicken-randomized.txt", "r")
-    elif group == "desserts":
-        group_title = "Desserts 🍰"
-        readfile = open(app.root_path + "/static/explore-desserts-randomized.txt", "r")
+    elif group == "dessert":
+        group_title = "Dessert"
+        readfile = open(app.root_path + "/static/explore-dessert-randomized.txt", "r")
+    elif group == "dinner":
+        group_title = "Dinner"
+        readfile = open(app.root_path + "/static/explore-dinner-randomized.txt", "r")
+    elif group == "drinks":
+        group_title = "Drinks"
+        readfile = open(app.root_path + "/static/explore-drinks-randomized.txt", "r")
+    elif group == "low-carb":
+        group_title = "Low Carb"
+        readfile = open(app.root_path + "/static/explore-lowcarb-randomized.txt", "r")
+    elif group == "lunch":
+        group_title = "Lunch"
+        readfile = open(app.root_path + "/static/explore-lunch-randomized.txt", "r")
     elif group == "salads":
-        group_title = "Salads 🥗"
+        group_title = "Salads"
         readfile = open(app.root_path + "/static/explore-salads-randomized.txt", "r")
-    elif group == "seafood-entrees":
-        group_title = "Seafood Entrees 🍤"
+    elif group == "seafood":
+        group_title = "Seafood"
         readfile = open(app.root_path + "/static/explore-seafood-randomized.txt", "r")
-    elif group == "side-dishes":
-        group_title = "Side Dishes 🌽"
-        readfile = open(app.root_path + "/static/explore-sides-randomized.txt", "r")
+    elif group == "slow-cooker":
+        group_title = "Slow Cooker"
+        readfile = open(app.root_path + "/static/explore-slowcooker-randomized.txt", "r")
+    elif group == "snacks":
+        group_title = "Snacks"
+        readfile = open(app.root_path + "/static/explore-snacks-randomized.txt", "r")
+    elif group == "soup":
+        group_title = "Soup"
+        readfile = open(app.root_path + "/static/explore-soup-randomized.txt", "r")
+    elif group == "vegetarian":
+        group_title = "Vegetarian"
+        readfile = open(app.root_path + "/static/explore-vegetarian-randomized.txt", "r")
     else:
         group_title = "Error"
         readfile = open(app.root_path + "/static/explore-blank.txt", "r")
@@ -171,9 +200,11 @@ def exploreGroup(group):
     if len(filelines) > 2:
         for line in filelines:
             x = line.split(";")
+            if len(x) == 2:
+                x.append(" ")
             url = urlparse(x[0]).netloc
             new_url = url.replace("www.","")
-            newline = [x[1], new_url, x[0], count]
+            newline = [x[1], new_url, x[0], count, x[2]]
             recipes.append(newline)
             count += 1
     readfile.close()
@@ -434,20 +465,38 @@ def get_wprm_instructions(soup):
 def exploreRecipeDetail(rec_group, recnum):
     if rec_group == "all":
         readfile = open(app.root_path + '/static/explore-all-randomized.txt', "r")
-    elif rec_group == "beef-entrees":
+    elif rec_group == "30-minute":
+        readfile = open(app.root_path + '/static/explore-30minute-randomized.txt', "r")
+    elif rec_group == "air-fryer":
+        readfile = open(app.root_path + '/static/explore-airfryer-randomized.txt', "r")
+    elif rec_group == "beef":
         readfile = open(app.root_path + '/static/explore-beef-randomized.txt', "r")
     elif rec_group == "breakfast":
         readfile = open(app.root_path + '/static/explore-breakfast-randomized.txt', "r")
     elif rec_group == "chicken-entrees":
         readfile = open(app.root_path + '/static/explore-chicken-randomized.txt', "r")
-    elif rec_group == "desserts":
-        readfile = open(app.root_path + '/static/explore-desserts-randomized.txt', "r")
+    elif rec_group == "dessert":
+        readfile = open(app.root_path + '/static/explore-dessert-randomized.txt', "r")
+    elif rec_group == "dinner":
+        readfile = open(app.root_path + '/static/explore-dinner-randomized.txt', "r")
+    elif rec_group == "drinks":
+        readfile = open(app.root_path + '/static/explore-drinks-randomized.txt', "r")
+    elif rec_group == "low-carb":
+        readfile = open(app.root_path + '/static/explore-lowcarb-randomized.txt', "r")
+    elif rec_group == "lunch":
+        readfile = open(app.root_path + '/static/explore-lunch-randomized.txt', "r")
     elif rec_group == "salads":
         readfile = open(app.root_path + '/static/explore-salads-randomized.txt', "r")
-    elif rec_group == "seafood-entrees":
+    elif rec_group == "seafood":
         readfile = open(app.root_path + '/static/explore-seafood-randomized.txt', "r")
-    elif rec_group == "side-dishes":
-        readfile = open(app.root_path + '/static/explore-sides-randomized.txt', "r")
+    elif rec_group == "slow-cooker":
+        readfile = open(app.root_path + '/static/explore-slowcooker-randomized.txt', "r")
+    elif rec_group == "snacks":
+        readfile = open(app.root_path + '/static/explore-snacks-randomized.txt', "r")
+    elif rec_group == "soup":
+        readfile = open(app.root_path + '/static/explore-soup-randomized.txt', "r")
+    elif rec_group == "vegetarian":
+        readfile = open(app.root_path + '/static/explore-vegetarian-randomized.txt', "r")
     else:
         readfile = open(app.root_path + '/static/explore-blank.txt', "r")
     filelines = readfile.readlines()

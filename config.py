@@ -18,6 +18,6 @@ class Config(object):
     # for my recipes > all recipes and my recipes > favorites
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50
-    EXPLORE_RECIPES_PER_PAGE = 60
+    EXPLORE_RECIPES_PER_PAGE = 32
     # for dynamic loading of images, distance from viewport that image will start to load
     DYNAMIC_ROOT_MARGIN = '120px'

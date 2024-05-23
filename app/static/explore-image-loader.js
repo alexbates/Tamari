@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 				// Delay the next replacement
 				setTimeout(() => {
 					replaceBackgroundImage(index + 1);
-				}, 500); // 0.5 second delay
+				}, 250); // 0.25 second delay
 			};
 
 			// Add an onerror event listener

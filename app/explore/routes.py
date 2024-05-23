@@ -123,8 +123,16 @@ def exploreSearch():
         rec_last = 0
     rec_count = len(recipes)
     pagination = Pagination(page=page, per_page=PER_PAGE, total=len(recipes), search=False, record_name='recipes')
+    # Default photos are shuffled and displayed immediately on page load
+    # Photos are later loaded client side from recipe websites and replace defaults upon successful loading
+    defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
+        'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
+        'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
+        'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
+    random.shuffle(defaults)
+    default_photos = (defaults * (100 // len(defaults) + 1))[:100]
     return render_template('explore-search.html', title='Explore Search', recipes=recipes_page, pagination=pagination, curr_page=curr_page, page=page,
-        rec_first=rec_first, rec_last=rec_last, rec_count=rec_count, query_string=query_string)
+        rec_first=rec_first, rec_last=rec_last, rec_count=rec_count, query_string=query_string, default_photos=default_photos)
 
 @bp.route('/explore/group/<group>')
 @login_required
@@ -221,8 +229,16 @@ def exploreGroup(group):
         rec_last = 0
     rec_count = len(recipes)
     pagination = Pagination(page=page, per_page=PER_PAGE, total=len(recipes), search=False, record_name='recipes')
+    # Default photos are shuffled and displayed immediately on page load
+    # Photos are later loaded client side from recipe websites and replace defaults upon successful loading
+    defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
+        'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
+        'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
+        'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
+    random.shuffle(defaults)
+    default_photos = (defaults * (100 // len(defaults) + 1))[:100]
     return render_template('explore-group.html', title=group_title, recipes=recipes_page, pagination=pagination, group=group,
-        group_title=group_title, curr_page=curr_page, rec_first=rec_first, rec_last=rec_last, rec_count=rec_count)
+        group_title=group_title, curr_page=curr_page, rec_first=rec_first, rec_last=rec_last, rec_count=rec_count, default_photos=default_photos)
 
 # Functions for parsing data from WP Recipe Maker Wordpress plugin
 # Used by exploreRecipeDetail route

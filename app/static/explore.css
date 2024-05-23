@@ -337,17 +337,25 @@
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
 }
-@media screen and (max-width: 435px) { 
-	.r2seemorespan {padding-top: 90px;}
-}
-@media screen and (max-width: 420px) { 
+@media screen and (max-width: 450px) { 
 	.expcat {
 		flex-basis: calc(25% - 10px);
 		margin-left: 5px;
 		margin-right: 5px;
 	}
 }
+@media screen and (max-width: 435px) { 
+	.r2seemorespan {padding-top: 90px;}
+}
+@media screen and (max-width: 410px) { 
+	.r2seemorespan {padding-top: 80px;}
+}
 @media screen and (max-width: 400px) { 
+	.iconcontainer {
+		border: 6px solid var(--color-iconcontainer-border);
+		outline: 3px solid var(--color-iconcontainer-outline);
+		width: calc(100% - 6px); /* Compensate for outline */
+	}
 	.recipe2cont {width: calc(100% - 10px);}
 	.recipe2 {
 		width: calc(50% - 10px); 
@@ -360,7 +368,10 @@
 	}
 }
 @media screen and (max-width: 390px) { 
-	.r2seemorespan {padding-top: 80px;}
+	.r2seemorespan {padding-top: 70px;}
+}
+@media screen and (max-width: 370px) { 
+	.r2seemorespan {padding-top: 60px;}
 }
 @media screen and (max-width: 330px) { 
 	.r2bottom {height: 69px;}

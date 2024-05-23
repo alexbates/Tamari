@@ -198,8 +198,18 @@
 .r2seemore {
 	background: var(--color) !important;
 	text-align: center;
+	position: relative;
+    width: 100%; /* Ensure it takes the full width of its container */
 }
-.r2seemorespan {display: block; font-size: 20px; padding-top: 110px;}
+.r2seemorespan {
+	display: block;
+	font-size: 20px;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+	padding-top: 80px;
+}
 .recipe2inner {
 	background-color: var(--color-recipe2inner);
 	border-radius: 15px;
@@ -258,12 +268,6 @@
 		margin-right: 10px;
 	}
 }
-@media screen and (max-width: 970px) { 
-	.r2seemorespan {padding-top: 100px;}
-}
-@media screen and (max-width: 895px) { 
-	.r2seemorespan {padding-top: 90px;}
-}
 @media screen and (max-width: 870px) { 
 	.expcat {
 		flex-basis: calc(12.5% - 10px);
@@ -272,6 +276,7 @@
 	}
 }
 @media screen and (max-width: 860px) { 
+	.r2seemorespan {padding-top: 75px;}
 	.r2bottom {height: 75px;}
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
@@ -283,13 +288,10 @@
 		margin-right: 10px;
 	}
 	.recipe2 {width: calc(33.33% - 20px);}
-	.r2seemorespan {padding-top: 110px;}
+	.r2seemorespan {padding-top: 80px;}
 	.r2bottom {height: 80px;}
 	.r2bottom div {font-size: 18px; max-height: 40px;}
 	.r2bottom span {font-size: 14px;}
-}
-@media screen and (max-width: 715px) { 
-	.r2seemorespan {padding-top: 100px;}
 }
 @media screen and (max-width: 700px) { 
 	.expcat {
@@ -308,16 +310,11 @@
 		margin-right: 8px;
 	}
 }
-@media screen and (max-width: 618px) { 
-	.r2seemorespan {padding-top: 90px;}
-}
 @media screen and (max-width: 620px) { 
+	.r2seemorespan {padding-top: 75px;}
 	.r2bottom {height: 75px;}
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
-}
-@media screen and (max-width: 560px) { 
-	.r2seemorespan {padding-top: 80px;}
 }
 @media screen and (max-width: 530px) { 
 	.expcat {
@@ -326,13 +323,13 @@
 		margin-right: 10px;
 	}
 	.recipe2 {width: calc(50% - 16px);}
-	.r2seemorespan {padding-top: 110px;}
+	.r2seemorespan {padding-top: 80px;}
 	.r2bottom {height: 80px;}
 	.r2bottom div {font-size: 18px; max-height: 40px;}
 	.r2bottom span {font-size: 14px;}
 }
 @media screen and (max-width: 470px) { 
-	.r2seemorespan {padding-top: 100px;}
+	.r2seemorespan {padding-top: 75px;}
 	.r2bottom {height: 75px;}
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
@@ -343,12 +340,6 @@
 		margin-left: 5px;
 		margin-right: 5px;
 	}
-}
-@media screen and (max-width: 435px) { 
-	.r2seemorespan {padding-top: 90px;}
-}
-@media screen and (max-width: 410px) { 
-	.r2seemorespan {padding-top: 80px;}
 }
 @media screen and (max-width: 400px) { 
 	.iconcontainer {
@@ -367,13 +358,8 @@
 		margin-right: 5px;
 	}
 }
-@media screen and (max-width: 390px) { 
-	.r2seemorespan {padding-top: 70px;}
-}
-@media screen and (max-width: 370px) { 
-	.r2seemorespan {padding-top: 60px;}
-}
 @media screen and (max-width: 330px) { 
+	.r2seemorespan {padding-top: 69px;}
 	.r2bottom {height: 69px;}
 	.r2bottom div {font-size: 14px; max-height: 30px;}
 	.r2bottom span {font-size: 10px;}

@@ -3,6 +3,7 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='edit-recipe.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<script src="limit-photo-upload.js"></script>
 	{% if nutrition %}
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {
@@ -66,6 +67,7 @@
 			<div class="form-group">
 				<label>Attach Photo</label><br>
 				<input type="file" class="custom-file-input" name="image" id="image" accept=".png,.jpg,.jpeg">
+				<div id="image-error" class="imageerror"></div>
 			</div>
 			<div class="form-group ">
 				<label class="control-label" for="description">Description</label><br>

@@ -139,6 +139,12 @@
 	line-height: 28px;
 	margin-top: 10px;
 }
+.imageerror {
+	color: var(--color-flashed-err);
+	font-size: 14px;
+	line-height: 28px;
+	margin-top: 2px;
+}
 .btn-default {
 	border: none;
 	border-radius: 7px;

@@ -9,7 +9,7 @@ from datetime import datetime
 from urllib.request import urlopen, Request
 import secrets, time, random, os, imghdr, requests, re, urllib.request
 from app.account import bp
-from Config import Config
+from config import Config
 
 @bp.before_request
 def before_request():

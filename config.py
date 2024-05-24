@@ -15,9 +15,14 @@ class Config(object):
     # If this is left blank, Tamari will use MAIL_USERNAME as the sender email
     # Example: ADMIN = 'default@tamariapp.com'
     ADMIN = ''
-    # for my recipes > all recipes and my recipes > favorites
+    # For My Recipes > All Recipes and My Recipes > Favorites
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50
     EXPLORE_RECIPES_PER_PAGE = 32
-    # for dynamic loading of images, distance from viewport that image will start to load
+    # For dynamic loading of images
+    # Distance from viewport that image will start to load in My Recipes
     DYNAMIC_ROOT_MARGIN = '120px'
+    # Rate Limit Settings
+    RATE_LIMIT_ENABLED = True
+    DEFAULT_RATE_LIMIT = '1000 per 10 minutes'
+    REGISTRATION_RATE_LIMIT = '1 per 10 minutes'

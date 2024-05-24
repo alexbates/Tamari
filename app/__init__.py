@@ -5,6 +5,8 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_moment import Moment
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath
@@ -23,6 +25,12 @@ moment = Moment(app)
 app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg']
+
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=[Config.DEFAULT_RATE_LIMIT]
+)
 
 from app.account import bp as account_bp
 app.register_blueprint(account_bp)

@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
-from app import app, db
+from app import app, db, limiter
 from app.account.forms import LoginForm, RegistrationForm, AccountForm, EmptyForm, ResetPasswordRequestForm, ResetPasswordForm, AccountPrefsForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe
@@ -9,6 +9,7 @@ from datetime import datetime
 from urllib.request import urlopen, Request
 import secrets, time, random, os, imghdr, requests, re, urllib.request
 from app.account import bp
+from Config import Config
 
 @bp.before_request
 def before_request():
@@ -55,6 +56,9 @@ def register():
         return redirect(url_for('myrecipes.allRecipes'))
     form = RegistrationForm()
     if form.validate_on_submit():
+        # Apply rate limit to POST requests that validate to prevent spamming database
+        if Config.RATE_LIMIT_ENABLED:
+            limiter.limit(Config.REGISTRATION_RATE_LIMIT, methods=["POST"], error_message="Rate limit exceeded")(lambda: None)()
         # Check if email is already registered
         checkemail = User.query.filter_by(email=form.email.data).first()
         # Validate email

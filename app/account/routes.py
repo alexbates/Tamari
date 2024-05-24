@@ -50,6 +50,8 @@ def logout():
     flash('You have successfully signed out.')
     return redirect(url_for('account.login'))
 
+if Config.RATE_LIMIT_ENABLED:
+    @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:

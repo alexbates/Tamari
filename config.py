@@ -24,5 +24,5 @@ class Config(object):
     DYNAMIC_ROOT_MARGIN = '120px'
     # Rate Limit Settings
     RATE_LIMIT_ENABLED = True
-    DEFAULT_RATE_LIMIT = '1000 per 10 minutes'
+    DEFAULT_RATE_LIMIT = '1 per 10 minutes'
     REGISTRATION_RATE_LIMIT = '1 per 10 minutes'

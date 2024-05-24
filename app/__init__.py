@@ -29,7 +29,8 @@ app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg']
 limiter = Limiter(
     get_remote_address,
     app=app,
-    default_limits=[Config.DEFAULT_RATE_LIMIT]
+    default_limits=[Config.DEFAULT_RATE_LIMIT],
+    storage_uri="memory://"
 )
 
 from app.account import bp as account_bp

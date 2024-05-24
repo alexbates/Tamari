@@ -26,22 +26,28 @@ def favicon():
 def about():
     return render_template('about.html', title='About')
 
+@limiter.limit(Config.LOGIN_RATE_LIMIT)
+def rate_limited_login():
+    return True
+
 @bp.route('/login', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
-        # Check login
-        if user is None or not user.check_password(form.password.data):
-            flash('Invalid email or password')
-            return redirect(url_for('account.login'))
-        login_user(user, remember=form.remember_me.data)
-        next_page = request.args.get('next')
-        if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('myrecipes.allRecipes')
-        return redirect(next_page)
+        if rate_limited_login():
+            user = User.query.filter_by(email=form.email.data).first()
+            # Check login
+            if user is None or not user.check_password(form.password.data):
+                flash('Invalid email or password')
+                return redirect(url_for('account.login'))
+            login_user(user, remember=form.remember_me.data)
+            next_page = request.args.get('next')
+            if not next_page or url_parse(next_page).netloc != '':
+                next_page = url_for('myrecipes.allRecipes')
+            return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
 @bp.route('/logout')
@@ -50,8 +56,8 @@ def logout():
     flash('You have successfully signed out.')
     return redirect(url_for('account.login'))
 
-@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @bp.route('/register', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))

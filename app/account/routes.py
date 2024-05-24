@@ -18,11 +18,13 @@ def before_request():
         db.session.commit()
     
 @bp.route('/favicon.ico')
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def favicon():
     return redirect(url_for('static', filename='favicon.ico'))
 
 @bp.route('/about')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def about():
     return render_template('about.html', title='About')
 
@@ -37,6 +39,7 @@ def login():
         return redirect(url_for('myrecipes.allRecipes'))
     form = LoginForm()
     if form.validate_on_submit():
+        # Call rate limited function to effectively impose rate limit on registration attempts
         if rate_limited_login():
             user = User.query.filter_by(email=form.email.data).first()
             # Check login
@@ -51,10 +54,15 @@ def login():
     return render_template('login.html', title='Sign In', form=form)
 
 @bp.route('/logout')
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def logout():
     logout_user()
     flash('You have successfully signed out.')
     return redirect(url_for('account.login'))
+
+@limiter.limit(Config.REGISTRATION_RATE_LIMIT)
+def rate_limited_registration():
+    return True
 
 @bp.route('/register', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -63,67 +71,70 @@ def register():
         return redirect(url_for('myrecipes.allRecipes'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        # Apply rate limit to POST requests that validate to prevent spamming database
-        limiter.limit(Config.REGISTRATION_RATE_LIMIT)(lambda: None)()
-        # Check if email is already registered
-        checkemail = User.query.filter_by(email=form.email.data).first()
-        # Validate email
-        regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-        emailisvalid = re.fullmatch(regex, form.email.data)
-        # Check length of email
-        if len(form.email.data) < 3 or len(form.email.data) > 254:
-            emailisvalid = False        
-        # Error if email is registered
-        if checkemail:
-            flash('Error: email is already taken.')
-        # Error if email is invalid for any reason
-        elif emailisvalid is None or emailisvalid == False:
-            flash('Error: email is invalid.')
-        # Error if passwords do not match
-        elif form.password.data != form.password2.data:
-            flash('Error: passwords do not match.')
-        # Error if password length out of range
-        elif len(form.password.data) < 3 or len(form.password.data) > 64:
-            flash('Error: password must be 3-64 characters.')
-        # Process registration
-        else:
-            logout_user()
-            user = User(email=form.email.data)
-            user.set_password(form.password.data)
-            user.reg_time = datetime.utcnow()
-            user.pref_size = 0
-            user.pref_sort = 0
-            user.pref_picture = 0
-            user.pref_color = 0
-            user.pref_theme = 0
-            db.session.add(user)
-            cats = ['Miscellaneous', 'Entrees', 'Sides']
-            for cat in cats:
-                hex_valid = 0
-                while hex_valid == 0:
-                    hex_string = secrets.token_hex(4)
-                    hex_exist = Category.query.filter_by(hex_id=hex_string).first()
-                    if hex_exist is None:
-                        hex_valid = 1
-                new_cat = Category(hex_id=hex_string, label=cat, user=user)
-                db.session.add(new_cat)
-            lists = ['Miscellaneous']
-            for list in lists:
-                hex_valid2 = 0
-                while hex_valid2 == 0:
-                    hex_string2 = secrets.token_hex(4)
-                    hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
-                    if hex_exist2 is None:
-                        hex_valid2 = 1
-                new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
-                db.session.add(new_list)
-            db.session.commit()
-            flash('You have been registerd! Please sign in.')
-            return redirect(url_for('account.login'))
+        # Call rate limited function to effectively impose rate limit on registration attempts
+        if rate_limited_registration():
+            # Apply rate limit to POST requests that validate to prevent spamming database
+            limiter.limit(Config.REGISTRATION_RATE_LIMIT)(lambda: None)()
+            # Check if email is already registered
+            checkemail = User.query.filter_by(email=form.email.data).first()
+            # Validate email
+            regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+            emailisvalid = re.fullmatch(regex, form.email.data)
+            # Check length of email
+            if len(form.email.data) < 3 or len(form.email.data) > 254:
+                emailisvalid = False        
+            # Error if email is registered
+            if checkemail:
+                flash('Error: email is already taken.')
+            # Error if email is invalid for any reason
+            elif emailisvalid is None or emailisvalid == False:
+                flash('Error: email is invalid.')
+            # Error if passwords do not match
+            elif form.password.data != form.password2.data:
+                flash('Error: passwords do not match.')
+            # Error if password length out of range
+            elif len(form.password.data) < 3 or len(form.password.data) > 64:
+                flash('Error: password must be 3-64 characters.')
+            # Process registration
+            else:
+                logout_user()
+                user = User(email=form.email.data)
+                user.set_password(form.password.data)
+                user.reg_time = datetime.utcnow()
+                user.pref_size = 0
+                user.pref_sort = 0
+                user.pref_picture = 0
+                user.pref_color = 0
+                user.pref_theme = 0
+                db.session.add(user)
+                cats = ['Miscellaneous', 'Entrees', 'Sides']
+                for cat in cats:
+                    hex_valid = 0
+                    while hex_valid == 0:
+                        hex_string = secrets.token_hex(4)
+                        hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                        if hex_exist is None:
+                            hex_valid = 1
+                    new_cat = Category(hex_id=hex_string, label=cat, user=user)
+                    db.session.add(new_cat)
+                lists = ['Miscellaneous']
+                for list in lists:
+                    hex_valid2 = 0
+                    while hex_valid2 == 0:
+                        hex_string2 = secrets.token_hex(4)
+                        hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
+                        if hex_exist2 is None:
+                            hex_valid2 = 1
+                    new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
+                    db.session.add(new_list)
+                db.session.commit()
+                flash('You have been registerd! Please sign in.')
+                return redirect(url_for('account.login'))
     return render_template('register.html', title='Register', form=form)
 
 @bp.route('/account', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def user():
     form = AccountForm(current_user.email)
     form.email.data = current_user.email
@@ -206,6 +217,7 @@ def user():
 
 @bp.route('/account/process-delete')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def deleteAccount():
     # Get user and handle if user doesn't exist
     user = User.query.filter_by(email=current_user.email).first()
@@ -221,6 +233,7 @@ def deleteAccount():
     return redirect(url_for('account.login'))
 
 @bp.route('/request-reset', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def request_reset():
     # Don't display page if user is signed in
     if current_user.is_authenticated:
@@ -235,6 +248,7 @@ def request_reset():
     return render_template('request-reset.html', title='Reset Password', form=form)
 
 @bp.route('/set-password/<token>', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def set_password(token):
     # Don't display page if user is signed in
     if current_user.is_authenticated:

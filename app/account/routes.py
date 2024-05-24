@@ -50,8 +50,7 @@ def logout():
     flash('You have successfully signed out.')
     return redirect(url_for('account.login'))
 
-if Config.RATE_LIMIT_ENABLED:
-    @limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @bp.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -59,8 +58,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         # Apply rate limit to POST requests that validate to prevent spamming database
-        if Config.RATE_LIMIT_ENABLED:
-            limiter.limit(Config.REGISTRATION_RATE_LIMIT, methods=["POST"], error_message="Rate limit exceeded")(lambda: None)()
+        limiter.limit(Config.REGISTRATION_RATE_LIMIT)(lambda: None)()
         # Check if email is already registered
         checkemail = User.query.filter_by(email=form.email.data).first()
         # Validate email

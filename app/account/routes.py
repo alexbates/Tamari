@@ -73,8 +73,6 @@ def register():
     if form.validate_on_submit():
         # Call rate limited function to effectively impose rate limit on registration attempts
         if rate_limited_registration():
-            # Apply rate limit to POST requests that validate to prevent spamming database
-            limiter.limit(Config.REGISTRATION_RATE_LIMIT)(lambda: None)()
             # Check if email is already registered
             checkemail = User.query.filter_by(email=form.email.data).first()
             # Validate email

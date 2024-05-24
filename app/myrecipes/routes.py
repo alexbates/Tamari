@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
-from app import app, db
+from app import app, db, limiter
 from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
@@ -12,6 +12,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 import secrets, time, random, os, imghdr, requests, re, urllib.request
 from app.myrecipes import bp
+from config import Config
 
 @bp.context_processor
 def inject_dynrootmargin():
@@ -27,12 +28,14 @@ def validate_image(stream):
     return '.' + format
 
 @bp.route('/recipe-photos/<path:filename>')
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipePhotos(filename):
     return send_from_directory(app.root_path + '/appdata/recipe-photos/', filename)
 
 @bp.route('/', methods=['GET', 'POST'])
 @bp.route('/my-recipes/all', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def allRecipes():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
@@ -60,6 +63,7 @@ def allRecipes():
 
 @bp.route('/api/my-recipes/all')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def apiAllRecipes():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
@@ -78,6 +82,7 @@ def apiAllRecipes():
 
 @bp.route('/my-recipes/favorites', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def favorites():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
@@ -105,6 +110,7 @@ def favorites():
 
 @bp.route('/recipe/<hexid>/favorite')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def favorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
@@ -117,6 +123,7 @@ def favorite(hexid):
 
 @bp.route('/recipe/<hexid>/unfavorite')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def unfavorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
@@ -129,6 +136,7 @@ def unfavorite(hexid):
 
 @bp.route('/recipe/<hexid>/make-public')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def makePublic(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
@@ -141,6 +149,7 @@ def makePublic(hexid):
 
 @bp.route('/recipe/<hexid>/make-private')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def makePrivate(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
@@ -152,6 +161,7 @@ def makePrivate(hexid):
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipeDetail(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     form = AddToListForm()
@@ -303,6 +313,7 @@ def recipeDetail(hexid):
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def categories():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     categories = user.categories.order_by(Category.label).all()
@@ -370,6 +381,7 @@ def categories():
 
 @bp.route('/m/category/<catname>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mobileCategory(catname):
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
@@ -399,6 +411,7 @@ def mobileCategory(catname):
 
 @bp.route('/remove-category/<catid>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removeCategory(catid):
     category = Category.query.filter_by(hex_id=catid).first()
     user = User.query.filter_by(email=current_user.email).first()
@@ -421,6 +434,7 @@ def removeCategory(catid):
 
 @bp.route('/remove-recipe/<hexid>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removeRecipe(hexid):
     # Query the recipe by hexid
     delrecipe = Recipe.query.filter_by(hex_id=hexid).first()
@@ -449,6 +463,7 @@ def removeRecipe(hexid):
 
 @bp.route('/add-recipe', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def addRecipe():
     form = AddRecipeForm()
     choices = []
@@ -558,6 +573,7 @@ def addRecipe():
 
 @bp.route('/edit-recipe/<hexid>', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def editRecipe(hexid):
     # Query the requested recipe as well as its nutritional info
     recipe = Recipe.query.filter_by(hex_id=hexid).first()

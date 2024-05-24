@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app, db
+from app import app, db, limiter
 from app.explore.forms import ExploreSearchForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
@@ -12,9 +12,11 @@ from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 import secrets, time, random, os, imghdr, requests, re, urllib.request, io, base64
 from app.explore import bp
+from config import Config
 
 @bp.route('/explore', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def explore():
     files = ['/static/explore-all-randomized.txt']
     recipes = []
@@ -50,6 +52,7 @@ def explore():
 
 @bp.route('/explore/search')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreSearch():
     # the query, example is search?query=garlic+shrimp which translates to "garlic shrimp"
     query_string = request.args.get('query')
@@ -136,6 +139,7 @@ def exploreSearch():
 
 @bp.route('/explore/group/<group>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreGroup(group):
     if group == "all":
         group_title = "All Recipes 🍽️"
@@ -467,6 +471,7 @@ def get_wprm_instructions(soup):
 
 @bp.route('/explore/recipe/<rec_group>/<recnum>', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreRecipeDetail(rec_group, recnum):
     if rec_group == "all":
         readfile = open(app.root_path + '/static/explore-all-randomized.txt', "r")

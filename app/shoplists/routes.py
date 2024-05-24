@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app, db
+from app import app, db, limiter
 from app.shoplists.forms import AddListForm, AddListItemForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Shoplist, Listitem
@@ -7,8 +7,10 @@ from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 import secrets, time, random, os, requests, re, urllib.request
 from app.shoplists import bp
+from config import Config
 
 @bp.route('/shopping-lists', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def shoppingLists():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     lists = user.shop_lists.order_by(Shoplist.label).all()
@@ -69,6 +71,7 @@ def shoppingLists():
 
 @bp.route('/m/shopping-list/<listname>', methods=['GET', 'POST'])
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mobileList(listname):
     user = User.query.filter_by(email=current_user.email).first_or_404()
     list = user.shop_lists.filter_by(label=listname).first()
@@ -104,6 +107,7 @@ def mobileList(listname):
 
 @bp.route('/remove-list/<mobile>/<hexid>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removeList(hexid, mobile):
     list = Shoplist.query.filter_by(hex_id=hexid).first()
     user = User.query.filter_by(email=current_user.email).first()
@@ -128,6 +132,7 @@ def removeList(hexid, mobile):
 
 @bp.route('/remove-item/<mobile>/<hexid>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removeListitem(hexid, mobile):
     listitem = Listitem.query.filter_by(hex_id=hexid).first()
     list = Shoplist.query.filter_by(id=listitem.list_id).first()
@@ -147,6 +152,7 @@ def removeListitem(hexid, mobile):
 
 @bp.route('/mark-item/<mobile>/<hexid>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def markItem(hexid, mobile):
     listitem = Listitem.query.filter_by(hex_id=hexid).first()
     list = Shoplist.query.filter_by(id=listitem.list_id).first()

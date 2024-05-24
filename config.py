@@ -24,7 +24,9 @@ class Config(object):
     DYNAMIC_ROOT_MARGIN = '120px'
     # Rate Limit Settings
     # If you wish to disable rate limiting, set all equal to None (no single quotes)
-    # If you wish to enable, for example, set DEFAULT_RATE_LIMIT = '1000 per 5 minutes'
-    DEFAULT_RATE_LIMIT = '1000 per 5 minutes'
-    LOGIN_RATE_LIMIT = '1 per 10 minutes'
-    REGISTRATION_RATE_LIMIT = '1 per 10 minutes'
+    # Enabled example: DEFAULT_RATE_LIMIT = '1000 per minute'
+    DEFAULT_RATE_LIMIT = None
+    # Enabled example: LOGIN_RATE_LIMIT = '25 per 10 minutes'
+    LOGIN_RATE_LIMIT = None
+    # Enabled example: REGISTRATION_RATE_LIMIT = '3 per 10 minutes'
+    REGISTRATION_RATE_LIMIT = None

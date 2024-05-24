@@ -1,13 +1,15 @@
 from flask import render_template, flash, redirect, url_for, request
-from app import app, db
+from app import app, db, limiter
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, Shoplist, Listitem, MealRecipe
 from datetime import datetime
 import secrets, time, random, requests, re, urllib.request
 from app.mealplanner import bp
+from config import Config
 
 @bp.route('/meal-planner')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mealPlanner():
     query_string = request.args.get('day')
     query_string_full = ""
@@ -68,6 +70,7 @@ def mealPlanner():
 
 @bp.route('/remove-plan/<hexid>')
 @login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removePlan(hexid):
     mealplan = MealRecipe.query.filter_by(hex_id=hexid).first()
     if mealplan is None:

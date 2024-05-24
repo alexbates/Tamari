@@ -126,7 +126,7 @@ def register():
                     new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
                     db.session.add(new_list)
                 db.session.commit()
-                flash('You have been registerd! Please sign in.')
+                flash('You have been registered! Please sign in.')
                 return redirect(url_for('account.login'))
     return render_template('register.html', title='Register', form=form)
 

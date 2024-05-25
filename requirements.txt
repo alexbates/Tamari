@@ -1,6 +1,7 @@
 aiosmtpd
 BeautifulSoup4
 email-validator==1.3.1
+fake_useragent
 flask==2.3.0
 Flask-Limiter==3.7.0
 flask-login==0.6.2

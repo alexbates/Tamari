@@ -130,23 +130,23 @@
 				<div class="form-group required">
 					<label class="control-label" for="email">Email</label>
 					{{ form.email(class="form-control") }}
-					{% for error in form.email.errors %}
-					<div class="fielderror"><div id="errorpassword">{{ error }}</div></div>
-					{% endfor %}
+					{% if form.email.errors %}
+					<div class="fielderror"><div id="erroremail">{{ form.email.errors|first }}</div></div>
+					{% endif %}
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="password">New Password</label>
 					{{ form.password(class="form-control") }}
-					{% for error in form.password.errors %}
-					<div class="fielderror"><div id="errorpassword">{{ error }}</div></div>
-					{% endfor %}
+					{% if form.password.errors %}
+					<div class="fielderror"><div id="errorpassword">{{ form.password.errors|first }}</div></div>
+					{% endif %}
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="password2">Confirm Password</label>
 					{{ form.password2(class="form-control") }}
-					{% for error in form.password2.errors %}
-					<div class="fielderror"><div id="errorpassword">{{ error }}</div></div>
-					{% endfor %}
+					{% if form.password2.errors %}
+					<div class="fielderror"><div id="errorpassword2">{{ form.password2.errors|first }}</div></div>
+					{% endif %}
 				</div>
 				<div class="updatebuttons">
 					{{ form.submit(class="btn btn-default") }}

@@ -193,7 +193,29 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	height: 0;
 	clear: both;
 }
+#erroremail {
+	color: var(--color-flashed-err);
+	float: right;
+	font-size: 14px;
+	margin-bottom: 0px;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-top: 6px;
+	right: 0;
+	width: 270px;
+}
 #errorpassword {
+	color: var(--color-flashed-err);
+	float: right;
+	font-size: 14px;
+	margin-bottom: 0px;
+	margin-left: 12px;
+	margin-right: 12px;
+	margin-top: 6px;
+	right: 0;
+	width: 270px;
+}
+#errorpassword2 {
 	color: var(--color-flashed-err);
 	float: right;
 	font-size: 14px;
@@ -253,19 +275,25 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	.userstats {margin-left: 10px; width: calc(50% - 15px);}
 	.updatedetails {margin-left: 10px; width: calc(50% - 15px);}
 	.form-control {width: 230px;}
+	#erroremail {width: 250px;}
 	#errorpassword {width: 250px;}
+	#errorpassword2 {width: 250px;}
 }
 @media screen and (max-width: 900px) {
 	.us-left {float: none; margin-bottom: 0px; width: 100%;}
 	.us-right {float: none; margin-bottom: 20px; padding-top: 0px; width: 100%;}
 	.form-control {width: 180px;}
+	#erroremail {width: 200px;}
 	#errorpassword {width: 200px;}
+	#errorpassword2 {width: 200px;}
 }
 @media screen and (max-width: 800px) { 
 	.userstats {float: none; width: 500px;}
 	.updatedetails {float: none; margin-top: 15px; width: 500px;}
 	.form-control {width: 250px;}
+	#erroremail {width: 270px;}
 	#errorpassword {width: 270px;}
+	#errorpassword2 {width: 270px;}
 }
 @media screen and (max-width: 700px) {
 	.block1inner h2 {display: none;}
@@ -277,13 +305,19 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	.userstats {width: calc(100% - 20px);}
 	.updatedetails {width: calc(100% - 20px);}
 	.form-control {width: 230px;}
+	#erroremail {width: 250px;}
 	#errorpassword {width: 250px;}
+	#errorpassword2 {width: 250px;}
 }
 @media screen and (max-width: 450px) { 
 	.form-control {width: 190px;}
+	#erroremail {width: 210px;}
 	#errorpassword {width: 210px;}
+	#errorpassword2 {width: 210px;}
 }
 @media screen and (max-width: 425px) {
 	.form-control {width: 160px;}
+	#erroremail {width: 180px;}
 	#errorpassword {width: 180px;}
+	#errorpassword2 {width: 180px;}
 }

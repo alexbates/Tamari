@@ -42,15 +42,15 @@
 				{{ form.hidden_tag() }}
 				<div class="form-group  required">
 					{{ form.email(class="form-control", placeholder="Email") }}
-					{% for error in form.email.errors %}
-					<span id="erroremail">{{ error }}</span>
-					{% endfor %}
+					{% if form.email.errors %}
+					<span id="erroremail">{{ form.email.errors|first }}</span>
+					{% endif %}
 				</div>
 				<div class="form-group  required">
 					{{ form.password(class="form-control", placeholder="Password") }}
-					{% for error in form.password.errors %}
-					<span id="errorpassword">{{ error }}</span>
-					{% endfor %}   
+					{% if form.password.errors %}
+					<span id="errorpassword">{{ form.password.errors|first }}</span>
+					{% endif %}   
 				</div>
 				<div class="check">
 					<label class="checkbox">Keep me Signed in

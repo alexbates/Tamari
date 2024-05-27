@@ -29,21 +29,21 @@
 				{{ form.hidden_tag() }}
 				<div class="form-group  required">
 					{{ form.email(class="form-control", placeholder="Email") }}
-					{% for error in form.email.errors %}
-					<span id="erroremail">{{ error }}</span>
-					{% endfor %}
+					{% if form.email.errors %}
+					<span id="erroremail">{{ form.email.errors|first }}</span>
+					{% endif %}
 				</div>
 				<div class="form-group  required">
 					{{ form.password(class="form-control", placeholder="Password") }}
-					{% for error in form.password.errors %}
-					<span id="errorpassword1">{{ error }}</span>
-					{% endfor %}   
+					{% if form.password.errors %}
+					<span id="errorpassword1">{{ form.password.errors|first }}</span>
+					{% endif %}   
 				</div>
 				<div class="form-group  required">
 					{{ form.password2(class="form-control", placeholder="Repeat Password") }}
-					{% for error in form.password2.errors %}
-					<span id="errorpassword2">{{ error }}</span>
-					{% endfor %}
+					{% if form.password2.errors %}
+					<span id="errorpassword2">{{ form.password2.errors|first }}</span>
+					{% endif %}
 				</div>
 				{{ form.submit(class="btn btn-default") }}
 			</form>

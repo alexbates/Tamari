@@ -39,15 +39,105 @@ def recipePhotos(filename):
 def allRecipes():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Query recipes for the current user depending on user sort preference
+    # Select specific fields from Recipe and NutritionalInfo tables
+    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
     if user.pref_sort == 0:
-        recipes = user.recipes.order_by(Recipe.title).paginate(page=page,
-            per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.title)
     elif user.pref_sort == 1:
-        recipes = user.recipes.order_by(Recipe.time_created).paginate(page=page,
-            per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created)
     else:
-        recipes = user.recipes.order_by(Recipe.time_created.desc()).paginate(page=page,
-            per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created.desc())
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Populate month array with the next 30 days of month, used for checking scheduled and last prepared
+    month = []
+    curr_dt = datetime.now()
+    timestamp = int(time.mktime(curr_dt.timetuple()))
+    for d in month:
+        date = datetime.fromtimestamp(timestamp)
+        compactdate = date.strftime("%Y-%m-%d")
+        month.append(compactdate)
+        timestamp += 86400
+    # Create recipe_info array that is parallel to recipes object, contains nearest scheduled date and last prepared
+    recipe_info = []
+    for recipe in recipes:
+        # Query all meal plans for the 
+        meal_plans = MealRecipe.query.filter_by(recipe_id=recipe.id).all()
+        # Find the nearest date
+        nearest_date = None
+        min_diff = float('inf')
+        for plan in meal_plans:
+            plan_date = datetime.strptime(plan.date, "%Y-%m-%d")
+            for month_date in month:
+                diff = abs((plan_date - month_date).days)
+                if diff < min_diff:
+                    min_diff = diff
+                    nearest_date = plan_date
+        # If a nearest date is found, query for that specific date
+        if nearest_date:
+            scheduled_rec = MealRecipe.query.filter_by(recipe_id=recipe.id, date=nearest_date.strftime("%Y-%m-%d")).first()
+            scheduled = scheduled_rec.date
+        else:
+            scheduled = None
+        # create array that will store meal dates, excluding future planned meals
+        meals_prepared = []
+        for meal in meal_plans:
+            if meal.date not in month:
+                meals_prepared.append(meal.date)
+        if meals_prepared:
+            meal_count = len(meals_prepared)
+            # Get last element of meals_prepared array
+            last_date = meals_prepared[-1]
+            # Convert date of last prepared meal to preferred format
+            last_prepared = datetime.strptime(last_date, '%Y-%m-%d').strftime('%m/%d/%Y')
+        else:
+            meal_count = None
+            last_prepared = None
+        # Create array that contains scheduled date and last prepared and will be appended to recipe_info array
+        recipe_info_single = []
+        recipe_info_single.append(scheduled if scheduled else "")
+        recipe_info_single.append(last_prepared if last_prepared else "")
+        recipe_info.append(recipe_info_single)
+    # Paginate the recipe_info array in the same way that recipes is paginated
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    recipe_info_paginated = recipe_info[start_index:end_index]
     next_url = url_for('myrecipes.allRecipes', page=recipes.next_num) \
         if recipes.has_next else None
     prev_url = url_for('myrecipes.allRecipes', page=recipes.prev_num) \
@@ -59,7 +149,7 @@ def allRecipes():
         db.session.commit()
         return redirect(url_for('myrecipes.allRecipes'))
     return render_template('all-recipes.html', title='All Recipes', user=user, recipes=recipes.items,
-        form=form, next_url=next_url, prev_url=prev_url)
+        form=form, next_url=next_url, prev_url=prev_url, recipe_info=recipe_info)
 
 @bp.route('/api/my-recipes/all')
 @login_required

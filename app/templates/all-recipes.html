@@ -78,7 +78,7 @@
 		</a>
 		{% endfor %}
 		</div>
-		{% else %}
+		{% elif user.pref_size == 1 %}
 		<div id="recipecont" class="recipe2cont">
 		<div class="recipe2continner">
 		{% for item in recipes %}
@@ -89,6 +89,41 @@
 				<div class="r2bottom">
 					<div>{{ item.title }}</div>
 					<span>{{ item.category }}</span>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		</div>
+		{% else %}
+		<div id="recipecont" class="recipe3cont">
+		<div class="recipe3continner">
+		{% for item in recipes %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a">
+		<div class="recipe3" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
+			<div class="r3bottom">
+				<div class="r3binner">
+					<div>{{ item.title }}</div>
+					<span class="r3category r3span">{{ item.category }}</span>
+					<br>
+					{% if item.prep_time or item.cook_time or item.total_time %}
+					{% if item.prep_time %}<span class="r3time r3span">Prep: {{ item.prep_time }}m</span>{% endif %}
+					{% if item.cook_time %}<span class="r3time r3span">Cook: {{ item.cook_time }}m</span>{% endif %}
+					{% if item.total_time %}<span class="r3time r3span">Total: {{ item.total_time }}m</span>{% endif %}
+					<br>
+					{% endif %}
+					{% if item.calories %}
+					<span class="r3calories r3span">Calories: {{ item.calories }}</span>
+					<br>
+					{% endif %}
+					{% if recipe_info[idx][0] %}
+					<span class="r3created r3span">Scheduled For: {{ recipe_info[idx][0] }}</span>
+					{% elif recipe_info[idx][1] %}
+					<span class="r3created r3span">Last Prepared: {{ recipe_info[idx][1] }}</span>
+					{% else %}
+					<span class="r3created r3span">Created: 08/13/2023</span>
+					{% endif %}
 				</div>
 			</div>
 		</div>

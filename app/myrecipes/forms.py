@@ -12,7 +12,7 @@ def disallowed_chars(form, field):
         raise ValidationError('Cannot contain <, >, {, }, ;, or *')
 
 class DisplaySettingsForm(FlaskForm):
-    recipe_size = RadioField('Recipe Size', choices=[(0, 'Large'),(1, 'Small')], default=lambda: current_user.pref_size)
+    recipe_size = RadioField('Recipe Size', choices=[(0, 'Large'),(1, 'Small'),(2, 'Details')], default=lambda: current_user.pref_size)
     sort_by = SelectField(choices=[(0, 'Title'),(1, 'Newest first'),(2, 'Oldest first')], default=lambda: current_user.pref_sort)
     submit = SubmitField('Save')
 

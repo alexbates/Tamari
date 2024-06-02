@@ -89,7 +89,8 @@ def allRecipes():
     month = []
     curr_dt = datetime.now()
     timestamp = int(time.mktime(curr_dt.timetuple()))
-    for d in month:
+    # Loop 30 times
+    for _ in range(30):
         date = datetime.fromtimestamp(timestamp)
         compactdate = date.strftime("%Y-%m-%d")
         month.append(compactdate)
@@ -97,7 +98,7 @@ def allRecipes():
     # Create recipe_info array that is parallel to recipes object, contains nearest scheduled date and last prepared
     recipe_info = []
     for recipe in recipes:
-        # Query all meal plans for the 
+        # Query all meal plans for the current recipe
         meal_plans = MealRecipe.query.filter_by(recipe_id=recipe.id).all()
         # Find the nearest date
         nearest_date = None
@@ -105,14 +106,22 @@ def allRecipes():
         for plan in meal_plans:
             plan_date = datetime.strptime(plan.date, "%Y-%m-%d")
             for month_date in month:
-                diff = abs((plan_date - month_date).days)
+                month_date_dt = datetime.strptime(month_date, "%Y-%m-%d")
+                diff = abs((plan_date - month_date_dt).days)
                 if diff < min_diff:
                     min_diff = diff
                     nearest_date = plan_date
         # If a nearest date is found, query for that specific date
-        if nearest_date:
+        # Scheduled only includes recipes that are scheduled for today or in the future
+        today = datetime.now().date()
+        if nearest_date and nearest_date.date() >= today:
             scheduled_rec = MealRecipe.query.filter_by(recipe_id=recipe.id, date=nearest_date.strftime("%Y-%m-%d")).first()
-            scheduled = scheduled_rec.date
+            if scheduled_rec:
+                scheduled_date = datetime.strptime(scheduled_rec.date, "%Y-%m-%d")
+                # Convert to the desired MM/DD/YYYY format for display
+                scheduled = scheduled_date.strftime("%m/%d/%Y")
+            else:
+                scheduled = None
         else:
             scheduled = None
         # create array that will store meal dates, excluding future planned meals

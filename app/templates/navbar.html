@@ -120,6 +120,33 @@
   		});
 	}
 	
+	if ('IntersectionObserver' in window) { // if IntersectionObserver support in browser
+		document.addEventListener("DOMContentLoaded", function() {
+			function handleIntersection(entries) {
+				entries.map((entry) => {
+					if (entry.isIntersecting) {
+          				// Item has crossed our observation
+          				// threshold - load src from data-src
+          				entry.target.style.backgroundImage = "url('"+entry.target.dataset.bgimage+"')";
+          				// Job done for this item - no need to watch it!
+          				observer.unobserve(entry.target);
+        			}
+      			});
+    		}
+    		const headers = document.querySelectorAll('.recipe3');
+    		const observer = new IntersectionObserver(
+      			handleIntersection,
+      			{ rootMargin: "{{ dynrootmargin }}" }
+    		);
+    		headers.forEach(header => observer.observe(header));
+		});
+	} else { // else load all images at once
+		const headers = document.querySelectorAll('.recipe3');
+		headers.forEach(header => {
+    		header.style.backgroundImage = "url('"+header.dataset.bgimage+"')";
+  		});
+	}
+	
 	// Add and Edit Recipe hidden div
 	function toggleNutrition(check) {
 		// Find nutrition_checkbox element

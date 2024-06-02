@@ -36,8 +36,9 @@
 	--color-r1bottom: rgba(20, 20, 20, 0.82);
 	--color-recipe2inner: #111111;
 	--color-r2bottom-span: #aeaeae;
-	--color-r3bottom: rgba(20, 20, 20, 0.95);
+	--color-r3bottom: rgba(20, 20, 20, 0.82);
 	--color-r3bottom-span: #bdbdbd;
+	--color-r3span: #111111;
 	--color-btn-paginate: #ffffff;
 }
 [data-theme="light"] {
@@ -69,6 +70,9 @@
 	--color-r1bottom: rgba(232, 232, 232, 0.86);
 	--color-recipe2inner: #efefef;
 	--color-r2bottom-span: #5c5c5c;
+	--color-r3bottom: rgba(232, 232, 232, 0.86);
+	--color-r3bottom-span: #424242;
+	--color-r3span: #efefef;
 	--color-btn-paginate: #000000;
 }
 [data-theme="dark"] {
@@ -100,6 +104,9 @@
 	--color-r1bottom: rgba(20, 20, 20, 0.82);
 	--color-recipe2inner: #111111;
 	--color-r2bottom-span: #aeaeae;
+	--color-r3bottom: rgba(20, 20, 20, 0.82);
+	--color-r3bottom-span: #bdbdbd;
+	--color-r3span: #111111;
 	--color-btn-paginate: #ffffff;
 }
 /* ACCENT COLOR APPLICATION */
@@ -494,7 +501,12 @@
 	max-height: 40px;
 }
 .r3span {
-	background: #111111; 
+	background: var(--color-r3span); 
+	color: var(--color-r3bottom-span); 
+	display: inline-block;
+}
+.r3spanscheduled {
+	background: var(--color); 
 	color: var(--color-r3bottom-span); 
 	display: inline-block;
 }
@@ -648,6 +660,7 @@
 	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
 		margin-right: 8px;
 	}
+	.recipe3 {width: calc(50% - 20px);}
 }
 @media screen and (max-width: 640px) { 
 	.recipe1-text {font-size: 20px; height: 52px; padding-top: 29px;}
@@ -691,6 +704,7 @@
 	.r2bottom {height: 75px;}
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
+	.recipe3 {width: calc(100% - 20px);}
 }
 @media screen and (max-width: 440px) { 
 	.recipe1-text {padding-top: 50px;}

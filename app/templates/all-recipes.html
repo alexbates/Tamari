@@ -23,7 +23,7 @@
 						<h3>Display Settings</h3>
 						<form method="post" novalidate>
 							{{ form.hidden_tag() }}
-							<label>Recipe Size</label>
+							<label>Recipe Type</label>
 							{{ form.recipe_size }}
 							<div class="custom-select">
 								<div class="cust-select">
@@ -118,10 +118,10 @@
 					<span class="r3calories r3span">Calories: {{ item.calories }}</span>
 					<br>
 					{% endif %}
-					{% if recipe_info[idx][0] %}
-					<span class="r3created r3spanscheduled">Scheduled For: {{ recipe_info[idx][0] }}</span>
-					{% elif recipe_info[idx][1] %}
-					<span class="r3created r3span">Last Prepared: {{ recipe_info[idx][1] }}</span>
+					{% if recipe_info_paginated[idx][0] %}
+					<span class="r3created r3spanscheduled">Scheduled For: {{ recipe_info_paginated[idx][0] }}</span>
+					{% elif recipe_info_paginated[idx][1] %}
+					<span class="r3created r3span">Last Prepared: {{ recipe_info_paginated[idx][1] }}</span>
 					{% else %}
 					<span class="r3created r3span">Created: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
 					{% endif %}

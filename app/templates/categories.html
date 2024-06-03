@@ -22,7 +22,7 @@
 					<h3>Display Settings</h3>
 					<form method="post" novalidate>
 						{{ form.hidden_tag() }}
-						<label>Recipe Size</label>
+						<label>Recipe Type</label>
 						{{ form.recipe_size }}
 						<div class="custom-select">
 							<div class="cust-select">
@@ -102,7 +102,7 @@
 			</a>
 			{% endfor %}
 			</div>
-			{% else %}
+			{% elif user.pref_size == 1 %}
 			<div id="recipecont" class="recipe2cont">
 			{% for item in recipes %}
 			<a style="display: contents;" href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a">
@@ -117,6 +117,42 @@
 			</div>
 			</a>
 			{% endfor %}
+			</div>
+			{% else %}
+			<div id="recipecont" class="recipe3cont">
+			<div class="recipe3continner">
+			{% for item in recipes %}
+			{% set idx = loop.index0 %}
+			<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a">
+			<div class="recipe3" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
+				<div class="r3bottom">
+					<div class="r3binner">
+						<div>{{ item.title }}</div>
+						<span class="r3category r3span">{{ item.category }}</span>
+						<br>
+						{% if item.prep_time or item.cook_time or item.total_time %}
+						{% if item.prep_time %}<span class="r3time r3span">Prep: {{ item.prep_time }}m</span>{% endif %}
+						{% if item.cook_time %}<span class="r3time r3span">Cook: {{ item.cook_time }}m</span>{% endif %}
+						{% if item.total_time %}<span class="r3time r3span">Total: {{ item.total_time }}m</span>{% endif %}
+						<br>
+						{% endif %}
+						{% if item.calories %}
+						<span class="r3calories r3span">Calories: {{ item.calories }}</span>
+						<br>
+						{% endif %}
+						{% if recipe_info_paginated[idx][0] %}
+						<span class="r3created r3spanscheduled">Scheduled For: {{ recipe_info_paginated[idx][0] }}</span>
+						{% elif recipe_info_paginated[idx][1] %}
+						<span class="r3created r3span">Last Prepared: {{ recipe_info_paginated[idx][1] }}</span>
+						{% else %}
+						<span class="r3created r3span">Created: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			</a>
+			{% endfor %}
+			</div>
 			</div>
 			{% endif %}
 			{% endif %}

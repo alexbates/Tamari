@@ -32,59 +32,10 @@ def validate_image(stream):
 def recipePhotos(filename):
     return send_from_directory(app.root_path + '/appdata/recipe-photos/', filename)
 
-@bp.route('/', methods=['GET', 'POST'])
-@bp.route('/my-recipes/all', methods=['GET', 'POST'])
-@login_required
-@limiter.limit(Config.DEFAULT_RATE_LIMIT)
-def allRecipes():
-    user = User.query.filter_by(email=current_user.email).first_or_404()
-    page = request.args.get('page', 1, type=int)
-    # per_page variable is used for paginating the recipes object
-    per_page = app.config['MAIN_RECIPES_PER_PAGE']
-    # Query recipes for the current user depending on user sort preference
-    # Select specific fields from Recipe and NutritionalInfo tables
-    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
-    if user.pref_sort == 0:
-        recipes_query = db.session.query(
-            Recipe.id,
-            Recipe.title,
-            Recipe.category,
-            Recipe.hex_id,
-            Recipe.photo,
-            Recipe.prep_time,
-            Recipe.cook_time,
-            Recipe.total_time,
-            Recipe.time_created,
-            NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.title)
-    elif user.pref_sort == 1:
-        recipes_query = db.session.query(
-            Recipe.id,
-            Recipe.title,
-            Recipe.category,
-            Recipe.hex_id,
-            Recipe.photo,
-            Recipe.prep_time,
-            Recipe.cook_time,
-            Recipe.total_time,
-            Recipe.time_created,
-            NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created)
-    else:
-        recipes_query = db.session.query(
-            Recipe.id,
-            Recipe.title,
-            Recipe.category,
-            Recipe.hex_id,
-            Recipe.photo,
-            Recipe.prep_time,
-            Recipe.cook_time,
-            Recipe.total_time,
-            Recipe.time_created,
-            NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created.desc())
-    # Paginate the queried recipes
-    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+# The get_recipe_info function is used by All Recipes, Favorites, and Categories routes
+# to build a recipe_info 2D array that is parallel to recipes object. It contains nearest scheduled date
+# and last prepared date in MM/DD/YYYY format. If no date exists the array contains empty string in place of it.
+def get_recipe_info(recipes):
     # Populate month array with the next 30 days of month, used for checking scheduled and last prepared
     month = []
     curr_dt = datetime.now()
@@ -143,6 +94,64 @@ def allRecipes():
         recipe_info_single.append(scheduled if scheduled else "")
         recipe_info_single.append(last_prepared if last_prepared else "")
         recipe_info.append(recipe_info_single)
+    # Return recipe_info array to All Recipes, Favorites, Categories routes
+    return recipe_info
+
+@bp.route('/', methods=['GET', 'POST'])
+@bp.route('/my-recipes/all', methods=['GET', 'POST'])
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def allRecipes():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Query recipes for the current user depending on user sort preference
+    # Select specific fields from Recipe and NutritionalInfo tables
+    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
+    if user.pref_sort == 0:
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.title)
+    elif user.pref_sort == 1:
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created)
+    else:
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created.desc())
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Build recipe_info array using external function
+    recipe_info = get_recipe_info(recipes)
     # Paginate the recipe_info array in the same way that recipes is paginated
     start_index = (page - 1) * per_page
     end_index = start_index + per_page
@@ -158,7 +167,7 @@ def allRecipes():
         db.session.commit()
         return redirect(url_for('myrecipes.allRecipes'))
     return render_template('all-recipes.html', title='All Recipes', user=user, recipes=recipes.items,
-        form=form, next_url=next_url, prev_url=prev_url, recipe_info=recipe_info)
+        form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/api/my-recipes/all')
 @login_required
@@ -185,15 +194,58 @@ def apiAllRecipes():
 def favorites():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Query recipes for the current user depending on user sort preference
+    # Select specific fields from Recipe and NutritionalInfo tables
+    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
     if user.pref_sort == 0:
-        recipes = user.recipes.filter_by(favorite=1).order_by(Recipe.title).paginate(page=page,
-            per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(Recipe.title)
     elif user.pref_sort == 1:
-        recipes = user.recipes.filter_by(favorite=1).order_by(Recipe.time_created).paginate(page=page,
-            per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(Recipe.time_created)
     else:
-        recipes = user.recipes.filter_by(favorite=1).order_by(Recipe.time_created.desc()).paginate(page=page,
-            per_page=app.config['MAIN_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(Recipe.time_created.desc())
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Build recipe_info array using external function
+    recipe_info = get_recipe_info(recipes)
+    # Paginate the recipe_info array in the same way that recipes is paginated
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    recipe_info_paginated = recipe_info[start_index:end_index]
     next_url = url_for('myrecipes.favorites', page=recipes.next_num) \
         if recipes.has_next else None
     prev_url = url_for('myrecipes.favorites', page=recipes.prev_num) \
@@ -205,7 +257,7 @@ def favorites():
         db.session.commit()
         return redirect(url_for('myrecipes.favorites'))
     return render_template('favorites.html', title='Favorites', user=user, recipes=recipes.items,
-        form=form, next_url=next_url, prev_url=prev_url)
+        form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/recipe/<hexid>/favorite')
 @login_required
@@ -418,28 +470,101 @@ def categories():
     categories = user.categories.order_by(Category.label).all()
     query_string = request.args.get('c')
     page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Query recipes for the current user depending on user sort preference
+    # Select specific fields from Recipe and NutritionalInfo tables
+    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
     if query_string is None:
         rec_count = user.recipes.filter_by(category='Miscellaneous').all()
         if user.pref_sort == 0:
-            recipes = user.recipes.filter_by(category='Miscellaneous').order_by(Recipe.title).paginate(page=page,
-                per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+            recipes_query = db.session.query(
+                Recipe.id,
+                Recipe.title,
+                Recipe.category,
+                Recipe.hex_id,
+                Recipe.photo,
+                Recipe.prep_time,
+                Recipe.cook_time,
+                Recipe.total_time,
+                Recipe.time_created,
+                NutritionalInfo.calories
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == 'Miscellaneous').order_by(Recipe.title)
         elif user.pref_sort == 1:
-            recipes = user.recipes.filter_by(category='Miscellaneous').order_by(Recipe.time_created).paginate(page=page,
-                per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+            recipes_query = db.session.query(
+                Recipe.id,
+                Recipe.title,
+                Recipe.category,
+                Recipe.hex_id,
+                Recipe.photo,
+                Recipe.prep_time,
+                Recipe.cook_time,
+                Recipe.total_time,
+                Recipe.time_created,
+                NutritionalInfo.calories
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == 'Miscellaneous').order_by(Recipe.time_created)
         else:
-            recipes = user.recipes.filter_by(category='Miscellaneous').order_by(Recipe.time_created.desc()).paginate(page=page,
-                per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+            recipes_query = db.session.query(
+                Recipe.id,
+                Recipe.title,
+                Recipe.category,
+                Recipe.hex_id,
+                Recipe.photo,
+                Recipe.prep_time,
+                Recipe.cook_time,
+                Recipe.total_time,
+                Recipe.time_created,
+                NutritionalInfo.calories
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == 'Miscellaneous').order_by(Recipe.time_created.desc())
     else:
         rec_count = user.recipes.filter_by(category=query_string).all()
         if user.pref_sort == 0:
-            recipes = user.recipes.filter_by(category=query_string).order_by(Recipe.title).paginate(page=page,
-                per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+            recipes_query = db.session.query(
+                Recipe.id,
+                Recipe.title,
+                Recipe.category,
+                Recipe.hex_id,
+                Recipe.photo,
+                Recipe.prep_time,
+                Recipe.cook_time,
+                Recipe.total_time,
+                Recipe.time_created,
+                NutritionalInfo.calories
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(Recipe.title)
         elif user.pref_sort == 1:
-            recipes = user.recipes.filter_by(category=query_string).order_by(Recipe.time_created).paginate(page=page,
-                per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+            recipes_query = db.session.query(
+                Recipe.id,
+                Recipe.title,
+                Recipe.category,
+                Recipe.hex_id,
+                Recipe.photo,
+                Recipe.prep_time,
+                Recipe.cook_time,
+                Recipe.total_time,
+                Recipe.time_created,
+                NutritionalInfo.calories
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(Recipe.time_created)
         else:
-            recipes = user.recipes.filter_by(category=query_string).order_by(Recipe.time_created.desc()).paginate(page=page,
-                per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+            recipes_query = db.session.query(
+                Recipe.id,
+                Recipe.title,
+                Recipe.category,
+                Recipe.hex_id,
+                Recipe.photo,
+                Recipe.prep_time,
+                Recipe.cook_time,
+                Recipe.total_time,
+                Recipe.time_created,
+                NutritionalInfo.calories
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(Recipe.time_created.desc())
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Build recipe_info array using external function
+    recipe_info = get_recipe_info(recipes)
+    # Paginate the recipe_info array in the same way that recipes is paginated
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    recipe_info_paginated = recipe_info[start_index:end_index]
     next_url = url_for('myrecipes.categories', page=recipes.next_num, c=query_string) \
         if recipes.has_next else None
     prev_url = url_for('myrecipes.categories', page=recipes.prev_num, c=query_string) \
@@ -476,7 +601,8 @@ def categories():
             flash('The category has been added.')
         return redirect(url_for('myrecipes.categories'))
     return render_template('categories.html', title='Categories', user=user, categories=categories, query_string=query_string,
-        recipes=recipes.items, recipe_count=recipe_count, form=form, form2=form2, cats=cats, next_url=next_url, prev_url=prev_url)
+        recipes=recipes.items, recipe_count=recipe_count, form=form, form2=form2, cats=cats, next_url=next_url, prev_url=prev_url,
+        recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/m/category/<catname>')
 @login_required

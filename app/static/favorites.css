@@ -36,8 +36,9 @@
 	--color-r1bottom: rgba(20, 20, 20, 0.82);
 	--color-recipe2inner: #111111;
 	--color-r2bottom-span: #aeaeae;
-	--color-r3bottom: rgba(20, 20, 20, 0.95);
+	--color-r3bottom: rgba(20, 20, 20, 0.82);
 	--color-r3bottom-span: #bdbdbd;
+	--color-r3span: #111111;
 	--color-btn-paginate: #ffffff;
 }
 [data-theme="light"] {
@@ -69,6 +70,9 @@
 	--color-r1bottom: rgba(232, 232, 232, 0.86);
 	--color-recipe2inner: #efefef;
 	--color-r2bottom-span: #5c5c5c;
+	--color-r3bottom: rgba(232, 232, 232, 0.86);
+	--color-r3bottom-span: #424242;
+	--color-r3span: #efefef;
 	--color-btn-paginate: #000000;
 }
 [data-theme="dark"] {
@@ -100,6 +104,9 @@
 	--color-r1bottom: rgba(20, 20, 20, 0.82);
 	--color-recipe2inner: #111111;
 	--color-r2bottom-span: #aeaeae;
+	--color-r3bottom: rgba(20, 20, 20, 0.82);
+	--color-r3bottom-span: #bdbdbd;
+	--color-r3span: #111111;
 	--color-btn-paginate: #ffffff;
 }
 /* ACCENT COLOR APPLICATION */
@@ -298,6 +305,13 @@
 	width: 20px;
 	margin-left: 0px;
 }
+#recipe_size-2 {
+	border: 0px;
+	display: table-cell;
+	height: 20px;
+	width: 20px;
+	margin-left: 0px;
+}
 .custom-select {margin-bottom: 0px; margin-top: 14px;}
 .cust-select select {
 	background: var(--color-cust-select-bg);
@@ -315,14 +329,15 @@
     appearance:none;
 }
 .cust-select:after {
-	position: relative;
-	content: "";
-	top: -16px;
-	right: -146px;
-	width: 0;
-	height: 0;
-	border: 6px solid transparent;
-	border-color: var(--color-cust-select-after-border) transparent transparent transparent;
+    content: "";
+    position: absolute;
+    bottom: 70px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    pointer-events: none; /* Prevent interaction */
+    border: 6px solid transparent;
+    border-color: var(--color-cust-select-after-border) transparent transparent transparent;
 }
 .btn3-default {
 	border: none;
@@ -331,7 +346,7 @@
 	cursor: pointer;
 	font-size: 16px;
 	height: 38px;
-	margin-top: -4px;
+	margin-top: 14px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
 	width: 64px;
@@ -494,7 +509,12 @@
 	max-height: 40px;
 }
 .r3span {
-	background: #111111; 
+	background: var(--color-r3span); 
+	color: var(--color-r3bottom-span); 
+	display: inline-block;
+}
+.r3spanscheduled {
+	background: var(--color); 
 	color: var(--color-r3bottom-span); 
 	display: inline-block;
 }
@@ -606,6 +626,13 @@
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
 }
+@media screen and (max-width: 820px) { 
+	.r3binner div {font-size: 16px; max-height: 36px;}
+	.r3category {font-size: 12px; }
+	.r3time {font-size: 10px;}
+	.r3calories {font-size: 10px;}
+	.r3created {font-size: 10px;}
+}
 @media screen and (max-width: 800px) { 
 	.recipe1-text {padding-top: 17px;}
 }
@@ -648,6 +675,12 @@
 	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
 		margin-right: 8px;
 	}
+	.recipe3 {width: calc(50% - 20px);}
+	.r3binner div {font-size: 18px; max-height: 40px;}
+	.r3category {font-size: 14px; }
+	.r3time {font-size: 12px;}
+	.r3calories {font-size: 12px;}
+	.r3created {font-size: 12px;}
 }
 @media screen and (max-width: 640px) { 
 	.recipe1-text {font-size: 20px; height: 52px; padding-top: 29px;}
@@ -659,6 +692,11 @@
 }
 @media screen and (max-width: 600px) { 
 	.recipe1-text {padding-top: 23px;}
+	.r3binner div {font-size: 16px; max-height: 36px;}
+	.r3category {font-size: 12px; }
+	.r3time {font-size: 10px;}
+	.r3calories {font-size: 10px;}
+	.r3created {font-size: 10px;}
 }
 @media screen and (max-width: 565px) { 
 	.recipe1-text {
@@ -691,6 +729,12 @@
 	.r2bottom {height: 75px;}
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
+	.recipe3 {width: calc(100% - 20px);}
+	.r3binner div {font-size: 18px; max-height: 40px;}
+	.r3category {font-size: 14px; }
+	.r3time {font-size: 12px;}
+	.r3calories {font-size: 12px;}
+	.r3created {font-size: 12px;}
 }
 @media screen and (max-width: 440px) { 
 	.recipe1-text {padding-top: 50px;}
@@ -713,6 +757,11 @@
 }
 @media screen and (max-width: 385px) { 
 	.recipe1-text {padding-top: 42px;}
+	.r3binner div {font-size: 16px; max-height: 36px;}
+	.r3category {font-size: 12px; }
+	.r3time {font-size: 10px;}
+	.r3calories {font-size: 10px;}
+	.r3created {font-size: 10px;}
 }
 @media screen and (max-width: 370px) { 
 	.recipe1-text {padding-top: 38px;}

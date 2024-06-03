@@ -617,22 +617,66 @@ def mobileCategory(catname):
     invalidcat = False
     if category is None:
         invalidcat = True
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Query recipes for the current user depending on user sort preference
+    # Select specific fields from Recipe and NutritionalInfo tables
+    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
     if user.pref_sort == 0:
-        recipes = user.recipes.filter_by(category=catname).order_by(Recipe.title).paginate(page=page,
-            per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(Recipe.title)
     elif user.pref_sort == 1:
-        recipes = user.recipes.filter_by(category=catname).order_by(Recipe.time_created).paginate(page=page,
-            per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(Recipe.time_created)
     else:
-        recipes = user.recipes.filter_by(category=catname).order_by(Recipe.time_created.desc()).paginate(page=page,
-            per_page=app.config['CAT_RECIPES_PER_PAGE'], error_out=False)
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(Recipe.time_created.desc())
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Build recipe_info array using external function
+    recipe_info = get_recipe_info(recipes)
+    # Paginate the recipe_info array in the same way that recipes is paginated
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    recipe_info_paginated = recipe_info[start_index:end_index]
     next_url = url_for('myrecipes.mobileCategory', catname=catname, page=recipes.next_num) \
         if recipes.has_next else None
     prev_url = url_for('myrecipes.mobileCategory', catname=catname, page=recipes.prev_num) \
         if recipes.has_prev else None
     recipe_count = len(rec_count)
     return render_template('mobile-category.html', title=catname, user=user, recipes=recipes.items,
-        recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url, invalidcat=invalidcat)
+        recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url, invalidcat=invalidcat,
+        recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/remove-category/<catid>')
 @login_required

@@ -13,7 +13,7 @@ def disallowed_chars(form, field):
 
 class DisplaySettingsForm(FlaskForm):
     recipe_size = RadioField('Recipe Size', choices=[(0, 'Large'),(1, 'Small'),(2, 'Details')], default=lambda: current_user.pref_size)
-    sort_by = SelectField(choices=[(0, 'Title'),(1, 'Title (desc)'),(2, 'Category'),(3, 'Category (desc)'),(4, 'Newest first'),(5, 'Oldest first')], default=lambda: current_user.pref_sort)
+    sort_by = SelectField(choices=[(0, 'Title'),(1, 'Title (desc)'),(2, 'Category'),(3, 'Category (desc)'),(4, 'Oldest first'),(5, 'Newest first')], default=lambda: current_user.pref_sort)
     submit = SubmitField('Save')
 
 class AddCategoryForm(FlaskForm):

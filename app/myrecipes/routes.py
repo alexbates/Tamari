@@ -32,7 +32,7 @@ def validate_image(stream):
 def recipePhotos(filename):
     return send_from_directory(app.root_path + '/appdata/recipe-photos/', filename)
 
-# The get_recipe_info function is used by All Recipes, Favorites, and Categories routes
+# The get_recipe_info function is used by All Recipes, Favorites, Categories, and Mobile Category routes
 # to build a recipe_info 2D array that is parallel to recipes object. It contains nearest scheduled date
 # and last prepared date in MM/DD/YYYY format. If no date exists the array contains empty string in place of it.
 def get_recipe_info(recipes):
@@ -436,6 +436,9 @@ def recipeDetail(hexid):
         instructions = ''
         nutrition = None
         creationtime = None
+        meal_count = None
+        last_prepared = None
+        scheduled = None
     else:
         recipe_title = recipe.title
         owner = recipe.user_id
@@ -480,6 +483,30 @@ def recipeDetail(hexid):
         else:
             meal_count = None
             last_prepared = None
+        # Find the nearest date
+        nearest_date = None
+        min_diff = float('inf')
+        for plan in all_meals:
+            plan_date = datetime.strptime(plan.date, "%Y-%m-%d")
+            for month_date in days30:
+                month_date_dt = datetime.strptime(month_date, "%Y-%m-%d")
+                diff = abs((plan_date - month_date_dt).days)
+                if diff < min_diff:
+                    min_diff = diff
+                    nearest_date = plan_date
+        # If a nearest date is found, query for that specific date
+        # Scheduled only includes recipes that are scheduled for today or in the future
+        today = datetime.now().date()
+        if nearest_date and nearest_date.date() >= today:
+            scheduled_rec = MealRecipe.query.filter_by(recipe_id=recipe.id, date=nearest_date.strftime("%Y-%m-%d")).first()
+            if scheduled_rec:
+                scheduled_date = datetime.strptime(scheduled_rec.date, "%Y-%m-%d")
+                # Convert to the desired MM/DD/YYYY format for display
+                scheduled = scheduled_date.strftime("%m/%d/%Y")
+            else:
+                scheduled = None
+        else:
+            scheduled = None
     # AddToListForm
     if form.validate_on_submit():
         list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
@@ -538,7 +565,8 @@ def recipeDetail(hexid):
                 flash('Error: this recipe is already scheduled for the selected date.')
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
         ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
-        nutrition=nutrition, creationtime=creationtime, meal_count=meal_count, last_prepared=last_prepared) 
+        nutrition=nutrition, creationtime=creationtime, meal_count=meal_count, last_prepared=last_prepared,
+        scheduled=scheduled) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required

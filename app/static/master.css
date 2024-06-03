@@ -481,7 +481,7 @@ select {font-family: Inter-Regular;}
 /* NAVBAR RESPONSIVE */
 @media screen and (max-width: 1000px) { 
 	.navbarinner {width: 100%;}
-	.navlogo {margin-left: 10px;}
+	.navlogo {margin-left: 12px;}
 }
 @media screen and (max-width: 810px) { 
 	.navleft-l {display: none;}

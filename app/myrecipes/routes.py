@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
 from app import app, db, limiter
-from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm
+from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, AutofillRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
 from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe, NutritionalInfo
@@ -10,6 +10,7 @@ from PIL import Image
 from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
+from fake_useragent import UserAgent
 import secrets, time, random, os, imghdr, requests, re, urllib.request
 from app.myrecipes import bp
 from config import Config
@@ -958,6 +959,7 @@ def removeRecipe(hexid):
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def addRecipe():
     form = AddRecipeForm()
+    form2 = AutofillRecipeForm()
     choices = []
     user = User.query.filter_by(email=current_user.email).first_or_404()
     cats = user.categories.all()
@@ -965,6 +967,112 @@ def addRecipe():
         curr_cat = cat.label
         choices.append(curr_cat)
     form.category.choices = choices
+    # Autofill the Add to Recipe form from URL
+    if form2.validate_on_submit():
+        autofill_url = request.form2['autofillurl']
+        if autofill_url:
+            headers = {
+                'User-Agent': UserAgent().random,
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Accept-Encoding': 'gzip, deflate',
+                'Connection': 'keep-alive',
+                'Upgrade-Insecure-Requests': '1',
+            }
+            try:
+                page = requests.get(rec_url, timeout=16, headers=headers)
+                soup = BeautifulSoup(page.text, 'html.parser')
+            except:
+                page = None
+                soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
+            # Extract title
+            title_1 = soup.find('meta',attrs={"property": "og:title"})
+            if title_1:
+                title = title_1['content']
+            else:
+                title_2 = soup.title
+                title_2 = title_2.string if title_2 else ""
+                title = title_2.split(' - ')[0] if ' - ' title_2 else title_2
+            # Extract description
+            description_1 = soup.find('meta',attrs={"name": "description"})
+            if description_1:
+                description = description_1['content']
+            else:
+                description_2 = soup.find('meta',attrs={"property": "og:description"})
+                if description_2:
+                    description = description_2['content']
+                else:
+                    description = ''
+            # EXTRACT INGREDIENTS
+            ingredients = []
+            # ingredients - wprm sites
+            ingredients_1 = soup.find('div',class_='wprm-recipe-ingredients-container')
+            # ingredients - pinchofyum
+            ingredients_2 = soup.find_all('li',attrs={'data-tr-ingredient-checkbox': True})
+            # ingredients - justapinch
+            ingredients_3 = soup.find('ul', {'id': 'recipe-ingredients-list'})
+            # ingredients - wprm sites
+            if ingredients_1:
+                ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
+                for ingredient in ingredients_wprm:
+                    ingred = ingredient.text
+                    ingred = ingred.replace("\n"," ")
+                    ingred = ingred.replace("▢","")
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # ingredients - pinchofyum
+            elif ingredients_2:
+                for ingredient in ingredients_2:
+                    ingred = ingredient.text
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # ingredients - justapinch
+            elif ingredients_3:
+                ingredients_justa = soup.find_all('li',class_='x-checkable')
+                for ingredient in ingredients_justa:
+                    ing_amount_1 = ingredient.find('div',class_='text-blue-ribbon text-wrap text-right font-weight-bold mr-2')
+                    ing_amount = ing_amount_1.text
+                    ing_amount = ing_amount.strip()
+                    ing_item_1 = ingredient.find('div',class_='ml-1')
+                    ing_item = ing_item_1.text
+                    ingred = ing_amount + ' ' + ing_item
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # EXTRACT INSTRUCTIONS
+            instructions = []
+            # instructions - wprm sites
+            instructions_1 = soup.find('div',class_='wprm-recipe-instructions-container')
+            # instructions - pinchofyum
+            instructions_2 = soup.find('div',class_='tasty-recipes-instructions')
+            # instructions - justapinch
+            instructions_3 = soup.find('ul', {'id': 'recipe-preparation'})
+            # instructions - wprm sites
+            if instructions_1:
+                instructions_wprm = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
+                for group in instructions_wprm:
+                    instructions_h4 = group.find('h4')
+                    if instructions_h4:
+                        instructions.append(instructions_h4.contents[0])
+                    inst_steps = group.find_all('div',class_='wprm-recipe-instruction-text')
+                    for step in inst_steps:
+                        inst_step = step.text
+                        instructions.append(inst_step)
+            # instructions - pinchofyum
+            elif instructions_2:
+                instructions_pinch = instructions_2.find_all('li')
+                for instruction in instructions_pinch:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - justapinch
+            elif instructions_3:
+                instructions_justa = soup.find_all('div',class_='card-body p-0 py-1')
+                for instruction in instructions_justa:
+                    instr_1 = instruction.find('div',class_='flex-fill recipe-direction rcp-ugc-block')
+                    instr = instr_1.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+    # Save recipe to My Recipes
     if form.validate_on_submit():
         hex_valid = 0
         while hex_valid == 0:

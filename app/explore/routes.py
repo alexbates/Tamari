@@ -1303,17 +1303,19 @@ def exploreRecipeDetail(rec_group, recnum):
                         outfile.write(r.content)
                     img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + i_photo)
                     img_width, img_height = img.size
+                    # Resize landscape photos
                     if img_width > img_height:
                         if img_width > 1500:
                             basewidth = 1500
                             wpercent = (basewidth/float(img.size[0]))
                             hsize = int((float(img.size[1])*float(wpercent)))
                             img = img.resize((basewidth,hsize), Image.Resampling.LANCZOS)
+                    # Resize portrait photos
                     else:
                         if img_height > 1500:
                             baseheight = 1500
-                            hpercent = (baseheight/float(img.size[0]))
-                            hsize = int((float(img.size[1])*float(wpercent)))
+                            hpercent = (baseheight/float(img.size[1]))
+                            wsize = int((float(img.size[0])*float(hpercent)))
                             img = img.resize((wsize,baseheight), Image.Resampling.LANCZOS)
                     img.save(app.config['UPLOAD_FOLDER'] + '/' + i_photo)
                 else:

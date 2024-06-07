@@ -3,6 +3,7 @@ from flask_login import current_user
 from wtforms import StringField, IntegerField, PasswordField, BooleanField, TextAreaField, SelectField, RadioField, SubmitField
 from wtforms.validators import ValidationError, DataRequired, Optional, Email, EqualTo, Length
 from app.models import User
+import re
 
 # Validation for string and textarea fields
 # Prevents input of code that a browser may interpret as HTML, CSS, or Javascript
@@ -10,6 +11,12 @@ def disallowed_chars(form, field):
     dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
     if any(char in dis_chars for char in field.data):
         raise ValidationError('Cannot contain <, >, {, }, ;, or *')
+
+# Validate URL in AutofillRecipeForm
+def valid_url(form, field):
+    url_pattern = re.compile(r'^(https?://)?(www\.)?([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$')
+    if not url_pattern.match(field.data):
+        raise ValidationError('Invalid URL.')
 
 class DisplaySettingsForm(FlaskForm):
     recipe_size = RadioField('Recipe Size', choices=[(0, 'Large'),(1, 'Small'),(2, 'Details')], default=lambda: current_user.pref_size)
@@ -39,6 +46,10 @@ class AddRecipeForm(FlaskForm):
     n_fiber = IntegerField(validators=[Optional()])
     ingredients = TextAreaField(validators=[DataRequired(),Length(1,2200),disallowed_chars])
     instructions = TextAreaField(validators=[DataRequired(),Length(1,6600),disallowed_chars])
+    submit = SubmitField('Submit')
+    
+class AutofillRecipeForm(FlaskForm):
+    autofillurl = StringField(validators=[Length(0,200),disallowed_chars,valid_url])
     submit = SubmitField('Submit')
 
 class EditRecipeForm(FlaskForm):

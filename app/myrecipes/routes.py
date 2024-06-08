@@ -992,7 +992,7 @@ def addRecipe():
             else:
                 title_2 = soup.title
                 title_2 = title_2.string if title_2 else ""
-                title = title_2.split(' - ')[0] if ' - ' title_2 else title_2
+                title = title_2.split(' - ')[0] if ' - ' in title_2 else title_2
             # Extract description
             description_1 = soup.find('meta',attrs={"name": "description"})
             if description_1:

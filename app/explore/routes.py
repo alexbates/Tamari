@@ -462,10 +462,21 @@ def get_wprm_instructions(soup):
         for group in instructions_2:
             instructions_h4 = group.find('h4')
             if instructions_h4:
-                instructions.append(instructions_h4.contents[0])
+                content = str(instructions_h4.contents[0])
+                try:
+                    content = content.replace("<strong>","")
+                    content = content.replace("</strong>","")
+                except:
+                    pass
+                instructions.append(content)
             inst_steps = group.find_all('div',class_='wprm-recipe-instruction-text')
             for step in inst_steps:
-                inst_step = step.text
+                inst_step = str(step.text)
+                try:
+                    inst_step = inst_step.replace("<strong>","")
+                    inst_step = inst_step.replace("</strong>","")
+                except:
+                    pass
                 instructions.append(inst_step)
     return instructions
 
@@ -1269,9 +1280,12 @@ def exploreRecipeDetail(rec_group, recnum):
                     if hex_exist is None:
                         hex_valid = 1
                 if photo:
-                    test_photo_1 = Request(photo, headers={'User-Agent': 'Mozilla/5.0'})
-                    test_photo_2 = urlopen(test_photo_1)
-                    ext = test_photo_2.info()['Content-Type'].split("/")[-1]
+                    try:
+                        test_photo_1 = Request(photo, headers={'User-Agent': 'Mozilla/5.0'})
+                        test_photo_2 = urlopen(test_photo_1)
+                        ext = test_photo_2.info()['Content-Type'].split("/")[-1]
+                    except:
+                        ext = None
                     if ext == 'jpeg':
                         file_extension = '.jpeg'
                     elif ext == 'jpg':

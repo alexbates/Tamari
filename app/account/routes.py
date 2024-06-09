@@ -234,7 +234,7 @@ def deleteAccount():
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
     for recipe in recipes:
         fullpath = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo
-        if delrecipe.photo not in defaults:
+        if recipe.photo not in defaults:
             try:
                 os.remove(fullpath)
             except:

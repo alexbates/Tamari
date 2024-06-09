@@ -224,6 +224,38 @@ def deleteAccount():
         return redirect(url_for('account.user'))
     # Logout before delete
     logout_user()
+    # Delete all recipes belonging to the current user
+    recipes = Recipe.query.filter_by(user_id=user.id).all()
+    # When deleting photos from recipe-photos directory, the photos are only deleted
+    # if not one of the defaults
+    defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
+        'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
+        'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
+        'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
+    for recipe in recipes:
+        fullpath = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo
+        if delrecipe.photo not in defaults:
+            try:
+                os.remove(fullpath)
+            except:
+                pass
+        db.session.delete(recipe)
+    # Delete all other records belonging to the current user
+    nutritional_infos = NutritionalInfo.query.filter_by(user_id=user.id).all()
+    for nutritional_info in nutritional_infos:
+        db.session.delete(nutritional_info)
+    categories = Category.query.filter_by(user_id=user.id).all()
+    for category in categories:
+        db.session.delete(category)
+    shoplists = Shoplist.query.filter_by(user_id=user.id).all()
+    for shoplist in shoplists:
+        db.session.delete(shoplist)
+    listitems = Listitem.query.filter_by(user_id=user.id).all()
+    for listitem in listitems:
+        db.session.delete(listitem)
+    mealrecipes = MealRecipe.query.filter_by(user_id=user.id).all()
+    for mealrecipe in mealrecipes:
+        db.session.delete(mealrecipe)
     # Delete account and redirect to login page
     db.session.delete(user)
     db.session.commit()

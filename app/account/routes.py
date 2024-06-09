@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request, send_from_
 from app import app, db, limiter
 from app.account.forms import LoginForm, RegistrationForm, AccountForm, EmptyForm, ResetPasswordRequestForm, ResetPasswordForm, AccountPrefsForm
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe
+from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
 from app.account.email import send_password_reset_email
 from werkzeug.urls import url_parse
 from datetime import datetime

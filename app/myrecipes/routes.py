@@ -985,15 +985,22 @@ def addRecipe():
             except:
                 page = None
                 soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
-            # Extract title
+            # INITIALIZE VARIABLES PRIOR TO EXTRACTION
+            title = None
+            description = None
+            servings = None
+            preptime = None
+            cooktime = None
+            totaltime = None
+            # EXTRACT TITLE
             title_1 = soup.find('meta',attrs={"property": "og:title"})
             if title_1:
                 title = title_1['content']
             else:
                 title_2 = soup.title
                 title_2 = title_2.string if title_2 else ""
-                title = title_2.split(' - ')[0] if ' - ' in title_2 else title_2
-            # Extract description
+                title = title_2.split(' - ')[0] if ' - ' title_2 else title_2
+            # EXTRACT DESCRIPTION
             description_1 = soup.find('meta',attrs={"name": "description"})
             if description_1:
                 description = description_1['content']
@@ -1003,6 +1010,244 @@ def addRecipe():
                     description = description_2['content']
                 else:
                     description = ''
+            # EXTRACT SERVINGS
+            # servings - wprm sites (type 1)
+            servings_1 = soup.find('span',class_='wprm-recipe-servings-with-unit')
+            # servings - wprm sites (type 2)
+            servings_2 = soup.find('span',class_='wprm-recipe-servings-adjustable-tooltip')
+            # servings - justapinch
+            servings_3 = soup.find('span', class_='small text-uppercase', string='yield')
+            # servings - pinchofyum
+            servings_4 = soup.find('span',class_='tasty-recipes-yeild')
+            # servings - tasty.co
+            servings_5 = soup.find('p',class_='servings-display')
+            # servings - food52
+            servings_6 = soup.find('span',class_='recipe__details-heading', text='Serves')
+            # servings - tasteofhome
+            servings_7 = soup.find('div',class_='makes')
+            # servings - taste.com.au
+            servings_8 = soup.find('li', text='Serves')
+            # servings - wprm sites (type 1)
+            if servings_1:
+                try:
+                    servings_wprm = servings_1.find('span',class_='wprm-recipe-servings')
+                except:
+                    servings_wprm = None
+                if servings_wprm:
+                    try:
+                        servings = servings_wprm.get_text()
+                        servings = int(servings)
+                    except:
+                        servings = None
+                else:
+                    servings = None
+            # servings - wprm sites (type 2)
+            elif servings_2:
+                try:
+                    servings = servings_2.get_text()
+                    servings = int(servings)
+                except:
+                    servings = None
+            # servings - justapinch
+            elif servings_3:
+                try:
+                    servings_jap = servings_3.find_next_siblings('span')
+                    servings_jap2 = servings_jap[0].text
+                    servings = servings_jap2.replace(' serving(s)', '').replace('serving', '').strip()
+                    servings = int(servings)
+                except:
+                    servings = None
+            # servings - pinchofyum
+            elif servings_4:
+                try:
+                    servings_poy = servings_4.find('span', attrs={'data-amount': True})
+                    servings = servings_poy[0].text
+                    servings = int(servings)
+                except:
+                    servings = None
+            # servings - tasty.co
+            elif servings_5:
+                try:
+                    servings = servings_5.text
+                    servings = servings.replace('for', '').replace('servings', '').replace('serving', '').replace(' ', '').strip()
+                    servings = int(servings)
+                except:
+                    servings = None
+            # servings - food52
+            elif servings_6:
+                try:
+                    servings = servings_6.parent
+                    servings = servings.text
+                    servings = servings.replace('Serves', '').replace(' ', '').strip()
+                    servings = re.match(r'\d+', servings)
+                    servings = servings.group() if servings else None
+                    servings = int(servings)
+                except:
+                    servings = None
+            # servings - tasteofhome
+            elif servings_7:
+                try:
+                    servings = servings_7.find('p')
+                    servings = servings.text
+                    servings = servings.replace('servings', '').replace('serving', '').replace(' ', '').strip()
+                    servings = int(servings)
+                except:
+                    servings = None
+            # servings - taste.com.au
+            elif servings_8:
+                try:
+                    servings = servings_8.find('span')
+                    servings = servings.text
+                    servings = int(servings)
+                except:
+                    servings = None
+            # EXTRACT PREP TIME
+            # prep time - wprm sites
+            preptime_1_m = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-prep_time wprm-recipe-prep_time-minutes')
+            preptime_1_h = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-prep_time wprm-recipe-prep_time-hours')
+            # prep time - justapinch
+            preptime_2 = soup.find('span', string='prep time')
+            # prep time - pinchofyum
+            preptime_3 = soup.find('span', class_='tasty-recipes-prep-time')
+            # prep time - food52
+            preptime_4 = soup.find('span',class_='recipe__details-heading', text='Prep time')
+            # prep time - wprm sites
+            if preptime_1_m or preptime_1_h:
+                if preptime_1_m:
+                    pt_m = preptime_1_m.contents[0]
+                    pt_m = int(pt_m)
+                else:
+                    pt_m = 0
+                if preptime_h:
+                    pt_h = preptime_1_h.contents[0]
+                    pt_h = int(pt_h)
+                else:
+                    pt_h = 0
+                preptime = pt_m + (pt_h * 60)
+            # prep time - justapinch
+            elif preptime_2:
+                preptime_jap = preptime_2.find_next_siblings('span')
+                preptime_jap2 = preptime_jap[0].text
+                if "Hr" in preptime_jap2:
+                    pt_h = preptime_jap2[0]
+                    pt_h = int(pt_h)
+                    if "Min" in preptime_jap2:
+                        pt_mins = re.search('Hr (.*)Min', preptime_jap2)
+                        pt_m = pt_mins.group(1)
+                        pt_m = int(pt_m)
+                    else:
+                        pt_m = 0
+                else:
+                    pt_h = 0
+                    pt_m = preptime_jap2.replace(" Min","")
+                    pt_m = int(pt_m)
+                preptime = pt_m + (pt_h * 60)
+            # prep time - pinchofyum
+            elif preptime_3:
+                preptime_poy = preptime_3.text
+                # Extract all numbers
+                preptime_poy2 = re.findall(r'\d+', preptime_poy)
+                try:
+                    preptime = int(preptime_poy2[0])
+                except:
+                    preptime = ''
+            # prep time - food52
+            elif preptime_4:
+                try:
+                    preptime = preptime_4.parent
+                    preptime = preptime.text
+                    preptime = preptime.replace('Prep time', '').replace('minutes', '').replace('minute', '').replace(' ', '').strip()
+                    preptime = re.match(r'\d+', preptime)
+                    preptime = preptime.group() if preptime else None
+                    preptime = int(preptime)
+                except:
+                    preptime = ''
+            # EXTRACT COOK TIME
+            # cook time - wprm sites
+            cooktime_m_1 = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-cook_time wprm-recipe-cook_time-minutes')
+            cooktime_h_1 = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-cook_time wprm-recipe-cook_time-hours')
+            # cook time - justapinch
+            cooktime_2 = soup.find('span', string='cook time')
+            # cook time - pinchofyum
+            cooktime_3 = soup.find('span', class_='tasty-recipes-cook-time')
+            # cook time - food52
+            cooktime_4 = soup.find('span',class_='recipe__details-heading', text='Cook time')
+            # cook time - wprm sites
+            if cooktime_m_1 or cooktime_h_1:
+                if cooktime_m_1:
+                    ct_m = cooktime_m_1.contents[0]
+                    ct_m = int(ct_m)
+                else:
+                    ct_m = 0
+                if cooktime_h_1:
+                    ct_h = cooktime_h_1.contents[0]
+                    ct_h = int(ct_h)
+                else:
+                    ct_h = 0
+                cooktime = ct_m + (ct_h * 60)
+            # cook time - justapinch
+            if cooktime_2:
+                cooktime_jap = cooktime_2.find_next_siblings('span')
+                cooktime_jap2 = cooktime_jap[0].text
+                if "Hr" in cooktime_jap2:
+                    ct_h = cooktime_jap2[0]
+                    ct_h = int(ct_h)
+                    if "Min" in cooktime_jap2:
+                        ct_mins = re.search('Hr (.*)Min', cooktime_jap2)
+                        ct_m = ct_mins.group(1)
+                        ct_m = int(ct_m)
+                    else:
+                        ct_m = 0
+                else:
+                    ct_h = 0
+                    ct_m = cooktime_jap2.replace(" Min","")
+                    ct_m = int(ct_m)
+                cooktime = ct_m + (ct_h * 60)
+            # cook time - pinchofyum
+            if cooktime_3:
+                cooktime_poy = cooktime_3.text
+                # Extract all numbers
+                cooktime_poy2 = re.findall(r'\d+', cooktime_poy)
+                try:
+                    cooktime = int(cooktime_poy2[0])
+                except:
+                    cooktime = ''
+            # cook time - food52
+            if cooktime_4:
+                cooktime = cooktime_4.parent
+                cooktime = cooktime.text
+                cooktime = cooktime.replace('Cook time', '').replace('minutes', '').replace('minute', '').replace(' ', '').strip()
+                cooktime = re.match(r'\d+', cooktime)
+                cooktime = cooktime.group() if cooktime else None
+                try:
+                    cooktime = int(cooktime)
+                except:
+                    cooktime = ''
+            # EXTRACT TOTAL TIME
+            # total time - wprm sites
+            totaltime_m_1 = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-minutes wprm-recipe-total_time wprm-recipe-total_time-minutes')
+            totaltime_h_1 = soup.find('span',class_='wprm-recipe-details wprm-recipe-details-hours wprm-recipe-total_time wprm-recipe-total_time-hours')
+            # total time - wprm sites
+            if totaltime_m_1 or totaltime_h_1:
+                if totaltime_m_1:
+                    tt_m = totaltime_m_1.contents[0]
+                    tt_m = int(tt_m)
+                else:
+                    tt_m = 0
+                if totaltime_h_1:
+                    tt_h = totaltime_h_1.contents[0]
+                    tt_h = int(tt_h)
+                else:
+                    tt_h = 0
+                totaltime = tt_m + (tt_h * 60)
+            # total time - all other sites
+            else:
+                if preptime and cooktime:
+                    totaltime = preptime + cooktime
+                elif preptime:
+                    totaltime = preptime
+                elif cooktime:
+                    totaltime = cooktime
             # EXTRACT INGREDIENTS
             ingredients = []
             # ingredients - wprm sites
@@ -1011,6 +1256,14 @@ def addRecipe():
             ingredients_2 = soup.find_all('li',attrs={'data-tr-ingredient-checkbox': True})
             # ingredients - justapinch
             ingredients_3 = soup.find('ul', {'id': 'recipe-ingredients-list'})
+            # ingredients - tastyco
+            ingredients_4 = soup.find('div',class_='ingredients__section')
+            # ingredients - food52
+            ingredients_5 = soup.find('div',class_='recipe__list--ingredients')
+            # ingredients - tasteofhome
+            ingredients_6 = soup.find('ul',class_='recipe-ingredients__list')
+            # ingredients - taste.com.au
+            ingredients_7 = soup.find('div',class_='recipe-ingredients-section')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
@@ -1038,6 +1291,35 @@ def addRecipe():
                     ingred = ing_amount + ' ' + ing_item
                     ingred = ingred.strip()
                     ingredients.append(ingred)
+            # ingredients - tastyco
+            elif ingredients_4:
+                ingredients_tastyco = ingredients_4.find_all('li',class_='ingredient')
+                for ingredient in ingredients_tastyco:
+                    ingred = ingredient.text
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # ingredients - food52
+            elif ingredients_5:
+                ingredients_food52 = ingredients_5.find_all('li')
+                for ingredient in ingredients_food52:
+                    ingred = ingredient.text
+                    ingred = ingred.replace('\n\n', ' ').replace('\n', ' ')
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # ingredients - tasteofhome
+            elif ingredients_6:
+                ingredients_toh = ingredients_6.find_all('li')
+                for ingredient in ingredients_toh:
+                    ingred = ingredient.text
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # ingredients - taste.com.au
+            elif ingredients_7:
+                ingredients_tcau = ingredients_7.find_all('div',class_='ingredient-description')
+                for ingredient in ingredients_tcau:
+                    ingred = ingredient.text
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
             # EXTRACT INSTRUCTIONS
             instructions = []
             # instructions - wprm sites
@@ -1046,6 +1328,14 @@ def addRecipe():
             instructions_2 = soup.find('div',class_='tasty-recipes-instructions')
             # instructions - justapinch
             instructions_3 = soup.find('ul', {'id': 'recipe-preparation'})
+            # instructions - tastyco
+            instructions_4 = soup.find('ol',class_='prep-steps')
+            # instructions - food52
+            instructions_5 = soup.find('div',class_='recipe__list--steps')
+            # instructions - tasteofhome
+            instructions_6 = soup.find('ol',class_='recipe-directions__list')
+            # instructions - taste.com.au
+            instructions_7 = soup.find('ul',class_='recipe-method-steps')
             # instructions - wprm sites
             if instructions_1:
                 instructions_wprm = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
@@ -1064,7 +1354,7 @@ def addRecipe():
                     instr = instruction.text
                     instr = instr.strip()
                     instructions.append(instr)
-            # instructions - justapinch
+            # instructions - justapinch 
             elif instructions_3:
                 instructions_justa = soup.find_all('div',class_='card-body p-0 py-1')
                 for instruction in instructions_justa:
@@ -1072,6 +1362,65 @@ def addRecipe():
                     instr = instr_1.text
                     instr = instr.strip()
                     instructions.append(instr)
+            # instructions - tastyco
+            elif instructions_4:
+                instructions_tastyco = instructions_4.find_all('li')
+                for instruction in instructions_tastyco:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - food52
+            elif instructions_5:
+                instructions_food52 = instructions_5.find_all('li',class_='recipe__list-step')
+                for instruction in instructions_food52:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - tasteofhome
+            elif instructions_6:
+                instructions_toh = instructions_6.find_all('li')
+                for instruction in instructions_toh:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - taste.com.au
+            elif instructions_7:
+                instructions_tcau = instructions_7.find_all('div',class_='recipe-method-step-content')
+                for instruction in instructions_tcau:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # PREPARE EXTRACTED DATA
+            i_description = description[:500]
+            i_ingredients = ''
+            for i in ingredients:
+                i_ingredients = i_ingredients + i + '\n'
+            i_ingredients = i_ingredients.strip()
+            i_ingredients = i_ingredients[:6600]
+            i_instructions = ''
+            for i in instructions:
+                i_instructions = i_instructions + i + '\n'
+            i_instructions = i_instructions.strip()
+            i_instructions = i_instructions[:2200]
+            # POPULATE FORM FIELDS
+            if title:
+                form.recipe_name.data = title
+            if i_description:
+                form.description.data = i_description
+            if servings:
+                form.servings.data = servings
+            if preptime:
+                form.prep_time.data = preptime
+            if cooktime:
+                form.cook_time.data = cooktime
+            if totaltime:
+                form.total_time.data = totaltime
+            if title and i_ingredients and i_instructions:
+                flash('The form was autofilled successfully.')
+            elif title or i_description or servings or i_ingredients or i_instructions:
+                flash('Some fields have been autofilled, please manually complete the remaining.')
+            else:
+                flash('Error: could not autofill from the given URL.')
     # Save recipe to My Recipes
     if form.validate_on_submit():
         hex_valid = 0

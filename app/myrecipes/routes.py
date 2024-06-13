@@ -999,7 +999,7 @@ def addRecipe():
             else:
                 title_2 = soup.title
                 title_2 = title_2.string if title_2 else ""
-                title = title_2.split(' - ')[0] if ' - ' title_2 else title_2
+                title = title_2.split(' - ')[0] if ' - ' in title_2 else title_2
             # EXTRACT DESCRIPTION
             description_1 = soup.find('meta',attrs={"name": "description"})
             if description_1:
@@ -1518,7 +1518,7 @@ def addRecipe():
             db.session.commit()
         flash('The recipe has been added.')
         return redirect(url_for('myrecipes.addRecipe'))
-    return render_template('add-recipe.html', title='Add a New Recipe', form=form, choices=choices)
+    return render_template('add-recipe.html', title='Add a New Recipe', form=form, form2=form2, choices=choices)
 
 @bp.route('/edit-recipe/<hexid>', methods=['GET', 'POST'])
 @login_required

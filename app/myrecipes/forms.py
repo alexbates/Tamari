@@ -18,8 +18,11 @@ def disallowed_chars(form, field):
 # Validate URL in AutofillRecipeForm
 def valid_url(form, field):
     url_pattern = re.compile(r'^(https?://)?(www\.)?([a-zA-Z0-9]+(\.[a-zA-Z0-9]+)+.*)$')
-    if not url_pattern.match(field.data):
-        raise ValidationError('Invalid URL.')
+    try:
+        if not url_pattern.match(field.data):
+            raise ValidationError('Invalid URL.')
+    except:
+        pass
 
 class DisplaySettingsForm(FlaskForm):
     recipe_size = RadioField('Recipe Size', choices=[(0, 'Large'),(1, 'Small'),(2, 'Details')], default=lambda: current_user.pref_size)

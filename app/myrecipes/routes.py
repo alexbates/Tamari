@@ -959,7 +959,7 @@ def removeRecipe(hexid):
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def addRecipe():
     form = AddRecipeForm()
-    form2 = AutofillRecipeForm()
+    form2 = AutofillRecipeForm(prefix='a')
     choices = []
     user = User.query.filter_by(email=current_user.email).first_or_404()
     cats = user.categories.all()

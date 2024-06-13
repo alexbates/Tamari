@@ -9,7 +9,6 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>Add a New Recipe</h2>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 		{% set first_message = true %}
@@ -28,6 +27,20 @@
 		{% endfor %}
 		{% endif %}
 		{% endwith %}
+		<h2>Autofill From URL</h2>
+		<form method="post" enctype="multipart/form-data" novalidate>
+			{{ form2.hidden_tag() }}
+			<div class="form-group">
+				<label class="control-label" for="autofillurl">Recipe URL</label><br>
+				{{ form2.autofillurl(class="form-control fc1", placeholder="https://www.example.com/recipes/air-fryer-squash") }}
+				{% for error in form2.autofillurl.errors %} 
+				<span class="errorrequired">{{ error }}</span>
+				{% endfor %}
+			</div>
+			{{ form2.submit(class="btn btn-default import-btn") }}
+		</form>
+		<hr>
+		<h2>Add a New Recipe</h2>
 		<form method="post" enctype="multipart/form-data" novalidate>
 			{{ form.hidden_tag() }}
 			<div class="form-group">
@@ -181,7 +194,7 @@
 				</div>
 			</div>
 			<div class="submitdiv">
-				{{ form.submit(class="btn btn-default") }}
+				{{ form.submit(class="btn btn-default manual-btn") }}
 			</div>
 		</form>
 	</div>

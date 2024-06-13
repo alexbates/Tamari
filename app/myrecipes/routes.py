@@ -1118,7 +1118,7 @@ def addRecipe():
                     pt_m = int(pt_m)
                 else:
                     pt_m = 0
-                if preptime_h:
+                if preptime_1_h:
                     pt_h = preptime_1_h.contents[0]
                     pt_h = int(pt_h)
                 else:

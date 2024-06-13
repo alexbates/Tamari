@@ -968,8 +968,8 @@ def addRecipe():
         choices.append(curr_cat)
     form.category.choices = choices
     # Autofill the Add to Recipe form from URL
-    if form2.validate_on_submit():
-        autofill_url = request.form2['autofillurl']
+    if form2.submit.data and form2.validate_on_submit():
+        autofill_url = request.form['a-autofillurl']
         if autofill_url:
             headers = {
                 'User-Agent': UserAgent().random,
@@ -980,7 +980,7 @@ def addRecipe():
                 'Upgrade-Insecure-Requests': '1',
             }
             try:
-                page = requests.get(rec_url, timeout=16, headers=headers)
+                page = requests.get(autofill_url, timeout=16, headers=headers)
                 soup = BeautifulSoup(page.text, 'html.parser')
             except:
                 page = None
@@ -1415,6 +1415,10 @@ def addRecipe():
                 form.cook_time.data = cooktime
             if totaltime:
                 form.total_time.data = totaltime
+            if i_ingredients:
+                form.ingredients.data = i_ingredients
+            if i_instructions:
+                form.instructions.data = i_instructions
             if title and i_ingredients and i_instructions:
                 flash('The form was autofilled successfully.')
             elif title or i_description or servings or i_ingredients or i_instructions:
@@ -1422,7 +1426,7 @@ def addRecipe():
             else:
                 flash('Error: could not autofill from the given URL.')
     # Save recipe to My Recipes
-    if form.validate_on_submit():
+    if form.submit.data and form.validate_on_submit():
         hex_valid = 0
         while hex_valid == 0:
             hex_string = secrets.token_hex(4)

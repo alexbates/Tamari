@@ -6,8 +6,11 @@ from app.models import User
 
 def disallowed_chars(form, field):
     dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
-    if any(char in dis_chars for char in field.data):
-        raise ValidationError('Cannot contain <, >, {, }, ;, or *')
+    try:
+        if any(char in dis_chars for char in field.data):
+            raise ValidationError('Cannot contain <, >, {, }, ;, or *')
+    except:
+        pass
 
 class ExploreSearchForm(FlaskForm):
     search = StringField(validators=[DataRequired(),disallowed_chars])

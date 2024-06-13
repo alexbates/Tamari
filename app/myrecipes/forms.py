@@ -9,8 +9,11 @@ import re
 # Prevents input of code that a browser may interpret as HTML, CSS, or Javascript
 def disallowed_chars(form, field):
     dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
-    if any(char in dis_chars for char in field.data):
-        raise ValidationError('Cannot contain <, >, {, }, ;, or *')
+    try:
+        if any(char in dis_chars for char in field.data):
+            raise ValidationError('Cannot contain <, >, {, }, ;, or *')
+    except:
+        pass
 
 # Validate URL in AutofillRecipeForm
 def valid_url(form, field):

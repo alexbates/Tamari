@@ -1265,7 +1265,9 @@ def addRecipe():
             # ingredients - taste.com.au
             ingredients_7 = soup.find('div',class_='recipe-ingredients-section')
             # ingredients - allrecipes
-            ingredients_8 = soup.find_all('li',class_='mntl-structured-ingredients__list-item')
+            ingredients_8 = soup.find('ul',class_='mntl-structured-ingredients__list')
+            if ingredients_8 is None:
+                ingredients_8 = soup.find('ul',class_='mm-recipes-structured-ingredients__list')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
@@ -1324,11 +1326,15 @@ def addRecipe():
                     ingredients.append(ingred)
             # ingredients - allrecipes
             elif ingredients_8:
-                for ingredient in ingredients_8:
-                    ingred = ingredient.text
-                    ingred = ingred.replace("\n"," ")
-                    ingred = ingred.strip()
-                    ingredients.append(ingred)
+                ingredients_allrec = ingredients_8.find_all('li')
+                for ingredient in ingredients_allrec:
+                    try:
+                        ingred_quantity = ingredient.find('span', {'data-ingredient-quantity': 'true'}).get_text(strip=True) if ingredient.find('span', {'data-ingredient-quantity': 'true'}) else ''
+                        ingred_unit = ingredient.find('span', {'data-ingredient-unit': 'true'}).get_text(strip=True) if ingredient.find('span', {'data-ingredient-unit': 'true'}) else ''
+                        ingred_name = ingredient.find('span', {'data-ingredient-name': 'true'}).get_text(strip=True) if ingredient.find('span', {'data-ingredient-name': 'true'}) else ''
+                        ingredients.append(f"{ingred_quantity} {ingred_unit} {ingred_name}".strip())
+                    except:
+                        pass
             # EXTRACT INSTRUCTIONS
             instructions = []
             # instructions - wprm sites

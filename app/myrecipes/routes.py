@@ -1478,6 +1478,8 @@ def addRecipe():
                 form.ingredients.data = i_ingredients
             if i_instructions:
                 form.instructions.data = i_instructions
+            if title or i_description or servings or i_ingredients or i_instructions:
+                form.url.data = autofill_url
             if title and i_ingredients and i_instructions:
                 flash('The form was autofilled successfully.')
             elif title or i_description or servings or i_ingredients or i_instructions:

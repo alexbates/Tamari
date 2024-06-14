@@ -1271,7 +1271,7 @@ def addRecipe():
             # ingredients - foodnetwork
             ingredients_9 = soup.find_all('span',class_='o-Ingredients__a-Ingredient--CheckboxLabel')
             # ingredients - onceuponachef
-            ingredients_10 = soup.find('ul',class_='fv_recipe_ingredient_width')
+            ingredients_10 = soup.find('div',class_='ingredients')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')

@@ -1268,6 +1268,8 @@ def addRecipe():
             ingredients_8 = soup.find('ul',class_='mntl-structured-ingredients__list')
             if ingredients_8 is None:
                 ingredients_8 = soup.find('ul',class_='mm-recipes-structured-ingredients__list')
+            # ingredients - foodnetwork
+            ingredients_9 = soup.find_all('span',class_='o-Ingredients__a-Ingredient--CheckboxLabel')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
@@ -1335,6 +1337,12 @@ def addRecipe():
                         ingredients.append(f"{ingred_quantity} {ingred_unit} {ingred_name}".strip())
                     except:
                         pass
+            # ingredients - foodnetwork
+            elif ingredients_9:
+                for ingredient in ingredients_9:
+                    ingred = ingredient.text
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
             # EXTRACT INSTRUCTIONS
             instructions = []
             # instructions - wprm sites
@@ -1353,6 +1361,8 @@ def addRecipe():
             instructions_7 = soup.find('ul',class_='recipe-method-steps')
             # instructions - allrecipes
             instructions_8 = soup.find('ol',class_='mntl-sc-block-group--OL')
+            # instructions - foodnetwork
+            instructions_9 = soup.find_all('li',class_='o-Method__m-Step')
             # instructions - wprm sites
             if instructions_1:
                 instructions_wprm = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
@@ -1411,6 +1421,12 @@ def addRecipe():
             elif instructions_8:
                 instructions_allrec = instructions_8.find_all('li')
                 for instruction in instructions_allrec:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - foodnetwork
+            elif instructions_9:
+                for instruction in instructions_9:
                     instr = instruction.text
                     instr = instr.strip()
                     instructions.append(instr)

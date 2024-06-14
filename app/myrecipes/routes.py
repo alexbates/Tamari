@@ -1270,6 +1270,8 @@ def addRecipe():
                 ingredients_8 = soup.find('ul',class_='mm-recipes-structured-ingredients__list')
             # ingredients - foodnetwork
             ingredients_9 = soup.find_all('span',class_='o-Ingredients__a-Ingredient--CheckboxLabel')
+            # ingredients - onceuponachef
+            ingredients_10 = soup.find('ul',class_='fv_recipe_ingredient_width')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
@@ -1343,6 +1345,14 @@ def addRecipe():
                     ingred = ingredient.text
                     ingred = ingred.strip()
                     ingredients.append(ingred)
+            # ingredients - onceuponachef
+            elif ingredients_10:
+                ingredients_ouac = ingredients_10.find_all('li',class_='ingredient')
+                for ingredient in ingredients_ouac:
+                    ingred = ingredient.text
+                    ingred = ingred.replace("\n"," ")
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
             # EXTRACT INSTRUCTIONS
             instructions = []
             # instructions - wprm sites
@@ -1363,6 +1373,8 @@ def addRecipe():
             instructions_8 = soup.find('ol',class_='mntl-sc-block-group--OL')
             # instructions - foodnetwork
             instructions_9 = soup.find_all('li',class_='o-Method__m-Step')
+            # instructions - onceuponachef
+            instructions_10 = soup.find('div',class_='instructions')
             # instructions - wprm sites
             if instructions_1:
                 instructions_wprm = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
@@ -1427,6 +1439,13 @@ def addRecipe():
             # instructions - foodnetwork
             elif instructions_9:
                 for instruction in instructions_9:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - onceuponachef
+            elif instructions_10:
+                instructions_ouac = instructions_10.find_all('li',class_='instruction')
+                for instruction in instructions_ouac:
                     instr = instruction.text
                     instr = instr.strip()
                     instructions.append(instr)

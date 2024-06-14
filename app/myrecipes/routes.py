@@ -1264,6 +1264,8 @@ def addRecipe():
             ingredients_6 = soup.find('ul',class_='recipe-ingredients__list')
             # ingredients - taste.com.au
             ingredients_7 = soup.find('div',class_='recipe-ingredients-section')
+            # ingredients - allrecipes
+            ingredients_7 = soup.find_all('li',class_='mntl-structured-ingredients__list-item')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
@@ -1320,6 +1322,13 @@ def addRecipe():
                     ingred = ingredient.text
                     ingred = ingred.strip()
                     ingredients.append(ingred)
+            # ingredients - allrecipes
+            elif ingredients_8:
+                for ingredient in ingredients_8:
+                    ingred = ingredient.text
+                    ingred = ingred.replace("\n"," ")
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
             # EXTRACT INSTRUCTIONS
             instructions = []
             # instructions - wprm sites
@@ -1336,6 +1345,8 @@ def addRecipe():
             instructions_6 = soup.find('ol',class_='recipe-directions__list')
             # instructions - taste.com.au
             instructions_7 = soup.find('ul',class_='recipe-method-steps')
+            # instructions - allrecipes
+            instructions_8 = soup.find('ol',class_='mntl-sc-block-group--OL')
             # instructions - wprm sites
             if instructions_1:
                 instructions_wprm = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
@@ -1387,6 +1398,13 @@ def addRecipe():
             elif instructions_7:
                 instructions_tcau = instructions_7.find_all('div',class_='recipe-method-step-content')
                 for instruction in instructions_tcau:
+                    instr = instruction.text
+                    instr = instr.strip()
+                    instructions.append(instr)
+            # instructions - allrecipes
+            elif instructions_8:
+                instructions_allrec = instructions_8.find_all('li')
+                for instruction in instructions_allrec:
                     instr = instruction.text
                     instr = instr.strip()
                     instructions.append(instr)

@@ -1457,7 +1457,7 @@ def addRecipe():
             # instructions - delish, thepioneerwoman
             elif instructions_10:
                 instructions_delish = instructions_10.find_all('li')
-                for instruction in instructions_allrec:
+                for instruction in instructions_delish:
                     try:
                         for span in instruction.find_all('span', class_=['e1241r8m1', 'e1241r8m0']):
                             span.decompose()

@@ -1265,7 +1265,7 @@ def addRecipe():
             # ingredients - taste.com.au
             ingredients_7 = soup.find('div',class_='recipe-ingredients-section')
             # ingredients - allrecipes
-            ingredients_7 = soup.find_all('li',class_='mntl-structured-ingredients__list-item')
+            ingredients_8 = soup.find_all('li',class_='mntl-structured-ingredients__list-item')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')

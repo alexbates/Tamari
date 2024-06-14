@@ -1270,8 +1270,10 @@ def addRecipe():
                 ingredients_8 = soup.find('ul',class_='mm-recipes-structured-ingredients__list')
             # ingredients - foodnetwork
             ingredients_9 = soup.find_all('span',class_='o-Ingredients__a-Ingredient--CheckboxLabel')
+            # ingredients - delish, thepioneerwoman
+            ingredients_10 = soup.find('ul',class_='ingredient-lists')
             # ingredients - onceuponachef
-            ingredients_10 = soup.find('div',class_='ingredients')
+            ingredients_11 = soup.find('div',class_='ingredients')
             # ingredients - wprm sites
             if ingredients_1:
                 ingredients_wprm = ingredients_1.find_all('li',class_='wprm-recipe-ingredient')
@@ -1345,9 +1347,17 @@ def addRecipe():
                     ingred = ingredient.text
                     ingred = ingred.strip()
                     ingredients.append(ingred)
-            # ingredients - onceuponachef
+            # ingredients - delish, thepioneerwoman
             elif ingredients_10:
-                ingredients_ouac = ingredients_10.find_all('li',class_='ingredient')
+                ingredients_delish = ingredients_10.find_all('li')
+                for ingredient in ingredients_delish:
+                    ingred = ingredient.text
+                    ingred = ingred.replace("\n"," ")
+                    ingred = ingred.strip()
+                    ingredients.append(ingred)
+            # ingredients - onceuponachef
+            elif ingredients_11:
+                ingredients_ouac = ingredients_11.find_all('li',class_='ingredient')
                 for ingredient in ingredients_ouac:
                     ingred = ingredient.text
                     ingred = ingred.replace("\n"," ")
@@ -1373,8 +1383,10 @@ def addRecipe():
             instructions_8 = soup.find('ol',class_='mntl-sc-block-group--OL')
             # instructions - foodnetwork
             instructions_9 = soup.find_all('li',class_='o-Method__m-Step')
+            # instructions - delish, thepioneerwoman
+            instructions_10 = soup.find('ol',class_='emevuu60')
             # instructions - onceuponachef
-            instructions_10 = soup.find('div',class_='instructions')
+            instructions_11 = soup.find('div',class_='instructions')
             # instructions - wprm sites
             if instructions_1:
                 instructions_wprm = instructions_1.find_all('div',class_='wprm-recipe-instruction-group')
@@ -1442,9 +1454,21 @@ def addRecipe():
                     instr = instruction.text
                     instr = instr.strip()
                     instructions.append(instr)
-            # instructions - onceuponachef
+            # instructions - delish, thepioneerwoman
             elif instructions_10:
-                instructions_ouac = instructions_10.find_all('li',class_='instruction')
+                instructions_delish = instructions_10.find_all('li')
+                for instruction in instructions_allrec:
+                    try:
+                        for span in instruction.find_all('span', class_=['e1241r8m1', 'e1241r8m0']):
+                            span.decompose()
+                        instr = instruction.get_text(strip=True)
+                        instr = instr.strip()
+                        instructions.append(instr)
+                    except:
+                        pass
+            # instructions - onceuponachef
+            elif instructions_11:
+                instructions_ouac = instructions_11.find_all('li',class_='instruction')
                 for instruction in instructions_ouac:
                     instr = instruction.text
                     instr = instr.strip()

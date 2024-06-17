@@ -5,11 +5,11 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
 from app.account.email import send_password_reset_email
 from werkzeug.urls import url_parse
-from io import StringIO
+from io import StringIO, BytesIO
 import csv
 from datetime import datetime
 from urllib.request import urlopen, Request
-import secrets, time, random, os, imghdr, requests, re, urllib.request
+import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
 from app.account import bp
 from config import Config
 
@@ -227,29 +227,49 @@ def user():
     if form3.submit.data and form3.validate_on_submit():
         # Store CSV data as string in memory, not on disk
         output = StringIO()
+        fieldnames= ["title", "category", "description", "url", "prep_time", "cook_time", "total_time",
+            "ingredients", "instructions", "time_created", "favorite", "public"]
         # Specify column headers for the CSV file
-        writer = csv.DictWriter(output, fieldnames=["title", "description", "ingredients", "instructions", "photo"])
+        writer = csv.DictWriter(output, fieldnames=fieldnames, quoting=csv.csv.QUOTE_ALL)
+        # Write Byte Order Mark (BOM) to output stream so MS Excel will recognize encoding when opening CSV
+        output.write('\ufeff')
         # Write the column headers to the CSV file
         writer.writeheader()
         # For each recipe belonging to user, write recipe data as a row in the file
         for recipe in recipes:
-            r_title = clean_csv(recipe.title)
-            r_description = clean_csv(recipe.description)
-            r_ingredients = clean_csv(recipe.ingredients)
-            r_instructions = clean_csv(recipe.instructions)
             writer.writerow({
-                'title': r_title,
-                'description': r_description,
-                'ingredients': r_ingredients.replace("\n", "<br>"),
-                'instructions': r_instructions.replace("\n", "<br>")
+                'title': recipe.title,
+                'category': recipe.category,
+                'description': recipe.description,
+                'url': recipe.url,
+                'prep_time': recipe.prep_time,
+                'cook_time': recipe.cook_time,
+                'total_time': recipe.total_time,
+                'ingredients': recipe.ingredients.replace("\n", "<br>"),
+                'instructions': recipe.instructions.replace("\n", "<br>"),
+                'time_created': recipe.time_created,
+                'favorite': recipe.favorite,
+                'public': recipe.public
             })
-        # Generate the output filename based on current datetime
+        # Generate the zip filename based on current datetime
         current_date = datetime.now().strftime("%m-%d-%Y")
-        filename = f"Tamari-Backup-{current_date}.csv"
-        # Create a response with the CSV file
-        response = make_response(output.getvalue())
-        response.headers["Content-Disposition"] = f"attachment; filename={filename}"
-        response.headers["Content-type"] = "text/csv; charset=utf-8"
+        zip_filename = f"Tamari-Backup-{current_date}.zip"
+        # Create a ZIP file in memory
+        zip_buffer = BytesIO()
+        with zipfile.ZipFile(zip_buffer, mode='w') as zip_file:
+            # Write the CSV containing recipes to the ZIP file
+            zip_file.writestr("_recipes.csv", output.getvalue())
+            # Write every photo associated with each recipe to the ZIP file
+            for recipe in recipes:
+                photo_path = os.path.join(app.config['UPLOAD_FOLDER'], recipe.photo)
+                try:
+                    zip_file.write(photo_path, os.path.basename(photo_path))
+                except:
+                    pass
+        # Create a response with the ZIP file
+        response = make_response(zip_buffer.getvalue())
+        response.headers.set('Content-Type', 'application/zip')
+        response.headers.set('Content-Disposition', 'attachment', filename=zip_filename)
         # Start the download
         return response
     return render_template('account.html', title='Account', user=user, form=form, form2=form2, form3=form3, rec_count=rec_count)

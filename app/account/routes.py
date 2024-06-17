@@ -137,6 +137,7 @@ def user():
     form = AccountForm(current_user.email)
     form.email.data = current_user.email
     form2 = AccountPrefsForm(prefix='a')
+    form3 = EmptyForm(prefix='b')
     user = User.query.filter_by(email=current_user.email).first_or_404()
     recipes = user.recipes.order_by(Recipe.title)
     rec_count = 0
@@ -211,6 +212,31 @@ def user():
                 user.pref_theme = selecttheme
             db.session.commit()
             flash('Your changes have been saved.')
+    # Export Account Form
+    if form3.validate_on_submit() and request.form.get('b-submit') == 'true':
+        # Store CSV data as string in memory, not on disk
+        output = StringIO()
+        # Specify column headers for the CSV file
+        writer = csv.DictWriter(output, fieldnames=["title", "description", "ingredients", "instructions"])
+        # Write the column headers to the CSV file
+        writer.writeheader()
+        # For each recipe belonging to user, write recipe data as a row in the file
+        for recipe in recipes:
+            writer.writerow({
+                'title': recipe.title,
+                'description': recipe.description,
+                'ingredients': recipe.ingredients,
+                'instructions': recipe.instructions
+            })
+        # Generate the output filename based on current datetime
+        current_date = datetime.now().strftime("%m-%d-%Y")
+        filename = f"Tamari-Backup-{current_date}.csv"
+        # Create a response with the CSV file
+        response = make_response(output.getvalue())
+        response.headers["Content-Disposition"] = f"attachment; filename={filename}"
+        response.headers["Content-type"] = "text/csv"
+        # Start the download
+        return response
     return render_template('account.html', title='Account', user=user, form=form, form2=form2, rec_count=rec_count)
 
 @bp.route('/account/process-delete')

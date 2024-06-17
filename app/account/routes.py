@@ -5,6 +5,8 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
 from app.account.email import send_password_reset_email
 from werkzeug.urls import url_parse
+from io import StringIO
+import csv
 from datetime import datetime
 from urllib.request import urlopen, Request
 import secrets, time, random, os, imghdr, requests, re, urllib.request
@@ -130,6 +132,15 @@ def register():
                 return redirect(url_for('account.login'))
     return render_template('register.html', title='Register', form=form)
 
+def clean_csv(text):
+    try:
+        new_text = text.replace("â€™", "'")
+        new_text = new_text.replace("Â", "")
+        new_text = new_text.replace("Ã—", "x")
+    except:
+        new_text = ""
+    return new_text
+
 @bp.route('/account', methods=['GET', 'POST'])
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -213,20 +224,32 @@ def user():
             db.session.commit()
             flash('Your changes have been saved.')
     # Export Account Form
-    if form3.validate_on_submit() and request.form.get('b-submit') == 'true':
+    if form3.submit.data and form3.validate_on_submit():
         # Store CSV data as string in memory, not on disk
         output = StringIO()
         # Specify column headers for the CSV file
-        writer = csv.DictWriter(output, fieldnames=["title", "description", "ingredients", "instructions"])
+        writer = csv.DictWriter(output, fieldnames=["title", "description", "ingredients", "instructions", "photo"])
         # Write the column headers to the CSV file
         writer.writeheader()
         # For each recipe belonging to user, write recipe data as a row in the file
         for recipe in recipes:
+            photo_path = os.path.join(app.config['UPLOAD_FOLDER'], recipe.photo)
+            try:
+                with open(photo_path, "rb") as img_file:
+                    img_data = img_file.read()
+                    img_base64 = base64.b64encode(img_data).decode('utf-8')
+            except:
+                img_base64 = ''
+            r_title = clean_csv(recipe.title)
+            r_description = clean_csv(recipe.description)
+            r_ingredients = clean_csv(recipe.ingredients)
+            r_instructions = clean_csv(recipe.instructions)
             writer.writerow({
-                'title': recipe.title,
-                'description': recipe.description,
-                'ingredients': recipe.ingredients,
-                'instructions': recipe.instructions
+                'title': r_title,
+                'description': r_description,
+                'ingredients': r_ingredients,
+                'instructions': r_instructions,
+                'photo': img_base64
             })
         # Generate the output filename based on current datetime
         current_date = datetime.now().strftime("%m-%d-%Y")
@@ -234,7 +257,7 @@ def user():
         # Create a response with the CSV file
         response = make_response(output.getvalue())
         response.headers["Content-Disposition"] = f"attachment; filename={filename}"
-        response.headers["Content-type"] = "text/csv"
+        response.headers["Content-type"] = "text/csv; charset=utf-8"
         # Start the download
         return response
     return render_template('account.html', title='Account', user=user, form=form, form2=form2, form3=form3, rec_count=rec_count)

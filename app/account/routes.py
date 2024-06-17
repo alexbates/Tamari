@@ -233,13 +233,6 @@ def user():
         writer.writeheader()
         # For each recipe belonging to user, write recipe data as a row in the file
         for recipe in recipes:
-            photo_path = os.path.join(app.config['UPLOAD_FOLDER'], recipe.photo)
-            try:
-                with open(photo_path, "rb") as img_file:
-                    img_data = img_file.read()
-                    img_base64 = base64.b64encode(img_data).decode('utf-8')
-            except:
-                img_base64 = ''
             r_title = clean_csv(recipe.title)
             r_description = clean_csv(recipe.description)
             r_ingredients = clean_csv(recipe.ingredients)
@@ -247,9 +240,8 @@ def user():
             writer.writerow({
                 'title': r_title,
                 'description': r_description,
-                'ingredients': r_ingredients,
-                'instructions': r_instructions,
-                'photo': img_base64
+                'ingredients': r_ingredients.replace("\n", "<br>"),
+                'instructions': r_instructions.replace("\n", "<br>")
             })
         # Generate the output filename based on current datetime
         current_date = datetime.now().strftime("%m-%d-%Y")

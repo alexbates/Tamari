@@ -237,7 +237,7 @@ def user():
         response.headers["Content-type"] = "text/csv"
         # Start the download
         return response
-    return render_template('account.html', title='Account', user=user, form=form, form2=form2, rec_count=rec_count)
+    return render_template('account.html', title='Account', user=user, form=form, form2=form2, form3=form3, rec_count=rec_count)
 
 @bp.route('/account/process-delete')
 @login_required

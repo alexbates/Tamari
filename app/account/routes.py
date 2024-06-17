@@ -230,7 +230,7 @@ def user():
         fieldnames= ["title", "category", "description", "url", "prep_time", "cook_time", "total_time",
             "ingredients", "instructions", "time_created", "favorite", "public"]
         # Specify column headers for the CSV file
-        writer = csv.DictWriter(output, fieldnames=fieldnames, quoting=csv.csv.QUOTE_ALL)
+        writer = csv.DictWriter(output, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
         # Write Byte Order Mark (BOM) to output stream so MS Excel will recognize encoding when opening CSV
         output.write('\ufeff')
         # Write the column headers to the CSV file

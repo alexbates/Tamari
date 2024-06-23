@@ -61,6 +61,7 @@
 .block1inner {
 	height: 100%;
 	margin: 0 auto;
+	padding-bottom: 20px;
 	width: 1000px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
@@ -140,16 +141,17 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	margin-left: 20px;
 	width: calc(50% - 10px);
 }
-.export p {padding-left: 10px; padding-right: 10px;}
+.export p {padding-left: 12px; padding-right: 12px;}
+.custom-file-input {margin-bottom: 12px; padding-left: 12px; padding-right: 12px;}
 .updatedetails {
 	background-color: var(--color-updatedetails-bg);
 	border-radius: 10px;
 	color: var(--color-updatedetails-font);
 	float: left;
-	margin-bottom: 20px;
 	margin-left: 20px;
 	width: calc(50% - 10px);
 }
+.spacer {background: transparent; height: 20px;}
 #flashed-err {
 	background: var(--color-flashed-err); 
 	font-size: 14px;
@@ -282,7 +284,6 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	cursor: pointer;
 	font-size: 16px;
 	height: 34px;
-	margin-bottom: 14px;
 	margin-left: 12px;
 	padding: 0px 12px 0px 12px; /* Top Right Bottom Left */
 	transition: background-color 0.08s linear, border 0.08s linear;
@@ -290,7 +291,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .btn-default3:active, .btn-default3.active, .btn-default3:hover, .btn-default3:focus {outline: none;}
-
+.btn-download {margin-bottom: 0px;}
+.btn-upload {margin-bottom: 14px; margin-top: 5px;}
 
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) { 
@@ -339,7 +341,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	#errorpassword {width: 250px;}
 	#errorpassword2 {width: 250px;}
 }
-@media screen and (max-width: 450px) { 
+@media screen and (max-width: 460px) { 
 	.form-control {width: 190px;}
 	#erroremail {width: 210px;}
 	#errorpassword {width: 210px;}

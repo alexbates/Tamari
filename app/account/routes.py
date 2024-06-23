@@ -289,13 +289,13 @@ def user():
         if request.files and zipbackup.filename != '':
             # Read the uploaded file
             zip_data = zipbackup.read()
-            with zipfile.ZipFile(io.BytesIO(zip_data)) as z:
+            with zipfile.ZipFile(BytesIO(zip_data)) as z:
                 # Check if _recipes.csv is in the zip file
                 if '_recipes.csv' in z.namelist():
                     # Extract the _recipes.csv file
                     with z.open('_recipes.csv') as csvfile:
-                        csv_reader = csv.DictReader(io.TextIOWrapper(csvfile))
-                        required_columns = {'title', 'category', 'photo', 'description', 'url', 'prep_time',
+                        csv_reader = csv.DictReader(TextIOWrapper(csvfile))
+                        required_columns = {'\ufeff"title"', 'category', 'photo', 'description', 'url', 'prep_time',
                             'cook_time', 'total_time', 'ingredients', 'instructions', 'time_created', 'favorite',
                             'public'}
                         # Check is CSV file contains required columns
@@ -320,8 +320,8 @@ def user():
                                     # Made invalid later if fields from CSV columns do not pass checks
                                     invalid_row = False
                                     # Set of disallowed characters for row fields
-                                    dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
-                                    row_title = row['title']
+                                    dis_chars = {'<', '>', '{', '}', '/*', '*/'}
+                                    row_title = row['\ufeff"title"']
                                     # Don't add recipe if title length is invalid
                                     if len(row_title) > 80 or len(row_title) < 1:
                                         invalid_row = True
@@ -385,24 +385,32 @@ def user():
                                     # Favorite and Public must be either a 0 or 1
                                     row_favorite = row['favorite']
                                     try:
-                                        int(row_favorite)
-                                        if row_favorite != 0 or row_favorite != 1:
+                                        row_favorite = int(row_favorite)
+                                        if row_favorite != 0 and row_favorite != 1:
                                             invalid_row = True
                                     except:
                                         invalid_row = True
                                     row_public = row['public']
                                     try:
-                                        int(row_public)
-                                        if row_public != 0 or row_public != 1:
+                                        row_public = int(row_public)
+                                        if row_public != 0 and row_public != 1:
                                             invalid_row = True
                                     except:
                                         invalid_row = True
                                     if invalid_row == False:
+                                        # Create hexid for recipe that is going to be added
+                                        hex_valid = 0
+                                        while hex_valid == 0:
+                                            hex_string = secrets.token_hex(4)
+                                            hex_exist = Recipe.query.filter_by(hex_id=hex_string).first()
+                                            if hex_exist is None:
+                                                hex_valid = 1
+                                        # Check if category exists for current user
                                         cat_exist = Category.query.filter(Category.label == row_category,
                                             Category.user_id == current_user.id).first()
                                         if cat_exist:
                                             pass
-                                        # If category does not exist for current user, add it to database
+                                        # If category does not exist, add it to database
                                         else:
                                             cat_hex_valid = 0
                                             while cat_hex_valid == 0:
@@ -410,7 +418,7 @@ def user():
                                                 cat_hex_exist = Category.query.filter_by(hex_id=cat_hex_string).first()
                                                 if cat_hex_exist is None:
                                                     cat_hex_valid = 1
-                                            new_category = Category(hex_id=hex_string, label=row_category, user_id=current_user.id)
+                                            new_category = Category(hex_id=cat_hex_string, label=row_category, user_id=current_user.id)
                                             db.session.add(new_category)
                                             db.session.commit()
                                         bad_photo = False

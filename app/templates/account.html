@@ -131,15 +131,15 @@
 				{{ form3.hidden_tag() }}
 				{{ form3.submit(class="btn btn-default3 btn-download", value="Download") }}
 			</form>
+			{% else %}
+			<p>Export feature is disabled because you have no saved recipes.</p>
+			{% endif %}
 			<p>Restore from backup. Only recipes not present will be added, existing recipes will not be changed or overwritten.</p>
-			<form method="post" novalidate>
+			<form method="post" enctype="multipart/form-data" novalidate>
 				{{ form4.hidden_tag() }}
 				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip"><br>
 				{{ form4.submit(class="btn btn-default3 btn-upload", value="Upload") }}
 			</form>
-			{% else %}
-			<p>Export feature is disabled because you have no saved recipes.</p>
-			{% endif %}
 		</div>
 		<div class="updatedetails">
 			<h3>Update or Delete Account</h3>

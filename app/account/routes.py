@@ -311,7 +311,7 @@ def user():
                                 except:
                                     # Skip loop iteration, date is not valid
                                     continue
-                                recipe = Recipe.query.filter_by(time_created=row_timecreated).first()
+                                recipe = Recipe.query.filter_by(user_id=current_user.id, time_created=row_timecreated).first()
                                 if recipe:
                                     # Skip loop iteration, don't import recipe because it already exists
                                     continue
@@ -461,8 +461,8 @@ def user():
                                         recipe = Recipe(hex_id=hex_string, title=row_title, category=row_category,
                                             photo=filename, description=row_description, url=row_url, prep_time=row_prep,
                                             cook_time=row_cook, total_time=row_total, ingredients=row_ingredients,
-                                            instructions=row_instructions, favorite=row_favorite, public=row_public,
-                                            user_id=current_user.id)
+                                            instructions=row_instructions, time_created=row_timecreated, favorite=row_favorite,
+                                            public=row_public, user_id=current_user.id)
                                         db.session.add(recipe)
                                         db.session.commit()
                                         # Add 1 to the counter, which is used to inform user how many recipes are imported

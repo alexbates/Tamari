@@ -258,7 +258,7 @@ def user():
                 'total_time': recipe.total_time,
                 'ingredients': recipe.ingredients.replace("\n", "<br>"),
                 'instructions': recipe.instructions.replace("\n", "<br>"),
-                'time_created': recipe.time_created.strftime("%Y-%m-%d %H:%M:%S.%f),
+                'time_created': recipe.time_created.strftime("%Y-%m-%d %H:%M:%S.%f"),
                 'favorite': recipe.favorite,
                 'public': recipe.public
             })
@@ -421,7 +421,7 @@ def user():
                                                 val_exts = []
                                                 if val_ext == '.jpg':
                                                     val_exts.extend(['.jpg', '.jpeg'])
-                                                elif val_ext = '.jpeg':
+                                                elif val_ext == '.jpeg':
                                                     val_exts.extend(['.jpeg', '.jpg'])
                                                 else:
                                                     val_exts.append(val_ext)

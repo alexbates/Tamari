@@ -134,7 +134,7 @@
 			<p>Restore from backup. Only recipes not present will be added, existing recipes will not be changed or overwritten.</p>
 			<form method="post" novalidate>
 				{{ form4.hidden_tag() }}
-				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip">
+				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip"><br>
 				{{ form4.submit(class="btn btn-default3 btn-upload", value="Upload") }}
 			</form>
 			{% else %}

@@ -468,7 +468,7 @@ def user():
                                         # Add 1 to the counter, which is used to inform user how many recipes are imported
                                         zip_count += 1
                             if zip_count == 0:
-                                flash('Success: 0 recipes have been imported.')
+                                flash('No new recipes added. All recipes in the backup are already present.')
                             else:
                                 flash('Success: ' + str(zip_count) + ' recipes have been imported.')
                 else:

@@ -22,7 +22,7 @@ login = LoginManager(app)
 login.login_view = 'account.login'
 mail = Mail(app)
 moment = Moment(app)
-app.config['MAX_CONTENT_LENGTH'] = 10 * 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 350 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg']
 

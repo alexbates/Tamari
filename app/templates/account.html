@@ -125,7 +125,9 @@
 		<div class="export">
 			<h3>Export or Import Data</h3>
 			<div class="boxdivider">&nbsp;</div>
-			{% if rec_count > 0 %}
+			{% if rec_count > 750 %}
+			<p>Export feature is disabled because you have more than 750 recipes.</p>
+			{% elif rec_count > 0 %}
 			<p>Download a .ZIP backup of your recipes, favorites, categories, and recipe photos.</p>
 			<form method="post" novalidate>
 				{{ form3.hidden_tag() }}

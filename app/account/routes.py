@@ -470,7 +470,7 @@ def user():
                             if zip_count == 0:
                                 flash('Success: 0 recipes have been imported.')
                             else:
-                                flash('Success: ' + zip_count + ' recipes have been imported.')
+                                flash('Success: ' + str(zip_count) + ' recipes have been imported.')
                 else:
                     flash('Error: backup is invalid, _recipes.csv is missing from ZIP.')
     return render_template('account.html', title='Account', user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)

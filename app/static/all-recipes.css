@@ -729,7 +729,7 @@
 	.r2bottom {height: 75px;}
 	.r2bottom div {font-size: 16px; max-height: 36px;}
 	.r2bottom span {font-size: 12px;}
-	.recipe3 {width: calc(100% - 20px);}
+	.recipe3 {width: calc(100% - 20px); margin-bottom: 10px;}
 	.r3binner div {font-size: 18px; max-height: 40px;}
 	.r3category {font-size: 14px; }
 	.r3time {font-size: 12px;}

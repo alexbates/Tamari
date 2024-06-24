@@ -483,6 +483,7 @@ tr:nth-child(odd) {
 	#r-image {display: none;}
 }
 @media screen and (max-width: 600px) { 
+	#r-detail p, .category, table, .ing, .steps {font-size: 18px;}
 	.timeouter {padding: 0;}
 	.timeouter::after {content: "\A"; white-space: pre;}
 	.mobile-image {width: 85%;}

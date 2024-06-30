@@ -1530,7 +1530,8 @@ def addRecipe():
             while hex_valid2 == 0:
                 hex_string2 = secrets.token_hex(8)
                 hex_exist2 = Recipe.query.filter(Recipe.photo.contains(hex_string2)).first()
-                if hex_exist2 is None:
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string2 + file_extension)
+                if hex_exist2 is None and not os.path.exists(file_path):
                     hex_valid2 = 1
             new_file = hex_string2 + file_extension
             val_ext = validate_image(image.stream)
@@ -1649,7 +1650,8 @@ def editRecipe(hexid):
             while hex_valid == 0:
                 hex_string = secrets.token_hex(8)
                 hex_exist = Recipe.query.filter(Recipe.photo.contains(hex_string)).first()
-                if hex_exist is None:
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string + file_extension)
+                if hex_exist is None and not os.path.exists(file_path):
                     hex_valid = 1
             new_file = hex_string + file_extension
             val_ext = validate_image(image.stream)

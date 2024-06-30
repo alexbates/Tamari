@@ -4,6 +4,7 @@
 {{ super() }}
 {{ moment.include_moment() }}
 <script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
+<script src="{{ url_for('static', filename='scaling.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='jquery-3.7.0.min.js', _external=True) }}"></script>
 <script>
 	// Navbar account dropdown, shown when viewing on desktop
@@ -280,11 +281,29 @@
 	});
 </script>
 {% endif %}
+{% if current_user.pref_scaling == 1 %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		scalingAuth('large');
+	});
+</script>
+{% else %}
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		scalingAuth('normal');
+	});
+</script>
+{% endif %}
 {% else %}
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeNoAuth();
 		themeElements();
+	});
+</script>
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		scalingNoAuth();
 	});
 </script>
 {% endif %}

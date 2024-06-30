@@ -8,10 +8,16 @@
 {% block scripts %}
 <script src="{{ url_for('static', filename='request-reset.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
+<script src="{{ url_for('static', filename='scaling.js', _external=True) }}"></script>
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeNoAuth();
 		themeElements();
+	});
+</script>
+<script defer>
+	document.addEventListener("DOMContentLoaded", function() {
+		scalingNoAuth();
 	});
 </script>
 {% endblock %}

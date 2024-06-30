@@ -286,6 +286,46 @@ select {font-family: Inter-Regular;}
 	--color-alt1: #df65c2;
 	--color-alt2: #db60be;
 }
+/* SCALING */
+:root {
+	--font-dropdown-content: 16px;
+	--font-navbar: 18px;
+	--font-mobile-title-h1: 26px;
+	--padding-left-mobile-title-h1: 44px;
+	--padding-top-mobile-title-h1: 9px;
+	--height-mobile-navbar: 44px;
+	--width-hamburger-line: 18px;
+	--height-hamburger-line: .15rem;
+	--top-hamburger-line2: 7px;
+	--top-hamburger-line3: 14px;
+	--width-line-checked: 22px;
+}
+[data-scaling="normal"] {
+	--font-dropdown-content: 16px;
+	--font-navbar: 18px;
+	--font-mobile-title-h1: 26px;
+	--padding-left-mobile-title-h1: 44px;
+	--padding-top-mobile-title-h1: 9px;
+	--height-mobile-navbar: 44px;
+	--width-hamburger-line: 18px;
+	--height-hamburger-line: .15rem;
+	--top-hamburger-line2: 7px;
+	--top-hamburger-line3: 14px;
+	--width-line-checked: 22px;
+}
+[data-scaling="large"] {
+	--font-dropdown-content: 18px;
+	--font-navbar: 20px;
+	--font-mobile-title-h1: 28px;
+	--padding-left-mobile-title-h1: 48px;
+	--padding-top-mobile-title-h1: 10px;
+	--height-mobile-navbar: 48px;
+	--width-hamburger-line: 22px;
+	--height-hamburger-line: .2rem;
+	--top-hamburger-line2: 8px;
+	--top-hamburger-line3: 16px;
+	--width-line-checked: 24px;
+}	
 /* PROFILE PICTURES */
 .icon-1-blue {background-image: var(--icon-1-blue);}
 .icon-1-green {background-image: var(--icon-1-green);}
@@ -309,7 +349,7 @@ select {font-family: Inter-Regular;}
 	color: var(--color-navbar-font);
 	min-height: 64px;
 	width: 100%;
-	font-size: 18px;
+	font-size: var(--font-navbar);
 }
 .navbarinner {height: 100%; margin: 0 auto; width: 1000px;}
 #navbar ul {list-style: none; line-height: 64px;}
@@ -326,13 +366,13 @@ select {font-family: Inter-Regular;}
 	margin-top: 17px;
 }
 .navlogo h1 {font-size: 28px;}
-.mobile-title {display: none; height: 44px;}
+.mobile-title {display: none; height: var(--height-mobile-navbar);}
 .mobile-title h1 {
 	display: none; 
-	font-size: 26px; 
+	font-size: var(--font-mobile-title-h1); 
 	line-height: 26px; 
-	padding-left: 44px; 
-	padding-top: 9px;
+	padding-left: var(--padding-left-mobile-title-h1); 
+	padding-top: var(--padding-top-mobile-title-h1);
 }
 .mt-tamari {display: block !important;}
 .navleft {float: left;}
@@ -371,7 +411,7 @@ select {font-family: Inter-Regular;}
 	box-shadow: 0px 8px 16px 0px var(--color-dropdown-content-boxshadow);
 	display: none;
 	position: absolute;
-	font-size: 16px;
+	font-size: var(--font-dropdown-content);
 	width: 140px;
 	margin-left: -76px;
     margin-top: 2px;
@@ -452,21 +492,21 @@ select {font-family: Inter-Regular;}
 	background: var(--color-hamburger-line);
 	position: absolute;
 	display: block;
-	width: 18px;
-	height: .15rem;
+	width: var(--width-hamburger-line);
+	height: var(--height-hamburger-line);
 	border-radius: .2rem;
 	left: 0;
 	transition: all .6s cubic-bezier(.5, .1, 0, 1.2);
 }
 .mobile-dropdown .hamburger .line-1 {top: 0;}
 .mobile-dropdown .hamburger .line-2 {
-	top: 7px;
+	top: var(--top-hamburger-line2);
 	transform: translateX(0px);
 }
-.mobile-dropdown .hamburger .line-3 {top: 14px;} 
+.mobile-dropdown .hamburger .line-3 {top: var(--top-hamburger-line3);} 
 .mobile-dropdown input[type=checkbox]:checked ~ label .line-1 {
 	top: 0px;
-	width: 22px;
+	width: var(--width-line-checked);
 	transform: translateX(-11px) rotate(-45deg) translateY(12px);
 }
 .mobile-dropdown input[type=checkbox]:checked ~ label .line-2 {
@@ -474,7 +514,7 @@ select {font-family: Inter-Regular;}
 }
 .mobile-dropdown input[type=checkbox]:checked ~ label .line-3 {
 	top: 14px;
-	width: 22px;
+	width: var(--width-line-checked);
 	transform: translateX(-8px) rotate(45deg) translateY(-8px);
 }
 
@@ -483,14 +523,14 @@ select {font-family: Inter-Regular;}
 	.navbarinner {width: 100%;}
 	.navlogo {margin-left: 12px;}
 }
-@media screen and (max-width: 810px) { 
+@media screen and (max-width: 850px) { 
 	.navleft-l {display: none;}
 	.navleft-r {padding-left: 10px !important;}
 	.linkcollapse {display: none;}
 }
 @media screen and (max-width: 700px) { 
-    #navbar {min-height: 44px;}
-	.navlogo {display: none; height: 44px;}
+    #navbar {min-height: var(--height-mobile-navbar);}
+	.navlogo {display: none; height: var(--height-mobile-navbar);}
 	.navlogo h1 {font-size: 26px; line-height: 26px; padding-left: 40px; padding-top: 9px;}
 	.mobile-title {display: block;}
     .navbarinner { width: 100%;}

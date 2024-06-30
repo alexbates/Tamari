@@ -115,6 +115,7 @@ def register():
                 user.pref_picture = 0
                 user.pref_color = 0
                 user.pref_theme = 0
+                user.pref_scaling = 0
                 db.session.add(user)
                 cats = ['Miscellaneous', 'Entrees', 'Sides']
                 for cat in cats:

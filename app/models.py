@@ -21,6 +21,7 @@ class User(UserMixin, db.Model):
     pref_picture = db.Column(db.Integer)
     pref_color = db.Column(db.Integer)
     pref_theme = db.Column(db.Integer)
+    pref_scaling = db.Column(db.Integer)
     reg_time = db.Column(db.DateTime)
     last_time = db.Column(db.DateTime, default=datetime.utcnow)
 

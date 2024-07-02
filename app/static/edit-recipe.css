@@ -51,6 +51,55 @@
 	--color-toggle-label: #111111;
 	--color-toggle-label-hover: #151515;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--line-height-form-group-label: 36px;
+	--font-form-control: 18px;
+	--height-fc1: 38px;
+	--height-fc2: 43px;
+	--height-fc3: 213px;
+	--font-error: 14px;
+	--line-height-error: 28px;
+	--font-btn-default: 16px;
+	--font-cust-select: 16px;
+	--height-cust-select: 38px;
+	--font-file-input: 16px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--line-height-form-group-label: 36px;
+	--font-form-control: 18px;
+	--height-fc1: 38px;
+	--height-fc2: 43px;
+	--height-fc3: 213px;
+	--font-error: 14px;
+	--line-height-error: 28px;
+	--font-btn-default: 16px;
+	--font-cust-select: 16px;
+	--height-cust-select: 38px;
+	--font-file-input: 16px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--line-height-form-group-label: 40px;
+	--font-form-control: 20px;
+	--height-fc1: 40px;
+	--height-fc2: 47px;
+	--height-fc3: 231px;
+	--font-error: 16px;
+	--line-height-error: 30px;
+	--font-btn-default: 18px;
+	--font-cust-select: 18px;
+	--height-cust-select: 40px;
+	--font-file-input: 16px;
+}
 /* ACCENT COLOR APPLICATION */
 .btn-default {background-color: var(--color);}
 .btn-default:hover {background: var(--color-lighter);}
@@ -60,7 +109,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
@@ -70,31 +119,31 @@
 }
 #flashed-err {
 	background: var(--color-flashed-err); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
 }
 .form-group {margin-bottom: 10px;}
-.form-group label {line-height: 36px;}
+.form-group label {line-height: var(--line-height-form-group-label);}
 .form-group2 {display: flow-root; margin-bottom: 10px; min-height: 270px; width: 100%;}
-.form-group2 label {line-height: 36px;}
+.form-group2 label {line-height: var(--line-height-form-group-label);}
 .form-group2 div {
 	float: left;
 	width: 48.75%;
 }
 .form-group2 div:nth-child(1) {margin-right: 2.5%;}
 .form-group3 {display: flow-root; margin-bottom: 10px; min-height: 76px; width: 100%;}
-.form-group3 label {line-height: 36px;}
+.form-group3 label {line-height: var(--line-height-form-group-label);}
 .form-group3 div {
 	float: left;
 	width: 31.666%;
@@ -102,7 +151,7 @@
 .form-group3 div:nth-child(1) {margin-right: 2.5%;}
 .form-group3 div:nth-child(2) {margin-right: 2.5%;}
 .form-group4 {display: flow-root; margin-bottom: 10px; min-height: 76px; width: 100%;}
-.form-group4 label {line-height: 36px;}
+.form-group4 label {line-height: var(--line-height-form-group-label);}
 .form-group4 div {
 	float: left;
 	width: 23.125%;
@@ -122,7 +171,7 @@
     border: none;
     box-shadow: none;
 	color: var(--color-form-control-font);
-    font-size: 18px;
+    font-size: var(--font-form-control);
     padding-left: 10px;
     padding-right: 10px;
 	width: calc(100% - 20px);
@@ -135,14 +184,14 @@
 .fc3 {height: 213px; resize: none; padding-bottom: 10px; padding-top: 10px;}
 .errorrequired {
 	color: var(--color-flashed-err);
-	font-size: 14px;
-	line-height: 28px;
+	font-size: var(--font-error);
+	line-height: var(--line-height-error);
 	margin-top: 10px;
 }
 .imageerror {
 	color: var(--color-flashed-err);
-	font-size: 14px;
-	line-height: 28px;
+	font-size: var(--font-error);
+	line-height: var(--line-height-error);
 	margin-top: 2px;
 }
 .btn-default {
@@ -150,7 +199,7 @@
 	border-radius: 7px;
 	color: var(--color-btn-default);
 	cursor: pointer;
-	font-size: 16px;
+	font-size: var(--font-btn-default);
 	height: 40px;
 	margin-bottom: 26px;
 	margin-top: 10px;
@@ -169,6 +218,7 @@
     box-shadow: none;
 	color: var(--color-cust-select-font);
 	height: 38px;
+	font-size: var(--font-cust-select);
 	margin-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -188,6 +238,7 @@
 	border: 6px solid transparent;
 	border-color: var(--color-cust-select-after) transparent transparent transparent;
 }
+.custom-file-input {font-size: var(--font-file-input);}
 /* Nutrition Hidden Section */
 #nutrition {display: none;}
 #nutrition_checkbox {display: none;}

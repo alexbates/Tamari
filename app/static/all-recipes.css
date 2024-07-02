@@ -109,6 +109,91 @@
 	--color-r3span: #111111;
 	--color-btn-paginate: #ffffff;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--width-recbtn1: 113px;
+	--width-recbtn2: 100px;
+	--font-btn-default: 16px;
+	--height-btn-default: 38px;
+	--width-btn-default: 137px;
+	--size-btn-icon: 20px;
+	--padding-btn2-icon: 9px;
+	--size-bg-search-box: 22px;
+	--font-search-box: 18px;
+	--height-search-box: 38px;
+	--padding-search-box: 36px;
+	--font-settings-content: 16px;
+	--margin-settings-content: -148px;
+	--font-settings-content-h3: 18px;
+	--font-cust-select: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--width-recbtn1: 113px;
+	--width-recbtn2: 100px;
+	--font-btn-default: 16px;
+	--height-btn-default: 38px;
+	--width-btn-default: 137px;
+	--size-btn-icon: 20px;
+	--padding-btn2-icon: 9px;
+	--size-bg-search-box: 22px;
+	--font-search-box: 18px;
+	--height-search-box: 38px;
+	--padding-search-box: 36px;
+	--font-settings-content: 16px;
+	--margin-settings-content: -148px;
+	--font-settings-content-h3: 18px;
+	--font-cust-select: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-recbtn: 18px;
+	--height-recipenav: 59px;
+	--height-recbtn: 32px;
+	--margin-recbtn: 13px;
+	--width-recbtn1: 116px;
+	--width-recbtn2: 103px;
+	--font-btn-default: 18px;
+	--height-btn-default: 40px;
+	--width-btn-default: 143px;
+	--size-btn-icon: 22px;
+	--padding-btn2-icon: 8px;
+	--size-bg-search-box: 24px;
+	--font-search-box: 20px;
+	--height-search-box: 40px;
+	--padding-search-box: 38px;
+	--font-settings-content: 18px;
+	--margin-settings-content: -146px;
+	--font-settings-content-h3: 20px;
+	--font-cust-select: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-pagination: 18px;
+	--height-pagination: 36px;
+	--width-next: 79px;
+	--width-prev: 110px;
+}
 /* ACCENT COLOR APPLICATION */
 .recbtn-active {background-color: var(--color) !important;}
 .btn-default {background-color: var(--color);}
@@ -134,7 +219,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
@@ -143,7 +228,7 @@
 	width: 1000px;
 }
 #recipenav {
-	height: 57px;
+	height: var(--height-recipenav);
 	text-align: right;
 	width: 100%;
 }
@@ -157,41 +242,47 @@
 	border-radius: 15px;
 	color: var(--color-recbtn-font);
 	cursor: pointer;
-	font-size: 16px;
-	height: 30px;
-	margin-top: 14px;
+	font-size: var(--font-recbtn);
+	height: var(--height-recbtn);
+	margin-top: var(--margin-recbtn);
 	padding: 0;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 .recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-.recbtn1 {width: 113px;}
-.recbtn2 {width: 100px;}
-.recbtn3 {width: 113px;}
-.recipenavright {content: ""; height: 57px;}
+.recbtn1 {width: var(--width-recbtn1);}
+.recbtn2 {width: var(--width-recbtn2);}
+.recbtn3 {width: var(--width-recbtn1);}
+.recipenavright {content: ""; height: var(--height-recipenav);}
 .btn-default {
 	border: none;
 	color: var(--color-btn-default);
 	cursor: pointer;
 	float: right;
-	font-size: 16px;
-	height: 38px;
+	font-size: var(--font-btn-default);
+	height: var(--height-btn-default);
 	margin-top: 9px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 137px;
+	width: var(--width-btn-default);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
 .btn-text {float: left; padding-left: 8px;}
-.btn-icon {display: block; float: right; height: 20px; padding-right: 8px; width: 20px;}
+.btn-icon {
+	display: block; 
+	float: right; 
+	height: var(--size-btn-icon); 
+	padding-right: 8px; 
+	width: var(--size-btn-icon);
+}
 .btn-icon img {height: 100%; width: 100%;}
 .btn2-default {
 	background-color: var(--color-btn2-default-bg);
 	border: none;
 	color: var(--color-btn2-default-font);
 	cursor: pointer;
-	height: 38px;
+	height: var(--height-btn-default);
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
 	width: 38px;
@@ -201,7 +292,12 @@
 .btn2-default:hover {background: var(--color-btn2-default-hover);}
 .btn2-default:active, .btn2-default.active {background: var(--color-btn2-default-active);}
 .btn2-default:active, .btn2-default.active, .btn2-default:hover, .btn2-default:focus {outline: none;}
-.btn2-icon {display: block; height: 20px; padding-left: 9px; width: 20px;}
+.btn2-icon {
+	display: block; 
+	height: var(--size-btn-icon); 
+	padding-left: var(--padding-btn2-icon); 
+	width: var(--size-btn-icon);
+}
 .btn2-icon img {height: 100%; width: 100%;}
 .search-cont {
 	float: right; 
@@ -212,17 +308,17 @@
 	background: var(--color-search-box-bg);
 	background-image: var(--image-search-box-bg);
 	background-repeat: no-repeat;
-	background-size: 22px 22px;
-	-moz-background-size: 22px 22px;
-	-webkit-background-size: 22px 22px;
+	background-size: var(--size-bg-search-box) var(--size-bg-search-box);
+	-moz-background-size: var(--size-bg-search-box) var(--size-bg-search-box);
+	-webkit-background-size: var(--size-bg-search-box) var(--size-bg-search-box);
 	background-position: left 8px top 8px;
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
 	color: var(--color-search-box-font);
-	font-size: 18px;
-	height: 38px;
-	padding-left: 36px;
+	font-size: var(--font-search-box);
+	height: var(--height-search-box);
+	padding-left: var(--padding-search-box);
 	padding-right: 10px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -236,10 +332,10 @@
 .settingsbtn {
 	background-color: var(--color-settingsbtn-bg);
 	float: right;
-	height: 38px;
+	height: var(--height-btn-default);
 	margin-left: 9px;
 	margin-top: 9px;
-	width: 38px;
+	width: var(--height-btn-default);
 }
 .settings-content {
 	background-color: var(--color-settings-content-bg);
@@ -248,9 +344,9 @@
 	display: none;
 	padding: 8px;
 	position: absolute;
-	font-size: 16px;
+	font-size: var(--font-settings-content);
 	width: 170px;
-	margin-left: -148px;
+	margin-left: var(--margin-settings-content);
     margin-top: 10px;
 	text-align: left;
 	z-index: 1;
@@ -272,7 +368,7 @@
   border-width: 10px;
 }
 .settings-content h3 {
-	font-size: 18px;
+	font-size: var(--font-settings-content-h3);
 	margin-bottom: 12px;
 }
 .showsettings {display: block;}
@@ -319,6 +415,7 @@
     box-shadow: none;
 	color: var(--color-cust-select-font);
 	height: 38px;
+	font-size: var(--font-cust-select);
 	margin-right: 0px;
 	margin-top: 6px;
 	padding-left: 10px;
@@ -344,7 +441,7 @@
 	border-radius: 7px;
 	color: var(--color-btn3-default);
 	cursor: pointer;
-	font-size: 16px;
+	font-size: var(--font-btn-default);
 	height: 38px;
 	margin-top: 14px;
 	padding: 0;
@@ -357,16 +454,16 @@
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
@@ -548,12 +645,12 @@
 	border-radius: 7px;
 	color: var(--color-btn-paginate);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
 	margin-left: 6px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 76px;
+	width: var(--width-next);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -573,12 +670,12 @@
 	border-radius: 7px;
 	color: var(--color-btn-paginate);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
 	margin-right: 6px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 107px;
+	width: var(--width-prev);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }

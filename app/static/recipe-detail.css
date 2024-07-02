@@ -90,6 +90,64 @@
 	--color-steps: #111111;
 	--color-steps-b: #b0b0b0;
 }
+/* SCALING */
+:root {
+	--font-modal: 16x;
+	--height-popupwindow: 240px;
+	--margin-top-popupwindow: -132px;
+	--font-cust-select: 16px;
+	--font-btn-submit: 16px;
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-rdetail-h2: 28px;
+	--font-information-content: 16px;
+	--font-btn-default: 16px;
+	--height-btn-default: 38px;
+	--size-btn-icon: 20px;
+	--size-btn-icon2: 18px;
+	--font-ingredients-h3: 22px;
+	--font-btn-addtolist: 16px;
+	--height-btn-addtolist: 34px;
+}
+[data-scaling="normal"] {
+	--font-modal: 16x;
+	--height-popupwindow: 240px;
+	--margin-top-popupwindow: -132px;
+	--font-cust-select: 16px;
+	--font-btn-submit: 16px;
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-rdetail-h2: 28px;
+	--font-information-content: 16px;
+	--font-btn-default: 16px;
+	--height-btn-default: 38px;
+	--size-btn-icon: 20px;
+	--size-btn-icon2: 18px;
+	--font-ingredients-h3: 22px;
+	--font-btn-addtolist: 16px;
+	--height-btn-addtolist: 34px;
+}
+[data-scaling="large"] {
+	--font-modal: 18px;
+	--height-popupwindow: 248px;
+	--margin-top-popupwindow: -136px;
+	--font-cust-select: 18px;
+	--font-btn-submit: 18px;
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-rdetail-h2: 30px;
+	--font-information-content: 18px;
+	--font-btn-default: 18px;
+	--height-btn-default: 40px;
+	--size-btn-icon: 22px;
+	--size-btn-icon2: 20px;
+	--font-ingredients-h3: 24px;
+	--font-btn-addtolist: 18px;
+	--height-btn-addtolist: 36px;
+}
 /* ACCENT COLOR APPLICATION */
 .recbtn-active {background-color: var(--color) !important;}
 .btn-default {background-color: var(--color);}
@@ -112,7 +170,7 @@
 .btn-addtolist:active, .btn-addtolist.active {background: var(--color-darker);}
 /* ADD TO LIST MODAL */
 #addtolist, #scheduler {
-    font-size: 16px;
+    font-size: var(--font-modal);
     margin: 0 auto;
 }
 .popupwindow {
@@ -130,13 +188,13 @@
     background-color: var(--color-popupwindow-content-bg);
 	border-radius: 10px;
 	color: var(--color-popupwindow-content-font);
-    height: 240px;
+    height: var(--height-popupwindow);
     margin: 0 auto;
     width: 340px;
     left: 50%;
 	position: absolute;
 	top: 50%;
-    margin-top: -132px;
+    margin-top: var(--margin-top-popupwindow);
     margin-left: -182px;
 	padding: 12px;
 }
@@ -173,6 +231,7 @@
     box-shadow: none;
 	color: var(--color-custselect-font);
 	height: 38px;
+	font-size: var(--font-cust-select);
 	margin-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -196,7 +255,7 @@
 	border-radius: 7px;
 	color: var(--color-btn-submit);
 	cursor: pointer;
-	font-size: 16px;
+	font-size: var(--font-btn-submit);
 	height: 40px;
 	margin-bottom: 26px;
 	margin-top: 10px;
@@ -211,7 +270,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 .block1inner {
 	height: 100%;
@@ -222,16 +281,16 @@
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 16px;
 	margin-top: 0px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm);
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 16px;
 	margin-top: 0px;
 	padding: 6px;
@@ -242,7 +301,7 @@
 	width: calc(65% - 20px);
 }
 #r-detail h2 {
-	font-size: 28px;
+	font-size: var(--font-rdetail-h2);
 	margin-bottom: 12px;
 }
 
@@ -274,7 +333,7 @@
 	padding: 8px;
 	padding-right: 10px;
 	position: absolute;
-	font-size: 16px;
+	font-size: var(--font-information-content);
 	margin-left: 0px;
     margin-top: 44px;
 	text-align: left;
@@ -344,8 +403,8 @@ tr:nth-child(odd) {
 	border: none;
 	color: var(--color-btn-default);
 	cursor: pointer;
-	font-size: 16px;
-	height: 38px;
+	font-size: var(--font-btn-default);
+	height: var(--height-btn-default);
 	margin-right: 10px;
 	margin-top: 2px;
 	margin-bottom: 9px;
@@ -361,8 +420,8 @@ tr:nth-child(odd) {
 	border: none;
 	color: var(--color-btn-default);
 	cursor: pointer;
-	font-size: 16px;
-	height: 38px;
+	font-size: var(--font-btn-default);
+	height: var(--height-btn-default);
 	margin-right: 10px;
 	margin-top: 2px;
 	margin-bottom: 9px;
@@ -376,11 +435,29 @@ tr:nth-child(odd) {
 .btn-default2:active, .btn-default2.active {background: var(--color-flashed-err-darker);}
 .btn-default2:active, .btn-default2.active, .btn-default2:hover, .btn-default2:focus {outline: none;}
 .btn-text {float: left; padding-left: 7px; padding-right: 8px;}
-.btn-icon {display: block; float: left; height: 20px; padding-left: 5px; width: 20px;}
+.btn-icon {
+	display: block; 
+	float: left; 
+	height: var(--size-btn-icon); 
+	padding-left: 5px; 
+	width: var(--size-btn-icon);
+}
 .btn-icon img {height: 100%; width: 100%;}
-.btn-icon2 {display: block; float: left; height: 18px; padding-left: 5px; width: 18px;}
+.btn-icon2 {
+	display: block; 
+	float: left; 
+	height: var(--size-btn-icon2); 
+	padding-left: 5px; 
+	width: var(--size-btn-icon2);
+}
 .btn-icon2 img {height: 100%; width: 100%;}
-.btn-icon3 {display: block; float: left; height: 18px; padding-left: 8px; width: 18px;}
+.btn-icon3 {
+	display: block; 
+	float: left; 
+	height: var(--size-btn-icon2); 
+	padding-left: 8px; 
+	width: var(--size-btn-icon2);
+}
 .btn-icon3 img {height: 100%; width: 100%;}
 #r-image {
 	aspect-ratio: 4 / 3;
@@ -397,7 +474,7 @@ tr:nth-child(odd) {
 	width: calc(50% - 20px);
 }
 #ingredients h3 {
-	font-size: 22px;
+	font-size: var(--font-ingredients-h3);
 	margin-bottom: 16px;
 	margin-top: 34px;
 }
@@ -427,8 +504,8 @@ tr:nth-child(odd) {
 	border-radius: 7px;
 	color: var(--color-btn-default);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-btn-addtolist);
+	height: var(--height-btn-addtolist);
 	margin-bottom: 8px;
 	margin-left: 10px;
 	margin-top: 8px;
@@ -444,7 +521,7 @@ tr:nth-child(odd) {
 	width: 50%;
 }
 #instructions h3 {
-	font-size: 22px;
+	font-size: var(--font-ingredients-h3);
 	margin-bottom: 16px;
 	margin-top: 34px;
 }

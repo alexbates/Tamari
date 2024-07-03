@@ -57,6 +57,31 @@
 	--color-recipe2inner: #111111;
 	--color-r2bottom-span: #aeaeae;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-search-input: 18px;
+	--height-search-input: 38px;
+	--height-search-btn: 38px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-search-input: 18px;
+	--height-search-input: 38px;
+	--height-search-btn: 38px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-search-input: 20px;
+	--height-search-input: 40px;
+	--height-search-btn: 40px;
+}
 /* ACCENT COLOR APPLICATION */
 .search-btn {background-color: var(--color);}
 .search-btn:hover {background: var(--color-lighter);} 
@@ -76,7 +101,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 .block1inner {
 	height: 100%;
@@ -88,16 +113,16 @@
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--font-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
@@ -120,8 +145,8 @@
 	border-radius: 0;
     box-shadow: none;
 	color: var(--color-search-input-font);
-    font-size: 18px;
-	height: 38px;
+    font-size: var(--font-search-input);
+	height: var(--height-search-input);
 	margin-right: 5px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -137,7 +162,7 @@
 	color: var(--color-search-btn);
 	cursor: pointer;
 	float: right;
-	height: 38px;
+	height: var(--height-search-btn);
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
 	width: 90px;

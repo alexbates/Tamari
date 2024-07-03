@@ -38,6 +38,40 @@
 	--color-r2bottom-span: #aeaeae;
 	--color-btn-paginate: #ffffff;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-showing: 14px;
+	--height-showing: 17px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-showing: 14px;
+	--height-showing: 17px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-showing: 16px;
+	--height-showing: 19px;
+	--font-pagination: 18px;
+	--height-pagination: 36px;
+	--width-next: 79px;
+	--width-prev: 110px;
+}
 /* ACCENT COLOR APPLICATION */
 .search-btn {background-color: var(--color);}
 .search-btn:hover {background: var(--color-lighter);} 
@@ -57,7 +91,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 #block1 h2 {
 	padding-top: 12px; 
@@ -72,26 +106,26 @@
 /* MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err); 
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm); 
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
 }
 #showing-msg {
 	background: var(--color-showing-msg);
-	font-size: 14px;
+	font-size: var(--font-showing);
 	margin-bottom: 12px;
 	margin-top: 0px;
-	min-height: 17px;
+	min-height: var(--height-showing);
 	padding: 6px;
 }
 /* RECIPE LIST */
@@ -148,13 +182,13 @@
 	border-radius: 7px;
 	color: var(--color-btn-paginate);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
 	margin-left: 6px;
 	margin-top: 10px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 76px;
+	width: var(--width-next);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -174,13 +208,13 @@
 	border-radius: 7px;
 	color: var(--color-btn-paginate);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
 	margin-right: 6px;
 	margin-top: 10px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 107px;
+	width: var(--width-prev);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }

@@ -45,6 +45,49 @@
 	--color-form-control-font: #d1d1d1;
 	--color-btn-font: #ffffff;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-select: 16px;
+	--height-select: 38px;
+	--line-height-userstats: inherit;
+	--font-custom-file-input: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-form-control: 16px;
+	--height-form-control: 34px;
+	--font-error: 14px;
+	--font-btn: 16px;
+	--height-btn: 34px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-select: 16px;
+	--height-select: 38px;
+	--line-height-userstats: inherit;
+	--font-custom-file-input: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-form-control: 16px;
+	--height-form-control: 34px;
+	--font-error: 14px;
+	--font-btn: 16px;
+	--height-btn: 34px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-select: 18px;
+	--height-select: 40px;
+	--line-height-userstats: 18px;
+	--font-custom-file-input: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-form-control: 18px;
+	--height-form-control: 36px;
+	--font-error: 16px;
+	--font-btn: 18px;
+	--height-btn: 36px;
+}
 /* ACCENT COLOR APPLICATION */
 .btn-default {background-color: var(--color);}
 .btn-default:hover {background: var(--color-lighter);}
@@ -56,7 +99,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 .block1inner {
 	height: 100%;
@@ -82,7 +125,7 @@
 	margin-top: 20px; 
 	width: 90px;
 }
-.userstats p {padding-left: 12px;}
+.userstats p {padding-left: 12px; line-height: var(--line-height-userstats);}
 .userstats h4 {font-size: 18px; padding-left: 12px; padding-right: 12px; padding-bottom: 12px;}
 .cust-select {margin-bottom: 16px; margin-left: 12px;}
 .cust-select select {
@@ -90,7 +133,8 @@
     border: none;
     box-shadow: none;
 	color: var(--color-cust-select-font);
-	height: 38px;
+	font-size: var(--font-select);
+	height: var(--height-select);
 	margin-top: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -142,7 +186,12 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	width: calc(50% - 10px);
 }
 .export p {padding-left: 12px; padding-right: 12px;}
-.custom-file-input {margin-bottom: 12px; padding-left: 12px; padding-right: 12px;}
+.custom-file-input {
+	font-size: var(--font-custom-file-input);
+	margin-bottom: 12px; 
+	padding-left: 12px; 
+	padding-right: 12px;
+}
 .updatedetails {
 	background-color: var(--color-updatedetails-bg);
 	border-radius: 10px;
@@ -154,8 +203,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 .spacer {background: transparent; height: 20px;}
 #flashed-err {
 	background: var(--color-flashed-err); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	margin-left: 0px;
@@ -164,8 +213,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 }
 #flashed-norm {
 	background: var(--color-flashed-norm); 
-	font-size: 14px;
-	height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	margin-left: 0px;
@@ -187,8 +236,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	box-shadow: none;
 	color: var(--color-form-control-font);
 	float: right; 
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-form-control);
+	height: var(--height-form-control);
 	margin-right: 12px;
 	padding-left: 10px;
 	padding-right: 10px;
@@ -210,7 +259,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 #erroremail {
 	color: var(--color-flashed-err);
 	float: right;
-	font-size: 14px;
+	font-size: var(--font-error);
 	margin-bottom: 0px;
 	margin-left: 12px;
 	margin-right: 12px;
@@ -221,7 +270,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 #errorpassword {
 	color: var(--color-flashed-err);
 	float: right;
-	font-size: 14px;
+	font-size: var(--font-error);
 	margin-bottom: 0px;
 	margin-left: 12px;
 	margin-right: 12px;
@@ -232,7 +281,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 #errorpassword2 {
 	color: var(--color-flashed-err);
 	float: right;
-	font-size: 14px;
+	font-size: var(--font-error);
 	margin-bottom: 0px;
 	margin-left: 12px;
 	margin-right: 12px;
@@ -245,14 +294,13 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	border-radius: 7px;
 	color: var(--color-btn-font);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-btn);
+	height: var(--height-btn);
 	margin-bottom: 14px;
 	margin-left: 12px;
 	margin-top: 16px;
-	padding: 0;
+	padding: 0px 12px 0px 12px; /* Top Right Bottom Left */
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 130px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -264,13 +312,12 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	border-radius: 7px;
 	color: var(--color-btn-font);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-btn);
+	height: var(--height-btn);
 	margin-left: 7px;
 	margin-top: 16px;
-	padding: 0;
+	padding: 0px 12px 0px 12px; /* Top Right Bottom Left */
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 136px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -282,8 +329,8 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	border-radius: 7px;
 	color: var(--color-btn-font);
 	cursor: pointer;
-	font-size: 16px;
-	height: 34px;
+	font-size: var(--font-btn);
+	height: var(--height-btn);
 	margin-left: 12px;
 	padding: 0px 12px 0px 12px; /* Top Right Bottom Left */
 	transition: background-color 0.08s linear, border 0.08s linear;
@@ -304,18 +351,18 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	.userstats {margin-left: 10px; width: calc(50% - 15px);}
 	.export {margin-left: 10px; margin-bottom: 10px; width: calc(50% - 15px);}
 	.updatedetails {margin-left: 10px; width: calc(50% - 15px);}
-	.form-control {width: 230px;}
-	#erroremail {width: 250px;}
-	#errorpassword {width: 250px;}
-	#errorpassword2 {width: 250px;}
+	.form-control {width: 220px;}
+	#erroremail {width: 240px;}
+	#errorpassword {width: 240px;}
+	#errorpassword2 {width: 240px;}
 }
 @media screen and (max-width: 900px) {
 	.us-left {float: none; margin-bottom: 0px; width: 100%;}
 	.us-right {float: none; margin-bottom: 20px; padding-top: 0px; width: 100%;}
-	.form-control {width: 180px;}
-	#erroremail {width: 200px;}
-	#errorpassword {width: 200px;}
-	#errorpassword2 {width: 200px;}
+	.form-control {width: 170px;}
+	#erroremail {width: 190px;}
+	#errorpassword {width: 190px;}
+	#errorpassword2 {width: 190px;}
 }
 @media screen and (max-width: 800px) { 
 	.userstats {float: none; width: 500px;}
@@ -336,20 +383,20 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	.userstats {width: calc(100% - 20px);}
 	.export {width: calc(100% - 20px);}
 	.updatedetails {width: calc(100% - 20px);}
-	.form-control {width: 230px;}
-	#erroremail {width: 250px;}
-	#errorpassword {width: 250px;}
-	#errorpassword2 {width: 250px;}
+	.form-control {width: 215px;}
+	#erroremail {width: 235px;}
+	#errorpassword {width: 235px;}
+	#errorpassword2 {width: 235px;}
 }
 @media screen and (max-width: 460px) { 
-	.form-control {width: 190px;}
-	#erroremail {width: 210px;}
-	#errorpassword {width: 210px;}
-	#errorpassword2 {width: 210px;}
+	.form-control {width: 180px;}
+	#erroremail {width: 200px;}
+	#errorpassword {width: 200px;}
+	#errorpassword2 {width: 200px;}
 }
 @media screen and (max-width: 425px) {
-	.form-control {width: 160px;}
-	#erroremail {width: 180px;}
-	#errorpassword {width: 180px;}
-	#errorpassword2 {width: 180px;}
+	.form-control {width: 140px;}
+	#erroremail {width: 160px;}
+	#errorpassword {width: 160px;}
+	#errorpassword2 {width: 160px;}
 }

@@ -17,12 +17,22 @@
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+}
 /* BLOCK 1 */
 #block1 {
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 .block1inner {
 	height: 100%;

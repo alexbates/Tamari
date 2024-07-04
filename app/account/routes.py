@@ -234,7 +234,7 @@ def user():
             if selecttheme >= 0 and selecttheme <= 2:
                 user.pref_theme = selecttheme
             if selectscaling >= 0 and selectscaling <= 2:
-                user.pref_scaling = selecttheme
+                user.pref_scaling = selectscaling
             db.session.commit()
             flash('Your changes have been saved.')
     # Export Account Form

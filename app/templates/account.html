@@ -81,6 +81,14 @@
 						<option value="2"{% if user.pref_theme == 2 %} selected{% endif %}>Dark</option>
 					</select>
 				</div>
+				<h4>Font Size and Scaling</h4>
+				<div class="cust-select">
+					<select name="selectscaling">
+						<option value="" disabled hidden>Choose here</option>
+						<option value="0"{% if user.pref_scaling == 0 %} selected{% endif %}>Normal</option>
+						<option value="1"{% if user.pref_scaling == 1 %} selected{% endif %}>Large</option>
+					</select>
+				</div>
 				<h4>Select Profile Picture</h4>
 				<div class="profileselector">
 					<input type="radio" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>

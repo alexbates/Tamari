@@ -214,12 +214,13 @@ def user():
             flash('No changes were made.')
     # AccountPrefsForm
     if form2.validate_on_submit():
-        # Get value from select field which has name attribute of selecttheme
-        # This is needed since select field is written manually instead of using {{ form2.selecttheme }} in template
+        # Get value from two select fields which has name attribute of selecttheme and selectscaling
+        # This is needed since select fields are written manually instead of using {{ form2.selecttheme }} in template
         selecttheme = int(request.form['selecttheme'])
+        selectscaling = int(request.form['selectscaling'])
         # Prevent form processing if hidden "Choose here" is selected
-        if selecttheme == '':
-            flash('Error: please select a theme.')
+        if selecttheme == '' or selectscaling == '':
+            flash('Error: please select theme and scaling.')
         else:
             propicture = int(request.form['propicture'])
             accentcolor = int(request.form['accentcolor'])
@@ -231,6 +232,8 @@ def user():
                 user.pref_picture = 0
                 user.pref_color = 0
             if selecttheme >= 0 and selecttheme <= 2:
+                user.pref_theme = selecttheme
+            if selectscaling >= 0 and selectscaling <= 2:
                 user.pref_theme = selecttheme
             db.session.commit()
             flash('Your changes have been saved.')

@@ -57,6 +57,61 @@
 	--color-additem-input-placeholder: #545454;
 	--color-additem-btn: #ffffff;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-list-label: 18px;
+	--font-form-control: 18px;
+	--font-listhowto: 14px;
+	--height-listhowto: 17px;
+	--font-ingred-label: 18px;
+	--font-ingred-recipe: 12px;
+	--size-btn4-icon: 20px;
+	--font-additem-input: 18px;
+	--height-additem-input: 44px;
+	--font-additem-btn: 16px;
+	--height-additem-btn: 44px;
+	--font-btn-delete: 16px;
+	--height-btn-delete: 40px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-list-label: 18px;
+	--font-form-control: 18px;
+	--font-listhowto: 14px;
+	--height-listhowto: 17px;
+	--font-ingred-label: 18px;
+	--font-ingred-recipe: 12px;
+	--size-btn4-icon: 20px;
+	--font-additem-input: 18px;
+	--height-additem-input: 44px;
+	--font-additem-btn: 16px;
+	--height-additem-btn: 44px;
+	--font-btn-delete: 16px;
+	--height-btn-delete: 40px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-list-label: 20px;
+	--font-form-control: 20px;
+	--font-listhowto: 16px;
+	--height-listhowto: 19px;
+	--font-ingred-label: 20px;
+	--font-ingred-recipe: 14px;
+	--size-btn4-icon: 22px;
+	--font-additem-input: 20px;
+	--height-additem-input: 46px;
+	--font-additem-btn: 18px;
+	--height-additem-btn: 46px;
+	--font-btn-delete: 18px;
+	--height-btn-delete: 42px;
+}
 /* ACCENT COLOR APPLICATION */
 .b1leftinner div {background: var(--color); border-bottom: solid 1px var(--color-alt2);}
 .list-selected {background: var(--color-alt1) !important;}
@@ -71,7 +126,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
@@ -82,16 +137,16 @@
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 0px;
 	margin-top: 16px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm);
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 0px;
 	margin-top: 16px;
 	padding: 6px;
@@ -105,8 +160,8 @@
 #b1right h3 {padding-bottom: 0px; padding-top: 16px;}
 #listhowto {
 	background: var(--color-listhowto); 
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-listhowto);
+	min-height: var(--height-listhowto);
 	margin: 0;
 	padding: 6px;
 }
@@ -136,7 +191,7 @@
 .ingred-label {
 	color: var(--color-ingred-label);
 	display: inline-block;
-	font-size: 18px;
+	font-size: var(--font-ingred-label);
 	margin: 0;
 	padding-left: 10px;
 	width: calc(100% - 62px);
@@ -146,7 +201,7 @@
 .ingred-recipe {
 	color: var(--color-ingred-recipe);
 	display: inline-block;
-	font-size: 12px;
+	font-size: var(--font-ingred-recipe);
 	margin: 0;
 	padding-left: 10px;
 	padding-top: 6px;
@@ -171,7 +226,12 @@
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .btn4-default:active, .btn4-default.active, .btn4-default:hover, .btn4-default:focus {outline: none;}
-.btn4-icon {display: block; height: 20px; padding-left: 9px; width: 20px;}
+.btn4-icon {
+	display: block; 
+	height: var(--size-btn4-icon); 
+	padding-left: 9px; 
+	width: var(--size-btn4-icon);
+}
 .btn4-icon img {height: 100%; width: 100%;}
 .completed {text-decoration: line-through;}
 .additem-input {
@@ -180,8 +240,8 @@
 	border-radius: 0;
 	box-shadow: none;
 	color: var(--color-additem-input-font);
-	font-size: 18px;
-	height: 44px;
+	font-size: var(--font-additem-input);
+	height: var(--height-additem-input);
 	margin-right: 5px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -197,8 +257,8 @@
 	border-radius: 0;
 	color: var(--color-additem-btn);
 	cursor: pointer;
-	font-size: 16px;
-	height: 44px;
+	font-size: var(--font-additem-btn);
+	height: var(--height-additem-btn);
 	margin-bottom: 26px;
 	margin-top: 10px;
 	padding: 0;
@@ -222,15 +282,15 @@
 	color: var(--color-additem-btn);
 	cursor: pointer;
 	display: block;
-	font-size: 16px;
-	height: 40px;
+	font-size: var(--font-btn-delete);
+	height: var(--height-btn-delete);
 	margin-bottom: 26px;
 	padding-left: 10px;
 	padding-right: 10px;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 142px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+	white-space: nowrap;
 }
 .btn-delete:hover {background: var(--color-flashed-err-lighter);}
 .btn-delete:active, .btn-delete.active {background: var(--color-flashed-err-darker);}

@@ -303,6 +303,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	transition: background-color 0.08s linear, border 0.08s linear;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+	white-space: nowrap;
 }
 .btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
 .btn-default2-a:hover {text-decoration: none;}
@@ -320,6 +321,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	transition: background-color 0.08s linear, border 0.08s linear;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+	white-space: nowrap;
 }
 .btn-default2:hover {background: var(--color-flashed-err-lighter);}
 .btn-default2:active, .btn-default2.active {background: var(--color-flashed-err-darker);}
@@ -336,6 +338,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	transition: background-color 0.08s linear, border 0.08s linear;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+	white-space: nowrap;
 }
 .btn-default3:active, .btn-default3.active, .btn-default3:hover, .btn-default3:focus {outline: none;}
 .btn-download {margin-bottom: 0px;}

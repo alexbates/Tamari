@@ -51,6 +51,46 @@
 	--color-plancategory: #b0b0b0;
 	--color-plancategory-a: #f1f1f1;
 }
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-day-label: 18px;
+	--line-height-day-label: 40px;
+	--line-height-day-label-2: 50px;
+	--font-mealmessage: 14px;
+	--height-mealmessage: 17px;
+	--font-plan-label: 18px;
+	--font-plan-category: 12px;
+	--size-btn4-icon: 20px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-day-label: 18px;
+	--line-height-day-label: 40px;
+	--line-height-day-label-2: 50px;
+	--font-mealmessage: 14px;
+	--height-mealmessage: 17px;
+	--font-plan-label: 18px;
+	--font-plan-category: 12px;
+	--size-btn4-icon: 20px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-day-label: 20px;
+	--line-height-day-label: 42px;
+	--line-height-day-label-2: 50px;
+	--font-mealmessage: 16px;
+	--height-mealmessage: 19px;
+	--font-plan-label: 20px;
+	--font-plan-category: 14px;
+	--size-btn4-icon: 22px;
+}
 /* ACCENT COLOR APPLICATION */
 .b1leftinner div {background: var(--color); border-bottom: solid 1px var(--color-alt2);}
 .list-selected {background: var(--color-alt1) !important;}
@@ -65,7 +105,7 @@
 	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
-	font-size: 16px;
+	font-size: var(--font-block1);
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
@@ -76,16 +116,16 @@
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 0px;
 	margin-top: 16px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm);
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 0px;
 	margin-top: 16px;
 	padding: 6px;
@@ -114,8 +154,8 @@
 .day-label {
 	color: var(--color-daylabel);
 	display: inline-block;
-	font-size: 18px;
-	line-height: 40px;
+	font-size: var(--font-day-label);
+	line-height: var(--line-height-day-label);
 	margin: 0;
 	overflow: hidden;
 	padding-left: 10px;
@@ -128,8 +168,8 @@
 .day-label2 {
 	color: var(--color-daylabel);
 	display: none;
-	font-size: 18px;
-	line-height: 50px;
+	font-size: var(--font-day-label);
+	line-height: var(--line-height-day-label-2);
 	margin: 0;
 	overflow: hidden;
 	padding-left: 10px;
@@ -148,8 +188,8 @@
 #b1right h3 {padding-bottom: 0px; padding-top: 16px;}
 #mealmessage {
 	background: var(--color-mealmessage); 
-	font-size: 14px;
-	min-height: 17px;
+	font-size: var(--font-mealmessage);
+	min-height: var(--height-mealmessage);
 	margin-bottom: 2px;
 	margin-top: 10px;
 	padding: 6px;
@@ -180,7 +220,7 @@
 .plan-label {
 	color: var(--color-planlabel);
 	display: inline-block;
-	font-size: 18px;
+	font-size: var(--font-plan-label);
 	margin: 0;
 	padding-left: 10px;
 	width: calc(100% - 62px);
@@ -190,7 +230,7 @@
 .plan-category {
 	color: var(--color-plancategory);
 	display: inline-block;
-	font-size: 12px;
+	font-size: var(--font-plan-category);
 	margin: 0;
 	padding-left: 10px;
 	padding-top: 6px;
@@ -215,7 +255,12 @@
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .btn4-default:active, .btn4-default.active, .btn4-default:hover, .btn4-default:focus {outline: none;}
-.btn4-icon {display: block; height: 20px; padding-left: 9px; width: 20px;}
+.btn4-icon {
+	display: block; 
+	height: var(--size-btn4-icon); 
+	padding-left: 9px; 
+	width: var(--size-btn4-icon);
+}
 .btn4-icon img {height: 100%; width: 100%;}
 
 /* RESPONSIVE */

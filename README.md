@@ -57,75 +57,8 @@ gunicorn -b 0.0.0.0:4888 -w 4 app:app
 ```
 Tamari is now running! Go to http://localhost:4888
 
-### Start Tamari Automatically at System Boot
-Make start script executable (must be in Tamari directory)
-```
-sudo chmod u+x start.sh
-```
-Create Systemd service
-```
-sudo nano /etc/systemd/system/tamari.service
-```
-Paste This (You must change “USERNAME”)
-```
-[Unit]
-Description=Tamari Recipe Manager
-After=syslog.target network.target
-
-[Service]
-Type=simple
-WorkingDirectory=/home/USERNAME/Tamari
-ExecStart=/home/USERNAME/Tamari/start.sh
-Restart=always
-RestartSec=15
-
-[Install]
-WantedBy=multi-user.target
-```
-Start the Systemd service
-```
-sudo systemctl enable tamari.service
-sudo systemctl start tamari.service
-```
-
-### Configure Mail Settings (Optional)
-Configure to enable password reset requests via email. If login username is not the same as your email address, you need to configure 'ADMIN' in config.py.
-```
-source venv/bin/activate
-export MAIL_SERVER=mail.example.com
-export MAIL_PORT=587
-export MAIL_USE_TLS=1
-export MAIL_USERNAME=youremail@example.com
-export MAIL_PASSWORD=yourpassword
-```
-
-## Access Tamari from behind a reverse proxy
-Here is a sample Nginx config (/etc/nginx/conf.d/default.conf).
-```
-server {
-	listen 80;
-	server_name tamari.example.com;
-	return 301 https://tamari.example.com$request_uri;
-}
-server {
-	listen 443 ssl;
-	server_name tamari.example.com;
-	ssl on;
-	
-	location / {
-		proxy_pass		http://127.0.0.1:4888;
-		proxy_set_header Host $http_host;
-		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		proxy_set_header X-Real-IP $remote_addr;
-		proxy_set_header X-Forwarded-Proto $scheme;
-		add_header 'Content-Security-Policy' 'upgrade-insecure-requests';
-		proxy_redirect http://$http_host/ https://$http_host/;
-	}
-	ssl_certificate /etc/ssl/certs/tamari.example.com/fullchain.pem;
-	ssl_certificate_key /etc/ssl/certs/tamari.example.com/privkey.pem;
-}
-```
-This forces SSL, causes Flask url_for to build urls using subdomain instead of localhost, and prevents http resources from being blocked by browsers. An SSL certificate for your domain is required. 
+## Documentation
+For more information regarding usage, installation, and upgrading, check out the documentation at https://tamariapp.com/docs/
 
 ## Backups
 

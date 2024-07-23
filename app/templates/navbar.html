@@ -194,6 +194,31 @@
 			img2.src = imageUrl2;
 		}
 	});
+	
+	// CTRL+S keyboard shortcut to focus search box in My Recipes
+	$(document).ready(function() {
+        if ($('#search').length) {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 's') {
+                    e.preventDefault();
+                    $('#search').focus();
+                }
+            });
+        }
+    });
+	
+	// CTRL+S keyboard shortcut to focus search box in Explore
+	$(document).ready(function() {
+        if ($('#search').length) {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 's') {
+                    e.preventDefault();
+                    $('#search').focus();
+                }
+            });
+        }
+    });
+	
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}

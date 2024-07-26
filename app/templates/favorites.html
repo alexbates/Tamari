@@ -10,13 +10,13 @@
 	<div class="block1inner">
 		<div id="recipenav">
 			<div class="recipenavleft">
-				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="All Recipes"
-				><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="Favorites"
-				><input type="button" class="recbtn recbtn3" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="Categories">
+				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="All Recipes" aria-label="Navigate to All Recipes"
+				><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="Favorites" aria-label="Navigate to Favorites"
+				><input type="button" class="recbtn recbtn3" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="Categories" aria-label="Navigate to Categories">
 			</div>
 			<div class="recipenavright">
 				<div class="settingsbtn">
-					<button class="btn2 btn2-default" onclick="toggleSettings()">
+					<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="Toggle display settings">
 						<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt=""></span>
 					</button>
 					<div class="settings-content" id="settingsDrop">
@@ -35,12 +35,12 @@
 						</form>
 					</div>
 				</div>
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.addRecipe') }}';">
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.addRecipe') }}';" aria-label="Add a new recipe">
                                         <span class="btn-text">Add Recipe</span>
                                         <span class="btn-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
 				</button>
 				<div class="search-cont">
-					<input class="search-box" id="search" name="search" placeholder="Search" value="">
+					<input class="search-box" id="search" name="search" placeholder="Search" value="" aria-label="Search recipes">
 				</div>
 			</div>
 		</div>
@@ -48,11 +48,11 @@
 		{% if user.pref_size == 0 %}
 		<div id="recipecont" class="recipe1cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" tabindex="-1">
 		<div class="recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r1bottom">
 				<div class="recipe1-text">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 				</div>
 			</div>
 		</div>
@@ -63,12 +63,12 @@
 		<div id="recipecont" class="recipe2cont">
 		<div class="recipe2continner">
 		{% for item in recipes %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a" tabindex="-1">
 		<div class="recipe2">
 			<div class="recipe2inner">
 				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
 				<div class="r2bottom">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 					<span>{{ item.category }}</span>
 				</div>
 			</div>
@@ -82,11 +82,11 @@
 		<div class="recipe3continner">
 		{% for item in recipes %}
 		{% set idx = loop.index0 %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a" tabindex="-1">
 		<div class="recipe3" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r3bottom">
 				<div class="r3binner">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 					<span class="r3category r3span">{{ item.category }}</span>
 					<br>
 					{% if item.prep_time or item.cook_time or item.total_time %}
@@ -120,13 +120,13 @@
 		{% if prev_url or next_url %}
 		<div class="prevnext">
 			{% if prev_url %}
-			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';">
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
 				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if next_url %}
-			<button class="btn-next" onclick="window.location.href='{{ next_url }}';">
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
 				<span class="btn-next-text">Next</span>
 				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
 			</button>

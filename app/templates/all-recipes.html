@@ -82,12 +82,12 @@
 		<div id="recipecont" class="recipe2cont">
 		<div class="recipe2continner">
 		{% for item in recipes %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a" tabindex="-1">
 		<div class="recipe2">
 			<div class="recipe2inner">
 				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
 				<div class="r2bottom">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 					<span>{{ item.category }}</span>
 				</div>
 			</div>
@@ -101,11 +101,11 @@
 		<div class="recipe3continner">
 		{% for item in recipes %}
 		{% set idx = loop.index0 %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a" tabindex="-1">
 		<div class="recipe3" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r3bottom">
 				<div class="r3binner">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 					<span class="r3category r3span">{{ item.category }}</span>
 					<br>
 					{% if item.prep_time or item.cook_time or item.total_time %}

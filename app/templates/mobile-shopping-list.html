@@ -83,3 +83,19 @@
 	</div>
 </main>
 {% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+	<script>
+		// CTRL+A keyboard shortcut to redirect to Add Recipe page, only when authenticated
+        $(document).ready(function() {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    window.location.href = '/add-recipe';
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

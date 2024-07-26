@@ -567,7 +567,7 @@ def recipeDetail(hexid):
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
         ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
         nutrition=nutrition, creationtime=creationtime, meal_count=meal_count, last_prepared=last_prepared,
-        scheduled=scheduled) 
+        scheduled=scheduled, hexid=hexid) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required

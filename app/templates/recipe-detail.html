@@ -246,3 +246,21 @@
 	</div>
 </main>
 {% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+	<script>
+		// CTRL+E keyboard shortcut to redirect to Edit Recipe page, only when authenticated
+        $(document).ready(function() {
+            var hexid = '{{ hexid }}'; // Use the passed hexid
+
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'e') {
+                    e.preventDefault();
+                    window.location.href = '/edit-recipe/' + hexid;
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

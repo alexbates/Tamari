@@ -96,14 +96,14 @@
 				{% if totaltime %}<span class="timeouter"><span class="timebold">Total Time:</span> {{ totaltime }} min</span>{% endif %}
 			</p>
 			{% if rec_url %}
-			<p><a class="urla" href="{{ rec_url }}" target="_blank">{{ rec_url }}</a></p>
+			<p><a class="urla" href="{{ rec_url }}" target="_blank" aria-label="Original recipe URL">{{ rec_url }}</a></p>
 			{% endif %}
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
-				<button class="btn btn-default" name="submit" type="submit">
-                                        <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt=""></span>
-                                        <span class="btn-text">Save Recipe</span>
-                                </button>
+				<button class="btn btn-default" name="submit" type="submit" aria-label="Save Recipe">
+                    <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="Save Recipe"></span>
+                    <span class="btn-text">Save Recipe</span>
+                </button>
 			</form>
 		</div>
 		<div id="r-image" style="background-image: url('{{ photo_server }}');"></div>

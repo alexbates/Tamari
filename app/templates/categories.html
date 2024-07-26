@@ -16,7 +16,7 @@
 			</div>
 			<div class="settingsbtn">
 				<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="Toggle display settings">
-					<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt=""></span>
+					<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt="Settings"></span>
 				</button>
 				<div class="settings-content" id="settingsDrop">
 					<h3>Display Settings</h3>
@@ -60,7 +60,7 @@
 						{{ form2.hidden_tag() }}
 						{{ form2.category(class="form-control", placeholder="Add a Category") }}
 						<button class="btn5-default" id="submitcat" name="submitcat" value="submitcat" aria-label="Submit new category">
-							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt=""></span>
+							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="Submit Category"></span>
 						</button>
 					</form> 
 				</div>
@@ -70,7 +70,7 @@
 					<span class="cat-label"><a href="{{ url_for('myrecipes.categories', c=[item.label]) }}">{{ item.label }}</a></span>
 					<span class="cat-label2"><a href="{{ url_for('myrecipes.mobileCategory', catname=item.label) }}">{{ item.label }}</a></span>
 					<a class="cat-trash" href="{{ url_for('myrecipes.removeCategory', catid=item.hex_id) }}" onclick="return confirm('Are you sure you want to delete the category {{ item.label }}?');" title="Delete Category" aria-label="Delete {{ item.label }} category">
-						<img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" width="20" height="20" alt="">
+						<img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" width="20" height="20" alt="Delete Category">
 					</a>
 				</div>
 				{% endfor %}
@@ -160,14 +160,14 @@
                 	<div class="prevnext">
                         	{% if prev_url %}
                         	<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
-                                	<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+                                	<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
                                 	<span class="btn-prev-text">Previous</span>
                         	</button>
                         	{% endif %}
                         	{% if next_url %}
                         	<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
                                 	<span class="btn-next-text">Next</span>
-                                	<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+                                	<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
                         	</button>
                         	{% endif %}
                 	</div>

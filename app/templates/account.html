@@ -74,7 +74,7 @@
 				{{ form2.hidden_tag() }}
 				<h4>Select Theme</h4>
 				<div class="cust-select">
-					<select name="selecttheme">
+					<select name="selecttheme" aria-label="Select Theme">
 						<option value="" disabled hidden>Choose here</option>
 						<option value="0"{% if user.pref_theme == 0 %} selected{% endif %}>System Default</option>
 						<option value="1"{% if user.pref_theme == 1 %} selected{% endif %}>Light</option>
@@ -83,7 +83,7 @@
 				</div>
 				<h4>Font Size and Scaling</h4>
 				<div class="cust-select">
-					<select name="selectscaling">
+					<select name="selectscaling" aria-label="Select Scaling Preference">
 						<option value="" disabled hidden>Choose here</option>
 						<option value="0"{% if user.pref_scaling == 0 %} selected{% endif %}>Normal</option>
 						<option value="1"{% if user.pref_scaling == 1 %} selected{% endif %}>Large</option>
@@ -91,38 +91,38 @@
 				</div>
 				<h4>Select Profile Picture</h4>
 				<div class="profileselector">
-					<input type="radio" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Profile Picture 1" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>
 					<label for="pro-1">
 						<img id="account-pic1" src="{{ url_for('static', filename='account-pic1.png', _external=True) }}" alt="Profile Picture 1">
 					</label>
-					<input type="radio" name="propicture" value="1" id="pro-2" class="input-hidden"{% if user.pref_picture == 1 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Profile Picture 2" name="propicture" value="1" id="pro-2" class="input-hidden"{% if user.pref_picture == 1 %} checked{% endif %}>
 					<label for="pro-2">
 						<img id="account-pic2" src="{{ url_for('static', filename='account-pic2.png', _external=True) }}" alt="Profile Picture 2">
 					</label>
-					<input type="radio" name="propicture" value="2" id="pro-3" class="input-hidden"{% if user.pref_picture == 2 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Profile Picture 3" name="propicture" value="2" id="pro-3" class="input-hidden"{% if user.pref_picture == 2 %} checked{% endif %}>
 					<label for="pro-3">
 						<img id="account-pic3" src="{{ url_for('static', filename='account-pic3.png', _external=True) }}" alt="Profile Picture 3">
 					</label>
-					<input type="radio" name="propicture" value="3" id="pro-4" class="input-hidden"{% if user.pref_picture == 3 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Profile Picture 4" name="propicture" value="3" id="pro-4" class="input-hidden"{% if user.pref_picture == 3 %} checked{% endif %}>
 					<label for="pro-4">
 						<img id="account-pic4" src="{{ url_for('static', filename='account-pic4.png', _external=True) }}" alt="Profile Picture 4">
 					</label>
 				</div>
 				<h4>Select Accent Color</h4>
 				<div class="colorselector">
-					<input type="radio" name="accentcolor" value="0" id="color-1" class="input-hidden"{% if user.pref_color == 0 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Blue Accent Color" name="accentcolor" value="0" id="color-1" class="input-hidden"{% if user.pref_color == 0 %} checked{% endif %}>
 					<label for="color-1">
 						<img id="account-blue" src="{{ url_for('static', filename='account-blue.png', _external=True) }}" alt="Blue">
 					</label>
-					<input type="radio" name="accentcolor" value="1" id="color-2" class="input-hidden"{% if user.pref_color == 1 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Green Accent Color" name="accentcolor" value="1" id="color-2" class="input-hidden"{% if user.pref_color == 1 %} checked{% endif %}>
 					<label for="color-2">
 						<img id="account-green" src="{{ url_for('static', filename='account-green.png', _external=True) }}" alt="Green">
 					</label>
-					<input type="radio" name="accentcolor" value="2" id="color-3" class="input-hidden"{% if user.pref_color == 2 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Purple Accent Color" name="accentcolor" value="2" id="color-3" class="input-hidden"{% if user.pref_color == 2 %} checked{% endif %}>
 					<label for="color-3">
 						<img id="account-purple" src="{{ url_for('static', filename='account-purple.png', _external=True) }}" alt="Purple">
 					</label>
-					<input type="radio" name="accentcolor" value="3" id="color-4" class="input-hidden"{% if user.pref_color == 3 %} checked{% endif %}>
+					<input type="radio" aria-label="Select Pink Accent Color" name="accentcolor" value="3" id="color-4" class="input-hidden"{% if user.pref_color == 3 %} checked{% endif %}>
 					<label for="color-4">
 						<img id="account-pink" src="{{ url_for('static', filename='account-pink.png', _external=True) }}" alt="Pink">
 					</label>
@@ -147,7 +147,7 @@
 			<p>Restore from backup. Only recipes not present will be added, existing recipes will not be changed or overwritten.</p>
 			<form method="post" enctype="multipart/form-data" novalidate>
 				{{ form4.hidden_tag() }}
-				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip"><br>
+				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip" aria-label="Select ZIP archive to restore from backup"><br>
 				{{ form4.submit(class="btn btn-default3 btn-upload", value="Upload") }}
 			</form>
 		</div>

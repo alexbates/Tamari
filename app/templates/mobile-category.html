@@ -44,11 +44,11 @@
 		{% if user.pref_size == 0 %}
 		<div id="recipecont" class="recipe1cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" tabindex="-1">
 		<div class="recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r1bottom">
 				<div class="recipe1-text">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 				</div>
 			</div>
 		</div>
@@ -58,12 +58,12 @@
 		{% elif user.pref_size == 1 %}
 		<div id="recipecont" class="recipe2cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" tabindex="-1">
 		<div class="recipe2">
 			<div class="recipe2inner">
 				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
 				<div class="r2bottom">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 					<span>{{ item.category }}</span>
 				</div>
 			</div>
@@ -76,11 +76,11 @@
 		<div class="recipe3continner">
 		{% for item in recipes %}
 		{% set idx = loop.index0 %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a">
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a" tabindex="-1">
 		<div class="recipe3" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
 			<div class="r3bottom">
 				<div class="r3binner">
-					<div>{{ item.title }}</div>
+					<div tabindex="0">{{ item.title }}</div>
 					<span class="r3category r3span">{{ item.category }}</span>
 					<br>
 					{% if item.prep_time or item.cook_time or item.total_time %}
@@ -112,15 +112,15 @@
 		{% if prev_url or next_url %}
 		<div class="prevnext">
 			{% if prev_url %}
-			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';">
-				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
+				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if next_url %}
-			<button class="btn-next" onclick="window.location.href='{{ next_url }}';">
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
 				<span class="btn-next-text">Next</span>
-				<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
+				<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
 			</button>
 			{% endif %}
 		</div>

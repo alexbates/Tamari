@@ -10,7 +10,7 @@
 <section id="addtolist" class="popupwindow">
 	<div class="popupwindow-content animate">
         	<div class="closebutton">
-            		<span onclick="document.getElementById('addtolist').style.display='none'" class="close">&times;</span>
+            	<span onclick="document.getElementById('addtolist').style.display='none'" class="close" tabindex="0" aria-label="Close Popup Window">&times;</span>
         	</div>
         	<h2>Add to List</h2>
         	<p>Ingredients from this recipe will be added to the following shopping list.</p>
@@ -29,7 +29,7 @@
 <section id="scheduler" class="popupwindow">
 	<div class="popupwindow-content animate">
 		<div class="closebutton">
-			<span onclick="document.getElementById('scheduler').style.display='none'" class="close">&times;</span>
+			<span onclick="document.getElementById('scheduler').style.display='none'" class="close" tabindex="0" aria-label="Close Popup Window">&times;</span>
 		</div>
 		<h2>Add to Meal Planner</h2>
 		<p>This recipe will be added to your Meal Plan for the following day.</p>
@@ -73,8 +73,8 @@
 			<span class="category">{{ recipe.category }}</span>
 			<div class="mobile-image-inner">
 				<div class="mobile-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});">
-					<button class="btn-information" onclick="toggleInformationMobile()">
-						<span class="btn-information-icon"><img class="inf-image" src="{{ url_for('static', filename='information.png', _external=True) }}" alt=""></span>
+					<button class="btn-information" onclick="toggleInformationMobile()" aria-label="Toggle Information Modal">
+						<span class="btn-information-icon"><img class="inf-image" src="{{ url_for('static', filename='information.png', _external=True) }}" alt="Toggle Information Modal"></span>
 					</button>
 					<div class="information-content" id="informationDropMobile">
 						<p>Created: {{ creationtime }}</p>
@@ -157,38 +157,38 @@
 			{% if current_user.is_authenticated and current_user.id == owner %}
 			<div class="btncontainer">
 				{% if recipe.favorite == 0 %}
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.favorite', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt=""></span>
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.favorite', hexid=recipe.hex_id) }}';" aria-label="Favorite Recipe">
+					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt="Favorite"></span>
 					<span class="btn-text">Favorite</span>
 				</button>
 				{% else %}
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.unfavorite', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='unfavorite-recipe.png', _external=True) }}" alt=""></span>
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.unfavorite', hexid=recipe.hex_id) }}';" aria-label="Unfavorite Recipe">
+					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='unfavorite-recipe.png', _external=True) }}" alt="Unfavorite"></span>
 					<span class="btn-text">Unfavorite</span>
 				</button>
 				{% endif %}
 				{% if recipe.public == 0 %}
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.makePublic', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img id="publicimg" src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.makePublic', hexid=recipe.hex_id) }}';" aria-label="Make Recipe Public">
+					<span class="btn-icon"><img id="publicimg" src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt="Make Public"></span>
 					<span class="btn-text">Make Public</span>
 				</button>
 				{% else %}
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.makePrivate', hexid=recipe.hex_id) }}';">
-					<span class="btn-icon"><img id="publicimg" src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt=""></span>
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.makePrivate', hexid=recipe.hex_id) }}';" aria-label="Make Recipe Private">
+					<span class="btn-icon"><img id="publicimg" src="{{ url_for('static', filename='public-private.png', _external=True) }}" alt="Make Private"></span>
 					<span class="btn-text">Make Private</span>
 				</button>
 				{% endif %}
-				<button class="btn btn-default" onclick="document.getElementById('scheduler').style.display='block'">
-					<span class="btn-icon3"><img id="scheduleimg" src="{{ url_for('static', filename='schedule.png', _external=True) }}" alt=""></span>
+				<button class="btn btn-default" onclick="document.getElementById('scheduler').style.display='block'" aria-label="Schedule Recipe">
+					<span class="btn-icon3"><img id="scheduleimg" src="{{ url_for('static', filename='schedule.png', _external=True) }}" alt="Schedule"></span>
 					<span class="btn-text">Schedule</span>
 				</button>
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.editRecipe', hexid=recipe.hex_id) }}';">
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.editRecipe', hexid=recipe.hex_id) }}';" aria-label="Edit Recipe">
 					<span class="btn-icon3"><img id="editimg" src="{{ url_for('static', filename='edit-recipe.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">Edit</span>
 				</button>
 				<form style="display: inline;" action="{{ url_for('myrecipes.removeRecipe', hexid=recipe.hex_id) }}" method="get" onsubmit="return confirm('Are you sure you want to delete this recipe?');">
-					<button class="btn btn-default2">
-						<span class="btn-icon2"><img id="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt=""></span>
+					<button class="btn btn-default2" aria-label="Delete Recipe">
+						<span class="btn-icon2"><img id="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="Delete"></span>
 						<span class="btn-text">Delete</span>
 					</button>
 				</form>
@@ -196,8 +196,8 @@
 			{% endif %}
 		</div>
 		<div id="r-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});">
-			<button class="btn-information" id="infbutton" onclick="toggleInformation()">
-				<span class="btn-information-icon"><img class="inf-image" src="{{ url_for('static', filename='information.png', _external=True) }}" alt=""></span>
+			<button class="btn-information" id="infbutton" onclick="toggleInformation()" aria-label="Toggle Information Modal">
+				<span class="btn-information-icon"><img class="inf-image" src="{{ url_for('static', filename='information.png', _external=True) }}" alt="Toggle Information Modal"></span>
 			</button>
 			<div class="information-content" id="informationDrop">
 				<p>Created: {{ creationtime }}</p>

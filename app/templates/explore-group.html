@@ -15,12 +15,12 @@
 		<p id="showing-msg">Showing {{ rec_first }} - {{ rec_last }} of {{ rec_count }} recipes.</p>
 		<div id="recipecont" class="recipe2cont">
 			{% for recipe in recipes %}
-			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group=group) }}" class="r2a">
+			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group=group) }}" class="r2a" tabindex="-1">
 			<div class="recipe2">
 				<div class="recipe2inner">
 					<div class="r2top" style="background-image: url('{{ url_for('myrecipes.recipePhotos', filename=default_photos[(loop.index - 1) % default_photos|length], _external=True) }}')" data-bgimage="{{ recipe[4] }}"></div>
 					<div class="r2bottom">
-						<div>{{ recipe[0] }}</div>
+						<div tabindex="0">{{ recipe[0] }}</div>
 						<span>{{ recipe[1] }}</span>
 					</div>
 				</div>
@@ -32,16 +32,16 @@
 		{% if pagination.has_prev or pagination.has_next %}
 		<div class="prevnext">
 			{% if pagination.has_prev %}
-			<button class="btn-prev" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page - 1, group=group) }}';">
-				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt=""></span>
+			<button class="btn-prev" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page - 1, group=group) }}';" aria-label="Navigate to previous page">
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
 				<span class="btn-prev-text">Previous</span>
 			</button>
 			{% endif %}
 			{% if pagination.has_next %}
-			<button class="btn-next" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page + 1, group=group) }}';">
+			<button class="btn-next" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page + 1, group=group) }}';" aria-label="Navigate to next page">
 				<span class="btn-next-text">Next</span>
-                                <span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt=""></span>
-                        </button>
+                <span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
+            </button>
 			{% endif %}
 		</div>
 		{% endif %}

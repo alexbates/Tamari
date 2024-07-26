@@ -16,14 +16,14 @@
 				{{ form.hidden_tag() }}
 				{{ form.search(class="search-input", id="exploresearch", placeholder="Search 100,000+ Recipes") }}
 				<button class="search-btn" name="submit" type="submit">
-					<span class="searchbtn-icon"><img id="searchimg" src="{{ url_for('static', filename='search.png', _external=True) }}" alt=""></span>
+					<span class="searchbtn-icon"><img id="searchimg" src="{{ url_for('static', filename='search.png', _external=True) }}" alt="Search recipes"></span>
 				</button>
 			</form> 
 		</div>
 		<h2>Browse By Category</h2>
 		<div class="expcatcontainer">
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='30-minute') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='30-minute') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="30 Minute Meals" src="{{ url_for('static', filename='explore-icon-30minute.png', _external=True) }}">
 				</div>
@@ -31,7 +31,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='30-minute') }}" class="expcatlabel">30 Minute</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='air-fryer') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='air-fryer') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Air Fryer" src="{{ url_for('static', filename='explore-icon-airfryer.png', _external=True) }}">
 				</div>
@@ -39,7 +39,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='air-fryer') }}" class="expcatlabel">Air Fryer</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='beef') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='beef') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Beef" src="{{ url_for('static', filename='explore-icon-beef.png', _external=True) }}">
 				</div>
@@ -47,7 +47,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='beef') }}" class="expcatlabel">Beef</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='breakfast') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='breakfast') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Breakfast" src="{{ url_for('static', filename='explore-icon-breakfast.png', _external=True) }}">
 				</div>
@@ -55,7 +55,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='breakfast') }}" class="expcatlabel">Breakfast</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='chicken') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='chicken') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Chicken" src="{{ url_for('static', filename='explore-icon-chicken.png', _external=True) }}">
 				</div>
@@ -63,7 +63,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='chicken') }}" class="expcatlabel">Chicken</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='dessert') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='dessert') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Dessert" src="{{ url_for('static', filename='explore-icon-dessert.png', _external=True) }}">
 				</div>
@@ -71,7 +71,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='dessert') }}" class="expcatlabel">Dessert</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='dinner') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='dinner') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Dinner" src="{{ url_for('static', filename='explore-icon-dinner.png', _external=True) }}">
 				</div>
@@ -79,7 +79,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='dinner') }}" class="expcatlabel">Dinner</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='drinks') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='drinks') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Drinks" src="{{ url_for('static', filename='explore-icon-drinks.png', _external=True) }}">
 				</div>
@@ -87,7 +87,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='drinks') }}" class="expcatlabel">Drinks</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='low-carb') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='low-carb') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Low Carb" src="{{ url_for('static', filename='explore-icon-lowcarb.png', _external=True) }}">
 				</div>
@@ -95,7 +95,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='low-carb') }}" class="expcatlabel">Low Carb</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='lunch') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='lunch') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Lunch" src="{{ url_for('static', filename='explore-icon-lunch.png', _external=True) }}">
 				</div>
@@ -103,7 +103,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='lunch') }}" class="expcatlabel">Lunch</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='salads') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='salads') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Salads" src="{{ url_for('static', filename='explore-icon-salads.png', _external=True) }}">
 				</div>
@@ -111,7 +111,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='salads') }}" class="expcatlabel">Salads</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='seafood') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='seafood') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Seafood" src="{{ url_for('static', filename='explore-icon-seafood.png', _external=True) }}">
 				</div>
@@ -119,7 +119,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='seafood') }}" class="expcatlabel">Seafood</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='slow-cooker') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='slow-cooker') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Slow Cooker" src="{{ url_for('static', filename='explore-icon-slowcooker.png', _external=True) }}">
 				</div>
@@ -127,7 +127,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='slow-cooker') }}" class="expcatlabel">Slow Cooker</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='snacks') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='snacks') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Snacks" src="{{ url_for('static', filename='explore-icon-snacks.png', _external=True) }}">
 				</div>
@@ -135,7 +135,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='snacks') }}" class="expcatlabel">Snacks</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='soup') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='soup') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Soup" src="{{ url_for('static', filename='explore-icon-soup.png', _external=True) }}">
 				</div>
@@ -143,7 +143,7 @@
 			<a href="{{ url_for('explore.exploreGroup', group='soup') }}" class="expcatlabel">Soup</a>
 		</div>
 		<div class="expcat">
-			<a href="{{ url_for('explore.exploreGroup', group='vegetarian') }}">
+			<a href="{{ url_for('explore.exploreGroup', group='vegetarian') }}" tabindex="-1">
 				<div class="iconcontainer">
 					<img alt="Vegetarian" src="{{ url_for('static', filename='explore-icon-vegetarian.png', _external=True) }}">
 				</div>
@@ -154,22 +154,22 @@
 		<h2>All Recipes 🍽️</h2>
 		<div id="recipecont" class="recipe2cont">
 			{% for recipe in rec_all %}
-			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}" class="r2a">
+			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group='all') }}" class="r2a" tabindex="-1">
 			<div class="recipe2">
 				<div class="recipe2inner">
 					<div class="r2top" style="background-image: url('{{ url_for('myrecipes.recipePhotos', filename=default_photos[(loop.index - 1) % default_photos|length], _external=True) }}')" data-bgimage="{{ recipe[4] }}"></div>
 					<div class="r2bottom">
-						<div>{{ recipe[0] }}</div>
+						<div tabindex="0">{{ recipe[0] }}</div>
 						<span>{{ recipe[1] }}</span>
 					</div>
 				</div>
 			</div>
 			</a>
 			{% endfor %}
-			<a href="{{ url_for('explore.exploreGroup', group='all') }}" class="r2a">
+			<a href="{{ url_for('explore.exploreGroup', group='all') }}" class="r2a" tabindex="-1">
 			<div class="recipe2">
 				<div class="recipe2inner r2seemore">
-					<div class="r2top r2seemore"><span class="r2seemorespan">See More</span></div>
+					<div class="r2top r2seemore"><span class="r2seemorespan" tabindex="0">See More</span></div>
 					<div class="r2bottom"></div>
 				</div>
 			</div>

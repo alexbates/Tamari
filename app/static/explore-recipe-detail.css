@@ -229,8 +229,8 @@ tr:nth-child(odd) {
 	float: left; 
 	height: var(--size-btn-icon); 
 	padding-left: 5px; 
-	width: var(--size-btn-icon;
-	}
+	width: var(--size-btn-icon);
+}
 .btn-icon img {height: 100%; width: 100%;}
 .btn-icon2 {
 	display: block; 
@@ -238,7 +238,7 @@ tr:nth-child(odd) {
 	height: var(--size-btn-icon2); 
 	padding-left: 5px; 
 	width: var(--size-btn-icon2);
-	}
+}
 .btn-icon2 img {height: 100%; width: 100%;}
 .btn-icon3 {
 	display: block; 
@@ -246,7 +246,7 @@ tr:nth-child(odd) {
 	height: var(--size-btn-icon2); 
 	padding-left: 8px; 
 	width: var(--size-btn-icon2);
-	}
+}
 .btn-icon3 img {height: 100%; width: 100%;}
 #r-image {
 	aspect-ratio: 4 / 3;

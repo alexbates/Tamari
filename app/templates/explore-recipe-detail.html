@@ -98,6 +98,7 @@
 			{% if rec_url %}
 			<p><a class="urla" href="{{ rec_url }}" target="_blank" aria-label="Original recipe URL">{{ rec_url }}</a></p>
 			{% endif %}
+			{% if current_user.is_authenticated %}
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<button class="btn btn-default" name="submit" type="submit" aria-label="Save Recipe">
@@ -105,6 +106,7 @@
                     <span class="btn-text">Save Recipe</span>
                 </button>
 			</form>
+			{% endif %}
 		</div>
 		<div id="r-image" style="background-image: url('{{ photo_server }}');"></div>
 		<div id="ingredients">

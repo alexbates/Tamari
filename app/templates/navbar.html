@@ -171,27 +171,31 @@
 	// Dynamic loading of images on Explore Recipe Detail
 	document.addEventListener("DOMContentLoaded", function() {
 		const mobileImageDiv = document.querySelector('.mobile-image');
-		const imageUrl1 = mobileImageDiv.dataset.image;
-		if (imageUrl1) {
-			const img1 = new Image();
-			// Required for sites that have measured to prevent unauthorized access to resources
-			img1.crossOrigin = 'Anonymous';
-			img1.onload = () => {
-				mobileImageDiv.style.backgroundImage = `url(${img1.src})`;
-			};
-			img1.src = imageUrl1;
+		if (mobileImageDiv) {
+			const imageUrl1 = mobileImageDiv.dataset.image;
+			if (imageUrl1) {
+				const img1 = new Image();
+				// Required for sites that have measured to prevent unauthorized access to resources
+				img1.crossOrigin = 'Anonymous';
+				img1.onload = () => {
+					mobileImageDiv.style.backgroundImage = `url(${img1.src})`;
+				};
+				img1.src = imageUrl1;
+			}
 		}
 		
 		const rImageDiv = document.getElementById('r-image');
-		const imageUrl2 = rImageDiv.dataset.image;
-		if (imageUrl2) {
-			const img2 = new Image();
-			// Required for sites that have measured to prevent unauthorized access to resources
-			img2.crossOrigin = 'Anonymous';
-			img2.onload = () => {
-				rImageDiv.style.backgroundImage = `url(${img2.src})`;
-			};
-			img2.src = imageUrl2;
+		if (rImageDiv) {
+			const imageUrl2 = rImageDiv.dataset.image;
+			if (imageUrl2) {
+				const img2 = new Image();
+				// Required for sites that have measured to prevent unauthorized access to resources
+				img2.crossOrigin = 'Anonymous';
+				img2.onload = () => {
+					rImageDiv.style.backgroundImage = `url(${img2.src})`;
+				};
+				img2.src = imageUrl2;
+			}
 		}
 	});
 	

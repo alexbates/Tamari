@@ -10,6 +10,7 @@ from app.shoplists import bp
 from config import Config
 
 @bp.route('/shopping-lists', methods=['GET', 'POST'])
+@login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def shoppingLists():
     user = User.query.filter_by(email=current_user.email).first_or_404()
@@ -19,9 +20,16 @@ def shoppingLists():
         list = user.shop_lists.filter_by(label='Miscellaneous').first()
     else:
         list = user.shop_lists.filter_by(label=query_string).first()
-    items = list.list_items.order_by(Listitem.item).all()
-    items_tobuy = user.list_items.filter_by(list_id=list.id, complete=0).all()
-    items_comp = user.list_items.filter_by(list_id=list.id, complete=1).all()
+    try:
+        items = list.list_items.order_by(Listitem.item).all()
+    except:
+        items = []
+    try:
+        items_tobuy = user.list_items.filter_by(list_id=list.id, complete=0).all()
+        items_comp = user.list_items.filter_by(list_id=list.id, complete=1).all()
+    except:
+        items_tobuy = []
+        items_comp = []
     form = AddListForm()
     form2 = AddListItemForm(prefix='a')
     lists_arr = []

@@ -15,7 +15,6 @@ from app.explore import bp
 from config import Config
 
 @bp.route('/explore', methods=['GET', 'POST'])
-@login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def explore():
     files = ['/static/explore-all-randomized.txt']
@@ -51,7 +50,6 @@ def explore():
     return render_template('explore.html', title='Explore', rec_all=rec_all, form=form, default_photos=default_photos)
 
 @bp.route('/explore/search')
-@login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreSearch():
     # the query, example is search?query=garlic+shrimp which translates to "garlic shrimp"
@@ -138,7 +136,6 @@ def exploreSearch():
         rec_first=rec_first, rec_last=rec_last, rec_count=rec_count, query_string=query_string, default_photos=default_photos)
 
 @bp.route('/explore/group/<group>')
-@login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreGroup(group):
     if group == "all":
@@ -481,7 +478,6 @@ def get_wprm_instructions(soup):
     return instructions
 
 @bp.route('/explore/recipe/<rec_group>/<recnum>', methods=['GET', 'POST'])
-@login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreRecipeDetail(rec_group, recnum):
     if rec_group == "all":

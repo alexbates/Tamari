@@ -47,13 +47,13 @@
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<div class="form-group  required">
-					{{ form.email(class="form-control", placeholder="Email", aria-label="Email") }}
+					{{ form.email(class="form-control", placeholder="Email", aria_label="Email") }}
 					{% if form.email.errors %}
 					<span id="erroremail">{{ form.email.errors|first }}</span>
 					{% endif %}
 				</div>
 				<div class="form-group  required">
-					{{ form.password(class="form-control", placeholder="Password", aria-label="Password") }}
+					{{ form.password(class="form-control", placeholder="Password", aria_label="Password") }}
 					{% if form.password.errors %}
 					<span id="errorpassword">{{ form.password.errors|first }}</span>
 					{% endif %}   

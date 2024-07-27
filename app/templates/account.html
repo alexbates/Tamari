@@ -158,21 +158,21 @@
 				{{ form.hidden_tag() }}
 				<div class="form-group required">
 					<label class="control-label" for="email">Email</label>
-					{{ form.email(class="form-control", aria-label="Email") }}
+					{{ form.email(class="form-control", aria_label="Email") }}
 					{% if form.email.errors %}
 					<div class="fielderror"><div id="erroremail">{{ form.email.errors|first }}</div></div>
 					{% endif %}
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="password">New Password</label>
-					{{ form.password(class="form-control", aria-label="New Password") }}
+					{{ form.password(class="form-control", aria_label="New Password") }}
 					{% if form.password.errors %}
 					<div class="fielderror"><div id="errorpassword">{{ form.password.errors|first }}</div></div>
 					{% endif %}
 				</div>
 				<div class="form-group">
 					<label class="control-label" for="password2">Confirm Password</label>
-					{{ form.password2(class="form-control", aria-label="Confirm Password") }}
+					{{ form.password2(class="form-control", aria_label="Confirm Password") }}
 					{% if form.password2.errors %}
 					<div class="fielderror"><div id="errorpassword2">{{ form.password2.errors|first }}</div></div>
 					{% endif %}

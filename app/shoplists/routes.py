@@ -60,8 +60,8 @@ def shoppingLists():
     if form2.submititem.data and form2.validate_on_submit():
         if form2.newitem.data in items_arr:
             flash('Error: the list item you entered already exists.')
-        elif len(items_arr) > 69:
-            flash('Error: you are limited to 70 items per list.')
+        elif len(items_arr) > 99:
+            flash('Error: you are limited to 100 items per list.')
         else:
             hex_valid2 = 0
             while hex_valid2 == 0:

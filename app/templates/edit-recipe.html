@@ -45,7 +45,7 @@
 			{{ form.hidden_tag() }}
 			<div class="form-group ">
 				<label class="control-label" for="recipe_name">Recipe Name</label><br>
-				{{ form.recipe_name(class="form-control fc1", placeholder="Air Fryer Squash", value=recipe.title) }}
+				{{ form.recipe_name(class="form-control fc1", placeholder="Air Fryer Squash", aria-label="Recipe Name", value=recipe.title) }}
 				{% for error in form.recipe_name.errors %} 
 				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}  
@@ -53,7 +53,7 @@
 			<div class="custom-select">
 				<div class="cust-select">
 					<label class="control-label" for="category">Select Category</label><br>
-					<select name="category" id="category">
+					<select name="category" id="category" aria-label="Select Category">
 						<option value="" disabled hidden>Choose here</option>
 						{% for choice in choices %}
 						<option value="{{ choice }}" {% if choice == recipe.category %}selected="selected"{% endif %}>{{ choice }}</option>
@@ -66,12 +66,12 @@
 			</div>
 			<div class="form-group">
 				<label>Attach Photo</label><br>
-				<input type="file" class="custom-file-input" name="image" id="image" accept=".png,.jpg,.jpeg">
+				<input type="file" class="custom-file-input" name="image" id="image" accept=".png,.jpg,.jpeg" aria-label="Attach Photo">
 				<div id="image-error" class="imageerror"></div>
 			</div>
 			<div class="form-group ">
 				<label class="control-label" for="description">Description</label><br>
-				<textarea class="form-control fc2" id="description" maxlength="500" minlength="0" name="description" placeholder="My crispy squash recipe.">
+				<textarea class="form-control fc2" id="description" maxlength="500" minlength="0" name="description" aria-label="Description" placeholder="My crispy squash recipe.">
 {{ recipe.description }}</textarea>
 				{% for error in form.description.errors %}
 				<span class="errorrequired">{{ error }}</span>
@@ -79,14 +79,14 @@
 			</div>
 			<div class="form-group ">
 				<label class="control-label" for="url">URL</label><br>
-				{{ form.url(class="form-control fc1", placeholder="https://www.example.com/recipes/air-fryer-squash", value=recipe.url) }}
+				{{ form.url(class="form-control fc1", placeholder="https://www.example.com/recipes/air-fryer-squash", aria-label="URL", value=recipe.url) }}
 				{% for error in form.url.errors %}
 				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}   
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="servings">Servings</label><br>
-				{{ form.servings(class="form-control fc1", placeholder="2") }}
+				{{ form.servings(class="form-control fc1", placeholder="2", aria-label="Servings") }}
 				{% for error in form.servings.errors %}
 				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}
@@ -94,54 +94,54 @@
 			<div class="form-group3">
 				<div>
 					<label class="control-label" for="prep_time">Preparation Time (minutes)</label><br>
-					{{ form.prep_time(class="form-control fc1", placeholder="15", value=recipe.prep_time) }}
+					{{ form.prep_time(class="form-control fc1", placeholder="15", aria-label="Preparation Time in minutes", value=recipe.prep_time) }}
 					{% for error in form.prep_time.errors %}
 					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}   
 				</div>
 				<div>
 					<label class="control-label" for="cook_time">Cook Time (minutes)</label><br>
-					{{ form.cook_time(class="form-control fc1", placeholder="30", value=recipe.cook_time) }}
+					{{ form.cook_time(class="form-control fc1", placeholder="30", aria-label="Cook Time in minutes", value=recipe.cook_time) }}
 					{% for error in form.cook_time.errors %}
 					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}   
 				</div>
 				<div>
 					<label class="control-label" for="total_time">Total Time (minutes)</label><br>
-					{{ form.total_time(class="form-control fc1", placeholder="45", value=recipe.total_time) }}
+					{{ form.total_time(class="form-control fc1", placeholder="45", aria-label="Total Time in minutes", value=recipe.total_time) }}
 					{% for error in form.total_time.errors %}
 					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}
 				</div>
 			</div>
-			<input type="checkbox" id="nutrition_checkbox" name="n_checkbox" onchange="toggleNutrition('a')">
+			<input type="checkbox" id="nutrition_checkbox" name="n_checkbox" onchange="toggleNutrition('a')" aria-label="Toggle Nutrition Info">
 			<label class="togglelabel" for="nutrition_checkbox">Add Nutrition Info</label>
 			<div id="nutrition">
 				<div class="form-group4">
 					<div>
 						<label class="control-label" for="n_calories">Calories (kcal)</label><br>
-						{{ form.n_calories(class="form-control fc1", placeholder="393", value=nutrition.calories) }}
+						{{ form.n_calories(class="form-control fc1", placeholder="393", aria-label="Calories", value=nutrition.calories) }}
 						{% for error in form.n_calories.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_carbs">Carbs (g)</label><br>
-						{{ form.n_carbs(class="form-control fc1", placeholder="46", value=nutrition.carbs) }}
+						{{ form.n_carbs(class="form-control fc1", placeholder="46", aria-label="Carbs in grams", value=nutrition.carbs) }}
 						{% for error in form.n_carbs.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_protein">Protein (g)</label><br>
-						{{ form.n_protein(class="form-control fc1", placeholder="8", value=nutrition.protein) }}
+						{{ form.n_protein(class="form-control fc1", placeholder="8", aria-label="Protein in grams", value=nutrition.protein) }}
 						{% for error in form.n_protein.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_fat">Fat (g)</label><br>
-						{{ form.n_fat(class="form-control fc1", placeholder="17", value=nutrition.fat) }}
+						{{ form.n_fat(class="form-control fc1", placeholder="17", aria-label="Fat in grams", value=nutrition.fat) }}
 						{% for error in form.n_fat.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
@@ -150,28 +150,28 @@
 				<div class="form-group4">
 					<div>
 						<label class="control-label" for="n_sugar">Sugar (g)</label><br>
-						{{ form.n_sugar(class="form-control fc1", placeholder="2", value=nutrition.sugar) }}
+						{{ form.n_sugar(class="form-control fc1", placeholder="2", aria-label="Sugar in grams", value=nutrition.sugar) }}
 						{% for error in form.n_sugar.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_cholesterol">Cholesterol (mg)</label><br>
-						{{ form.n_cholesterol(class="form-control fc1", placeholder="7", value=nutrition.cholesterol) }}
+						{{ form.n_cholesterol(class="form-control fc1", placeholder="7", aria-label="Cholesterol in milligrams", value=nutrition.cholesterol) }}
 						{% for error in form.n_cholesterol.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_sodium">Sodium (mg)</label><br>
-						{{ form.n_sodium(class="form-control fc1", placeholder="122", value=nutrition.sodium) }}
+						{{ form.n_sodium(class="form-control fc1", placeholder="122", aria-label="Sodium in milligrams", value=nutrition.sodium) }}
 						{% for error in form.n_sodium.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
 					</div>
 					<div>
 						<label class="control-label" for="n_fiber">Fiber (g)</label><br>
-						{{ form.n_fiber(class="form-control fc1", placeholder="1", value=nutrition.fiber) }}
+						{{ form.n_fiber(class="form-control fc1", placeholder="1", aria-label="Fiber in grams", value=nutrition.fiber) }}
 						{% for error in form.n_fiber.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}
@@ -181,7 +181,7 @@
 			<div class="form-group2">
 				<div>
 					<label class="control-label" for="ingredients">Ingredients</label><br>
-					<textarea class="form-control fc3" id="ingredients" maxlength="1100" minlength="1" name="ingredients" placeholder="2 Tbsp olive oil" required>
+					<textarea class="form-control fc3" id="ingredients" maxlength="2200" minlength="1" name="ingredients" aria-label="Ingredients separated by line break" placeholder="2 Tbsp olive oil" required>
 {{ recipe.ingredients }}</textarea>
 					{% for error in form.ingredients.errors %}
 					<span class="errorrequired">{{ error }}</span>
@@ -189,7 +189,7 @@
 				</div>
 				<div>
 					<label class="control-label" for="instructions">Instructions</label><br>
-					<textarea class="form-control fc3" id="instructions" maxlength="2200" minlength="1" name="instructions" placeholder="Wash squash in sink to prepare." required>
+					<textarea class="form-control fc3" id="instructions" maxlength="6600" minlength="1" name="instructions" aria-label="Instructions separated by line break" placeholder="Wash squash in sink to prepare." required>
 {{ recipe.instructions }}</textarea>
 					{% for error in form.instructions.errors %}
 					<span class="errorrequired">{{ error }}</span>

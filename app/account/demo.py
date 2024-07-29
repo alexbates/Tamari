@@ -55,26 +55,26 @@ def reset_demo_account():
             db.session.commit()
             # Add three categories
             cats = ['Miscellaneous', 'Entrees', 'Sides']
-                for cat in cats:
-                    hex_valid = 0
-                    while hex_valid == 0:
-                        hex_string = secrets.token_hex(4)
-                        hex_exist = Category.query.filter_by(hex_id=hex_string).first()
-                        if hex_exist is None:
-                            hex_valid = 1
-                    new_cat = Category(hex_id=hex_string, label=cat, user=user)
-                    db.session.add(new_cat)
+            for cat in cats:
+                hex_valid = 0
+                while hex_valid == 0:
+                    hex_string = secrets.token_hex(4)
+                    hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                    if hex_exist is None:
+                        hex_valid = 1
+                new_cat = Category(hex_id=hex_string, label=cat, user=user)
+                db.session.add(new_cat)
             # Add shopping lists
             lists = ['Miscellaneous', 'Publix']
-                for list in lists:
-                    hex_valid2 = 0
-                    while hex_valid2 == 0:
-                        hex_string2 = secrets.token_hex(4)
-                        hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
-                        if hex_exist2 is None:
-                            hex_valid2 = 1
-                    new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
-                    db.session.add(new_list)
+            for list in lists:
+                hex_valid2 = 0
+                while hex_valid2 == 0:
+                    hex_string2 = secrets.token_hex(4)
+                    hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
+                    if hex_exist2 is None:
+                        hex_valid2 = 1
+                new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
+                db.session.add(new_list)
             # Commit new categories and shopping lists
             db.session.commit()
             # Add Recipe 1 to Demo account

@@ -10,7 +10,7 @@ from io import StringIO, BytesIO, TextIOWrapper
 import csv
 from datetime import datetime
 from urllib.request import urlopen, Request
-import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile, threading
+import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
 from app.account import bp
 from config import Config
 
@@ -28,19 +28,6 @@ def validate_image(stream):
     if not format:
         return None
     return '.' + format
-
-# The following two functions are used to reconstruct Demo account data
-def schedule_reset(interval):
-    while True:
-        time.sleep(interval)
-        reset_demo_account()
-
-@app.before_first_request
-def start_reset_scheduler():
-    interval = 30 * 60  # run every 30 minutes
-    reset_thread = threading.Thread(target=schedule_reset, args=(interval,))
-    reset_thread.daemon = True
-    reset_thread.start()
 
 @bp.route('/favicon.ico')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

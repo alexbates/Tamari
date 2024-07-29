@@ -10,7 +10,7 @@ from flask_limiter.util import get_remote_address
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath
-import os
+import os, time, threading
 
 UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'appdata', 'recipe-photos')
 
@@ -32,6 +32,22 @@ limiter = Limiter(
     default_limits=[Config.DEFAULT_RATE_LIMIT],
     storage_uri="memory://"
 )
+
+# The following two functions are used to reconstruct Demo account data on an interval
+from app.account.demo import reset_demo_account
+
+def schedule_reset(interval):
+    while True:
+        time.sleep(interval)
+        reset_demo_account()
+
+def start_reset_scheduler():
+    interval = 30 * 60  # reset demo every 30 minutes
+    reset_thread = threading.Thread(target=schedule_reset, args=(interval,))
+    reset_thread.daemon = True
+    reset_thread.start()
+
+start_reset_scheduler()
 
 from app.account import bp as account_bp
 app.register_blueprint(account_bp)

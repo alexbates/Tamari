@@ -4,12 +4,13 @@ from app.account.forms import LoginForm, RegistrationForm, AccountForm, EmptyFor
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
 from app.account.email import send_password_reset_email
+from app.account.demo import reset_demo_account
 from werkzeug.urls import url_parse
 from io import StringIO, BytesIO, TextIOWrapper
 import csv
 from datetime import datetime
 from urllib.request import urlopen, Request
-import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
+import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile, threading
 from app.account import bp
 from config import Config
 
@@ -27,6 +28,19 @@ def validate_image(stream):
     if not format:
         return None
     return '.' + format
+
+# The following two functions are used to reconstruct Demo account data
+def schedule_reset(interval):
+    while True:
+        time.sleep(interval)
+        reset_demo_account()
+
+@app.before_first_request
+def start_reset_scheduler():
+    interval = 30 * 60  # run every 30 minutes
+    reset_thread = threading.Thread(target=schedule_reset, args=(interval,))
+    reset_thread.daemon = True
+    reset_thread.start()
 
 @bp.route('/favicon.ico')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

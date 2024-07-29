@@ -49,6 +49,18 @@
 	--height-pagination: 34px;
 	--width-next: 76px;
 	--width-prev: 107px;
+	--height-r2bottom: 80px;
+	--font-r2bottom-div: 18px;
+	--height-r2bottom-div: 40px;
+	--font-r2bottom-span: 14px;
+	--w860-height-r2bottom: 75px;
+	--w860-font-r2bottom-div: 16px;
+	--w860-height-r2bottom-div: 36px;
+	--w860-font-r2bottom-span: 12px;
+	--w330-height-r2bottom: 69px;
+	--w330-font-r2bottom-div: 14px;
+	--w330-height-r2bottom-div: 30px;
+	--w330-font-r2bottom-span: 10px;
 }
 [data-scaling="normal"] {
 	--font-block1: 16px;
@@ -60,6 +72,18 @@
 	--height-pagination: 34px;
 	--width-next: 76px;
 	--width-prev: 107px;
+	--height-r2bottom: 80px;
+	--font-r2bottom-div: 18px;
+	--height-r2bottom-div: 40px;
+	--font-r2bottom-span: 14px;
+	--w860-height-r2bottom: 75px;
+	--w860-font-r2bottom-div: 16px;
+	--w860-height-r2bottom-div: 36px;
+	--w860-font-r2bottom-span: 12px;
+	--w330-height-r2bottom: 69px;
+	--w330-font-r2bottom-div: 14px;
+	--w330-height-r2bottom-div: 30px;
+	--w330-font-r2bottom-span: 10px;
 }
 [data-scaling="large"] {
 	--font-block1: 18px;
@@ -71,6 +95,18 @@
 	--height-pagination: 36px;
 	--width-next: 79px;
 	--width-prev: 110px;
+	--height-r2bottom: 86px;
+	--font-r2bottom-div: 20px;
+	--height-r2bottom-div: 44px;
+	--font-r2bottom-span: 16px;
+	--w860-height-r2bottom: 81px;
+	--w860-font-r2bottom-div: 18px;
+	--w860-height-r2bottom-div: 40px;
+	--w860-font-r2bottom-span: 14px;
+	--w330-height-r2bottom: 75px;
+	--w330-font-r2bottom-div: 16px;
+	--w330-height-r2bottom-div: 34px;
+	--w330-font-r2bottom-span: 12px;
 }
 /* ACCENT COLOR APPLICATION */
 .search-btn {background-color: var(--color);}
@@ -156,7 +192,7 @@
 .r2bottom {
 	display: flex; /* Used for vertical centering */
 	flex-direction: column; /* Stacks the child elements vertically */
-	height: 80px;
+	height: var(--height-r2bottom);
 	justify-content: center; /* Vertically center the items */
 	padding-left: 10px;
 	padding-right: 10px;
@@ -166,14 +202,17 @@
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;
-	font-size: 18px;
+	font-size: var(--font-r2bottom-div);
 	margin: 0;
 	padding-bottom: 5px;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	max-height: 40px;
+	max-height: var(--height-r2bottom-div);
 }
-.r2bottom span {color: var(--color-r2bottom-span); font-size: 14px;}
+.r2bottom span {
+	color: var(--color-r2bottom-span); 
+	font-size: var(--font-r2bottom-span);
+}
 
 /* PAGINATION BUTTONS */
 .prevnext {height: 64px; text-align: center; width: 100%;}
@@ -247,15 +286,21 @@
 	}
 }
 @media screen and (max-width: 860px) { 
-	.r2bottom {height: 75px;}
-	.r2bottom div {font-size: 16px; max-height: 36px;}
-	.r2bottom span {font-size: 12px;}
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
 }
 @media screen and (max-width: 770px) { 
 	.recipe2 {width: calc(33.33% - 20px);}
-	.r2bottom {height: 80px;}
-	.r2bottom div {font-size: 18px; max-height: 40px;}
-	.r2bottom span {font-size: 14px;}
+	.r2bottom {height: var(--height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--font-r2bottom-div); 
+		max-height: var(--height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 700px) { 
 	#recipe2container {width: calc(100% - 16px);}
@@ -270,20 +315,29 @@
 	}
 }
 @media screen and (max-width: 620px) { 
-	.r2bottom {height: 75px;}
-	.r2bottom div {font-size: 16px; max-height: 36px;}
-	.r2bottom span {font-size: 12px;}
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
 }
 @media screen and (max-width: 530px) { 
 	.recipe2 {width: calc(50% - 16px);}
-	.r2bottom {height: 80px;}
-	.r2bottom div {font-size: 18px; max-height: 40px;}
-	.r2bottom span {font-size: 14px;}
+	.r2bottom {height: var(--height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--font-r2bottom-div); 
+		max-height: var(--height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 470px) { 
-	.r2bottom {height: 75px;}
-	.r2bottom div {font-size: 16px; max-height: 36px;}
-	.r2bottom span {font-size: 12px;}
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
 }
 @media screen and (max-width: 400px) { 
 	.recipe2cont {width: calc(100% - 10px);}
@@ -298,7 +352,10 @@
 	}
 }
 @media screen and (max-width: 330px) { 
-	.r2bottom {height: 69px;}
-	.r2bottom div {font-size: 14px; max-height: 30px;}
-	.r2bottom span {font-size: 10px;}
+	.r2bottom {height: var(--w330-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w330-font-r2bottom-div); 
+		max-height: var(--w330-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w330-font-r2bottom-span);}
 }

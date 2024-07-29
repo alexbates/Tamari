@@ -167,6 +167,10 @@ def user():
         rec_count += 1
     # AccountForm
     if form.validate_on_submit():
+        # If Demo Account, users cannot change email or password
+        if current_user.email == 'demo@tamariapp.com':
+            flash('Error: account changes restricted for demo account.')
+            return redirect(url_for('account.account'))
         # Create variables that will be used for flashed messages
         has_passwords = False
         passwords_match = False
@@ -289,6 +293,10 @@ def user():
         return response
     # Import Account Form
     if form4.submit.data and form4.validate_on_submit():
+        # If Demo Account, users cannot import data
+        if current_user.email == 'demo@tamariapp.com':
+            flash('Error: data import restricted for demo account.')
+            return redirect(url_for('account.account'))
         zipbackup = request.files['zipbackup']
         if request.files and zipbackup.filename != '':
             # Read the uploaded file
@@ -483,6 +491,10 @@ def user():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def deleteAccount():
+    # If Demo Account, users cannot delete account
+    if current_user.email == 'demo@tamariapp.com':
+        flash('Error: account deletion restricted for demo account.')
+        return redirect(url_for('account.account'))
     # Get user and handle if user doesn't exist
     user = User.query.filter_by(email=current_user.email).first()
     if user is None:

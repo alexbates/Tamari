@@ -1,7 +1,7 @@
 from flask import render_template
 from app import app, db
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
-import os
+import os, secrets
 from config import Config
 
 # This python file is used to reconstruct the data in the Demo account.

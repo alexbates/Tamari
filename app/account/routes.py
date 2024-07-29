@@ -171,7 +171,7 @@ def user():
         # If Demo Account, users cannot change email or password
         if current_user.email == 'demo@tamariapp.com':
             flash('Error: account changes restricted for demo account.')
-            return redirect(url_for('account.account'))
+            return redirect(url_for('account.user'))
         # Create variables that will be used for flashed messages
         has_passwords = False
         passwords_match = False
@@ -297,7 +297,7 @@ def user():
         # If Demo Account, users cannot import data
         if current_user.email == 'demo@tamariapp.com':
             flash('Error: data import restricted for demo account.')
-            return redirect(url_for('account.account'))
+            return redirect(url_for('account.user'))
         zipbackup = request.files['zipbackup']
         if request.files and zipbackup.filename != '':
             # Read the uploaded file
@@ -495,7 +495,7 @@ def deleteAccount():
     # If Demo Account, users cannot delete account
     if current_user.email == 'demo@tamariapp.com':
         flash('Error: account deletion restricted for demo account.')
-        return redirect(url_for('account.account'))
+        return redirect(url_for('account.user'))
     # Get user and handle if user doesn't exist
     user = User.query.filter_by(email=current_user.email).first()
     if user is None:
@@ -547,6 +547,10 @@ def request_reset():
     # Don't display page if user is signed in
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))
+    # If Demo Account, users cannot delete account
+    if current_user.email == 'demo@tamariapp.com':
+        flash('Password reset disabled for demo.')
+        return redirect(url_for('account.login'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()

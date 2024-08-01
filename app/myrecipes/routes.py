@@ -31,7 +31,9 @@ def validate_image(stream):
 @bp.route('/recipe-photos/<path:filename>')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipePhotos(filename):
-    return send_from_directory(app.root_path + '/appdata/recipe-photos/', filename)
+    response = make_response(send_from_directory(app.root_path + '/appdata/recipe-photos/', filename))
+    response.headers['Cache-Control'] = 'public, max-age=864000' # Cache for 1 month
+    return response
 
 # The get_recipe_info function is used by All Recipes, Favorites, Categories, and Mobile Category routes
 # to build a recipe_info 2D array that is parallel to recipes object. It contains nearest scheduled date

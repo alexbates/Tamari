@@ -547,13 +547,13 @@ def request_reset():
     # Don't display page if user is signed in
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))
-    # If Demo Account, users cannot delete account
-    if current_user.email == 'demo@tamariapp.com':
-        flash('Password reset disabled for demo.')
-        return redirect(url_for('account.login'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
+        # If Demo Account, users cannot delete account
+        if user.email == 'demo@tamariapp.com':
+            flash('Password reset disabled for demo.')
+            return redirect(url_for('account.login'))
         if user:
             send_password_reset_email(user)
         flash('Check your email for instructions.')

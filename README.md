@@ -9,11 +9,11 @@ Tamari is a fully-featured recipe manager web application built using Python and
 
 ![Tamari Screenshot](https://bates.gg/mockup-tamari.png)
 
-## Live Demo
+## Live Demo and Public Instance
 
-Try it out at https://demo.tamariapp.com
+Try it out at https://app.tamariapp.com
 
-Some functionality is disabled and data is deleted every 20 minutes.
+Create your own account or sign in with the demo credentials.
 
 ## Features
 - **Create User Accounts.** Login with an email and password. If configured on the instance, account passwords can be reset by sending a reset request to the email associated with your account.

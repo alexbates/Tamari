@@ -947,12 +947,16 @@ def removeRecipe(hexid):
             os.remove(fullpath)
         except:
             pass
-    # Query NutritionalInfo by id of recipe that is requested for deletion
+    # Query and delete NutritionalInfo for specified recipe
     delnutrition = NutritionalInfo.query.filter_by(recipe_id=delrecipe.id).first()
-    db.session.delete(delrecipe)
-    # Delete NutritionalInfo if it exists for the selected recipe
     if delnutrition is not None:
         db.session.delete(delnutrition)
+    # Query and deleted Meal Plans for specified recipe
+    delmealrecipes = MealRecipe.query.filter_by(recipe_id=delrecipe.id).all()
+    for mealrecipe in delmealrecipes:
+        db.session.delete(mealrecipe)
+    # Delete recipe and commit changes
+    db.session.delete(delrecipe)
     db.session.commit()
     flash('Recipe has been removed.')
     return redirect(url_for('myrecipes.allRecipes'))

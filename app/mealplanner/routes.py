@@ -7,7 +7,7 @@ import secrets, time, random, requests, re, urllib.request
 from app.mealplanner import bp
 from config import Config
 
-@bp.route('/meal-planner')
+@bp.route('/meal-planner/upcoming')
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mealPlanner():
@@ -65,7 +65,7 @@ def mealPlanner():
     for meal in plannedmeals:
         if meal.date == query_string:
             query_count += 1
-    return render_template('meal-planner.html', title='Meal Planner', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals,
+    return render_template('meal-planner-upcoming.html', title='Meal Planner (Upcoming)', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals,
 	month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, compactmonth=compactmonth, mealsinmonth=mealsinmonth)
 
 @bp.route('/remove-plan/<hexid>')

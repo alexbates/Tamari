@@ -54,11 +54,18 @@
 /* SCALING */
 :root {
 	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--width-recbtn1: 100px;
+	--width-recbtn2: 104px;
 	--font-flashed: 14px;
 	--height-flashed: 17px;
 	--font-day-label: 18px;
-	--line-height-day-label: 40px;
+	--line-height-day-label: 43px;
 	--line-height-day-label-2: 50px;
+	--margin-top-statsbox-number: 7px;
 	--font-mealmessage: 14px;
 	--height-mealmessage: 17px;
 	--font-plan-label: 18px;
@@ -67,11 +74,18 @@
 }
 [data-scaling="normal"] {
 	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--width-recbtn1: 100px;
+	--width-recbtn2: 104px;
 	--font-flashed: 14px;
 	--height-flashed: 17px;
 	--font-day-label: 18px;
-	--line-height-day-label: 40px;
+	--line-height-day-label: 43px;
 	--line-height-day-label-2: 50px;
+	--margin-top-statsbox-number: 7px;
 	--font-mealmessage: 14px;
 	--height-mealmessage: 17px;
 	--font-plan-label: 18px;
@@ -80,11 +94,18 @@
 }
 [data-scaling="large"] {
 	--font-block1: 18px;
+	--font-recbtn: 18px;
+	--height-recipenav: 59px;
+	--height-recbtn: 32px;
+	--margin-recbtn: 13px;
+	--width-recbtn1: 112px;
+	--width-recbtn2: 116px;
 	--font-flashed: 16px;
 	--height-flashed: 19px;
 	--font-day-label: 20px;
-	--line-height-day-label: 42px;
+	--line-height-day-label: 45px;
 	--line-height-day-label-2: 50px;
+	--margin-top-statsbox-number: 7px;
 	--font-mealmessage: 16px;
 	--height-mealmessage: 19px;
 	--font-plan-label: 20px;
@@ -92,7 +113,8 @@
 	--size-btn4-icon: 22px;
 }
 /* ACCENT COLOR APPLICATION */
-.b1leftinner div {background: var(--color); border-bottom: solid 1px var(--color-alt2);}
+.recbtn-active {background-color: var(--color) !important;}
+.statsbox-number {background-color: var(--color);}
 .list-selected {background: var(--color-alt1) !important;}
 .additem-btn {background-color: var(--color);}
 .additem-btn:hover {background: var(--color-lighter);}
@@ -113,21 +135,43 @@
 	margin: 0 auto;
 	width: 1000px;
 }
+#recipenav {
+	height: var(--height-recipenav);
+	width: 100%;
+}
+.recipenavleft {
+	float: left;
+	height: 100%;
+}
+.recbtn {
+	background-color: var(--color-recbtn-bg);
+	border: none;
+	border-radius: 15px;
+	color: var(--color-recbtn-font);
+	cursor: pointer;
+	font-size: var(--font-recbtn);
+	height: var(--height-recbtn);
+	margin-top: var(--margin-recbtn);
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
+.recbtn1 {width: var(--width-recbtn1);}
+.recbtn2 {width: var(--width-recbtn2);}
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);
 	font-size: var(--font-flashed);
 	min-height: var(--height-flashed);
-	margin-bottom: 0px;
-	margin-top: 16px;
+	margin-bottom: 12px;
+	margin-top: 0px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm);
 	font-size: var(--font-flashed);
 	min-height: var(--height-flashed);
-	margin-bottom: 0px;
-	margin-top: 16px;
+	margin-bottom: 12px;
+	margin-top: 0px;
 	padding: 6px;
 }
 
@@ -135,23 +179,36 @@
 	float: left;
 	width: 310px;
 }
-#b1left h2 {padding-top: 14px;}
-.b1leftinner {margin-bottom: 20px; margin-top: 20px;}
-.b1leftinner div {
-	height: 40px;
+#b1left h2 {padding-top: 0px; padding-bottom: 4px;}
+#b1left h3 {padding-bottom: 0px; padding-top: 16px;}
+.b1leftinner {margin-bottom: 20px;}
+#statsmessage {
+	background: var(--color-mealmessage); 
+	font-size: var(--font-mealmessage);
+	min-height: var(--height-mealmessage);
+	margin-bottom: 2px;
+	margin-top: 10px;
+	padding: 6px;
+	width: 286px;
+}
+.statsbox {margin-top: 10px;}
+.statsbox div {
+	background: var(--color-planinner-bg);
+	border-bottom: solid 1px var(--color-planinner-border);
+	height: var(--line-height-day-label);
 	text-align: left;
 	width: 298px;
 }
-.b1leftinner div:first-child {
+.statsbox div:first-child {
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
-.b1leftinner div:last-child {
+.statsbox div:last-child {
 	border-bottom: none !important;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 }
-.day-label {
+.statsbox-label {
 	color: var(--color-daylabel);
 	display: inline-block;
 	font-size: var(--font-day-label);
@@ -161,30 +218,27 @@
 	padding-left: 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 278px;
+	width: 180px;
 }
-.day-label:hover {color: var(--color-daylabel-hover);}
-.day-label a:hover {text-decoration: none;}
-.day-label2 {
-	color: var(--color-daylabel);
-	display: none;
-	font-size: var(--font-day-label);
-	line-height: var(--line-height-day-label-2);
-	margin: 0;
-	overflow: hidden;
+.statsbox-label:hover {color: var(--color-daylabel-hover);}
+.statsbox-label a:hover {text-decoration: none;}
+.statsbox-number {
+	border-radius: 14px;
+	display: block;
+	float: right;
+	margin-right: 10px;
+	margin-top: var(--margin-top-statsbox-number);
+	padding-top: 4px;
+	padding-bottom: 4px;
 	padding-left: 10px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	width: 278px;
+	padding-right: 10px;
 }
-.day-label2:hover {color: var(--color-daylabel-hover);}
-.day-label2 a:hover {text-decoration: none;}
 
 #b1right {
 	float: left;
 	width: calc(100% - 310px);
 }
-#b1right h2 {padding-top: 16px; padding-bottom: 4px;}
+#b1right h2 {padding-top: 0px; padding-bottom: 4px;}
 #b1right h3 {padding-bottom: 0px; padding-top: 16px;}
 #mealmessage {
 	background: var(--color-mealmessage); 
@@ -272,16 +326,13 @@
 }
 @media screen and (max-width: 880px) {
 	#b1left {width: 280px;}
-	.b1leftinner div {width: 268px;}
-	.day-label {width: 248px;}
-	.day-label2 {width: 248px;}
+	#statsmessage {width: 252px;}
+	.statsbox div {width: 268px;}
 	#b1right {width: calc(100% - 280px);}
 }
-@media screen and (max-width: 700px) {
-	#b1left h2 {display: none;}
-	.b1leftinner {margin-top: 15px;}
-}
 @media screen and (max-width: 620px) { 
-	#b1left {display: none;}
+	#b1left {width: 100%;}
+	#statsmessage {width: auto;}
+	.statsbox div {width: 100%;}
 	#b1right {width: 100%;}
 }

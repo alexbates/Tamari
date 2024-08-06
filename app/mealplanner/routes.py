@@ -99,7 +99,7 @@ def mealPlannerCompleted():
         d[1] = fulldate
     for d in month:
         year_timestamp -= 86400
-        date = datetime.fromtimestamp(year_timestamp)
+        date = datetime.fromtimestamp(month_timestamp)
         intDay = date.weekday()
         full_month = date.strftime("%B")
         full_day = date.strftime("%-d")
@@ -112,7 +112,7 @@ def mealPlannerCompleted():
         d[1] = fulldate
     for d in week:
         year_timestamp -= 86400
-        date = datetime.fromtimestamp(year_timestamp)
+        date = datetime.fromtimestamp(week_timestamp)
         intDay = date.weekday()
         full_month = date.strftime("%B")
         full_day = date.strftime("%-d")

@@ -48,6 +48,7 @@
 			{% if mealsinmonth %} 
 			{% for day in month %}
 			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
+			{% if day[0] in dayswithmeals %}
 			<div class="planinner">
 				{% for meal in plannedmeals %}
 				{% if meal.date == day[0] %}
@@ -63,6 +64,7 @@
 				{% endif %}
 				{% endfor %}
 			</div>
+			{% endif %}
 			{% endfor %}
 			{% else %}
 			<p id="mealmessage">You have no recipes saved to the meal planner.</p>

@@ -35,7 +35,7 @@
 				<div{% if query_string is none%} class="list-selected"{% endif %}{% if query_string == 'All' %} class="list-selected"{% endif %}>
 					<span class="day-label"><a href="{{ url_for('mealplanner.mealPlanner', day='All') }}">All Upcoming Days</a></span>
 				</div>
-				{% for m in month %}
+				{% for m in month_with_meals %}
 				<div{% if query_string == m[0] %} class="list-selected"{% endif %}>
 					<span class="day-label"><a href="{{ url_for('mealplanner.mealPlanner', day=m[0]) }}">{{ m[1] }}</a></span>
 				</div>

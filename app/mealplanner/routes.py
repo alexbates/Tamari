@@ -45,6 +45,8 @@ def mealPlanner():
     for meal in plannedmeals:
         if meal.date in compactmonth:
             mealsinmonth.append(meal)
+    # Create 2D array in the same format as "month" that only contains days with meals
+    month_with_meals = [d for d in month if d[0] in [meal.date for meal in mealsinmonth]]
     # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
     w2, h2 = 3, len(plannedmeals)
     recdetails = [[0 for x in range(w2)] for y in range(h2)]
@@ -65,8 +67,9 @@ def mealPlanner():
     for meal in plannedmeals:
         if meal.date == query_string:
             query_count += 1
-    return render_template('meal-planner-upcoming.html', title='Meal Planner (Upcoming)', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals,
-	month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, compactmonth=compactmonth, mealsinmonth=mealsinmonth)
+    return render_template('meal-planner-upcoming.html', title='Meal Planner (Upcoming)', plannedmeals=plannedmeals, recdetails=recdetails, 
+    dayswithmeals=dayswithmeals, month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, 
+    compactmonth=compactmonth, mealsinmonth=mealsinmonth, month_with_meals=month_with_meals)
 
 @bp.route('/meal-planner/completed')
 @login_required

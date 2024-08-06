@@ -2,7 +2,7 @@
 
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	<link href="{{ url_for('static', filename='meal-planner-upcoming.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='meal-planner-completed.css', _external=True) }}" rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block content %}
@@ -32,21 +32,44 @@
 		{% endwith %}
 		<div id="b1left">
 			<div class="b1leftinner">
-				<div{% if query_string is none%} class="list-selected"{% endif %}{% if query_string == 'All' %} class="list-selected"{% endif %}>
-					<span class="day-label"><a href="{{ url_for('mealplanner.mealPlanner', day='All') }}">All Upcoming Days</a></span>
+				<h2>Statistics</h2>
+				<p id="statsmessage">Stats will be displayed after you complete some recipes.</p>
+				<h3>Recipes Prepared</h3>
+				<div class="statsbox">
+					<div>
+						<span class="statsbox-label">Past Week</span>
+						<span class="statsbox-number">5</span>
+					</div>
+					<div>
+						<span class="statsbox-label">Past Month</span>
+						<span class="statsbox-number">15</span>
+					</div>
+					<div>
+						<span class="statsbox-label">Past Year</span>
+						<span class="statsbox-number">185</span>
+					</div>
 				</div>
-				{% for m in month %}
-				<div{% if query_string == m[0] %} class="list-selected"{% endif %}>
-					<span class="day-label"><a href="{{ url_for('mealplanner.mealPlanner', day=m[0]) }}">{{ m[1] }}</a></span>
+				<h3>Days Cooked</h3>
+				<div class="statsbox">
+					<div>
+						<span class="statsbox-label">Past Week</span>
+						<span class="statsbox-number">2</span>
+					</div>
+					<div>
+						<span class="statsbox-label">Past Month</span>
+						<span class="statsbox-number">7</span>
+					</div>
+					<div>
+						<span class="statsbox-label">Past Year</span>
+						<span class="statsbox-number">76</span>
+					</div>
 				</div>
-				{% endfor %}
 			</div>
 		</div>
 		<div id="b1right">
-			{% if query_string is none or query_string == 'All' %}
-			<h2>All Planned Recipes</h2>
-			{% if mealsinmonth %} 
-			{% for day in month %}
+			<h2>Completed Recipes</h2>
+			{% if mealsinyear %} 
+			{% for day in year %}
 			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
 			<div class="planinner">
 				{% for meal in plannedmeals %}
@@ -65,33 +88,8 @@
 			</div>
 			{% endfor %}
 			{% else %}
-			<p id="mealmessage">You have no recipes saved to the meal planner.</p>
+			<p id="mealmessage">Previously prepared recipes will be displayed here.</p>
 			{% endif %}
-			{% else %}
-			{% if query_string in compactmonth %}
-			<h2>{{ query_string_full }}</h2>
-			{% if query_count == 0 %}<p id="mealmessage">There are no meals planned for the selected day.</p>{% endif %}
-			<div class="planinner">
-				{% for meal in plannedmeals %}
-				{% if meal.date == query_string %}
-				<div>
-					<button class="btn4-default" onclick="window.location.href='{{ url_for('mealplanner.removePlan', hexid=meal.hex_id) }}';" aria-label="Remove {{ recdetails[loop.index0][0] }} Meal Plan">
-						<span class="btn4-icon"><img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="Remove {{ recdetails[loop.index0][0] }} Meal Plan"></span>
-					</button>
-					<p class="label-inner">
-						<span class="plan-label"><a href="{{ url_for('myrecipes.recipeDetail', hexid=recdetails[loop.index0][2]) }}">{{ recdetails[loop.index0][0] }}</a></span>
-						<span class="plan-category">{{ recdetails[loop.index0][1] }}</span>
-					</p>
-				</div>
-				{% endif %}
-				{% endfor %}
-			</div>
-			{% else %}
-			<h2>Invalid Date</h2>
-			<p id="mealmessage">The requested date is invalid or cannot be searched.</p>
-			{% endif %}
-			{% endif %}
-
 		</div>
 
 	</div>

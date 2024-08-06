@@ -68,6 +68,58 @@ def mealPlanner():
     return render_template('meal-planner-upcoming.html', title='Meal Planner (Upcoming)', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals,
 	month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, compactmonth=compactmonth, mealsinmonth=mealsinmonth)
 
+@bp.route('/meal-planner/completed')
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def mealPlannerCompleted():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    plannedmeals = user.planned_meals.all()
+    # Create 2D array to hold compact date and full date for past year
+    w, h = 2, 365
+    year = [[0 for x in range(w)] for y in range(h)]
+    curr_dt = datetime.now()
+    year_timestamp = int(time.mktime(curr_dt.timetuple()))
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    for d in year:
+        year_timestamp -= 86400
+        date = datetime.fromtimestamp(month_timestamp)
+        intDay = date.weekday()
+        full_month = date.strftime("%B")
+        full_day = date.strftime("%-d")
+        compact_month = date.strftime("%m")
+        compact_day = date.strftime("%d")
+        curr_year = date.strftime("%Y")
+        compactdate = curr_year + "-" + compact_month + "-" + compact_day
+        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        d[0] = compactdate
+        d[1] = fulldate
+    # Create array to store only compact year, used to check if meal is upcoming
+    compactyear = []
+    for d in year:
+        compactyear.append(d[0])
+    # Create array that contains all items from "plannedmeals" except those outside 1 year window
+    mealsinyear = []
+    for meal in plannedmeals:
+        if meal.date in compactyear:
+            mealsinyear.append(meal)
+    # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
+    w2, h2 = 3, len(plannedmeals)
+    recdetails = [[0 for x in range(w2)] for y in range(h2)]
+    mealiteration = 0
+    for meal in plannedmeals:
+        recipe = Recipe.query.filter_by(id=meal.recipe_id).first_or_404()
+        recdetails[mealiteration][0] = recipe.title
+        recdetails[mealiteration][1] = recipe.category
+        recdetails[mealiteration][2] = recipe.hex_id
+        mealiteration += 1
+    # Create array to store dates that meals are planned for, used by template to hide days with no meals
+    dayswithmeals = []
+    for meal in plannedmeals:
+        if meal.date not in dayswithmeals:
+            dayswithmeals.append(meal.date)
+    return render_template('meal-planner-completed.html', title='Meal Planner (Completed)', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals,
+	year=year, compactyear=compactyear, mealsinyear=mealsinyear)
+
 @bp.route('/remove-plan/<hexid>')
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

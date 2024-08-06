@@ -37,30 +37,30 @@
 				<div class="statsbox">
 					<div>
 						<span class="statsbox-label">Past Week</span>
-						<span class="statsbox-number">5</span>
+						<span class="statsbox-number">{{ mealsinweek | length }}</span>
 					</div>
 					<div>
 						<span class="statsbox-label">Past Month</span>
-						<span class="statsbox-number">15</span>
+						<span class="statsbox-number">{{ mealsinmonth | length }}</span>
 					</div>
 					<div>
 						<span class="statsbox-label">Past Year</span>
-						<span class="statsbox-number">185</span>
+						<span class="statsbox-number">{{ mealsinyear | length }}</span>
 					</div>
 				</div>
 				<h3>Days Cooked</h3>
 				<div class="statsbox">
 					<div>
 						<span class="statsbox-label">Past Week</span>
-						<span class="statsbox-number">2</span>
+						<span class="statsbox-number">{{ dayswithmeals_w | length }}</span>
 					</div>
 					<div>
 						<span class="statsbox-label">Past Month</span>
-						<span class="statsbox-number">7</span>
+						<span class="statsbox-number">{{ dayswithmeals_m | length }}</span>
 					</div>
 					<div>
 						<span class="statsbox-label">Past Year</span>
-						<span class="statsbox-number">76</span>
+						<span class="statsbox-number">{{ dayswithmeals | length }}</span>
 					</div>
 				</div>
 			</div>

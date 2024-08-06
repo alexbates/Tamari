@@ -223,6 +223,7 @@
 
 #b1right {
 	float: left;
+	margin-bottom: 20px;
 	width: calc(100% - 310px);
 }
 #b1right h2 {padding-top: 0px; padding-bottom: 4px;}

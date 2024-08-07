@@ -149,6 +149,7 @@
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
 	margin-top: var(--margin-recbtn);
+	padding: 0;
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 .recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}

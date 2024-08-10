@@ -78,6 +78,9 @@
 					</button>
 					<div class="information-content" id="informationDropMobile">
 						<p>Created: {{ creationtime }}</p>
+						{% if editedtime %}
+						<p>Edited: {{ editedtime }}</p>
+						{% endif %}
 						{% if meal_count %}
 						<p>Times Prepared: {{ meal_count }}</p>
 						{% endif %}
@@ -201,6 +204,9 @@
 			</button>
 			<div class="information-content" id="informationDrop">
 				<p>Created: {{ creationtime }}</p>
+				{% if editedtime %}
+				<p>Edited: {{ editedtime }}</p>
+				{% endif %}
 				{% if meal_count %}
 				<p>Times Prepared: {{ meal_count }}</p>
 				{% endif %}

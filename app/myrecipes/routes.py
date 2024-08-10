@@ -470,6 +470,7 @@ def recipeDetail(hexid):
         nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
         # creationtime is the date of recipe creation, used for Information modal
         creationtime = recipe.time_created.strftime('%m/%d/%Y')
+        editedtime = recipe.time_edited.strftime('%m/%d/%Y')
         # query all meals of the current recipe, including future planned meals
         all_meals = MealRecipe.query.filter_by(recipe_id=recipe.id).all()
         # create array that will store meal dates, excluding future planned meals
@@ -568,8 +569,8 @@ def recipeDetail(hexid):
                 flash('Error: this recipe is already scheduled for the selected date.')
     return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
         ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
-        nutrition=nutrition, creationtime=creationtime, meal_count=meal_count, last_prepared=last_prepared,
-        scheduled=scheduled, hexid=hexid) 
+        nutrition=nutrition, creationtime=creationtime, editedtime=editedtime, meal_count=meal_count, 
+        last_prepared=last_prepared, scheduled=scheduled, hexid=hexid) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])
 @login_required
@@ -1645,6 +1646,7 @@ def editRecipe(hexid):
         recipe.total_time = form.total_time.data
         recipe.ingredients = form.ingredients.data
         recipe.instructions = form.instructions.data
+        recipe.time_edited = datetime.utcnow()
         image = request.files['image']
         if request.files and image.filename != '':
             old_path = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo

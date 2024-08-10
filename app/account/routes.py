@@ -208,8 +208,12 @@ def user():
         elif has_passwords or newemail != current_user.email:
             if has_passwords:
                 user.set_password(form.password.data)
+                # Update time in database for account password change
+                user.p_change_time = datetime.utcnow()
             if newemail != current_user.email:
                 current_user.email = newemail
+                # Update time in database for account email change
+                user.e_change_time = datetime.utcnow()
             db.session.commit()
             flash('Your changes have been saved.')
             # Redirect to current page so form email will be updated following change

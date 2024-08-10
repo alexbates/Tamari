@@ -24,6 +24,8 @@ class User(UserMixin, db.Model):
     pref_scaling = db.Column(db.Integer)
     reg_time = db.Column(db.DateTime)
     last_time = db.Column(db.DateTime, default=datetime.utcnow)
+    e_change_time = db.Column(db.DateTime)
+    p_change_time = db.Column(db.DateTime)
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -64,6 +66,7 @@ class Recipe(db.Model):
     ingredients = db.Column(db.String(2200))
     instructions = db.Column(db.String(6600))
     time_created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    time_edited = db.Column(db.DateTime)
     favorite = db.Column(db.Integer)
     public = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

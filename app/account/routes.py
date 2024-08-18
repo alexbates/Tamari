@@ -152,7 +152,7 @@ def clean_csv(text):
         new_text = ""
     return new_text
 
-@bp.route('/account', methods=['GET', 'POST'])
+@bp.route('/account/preferences', methods=['GET', 'POST'])
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def user():
@@ -490,7 +490,14 @@ def user():
                                 flash('Success: ' + str(zip_count) + ' recipes have been imported.')
                 else:
                     flash('Error: backup is invalid, _recipes.csv is missing from ZIP.')
-    return render_template('account.html', title='Account', user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)
+    return render_template('account-preferences.html', title='Account Preferences', user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)
+    
+@bp.route('/account/history')
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def accountHistory():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    return render_template('account-preferences.html', title='Account History', user=user)
 
 @bp.route('/account/process-delete')
 @login_required

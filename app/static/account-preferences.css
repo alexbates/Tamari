@@ -48,6 +48,12 @@
 /* SCALING */
 :root {
 	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--width-recbtn1: 118px;
+	--width-recbtn2: 82px;
 	--font-select: 16px;
 	--height-select: 38px;
 	--line-height-userstats: inherit;
@@ -62,6 +68,12 @@
 }
 [data-scaling="normal"] {
 	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--width-recbtn1: 118px;
+	--width-recbtn2: 82px;
 	--font-select: 16px;
 	--height-select: 38px;
 	--line-height-userstats: inherit;
@@ -76,6 +88,12 @@
 }
 [data-scaling="large"] {
 	--font-block1: 18px;
+	--font-recbtn: 18px;
+	--height-recipenav: 59px;
+	--height-recbtn: 32px;
+	--margin-recbtn: 13px;
+	--width-recbtn1: 128px;
+	--width-recbtn2: 88px;
 	--font-select: 18px;
 	--height-select: 40px;
 	--line-height-userstats: 18px;
@@ -89,6 +107,7 @@
 	--height-btn: 36px;
 }
 /* ACCENT COLOR APPLICATION */
+.recbtn-active {background-color: var(--color) !important;}
 .btn-default {background-color: var(--color);}
 .btn-default:hover {background: var(--color-lighter);}
 .btn-default:active, .btn-default.active {background: var(--color-darker);}
@@ -107,8 +126,31 @@
 	padding-bottom: 20px;
 	width: 1000px;
 }
-#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+#block1 h2 {padding-top: 12px; padding-bottom: 0px;}
 .block1inner h3 {line-height: 46px; padding-left: 12px;}
+#recipenav {
+	height: var(--height-recipenav);
+	width: 100%;
+}
+.recipenavleft {
+	float: left;
+	height: 100%;
+}
+.recbtn {
+	background-color: var(--color-recbtn-bg);
+	border: none;
+	border-radius: 15px;
+	color: var(--color-recbtn-font);
+	cursor: pointer;
+	font-size: var(--font-recbtn);
+	height: var(--height-recbtn);
+	margin-top: var(--margin-recbtn);
+	padding: 0;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
+.recbtn1 {width: var(--width-recbtn1);}
+.recbtn2 {width: var(--width-recbtn2);}
 .userstats {
 	background-color: var(--color-userstats-bg);
 	border-radius: 10px;

@@ -497,7 +497,7 @@ def user():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def accountHistory():
     user = User.query.filter_by(email=current_user.email).first_or_404()
-    return render_template('account-preferences.html', title='Account History', user=user)
+    return render_template('account-history.html', title='Account History', user=user)
 
 @bp.route('/account/process-delete')
 @login_required

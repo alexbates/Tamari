@@ -391,6 +391,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	#recipenav {padding-left: 10px; padding-right: 10px;}
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
 	#flashed-norm {margin-left: 10px; margin-right: 10px;}
 	.userstats {margin-left: 10px; width: calc(50% - 15px);}

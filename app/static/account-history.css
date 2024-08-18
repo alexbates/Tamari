@@ -346,8 +346,16 @@
 	height: 140px;
 }
 
-/* Media query for screens with a max width of 767px */
-@media only screen and (max-width: 767px) {
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	#recipenav {padding-left: 10px; padding-right: 10px;}
+	#historynotice {margin-left: 10px; margin-right: 10px;}
+	#flashed-err {margin-left: 10px; margin-right: 10px;}
+	#flashed-norm {margin-left: 10px; margin-right: 10px;}
+}
+@media only screen and (max-width: 775px) {
 	.yearcontainer {
 		display: block;
 	}
@@ -356,8 +364,8 @@
 		margin-left: -30px;
 	}
 	.eventinner:before {
-		left: 0px; /* Move the vertical line to the left side */
-		transform: none; /* Remove centering transform */
+		left: 0px;
+		transform: none;
 		margin-left: 0px;
 	}
 	.eventinner ul li {
@@ -385,34 +393,16 @@
 		right: auto; /* Reset right positioning */
 		transform: translateX(-50%, -50%); /* Adjust transformation */
 	}
-	.eventinner ul li:nth-child(odd)::before {
+	.eventinner ul li:nth-child(even)::before {
 		transform: translateX(-50%, -50%);
 		right: auto;
 		left: -50px;
 	}
-	
-	.eventinner ul li:nth-child(even)::before {
+	.eventinner ul li:nth-child(odd)::before {
 		transform: translateX(-50%, -50%);
 		right: auto;
 		left: -30px;
 	}
-}
-  
-
-/* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
-	.block1inner {width: 100%;}
-	#block1 h2 {padding-left: 10px; padding-right: 10px;}
-	#recipenav {padding-left: 10px; padding-right: 10px;}
-	#historynotice {margin-left: 10px; margin-right: 10px;}
-	#flashed-err {margin-left: 10px; margin-right: 10px;}
-	#flashed-norm {margin-left: 10px; margin-right: 10px;}
-}
-@media screen and (max-width: 900px) {
-	
-}
-@media screen and (max-width: 800px) { 
-	
 }
 @media screen and (max-width: 700px) {
 	.block1inner h2 {display: none;}

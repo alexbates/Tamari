@@ -33,8 +33,18 @@
 		{% endwith %}
 		<p id="historynotice">This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.</p>
 		<div class="history">
+			{% set current_year = None %}
+			
+			{% for event in sorted_events %}
+			{% set event_year = event[0].year %}
+			{% if current_year != event_year %}
+			{% if current_year is not None %}
+				</ul>
+			</div>
+			</div>
+			{% endif %}
 			<div class="yearcontainer">
-				<span class="year">2024</span>
+				<span class="year">{{ event_year }}</span>
 				<div class="yearafter"></div>
 			</div>
 			<div class="eventcontainer">
@@ -43,7 +53,8 @@
 					<li class="lihidden">
 						This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.
 					</li>
-					{% for event in sorted_events %}
+			{% endif %}
+					
 					<li>
 						<div class="event">
 							{% if event[0] %}
@@ -63,15 +74,13 @@
 							{% endif %}
 						</div>
 					</li>
-					{% endfor %}
+			{% set current_year = event_year %}
+			{% endfor %}
+					
 				</ul>
 			</div>
 			</div>
 
-			<div class="yearcontainer">
-				<span class="year">2024</span>
-				<div class="yearafter"></div>
-			</div>
 		</div>
 	</div>
 </main>

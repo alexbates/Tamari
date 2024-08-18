@@ -262,18 +262,27 @@
 	margin-bottom: 0;
 }
 /* Align odd lis to left of timeline */
-.eventinner ul li:nth-child(odd) {
+.eventinner ul li:nth-child(even) {
 	float: left;
 	clear: right;
 	transform: translateX(-30px);
 	border-radius: 20px;
 }
 /* Align even lis to right of timeline */
-.eventinner ul li:nth-child(even) {
+.eventinner ul li:nth-child(odd) {
 	float: right;
 	clear: left;
 	transform: translateX(30px);
 	border-radius: 20px;
+}
+.lihidden {
+	visibility: hidden;
+	height: 1px;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+.lihidden::before {
+	height: 0px !important;
 }
 /* Dots next to events */
 .eventinner ul li::before {
@@ -285,11 +294,11 @@
 	background-color: var(--color-timeline);
 	top: 0px;
 }
-.eventinner ul li:nth-child(odd)::before {
+.eventinner ul li:nth-child(even)::before {
 	transform: translate(50%, -50%);
 	right: -30px;
 }
-.eventinner ul li:nth-child(even)::before {
+.eventinner ul li:nth-child(odd)::before {
 	transform: translate(-50%, -50%);
 	left: -30px;
 }
@@ -309,11 +318,10 @@
 .event .date {
 	font-size: 16px;
 	position: absolute;
-	top: -40px;
+	top: -30px;
 	padding-left: 0px;
 	margin-left: 0px;
 }
-
 .eventinner ul li:hover::before {
 	background-color: var(--color);
 }

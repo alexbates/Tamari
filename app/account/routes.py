@@ -8,7 +8,7 @@ from app.account.demo import reset_demo_account
 from werkzeug.urls import url_parse
 from io import StringIO, BytesIO, TextIOWrapper
 import csv
-from datetime import datetime
+from datetime import datetime, timedelta
 from urllib.request import urlopen, Request
 import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
 from app.account import bp
@@ -496,8 +496,86 @@ def user():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def accountHistory():
+    # Create 2d events array which stores created recipes, edited recipes, account creation, email change, password change
+    # Array format: event timestamp [0], event h1 [1], event h4 [2], event image [3], event description [4]
+    events = []
     user = User.query.filter_by(email=current_user.email).first_or_404()
-    return render_template('account-history.html', title='Account History', user=user)
+    recipes = user.recipes.order_by(Recipe.title)
+    # Create an Event for every recipe created
+    for recipe in recipes:
+        event = []
+        timestamp = recipe.time_created
+        event_h1 = 'Created Recipe'
+        event_h4 = recipe.title
+        event_image = recipe.photo
+        event_desc = 'Category: ' + recipe.category
+        event.append(timestamp)
+        event.append(event_h1)
+        event.append(event_h4)
+        event.append(event_image)
+        event.append(event_desc)
+        events.append(event)
+    # Create an Event for edited recipes
+    # but only if span between created and edited time is greater than 24 hours
+    for recipe in recipes:
+        if recipe.time_edited and (recipe.time_edited - recipe.time_created) >= timedelta(hours=24):
+            event = []
+            timestamp = recipe.time_edited
+            event_h1 = 'Edited Recipe'
+            event_h4 = recipe.title
+            event_image = recipe.photo
+            event_desc = 'Category: ' + recipe.category
+            event.append(timestamp)
+            event.append(event_h1)
+            event.append(event_h4)
+            event.append(event_image)
+            event.append(event_desc)
+            events.append(event)
+    # Create account creation event
+    if user.reg_time:
+        event = []
+        timestamp = recipe.reg_time
+        event_h1 = 'Account Created'
+        event_h4 = None
+        event_image = None
+        event_desc = 'Account registered with Tamari.'
+        event.append(timestamp)
+        event.append(event_h1)
+        event.append(event_h4)
+        event.append(event_image)
+        event.append(event_desc)
+        events.append(event)
+    # Create account email change event
+    if user.e_change_time:
+        event = []
+        timestamp = recipe.e_change_time
+        event_h1 = 'Account Email Changed'
+        event_h4 = None
+        event_image = None
+        event_desc = 'New Email: ' + user.email
+        event.append(timestamp)
+        event.append(event_h1)
+        event.append(event_h4)
+        event.append(event_image)
+        event.append(event_desc)
+        events.append(event)
+    # Create account password change event
+    if user.p_change_time:
+        event = []
+        timestamp = recipe.p_change_time
+        event_h1 = 'Account Password Changed'
+        event_h4 = None
+        event_image = None
+        event_desc = 'Changed Tamari password. Devices remained signed in.'
+        event.append(timestamp)
+        event.append(event_h1)
+        event.append(event_h4)
+        event.append(event_image)
+        event.append(event_desc)
+        events.append(event)
+    # Sort events by most recent first
+    sorted_events = sorted(events, key=lambda event: event[0], reverse=True)
+    return render_template('account-history.html', title='Account History', user=user, sorted_events=sorted_events)
 
 @bp.route('/account/process-delete')
 @login_required

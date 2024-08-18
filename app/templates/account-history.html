@@ -31,7 +31,43 @@
 		{% endfor %}
 		{% endif %}
 		{% endwith %}
-		
+		<p id="historynotice">This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.</p>
+		<div class="history">
+			<div class="yearcontainer">
+				<span class="year">2024</span>
+				<div class="yearafter"></div>
+			</div>
+			<div class="eventcontainer">
+			<div class="eventinner">
+				<ul>
+					{% for event in sorted_events %}
+					<li>
+						<div class="event">
+							{% if event[0] %}
+							<h3 class="date">{{ event[0].strftime('%B %-d, %Y') }}</h3>
+							{% endif %}
+							{% if event[1] %}
+							<h1>{{ event[1] }}</h1>
+							{% endif %}
+							{% if event[2] %}
+							<h4>{{ event[2] }}</h4>
+							{% endif %}
+							<div class="eventimage recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=event[3], _external=True) }}"></h1>
+							{% if event[4] %}
+							<p>{{ event[4] }}</p>
+							{% endif %}
+						</div>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			</div>
+
+			<div class="yearcontainer">
+				<span class="year">2024</span>
+				<div class="yearafter"></div>
+			</div>
+		</div>
 	</div>
 </main>
 {% endblock %}

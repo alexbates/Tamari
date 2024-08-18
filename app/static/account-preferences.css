@@ -115,7 +115,6 @@
 .btn-default3:hover {background: var(--color-lighter);}
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
@@ -124,6 +123,7 @@
 	height: 100%;
 	margin: 0 auto;
 	padding-bottom: 20px;
+	overflow-x: hidden;
 	width: 1000px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 0px;}

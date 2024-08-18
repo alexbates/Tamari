@@ -33,18 +33,9 @@
 		{% endwith %}
 		<p id="historynotice">This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.</p>
 		<div class="history">
-			{% set current_year = None %}
-			
-			{% for event in sorted_events %}
-			{% set event_year = event[0].year %}
-			{% if current_year != event_year %}
-			{% if current_year is not None %}
-				</ul>
-			</div>
-			</div>
-			{% endif %}
+			{% for year, year_event in events_by_year.items() %}
 			<div class="yearcontainer">
-				<span class="year">{{ event_year }}</span>
+				<span class="year">{{ year }}</span>
 				<div class="yearafter"></div>
 			</div>
 			<div class="eventcontainer">
@@ -53,8 +44,7 @@
 					<li class="lihidden">
 						This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.
 					</li>
-			{% endif %}
-					
+					{% for event in year_event %}
 					<li>
 						<div class="event">
 							{% if event[0] %}
@@ -68,19 +58,51 @@
 							{% endif %}
 							{% if event[3] %}
 							<div class="eventimage recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=event[3], _external=True) }}"></div>
+							{% elif event[1] == 'Account Created' or event[1] == 'Account Email Changed' or event[1] == 'Account Password Changed' %}
+							{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
+							<div class="eventimage icon-1-blue">&nbsp;</div>
+							{% elif current_user.pref_picture == 0 and current_user.pref_color == 1 %}
+							<div class="eventimage icon-1-green">&nbsp;</div>
+							{% elif current_user.pref_picture == 0 and current_user.pref_color == 2 %}
+							<div class="eventimage icon-1-purple">&nbsp;</div>
+							{% elif current_user.pref_picture == 0 and current_user.pref_color == 3 %}
+							<div class="eventimage icon-1-pink">&nbsp;</div>
+							{% elif current_user.pref_picture == 1 and current_user.pref_color == 0 %}
+							<div class="eventimage icon-2-blue">&nbsp;</div>
+							{% elif current_user.pref_picture == 1 and current_user.pref_color == 1 %}
+							<div class="eventimage icon-2-green">&nbsp;</div>
+							{% elif current_user.pref_picture == 1 and current_user.pref_color == 2 %}
+							<div class="eventimage icon-2-purple">&nbsp;</div>
+							{% elif current_user.pref_picture == 1 and current_user.pref_color == 3 %}
+							<div class="eventimage icon-2-pink">&nbsp;</div>
+							{% elif current_user.pref_picture == 2 and current_user.pref_color == 0 %}
+							<div class="eventimage icon-3-blue">&nbsp;</div>
+							{% elif current_user.pref_picture == 2 and current_user.pref_color == 1 %}
+							<div class="eventimage icon-3-green">&nbsp;</div>
+							{% elif current_user.pref_picture == 2 and current_user.pref_color == 2 %}
+							<div class="eventimage icon-3-purple">&nbsp;</div>
+							{% elif current_user.pref_picture == 2 and current_user.pref_color == 3 %}
+							<div class="eventimage icon-3-pink">&nbsp;</div>
+							{% elif current_user.pref_picture == 3 and current_user.pref_color == 0 %}
+							<div class="eventimage icon-4-blue">&nbsp;</div>
+							{% elif current_user.pref_picture == 3 and current_user.pref_color == 1 %}
+							<div class="eventimage icon-4-green">&nbsp;</div>
+							{% elif current_user.pref_picture == 3 and current_user.pref_color == 2 %}
+							<div class="eventimage icon-4-purple">&nbsp;</div>
+							{% else %}
+							<div class="eventimage icon-4-pink">&nbsp;</div>
+							{% endif %}
 							{% endif %}
 							{% if event[4] %}
 							<p>{{ event[4] }}</p>
 							{% endif %}
 						</div>
 					</li>
-			{% set current_year = event_year %}
-			{% endfor %}
-					
+					{% endfor %}
 				</ul>
 			</div>
 			</div>
-
+			{% endfor %}
 		</div>
 	</div>
 </main>

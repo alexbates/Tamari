@@ -575,7 +575,26 @@ def accountHistory():
         events.append(event)
     # Sort events by most recent first
     sorted_events = sorted(events, key=lambda event: event[0], reverse=True)
-    return render_template('account-history.html', title='Account History', user=user, sorted_events=sorted_events)
+    # Create integer variables for year of first event and year of last event
+    try:
+        first_event_year = sorted_events[0][0].year
+        last_event_year = sorted_events[-1][0].year
+    except:
+        first_event_year = None
+        last_event_year = None
+    # Create dictionary to effectively sort events by year
+    events_by_year = {}
+    # Build dictionary from sorted_events
+    for event in sorted_events:
+        try:
+            event_year = event[0].year
+            if event_year not in events_by_year:
+                events_by_year[event_year] = []
+            events_by_year[event_year].append(event)
+        except:
+            pass
+    return render_template('account-history.html', title='Account History', user=user, sorted_events=sorted_events,
+        first_event_year=first_event_year, last_event_year=last_event_year, events_by_year=events_by_year)
 
 @bp.route('/account/process-delete')
 @login_required

@@ -534,7 +534,7 @@ def accountHistory():
     # Create account creation event
     if user.reg_time:
         event = []
-        timestamp = recipe.reg_time
+        timestamp = user.reg_time
         event_h1 = 'Account Created'
         event_h4 = None
         event_image = None
@@ -548,7 +548,7 @@ def accountHistory():
     # Create account email change event
     if user.e_change_time:
         event = []
-        timestamp = recipe.e_change_time
+        timestamp = user.e_change_time
         event_h1 = 'Account Email Changed'
         event_h4 = None
         event_image = None
@@ -562,7 +562,7 @@ def accountHistory():
     # Create account password change event
     if user.p_change_time:
         event = []
-        timestamp = recipe.p_change_time
+        timestamp = user.p_change_time
         event_h1 = 'Account Password Changed'
         event_h4 = None
         event_image = None

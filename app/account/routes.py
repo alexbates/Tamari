@@ -500,6 +500,10 @@ def accountHistory():
     # Array format: event timestamp [0], event h1 [1], event h4 [2], event image [3], event description [4]
     events = []
     user = User.query.filter_by(email=current_user.email).first_or_404()
+    # Get page number from URL query string
+    page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['ACCOUNT_EVENTS_PER_PAGE', 30]
     recipes = user.recipes.order_by(Recipe.title)
     # Create an Event for every recipe created
     for recipe in recipes:
@@ -575,17 +579,25 @@ def accountHistory():
         events.append(event)
     # Sort events by most recent first
     sorted_events = sorted(events, key=lambda event: event[0], reverse=True)
+    # Calculate the start and end indices for pagination
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    # Paginate the sorted_events array
+    sorted_events_paginated = sorted_events[start_index:end_index]
+    # Step 6: Create next and previous URLs for pagination
+    next_url = url_for('account.accountHistory', page=page + 1) if end_index < len(sorted_events) else None
+    prev_url = url_for('account.accountHistory', page=page - 1) if start_index > 0 else None
     # Create integer variables for year of first event and year of last event
     try:
-        first_event_year = sorted_events[0][0].year
-        last_event_year = sorted_events[-1][0].year
+        first_event_year = sorted_events_paginated[0][0].year
+        last_event_year = sorted_events_paginated[-1][0].year
     except:
         first_event_year = None
         last_event_year = None
     # Create dictionary to effectively sort events by year
     events_by_year = {}
     # Build dictionary from sorted_events
-    for event in sorted_events:
+    for event in sorted_events_paginated:
         try:
             event_year = event[0].year
             if event_year not in events_by_year:
@@ -594,7 +606,8 @@ def accountHistory():
         except:
             pass
     return render_template('account-history.html', title='Account History', user=user, sorted_events=sorted_events,
-        first_event_year=first_event_year, last_event_year=last_event_year, events_by_year=events_by_year)
+        first_event_year=first_event_year, last_event_year=last_event_year, events_by_year=events_by_year,
+        sorted_events_paginated=sorted_events_paginated, next_url=next_url, prev_url=prev_url)
 
 @bp.route('/account/process-delete')
 @login_required

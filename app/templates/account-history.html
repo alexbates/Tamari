@@ -104,6 +104,22 @@
 			</div>
 			{% endfor %}
 		</div>
+		{% if prev_url or next_url %}
+		<div class="prevnext">
+			{% if prev_url %}
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
+				<span class="btn-prev-text">Previous</span>
+			</button>
+			{% endif %}
+			{% if next_url %}
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
+				<span class="btn-next-text">Next</span>
+				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
+			</button>
+			{% endif %}
+		</div>
+		{% endif %}
 	</div>
 </main>
 {% endblock %}

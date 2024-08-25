@@ -19,6 +19,8 @@ class Config(object):
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50
     EXPLORE_RECIPES_PER_PAGE = 32
+    # For Account History page event pagination
+    ACCOUNT_EVENTS_PER_PAGE = 30
     # For dynamic loading of images
     # Distance from viewport that image will start to load in My Recipes
     DYNAMIC_ROOT_MARGIN = '120px'

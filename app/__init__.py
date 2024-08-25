@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -7,12 +7,16 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+from flask_babel import Babel
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath
 import os, time, threading
 
 UPLOAD_FOLDER = join(dirname(realpath(__file__)), 'appdata', 'recipe-photos')
+
+def get_locale():
+    return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -22,6 +26,7 @@ login = LoginManager(app)
 login.login_view = 'account.login'
 mail = Mail(app)
 moment = Moment(app)
+babel = Babel(app, locale_selector=get_locale)
 app.config['MAX_CONTENT_LENGTH'] = 350 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg']

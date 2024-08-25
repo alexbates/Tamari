@@ -8,8 +8,8 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>Not Found</h2>
-		<p>The page you requested was not found. <a href="{{ url_for('myrecipes.allRecipes') }}">Go home.</a></p>
+		<h2>{{ _('Not Found') }}</h2>
+		<p>{{ _('The page you requested was not found.') }} <a href="{{ url_for('myrecipes.allRecipes') }}">{{ _('Go home.') }}</a></p>
 	</div>
 </main>
 {% endblock %}

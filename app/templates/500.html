@@ -8,8 +8,8 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>Error</h2>
-		<p>An unexpected error has occurred. Sorry for the inconvenience! <a href="{{ url_for('myrecipes.allRecipes') }}">Go home.</a></p>
+		<h2>{{ _('Error') }}</h2>
+		<p>{{ _('An unexpected error has occurred. Sorry for the inconvenience!') }} <a href="{{ url_for('myrecipes.allRecipes') }}">{{ _('Go home.') }}</a></p>
 	</div>
 </main>
 {% endblock %}

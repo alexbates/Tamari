@@ -503,7 +503,7 @@ def accountHistory():
     # Get page number from URL query string
     page = request.args.get('page', 1, type=int)
     # per_page variable is used for paginating the recipes object
-    per_page = app.config['ACCOUNT_EVENTS_PER_PAGE', 30]
+    per_page = app.config['ACCOUNT_EVENTS_PER_PAGE']
     recipes = user.recipes.order_by(Recipe.title)
     # Create an Event for every recipe created
     for recipe in recipes:

@@ -187,7 +187,7 @@
 				</div>
 				<div>
 					<label class="control-label" for="instructions">{{ _('Instructions') }}</label><br>
-					{{ form.instructions(class="form-control fc3", placeholder=_('Wash squash in sink to prepare.')', aria_label=_('Instructions separated by line break')) }}
+					{{ form.instructions(class="form-control fc3", placeholder=_('Wash squash in sink to prepare.'), aria_label=_('Instructions separated by line break')) }}
 					{% for error in form.instructions.errors %}
 					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}  

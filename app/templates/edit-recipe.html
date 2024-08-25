@@ -164,7 +164,7 @@
 					</div>
 					<div>
 						<label class="control-label" for="n_sodium">{{ _('Sodium (mg)') }}</label><br>
-						{{ form.n_sodium(class="form-control fc1", placeholder="122", aria_label=_(Sodium in milligrams'), value=nutrition.sodium) }}
+						{{ form.n_sodium(class="form-control fc1", placeholder="122", aria_label=_('Sodium in milligrams'), value=nutrition.sodium) }}
 						{% for error in form.n_sodium.errors %}
 						<span class="errorrequired">{{ error }}</span>
 						{% endfor %}

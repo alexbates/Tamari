@@ -469,8 +469,14 @@ def recipeDetail(hexid):
             instructions.append(item)
         nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
         # creationtime is the date of recipe creation, used for Information modal
-        creationtime = recipe.time_created.strftime('%m/%d/%Y')
-        editedtime = recipe.time_edited.strftime('%m/%d/%Y')
+        try:
+            creationtime = recipe.time_created.strftime('%m/%d/%Y')
+        except:
+            creationtime = None
+        try:
+            editedtime = recipe.time_edited.strftime('%m/%d/%Y')
+        except:
+            editedtime = None
         # query all meals of the current recipe, including future planned meals
         all_meals = MealRecipe.query.filter_by(recipe_id=recipe.id).all()
         # create array that will store meal dates, excluding future planned meals

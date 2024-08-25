@@ -8,10 +8,10 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>My Account</h2>
+		<h2>{{ _('My Account') }}</h2>
 		<div id="recipenav">
-			<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('account.user') }}';" value="Preferences" aria-label="Navigate to Account Preferences"
-			><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('account.accountHistory') }}';" value="History" aria-label="Navigate to Account History">
+			<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('account.user') }}';" value="{{ _('Preferences') }}" aria-label="{{ _('Navigate to Account Preferences') }}"
+			><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('account.accountHistory') }}';" value="{{ _('History') }}" aria-label="{{ _('Navigate to Account History') }}">
 		</div>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
@@ -31,7 +31,7 @@
 		{% endfor %}
 		{% endif %}
 		{% endwith %}
-		<p id="historynotice">This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.</p>
+		<p id="historynotice">{{ _('This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.') }}</p>
 		<div class="history">
 			{% for year, year_event in events_by_year.items() %}
 			<div class="yearcontainer">
@@ -42,7 +42,7 @@
 			<div class="eventinner">
 				<ul>
 					<li class="lihidden">
-						This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.
+						{{ _('This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed.') }}
 					</li>
 					{% for event in year_event %}
 					<li>
@@ -107,15 +107,15 @@
 		{% if prev_url or next_url %}
 		<div class="prevnext">
 			{% if prev_url %}
-			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
-				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
-				<span class="btn-prev-text">Previous</span>
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="{{ _('Navigate to previous page') }}">
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+				<span class="btn-prev-text">{{ _('Previous') }}</span>
 			</button>
 			{% endif %}
 			{% if next_url %}
-			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
-				<span class="btn-next-text">Next</span>
-				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="{{ _('Navigate to next page') }}">
+				<span class="btn-next-text">{{ _('Next') }}</span>
+				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
 			</button>
 			{% endif %}
 		</div>

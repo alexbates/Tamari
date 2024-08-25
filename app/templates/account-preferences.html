@@ -8,10 +8,10 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>My Account</h2>
+		<h2>{{ _('My Account') }}</h2>
 		<div id="recipenav">
-			<input type="button" class="recbtn recbtn1 recbtn-active" onclick="window.location.href='{{ url_for('account.user') }}';" value="Preferences" aria-label="Navigate to Account Preferences"
-			><input type="button" class="recbtn recbtn2" onclick="window.location.href='{{ url_for('account.accountHistory') }}';" value="History" aria-label="Navigate to Account History">
+			<input type="button" class="recbtn recbtn1 recbtn-active" onclick="window.location.href='{{ url_for('account.user') }}';" value="{{ _('Preferences') }}" aria-label="{{ _('Navigate to Account Preferences') }}"
+			><input type="button" class="recbtn recbtn2" onclick="window.location.href='{{ url_for('account.accountHistory') }}';" value="{{ _('History') }}" aria-label="{{ _('Navigate to Account History') }}">
 		</div>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
@@ -32,7 +32,7 @@
 		{% endif %}
 		{% endwith %}
 		<div class="userstats">
-			<h3>User Stats</h3>
+			<h3>{{ _('User Stats') }}</h3>
 			<div class="boxdivider">&nbsp;</div>
 			<div class="us-left">
 				{% if user.pref_picture == 0 and user.pref_color == 0 %}
@@ -70,120 +70,120 @@
 				{% endif %}
 			</div>
 			<div class="us-right">
-				{% if user.reg_time %}<p>Registered: {{ moment(user.reg_time).format('LLL') }}</p>{% endif %}
-				{% if user.last_time %}<p>Last Visit: {{ moment(user.last_time).format('LLL') }}</p>{% endif %}
-				<p>You have {{ rec_count }} recipes saved.</p>
+				{% if user.reg_time %}<p>{{ _('Registered') }}: {{ moment(user.reg_time).format('LLL') }}</p>{% endif %}
+				{% if user.last_time %}<p>{{ _('Last Visit') }}: {{ moment(user.last_time).format('LLL') }}</p>{% endif %}
+				<p>{{ _('You have %(rec_count)d recipes saved.') % {'rec_count': rec_count} }}</p>
 			</div>
 			<form method="post" novalidate>
 				{{ form2.hidden_tag() }}
-				<h4>Select Theme</h4>
+				<h4>{{ _('Select Theme') }}</h4>
 				<div class="cust-select">
 					<select name="selecttheme" aria-label="Select Theme">
-						<option value="" disabled hidden>Choose here</option>
-						<option value="0"{% if user.pref_theme == 0 %} selected{% endif %}>System Default</option>
-						<option value="1"{% if user.pref_theme == 1 %} selected{% endif %}>Light</option>
-						<option value="2"{% if user.pref_theme == 2 %} selected{% endif %}>Dark</option>
+						<option value="" disabled hidden>{{ _('Choose here') }}</option>
+						<option value="0"{% if user.pref_theme == 0 %} selected{% endif %}>{{ _('System Default') }}</option>
+						<option value="1"{% if user.pref_theme == 1 %} selected{% endif %}>{{ _('Light') }}</option>
+						<option value="2"{% if user.pref_theme == 2 %} selected{% endif %}>{{ _('Dark') }}</option>
 					</select>
 				</div>
-				<h4>Font Size and Scaling</h4>
+				<h4>{{ _('Font Size and Scaling') }}</h4>
 				<div class="cust-select">
 					<select name="selectscaling" aria-label="Select Scaling Preference">
-						<option value="" disabled hidden>Choose here</option>
-						<option value="0"{% if user.pref_scaling == 0 %} selected{% endif %}>Normal</option>
-						<option value="1"{% if user.pref_scaling == 1 %} selected{% endif %}>Large</option>
+						<option value="" disabled hidden>{{ _('Choose here') }}</option>
+						<option value="0"{% if user.pref_scaling == 0 %} selected{% endif %}>{{ _('Normal') }}</option>
+						<option value="1"{% if user.pref_scaling == 1 %} selected{% endif %}>{{ _('Large') }}</option>
 					</select>
 				</div>
 				<h4>Select Profile Picture</h4>
 				<div class="profileselector">
-					<input type="radio" aria-label="Select Profile Picture 1" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Profile Picture') }} 1" name="propicture" value="0" id="pro-1" class="input-hidden"{% if user.pref_picture == 0 %} checked{% endif %}>
 					<label for="pro-1">
-						<img id="account-pic1" src="{{ url_for('static', filename='account-pic1.png', _external=True) }}" alt="Profile Picture 1">
+						<img id="account-pic1" src="{{ url_for('static', filename='account-pic1.png', _external=True) }}" alt="{{ _('Profile Picture') }} 1">
 					</label>
-					<input type="radio" aria-label="Select Profile Picture 2" name="propicture" value="1" id="pro-2" class="input-hidden"{% if user.pref_picture == 1 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Profile Picture') }} 2" name="propicture" value="1" id="pro-2" class="input-hidden"{% if user.pref_picture == 1 %} checked{% endif %}>
 					<label for="pro-2">
-						<img id="account-pic2" src="{{ url_for('static', filename='account-pic2.png', _external=True) }}" alt="Profile Picture 2">
+						<img id="account-pic2" src="{{ url_for('static', filename='account-pic2.png', _external=True) }}" alt="{{ _('Profile Picture') }} 2">
 					</label>
-					<input type="radio" aria-label="Select Profile Picture 3" name="propicture" value="2" id="pro-3" class="input-hidden"{% if user.pref_picture == 2 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Profile Picture') }} 3" name="propicture" value="2" id="pro-3" class="input-hidden"{% if user.pref_picture == 2 %} checked{% endif %}>
 					<label for="pro-3">
-						<img id="account-pic3" src="{{ url_for('static', filename='account-pic3.png', _external=True) }}" alt="Profile Picture 3">
+						<img id="account-pic3" src="{{ url_for('static', filename='account-pic3.png', _external=True) }}" alt="{{ _('Profile Picture') }} 3">
 					</label>
-					<input type="radio" aria-label="Select Profile Picture 4" name="propicture" value="3" id="pro-4" class="input-hidden"{% if user.pref_picture == 3 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Profile Picture') }} 4" name="propicture" value="3" id="pro-4" class="input-hidden"{% if user.pref_picture == 3 %} checked{% endif %}>
 					<label for="pro-4">
-						<img id="account-pic4" src="{{ url_for('static', filename='account-pic4.png', _external=True) }}" alt="Profile Picture 4">
+						<img id="account-pic4" src="{{ url_for('static', filename='account-pic4.png', _external=True) }}" alt="{{ _('Profile Picture') }} 4">
 					</label>
 				</div>
-				<h4>Select Accent Color</h4>
+				<h4>{{ _('Select Accent Color') }}</h4>
 				<div class="colorselector">
-					<input type="radio" aria-label="Select Blue Accent Color" name="accentcolor" value="0" id="color-1" class="input-hidden"{% if user.pref_color == 0 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Blue Accent Color') }}" name="accentcolor" value="0" id="color-1" class="input-hidden"{% if user.pref_color == 0 %} checked{% endif %}>
 					<label for="color-1">
-						<img id="account-blue" src="{{ url_for('static', filename='account-blue.png', _external=True) }}" alt="Blue">
+						<img id="account-blue" src="{{ url_for('static', filename='account-blue.png', _external=True) }}" alt="{{ _('Blue') }}">
 					</label>
-					<input type="radio" aria-label="Select Green Accent Color" name="accentcolor" value="1" id="color-2" class="input-hidden"{% if user.pref_color == 1 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Green Accent Color') }}" name="accentcolor" value="1" id="color-2" class="input-hidden"{% if user.pref_color == 1 %} checked{% endif %}>
 					<label for="color-2">
-						<img id="account-green" src="{{ url_for('static', filename='account-green.png', _external=True) }}" alt="Green">
+						<img id="account-green" src="{{ url_for('static', filename='account-green.png', _external=True) }}" alt="{{ _('Green') }}">
 					</label>
-					<input type="radio" aria-label="Select Purple Accent Color" name="accentcolor" value="2" id="color-3" class="input-hidden"{% if user.pref_color == 2 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Purple Accent Color') }}" name="accentcolor" value="2" id="color-3" class="input-hidden"{% if user.pref_color == 2 %} checked{% endif %}>
 					<label for="color-3">
-						<img id="account-purple" src="{{ url_for('static', filename='account-purple.png', _external=True) }}" alt="Purple">
+						<img id="account-purple" src="{{ url_for('static', filename='account-purple.png', _external=True) }}" alt="{{ _('Purple') }}">
 					</label>
-					<input type="radio" aria-label="Select Pink Accent Color" name="accentcolor" value="3" id="color-4" class="input-hidden"{% if user.pref_color == 3 %} checked{% endif %}>
+					<input type="radio" aria-label="{{ _('Select Pink Accent Color') }}" name="accentcolor" value="3" id="color-4" class="input-hidden"{% if user.pref_color == 3 %} checked{% endif %}>
 					<label for="color-4">
-						<img id="account-pink" src="{{ url_for('static', filename='account-pink.png', _external=True) }}" alt="Pink">
+						<img id="account-pink" src="{{ url_for('static', filename='account-pink.png', _external=True) }}" alt="{{ _('Pink') }}">
 					</label>
 				</div>
 				{{ form2.submit2(class="btn btn-default") }}
 			</form>
 		</div>
 		<div class="export">
-			<h3>Export or Import Data</h3>
+			<h3>{{ _('Export or Import Data') }}</h3>
 			<div class="boxdivider">&nbsp;</div>
 			{% if rec_count > 750 %}
-			<p>Export feature is disabled because you have more than 750 recipes.</p>
+			<p>{{ _('Export feature is disabled because you have more than 750 recipes.') }}</p>
 			{% elif rec_count > 0 %}
-			<p>Download a .ZIP backup of your recipes, favorites, categories, and recipe photos.</p>
+			<p>{{ _('Download a .ZIP backup of your recipes, favorites, categories, and recipe photos.') }}</p>
 			<form method="post" novalidate>
 				{{ form3.hidden_tag() }}
-				{{ form3.submit(class="btn btn-default3 btn-download", value="Download") }}
+				{{ form3.submit(class="btn btn-default3 btn-download", value=_('Download')) }}
 			</form>
 			{% else %}
-			<p>Export feature is disabled because you have no saved recipes.</p>
+			<p>{{ _('Export feature is disabled because you have no saved recipes.') }}</p>
 			{% endif %}
-			<p>Restore from backup. Only recipes not present will be added, existing recipes will not be changed or overwritten.</p>
+			<p>{{ _('Restore from backup. Only recipes not present will be added, existing recipes will not be changed or overwritten.') }}</p>
 			<form method="post" enctype="multipart/form-data" novalidate>
 				{{ form4.hidden_tag() }}
-				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip" aria-label="Select ZIP archive to restore from backup"><br>
-				{{ form4.submit(class="btn btn-default3 btn-upload", value="Upload") }}
+				<input type="file" class="custom-file-input" name="zipbackup" id="zipbackup" accept=".zip" aria-label="{{ _('Select ZIP archive to restore from backup') }}"><br>
+				{{ form4.submit(class="btn btn-default3 btn-upload", value=_('Upload')) }}
 			</form>
 		</div>
 		<div class="updatedetails">
-			<h3>Update or Delete Account</h3>
+			<h3>{{ _('Update or Delete Account') }}</h3>
 			<div class="boxdivider">&nbsp;</div>
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<div class="form-group required">
-					<label class="control-label" for="email">Email</label>
-					{{ form.email(class="form-control", aria_label="Email") }}
+					<label class="control-label" for="email">{{ _('Email') }}</label>
+					{{ form.email(class="form-control", aria_label=_('Email')) }}
 					{% if form.email.errors %}
 					<div class="fielderror"><div id="erroremail">{{ form.email.errors|first }}</div></div>
 					{% endif %}
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="password">New Password</label>
-					{{ form.password(class="form-control", aria_label="New Password") }}
+					<label class="control-label" for="password">{{ _('New Password') }}</label>
+					{{ form.password(class="form-control", aria_label=_('New Password')) }}
 					{% if form.password.errors %}
 					<div class="fielderror"><div id="errorpassword">{{ form.password.errors|first }}</div></div>
 					{% endif %}
 				</div>
 				<div class="form-group">
-					<label class="control-label" for="password2">Confirm Password</label>
-					{{ form.password2(class="form-control", aria_label="Confirm Password") }}
+					<label class="control-label" for="password2">{{ _('Confirm Password') }}</label>
+					{{ form.password2(class="form-control", aria_label=_('Confirm Password')) }}
 					{% if form.password2.errors %}
 					<div class="fielderror"><div id="errorpassword2">{{ form.password2.errors|first }}</div></div>
 					{% endif %}
 				</div>
 				<div class="updatebuttons">
 					{{ form.submit(class="btn btn-default") }}
-					<button class="btn btn-default2" formaction="{{ url_for('account.deleteAccount') }}" formmethod="get" onclick="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">Delete Account</button>
+					<button class="btn btn-default2" formaction="{{ url_for('account.deleteAccount') }}" formmethod="get" onclick="return confirm('{{ _('Are you sure you want to delete your account? This action cannot be undone.') }}')';">{{ _('Delete Account') }}</button>
 				</div>
 			</form>
 		</div>

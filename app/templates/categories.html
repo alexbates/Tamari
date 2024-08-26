@@ -10,23 +10,23 @@
 	<div class="block1inner">
 		<div id="recipenav">
 			<div class="recipenavleft">
-				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="All Recipes" aria-label="Navigate to All Recipes"
-				><input type="button" class="recbtn recbtn2" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="Favorites" aria-label="Navigate to Favorites"
-				><input type="button" class="recbtn recbtn3 recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="Categories" aria-label="Navigate to Categories">
+				<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="{{ _('All Recipes') }}" aria-label="{{ _('Navigate to All Recipes') }}"
+				><input type="button" class="recbtn recbtn2" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="{{ _('Favorites') }}" aria-label="{{ _('Navigate to Favorites') }}"
+				><input type="button" class="recbtn recbtn3 recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="{{ _('Categories') }}" aria-label="{{ _('Navigate to Categories') }}">
 			</div>
 			<div class="settingsbtn">
-				<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="Toggle display settings">
-					<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt="Settings"></span>
+				<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="{{ _('Toggle display settings') }}">
+					<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt="{{ _('Settings') }}"></span>
 				</button>
 				<div class="settings-content" id="settingsDrop">
-					<h3>Display Settings</h3>
+					<h3>{{ _('Display Settings') }}</h3>
 					<form method="post" novalidate>
 						{{ form.hidden_tag() }}
-						<label>Recipe Type</label>
+						<label>{{ _('Recipe Type') }}</label>
 						{{ form.recipe_size }}
 						<div class="custom-select">
 							<div class="cust-select">
-								<label class="control-label">Sort By</label><br>
+								<label class="control-label">{{ _('Sort By') }}</label><br>
 								{{ form.sort_by }}
 							</div>
 						</div>
@@ -58,9 +58,9 @@
 				<div>
 					<form method="post" novalidate>
 						{{ form2.hidden_tag() }}
-						{{ form2.category(class="form-control", placeholder="Add a Category") }}
-						<button class="btn5-default" id="submitcat" name="submitcat" value="submitcat" aria-label="Submit new category">
-							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="Submit Category"></span>
+						{{ form2.category(class="form-control", placeholder=_('Add a Category')) }}
+						<button class="btn5-default" id="submitcat" name="submitcat" value="submitcat" aria-label="{{ _('Submit new category') }}">
+							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="{{ _('Submit Category') }}"></span>
 						</button>
 					</form> 
 				</div>
@@ -69,7 +69,7 @@
 				<div{% if query_string is none %}{% if item.label == 'Miscellaneous' %} class="cat-selected"{% endif %}{% else %}{% if item.label == query_string %} class="cat-selected"{% endif %}{% endif %}>
 					<span class="cat-label"><a href="{{ url_for('myrecipes.categories', c=[item.label]) }}">{{ item.label }}</a></span>
 					<span class="cat-label2"><a href="{{ url_for('myrecipes.mobileCategory', catname=item.label) }}">{{ item.label }}</a></span>
-					<a class="cat-trash" href="{{ url_for('myrecipes.removeCategory', catid=item.hex_id) }}" onclick="return confirm('Are you sure you want to delete the category {{ item.label }}?');" title="Delete Category" aria-label="Delete {{ item.label }} category">
+					<a class="cat-trash" href="{{ url_for('myrecipes.removeCategory', catid=item.hex_id) }}" onclick="return confirm('{{ _('Are you sure you want to delete the category')|e }} {{ item.label|e }}?');" title="Delete Category" aria-label="{{ _('Delete category') }} {{ item.label }}">
 						<img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" width="20" height="20" alt="Delete Category">
 					</a>
 				</div>
@@ -80,12 +80,12 @@
 		<div id="b1right">
 			{% if query_string %}
 			{% if query_string in cats %}
-			<p id="recipecount">Showing {{ recipe_count }} recipes in '{{ query_string }}' category.</p>
+			<p id="recipecount">{{ _('Showing %(recipe_count)d recipes in "%(query_string)s" category.') % {'recipe_count': recipe_count, 'query_string': query_string} }}</p>
 			{% else %}
-			<p id="recipecount">The requested category does not exist.</p>
+			<p id="recipecount">{{ _('The requested category does not exist.') }}</p>
 			{% endif %}
 			{% else %}
-			<p id="recipecount">Showing {{ recipe_count }} recipes in 'Miscellaneous' category.</p>
+			<p id="recipecount">{{ _('Showing %(recipe_count)d recipes in "Miscellaneous" category.') % {'recipe_count': recipe_count} }}</p>
 			{% endif %}
 			{% if recipes %}
 			{% if user.pref_size == 0 %}
@@ -131,21 +131,21 @@
 						<span class="r3category r3span">{{ item.category }}</span>
 						<br>
 						{% if item.prep_time or item.cook_time or item.total_time %}
-						{% if item.prep_time %}<span class="r3time r3span">Prep: {{ item.prep_time }}m</span>{% endif %}
-						{% if item.cook_time %}<span class="r3time r3span">Cook: {{ item.cook_time }}m</span>{% endif %}
-						{% if item.total_time %}<span class="r3time r3span">Total: {{ item.total_time }}m</span>{% endif %}
+						{% if item.prep_time %}<span class="r3time r3span">{{ _('Prep') }}: {{ item.prep_time }}m</span>{% endif %}
+						{% if item.cook_time %}<span class="r3time r3span">{{ _('Cook') }}: {{ item.cook_time }}m</span>{% endif %}
+						{% if item.total_time %}<span class="r3time r3span">{{ _('Total') }}: {{ item.total_time }}m</span>{% endif %}
 						<br>
 						{% endif %}
 						{% if item.calories %}
-						<span class="r3calories r3span">Calories: {{ item.calories }}</span>
+						<span class="r3calories r3span">{{ _('Calories') }}: {{ item.calories }}</span>
 						<br>
 						{% endif %}
 						{% if recipe_info_paginated[idx][0] %}
-						<span class="r3created r3spanscheduled">Scheduled For: {{ recipe_info_paginated[idx][0] }}</span>
+						<span class="r3created r3spanscheduled">{{ _('Scheduled For') }}: {{ recipe_info_paginated[idx][0] }}</span>
 						{% elif recipe_info_paginated[idx][1] %}
-						<span class="r3created r3span">Last Prepared: {{ recipe_info_paginated[idx][1] }}</span>
+						<span class="r3created r3span">{{ _('Last Prepared') }}: {{ recipe_info_paginated[idx][1] }}</span>
 						{% else %}
-						<span class="r3created r3span">Created: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
+						<span class="r3created r3span">{{ _('Created') }}: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
 						{% endif %}
 					</div>
 				</div>
@@ -159,15 +159,15 @@
 			{% if prev_url or next_url %}
                 	<div class="prevnext">
                         	{% if prev_url %}
-                        	<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
-                                	<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
-                                	<span class="btn-prev-text">Previous</span>
+                        	<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="{{ _('Navigate to previous page') }}">
+                                	<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+                                	<span class="btn-prev-text">{{ _('Previous') }}</span>
                         	</button>
                         	{% endif %}
                         	{% if next_url %}
-                        	<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
-                                	<span class="btn-next-text">Next</span>
-                                	<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
+                        	<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="{{ _('Navigate to next page') }}">
+                                	<span class="btn-next-text">{{ _('Next') }}</span>
+                                	<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
                         	</button>
                         	{% endif %}
                 	</div>

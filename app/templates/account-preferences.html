@@ -72,7 +72,7 @@
 			<div class="us-right">
 				{% if user.reg_time %}<p>{{ _('Registered') }}: {{ moment(user.reg_time).format('LLL') }}</p>{% endif %}
 				{% if user.last_time %}<p>{{ _('Last Visit') }}: {{ moment(user.last_time).format('LLL') }}</p>{% endif %}
-				<p>{{ _('You have %(rec_count)d recipes saved.') % {'rec_count': rec_count} }}</p>
+				<p>{{ _('You have %(rec_count)d recipes saved.', rec_count=rec_count) }}</p>
 			</div>
 			<form method="post" novalidate>
 				{{ form2.hidden_tag() }}

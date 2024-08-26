@@ -80,12 +80,12 @@
 		<div id="b1right">
 			{% if query_string %}
 			{% if query_string in cats %}
-			<p id="recipecount">{{ _('Showing %(recipe_count)d recipes in "%(query_string)s" category.') % {'recipe_count': recipe_count, 'query_string': query_string} }}</p>
+			<p id="recipecount">{{ _('Showing %(recipe_count)d recipes in "%(query_string)s" category.', recipe_count=recipe_count, query_string=query_string) }}</p>
 			{% else %}
 			<p id="recipecount">{{ _('The requested category does not exist.') }}</p>
 			{% endif %}
 			{% else %}
-			<p id="recipecount">{{ _('Showing %(recipe_count)d recipes in "Miscellaneous" category.') % {'recipe_count': recipe_count} }}</p>
+			<p id="recipecount">{{ _('Showing %(recipe_count)d recipes in "Miscellaneous" category.', recipe_count=recipe_count) }}</p>
 			{% endif %}
 			{% if recipes %}
 			{% if user.pref_size == 0 %}

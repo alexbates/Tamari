@@ -12,7 +12,7 @@
 		{% if recipes %}
 
 		<h2>{{ group_title }}</h2>
-		<p id="showing-msg">Showing {{ rec_first }} - {{ rec_last }} of {{ rec_count }} recipes.</p>
+		<p id="showing-msg">{{ _('Showing %(rec_first)s - %(rec_last)s of %(rec_count)s recipes.', rec_first=rec_first, rec_last=rec_last, rec_count=rec_count) }}</p>
 		<div id="recipecont" class="recipe2cont">
 			{% for recipe in recipes %}
 			<a href="{{ url_for('explore.exploreRecipeDetail', recnum=recipe[3], rec_group=group) }}" class="r2a" tabindex="-1">
@@ -32,23 +32,23 @@
 		{% if pagination.has_prev or pagination.has_next %}
 		<div class="prevnext">
 			{% if pagination.has_prev %}
-			<button class="btn-prev" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page - 1, group=group) }}';" aria-label="Navigate to previous page">
-				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
-				<span class="btn-prev-text">Previous</span>
+			<button class="btn-prev" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page - 1, group=group) }}';" aria-label="{{ _('Navigate to previous page') }}">
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+				<span class="btn-prev-text">{{ _('Previous') }}</span>
 			</button>
 			{% endif %}
 			{% if pagination.has_next %}
-			<button class="btn-next" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page + 1, group=group) }}';" aria-label="Navigate to next page">
-				<span class="btn-next-text">Next</span>
-                <span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
+			<button class="btn-next" onclick="window.location.href='{{ url_for('explore.exploreGroup', page=curr_page + 1, group=group) }}';" aria-label="{{ _('Navigate to next page') }}">
+				<span class="btn-next-text">{{ _('Next') }}</span>
+                <span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
             </button>
 			{% endif %}
 		</div>
 		{% endif %}
 
 		{% else %}
-		<h2 class="errorh2">Error</h2>
-		<p>The requested group does not exist or has no recipes.</p>
+		<h2 class="errorh2">{{ _('Error') }}</h2>
+		<p>{{ _('The requested group does not exist or has no recipes.')' }}</p>
 		{% endif %}
 	</div>
 </main>

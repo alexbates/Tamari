@@ -38,84 +38,84 @@
 			<p>{{ description }}</p>
 			{% endif %}
 			{% if servings %}
-			<p>{{ servings }} Servings</p>
+			<p>{{ servings }} {{ _('Servings') }}</p>
 			{% endif %}
 			{% if nutrition %}
 			<table>
 				<tr>
-				  	<th>Nutrition (1 serv.)</th>
-				  	<th>Amount</th>
-				  	<th class="t-col-4">Nutrition (1 serv.)</th>
-				  	<th class="t-col-4">Amount</th>
+				  	<th>{{ _('Nutrition (1 serv.)') }}</th>
+				  	<th>{{ _('Amount') }}</th>
+				  	<th class="t-col-4">{{ _('Nutrition (1 serv.)') }}</th>
+				  	<th class="t-col-4">{{ _('Amount') }}</th>
 				</tr>
 				<tr>
-				  	<td>Calories</td>
+				  	<td>{{ _('Calories') }}</td>
 				  	<td>{% if calories %}{{ calories }} kcal{% else %}–{% endif %}</td>
-				  	<td class="t-col-4">Sugar</td>
+				  	<td class="t-col-4">{{ _('Sugar') }}</td>
 					<td class="t-col-4">{% if sugar %}{{ sugar }} g{% else %}–{% endif %}</td>
 				</tr>
 				<tr>
-				  	<td>Carbs</td>
+				  	<td>{{ _('Carbs') }}</td>
 				  	<td>{% if carbs %}{{ carbs }} g{% else %}–{% endif %}</td>
-				  	<td class="t-col-4">Cholesterol</td>
+				  	<td class="t-col-4">{{ _('Cholesterol') }}</td>
 					<td class="t-col-4">{% if cholesterol %}{{ cholesterol }} mg{% else %}–{% endif %}</td>
 				</tr>
 				<tr>
-				  	<td>Protein</td>
+				  	<td>{{ _('Protein') }}</td>
 				  	<td>{% if protein %}{{ protein }} g{% else %}–{% endif %}</td>
-				  	<td class="t-col-4">Sodium</td>
+				  	<td class="t-col-4">{{ _('Sodium') }}</td>
 					<td class="t-col-4">{% if sodium %}{{ sodium }} mg{% else %}–{% endif %}</td>
 				</tr>
 				<tr>
-					<td>Fat</td>
+					<td>{{ _('Fat') }}</td>
 					<td>{% if fat %}{{ fat }} g{% else %}–{% endif %}</td>
-					<td class="t-col-4">Fiber</td>
+					<td class="t-col-4">{{ _('Fiber') }}</td>
 					<td class="t-col-4">{% if fiber %}{{ fiber }} g{% else %}–{% endif %}</td>
 				</tr>
 				<tr class="t-col-2">
-					<td>Sugar</td>
+					<td>{{ _('Sugar') }}</td>
 				  	<td>{% if sugar %}{{ sugar }} g{% else %}–{% endif %}</td>
 			  	</tr>
 			  	<tr class="t-col-2">
-					<td>Cholesterol</td>
+					<td>{{ _('Cholesterol') }}</td>
 				  	<td>{% if cholesterol %}{{ cholesterol }} mg{% else %}–{% endif %}</td>
 			  	</tr>
 			  	<tr class="t-col-2">
-					<td>Sodium</td>
+					<td>{{ _('Sodium') }}</td>
 				  	<td>{% if sodium %}{{ sodium }} mg{% else %}–{% endif %}</td>
 			  	</tr>
 			  	<tr class="t-col-2">
-				  	<td>Fiber</td>
+				  	<td>{{ _('Fiber') }}</td>
 				  	<td>{% if fiber %}{{ fiber }} g{% else %}–{% endif %}</td>
 			  	</tr>
 			</table>
 			{% endif %}
 			<p>
-				{% if preptime %}<span class="timeouter"><span class="timebold">Prep Time:</span> {{ preptime }} min</span>{% endif %}
-				{% if cooktime %}<span class="timeouter"><span class="timebold">Cook Time:</span> {{ cooktime }} min</span>{% endif %}
-				{% if totaltime %}<span class="timeouter"><span class="timebold">Total Time:</span> {{ totaltime }} min</span>{% endif %}
+				{% if preptime %}<span class="timeouter"><span class="timebold">{{ _('Prep Time') }}:</span> {{ preptime }} min</span>{% endif %}
+				{% if cooktime %}<span class="timeouter"><span class="timebold">{{ _('Cook Time') }}:</span> {{ cooktime }} min</span>{% endif %}
+				{% if totaltime %}<span class="timeouter"><span class="timebold">{{ _('Total Time') }}:</span> {{ totaltime }} min</span>{% endif %}
 			</p>
 			{% if rec_url %}
-			<p><a class="urla" href="{{ rec_url }}" target="_blank" aria-label="Original recipe URL">{{ rec_url }}</a></p>
+			<p><a class="urla" href="{{ rec_url }}" target="_blank" aria-label="{{ _('Original recipe URL') }}">{{ rec_url }}</a></p>
 			{% endif %}
 			{% if current_user.is_authenticated %}
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
-				<button class="btn btn-default" name="submit" type="submit" aria-label="Save Recipe">
-                    <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="Save Recipe"></span>
-                    <span class="btn-text">Save Recipe</span>
+				<button class="btn btn-default" name="submit" type="submit" aria-label="{{ _('Save Recipe') }}">
+                    <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="{{ _('Save Recipe') }}"></span>
+                    <span class="btn-text">{{ _('Save Recipe') }}</span>
                 </button>
 			</form>
 			{% else %}
-			<button class="btn btn-default" name="submit" type="submit" disabled style="cursor: not-allowed;" aria-label="Login to Save Recipe">
-                <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="Login to Save Recipe"></span>
-                <span class="btn-text">Login to Save Recipe</span>
+			<button class="btn btn-default" name="submit" type="submit" disabled style="cursor: not-allowed;" aria-label="{{ _('Login to Save Recipe') }}">
+                <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="{{ _('Login to Save Recipe') }}"></span>
+                <span class="btn-text">{{ _('Login to Save Recipe') }}</span>
             </button>
 			{% endif %}
 		</div>
 		<div id="r-image" style="background-image: url('{{ photo_server }}');"></div>
 		<div id="ingredients">
-			<h3>Ingredients</h3>
+			<h3>{{ _('Ingredients') }}</h3>
 			<div id="inginner" class="inginner">
 				{% for item in ingredients %}
 				<div><p class="ing">{{ item }}</p></div>
@@ -123,20 +123,20 @@
 			</div>
 		</div>
 		<div id="instructions">
-			<h3>Instructions</h3>
+			<h3>{{ _('Instructions') }}</h3>
 			{% for item in instructions %}
-			<div class="steps"><b>Step {{ loop.index }}</b><p>{{ item }}</p></div>
+			<div class="steps"><b>{{ _(Step') }} {{ loop.index }}</b><p>{{ item }}</p></div>
 			{% endfor %}
 		</div>
 		{% else %}
-		<h2 class="recipe-error">Error</h2>
-		<p class="recipe-error">The retrieval or parsing of data for the requested recipe failed.</p>
-		<p class="recipe-error">Sometimes, refreshing the page will fix it.</p>
-		<p class="recipe-error">If you see this error frequently, opening an Issue Report on Github may help get it resolved.</p>
+		<h2 class="recipe-error">{{ _('Error') }}</h2>
+		<p class="recipe-error">{{ _('The retrieval or parsing of data for the requested recipe failed.') }}</p>
+		<p class="recipe-error">{{ _('Sometimes, refreshing the page will fix it.') }}</p>
+		<p class="recipe-error">{{ _('If you see this error frequently, opening an Issue Report on Github may help get it resolved.') }}</p>
 		{% endif %}
 		{% else %}
-		<h2 class="recipe-error">Error</h2>
-		<p class="recipe-error">The requested recipe cannot be found.</p>
+		<h2 class="recipe-error">{{ _('Error') }}</h2>
+		<p class="recipe-error">{{ _('The requested recipe cannot be found.') }}</p>
 		{% endif %}
 	</div>
 </main>

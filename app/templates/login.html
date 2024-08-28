@@ -31,8 +31,8 @@
 			<div class="b1logo"></div>
 		</div>
 		<div id="b1bottom" class="block1bottom">
-			<button class="logregselector logregactive" onclick="window.location.href='{{ url_for('account.login') }}';" aria-label="Navigate to Sign In page">Sign In</button
-			><button class="logregselector" onclick="window.location.href='{{ url_for('account.register') }}';" aria-label="Navigate to Register page">Register</button>
+			<button class="logregselector logregactive" onclick="window.location.href='{{ url_for('account.login') }}';" aria-label="{{ _('Navigate to Sign In page') }}">{{ _('Sign In') }}</button
+			><button class="logregselector" onclick="window.location.href='{{ url_for('account.register') }}';" aria-label="{{ _('Navigate to Register page') }}">{{ _('Register') }}</button>
 			{% with messages = get_flashed_messages() %}
 			{% if messages %}
 			{% set first_message = true %}
@@ -49,26 +49,26 @@
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<div class="form-group  required">
-					{{ form.email(class="form-control", placeholder="Email", aria_label="Email") }}
+					{{ form.email(class="form-control", placeholder=_('Email'), aria_label=_('Email')) }}
 					{% if form.email.errors %}
 					<span id="erroremail">{{ form.email.errors|first }}</span>
 					{% endif %}
 				</div>
 				<div class="form-group  required">
-					{{ form.password(class="form-control", placeholder="Password", aria_label="Password") }}
+					{{ form.password(class="form-control", placeholder=_('Password'), aria_label=_('Password')) }}
 					{% if form.password.errors %}
 					<span id="errorpassword">{{ form.password.errors|first }}</span>
 					{% endif %}   
 				</div>
 				<div class="check">
-					<label tabindex="0" class="checkbox">Keep me Signed in
+					<label tabindex="0" class="checkbox">{{ _('Keep me Signed in') }}
 						{{ form.remember_me(class="rememberme") }}
 						<span class="checkmark"></span>
 					</label>
 				</div>
 				<div class="signinreset">
 					{{ form.submit(class="btn btn-default") }}
-					<div class="resetlink"><a href=" {{ url_for('account.request_reset') }}">Reset Password?</a></div>
+					<div class="resetlink"><a href=" {{ url_for('account.request_reset') }}">{{ _('Reset Password?') }}</a></div>
 				</div>
 			</form>
 		</div>

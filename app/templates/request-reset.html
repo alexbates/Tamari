@@ -29,11 +29,11 @@
 			<div class="b1logo"></div>
 		</div>
 		<div id="b1bottom" class="block1bottom">
-			<h3>Reset Password</h3>
+			<h3>{{ _('Reset Password') }}</h3>
 			<form method="post" novalidate>
 				{{ form.hidden_tag() }}
 				<div class="form-group  required">
-					{{ form.email(class="form-control", placeholder="Email", aria_label="Email") }}
+					{{ form.email(class="form-control", placeholder=_('Email'), aria_label=_('Email')) }}
 					{% if form.email.errors %}
 					<span id="erroremail">{{ form.email.errors|first }}</span>
 					{% endif %}

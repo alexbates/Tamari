@@ -8,7 +8,7 @@ def send_password_reset_email(user):
         mailsender = app.config['MAIL_USERNAME']
     else:
         mailsender = app.config['ADMIN']
-    send_email('[Tamari] Reset Your Password',
+    send_email('[Tamari] ' + _('Reset Your Password'),
                sender=mailsender,
                recipients=[user.email],
                text_body=render_template('email/set-password.txt',

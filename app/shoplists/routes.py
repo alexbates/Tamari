@@ -42,9 +42,9 @@ def shoppingLists():
         items_arr.append(curr_item)
     if form.submitlist.data and form.validate_on_submit():
         if form.newlist.data in lists_arr:
-            flash('Error: the shopping list you entered already exists.')
+            flash('Error: ' + _('the shopping list you entered already exists.'))
         elif len(lists_arr) > 19:
-            flash('Error: you are limited to 20 shopping lists.')
+            flash('Error: ' + _('you are limited to 20 shopping lists.'))
         else:
             hex_valid = 0
             while hex_valid == 0:
@@ -55,13 +55,13 @@ def shoppingLists():
             sel_list = Shoplist(hex_id=hex_string, label=form.newlist.data, user_id=current_user.id)
             db.session.add(sel_list)
             db.session.commit()
-            flash('The shopping list has been added.')
+            flash(_('The shopping list has been added.'))
         return redirect(url_for('shoplists.shoppingLists', list=list.label))
     if form2.submititem.data and form2.validate_on_submit():
         if form2.newitem.data in items_arr:
-            flash('Error: the list item you entered already exists.')
+            flash('Error: ' + _('the list item you entered already exists.'))
         elif len(items_arr) > 99:
-            flash('Error: you are limited to 100 items per list.')
+            flash('Error: ' + _('you are limited to 100 items per list.'))
         else:
             hex_valid2 = 0
             while hex_valid2 == 0:
@@ -72,10 +72,10 @@ def shoppingLists():
             sel_item = Listitem(hex_id=hex_string2, item=form2.newitem.data, user_id=current_user.id, complete=0, list_id=list.id)
             db.session.add(sel_item)
             db.session.commit()
-            flash('The item has been added.')
+            flash(_('The item has been added.'))
         return redirect(url_for('shoplists.shoppingLists', list=list.label))
-    return render_template('shopping-lists.html', title='Shopping Lists',
-        mdescription='Display all saved shopping lists and list items for the selected list.', lists=lists,
+    return render_template('shopping-lists.html', title=_('Shopping Lists'),
+        mdescription=_('Display all saved shopping lists and list items for the selected list.'), lists=lists,
         query_string=query_string, list=list, lists_arr=lists_arr, items=items, items_tobuy=items_tobuy,
         items_comp=items_comp, form=form, form2=form2)
 
@@ -86,7 +86,7 @@ def mobileList(listname):
     user = User.query.filter_by(email=current_user.email).first_or_404()
     list = user.shop_lists.filter_by(label=listname).first()
     if list is None:
-        flash('Error: the list you requested does not exist.')
+        flash('Error: ' + _('the list you requested does not exist.'))
     items = list.list_items.order_by(Listitem.item).all()
     items_tobuy = user.list_items.filter_by(list_id=list.id, complete=0).all()
     items_comp = user.list_items.filter_by(list_id=list.id, complete=1).all()
@@ -97,9 +97,9 @@ def mobileList(listname):
         items_arr.append(curr_item)
     if form.submititem.data and form.validate_on_submit():
         if form.newitem.data in items_arr:
-            flash('Error: the list item you entered already exists.')
+            flash('Error: ' + _('the list item you entered already exists.'))
         elif len(items_arr) > 69:
-            flash('Error: you are limited to 70 items per list.')
+            flash('Error: ' + _('you are limited to 70 items per list.'))
         else:
             hex_valid = 0
             while hex_valid == 0:
@@ -110,10 +110,10 @@ def mobileList(listname):
             sel_item = Listitem(hex_id=hex_string, item=form.newitem.data, user_id=current_user.id, complete=0, list_id=list.id)
             db.session.add(sel_item)
             db.session.commit()
-            flash('The item has been added.')
+            flash(_('The item has been added.'))
         return redirect(url_for('shoplists.mobileList', listname=list.label))
     return render_template('mobile-shopping-list.html', title=listname,
-        mdescription='Display all list items for the selected shopping list.', list=list, items=items,
+        mdescription=_('Display all list items for the selected shopping list.'), list=list, items=items,
         items_tobuy=items_tobuy, items_comp=items_comp, form=form)
 
 @bp.route('/remove-list/<mobile>/<hexid>')
@@ -124,18 +124,18 @@ def removeList(hexid, mobile):
     user = User.query.filter_by(email=current_user.email).first()
     listitems = Listitem.query.filter_by(list_id=list.id).all()
     if list is None:
-        flash('Error: shopping list does not exist.')
+        flash('Error: ' + _('shopping list does not exist.'))
     elif list.label == 'Miscellaneous':
-        flash('Error: Miscellaneous cannot be deleted because it is the default shopping list.')
+        flash('Error: Miscellaneous ' + _('cannot be deleted because it is the default shopping list.'))
     else:
         if list.user_id == current_user.id:
             for item in listitems:
                 db.session.delete(item)
             db.session.delete(list)
             db.session.commit()
-            flash('Shopping list has been removed.')
+            flash(_('Shopping list has been removed.'))
         else:
-            flash('Error: shopping list does not exist.')
+            flash('Error: ' + _('shopping list does not exist.'))
     if mobile == '0':
         return redirect(url_for('shoplists.shoppingLists'))
     else:
@@ -148,14 +148,14 @@ def removeListitem(hexid, mobile):
     listitem = Listitem.query.filter_by(hex_id=hexid).first()
     list = Shoplist.query.filter_by(id=listitem.list_id).first()
     if listitem is None:
-        flash('Error: item does not exist.')
+        flash('Error: ' + _('item does not exist.'))
     else:
         if listitem.user_id == current_user.id:
             db.session.delete(listitem)
             db.session.commit()
-            flash('The item has been removed.')
+            flash(_('The item has been removed.'))
         else:
-            flash('Error: item does not exist.')
+            flash('Error: ' + _('item does not exist.'))
     if mobile == '0':
         return redirect(url_for('shoplists.shoppingLists', list=list.label))
     else:
@@ -168,7 +168,7 @@ def markItem(hexid, mobile):
     listitem = Listitem.query.filter_by(hex_id=hexid).first()
     list = Shoplist.query.filter_by(id=listitem.list_id).first()
     if listitem is None:
-        flash('Error: item does not exist.')
+        flash('Error: ' + _('item does not exist.'))
     else:
         if listitem.user_id == current_user.id:
             if listitem.complete == 0:
@@ -178,7 +178,7 @@ def markItem(hexid, mobile):
                 listitem.complete = 0
                 db.session.commit()
         else:
-            flash('Error: item does not exist.')
+            flash('Error: ' + _('item does not exist.'))
     if mobile == '0':
         return redirect(url_for('shoplists.shoppingLists', list=list.label))
     else:

@@ -208,8 +208,8 @@ def allRecipes():
         user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('myrecipes.allRecipes'))
-    return render_template('all-recipes.html', title='All Recipes',
-        mdescription='View all recipes saved in your account. This is the homepage of the Tamari web app.', user=user,
+    return render_template('all-recipes.html', title=_('All Recipes'),
+        mdescription=_('View all recipes saved in your account. This is the home page of the Tamari web app.'), user=user,
         recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/api/my-recipes/all')
@@ -338,8 +338,8 @@ def favorites():
         user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('myrecipes.favorites'))
-    return render_template('favorites.html', title='Favorites',
-        mdescription='View all recipes that have been marked as favorites in your Tamari account.', user=user,
+    return render_template('favorites.html', title=_('Favorites'),
+        mdescription=_('View all recipes that have been marked as favorites in your Tamari account.'), user=user,
         recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/recipe/<hexid>/favorite')
@@ -348,11 +348,11 @@ def favorites():
 def favorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
-        flash('Error: recipe does not exist or you do not have permission to modify it.')
+        flash('Error: ' + _('recipe does not exist or you do not have permission to modify it.'))
         return redirect(url_for('myrecipes.allRecipes'))
     recipe.favorite = 1
     db.session.commit()
-    flash('This recipe has been added to your Favorites.')
+    flash(_('This recipe has been added to your Favorites.'))
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>/unfavorite')
@@ -361,11 +361,11 @@ def favorite(hexid):
 def unfavorite(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
-        flash('Error: recipe does not exist or you do not have permission to modify it.')
+        flash('Error: ' + _('recipe does not exist or you do not have permission to modify it.'))
         return redirect(url_for('myrecipes.allRecipes'))
     recipe.favorite = 0
     db.session.commit()
-    flash('This recipe has been removed from your Favorites.')
+    flash(_('This recipe has been removed from your Favorites.'))
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>/make-public')
@@ -374,11 +374,11 @@ def unfavorite(hexid):
 def makePublic(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
-        flash('Error: recipe does not exist or you do not have permission to modify it.')
+        flash('Error: ' + _('recipe does not exist or you do not have permission to modify it.'))
         return redirect(url_for('myrecipes.allRecipes'))
     recipe.public = 1
     db.session.commit()
-    flash('You can now share the URL for this recipe.')
+    flash(_('You can now share the URL for this recipe.'))
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>/make-private')
@@ -387,11 +387,11 @@ def makePublic(hexid):
 def makePrivate(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
     if recipe is None or recipe.user_id != current_user.id:
-        flash('Error: recipe does not exist or you do not have permission to modify it.')
+        flash('Error: ' + _('recipe does not exist or you do not have permission to modify it.'))
         return redirect(url_for('myrecipes.allRecipes'))
     recipe.public = 0
     db.session.commit()
-    flash('The recipe URL can no longer be shared.')
+    flash(_('The recipe URL can no longer be shared.'))
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
@@ -541,13 +541,13 @@ def recipeDetail(hexid):
                 count += 1
         db.session.commit()
         if count != 0:
-            message = str(count) + " items have been added to " + str(list.label) + " shopping list."
+            message = str(count) + _(' items have been added to ') + str(list.label) + _(' shopping list.')
             flash(message)
         else:
-            flash('Error: all ingredients from this recipe are already on your shopping list.')
+            flash('Error: ' + _('all ingredients from this recipe are already on your shopping list.'))
     # If user selects hidden "Choose here" for AddToListForm
     if form.errors and not form2.validate_on_submit():
-        flash('Error: please select a shopping list.')
+        flash('Error: ' + _('please select a shopping list.'))
     # AddToMealPlannerForm
     if form2.validate_on_submit():
         # Get value from select field which has name attribute of selectdate
@@ -555,7 +555,7 @@ def recipeDetail(hexid):
         selectdate = request.form.get('selectdate')
         # Prevent form processing if hidden "Choose here" is selected
         if selectdate == '':
-            flash('Error: please select a date.')
+            flash('Error: ' + _('please select a date.'))
         else:
             hex_valid2 = 0
             while hex_valid2 == 0:
@@ -570,13 +570,13 @@ def recipeDetail(hexid):
                 if any(selectdate in sublist for sublist in month):
                     db.session.add(newmealplan)
                     db.session.commit()
-                    flash('This recipe has been added to your meal plan.')
+                    flash(_('This recipe has been added to your meal plan.'))
                 else:
-                    flash('Error: the selected date in invalid.')
+                    flash('Error: ' + _('the selected date in invalid.'))
             else:
-                flash('Error: this recipe is already scheduled for the selected date.')
+                flash('Error: ' + _('this recipe is already scheduled for the selected date.'))
     return render_template('recipe-detail.html', title=recipe_title,
-        mdescription='View details for the selected recipe saved in My Recipes.', recipe=recipe, choices=choices,
+        mdescription=_('View details for the selected recipe saved in My Recipes.'), recipe=recipe, choices=choices,
         owner=owner, ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
         nutrition=nutrition, creationtime=creationtime, editedtime=editedtime, meal_count=meal_count, 
         last_prepared=last_prepared, scheduled=scheduled, hexid=hexid) 
@@ -782,9 +782,9 @@ def categories():
     # AddCategoryForm
     if form2.validate_on_submit():
         if form2.category.data in cats:
-            flash('Error: the category you entered already exists.')
+            flash('Error: ' + _('the category you entered already exists.'))
         elif len(cats) > 39:
-            flash('Error: you are limited to 40 categories.')
+            flash('Error: ' + _('you are limited to 40 categories.'))
         else:
             hex_valid = 0
             while hex_valid == 0:
@@ -795,10 +795,10 @@ def categories():
             category = Category(hex_id=hex_string, label=form2.category.data, user=current_user)
             db.session.add(category)
             db.session.commit()
-            flash('The category has been added.')
+            flash(_('The category has been added.'))
         return redirect(url_for('myrecipes.categories'))
-    return render_template('categories.html', title='Categories',
-        mdescription='Displays a list of your saved categories and all recipes saved in the selected category.', user=user,
+    return render_template('categories.html', title=_('Categories'),
+        mdescription=_('Displays a list of your saved categories and all recipes saved in the selected category.'), user=user,
         categories=categories, query_string=query_string, recipes=recipes.items, recipe_count=recipe_count, form=form,
         form2=form2, cats=cats, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
@@ -912,7 +912,7 @@ def mobileCategory(catname):
         if recipes.has_prev else None
     recipe_count = len(rec_count)
     return render_template('mobile-category.html',
-        mdescription='Displays a list of your saved categories and all recipes in the selected category.', title=catname,
+        title=catname, mdescription=_('Displays a list of your saved categories and all recipes in the selected category.'),
         user=user, recipes=recipes.items, recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url,
         invalidcat=invalidcat, recipe_info_paginated=recipe_info_paginated)
 
@@ -924,9 +924,9 @@ def removeCategory(catid):
     user = User.query.filter_by(email=current_user.email).first()
     recipes = user.recipes.all()
     if category is None or category.user_id != current_user.id:
-        flash('Error: category does not exist or you do not have permission to remove it.')
+        flash('Error: ' + _('category does not exist or you do not have permission to remove it.'))
     elif category.label == 'Miscellaneous':
-        flash('Error: Miscellaneous cannot be deleted because it is the default category.')
+        flash('Error: ' + _('Miscellaneous cannot be deleted because it is the default category.'))
     else:
         if category.user_id == current_user.id:
             for recipe in recipes:
@@ -934,9 +934,9 @@ def removeCategory(catid):
                     recipe.category = 'Miscellaneous'
             db.session.delete(category)
             db.session.commit()
-            flash('Category has been removed.')
+            flash(_('Category has been removed.'))
         else:
-            flash('Error: category does not exist.')
+            flash('Error: ' + _('category does not exist.'))
     return redirect(url_for('myrecipes.categories'))
 
 @bp.route('/remove-recipe/<hexid>')
@@ -946,7 +946,7 @@ def removeRecipe(hexid):
     # Query the recipe by hexid
     delrecipe = Recipe.query.filter_by(hex_id=hexid).first()
     if delrecipe is None or delrecipe.user_id != current_user.id:
-        flash('Error: recipe does not exist or you do not have permission to delete it.')
+        flash('Error: ' + _('recipe does not exist or you do not have permission to delete it.'))
         return redirect(url_for('myrecipes.allRecipes'))
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
@@ -970,7 +970,7 @@ def removeRecipe(hexid):
     # Delete recipe and commit changes
     db.session.delete(delrecipe)
     db.session.commit()
-    flash('Recipe has been removed.')
+    flash(_('Recipe has been removed.'))
     return redirect(url_for('myrecipes.allRecipes'))
 
 @bp.route('/add-recipe', methods=['GET', 'POST'])
@@ -1524,11 +1524,11 @@ def addRecipe():
             if title or i_description or servings or i_ingredients or i_instructions:
                 form.url.data = autofill_url
             if title and i_ingredients and i_instructions:
-                flash('The form was autofilled successfully.')
+                flash(_('The form was autofilled successfully.'))
             elif title or i_description or servings or i_ingredients or i_instructions:
-                flash('Some fields have been autofilled, please manually complete the remaining.')
+                flash(_('Some fields have been autofilled, please manually complete the remaining.'))
             else:
-                flash('Error: could not autofill from the given URL.')
+                flash(_('Error: could not autofill from the given URL.'))
     # Save recipe to My Recipes
     if form.submit.data and form.validate_on_submit():
         hex_valid = 0
@@ -1625,10 +1625,10 @@ def addRecipe():
                 sodium=form.n_sodium.data, fiber=form.n_fiber.data)
             db.session.add(nutrition)
             db.session.commit()
-        flash('The recipe has been added.')
+        flash(_('The recipe has been added.'))
         return redirect(url_for('myrecipes.addRecipe'))
-    return render_template('add-recipe.html', title='Add a New Recipe',
-        mdescription='Use the provided form to add a new recipe to your account.', form=form, form2=form2, choices=choices)
+    return render_template('add-recipe.html', title=_('Add a New Recipe'),
+        mdescription=_('Use the provided form to add a new recipe to your account.'), form=form, form2=form2, choices=choices)
 
 @bp.route('/edit-recipe/<hexid>', methods=['GET', 'POST'])
 @login_required
@@ -1646,7 +1646,7 @@ def editRecipe(hexid):
         choices.append(curr_cat)
     form.category.choices = choices
     if recipe.user_id != current_user.id:
-        flash('Error: recipe doesn’t exist or you don’t have permission to edit it.')
+        flash('Error: ' + _('recipe does not exist or you do not have permission to edit it.'))
     if form.validate_on_submit():
         recipe.title = form.recipe_name.data
         recipe.category = form.category.data
@@ -1758,8 +1758,8 @@ def editRecipe(hexid):
             pass
         # Process database changes
         db.session.commit()
-        flash('The recipe has been updated.')
+        flash(_('The recipe has been updated.'))
         return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
-    return render_template('edit-recipe.html', title='Edit Recipe',
-        mdescription='Use the provided form to edit details for the requested recipe.', form=form, recipe=recipe,
+    return render_template('edit-recipe.html', title=_('Edit Recipe'),
+        mdescription=_('Use the provided form to edit details for the requested recipe.'), form=form, recipe=recipe,
         nutrition=nutrition, choices=choices)

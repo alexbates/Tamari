@@ -38,8 +38,8 @@ def favicon():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def about():
-    return render_template('about.html', title='About',
-        mdescription='Credits, changelog, and other information about the Tamari web app.')
+    return render_template('about.html', title=_('About'),
+        mdescription=_('Credits, changelog, and other information about the Tamari web app.'))
 
 @limiter.limit(Config.LOGIN_RATE_LIMIT)
 def rate_limited_login():
@@ -57,20 +57,20 @@ def login():
             user = User.query.filter_by(email=form.email.data).first()
             # Check login
             if user is None or not user.check_password(form.password.data):
-                flash('Invalid email or password')
+                flash(_('Invalid email or password'))
                 return redirect(url_for('account.login'))
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':
                 next_page = url_for('myrecipes.allRecipes')
             return redirect(next_page)
-    return render_template('login.html', title='Sign In', mdescription='Sign In to the Tamari web app.', form=form)
+    return render_template('login.html', title=_('Sign In'), mdescription=_('Sign In to the Tamari web app.'), form=form)
 
 @bp.route('/logout')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def logout():
     logout_user()
-    flash('You have successfully signed out.')
+    flash(_('You have successfully signed out.'))
     return redirect(url_for('account.login'))
 
 @limiter.limit(Config.REGISTRATION_RATE_LIMIT)
@@ -96,16 +96,16 @@ def register():
                 emailisvalid = False        
             # Error if email is registered
             if checkemail:
-                flash('Error: email is already taken.')
+                flash('Error: ' + _('email is already taken.'))
             # Error if email is invalid for any reason
             elif emailisvalid is None or emailisvalid == False:
-                flash('Error: email is invalid.')
+                flash('Error: ' + _('email is invalid.'))
             # Error if passwords do not match
             elif form.password.data != form.password2.data:
-                flash('Error: passwords do not match.')
+                flash('Error: ' + _('passwords do not match.'))
             # Error if password length out of range
             elif len(form.password.data) < 3 or len(form.password.data) > 64:
-                flash('Error: password must be 3-64 characters.')
+                flash('Error: ' + _('password must be 3-64 characters.'))
             # Process registration
             else:
                 logout_user()
@@ -140,9 +140,10 @@ def register():
                     new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
                     db.session.add(new_list)
                 db.session.commit()
-                flash('You have been registered! Please sign in.')
+                flash(_('You have been registered! Please sign in.'))
                 return redirect(url_for('account.login'))
-    return render_template('register.html', title='Register', mdescription='Register an account with the Tamari web app.', form=form)
+    return render_template('register.html', title=_('Register'),
+        mdescription=_('Register an account with the Tamari web app.'), form=form)
 
 def clean_csv(text):
     try:
@@ -171,7 +172,7 @@ def user():
     if form.validate_on_submit():
         # If Demo Account, users cannot change email or password
         if current_user.email == 'demo@tamariapp.com':
-            flash('Error: account changes restricted for demo account.')
+            flash('Error: ' + _('account changes restricted for demo account.'))
             return redirect(url_for('account.user'))
         # Create variables that will be used for flashed messages
         has_passwords = False
@@ -198,13 +199,13 @@ def user():
                 emailisvalid = False
         # Error if there are passwords and they do not match
         if has_passwords and passwords_match == False:
-            flash('Error: passwords do not match.')
+            flash('Error: ' + _('passwords do not match.'))
         # Error if email is invalid for any reason
         elif emailisvalid == False:
-            flash('Error: email is invalid.')
+            flash('Error: ' + _('email is invalid.'))
         # Error if password length out of range
         elif has_passwords and (len(form.password.data) < 3 or len(form.password.data) > 64):
-            flash('Error: password must be between 3 and 64 characters.')
+            flash('Error: ' + _('password must be between 3 and 64 characters.'))
         # Process changes
         elif has_passwords or newemail != current_user.email:
             if has_passwords:
@@ -216,12 +217,12 @@ def user():
                 # Update time in database for account email change
                 user.e_change_time = datetime.utcnow()
             db.session.commit()
-            flash('Your changes have been saved.')
+            flash(_('Your changes have been saved.'))
             # Redirect to current page so form email will be updated following change
             return redirect(url_for('account.user'))
         # Notify if there are no errors or changes
         else:
-            flash('No changes were made.')
+            flash(_('No changes were made.'))
     # AccountPrefsForm
     if form2.validate_on_submit():
         # Get value from two select fields which has name attribute of selecttheme and selectscaling
@@ -230,7 +231,7 @@ def user():
         selectscaling = int(request.form['selectscaling'])
         # Prevent form processing if hidden "Choose here" is selected
         if selecttheme == '' or selectscaling == '':
-            flash('Error: please select theme and scaling.')
+            flash('Error: ' + _('please select theme and scaling.'))
         else:
             propicture = int(request.form['propicture'])
             accentcolor = int(request.form['accentcolor'])
@@ -246,7 +247,7 @@ def user():
             if selectscaling >= 0 and selectscaling <= 2:
                 user.pref_scaling = selectscaling
             db.session.commit()
-            flash('Your changes have been saved.')
+            flash(_('Your changes have been saved.'))
     # Export Account Form
     if form3.submit.data and form3.validate_on_submit():
         # Store CSV data as string in memory, not on disk
@@ -301,7 +302,7 @@ def user():
     if form4.submit.data and form4.validate_on_submit():
         # If Demo Account, users cannot import data
         if current_user.email == 'demo@tamariapp.com':
-            flash('Error: data import restricted for demo account.')
+            flash('Error: ' + _('data import restricted for demo account.'))
             return redirect(url_for('account.user'))
         zipbackup = request.files['zipbackup']
         if request.files and zipbackup.filename != '':
@@ -318,7 +319,7 @@ def user():
                             'public'}
                         # Check is CSV file contains required columns
                         if not required_columns.issubset(csv_reader.fieldnames):
-                            flash('Error: backup is invalid, _recipes.csv in ZIP is missing columns.')
+                            flash('Error: ' + _('backup is invalid, _recipes.csv in ZIP is missing columns.'))
                         else:
                             # Create counter that will keep track of how many recipes are imported
                             zip_count = 0
@@ -486,12 +487,13 @@ def user():
                                         # Add 1 to the counter, which is used to inform user how many recipes are imported
                                         zip_count += 1
                             if zip_count == 0:
-                                flash('No new recipes added. All recipes in the backup are already present.')
+                                flash(_('No new recipes added. All recipes in the backup are already present.'))
                             else:
-                                flash('Success: ' + str(zip_count) + ' recipes have been imported.')
+                                flash(_('Success: ') + str(zip_count) + _(' recipes have been imported.'))
                 else:
-                    flash('Error: backup is invalid, _recipes.csv is missing from ZIP.')
-    return render_template('account-preferences.html', title='Account Preferences', mdescription='View and modify account preferences for your Tamari account.',
+                    flash('Error: ' + _('backup is invalid, _recipes.csv is missing from ZIP.'))
+    return render_template('account-preferences.html', title=_('Account Preferences'),
+        mdescription=_('View and modify account preferences for your Tamari account.'),
         user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)
     
 @bp.route('/account/history')
@@ -530,7 +532,7 @@ def accountHistory():
             event_h1 = 'Edited Recipe'
             event_h4 = recipe.title
             event_image = recipe.photo
-            event_desc = 'Category: ' + recipe.category
+            event_desc = _('Category: ') + recipe.category
             event.append(timestamp)
             event.append(event_h1)
             event.append(event_h4)
@@ -544,7 +546,7 @@ def accountHistory():
         event_h1 = 'Account Created'
         event_h4 = None
         event_image = None
-        event_desc = 'Account registered with Tamari.'
+        event_desc = _('Account registered with Tamari.')
         event.append(timestamp)
         event.append(event_h1)
         event.append(event_h4)
@@ -558,7 +560,7 @@ def accountHistory():
         event_h1 = 'Account Email Changed'
         event_h4 = None
         event_image = None
-        event_desc = 'New Email: ' + user.email
+        event_desc = _('New Email: ') + user.email
         event.append(timestamp)
         event.append(event_h1)
         event.append(event_h4)
@@ -572,7 +574,7 @@ def accountHistory():
         event_h1 = 'Account Password Changed'
         event_h4 = None
         event_image = None
-        event_desc = 'Changed Tamari password. Devices remained signed in.'
+        event_desc = _('Changed Tamari password. Devices remained signed in.')
         event.append(timestamp)
         event.append(event_h1)
         event.append(event_h4)
@@ -607,7 +609,8 @@ def accountHistory():
             events_by_year[event_year].append(event)
         except:
             pass
-    return render_template('account-history.html', title='Account History', mdescription='Account History displays a timeline of events, or changes to your account.',
+    return render_template('account-history.html', title=_('Account History'),
+        mdescription=_('Account History displays a timeline of events, or changes to your account.'),
         user=user, sorted_events=sorted_events, first_event_year=first_event_year, last_event_year=last_event_year,
         events_by_year=events_by_year, sorted_events_paginated=sorted_events_paginated, next_url=next_url, prev_url=prev_url)
 
@@ -617,12 +620,12 @@ def accountHistory():
 def deleteAccount():
     # If Demo Account, users cannot delete account
     if current_user.email == 'demo@tamariapp.com':
-        flash('Error: account deletion restricted for demo account.')
+        flash('Error: ' + _('account deletion restricted for demo account.'))
         return redirect(url_for('account.user'))
     # Get user and handle if user doesn't exist
     user = User.query.filter_by(email=current_user.email).first()
     if user is None:
-        flash('Error: there was a problem deleting your account')
+        flash('Error: ' + _('there was a problem deleting your account'))
         return redirect(url_for('account.user'))
     # Logout before delete
     logout_user()
@@ -661,7 +664,7 @@ def deleteAccount():
     # Delete account and redirect to login page
     db.session.delete(user)
     db.session.commit()
-    flash('Your account has been deleted.')
+    flash(_('Your account has been deleted.'))
     return redirect(url_for('account.login'))
 
 @bp.route('/request-reset', methods=['GET', 'POST'])
@@ -675,29 +678,31 @@ def request_reset():
         user = User.query.filter_by(email=form.email.data).first()
         # If Demo Account, users cannot delete account
         if user.email == 'demo@tamariapp.com':
-            flash('Password reset disabled for demo.')
+            flash(_('Password reset disabled for demo.'))
             return redirect(url_for('account.login'))
         if user:
             send_password_reset_email(user)
-        flash('Check your email for instructions.')
+        flash(_('Check your email for instructions.'))
         return redirect(url_for('account.login'))
-    return render_template('request-reset.html', title='Reset Password', mdescription='Reset the password for your Tamari account.', form=form)
+    return render_template('request-reset.html', title=_('Reset Password'),
+        mdescription=_('Reset the password for your Tamari account.'), form=form)
 
 @bp.route('/set-password/<token>', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def set_password(token):
     # Don't display page if user is signed in
     if current_user.is_authenticated:
-        flash('Please sign out before setting a new password.')
+        flash(_('Please sign out before setting a new password.'))
         return redirect(url_for('myrecipes.allRecipes'))
     user = User.verify_reset_password_token(token)
     if not user:
-        flash('Password reset token is invalid.')
+        flash(_('Password reset token is invalid.'))
         return redirect(url_for('account.login'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
         user.set_password(form.password.data)
         db.session.commit()
-        flash('Your new password has been set.')
+        flash(_('Your new password has been set.'))
         return redirect(url_for('account.login'))
-    return render_template('set-password.html', title='Set Password', mdescription='Set a new password for your Tamari account.', form=form)
+    return render_template('set-password.html', title=_('Set Password'),
+        mdescription=_('Set a new password for your Tamari account.'), form=form)

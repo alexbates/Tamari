@@ -10,7 +10,7 @@
 	<div class="block1inner">
 		<div id="recipenav">
 			<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="{{ _('Upcoming') }}" aria-label="{{ _('Navigate to Meal Planner (Upcoming)') }}"
-			><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _(Navigate to Meal Planner (Completed)') }}">
+			><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Completed)') }}">
 		</div>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}

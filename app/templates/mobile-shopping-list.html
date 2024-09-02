@@ -28,53 +28,53 @@
 		{% endwith %}
 		<div id="b1right">
 			{% if list %}
-			<h2>'{{ list.label }}' List</h2>
+			<h2>'{{ list.label }}' {{ _('List') }}</h2>
 			{% if items %}
-			<p id="listhowto">Click an item to add or remove it from Completed.</p>
+			<p id="listhowto">{{ _('Click an item to add or remove it from Completed.') }}</p>
 			{% if items_tobuy %} 
-			<h3>To Buy</h3>
+			<h3>{{ _('To Buy') }}</h3>
 			<div class="ingredinner">
 				{% for item in items_tobuy %}
 				<div>
-					<button class="btn4-default" onclick="window.location.href='{{ url_for('shoplists.removeListitem', hexid=item.hex_id, mobile=1) }}';" aria-label="Remove List Item {{ item.item }}">
-						<span class="btn4-icon"><img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="Remove List Item {{ item.item }}"></span>
+					<button class="btn4-default" onclick="window.location.href='{{ url_for('shoplists.removeListitem', hexid=item.hex_id, mobile=1) }}';" aria-label="{{ _('Remove List Item') }} {{ item.item }}">
+						<span class="btn4-icon"><img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="{{ _('Remove List Item') }} {{ item.item }}"></span>
 					</button>
 					<p class="label-inner">
 						<span class="ingred-label"><a href="{{ url_for('shoplists.markItem', hexid=item.hex_id, mobile=1) }}">{{ item.item }}</a></span>
-						{% if item.rec_title %}<span class="ingred-recipe"><a href="{{ url_for('shoplists.markItem', hexid=item.hex_id, mobile=1) }}">For recipe: {{ item.rec_title }}</a></span>{% endif %}
+						{% if item.rec_title %}<span class="ingred-recipe"><a href="{{ url_for('shoplists.markItem', hexid=item.hex_id, mobile=1) }}">{{ _('For recipe') }}: {{ item.rec_title }}</a></span>{% endif %}
 					</p>
 				</div>
 				{% endfor %}
 			</div>
 			{% endif %}
 			{% if items_comp %}
-			<h3>Completed</h3>
+			<h3>{{ _('Completed') }}</h3>
 			<div class="ingredinner">
 				{% for item in items_comp %}
 				<div>
-					<button class="btn4-default" onclick="window.location.href='{{ url_for('shoplists.removeListitem', hexid=item.hex_id, mobile=1) }}';" aria-label="Remove List Item {{ item.item }}">
-						<span class="btn4-icon"><img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="Remove List Item {{ item.item }}"></span>
+					<button class="btn4-default" onclick="window.location.href='{{ url_for('shoplists.removeListitem', hexid=item.hex_id, mobile=1) }}';" aria-label="{{ _('Remove List Item') }} {{ item.item }}">
+						<span class="btn4-icon"><img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="{{ _('Remove List Item') }} {{ item.item }}"></span>
 					</button>
 					<p class="label-inner">
 						<span class="ingred-label completed"><a href="{{ url_for('shoplists.markItem', hexid=item.hex_id, mobile=1) }}">{{ item.item }}</a></span>
-						{% if item.rec_title %}<span class="ingred-recipe completed"><a href="{{ url_for('shoplists.markItem', hexid=item.hex_id, mobile=1) }}">For recipe: {{ item.rec_title }}</a></span>{% endif %}
+						{% if item.rec_title %}<span class="ingred-recipe completed"><a href="{{ url_for('shoplists.markItem', hexid=item.hex_id, mobile=1) }}">{{ _('For recipe') }}: {{ item.rec_title }}</a></span>{% endif %}
 					</p>
 				</div>
 				{% endfor %}
 			</div>
 			{% endif %}
 			{% else %}
-			<p id="listhowto">This list has no items saved. Add one below or from a Recipe Detail page.</p>
+			<p id="listhowto">{{ _('This list has no items saved. Add one below or from a Recipe Detail page.') }}</p>
 			{% endif %}
-			<h3>Add an Item</h3>
+			<h3>{{ _('Add an Item') }}</h3>
 			<form method="post" class="form">
 				{{ form.hidden_tag() }}
-				{{ form.newitem(class="additem-input", placeholder="(4) yellow squash") }}
+				{{ form.newitem(class="additem-input", placeholder=_('(4) yellow squash')) }}
 				{{ form.submititem(class="additem-btn") }}
 			</form>
 			<div class="deletelist">
-				<form style="display: inline;" action="{{ url_for('shoplists.removeList', hexid=list.hex_id, mobile=1) }}" method="get" onsubmit="return confirm('Are you sure you want to delete the shopping list {{ list.label }}?');"> 
-					<button class="btn-delete">Delete This List</button>
+				<form style="display: inline;" action="{{ url_for('shoplists.removeList', hexid=list.hex_id, mobile=1) }}" method="get" onsubmit="return confirm('{{ _('Are you sure you want to delete the shopping list') }} {{ list.label }}?');"> 
+					<button class="btn-delete">{{ _('Delete This List') }}</button>
 				</form>
 			</div>
 			{% endif %}

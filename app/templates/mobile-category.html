@@ -3,15 +3,6 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='mobile-category.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% if current_user.pref_color == 0 %}
-	<link href="{{ url_for('static', filename='my-recipes-blue.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 1 %}
-	<link href="{{ url_for('static', filename='my-recipes-green.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% elif current_user.pref_color == 2 %}
-	<link href="{{ url_for('static', filename='my-recipes-purple.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% else %}
-	<link href="{{ url_for('static', filename='my-recipes-pink.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -36,9 +27,9 @@
 		{% endif %}
 		{% endwith %}
 		{% if invalidcat == False %}
-		<p id="recipecount">Showing {{ recipe_count }} recipes in '{{ catname }}' category.</p>
+		<p id="recipecount">{{ _('Showing %(recipe_count)s recipes in "%(catname)s" category.', recipe_count=recipe_count, catname=catname) }}</p>
 		{% else %}
-		<p id="recipecount">The requested category could not be found.</p>
+		<p id="recipecount">{{ _('The requested category could not be found.') }}</p>
 		{% endif %}
 		{% if recipes %}
 		{% if user.pref_size == 0 %}
@@ -84,21 +75,21 @@
 					<span class="r3category r3span">{{ item.category }}</span>
 					<br>
 					{% if item.prep_time or item.cook_time or item.total_time %}
-					{% if item.prep_time %}<span class="r3time r3span">Prep: {{ item.prep_time }}m</span>{% endif %}
-					{% if item.cook_time %}<span class="r3time r3span">Cook: {{ item.cook_time }}m</span>{% endif %}
-					{% if item.total_time %}<span class="r3time r3span">Total: {{ item.total_time }}m</span>{% endif %}
+					{% if item.prep_time %}<span class="r3time r3span">{{ _('Prep') }}: {{ item.prep_time }}m</span>{% endif %}
+					{% if item.cook_time %}<span class="r3time r3span">{{ _('Cook') }}: {{ item.cook_time }}m</span>{% endif %}
+					{% if item.total_time %}<span class="r3time r3span">{{ _('Total') }}: {{ item.total_time }}m</span>{% endif %}
 					<br>
 					{% endif %}
 					{% if item.calories %}
-					<span class="r3calories r3span">Calories: {{ item.calories }}</span>
+					<span class="r3calories r3span">{{ _('Calories') }}: {{ item.calories }}</span>
 					<br>
 					{% endif %}
 					{% if recipe_info_paginated[idx][0] %}
-					<span class="r3created r3spanscheduled">Scheduled For: {{ recipe_info_paginated[idx][0] }}</span>
+					<span class="r3created r3spanscheduled">{{ _('Scheduled For') }}: {{ recipe_info_paginated[idx][0] }}</span>
 					{% elif recipe_info_paginated[idx][1] %}
-					<span class="r3created r3span">Last Prepared: {{ recipe_info_paginated[idx][1] }}</span>
+					<span class="r3created r3span">{{ _('Last Prepared') }}: {{ recipe_info_paginated[idx][1] }}</span>
 					{% else %}
-					<span class="r3created r3span">Created: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
+					<span class="r3created r3span">{{ _('Created') }}: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
 					{% endif %}
 				</div>
 			</div>
@@ -112,15 +103,15 @@
 		{% if prev_url or next_url %}
 		<div class="prevnext">
 			{% if prev_url %}
-			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="Navigate to previous page">
-				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="Previous"></span>
-				<span class="btn-prev-text">Previous</span>
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="{{ _('Navigate to previous page') }}">
+				<span class="btn-prev-icon"><img src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+				<span class="btn-prev-text">{{ _('Previous') }}</span>
 			</button>
 			{% endif %}
 			{% if next_url %}
-			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="Navigate to next page">
-				<span class="btn-next-text">Next</span>
-				<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt="Next"></span>
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="{{ _('Navigate to next page') }}">
+				<span class="btn-next-text">{{ _('Next') }}</span>
+				<span class="btn-next-icon"><img src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
 			</button>
 			{% endif %}
 		</div>

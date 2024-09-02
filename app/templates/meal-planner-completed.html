@@ -9,8 +9,8 @@
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
 		<div id="recipenav">
-			<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="Upcoming" aria-label="Navigate to Meal Planner (Upcoming)"
-			><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="Completed" aria-label="Navigate to Meal Planner (Completed)">
+			<input type="button" class="recbtn recbtn1" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="{{ _('Upcoming') }}" aria-label="{{ _('Navigate to Meal Planner (Upcoming)') }}"
+			><input type="button" class="recbtn recbtn2 recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _(Navigate to Meal Planner (Completed)') }}">
 		</div>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
@@ -32,41 +32,41 @@
 		{% endwith %}
 		<div id="b1left">
 			<div class="b1leftinner">
-				<h2>Statistics</h2>
-				<h3>Recipes Prepared</h3>
+				<h2>{{ _('Statistics') }}</h2>
+				<h3>{{ _('Recipes Prepared') }}</h3>
 				<div class="statsbox">
 					<div>
-						<span class="statsbox-label">Past Week</span>
+						<span class="statsbox-label">{{ _('Past Week') }}</span>
 						<span class="statsbox-number">{{ mealsinweek | length }}</span>
 					</div>
 					<div>
-						<span class="statsbox-label">Past Month</span>
+						<span class="statsbox-label">{{ _('Past Month') }}</span>
 						<span class="statsbox-number">{{ mealsinmonth | length }}</span>
 					</div>
 					<div>
-						<span class="statsbox-label">Past Year</span>
+						<span class="statsbox-label">{{ _('Past Year') }}</span>
 						<span class="statsbox-number">{{ mealsinyear | length }}</span>
 					</div>
 				</div>
 				<h3>Days Cooked</h3>
 				<div class="statsbox">
 					<div>
-						<span class="statsbox-label">Past Week</span>
+						<span class="statsbox-label">{{ _('Past Week') }}</span>
 						<span class="statsbox-number">{{ dayswithmeals_w | length }}</span>
 					</div>
 					<div>
-						<span class="statsbox-label">Past Month</span>
+						<span class="statsbox-label">{{ _('Past Month') }}</span>
 						<span class="statsbox-number">{{ dayswithmeals_m | length }}</span>
 					</div>
 					<div>
-						<span class="statsbox-label">Past Year</span>
+						<span class="statsbox-label">{{ _('Past Year') }}</span>
 						<span class="statsbox-number">{{ dayswithmeals | length }}</span>
 					</div>
 				</div>
 			</div>
 		</div>
 		<div id="b1right">
-			<h2>Completed Recipes</h2>
+			<h2>{{ _('Completed Recipes') }}</h2>
 			{% if mealsinyear %} 
 			{% for day in year %}
 			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
@@ -86,7 +86,7 @@
 			{% endif %}
 			{% endfor %}
 			{% else %}
-			<p id="mealmessage">Previously prepared recipes will be displayed here.</p>
+			<p id="mealmessage">{{ _('Previously prepared recipes will be displayed here.') }}</p>
 			{% endif %}
 		</div>
 

@@ -47,7 +47,8 @@ def explore():
     form = ExploreSearchForm()
     if form.validate_on_submit():
         return redirect(url_for('explore.exploreSearch', query=form.search.data))
-    return render_template('explore.html', title='Explore', mdescription='Explore page allows you to browse and search a collection of over 100,000 recipes.',
+    return render_template('explore.html', title=_('Explore'),
+        mdescription=_('Explore page allows you to browse and search a collection of over 100,000 recipes.'),
         rec_all=rec_all, form=form, default_photos=default_photos)
 
 @bp.route('/explore/search')
@@ -133,7 +134,8 @@ def exploreSearch():
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
     random.shuffle(defaults)
     default_photos = (defaults * (100 // len(defaults) + 1))[:100]
-    return render_template('explore-search.html', title='Explore Search', mdescription='Search results for the Expore page, all matching recipes are shown here.',
+    return render_template('explore-search.html', title=_('Explore Search'),
+        mdescription=_('Search results for the Explore page, all matching recipes are shown here.'),
         recipes=recipes_page, pagination=pagination, curr_page=curr_page, page=page, rec_first=rec_first, rec_last=rec_last,
         rec_count=rec_count, query_string=query_string, default_photos=default_photos)
 
@@ -141,58 +143,58 @@ def exploreSearch():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreGroup(group):
     if group == "all":
-        group_title = "All Recipes 🍽️"
+        group_title = _('All Recipes 🍽️')
         readfile = open(app.root_path + "/static/explore-all-randomized.txt", "r")
     elif group == "30-minute":
-        group_title = "30 Minute"
+        group_title = _('30 Minute')
         readfile = open(app.root_path + "/static/explore-30minute-randomized.txt", "r")
     elif group == "air-fryer":
-        group_title = "Air Fryer"
+        group_title = _('Air Fryer')
         readfile = open(app.root_path + "/static/explore-airfryer-randomized.txt", "r")
     elif group == "beef":
-        group_title = "Beef"
+        group_title = _('Beef')
         readfile = open(app.root_path + "/static/explore-beef-randomized.txt", "r")
     elif group == "breakfast":
-        group_title = "Breakfast"
+        group_title = _('Breakfast')
         readfile = open(app.root_path + "/static/explore-breakfast-randomized.txt", "r")
     elif group == "chicken":
-        group_title = "Chicken"
+        group_title = _('Chicken')
         readfile = open(app.root_path + "/static/explore-chicken-randomized.txt", "r")
     elif group == "dessert":
-        group_title = "Dessert"
+        group_title = _('Dessert')
         readfile = open(app.root_path + "/static/explore-dessert-randomized.txt", "r")
     elif group == "dinner":
-        group_title = "Dinner"
+        group_title = _('Dinner')
         readfile = open(app.root_path + "/static/explore-dinner-randomized.txt", "r")
     elif group == "drinks":
-        group_title = "Drinks"
+        group_title = _('Drinks')
         readfile = open(app.root_path + "/static/explore-drinks-randomized.txt", "r")
     elif group == "low-carb":
-        group_title = "Low Carb"
+        group_title = _('Low Carb')
         readfile = open(app.root_path + "/static/explore-lowcarb-randomized.txt", "r")
     elif group == "lunch":
-        group_title = "Lunch"
+        group_title = _('Lunch')
         readfile = open(app.root_path + "/static/explore-lunch-randomized.txt", "r")
     elif group == "salads":
-        group_title = "Salads"
+        group_title = _('Salads')
         readfile = open(app.root_path + "/static/explore-salads-randomized.txt", "r")
     elif group == "seafood":
-        group_title = "Seafood"
+        group_title = _('Seafood')
         readfile = open(app.root_path + "/static/explore-seafood-randomized.txt", "r")
     elif group == "slow-cooker":
-        group_title = "Slow Cooker"
+        group_title = _('Slow Cooker')
         readfile = open(app.root_path + "/static/explore-slowcooker-randomized.txt", "r")
     elif group == "snacks":
-        group_title = "Snacks"
+        group_title = _('Snacks')
         readfile = open(app.root_path + "/static/explore-snacks-randomized.txt", "r")
     elif group == "soup":
-        group_title = "Soup"
+        group_title = _('Soup')
         readfile = open(app.root_path + "/static/explore-soup-randomized.txt", "r")
     elif group == "vegetarian":
-        group_title = "Vegetarian"
+        group_title = _('Vegetarian')
         readfile = open(app.root_path + "/static/explore-vegetarian-randomized.txt", "r")
     else:
-        group_title = "Error"
+        group_title = _('Error')
         readfile = open(app.root_path + "/static/explore-blank.txt", "r")
     filelines = readfile.readlines()
     recipes = []
@@ -240,7 +242,7 @@ def exploreGroup(group):
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
     random.shuffle(defaults)
     default_photos = (defaults * (100 // len(defaults) + 1))[:100]
-    return render_template('explore-group.html', title=group_title, mdescription='All recipes are listed for the selected Explore category.',
+    return render_template('explore-group.html', title=group_title, mdescription=_('All recipes are listed for the selected Explore category.'),
         recipes=recipes_page, pagination=pagination, group=group, group_title=group_title, curr_page=curr_page, rec_first=rec_first,
         rec_last=rec_last, rec_count=rec_count, default_photos=default_photos)
 
@@ -1371,12 +1373,13 @@ def exploreRecipeDetail(rec_group, recnum):
                         carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber)
                     db.session.add(new_nutrition)
                     db.session.commit()
-                flash('The recipe has been saved to My Recipes.')
+                flash(_('The recipe has been saved to My Recipes.'))
             else:
-                flash('The recipe is missing ingredients or instructions and cannot be imported.')
+                flash(_('The recipe is missing ingredients or instructions and cannot be imported.'))
         else:
-            flash('Error: This recipe is already saved in My Recipes.')
-    return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', mdescription='View the details for the selected Explore page recipe.',
+            flash('Error: ' + _('This recipe is already saved in My Recipes.'))
+    return render_template('explore-recipe-detail.html', title=_('Explore Recipe Detail'),
+        mdescription=_('View the details for the selected Explore page recipe.'),
         rec_url=rec_url, rec_title=rec_title, preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description,
         photo=photo, ingredients=ingredients, instructions=instructions, form=form, calories=calories, carbs=carbs,
         protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition,

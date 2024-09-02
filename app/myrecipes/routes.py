@@ -208,8 +208,9 @@ def allRecipes():
         user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('myrecipes.allRecipes'))
-    return render_template('all-recipes.html', title='All Recipes', user=user, recipes=recipes.items,
-        form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
+    return render_template('all-recipes.html', title='All Recipes',
+        mdescription='View all recipes saved in your account. This is the homepage of the Tamari web app.', user=user,
+        recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/api/my-recipes/all')
 @login_required
@@ -337,8 +338,9 @@ def favorites():
         user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('myrecipes.favorites'))
-    return render_template('favorites.html', title='Favorites', user=user, recipes=recipes.items,
-        form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
+    return render_template('favorites.html', title='Favorites',
+        mdescription='View all recipes that have been marked as favorites in your Tamari account.', user=user,
+        recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/recipe/<hexid>/favorite')
 @login_required
@@ -573,8 +575,9 @@ def recipeDetail(hexid):
                     flash('Error: the selected date in invalid.')
             else:
                 flash('Error: this recipe is already scheduled for the selected date.')
-    return render_template('recipe-detail.html', title=recipe_title, recipe=recipe, choices=choices, owner=owner, 
-        ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
+    return render_template('recipe-detail.html', title=recipe_title,
+        mdescription='View details for the selected recipe saved in My Recipes.', recipe=recipe, choices=choices,
+        owner=owner, ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
         nutrition=nutrition, creationtime=creationtime, editedtime=editedtime, meal_count=meal_count, 
         last_prepared=last_prepared, scheduled=scheduled, hexid=hexid) 
 
@@ -794,9 +797,10 @@ def categories():
             db.session.commit()
             flash('The category has been added.')
         return redirect(url_for('myrecipes.categories'))
-    return render_template('categories.html', title='Categories', user=user, categories=categories, query_string=query_string,
-        recipes=recipes.items, recipe_count=recipe_count, form=form, form2=form2, cats=cats, next_url=next_url, prev_url=prev_url,
-        recipe_info_paginated=recipe_info_paginated)
+    return render_template('categories.html', title='Categories',
+        mdescription='Displays a list of your saved categories and all recipes saved in the selected category.', user=user,
+        categories=categories, query_string=query_string, recipes=recipes.items, recipe_count=recipe_count, form=form,
+        form2=form2, cats=cats, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/m/category/<catname>')
 @login_required
@@ -907,9 +911,10 @@ def mobileCategory(catname):
     prev_url = url_for('myrecipes.mobileCategory', catname=catname, page=recipes.prev_num) \
         if recipes.has_prev else None
     recipe_count = len(rec_count)
-    return render_template('mobile-category.html', title=catname, user=user, recipes=recipes.items,
-        recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url, invalidcat=invalidcat,
-        recipe_info_paginated=recipe_info_paginated)
+    return render_template('mobile-category.html',
+        mdescription='Displays a list of your saved categories and all recipes in the selected category.', title=catname,
+        user=user, recipes=recipes.items, recipe_count=recipe_count, catname=catname, next_url=next_url, prev_url=prev_url,
+        invalidcat=invalidcat, recipe_info_paginated=recipe_info_paginated)
 
 @bp.route('/remove-category/<catid>')
 @login_required
@@ -1622,7 +1627,8 @@ def addRecipe():
             db.session.commit()
         flash('The recipe has been added.')
         return redirect(url_for('myrecipes.addRecipe'))
-    return render_template('add-recipe.html', title='Add a New Recipe', form=form, form2=form2, choices=choices)
+    return render_template('add-recipe.html', title='Add a New Recipe',
+        mdescription='Use the provided form to add a new recipe to your account.', form=form, form2=form2, choices=choices)
 
 @bp.route('/edit-recipe/<hexid>', methods=['GET', 'POST'])
 @login_required
@@ -1754,4 +1760,6 @@ def editRecipe(hexid):
         db.session.commit()
         flash('The recipe has been updated.')
         return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
-    return render_template('edit-recipe.html', title='Edit Recipe', form=form, recipe=recipe, nutrition=nutrition, choices=choices)
+    return render_template('edit-recipe.html', title='Edit Recipe',
+        mdescription='Use the provided form to edit details for the requested recipe.', form=form, recipe=recipe,
+        nutrition=nutrition, choices=choices)

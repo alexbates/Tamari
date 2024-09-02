@@ -38,7 +38,8 @@ def favicon():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def about():
-    return render_template('about.html', title='About')
+    return render_template('about.html', title='About',
+        mdescription='Credits, changelog, and other information about the Tamari web app.')
 
 @limiter.limit(Config.LOGIN_RATE_LIMIT)
 def rate_limited_login():
@@ -63,7 +64,7 @@ def login():
             if not next_page or url_parse(next_page).netloc != '':
                 next_page = url_for('myrecipes.allRecipes')
             return redirect(next_page)
-    return render_template('login.html', title='Sign In', form=form)
+    return render_template('login.html', title='Sign In', mdescription='Sign In to the Tamari web app.', form=form)
 
 @bp.route('/logout')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -141,7 +142,7 @@ def register():
                 db.session.commit()
                 flash('You have been registered! Please sign in.')
                 return redirect(url_for('account.login'))
-    return render_template('register.html', title='Register', form=form)
+    return render_template('register.html', title='Register', mdescription='Register an account with the Tamari web app.', form=form)
 
 def clean_csv(text):
     try:
@@ -490,7 +491,8 @@ def user():
                                 flash('Success: ' + str(zip_count) + ' recipes have been imported.')
                 else:
                     flash('Error: backup is invalid, _recipes.csv is missing from ZIP.')
-    return render_template('account-preferences.html', title='Account Preferences', user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)
+    return render_template('account-preferences.html', title='Account Preferences', mdescription='View and modify account preferences for your Tamari account.',
+        user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)
     
 @bp.route('/account/history')
 @login_required
@@ -605,9 +607,9 @@ def accountHistory():
             events_by_year[event_year].append(event)
         except:
             pass
-    return render_template('account-history.html', title='Account History', user=user, sorted_events=sorted_events,
-        first_event_year=first_event_year, last_event_year=last_event_year, events_by_year=events_by_year,
-        sorted_events_paginated=sorted_events_paginated, next_url=next_url, prev_url=prev_url)
+    return render_template('account-history.html', title='Account History', mdescription='Account History displays a timeline of events, or changes to your account.',
+        user=user, sorted_events=sorted_events, first_event_year=first_event_year, last_event_year=last_event_year,
+        events_by_year=events_by_year, sorted_events_paginated=sorted_events_paginated, next_url=next_url, prev_url=prev_url)
 
 @bp.route('/account/process-delete')
 @login_required
@@ -679,7 +681,7 @@ def request_reset():
             send_password_reset_email(user)
         flash('Check your email for instructions.')
         return redirect(url_for('account.login'))
-    return render_template('request-reset.html', title='Reset Password', form=form)
+    return render_template('request-reset.html', title='Reset Password', mdescription='Reset the password for your Tamari account.', form=form)
 
 @bp.route('/set-password/<token>', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -698,4 +700,4 @@ def set_password(token):
         db.session.commit()
         flash('Your new password has been set.')
         return redirect(url_for('account.login'))
-    return render_template('set-password.html', title='Set Password', form=form)
+    return render_template('set-password.html', title='Set Password', mdescription='Set a new password for your Tamari account.', form=form)

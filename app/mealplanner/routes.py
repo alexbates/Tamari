@@ -67,9 +67,10 @@ def mealPlanner():
     for meal in plannedmeals:
         if meal.date == query_string:
             query_count += 1
-    return render_template('meal-planner-upcoming.html', title='Meal Planner (Upcoming)', plannedmeals=plannedmeals, recdetails=recdetails, 
-    dayswithmeals=dayswithmeals, month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, 
-    compactmonth=compactmonth, mealsinmonth=mealsinmonth, month_with_meals=month_with_meals)
+    return render_template('meal-planner-upcoming.html', title='Meal Planner (Upcoming)',
+        mdescription='View recipes planned over the next 30 days in Meal Planner Upcoming.', plannedmeals=plannedmeals, recdetails=recdetails, 
+        dayswithmeals=dayswithmeals, month=month, query_string=query_string, query_string_full=query_string_full, query_count=query_count, 
+        compactmonth=compactmonth, mealsinmonth=mealsinmonth, month_with_meals=month_with_meals)
 
 @bp.route('/meal-planner/completed')
 @login_required
@@ -172,9 +173,11 @@ def mealPlannerCompleted():
     for meal in mealsinweek:
         if meal.date not in dayswithmeals_w:
             dayswithmeals_w.append(meal.date)
-    return render_template('meal-planner-completed.html', title='Meal Planner (Completed)', plannedmeals=plannedmeals, recdetails=recdetails, dayswithmeals=dayswithmeals, 
-    dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month, week=week, compactyear=compactyear, compactmonth=compactmonth,
-    compactweek=compactweek, mealsinyear=mealsinyear, mealsinmonth=mealsinmonth, mealsinweek=mealsinweek)
+    return render_template('meal-planner-completed.html', title='Meal Planner (Completed)',
+        mdescription='View Recipes that have been completed in the Meal Planner.', plannedmeals=plannedmeals, recdetails=recdetails,
+        dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,
+        week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
+        mealsinmonth=mealsinmonth, mealsinweek=mealsinweek)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

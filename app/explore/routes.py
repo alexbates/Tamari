@@ -47,7 +47,8 @@ def explore():
     form = ExploreSearchForm()
     if form.validate_on_submit():
         return redirect(url_for('explore.exploreSearch', query=form.search.data))
-    return render_template('explore.html', title='Explore', rec_all=rec_all, form=form, default_photos=default_photos)
+    return render_template('explore.html', title='Explore', mdescription='Explore page allows you to browse and search a collection of over 100,000 recipes.',
+        rec_all=rec_all, form=form, default_photos=default_photos)
 
 @bp.route('/explore/search')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -132,8 +133,9 @@ def exploreSearch():
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
     random.shuffle(defaults)
     default_photos = (defaults * (100 // len(defaults) + 1))[:100]
-    return render_template('explore-search.html', title='Explore Search', recipes=recipes_page, pagination=pagination, curr_page=curr_page, page=page,
-        rec_first=rec_first, rec_last=rec_last, rec_count=rec_count, query_string=query_string, default_photos=default_photos)
+    return render_template('explore-search.html', title='Explore Search', mdescription='Search results for the Expore page, all matching recipes are shown here.',
+        recipes=recipes_page, pagination=pagination, curr_page=curr_page, page=page, rec_first=rec_first, rec_last=rec_last,
+        rec_count=rec_count, query_string=query_string, default_photos=default_photos)
 
 @bp.route('/explore/group/<group>')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -238,8 +240,9 @@ def exploreGroup(group):
         'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png']
     random.shuffle(defaults)
     default_photos = (defaults * (100 // len(defaults) + 1))[:100]
-    return render_template('explore-group.html', title=group_title, recipes=recipes_page, pagination=pagination, group=group,
-        group_title=group_title, curr_page=curr_page, rec_first=rec_first, rec_last=rec_last, rec_count=rec_count, default_photos=default_photos)
+    return render_template('explore-group.html', title=group_title, mdescription='All recipes are listed for the selected Explore category.',
+        recipes=recipes_page, pagination=pagination, group=group, group_title=group_title, curr_page=curr_page, rec_first=rec_first,
+        rec_last=rec_last, rec_count=rec_count, default_photos=default_photos)
 
 # Functions for parsing data from WP Recipe Maker Wordpress plugin
 # Used by exploreRecipeDetail route
@@ -1373,8 +1376,8 @@ def exploreRecipeDetail(rec_group, recnum):
                 flash('The recipe is missing ingredients or instructions and cannot be imported.')
         else:
             flash('Error: This recipe is already saved in My Recipes.')
-    return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', rec_url=rec_url, rec_title=rec_title,
-        preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description, photo=photo, ingredients=ingredients,
-        instructions=instructions, form=form, calories=calories, carbs=carbs, protein=protein, fat=fat, sugar=sugar,
-        cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition, servings=servings, photo_server=photo_server,
-        responsecode=responsecode)
+    return render_template('explore-recipe-detail.html', title='Explore Recipe Detail', mdescription='View the details for the selected Explore page recipe.',
+        rec_url=rec_url, rec_title=rec_title, preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description,
+        photo=photo, ingredients=ingredients, instructions=instructions, form=form, calories=calories, carbs=carbs,
+        protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition,
+        servings=servings, photo_server=photo_server, responsecode=responsecode)

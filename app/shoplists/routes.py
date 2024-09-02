@@ -74,8 +74,10 @@ def shoppingLists():
             db.session.commit()
             flash('The item has been added.')
         return redirect(url_for('shoplists.shoppingLists', list=list.label))
-    return render_template('shopping-lists.html', title='Shopping Lists', lists=lists, query_string=query_string, list=list,
-        lists_arr=lists_arr, items=items, items_tobuy=items_tobuy, items_comp=items_comp, form=form, form2=form2)
+    return render_template('shopping-lists.html', title='Shopping Lists',
+        mdescription='Display all saved shopping lists and list items for the selected list.', lists=lists,
+        query_string=query_string, list=list, lists_arr=lists_arr, items=items, items_tobuy=items_tobuy,
+        items_comp=items_comp, form=form, form2=form2)
 
 @bp.route('/m/shopping-list/<listname>', methods=['GET', 'POST'])
 @login_required
@@ -110,8 +112,9 @@ def mobileList(listname):
             db.session.commit()
             flash('The item has been added.')
         return redirect(url_for('shoplists.mobileList', listname=list.label))
-    return render_template('mobile-shopping-list.html', title=listname, list=list, items=items, items_tobuy=items_tobuy,
-        items_comp=items_comp, form=form)
+    return render_template('mobile-shopping-list.html', title=listname,
+        mdescription='Display all list items for the selected shopping list.', list=list, items=items,
+        items_tobuy=items_tobuy, items_comp=items_comp, form=form)
 
 @bp.route('/remove-list/<mobile>/<hexid>')
 @login_required

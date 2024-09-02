@@ -8,7 +8,7 @@ def not_found_error(error):
 
 @bp.app_errorhandler(413)
 def photo_too_large(error):
-    return "The attached photo is too large.", 413
+    return _('The attached photo is too large.'), 413
 
 @bp.app_errorhandler(500)
 def internal_error(error):

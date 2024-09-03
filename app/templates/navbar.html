@@ -349,12 +349,12 @@
 		<div class="navlogo"></div>
 		<div class="mobile-title">
 			{% if current_user.is_authenticated %}
-			<h1 class="mt-myrecipes">My Recipes</h1>
-			<h1 class="mt-explore">Explore</h1>
-			<h1 class="mt-lists">Shopping Lists</h1>
-			<h1 class="mt-mealplanner">Meal Planner</h1>
-			<h1 class="mt-about">About</h1>
-			<h1 class="mt-myaccount">My Account</h1>
+			<h1 class="mt-myrecipes">{{ _('My Recipes') }}</h1>
+			<h1 class="mt-explore">{{ _('Explore') }}</h1>
+			<h1 class="mt-lists">{{ _('Shopping Lists') }}</h1>
+			<h1 class="mt-mealplanner">{{ _('Meal Planner') }}</h1>
+			<h1 class="mt-about">{{ _('About') }}</h1>
+			<h1 class="mt-myaccount">{{ _('My Account') }}</h1>
 			<h1 class="mt-tam">Tamari</h1>
 			{% else %}
 			<h1 class="mt-tamari">Tamari</h1>
@@ -362,11 +362,11 @@
 		</div>
 		{% if current_user.is_authenticated %}
 		<ul class="navleft">
-			<li class="myrecipes-active"><a href="{{ url_for('myrecipes.allRecipes') }}"><span>My Recipes</span></a></li
-			><li class="explore-active"><a href="{{ url_for('explore.explore') }}"><span>Explore</span></a></li
-			><li class="shoplist-active"><a href="{{ url_for('shoplists.shoppingLists') }}"><span><span class="linkcollapse">Shopping </span>Lists</span></a></li
-			><li class="mealplanner-active"><a href="{{ url_for('mealplanner.mealPlanner') }}"><span><span class="linkcollapse">Meal </span>Planner</span></a></li
-			><li class="about-active"><a href="{{ url_for('account.about') }}"><span>About</span></a></li>
+			<li class="myrecipes-active"><a href="{{ url_for('myrecipes.allRecipes') }}"><span>{{ _('My Recipes') }}</span></a></li
+			><li class="explore-active"><a href="{{ url_for('explore.explore') }}"><span>{{ _('Explore') }}</span></a></li
+			><li class="shoplist-active"><a href="{{ url_for('shoplists.shoppingLists') }}"><span class="linkfull">{{ _('Shopping Lists') }}</span><span class="linkshort">{{ _('Lists') }}</span></a></li
+			><li class="mealplanner-active"><a href="{{ url_for('mealplanner.mealPlanner') }}"><span class="linkfull">{{ _('Meal Planner') }}</span><span class="linkshort">{{ _('Planner') }}</span></a></li
+			><li class="about-active"><a href="{{ url_for('account.about') }}"><span>{{ _('About') }}</span></a></li>
 		</ul>
 		<nav class="navright" onclick="toggleDropdown()">
 			{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
@@ -403,14 +403,14 @@
 			<div class="navrighticon icon-4-pink"></div>
 			{% endif %}
 			<div class="dropdown-content" id="myDropdown">
-				<a href="{{ url_for('account.user') }}">My Account</a>
-				<a href="{{ url_for('account.logout') }}">Sign Out</a>
+				<a href="{{ url_for('account.user') }}">{{ _('My Account') }}</a>
+				<a href="{{ url_for('account.logout') }}">{{ _('Sign Out') }}</a>
 			</div>
 		</nav>
 		{% else %}
 		<ul class="navnoauth">
-			<li><a href="{{ url_for('account.login') }}"><span>Login</span></a></li
-			><li><a href="{{ url_for('account.register') }}"><span>Register</span></a></li>
+			<li><a href="{{ url_for('account.login') }}"><span>{{ _('Login') }}</span></a></li
+			><li><a href="{{ url_for('account.register') }}"><span>{{ _('Register') }}</span></a></li>
 		</ul>
 		{% endif %}
 		<div class="mobile-dropdown">
@@ -424,16 +424,16 @@
 				<section>
 					{% if current_user.is_authenticated %}
 					<ul class="mobilebg-top">
-						<li><a href="{{ url_for('myrecipes.allRecipes') }}">My Recipes</a></li>
-						<li><a href="{{ url_for('explore.explore') }}">Explore</a></li>
-						<li><a href="{{ url_for('shoplists.shoppingLists') }}">Shopping Lists</a></li>
-						<li><a href="{{ url_for('mealplanner.mealPlanner') }}">Meal Planner</a></li>
-						<li><a href="{{ url_for('account.about') }}">About Tamari</a></li>
+						<li><a href="{{ url_for('myrecipes.allRecipes') }}">{{ _('My Recipes') }}</a></li>
+						<li><a href="{{ url_for('explore.explore') }}">{{ _('Explore') }}</a></li>
+						<li><a href="{{ url_for('shoplists.shoppingLists') }}">{{ _('Shopping Lists') }}</a></li>
+						<li><a href="{{ url_for('mealplanner.mealPlanner') }}">{{ _('Meal Planner') }}</a></li>
+						<li><a href="{{ url_for('account.about') }}">{{ _('About') }} Tamari</a></li>
 					</ul>
 					<hr>
 					<ul class="mobilebg-bottom">
-						<li><a href="{{ url_for('account.user') }}">My Account</a></li>
-						<li><a href="{{ url_for('account.logout') }}">Sign Out</a></li>
+						<li><a href="{{ url_for('account.user') }}">{{ _('My Account') }}</a></li>
+						<li><a href="{{ url_for('account.logout') }}">{{ _('Sign Out') }}</a></li>
 					</ul>
 					{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
 					<div class="drop-profile icon-1-blue">&nbsp;</div>
@@ -470,8 +470,8 @@
 					{% endif %}
 					{% else %}
 					<ul>
-						<li><a href="{{ url_for('account.login') }}">Login</a></li>
-						<li><a href="{{ url_for('account.register') }}">Register</a></li>
+						<li><a href="{{ url_for('account.login') }}">{{ _('Login') }}</a></li>
+						<li><a href="{{ url_for('account.register') }}">{{ _('Register') }}</a></li>
 					</ul>
 					{% endif %}
 				</section>

@@ -386,7 +386,8 @@ select {font-family: Inter-Regular;}
 .active:hover {
 	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 }
-.linkcollapse {display: inline; padding: 0 !important;}
+.linkfull {display: inline;}
+.linkshort {display: none;}
 .navright {
 	float: right;
 	height: 64px;
@@ -526,7 +527,8 @@ select {font-family: Inter-Regular;}
 @media screen and (max-width: 850px) { 
 	.navleft-l {display: none;}
 	.navleft-r {padding-left: 10px !important;}
-	.linkcollapse {display: none;}
+	.linkfull {display: none;}
+	.linkshort {display: inline;}
 }
 @media screen and (max-width: 700px) { 
     #navbar {min-height: var(--height-mobile-navbar);}

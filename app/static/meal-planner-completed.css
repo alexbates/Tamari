@@ -58,8 +58,6 @@
 	--height-recipenav: 57px;
 	--height-recbtn: 30px;
 	--margin-recbtn: 14px;
-	--width-recbtn1: 100px;
-	--width-recbtn2: 104px;
 	--font-flashed: 14px;
 	--height-flashed: 17px;
 	--font-day-label: 18px;
@@ -78,8 +76,6 @@
 	--height-recipenav: 57px;
 	--height-recbtn: 30px;
 	--margin-recbtn: 14px;
-	--width-recbtn1: 100px;
-	--width-recbtn2: 104px;
 	--font-flashed: 14px;
 	--height-flashed: 17px;
 	--font-day-label: 18px;
@@ -98,8 +94,6 @@
 	--height-recipenav: 59px;
 	--height-recbtn: 32px;
 	--margin-recbtn: 13px;
-	--width-recbtn1: 112px;
-	--width-recbtn2: 116px;
 	--font-flashed: 16px;
 	--height-flashed: 19px;
 	--font-day-label: 20px;
@@ -152,12 +146,11 @@
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
 	margin-top: var(--margin-recbtn);
-	padding: 0;
+	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 .recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-.recbtn1 {width: var(--width-recbtn1);}
-.recbtn2 {width: var(--width-recbtn2);}
+/* add .recbtn1 {} and .recbtn2 {} here if needed */
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);

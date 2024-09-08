@@ -1,4 +1,5 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
+from flask_babel import _
 from app import app, db, limiter
 from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, AutofillRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required

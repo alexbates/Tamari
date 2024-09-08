@@ -208,8 +208,9 @@
 	font-size: var(--font-btn-default);
 	height: 40px;
 	margin-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 90px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }

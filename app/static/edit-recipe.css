@@ -111,7 +111,11 @@
 	color: var(--color-block1);
 	font-size: var(--font-block1);
 }
-#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+#block1 h2 {padding-top: 12px; padding-bottom: 12px;}
+#block1 hr {
+	border: 1px solid var(--color-block1);
+	height: 0px;
+}
 .block1inner {
 	height: 100%;
 	margin: 0 auto;
@@ -121,16 +125,16 @@
 	background: var(--color-flashed-err); 
 	font-size: var(--font-flashed);
 	min-height: var(--height-flashed);
-	margin-bottom: 12px;
-	margin-top: 0px;
+	margin-bottom: 8px;
+	margin-top: 12px;
 	padding: 6px;
 }
 #flashed-norm {
 	background: var(--color-flashed-norm); 
 	font-size: var(--font-flashed);
 	min-height: var(--height-flashed);
-	margin-bottom: 12px;
-	margin-top: 0px;
+	margin-bottom: 8px;
+	margin-top: 12px;
 	padding: 6px;
 }
 .form-group {margin-bottom: 10px;}
@@ -179,9 +183,9 @@
 }
 .form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
 .form-control::placeholder {color: var(--color-form-control-placeholder);}
-.fc1 {height: 38px;}
-.fc2 {height: 43px; resize: none; padding-bottom: 10px; padding-top: 10px;}
-.fc3 {height: 213px; resize: none; padding-bottom: 10px; padding-top: 10px;}
+.fc1 {height: var(--height-fc1);}
+.fc2 {height: var(--height-fc2); resize: none; padding-bottom: 10px; padding-top: 10px;}
+.fc3 {height: var(--height-fc3); resize: none; padding-bottom: 10px; padding-top: 10px;}
 .errorrequired {
 	color: var(--color-flashed-err);
 	font-size: var(--font-error);
@@ -194,6 +198,8 @@
 	line-height: var(--line-height-error);
 	margin-top: 2px;
 }
+.import-btn {margin-bottom: 14px;}
+.manual-btn {margin-bottom: 26px;}
 .btn-default {
 	border: none;
 	border-radius: 7px;
@@ -201,10 +207,10 @@
 	cursor: pointer;
 	font-size: var(--font-btn-default);
 	height: 40px;
-	margin-bottom: 26px;
 	margin-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 90px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -217,7 +223,7 @@
     border: none;
     box-shadow: none;
 	color: var(--color-cust-select-font);
-	height: 38px;
+	height: var(--height-cust-select);
 	font-size: var(--font-cust-select);
 	margin-top: 10px;
 	padding-left: 10px;

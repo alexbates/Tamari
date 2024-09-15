@@ -1781,3 +1781,7 @@ msgstr "Lista No Encontrada"
 #: app/templates/shopping-lists.html:104
 msgid "The requested shopping list does not exist."
 msgstr "La lista de la compra solicitada no existe."
+
+#: app/templates/meal-planner-completed.html:51
+msgid "Days Cooked"
+msgstr "Días Cocinados"

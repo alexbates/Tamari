@@ -213,19 +213,16 @@
 .searchbtn-icon img {height: 100%; width: 100%;}
 /* BROWSE BY CATEGORY */
 .expcatcontainer {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
+	display: flow-root;
+	width: 100%;
 }
 .expcat {
+	float: left;
   	box-sizing: border-box; /* Include padding and border in the item's width */
   	margin-right: 20px;
   	margin-bottom: 16px;
 	text-align: center; /* Center category labels in div */
-  	width: 107.5px;
-}
-.expcat:nth-child(8n) {
-    margin-right: 0; /* Remove margin-right from every 8th item */
+  	width: calc(12.5% - 20px);
 }
 .iconcontainer {
 	align-items: center; /* Center vertically */
@@ -241,8 +238,16 @@
   	margin-left: 4px;
   	outline: 4px solid var(--color-iconcontainer-outline);
 	width: calc(100% - 8px); /* Compensate for outline */
+	height: auto;
 }
 .iconcontainer img {width: 68%;}
+.expcatlabel {
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-width: 100%;
+}
 .expcatlabel:hover {color: var(--color-expcatlabel); text-decoration: none;}
 .expcatlabel:active {text-decoration: none;}
 /* RECIPE LIST */
@@ -317,11 +322,7 @@
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
 	.searchform {margin: 0 auto; margin-top: 20px; margin-bottom: 10px; width: calc(100% - 20px);}
 	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
-	.expcat:nth-child(8n) {
-		margin-right: auto;
-	}
 	.expcat {
-		flex-basis: calc(12.5% - 20px);
 		margin-left: 10px;
 		margin-right: 10px;
 	}
@@ -337,7 +338,7 @@
 }
 @media screen and (max-width: 870px) { 
 	.expcat {
-		flex-basis: calc(12.5% - 10px);
+		width: calc(12.5% - 10px);
 		margin-left: 5px;
 		margin-right: 5px;
 	}
@@ -353,7 +354,7 @@
 }
 @media screen and (max-width: 770px) { 
 	.expcat {
-		flex-basis: calc(16.666% - 20px);
+		width: calc(16.666% - 20px);
 		margin-left: 10px;
 		margin-right: 10px;
 	}
@@ -368,7 +369,7 @@
 }
 @media screen and (max-width: 700px) { 
 	.expcat {
-		flex-basis: calc(16.666% - 10px);
+		width: calc(16.666% - 10px);
 		margin-left: 5px;
 		margin-right: 5px;
 	}
@@ -394,7 +395,7 @@
 }
 @media screen and (max-width: 530px) { 
 	.expcat {
-		flex-basis: calc(25% - 20px);
+		width: calc(25% - 20px);
 		margin-left: 10px;
 		margin-right: 10px;
 	}
@@ -418,7 +419,7 @@
 }
 @media screen and (max-width: 450px) { 
 	.expcat {
-		flex-basis: calc(25% - 10px);
+		width: calc(25% - 10px);
 		margin-left: 5px;
 		margin-right: 5px;
 	}

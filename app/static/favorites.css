@@ -119,6 +119,7 @@
 	--font-btn-default: 16px;
 	--height-btn-default: 38px;
 	--size-btn-icon: 20px;
+	--padding-right-btn-icon: 10px;
 	--padding-btn2-icon: 9px;
 	--width-search-cont: 140px;
 	--width-search-cont-mobile: calc(100% - 163px);
@@ -201,6 +202,7 @@
 	--font-btn-default: 16px;
 	--height-btn-default: 38px;
 	--size-btn-icon: 20px;
+	--padding-right-btn-icon: 10px;
 	--padding-btn2-icon: 9px;
 	--width-search-cont: 140px;
 	--width-search-cont-mobile: calc(100% - 163px);
@@ -283,6 +285,7 @@
 	--font-btn-default: 18px;
 	--height-btn-default: 40px;
 	--size-btn-icon: 22px;
+	--padding-right-btn-icon: 8px;
 	--padding-btn2-icon: 8px;
 	--width-search-cont: 128px;
 	--width-search-cont-mobile: calc(100% - 163px);
@@ -435,7 +438,10 @@
 	padding-right: 8px; 
 	width: var(--size-btn-icon);
 }
-.btn-icon img {height: 100%; width: 100%;}
+.btn-icon img {
+	height: 100%; 
+	width: 100%; 
+}
 .btn2-default {
 	background-color: var(--color-btn2-default-bg);
 	border: none;
@@ -922,6 +928,7 @@
 	.recipenavright {width: 100%;}
 	.btn-default {width: 40px;}
 	.btn-text {display: none;}
+	.btn-icon {padding-right: var(--padding-right-btn-icon);}
 	.search-cont {width: var(--width-search-cont-mobile);}
 	.recipe1-text {
 		padding-left: 12px; 

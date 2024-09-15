@@ -28,7 +28,7 @@
 					<img alt="{{ _('30 Minute Meals') }}" src="{{ url_for('static', filename='explore-icon-30minute.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='30-minute') }}" class="expcatlabel">{{ _('30 Minute') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='30-minute') }}" class="expcatlabel" title="{{ _('30 Minute') }}">{{ _('30 Minute') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='air-fryer') }}" tabindex="-1">
@@ -36,7 +36,7 @@
 					<img alt="{{ _('Air Fryer') }}" src="{{ url_for('static', filename='explore-icon-airfryer.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='air-fryer') }}" class="expcatlabel">{{ _('Air Fryer') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='air-fryer') }}" class="expcatlabel" title="{{ _('Air Fryer') }}">{{ _('Air Fryer') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='beef') }}" tabindex="-1">
@@ -44,7 +44,7 @@
 					<img alt="{{ _('Beef') }}" src="{{ url_for('static', filename='explore-icon-beef.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='beef') }}" class="expcatlabel">{{ _('Beef') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='beef') }}" class="expcatlabel" title="{{ _('Beef') }}">{{ _('Beef') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='breakfast') }}" tabindex="-1">
@@ -52,7 +52,7 @@
 					<img alt="{{ _('Breakfast') }}" src="{{ url_for('static', filename='explore-icon-breakfast.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='breakfast') }}" class="expcatlabel">{{ _('Breakfast') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='breakfast') }}" class="expcatlabel" title="{{ _('Breakfast') }}">{{ _('Breakfast') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='chicken') }}" tabindex="-1">
@@ -60,7 +60,7 @@
 					<img alt="{{ _('Chicken') }}" src="{{ url_for('static', filename='explore-icon-chicken.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='chicken') }}" class="expcatlabel">{{ _('Chicken') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='chicken') }}" class="expcatlabel" title="{{ _('Chicken') }}">{{ _('Chicken') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='dessert') }}" tabindex="-1">
@@ -68,7 +68,7 @@
 					<img alt="{{ _('Dessert') }}" src="{{ url_for('static', filename='explore-icon-dessert.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='dessert') }}" class="expcatlabel">{{ _('Dessert') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='dessert') }}" class="expcatlabel" title="{{ _('Dessert') }}">{{ _('Dessert') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='dinner') }}" tabindex="-1">
@@ -76,7 +76,7 @@
 					<img alt="{{ _('Dinner') }}" src="{{ url_for('static', filename='explore-icon-dinner.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='dinner') }}" class="expcatlabel">{{ _('Dinner') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='dinner') }}" class="expcatlabel" title="{{ _('Dinner') }}">{{ _('Dinner') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='drinks') }}" tabindex="-1">
@@ -84,7 +84,7 @@
 					<img alt="{{ _('Drinks') }}" src="{{ url_for('static', filename='explore-icon-drinks.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='drinks') }}" class="expcatlabel">{{ _('Drinks') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='drinks') }}" class="expcatlabel" title="{{ _('Drinks') }}">{{ _('Drinks') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='low-carb') }}" tabindex="-1">
@@ -92,7 +92,7 @@
 					<img alt="{{ _('Low Carb') }}" src="{{ url_for('static', filename='explore-icon-lowcarb.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='low-carb') }}" class="expcatlabel">{{ _('Low Carb') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='low-carb') }}" class="expcatlabel" title="{{ _('Low Carb') }}">{{ _('Low Carb') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='lunch') }}" tabindex="-1">
@@ -100,7 +100,7 @@
 					<img alt="{{ _('Lunch') }}" src="{{ url_for('static', filename='explore-icon-lunch.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='lunch') }}" class="expcatlabel">{{ _('Lunch') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='lunch') }}" class="expcatlabel" title="{{ _('Lunch') }}">{{ _('Lunch') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='salads') }}" tabindex="-1">
@@ -108,7 +108,7 @@
 					<img alt="{{ _('Salads') }}" src="{{ url_for('static', filename='explore-icon-salads.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='salads') }}" class="expcatlabel">{{ _('Salads') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='salads') }}" class="expcatlabel" title="{{ _('Salads') }}">{{ _('Salads') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='seafood') }}" tabindex="-1">
@@ -116,7 +116,7 @@
 					<img alt="{{ _('Seafood') }}" src="{{ url_for('static', filename='explore-icon-seafood.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='seafood') }}" class="expcatlabel">{{ _('Seafood') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='seafood') }}" class="expcatlabel" title="{{ _('Seafood') }}">{{ _('Seafood') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='slow-cooker') }}" tabindex="-1">
@@ -124,7 +124,7 @@
 					<img alt="{{ _('Slow Cooker') }}" src="{{ url_for('static', filename='explore-icon-slowcooker.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='slow-cooker') }}" class="expcatlabel">{{ _('Slow Cooker') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='slow-cooker') }}" class="expcatlabel" title="{{ _('Slow Cooker') }}">{{ _('Slow Cooker') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='snacks') }}" tabindex="-1">
@@ -132,7 +132,7 @@
 					<img alt="{{ _('Snacks') }}" src="{{ url_for('static', filename='explore-icon-snacks.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='snacks') }}" class="expcatlabel">{{ _('Snacks') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='snacks') }}" class="expcatlabel" title="{{ _('Snacks') }}">{{ _('Snacks') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='soup') }}" tabindex="-1">
@@ -140,7 +140,7 @@
 					<img alt="{{ _('Soup') }}" src="{{ url_for('static', filename='explore-icon-soup.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='soup') }}" class="expcatlabel">{{ _('Soup') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='soup') }}" class="expcatlabel" title="{{ _('Soup') }}">{{ _('Soup') }}</a>
 		</div>
 		<div class="expcat">
 			<a href="{{ url_for('explore.exploreGroup', group='vegetarian') }}" tabindex="-1">
@@ -148,7 +148,7 @@
 					<img alt="{{ _('Vegetarian') }}" src="{{ url_for('static', filename='explore-icon-vegetarian.png', _external=True) }}">
 				</div>
 			</a>
-			<a href="{{ url_for('explore.exploreGroup', group='vegetarian') }}" class="expcatlabel">{{ _('Vegetarian') }}</a>
+			<a href="{{ url_for('explore.exploreGroup', group='vegetarian') }}" class="expcatlabel" title="{{ _('Vegetarian') }}">{{ _('Vegetarian') }}</a>
 		</div>
 		</div>
 		<h2>{{ _('All Recipes') }} 🍽️</h2>

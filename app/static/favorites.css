@@ -116,8 +116,6 @@
 	--height-recipenav: 57px;
 	--height-recbtn: 30px;
 	--margin-recbtn: 14px;
-	--width-recbtn1: 113px;
-	--width-recbtn2: 100px;
 	--font-btn-default: 16px;
 	--height-btn-default: 38px;
 	--width-btn-default: 137px;
@@ -201,8 +199,6 @@
 	--height-recipenav: 57px;
 	--height-recbtn: 30px;
 	--margin-recbtn: 14px;
-	--width-recbtn1: 113px;
-	--width-recbtn2: 100px;
 	--font-btn-default: 16px;
 	--height-btn-default: 38px;
 	--width-btn-default: 137px;
@@ -278,8 +274,6 @@
 	--height-recipenav: 59px;
 	--height-recbtn: 32px;
 	--margin-recbtn: 13px;
-	--width-recbtn1: 116px;
-	--width-recbtn2: 103px;
 	--font-btn-default: 18px;
 	--height-btn-default: 40px;
 	--width-btn-default: 143px;
@@ -408,13 +402,11 @@
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
 	margin-top: var(--margin-recbtn);
-	padding: 0;
+	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */;
 	-webkit-font-smoothing: subpixel-antialiased;
-}
+} 
 .recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-.recbtn1 {width: var(--width-recbtn1);}
-.recbtn2 {width: var(--width-recbtn2);}
-.recbtn3 {width: var(--width-recbtn1);}
+/* add .recbtn1 {} and .recbtn2 {} and .recbtn3 {} here if needed */
 .recipenavright {content: ""; height: var(--height-recipenav);}
 .btn-default {
 	border: none;

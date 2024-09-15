@@ -223,6 +223,54 @@
         }
     });
 	
+	// This code is for handling the horizontal scrolling of navbar on desktop
+	document.addEventListener('DOMContentLoaded', function() {
+		const container = document.querySelector('.navleft');
+		const navleft = document.querySelector('.navleft ul');
+		const rightArrow = document.querySelector('.scroll-right');
+		const leftArrow = document.querySelector('.scroll-left');
+
+		function checkScroll() {
+			if (!container || !navleft || !rightArrow || !leftArrow) return;
+
+			const isScrollable = navleft.scrollWidth > container.clientWidth;
+			const isScrolledToEnd = navleft.scrollLeft + navleft.clientWidth >= navleft.scrollWidth;
+			const isScrolledToStart = navleft.scrollLeft === 0;
+
+			rightArrow.style.display = isScrollable && !isScrolledToEnd ? 'block' : 'none';
+			leftArrow.style.display = isScrollable && !isScrolledToStart ? 'block' : 'none';
+		}
+
+		if (rightArrow && leftArrow) {
+			rightArrow.addEventListener('click', function() {
+				if (navleft) {
+					navleft.scrollBy({ left: 300, behavior: 'smooth' });
+				}
+			});
+
+			leftArrow.addEventListener('click', function() {
+				if (navleft) {
+					navleft.scrollBy({ left: -300, behavior: 'smooth' });
+				}
+			});
+		}
+
+		if (navleft) {
+            navleft.addEventListener('scroll', checkScroll);
+        }
+		window.addEventListener('resize', checkScroll);
+
+		// Initial check with delay
+		setTimeout(checkScroll, 100);  // 100ms delay
+
+		// Additional check after a longer delay to catch any late-loading content
+		setTimeout(checkScroll, 2000);  // 2 second delay
+	});
+	// Add this function to recalculate on image load
+	window.addEventListener('load', function() {
+		setTimeout(checkScroll, 100);
+	});
+	
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}
@@ -361,13 +409,17 @@
 			{% endif %}
 		</div>
 		{% if current_user.is_authenticated %}
-		<ul class="navleft">
-			<li class="myrecipes-active"><a href="{{ url_for('myrecipes.allRecipes') }}"><span>{{ _('My Recipes') }}</span></a></li
-			><li class="explore-active"><a href="{{ url_for('explore.explore') }}"><span>{{ _('Explore') }}</span></a></li
-			><li class="shoplist-active"><a href="{{ url_for('shoplists.shoppingLists') }}"><span class="linkfull">{{ _('Shopping Lists') }}</span><span class="linkshort">{{ _('Lists') }}</span></a></li
-			><li class="mealplanner-active"><a href="{{ url_for('mealplanner.mealPlanner') }}"><span class="linkfull">{{ _('Meal Planner') }}</span><span class="linkshort">{{ _('Planner') }}</span></a></li
-			><li class="about-active"><a href="{{ url_for('account.about') }}"><span>{{ _('About') }}</span></a></li>
-		</ul>
+		<div class="navleft">
+			<ul>
+				<li class="myrecipes-active"><a href="{{ url_for('myrecipes.allRecipes') }}"><span>{{ _('My Recipes') }}</span></a></li
+				><li class="explore-active"><a href="{{ url_for('explore.explore') }}"><span>{{ _('Explore') }}</span></a></li
+				><li class="shoplist-active"><a href="{{ url_for('shoplists.shoppingLists') }}"><span class="linkfull">{{ _('Shopping Lists') }}</span><span class="linkshort">{{ _('Lists') }}</span></a></li
+				><li class="mealplanner-active"><a href="{{ url_for('mealplanner.mealPlanner') }}"><span class="linkfull">{{ _('Meal Planner') }}</span><span class="linkshort">{{ _('Planner') }}</span></a></li
+				><li class="about-active"><a href="{{ url_for('account.about') }}"><span>{{ _('About') }}</span></a></li>
+			</ul>
+			<div class="scroll-arrow scroll-right"><img id="scroll-right" src="navbar-scroll-right-light.png" alt="Scroll Right"></div>
+        	<div class="scroll-arrow scroll-left"><img id="scroll-left" src="navbar-scroll-left-light.png" alt="Scroll Left"></div>
+		</div>
 		<nav class="navright" onclick="toggleDropdown()">
 			{% if current_user.pref_picture == 0 and current_user.pref_color == 0 %}
 			<div class="navrighticon icon-1-blue"></div>

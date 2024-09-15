@@ -141,6 +141,8 @@ function themeElements() {
     const accountPurple = document.getElementById("account-purple");
     const accountPink = document.getElementById("account-pink");
 	var informationImages = document.querySelectorAll('img.inf-image');
+	const scrollRight = document.getElementById("scroll-right");
+	const scrollLeft = document.getElementById("scroll-left");
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
         // If light, switch icons
@@ -169,6 +171,8 @@ function themeElements() {
 		if (informationImages !== null) {
             informationImages.forEach(function(img) {img.src = "/static/information-light.png";});
         }
+		if (scrollRight !== null) {scrollRight.src = "/static/navbar-scroll-right-light.png";}
+		if (scrollLeft !== null) {scrollLeft.src = "/static/navbar-scroll-left-light.png";}
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
@@ -198,5 +202,7 @@ function themeElements() {
 		if (informationImages !== null) {
             informationImages.forEach(function(img) {img.src = "/static/information-dark.png";});
         }
+		if (scrollRight !== null) {scrollRight.src = "/static/navbar-scroll-right-dark.png";}
+		if (scrollLeft !== null) {scrollLeft.src = "/static/navbar-scroll-left-dark.png";}
     }
 }

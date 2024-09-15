@@ -291,7 +291,7 @@ msgstr "Resultados de la búsqueda en la página Explorar, aquí se muestran tod
 
 #: app/explore/routes.py:146
 msgid "All Recipes 🍽️"
-msgstr "Todas las Recetas 🍽️"
+msgstr "Todas Recetas 🍽️"
 
 #: app/explore/routes.py:149 app/templates/explore.html:31
 msgid "30 Minute"
@@ -485,7 +485,7 @@ msgstr "Añadir una categoría"
 #: app/templates/categories.html:13 app/templates/explore.html:154
 #: app/templates/favorites.html:13
 msgid "All Recipes"
-msgstr "Todas Recetas"
+msgstr "Recetas"
 
 #: app/myrecipes/routes.py:212
 msgid "View all recipes saved in your account. This is the home page of the Tamari web app."
@@ -652,7 +652,7 @@ msgstr "Añadir una Lista"
 
 #: app/shoplists/forms.py:22
 msgid "Add Item"
-msgstr "Añadir Artículo"
+msgstr "Añadir"
 
 #: app/shoplists/routes.py:45
 msgid "the shopping list you entered already exists."

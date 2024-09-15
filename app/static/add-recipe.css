@@ -147,7 +147,15 @@
 }
 .form-group2 div:nth-child(1) {margin-right: 2.5%;}
 .form-group3 {display: flow-root; margin-bottom: 10px; min-height: 76px; width: 100%;}
-.form-group3 label {line-height: var(--line-height-form-group-label);}
+.form-group3 label {
+	display: inline-block;
+	line-height: var(--line-height-form-group-label);
+	white-space: nowrap;
+	margin-bottom: -4px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 100%;
+}
 .form-group3 div {
 	float: left;
 	width: 31.666%;

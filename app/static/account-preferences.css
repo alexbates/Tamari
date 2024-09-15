@@ -52,8 +52,6 @@
 	--height-recipenav: 57px;
 	--height-recbtn: 30px;
 	--margin-recbtn: 14px;
-	--width-recbtn1: 118px;
-	--width-recbtn2: 82px;
 	--font-select: 16px;
 	--height-select: 38px;
 	--line-height-userstats: inherit;
@@ -72,8 +70,6 @@
 	--height-recipenav: 57px;
 	--height-recbtn: 30px;
 	--margin-recbtn: 14px;
-	--width-recbtn1: 118px;
-	--width-recbtn2: 82px;
 	--font-select: 16px;
 	--height-select: 38px;
 	--line-height-userstats: inherit;
@@ -92,8 +88,6 @@
 	--height-recipenav: 59px;
 	--height-recbtn: 32px;
 	--margin-recbtn: 13px;
-	--width-recbtn1: 128px;
-	--width-recbtn2: 88px;
 	--font-select: 18px;
 	--height-select: 40px;
 	--line-height-userstats: 18px;
@@ -145,12 +139,11 @@
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
 	margin-top: var(--margin-recbtn);
-	padding: 0;
+	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
 	-webkit-font-smoothing: subpixel-antialiased;
 }
 .recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-.recbtn1 {width: var(--width-recbtn1);}
-.recbtn2 {width: var(--width-recbtn2);}
+/* add .recbtn1 {} and .recbtn2 {} and .recbtn3 {} here if needed */
 .userstats {
 	background-color: var(--color-userstats-bg);
 	border-radius: 10px;

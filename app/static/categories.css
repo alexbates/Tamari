@@ -536,9 +536,8 @@
 	font-size: var(--font-btn-default);
 	height: 38px;
 	margin-top: 14px;
-	padding: 0;
+	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 64px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }

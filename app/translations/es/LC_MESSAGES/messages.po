@@ -1476,7 +1476,7 @@ msgstr "Mantenerme registrado"
 
 #: app/templates/login.html:73
 msgid "Reset Password?"
-msgstr "¿Restablecer Contraseña?"
+msgstr "¿Restablecer?"
 
 #: app/templates/meal-planner-completed.html:12
 #: app/templates/meal-planner-upcoming.html:12

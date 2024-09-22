@@ -479,7 +479,7 @@ msgstr "Speichern"
 
 #: app/myrecipes/forms.py:34 app/templates/categories.html:61
 msgid "Add a Category"
-msgstr "Eine Kategorie hinzufügen"
+msgstr "Kategorie Hinzufügen"
 
 #: app/myrecipes/routes.py:211 app/templates/all-recipes.html:13
 #: app/templates/categories.html:13 app/templates/explore.html:154
@@ -652,7 +652,7 @@ msgstr "Eine Liste hinzufügen"
 
 #: app/shoplists/forms.py:22
 msgid "Add Item"
-msgstr "Hinzufügen"
+msgstr "Neu"
 
 #: app/shoplists/routes.py:45
 msgid "the shopping list you entered already exists."
@@ -1238,7 +1238,7 @@ msgstr "Ein neues Rezept hinzufügen"
 #: app/templates/all-recipes.html:39 app/templates/all-recipes.html:40
 #: app/templates/favorites.html:39 app/templates/favorites.html:40
 msgid "Add Recipe"
-msgstr "Rezept Hinzufügen"
+msgstr "Hinzufügen"
 
 #: app/templates/all-recipes.html:43 app/templates/explore-search.html:14
 #: app/templates/explore-search.html:50 app/templates/favorites.html:43
@@ -1475,7 +1475,7 @@ msgstr "Angemeldet bleiben"
 
 #: app/templates/login.html:73
 msgid "Reset Password?"
-msgstr "Passwort Zurücksetzen?"
+msgstr "Zurücksetzen?"
 
 #: app/templates/meal-planner-completed.html:12
 #: app/templates/meal-planner-upcoming.html:12
@@ -1637,7 +1637,7 @@ msgstr "Essensplaner"
 
 #: app/templates/navbar.html:367
 msgid "Lists"
-msgstr "Verzeichnisse"
+msgstr "Einkaufslisten"
 
 #: app/templates/navbar.html:368
 msgid "Planner"

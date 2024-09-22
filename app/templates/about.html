@@ -9,7 +9,7 @@
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
 		<p>{{ _('Tamari is open source software provided with GNU General Public License v3.0.') }}</p>
-		<span class="version">{{ _('Version') }} 0.8</span>
+		<span class="version">{{ _('Version') }} 0.9</span>
 		<h3>Credits</h3>
 		<div class="pblock credits">
 			{{ _('Developed by Alex Bates.') }}<br><br>
@@ -20,6 +20,7 @@
 		</div>
 		<h3>{{ _('Changelog') }}</h3>
 		<div class="pblock changelog">
+			<b>{{ _('Version') }} 0.9:</b> Split Account page into two pages, Account Preferences and Account History. Account History displays a timeline of account events including account creation, email change, password change, recipe creation, and recipe edits. Added initial support for internationalization and localization. The first two supported languages are Spanish and German.<br><br>
 			<b>{{ _('Version') }} 0.8:</b> Developed UI scaling, users can select a preference on Account page that applies app wide. Implemented keyboard shortcuts that can be used to quickly highlight search boxes or navigate between pages. Improved app accessibility to allow navigating with TAB key. Added automated data rebuilding for "demo@tamariapp.com" demo account every 30 minutes. Redesigned Meal Planner with a "Completed" page that displays past meals and meal statistics.<br><br>
 			<b>{{ _('Version') }} 0.7:</b> In My Recipes, added a third display option called 'Details' and added three new 'Sort By' options. Created an Autofill from URL feature on Add Recipe page. Developed client side recipe export (.ZIP download) and import (restore from backup) to give users better control of account data. Increased font size of Recipe Detail page when viewing on smartphone.<br><br>
 			<b>{{ _('Version') }} 0.6:</b> Created an Information modal on Recipe Detail page. Redesigned the Explore page, it now displays pictures when browsing the recipe list. Explore recipe count has increased from 36,000 to 109,000, supported websites has increased from 3 to 50, and categories have increased from 7 to 16. Optional rate limiting has been implemented for use with public Tamari instances.<br><br>

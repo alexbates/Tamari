@@ -1,0 +1,1786 @@
+# German translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-09-02 20:27-0400\n"
+"PO-Revision-Date: 2024-09-22 10:34-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: de <LL@li.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: app/account/email.py:11
+msgid "Reset Your Password"
+msgstr "Ihr Passwort Zurücksetzen"
+
+#: app/account/forms.py:9 app/account/forms.py:15 app/account/forms.py:27
+#: app/account/forms.py:49 app/templates/account-preferences-bak.html:164
+#: app/templates/account-preferences-bak.html:165
+#: app/templates/account-preferences.html:164
+#: app/templates/account-preferences.html:165 app/templates/login.html:54
+#: app/templates/register.html:39 app/templates/request-reset.html:38
+msgid "Email"
+msgstr "E-Mail"
+
+#: app/account/forms.py:10 app/account/forms.py:16 app/account/forms.py:53
+#: app/templates/login.html:60 app/templates/register.html:45
+#: app/templates/set-password.html:38
+msgid "Password"
+msgstr "Passwort"
+
+#: app/account/forms.py:11
+msgid "Remember Me"
+msgstr "Merken"
+
+#: app/account/forms.py:12 app/account/routes.py:67
+#: app/templates/login.html:36 app/templates/register.html:34
+msgid "Sign In"
+msgstr "Eintragen"
+
+#: app/account/forms.py:16 app/account/forms.py:53
+msgid "Must be 3-64 characters long."
+msgstr "Muss 3 bis 64 Zeichen lang sein."
+
+#: app/account/forms.py:17 app/account/forms.py:54
+#: app/templates/register.html:51 app/templates/set-password.html:44
+msgid "Repeat Password"
+msgstr "Passwort Wiederholen"
+
+#: app/account/forms.py:18 app/account/routes.py:145
+#: app/templates/login.html:37 app/templates/navbar.html:413
+#: app/templates/navbar.html:474 app/templates/register.html:35
+msgid "Register"
+msgstr "Register"
+
+#: app/account/forms.py:24 app/account/forms.py:41
+msgid "Please use a different email address."
+msgstr "Bitte verwenden Sie eine andere E-Mail-Adresse."
+
+#: app/account/forms.py:28 app/templates/account-preferences-bak.html:171
+#: app/templates/account-preferences-bak.html:172
+#: app/templates/account-preferences.html:171
+#: app/templates/account-preferences.html:172
+msgid "New Password"
+msgstr "Neues Passwort"
+
+#: app/account/forms.py:29 app/templates/account-preferences-bak.html:178
+#: app/templates/account-preferences-bak.html:179
+#: app/templates/account-preferences.html:178
+#: app/templates/account-preferences.html:179
+msgid "Confirm Password"
+msgstr "Passwrot Bestätigen"
+
+#: app/account/forms.py:30 app/account/forms.py:46
+msgid "Save Changes"
+msgstr "Speichern"
+
+#: app/account/forms.py:50
+msgid "Request Reset"
+msgstr "Reset Anfordern"
+
+#: app/account/forms.py:55 app/account/routes.py:707
+msgid "Set Password"
+msgstr "Passwort Festlegen"
+
+#: app/account/forms.py:58 app/explore/forms.py:18 app/explore/forms.py:21
+#: app/myrecipes/forms.py:35 app/myrecipes/forms.py:56
+#: app/myrecipes/forms.py:60 app/myrecipes/forms.py:85
+#: app/myrecipes/forms.py:89 app/myrecipes/forms.py:92
+#: app/shoplists/forms.py:18 app/shoplists/forms.py:25
+msgid "Submit"
+msgstr "Einreichen"
+
+#: app/account/routes.py:41 app/templates/navbar.html:356
+#: app/templates/navbar.html:369 app/templates/navbar.html:431
+msgid "About"
+msgstr "Über"
+
+#: app/account/routes.py:42
+msgid "Credits, changelog, and other information about the Tamari web app."
+msgstr "Credits, Änderungsprotokoll und andere Informationen über die Tamari-Webanwendung."
+
+#: app/account/routes.py:60
+msgid "Invalid email or password"
+msgstr "Ungültige E-Mail oder Passwort"
+
+#: app/account/routes.py:67
+msgid "Sign In to the Tamari web app."
+msgstr "Melden Sie sich bei der Tamari Web-App an."
+
+#: app/account/routes.py:73
+msgid "You have successfully signed out."
+msgstr "Sie haben sich erfolgreich abgemeldet."
+
+#: app/account/routes.py:99
+msgid "email is already taken."
+msgstr "E-Mail ist bereits vergeben."
+
+#: app/account/routes.py:102 app/account/routes.py:205
+msgid "email is invalid."
+msgstr "E-Mail ist ungültig."
+
+#: app/account/routes.py:105 app/account/routes.py:202
+msgid "passwords do not match."
+msgstr "Passwörter stimmen nicht überein."
+
+#: app/account/routes.py:108
+msgid "password must be 3-64 characters."
+msgstr "Passwort 3-64 Zeichen."
+
+#: app/account/routes.py:143
+msgid "You have been registered! Please sign in."
+msgstr "Sie wurden registriert! Bitte melden Sie sich an."
+
+#: app/account/routes.py:146
+msgid "Register an account with the Tamari web app."
+msgstr "Registrieren Sie ein Konto in der Tamari-Webanwendung."
+
+#: app/account/routes.py:175
+msgid "account changes restricted for demo account."
+msgstr "Kontoänderungen für Demokonto eingeschränkt."
+
+#: app/account/routes.py:208
+msgid "password must be between 3 and 64 characters."
+msgstr "Das Passwort muss zwischen 3 und 64 Zeichen lang sein."
+
+#: app/account/routes.py:220 app/account/routes.py:250
+msgid "Your changes have been saved."
+msgstr "Ihre Änderungen wurden gespeichert."
+
+#: app/account/routes.py:225
+msgid "No changes were made."
+msgstr "Es wurden keine Änderungen vorgenommen."
+
+#: app/account/routes.py:234
+msgid "please select theme and scaling."
+msgstr "bitte Thema und Skalierung auswählen."
+
+#: app/account/routes.py:305
+msgid "data import restricted for demo account."
+msgstr "Datenimport für Demokonto eingeschränkt."
+
+#: app/account/routes.py:322
+msgid "backup is invalid, _recipes.csv in ZIP is missing columns."
+msgstr "Sicherung ist ungültig, _recipes.csv im ZIP enthält keine Spalten."
+
+#: app/account/routes.py:490
+msgid "No new recipes added. All recipes in the backup are already present."
+msgstr "Es wurden keine neuen Rezepte hinzugefügt. Alle Rezepte im Backup sind bereits vorhanden."
+
+#: app/account/routes.py:492
+msgid "Success: "
+msgstr "Erfolg:"
+
+#: app/account/routes.py:492
+msgid " recipes have been imported."
+msgstr " Die Rezepte wurden importiert."
+
+#: app/account/routes.py:494
+msgid "backup is invalid, _recipes.csv is missing from ZIP."
+msgstr "Sicherung ist ungültig, _recipes.csv fehlt im ZIP."
+
+#: app/account/routes.py:495
+msgid "Account Preferences"
+msgstr "Konto-Einstellungen"
+
+#: app/account/routes.py:496
+msgid "View and modify account preferences for your Tamari account."
+msgstr "Anzeigen und Ändern der Kontoeinstellungen für Ihr Tamari-Konto."
+
+#: app/account/routes.py:535
+msgid "Category: "
+msgstr "Kategorie:"
+
+#: app/account/routes.py:549
+msgid "Account registered with Tamari."
+msgstr "Konto bei Tamari registriert."
+
+#: app/account/routes.py:563
+msgid "New Email: "
+msgstr "Neue E-Mail:"
+
+#: app/account/routes.py:577
+msgid "Changed Tamari password. Devices remained signed in."
+msgstr "Das Tamari-Passwort wurde geändert. Geräte blieben angemeldet."
+
+#: app/account/routes.py:612
+msgid "Account History"
+msgstr "Konto-Geschichte"
+
+#: app/account/routes.py:613
+msgid "Account History displays a timeline of events, or changes to your account."
+msgstr "Der Kontoverlauf zeigt eine Zeitleiste der Ereignisse oder Änderungen an Ihrem Konto an."
+
+#: app/account/routes.py:623
+msgid "account deletion restricted for demo account."
+msgstr "Kontolöschung für Demokonto eingeschränkt."
+
+#: app/account/routes.py:628
+msgid "there was a problem deleting your account"
+msgstr "Es gab ein Problem bei der Löschung Ihres Kontos"
+
+#: app/account/routes.py:667
+msgid "Your account has been deleted."
+msgstr "Ihr Konto wurde gelöscht."
+
+#: app/account/routes.py:681
+msgid "Password reset disabled for demo."
+msgstr "Passwortzurücksetzung für Demo deaktiviert."
+
+#: app/account/routes.py:685
+msgid "Check your email for instructions."
+msgstr "Prüfen Sie Ihre E-Mail auf Anweisungen."
+
+#: app/account/routes.py:687 app/templates/request-reset.html:34
+msgid "Reset Password"
+msgstr "Passwort zurücksetzen"
+
+#: app/account/routes.py:688
+msgid "Reset the password for your Tamari account."
+msgstr "Setzen Sie das Passwort für Ihr Tamari-Konto zurück."
+
+#: app/account/routes.py:695
+msgid "Please sign out before setting a new password."
+msgstr "Bitte melden Sie sich ab, bevor Sie ein neues Passwort festlegen."
+
+#: app/account/routes.py:699
+msgid "Password reset token is invalid."
+msgstr "Das Token zum Zurücksetzen des Passworts ist ungültig."
+
+#: app/account/routes.py:705
+msgid "Your new password has been set."
+msgstr "Ihr neues Passwort wurde festgelegt."
+
+#: app/account/routes.py:708
+msgid "Set a new password for your Tamari account."
+msgstr "Legen Sie ein neues Passwort für Ihr Tamari-Konto fest."
+
+#: app/errors/handlers.py:11
+msgid "The attached photo is too large."
+msgstr "Das angehängte Foto ist zu groß."
+
+#: app/explore/forms.py:12 app/myrecipes/forms.py:15 app/shoplists/forms.py:12
+msgid "Cannot contain <, >, {, }, ;, or *"
+msgstr "Kann nicht <, >, {, }, ;, oder * enthalten"
+
+#: app/explore/routes.py:50 app/templates/navbar.html:353
+#: app/templates/navbar.html:366 app/templates/navbar.html:428
+msgid "Explore"
+msgstr "Erkunden Sie"
+
+#: app/explore/routes.py:51
+msgid "Explore page allows you to browse and search a collection of over 100,000 recipes."
+msgstr "Auf der Seite Erkunden können Sie eine Sammlung von über 100 000 Rezepten durchsuchen."
+
+#: app/explore/routes.py:137
+msgid "Explore Search"
+msgstr "Suche erforschen"
+
+#: app/explore/routes.py:138
+msgid "Search results for the Explore page, all matching recipes are shown here."
+msgstr "Suchergebnisse für die Seite Erkunden, alle passenden Rezepte werden hier angezeigt."
+
+#: app/explore/routes.py:146
+msgid "All Recipes 🍽️"
+msgstr "Alle Rezepte 🍽️"
+
+#: app/explore/routes.py:149 app/templates/explore.html:31
+msgid "30 Minute"
+msgstr "30 Minuten"
+
+#: app/explore/routes.py:152 app/templates/explore.html:36
+#: app/templates/explore.html:39
+msgid "Air Fryer"
+msgstr "Heißluftfritteuse"
+
+#: app/explore/routes.py:155 app/templates/explore.html:44
+#: app/templates/explore.html:47
+msgid "Beef"
+msgstr "Rindfleisch"
+
+#: app/explore/routes.py:158 app/templates/explore.html:52
+#: app/templates/explore.html:55
+msgid "Breakfast"
+msgstr "Frühstück"
+
+#: app/explore/routes.py:161 app/templates/explore.html:60
+#: app/templates/explore.html:63
+msgid "Chicken"
+msgstr "Huhn"
+
+#: app/explore/routes.py:164 app/templates/explore.html:68
+#: app/templates/explore.html:71
+msgid "Dessert"
+msgstr "Nachspeise"
+
+#: app/explore/routes.py:167 app/templates/explore.html:76
+#: app/templates/explore.html:79
+msgid "Dinner"
+msgstr "Abendessen"
+
+#: app/explore/routes.py:170 app/templates/explore.html:84
+#: app/templates/explore.html:87
+msgid "Drinks"
+msgstr "Getränke"
+
+#: app/explore/routes.py:173 app/templates/explore.html:92
+#: app/templates/explore.html:95
+msgid "Low Carb"
+msgstr "Low Carb"
+
+#: app/explore/routes.py:176 app/templates/explore.html:100
+#: app/templates/explore.html:103
+msgid "Lunch"
+msgstr "Mittagessen"
+
+#: app/explore/routes.py:179 app/templates/explore.html:108
+#: app/templates/explore.html:111
+msgid "Salads"
+msgstr "Salate"
+
+#: app/explore/routes.py:182 app/templates/explore.html:116
+#: app/templates/explore.html:119
+msgid "Seafood"
+msgstr "Meeresfrüchte"
+
+#: app/explore/routes.py:185 app/templates/explore.html:124
+#: app/templates/explore.html:127
+msgid "Slow Cooker"
+msgstr "Langsamkocher"
+
+#: app/explore/routes.py:188 app/templates/explore.html:132
+#: app/templates/explore.html:135
+msgid "Snacks"
+msgstr "Imbisse"
+
+#: app/explore/routes.py:191 app/templates/explore.html:140
+#: app/templates/explore.html:143
+msgid "Soup"
+msgstr "Suppe"
+
+#: app/explore/routes.py:194 app/templates/explore.html:148
+#: app/templates/explore.html:151
+msgid "Vegetarian"
+msgstr "Vegetarisch"
+
+#: app/explore/routes.py:197 app/templates/500.html:11
+#: app/templates/explore-group.html:50
+#: app/templates/explore-recipe-detail.html:132
+#: app/templates/explore-recipe-detail.html:138 app/templates/explore.html:180
+#: app/templates/recipe-detail.html:245 app/templates/recipe-detail.html:249
+msgid "Error"
+msgstr "Fehler"
+
+#: app/explore/routes.py:245
+msgid "All recipes are listed for the selected Explore category."
+msgstr "Alle Rezepte werden für die ausgewählte Erkunden-Kategorie aufgelistet."
+
+#: app/explore/routes.py:1376
+msgid "The recipe has been saved to My Recipes."
+msgstr "Das Rezept wurde unter Meine Rezepte gespeichert."
+
+#: app/explore/routes.py:1378
+msgid "The recipe is missing ingredients or instructions and cannot be imported."
+msgstr "Das Rezept enthält keine Zutaten oder Anweisungen und kann nicht importiert werden."
+
+#: app/explore/routes.py:1380
+msgid "This recipe is already saved in My Recipes."
+msgstr "Dieses Rezept ist bereits in Meine Rezepte gespeichert."
+
+#: app/explore/routes.py:1381
+msgid "Explore Recipe Detail"
+msgstr "Rezeptdetails Erkunden"
+
+#: app/explore/routes.py:1382
+msgid "View the details for the selected Explore page recipe."
+msgstr "Zeigen Sie die Details für das ausgewählte Rezept auf der Seite Erkunden an."
+
+#: app/mealplanner/routes.py:70
+msgid "Meal Planner (Upcoming)"
+msgstr "Essensplaner (Demnächst)"
+
+#: app/mealplanner/routes.py:71
+msgid "View recipes planned over the next 30 days in Meal Planner Upcoming."
+msgstr "Rezepte für die nächsten 30 Tage im Essensplaner (Demnächst) anzeigen."
+
+#: app/mealplanner/routes.py:176
+msgid "Meal Planner (Completed)"
+msgstr "Essensplaner (Abgeschlossen)"
+
+#: app/mealplanner/routes.py:177
+msgid "View Recipes that have been completed in the Meal Planner."
+msgstr "Sehen Sie sich die Rezepte an, die im Essenplaner fertiggestellt wurden."
+
+#: app/mealplanner/routes.py:188 app/mealplanner/routes.py:195
+msgid "meal plan does not exist or you lack permission to remove it."
+msgstr "Der Essensplan existiert nicht oder Sie haben keine Erlaubnis, ihn zu entfernen."
+
+#: app/mealplanner/routes.py:193
+msgid "The meal plan has been deleted."
+msgstr "Der Speiseplan wurde gelöscht."
+
+#: app/myrecipes/forms.py:24
+msgid "Invalid URL."
+msgstr "Ungültige URL."
+
+#: app/myrecipes/forms.py:29
+msgid "Recipe Size"
+msgstr "Größe des Rezepts"
+
+#: app/myrecipes/forms.py:29 app/templates/account-preferences-bak.html:93
+#: app/templates/account-preferences.html:93
+msgid "Large"
+msgstr "Groß"
+
+#: app/myrecipes/forms.py:29
+msgid "Small"
+msgstr "Klein"
+
+#: app/myrecipes/forms.py:29
+msgid "Details"
+msgstr "Einzelheiten"
+
+#: app/myrecipes/forms.py:30
+msgid "Title"
+msgstr "Titel"
+
+#: app/myrecipes/forms.py:30
+msgid "Title (desc)"
+msgstr "Titel (absteigend)"
+
+#: app/myrecipes/forms.py:30
+msgid "Category"
+msgstr "Kategorie"
+
+#: app/myrecipes/forms.py:30
+msgid "Category (desc)"
+msgstr "Kategorie (absteigend)"
+
+#: app/myrecipes/forms.py:30
+msgid "Oldest first"
+msgstr "Älteste zuerst"
+
+#: app/myrecipes/forms.py:30
+msgid "Newest first"
+msgstr "Neuestes zuerst"
+
+#: app/myrecipes/forms.py:31 app/myrecipes/forms.py:81
+msgid "Save"
+msgstr "Speichern"
+
+#: app/myrecipes/forms.py:34 app/templates/categories.html:61
+msgid "Add a Category"
+msgstr "Eine Kategorie hinzufügen"
+
+#: app/myrecipes/routes.py:211 app/templates/all-recipes.html:13
+#: app/templates/categories.html:13 app/templates/explore.html:154
+#: app/templates/favorites.html:13
+msgid "All Recipes"
+msgstr "Alle Rezepte"
+
+#: app/myrecipes/routes.py:212
+msgid "View all recipes saved in your account. This is the home page of the Tamari web app."
+msgstr "Alle in Ihrem Konto gespeicherten Rezepte anzeigen. Dies ist die Startseite der Tamari Web-App."
+
+#: app/myrecipes/routes.py:341 app/templates/all-recipes.html:14
+#: app/templates/categories.html:14 app/templates/favorites.html:14
+msgid "Favorites"
+msgstr "Favoriten"
+
+#: app/myrecipes/routes.py:342
+msgid "View all recipes that have been marked as favorites in your Tamari account."
+msgstr "Sehen Sie sich alle Rezepte an, die Sie in Ihrem Tamari-Konto als Favoriten markiert haben."
+
+#: app/myrecipes/routes.py:351 app/myrecipes/routes.py:364
+#: app/myrecipes/routes.py:377 app/myrecipes/routes.py:390
+msgid "recipe does not exist or you do not have permission to modify it."
+msgstr "Das Rezept existiert nicht oder Sie haben keine Berechtigung, es zu ändern."
+
+#: app/myrecipes/routes.py:355
+msgid "This recipe has been added to your Favorites."
+msgstr "Dieses Rezept wurde zu Ihren Favoriten hinzugefügt."
+
+#: app/myrecipes/routes.py:368
+msgid "This recipe has been removed from your Favorites."
+msgstr "Dieses Rezept wurde aus Ihren Favoriten entfernt."
+
+#: app/myrecipes/routes.py:381
+msgid "You can now share the URL for this recipe."
+msgstr "Sie können jetzt die URL für dieses Rezept freigeben."
+
+#: app/myrecipes/routes.py:394
+msgid "The recipe URL can no longer be shared."
+msgstr "Die Rezept-URL kann nicht mehr weitergegeben werden."
+
+#: app/myrecipes/routes.py:544
+msgid " items have been added to "
+msgstr " Artikel wurden hinzugefügt zu"
+
+#: app/myrecipes/routes.py:544
+msgid " shopping list."
+msgstr " Einkaufsliste."
+
+#: app/myrecipes/routes.py:547
+msgid "all ingredients from this recipe are already on your shopping list."
+msgstr "alle Zutaten dieses Rezepts bereits auf Ihrer Einkaufsliste stehen."
+
+#: app/myrecipes/routes.py:550
+msgid "please select a shopping list."
+msgstr "Bitte wählen Sie eine Einkaufsliste aus."
+
+#: app/myrecipes/routes.py:558
+msgid "please select a date."
+msgstr "Bitte wählen Sie ein Datum."
+
+#: app/myrecipes/routes.py:573
+msgid "This recipe has been added to your meal plan."
+msgstr "Dieses Rezept wurde in Ihren Speiseplan aufgenommen."
+
+#: app/myrecipes/routes.py:575
+msgid "the selected date in invalid."
+msgstr "das ausgewählte Datum ist ungültig."
+
+#: app/myrecipes/routes.py:577
+msgid "this recipe is already scheduled for the selected date."
+msgstr "dieses Rezept ist bereits für das ausgewählte Datum vorgesehen."
+
+#: app/myrecipes/routes.py:579
+msgid "View details for the selected recipe saved in My Recipes."
+msgstr "Zeigt die Details des ausgewählten Rezepts an, das unter Meine Rezepte gespeichert ist."
+
+#: app/myrecipes/routes.py:785
+msgid "the category you entered already exists."
+msgstr "die von Ihnen eingegebene Kategorie bereits existiert."
+
+#: app/myrecipes/routes.py:787
+msgid "you are limited to 40 categories."
+msgstr "sind Sie auf 40 Kategorien beschränkt."
+
+#: app/myrecipes/routes.py:798
+msgid "The category has been added."
+msgstr "Die Kategorie wurde hinzugefügt."
+
+#: app/myrecipes/routes.py:800 app/templates/all-recipes.html:15
+#: app/templates/categories.html:15 app/templates/favorites.html:15
+msgid "Categories"
+msgstr "Kategorien"
+
+#: app/myrecipes/routes.py:801
+msgid "Displays a list of your saved categories and all recipes saved in the selected category."
+msgstr "Zeigt eine Liste Ihrer gespeicherten Kategorien und aller in der ausgewählten Kategorie gespeicherten Rezepte an."
+
+#: app/myrecipes/routes.py:915
+msgid "Displays a list of your saved categories and all recipes in the selected category."
+msgstr "Zeigt eine Liste Ihrer gespeicherten Kategorien und aller Rezepte in der ausgewählten Kategorie an."
+
+#: app/myrecipes/routes.py:927
+msgid "category does not exist or you do not have permission to remove it."
+msgstr "Kategorie nicht existiert oder Sie nicht berechtigt sind, sie zu entfernen."
+
+#: app/myrecipes/routes.py:929
+msgid "Miscellaneous cannot be deleted because it is the default category."
+msgstr "Miscellaneous kann nicht gelöscht werden, da es die Standardkategorie ist."
+
+#: app/myrecipes/routes.py:937
+msgid "Category has been removed."
+msgstr "Die Kategorie wurde entfernt."
+
+#: app/myrecipes/routes.py:939
+msgid "category does not exist."
+msgstr "Kategorie gibt es nicht."
+
+#: app/myrecipes/routes.py:949
+msgid "recipe does not exist or you do not have permission to delete it."
+msgstr "Das Rezept existiert nicht oder Sie haben keine Berechtigung, es zu löschen."
+
+#: app/myrecipes/routes.py:973
+msgid "Recipe has been removed."
+msgstr "Das Rezept wurde entfernt."
+
+#: app/myrecipes/routes.py:1527
+msgid "The form was autofilled successfully."
+msgstr "Das Formular wurde erfolgreich automatisch ausgefüllt."
+
+#: app/myrecipes/routes.py:1529
+msgid "Some fields have been autofilled, please manually complete the remaining."
+msgstr "Einige Felder wurden bereits automatisch ausgefüllt, die übrigen füllen Sie bitte manuell aus."
+
+#: app/myrecipes/routes.py:1531
+msgid "Error: could not autofill from the given URL."
+msgstr "Error: Die angegebene URL konnte nicht automatisch ausgefüllt werden."
+
+#: app/myrecipes/routes.py:1628
+msgid "The recipe has been added."
+msgstr "Das Rezept wurde hinzugefügt."
+
+#: app/myrecipes/routes.py:1630 app/templates/add-recipe.html:43
+msgid "Add a New Recipe"
+msgstr "Ein neues Rezept Hinzufügen"
+
+#: app/myrecipes/routes.py:1631
+msgid "Use the provided form to add a new recipe to your account."
+msgstr "Verwenden Sie das vorgesehene Formular, um ein neues Rezept zu Ihrem Konto hinzuzufügen."
+
+#: app/myrecipes/routes.py:1649
+msgid "recipe does not exist or you do not have permission to edit it."
+msgstr "Das Rezept existiert nicht oder Sie haben keine Berechtigung, es zu bearbeiten."
+
+#: app/myrecipes/routes.py:1761
+msgid "The recipe has been updated."
+msgstr "Das Rezept wurde aktualisiert."
+
+#: app/myrecipes/routes.py:1763 app/templates/recipe-detail.html:188
+msgid "Edit Recipe"
+msgstr "Rezept bearbeiten"
+
+#: app/myrecipes/routes.py:1764
+msgid "Use the provided form to edit details for the requested recipe."
+msgstr "Verwenden Sie das bereitgestellte Formular, um Details für das gewünschte Rezept zu bearbeiten."
+
+#: app/shoplists/forms.py:17 app/templates/shopping-lists.html:35
+msgid "Add a List"
+msgstr "Eine Liste hinzufügen"
+
+#: app/shoplists/forms.py:22
+msgid "Add Item"
+msgstr "Hinzufügen"
+
+#: app/shoplists/routes.py:45
+msgid "the shopping list you entered already exists."
+msgstr "die von Ihnen eingegebene Einkaufsliste bereits existiert."
+
+#: app/shoplists/routes.py:47
+msgid "you are limited to 20 shopping lists."
+msgstr "sind Sie auf 20 Einkaufslisten beschränkt."
+
+#: app/shoplists/routes.py:58
+msgid "The shopping list has been added."
+msgstr "Die Einkaufsliste wurde hinzugefügt."
+
+#: app/shoplists/routes.py:62 app/shoplists/routes.py:100
+msgid "the list item you entered already exists."
+msgstr "der von Ihnen eingegebene Listeneintrag bereits existiert."
+
+#: app/shoplists/routes.py:64
+msgid "you are limited to 100 items per list."
+msgstr "Sie sind auf 100 Einträge pro Liste beschränkt."
+
+#: app/shoplists/routes.py:75 app/shoplists/routes.py:113
+msgid "The item has been added."
+msgstr "Der Artikel wurde hinzugefügt."
+
+#: app/shoplists/routes.py:77 app/templates/navbar.html:354
+#: app/templates/navbar.html:367 app/templates/navbar.html:429
+msgid "Shopping Lists"
+msgstr "Einkaufslisten"
+
+#: app/shoplists/routes.py:78
+msgid "Display all saved shopping lists and list items for the selected list."
+msgstr "Anzeige aller gespeicherten Einkaufslisten und Listenpositionen für die ausgewählte Liste."
+
+#: app/shoplists/routes.py:89
+msgid "the list you requested does not exist."
+msgstr "die von Ihnen angeforderte Liste existiert nicht."
+
+#: app/shoplists/routes.py:102
+msgid "you are limited to 70 items per list."
+msgstr "Sie sind auf 70 Einträge pro Liste beschränkt."
+
+#: app/shoplists/routes.py:116
+msgid "Display all list items for the selected shopping list."
+msgstr "Alle Listenpositionen für die ausgewählte Einkaufsliste anzeigen."
+
+#: app/shoplists/routes.py:127 app/shoplists/routes.py:138
+msgid "shopping list does not exist."
+msgstr "Einkaufsliste gibt es nicht."
+
+#: app/shoplists/routes.py:129
+msgid "cannot be deleted because it is the default shopping list."
+msgstr "kann nicht gelöscht werden, da sie die Standardeinkaufsliste ist."
+
+#: app/shoplists/routes.py:136
+msgid "Shopping list has been removed."
+msgstr "Die Einkaufsliste wurde entfernt."
+
+#: app/shoplists/routes.py:151 app/shoplists/routes.py:158
+#: app/shoplists/routes.py:171 app/shoplists/routes.py:181
+msgid "item does not exist."
+msgstr "Element nicht existiert."
+
+#: app/shoplists/routes.py:156
+msgid "The item has been removed."
+msgstr "Der Artikel wurde entfernt."
+
+#: app/templates/404.html:11
+msgid "Not Found"
+msgstr "Nicht gefunden"
+
+#: app/templates/404.html:12
+msgid "The page you requested was not found."
+msgstr "Die von Ihnen angeforderte Seite wurde nicht gefunden."
+
+#: app/templates/404.html:12 app/templates/500.html:12
+msgid "Go home."
+msgstr "Gehen Sie nach Hause."
+
+#: app/templates/500.html:12
+msgid "An unexpected error has occurred. Sorry for the inconvenience!"
+msgstr "Es ist ein unerwarteter Fehler aufgetreten. Wir entschuldigen uns für die Unannehmlichkeiten!"
+
+#: app/templates/about.html:11
+msgid "Tamari is open source software provided with GNU General Public License v3.0."
+msgstr "Tamari ist quelloffene Software, die unter der GNU General Public License v3.0 zur Verfügung gestellt wird."
+
+#: app/templates/about.html:12 app/templates/about.html:23
+#: app/templates/about.html:24 app/templates/about.html:25
+#: app/templates/about.html:26 app/templates/about.html:27
+#: app/templates/about.html:28 app/templates/about.html:29
+#: app/templates/about.html:30
+msgid "Version"
+msgstr "Version"
+
+#: app/templates/about.html:15
+msgid "Developed by Alex Bates."
+msgstr "Entwickelt von Alex Bates."
+
+#: app/templates/about.html:16
+msgid "Profile picture and Explore category icons designed by Arsyadi Yulian."
+msgstr "Profilbild und Erkundungskategorie-Symbole entworfen von Arsyadi Yulian."
+
+#: app/templates/about.html:17
+msgid "Icons used by buttons and default recipe photos are licensed via the Noun Project."
+msgstr "Die von den Schaltflächen und den Standardrezeptfotos verwendeten Icons sind über das Noun Project lizenziert."
+
+#: app/templates/about.html:18
+msgid "Inter font is licensed under the SIL Open Font License 1.1."
+msgstr "Die Schriftart Inter ist unter der SIL Open Font License 1.1 lizenziert."
+
+#: app/templates/about.html:19
+msgid "The jQuery library is licensed under the MIT License."
+msgstr "Die jQuery-Bibliothek ist unter der MIT-Lizenz lizenziert."
+
+#: app/templates/about.html:21
+msgid "Changelog"
+msgstr "Änderungsliste"
+
+#: app/templates/account-history.html:11
+#: app/templates/account-preferences-bak.html:11
+#: app/templates/account-preferences.html:11 app/templates/navbar.html:357
+#: app/templates/navbar.html:406 app/templates/navbar.html:435
+msgid "My Account"
+msgstr "Mein Konto"
+
+#: app/templates/account-history.html:13
+#: app/templates/account-preferences-bak.html:13
+#: app/templates/account-preferences.html:13
+msgid "Preferences"
+msgstr "Präferenzen"
+
+#: app/templates/account-history.html:13
+#: app/templates/account-preferences-bak.html:13
+#: app/templates/account-preferences.html:13
+msgid "Navigate to Account Preferences"
+msgstr "Navigieren Sie zu Kontoeinstellungen"
+
+#: app/templates/account-history.html:14
+#: app/templates/account-preferences-bak.html:14
+#: app/templates/account-preferences.html:14
+msgid "History"
+msgstr "Geschichte"
+
+#: app/templates/account-history.html:14
+#: app/templates/account-preferences-bak.html:14
+#: app/templates/account-preferences.html:14
+msgid "Navigate to Account History"
+msgstr "Zu Kontoverlauf navigieren"
+
+#: app/templates/account-history.html:34 app/templates/account-history.html:45
+msgid "This list displays changes to recipes and your account. To view Meal Plan history, go to Meal Planner Completed."
+msgstr "Diese Liste zeigt Änderungen an Rezepten und Ihrem Konto an. Um den Verlauf des Essensplans anzuzeigen, gehen Sie zu Essenplaner Abgeschlossen."
+
+#: app/templates/account-history.html:110 app/templates/all-recipes.html:142
+#: app/templates/categories.html:162 app/templates/explore-group.html:35
+#: app/templates/explore-search.html:35 app/templates/favorites.html:123
+#: app/templates/mobile-category.html:106
+msgid "Navigate to previous page"
+msgstr "Zur vorherigen Seite navigieren"
+
+#: app/templates/account-history.html:111
+#: app/templates/account-history.html:112 app/templates/all-recipes.html:143
+#: app/templates/all-recipes.html:144 app/templates/categories.html:163
+#: app/templates/categories.html:164 app/templates/explore-group.html:36
+#: app/templates/explore-group.html:37 app/templates/explore-search.html:36
+#: app/templates/explore-search.html:37 app/templates/favorites.html:124
+#: app/templates/favorites.html:125 app/templates/mobile-category.html:107
+#: app/templates/mobile-category.html:108
+msgid "Previous"
+msgstr "Vorherige"
+
+#: app/templates/account-history.html:116 app/templates/all-recipes.html:148
+#: app/templates/categories.html:168 app/templates/explore-group.html:41
+#: app/templates/explore-search.html:41 app/templates/favorites.html:129
+#: app/templates/mobile-category.html:112
+msgid "Navigate to next page"
+msgstr "Zur nächsten Seite navigieren"
+
+#: app/templates/account-history.html:117
+#: app/templates/account-history.html:118 app/templates/all-recipes.html:149
+#: app/templates/all-recipes.html:150 app/templates/categories.html:169
+#: app/templates/categories.html:170 app/templates/explore-group.html:42
+#: app/templates/explore-group.html:43 app/templates/explore-search.html:42
+#: app/templates/explore-search.html:43 app/templates/favorites.html:130
+#: app/templates/favorites.html:131 app/templates/mobile-category.html:113
+#: app/templates/mobile-category.html:114
+msgid "Next"
+msgstr "Weiter"
+
+#: app/templates/account-preferences-bak.html:35
+#: app/templates/account-preferences.html:35
+msgid "User Stats"
+msgstr "Benutzer-Statistiken"
+
+#: app/templates/account-preferences-bak.html:73
+#: app/templates/account-preferences.html:73
+msgid "Registered"
+msgstr "Registriert"
+
+#: app/templates/account-preferences-bak.html:74
+#: app/templates/account-preferences.html:74
+msgid "Last Visit"
+msgstr "Letzter Besuch"
+
+#: app/templates/account-preferences-bak.html:75
+#: app/templates/account-preferences.html:75
+#, python-format
+msgid "You have %(rec_count)d recipes saved."
+msgstr "Sie haben %(rec_count)d Rezepte gespeichert."
+
+#: app/templates/account-preferences-bak.html:79
+#: app/templates/account-preferences.html:79
+msgid "Select Theme"
+msgstr "Thema auswählen"
+
+#: app/templates/account-preferences-bak.html:82
+#: app/templates/account-preferences-bak.html:91
+#: app/templates/account-preferences.html:82
+#: app/templates/account-preferences.html:91 app/templates/add-recipe.html:57
+#: app/templates/edit-recipe.html:57 app/templates/recipe-detail.html:22
+#: app/templates/recipe-detail.html:41
+msgid "Choose here"
+msgstr "Wählen Sie hier"
+
+#: app/templates/account-preferences-bak.html:83
+#: app/templates/account-preferences.html:83
+msgid "System Default"
+msgstr "Systemvoreinstellung"
+
+#: app/templates/account-preferences-bak.html:84
+#: app/templates/account-preferences.html:84
+msgid "Light"
+msgstr "Licht"
+
+#: app/templates/account-preferences-bak.html:85
+#: app/templates/account-preferences.html:85
+msgid "Dark"
+msgstr "Dunkelheit"
+
+#: app/templates/account-preferences-bak.html:88
+#: app/templates/account-preferences.html:88
+msgid "Font Size and Scaling"
+msgstr "Schriftgröße und Skalierung"
+
+#: app/templates/account-preferences-bak.html:92
+#: app/templates/account-preferences.html:92
+msgid "Normal"
+msgstr "Normal"
+
+#: app/templates/account-preferences-bak.html:98
+#: app/templates/account-preferences-bak.html:102
+#: app/templates/account-preferences-bak.html:106
+#: app/templates/account-preferences-bak.html:110
+#: app/templates/account-preferences.html:98
+#: app/templates/account-preferences.html:102
+#: app/templates/account-preferences.html:106
+#: app/templates/account-preferences.html:110
+msgid "Select Profile Picture"
+msgstr "Profilbild auswählen"
+
+#: app/templates/account-preferences-bak.html:100
+#: app/templates/account-preferences-bak.html:104
+#: app/templates/account-preferences-bak.html:108
+#: app/templates/account-preferences-bak.html:112
+#: app/templates/account-preferences.html:100
+#: app/templates/account-preferences.html:104
+#: app/templates/account-preferences.html:108
+#: app/templates/account-preferences.html:112
+msgid "Profile Picture"
+msgstr "Profilbild"
+
+#: app/templates/account-preferences-bak.html:115
+#: app/templates/account-preferences.html:115
+msgid "Select Accent Color"
+msgstr "Akzentfarbe Auswählen"
+
+#: app/templates/account-preferences-bak.html:117
+#: app/templates/account-preferences.html:117
+msgid "Select Blue Accent Color"
+msgstr "Wählen Sie die Akzentfarbe Blau"
+
+#: app/templates/account-preferences-bak.html:119
+#: app/templates/account-preferences.html:119
+msgid "Blue"
+msgstr "Blau"
+
+#: app/templates/account-preferences-bak.html:121
+#: app/templates/account-preferences.html:121
+msgid "Select Green Accent Color"
+msgstr "Wählen Sie eine grüne Akzentfarbe"
+
+#: app/templates/account-preferences-bak.html:123
+#: app/templates/account-preferences.html:123
+msgid "Green"
+msgstr "Grün"
+
+#: app/templates/account-preferences-bak.html:125
+#: app/templates/account-preferences.html:125
+msgid "Select Purple Accent Color"
+msgstr "Lila Akzentfarbe auswählen"
+
+#: app/templates/account-preferences-bak.html:127
+#: app/templates/account-preferences.html:127
+msgid "Purple"
+msgstr "Lila"
+
+#: app/templates/account-preferences-bak.html:129
+#: app/templates/account-preferences.html:129
+msgid "Select Pink Accent Color"
+msgstr "Pinke Akzentfarbe auswählen"
+
+#: app/templates/account-preferences-bak.html:131
+#: app/templates/account-preferences.html:131
+msgid "Pink"
+msgstr "Rosa"
+
+#: app/templates/account-preferences-bak.html:138
+#: app/templates/account-preferences.html:138
+msgid "Export or Import Data"
+msgstr "Daten exportieren oder importieren"
+
+#: app/templates/account-preferences-bak.html:141
+#: app/templates/account-preferences.html:141
+msgid "Export feature is disabled because you have more than 750 recipes."
+msgstr "Die Exportfunktion ist deaktiviert, weil Sie mehr als 750 Rezepte haben."
+
+#: app/templates/account-preferences-bak.html:143
+#: app/templates/account-preferences.html:143
+msgid "Download a .ZIP backup of your recipes, favorites, categories, and recipe photos."
+msgstr "Laden Sie eine ZIP-Sicherung Ihrer Rezepte, Favoriten, Kategorien und Rezeptfotos herunter."
+
+#: app/templates/account-preferences-bak.html:146
+#: app/templates/account-preferences.html:146
+msgid "Download"
+msgstr "Herunterladen"
+
+#: app/templates/account-preferences-bak.html:149
+#: app/templates/account-preferences.html:149
+msgid "Export feature is disabled because you have no saved recipes."
+msgstr "Die Exportfunktion ist deaktiviert, da Sie keine Rezepte gespeichert haben."
+
+#: app/templates/account-preferences-bak.html:151
+#: app/templates/account-preferences.html:151
+msgid "Restore from backup. Only recipes not present will be added, existing recipes will not be changed or overwritten."
+msgstr "Wiederherstellen vom Backup. Nur nicht vorhandene Rezepte werden hinzugefügt, vorhandene Rezepte werden nicht geändert oder überschrieben."
+
+#: app/templates/account-preferences-bak.html:154
+#: app/templates/account-preferences.html:154
+msgid "Select ZIP archive to restore from backup"
+msgstr "ZIP-Archiv zur Wiederherstellung aus der Sicherung auswählen"
+
+#: app/templates/account-preferences-bak.html:155
+#: app/templates/account-preferences.html:155
+msgid "Upload"
+msgstr "Hochladen"
+
+#: app/templates/account-preferences-bak.html:159
+#: app/templates/account-preferences.html:159
+msgid "Update or Delete Account"
+msgstr "Konto aktualisieren oder löschen"
+
+#: app/templates/account-preferences-bak.html:186
+#: app/templates/account-preferences.html:186
+msgid "Are you sure you want to delete your account? This action cannot be undone."
+msgstr "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden."
+
+#: app/templates/account-preferences-bak.html:186
+#: app/templates/account-preferences.html:186
+msgid "Delete Account"
+msgstr "Konto Löschen"
+
+#: app/templates/add-recipe.html:30
+msgid "Autofill From URL"
+msgstr "Autofill von URL"
+
+#: app/templates/add-recipe.html:34 app/templates/add-recipe.html:35
+msgid "Recipe URL"
+msgstr "URL des Rezepts"
+
+#: app/templates/add-recipe.html:47 app/templates/add-recipe.html:48
+#: app/templates/edit-recipe.html:47 app/templates/edit-recipe.html:48
+msgid "Recipe Name"
+msgstr "Name des Rezepts"
+
+#: app/templates/add-recipe.html:55 app/templates/add-recipe.html:56
+#: app/templates/edit-recipe.html:55 app/templates/edit-recipe.html:56
+msgid "Select Category"
+msgstr "Kategorie Auswählen"
+
+#: app/templates/add-recipe.html:68 app/templates/add-recipe.html:69
+#: app/templates/edit-recipe.html:68 app/templates/edit-recipe.html:69
+msgid "Attach Photo"
+msgstr "Foto Anhängen"
+
+#: app/templates/add-recipe.html:73 app/templates/add-recipe.html:74
+#: app/templates/edit-recipe.html:73 app/templates/edit-recipe.html:74
+msgid "Description"
+msgstr "Beschreibung"
+
+#: app/templates/add-recipe.html:74 app/templates/edit-recipe.html:74
+msgid "My crispy squash recipe."
+msgstr "Mein Rezept für knusprigen Kürbis."
+
+#: app/templates/add-recipe.html:80 app/templates/add-recipe.html:81
+#: app/templates/edit-recipe.html:81 app/templates/edit-recipe.html:82
+msgid "URL"
+msgstr "URL"
+
+#: app/templates/add-recipe.html:87 app/templates/add-recipe.html:88
+#: app/templates/edit-recipe.html:88 app/templates/edit-recipe.html:89
+#: app/templates/explore-recipe-detail.html:41
+#: app/templates/recipe-detail.html:100
+msgid "Servings"
+msgstr "Portionen"
+
+#: app/templates/add-recipe.html:95 app/templates/edit-recipe.html:96
+msgid "Preparation Time (minutes)"
+msgstr "Zubereitungszeit (Minuten)"
+
+#: app/templates/add-recipe.html:96 app/templates/edit-recipe.html:97
+msgid "Preparation Time in minutes"
+msgstr "Zubereitungszeit in Minuten"
+
+#: app/templates/add-recipe.html:102 app/templates/edit-recipe.html:103
+msgid "Cook Time (minutes)"
+msgstr "Kochzeit (Minuten)"
+
+#: app/templates/add-recipe.html:103 app/templates/edit-recipe.html:104
+msgid "Cook Time in minutes"
+msgstr "Kochzeit in Minuten"
+
+#: app/templates/add-recipe.html:109 app/templates/edit-recipe.html:110
+msgid "Total Time (minutes)"
+msgstr "Gesamtzeit (Minuten)"
+
+#: app/templates/add-recipe.html:110 app/templates/edit-recipe.html:111
+msgid "Total Time in minutes"
+msgstr "Gesamtzeit in Minuten"
+
+#: app/templates/add-recipe.html:116 app/templates/edit-recipe.html:117
+msgid "Toggle Nutrition Info"
+msgstr "Nährwertangaben umschalten"
+
+#: app/templates/add-recipe.html:117 app/templates/edit-recipe.html:118
+msgid "Add Nutrition Info"
+msgstr "Nährwertangaben Hinzufügen"
+
+#: app/templates/add-recipe.html:121 app/templates/edit-recipe.html:122
+msgid "Calories (kcal)"
+msgstr "Kalorien (kcal)"
+
+#: app/templates/add-recipe.html:122 app/templates/all-recipes.html:118
+#: app/templates/categories.html:140 app/templates/edit-recipe.html:123
+#: app/templates/explore-recipe-detail.html:52 app/templates/favorites.html:99
+#: app/templates/mobile-category.html:84 app/templates/recipe-detail.html:111
+msgid "Calories"
+msgstr "Kalorien"
+
+#: app/templates/add-recipe.html:128 app/templates/edit-recipe.html:129
+msgid "Carbs (g)"
+msgstr "Kohlenhydrate (g)"
+
+#: app/templates/add-recipe.html:129 app/templates/edit-recipe.html:130
+msgid "Carbs in grams"
+msgstr "Kohlenhydrate in Gramm"
+
+#: app/templates/add-recipe.html:135 app/templates/edit-recipe.html:136
+msgid "Protein (g)"
+msgstr "Eiweiß (g)"
+
+#: app/templates/add-recipe.html:136 app/templates/edit-recipe.html:137
+msgid "Protein in grams"
+msgstr "Eiweiß in Gramm"
+
+#: app/templates/add-recipe.html:142 app/templates/edit-recipe.html:143
+msgid "Fat (g)"
+msgstr "Fett (g)"
+
+#: app/templates/add-recipe.html:143 app/templates/edit-recipe.html:144
+msgid "Fat in grams"
+msgstr "Fett in Gramm"
+
+#: app/templates/add-recipe.html:151 app/templates/edit-recipe.html:152
+msgid "Sugar (g)"
+msgstr "Zucker (g)"
+
+#: app/templates/add-recipe.html:152 app/templates/edit-recipe.html:153
+msgid "Sugar in grams"
+msgstr "Zucker in Gramm"
+
+#: app/templates/add-recipe.html:158 app/templates/edit-recipe.html:159
+msgid "Cholesterol (mg)"
+msgstr "Cholesterin (mg)"
+
+#: app/templates/add-recipe.html:159 app/templates/edit-recipe.html:160
+msgid "Cholesterol in milligrams"
+msgstr "Cholesterin in Milligramm"
+
+#: app/templates/add-recipe.html:165 app/templates/edit-recipe.html:166
+msgid "Sodium (mg)"
+msgstr "Natrium (mg)"
+
+#: app/templates/add-recipe.html:166 app/templates/edit-recipe.html:167
+msgid "Sodium in milligrams"
+msgstr "Natrium in Milligramm"
+
+#: app/templates/add-recipe.html:172 app/templates/edit-recipe.html:173
+msgid "Fiber (g)"
+msgstr "Ballaststoffe (g)"
+
+#: app/templates/add-recipe.html:173 app/templates/edit-recipe.html:174
+msgid "Fiber in grams"
+msgstr "Ballaststoffe in Gramm"
+
+#: app/templates/add-recipe.html:182 app/templates/edit-recipe.html:183
+#: app/templates/explore-recipe-detail.html:118
+#: app/templates/recipe-detail.html:222
+msgid "Ingredients"
+msgstr "Inhaltsstoffe"
+
+#: app/templates/add-recipe.html:183 app/templates/edit-recipe.html:184
+msgid "2 Tbsp olive oil"
+msgstr "2 Esslöffel Olivenöl"
+
+#: app/templates/add-recipe.html:183 app/templates/edit-recipe.html:184
+msgid "Ingredients separated by line break"
+msgstr "Zutaten durch Zeilenumbruch getrennt"
+
+#: app/templates/add-recipe.html:189 app/templates/edit-recipe.html:191
+#: app/templates/explore-recipe-detail.html:126
+#: app/templates/recipe-detail.html:237
+msgid "Instructions"
+msgstr "Anweisungen"
+
+#: app/templates/add-recipe.html:190 app/templates/edit-recipe.html:192
+msgid "Wash squash in sink to prepare."
+msgstr "Zur Vorbereitung den Kürbis in der Spüle waschen."
+
+#: app/templates/add-recipe.html:190 app/templates/edit-recipe.html:192
+msgid "Instructions separated by line break"
+msgstr "Anweisungen durch Zeilenumbruch getrennt"
+
+#: app/templates/all-recipes.html:13 app/templates/categories.html:13
+#: app/templates/favorites.html:13
+msgid "Navigate to All Recipes"
+msgstr "Zu allen Rezepten navigieren"
+
+#: app/templates/all-recipes.html:14 app/templates/categories.html:14
+#: app/templates/favorites.html:14
+msgid "Navigate to Favorites"
+msgstr "Zu den Favoriten navigieren"
+
+#: app/templates/all-recipes.html:15 app/templates/categories.html:15
+#: app/templates/favorites.html:15
+msgid "Navigate to Categories"
+msgstr "Zu Kategorien navigieren"
+
+#: app/templates/all-recipes.html:19 app/templates/categories.html:18
+#: app/templates/favorites.html:19
+msgid "Toggle display settings"
+msgstr "Anzeigeeinstellungen umschalten"
+
+#: app/templates/all-recipes.html:23 app/templates/categories.html:22
+#: app/templates/favorites.html:23
+msgid "Display Settings"
+msgstr "Einstellungen Anzeigen"
+
+#: app/templates/all-recipes.html:26 app/templates/categories.html:25
+#: app/templates/favorites.html:26
+msgid "Recipe Type"
+msgstr "Rezept Typ"
+
+#: app/templates/all-recipes.html:30 app/templates/categories.html:29
+#: app/templates/favorites.html:30
+msgid "Sort By"
+msgstr "Sortieren nach"
+
+#: app/templates/all-recipes.html:38 app/templates/favorites.html:38
+msgid "Add a new recipe"
+msgstr "Ein neues Rezept hinzufügen"
+
+#: app/templates/all-recipes.html:39 app/templates/all-recipes.html:40
+#: app/templates/favorites.html:39 app/templates/favorites.html:40
+msgid "Add Recipe"
+msgstr "Rezept Hinzufügen"
+
+#: app/templates/all-recipes.html:43 app/templates/explore-search.html:14
+#: app/templates/explore-search.html:50 app/templates/favorites.html:43
+msgid "Search"
+msgstr "Suche"
+
+#: app/templates/all-recipes.html:43 app/templates/explore.html:19
+#: app/templates/favorites.html:43
+msgid "Search recipes"
+msgstr "Rezepte suchen"
+
+#: app/templates/all-recipes.html:112 app/templates/categories.html:134
+#: app/templates/favorites.html:93 app/templates/mobile-category.html:78
+msgid "Prep"
+msgstr "Vorbereitung"
+
+#: app/templates/all-recipes.html:113 app/templates/categories.html:135
+#: app/templates/favorites.html:94 app/templates/mobile-category.html:79
+msgid "Cook"
+msgstr "Kochen"
+
+#: app/templates/all-recipes.html:114 app/templates/categories.html:136
+#: app/templates/favorites.html:95 app/templates/mobile-category.html:80
+msgid "Total"
+msgstr "Insgesamt"
+
+#: app/templates/all-recipes.html:122 app/templates/categories.html:144
+#: app/templates/favorites.html:103 app/templates/mobile-category.html:88
+#: app/templates/recipe-detail.html:91 app/templates/recipe-detail.html:217
+msgid "Scheduled For"
+msgstr "Geplant für"
+
+#: app/templates/all-recipes.html:124 app/templates/categories.html:146
+#: app/templates/favorites.html:105 app/templates/mobile-category.html:90
+#: app/templates/recipe-detail.html:88 app/templates/recipe-detail.html:214
+msgid "Last Prepared"
+msgstr "Zuletzt Vorbereitet"
+
+#: app/templates/all-recipes.html:126 app/templates/categories.html:148
+#: app/templates/favorites.html:107 app/templates/mobile-category.html:92
+#: app/templates/recipe-detail.html:80 app/templates/recipe-detail.html:206
+msgid "Created"
+msgstr "Erstellt"
+
+#: app/templates/all-recipes.html:137
+msgid "Welcome to Tamari!<br><br>There are no recipes to display.<br><br>Click the \"Add Recipe\" button above to get started."
+msgstr "Willkommen bei Tamari!<br><br>Es sind noch keine Rezepte vorhanden.<br><br>Klicken Sie auf die Schaltfläche \"Rezept Hinzufügen\", um zu beginnen."
+
+#: app/templates/categories.html:19 app/templates/favorites.html:20
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: app/templates/categories.html:62
+msgid "Submit new category"
+msgstr "Neue Kategorie einreichen"
+
+#: app/templates/categories.html:63
+msgid "Submit Category"
+msgstr "Kategorie einreichen"
+
+#: app/templates/categories.html:72
+msgid "Are you sure you want to delete the category"
+msgstr "Sind Sie sicher, dass Sie die Kategorie löschen möchten?"
+
+#: app/templates/categories.html:72
+msgid "Delete category"
+msgstr "Kategorie löschen"
+
+#: app/templates/categories.html:83
+#, python-format
+msgid "Showing %(recipe_count)d recipes in \"%(query_string)s\" category."
+msgstr "Zeigt %(recipe_count)d Rezepte in der Kategorie \"%(query_string)s\"."
+
+#: app/templates/categories.html:85
+msgid "The requested category does not exist."
+msgstr "Die gewünschte Kategorie existiert nicht."
+
+#: app/templates/categories.html:88
+#, python-format
+msgid "Showing %(recipe_count)d recipes in \"Miscellaneous\" category."
+msgstr "Zeigt %(recipe_count)d Rezepte in der Kategorie \"Miscellaneous\"."
+
+#: app/templates/explore-group.html:15 app/templates/explore-search.html:15
+#, python-format
+msgid "Showing %(rec_first)s - %(rec_last)s of %(rec_count)s recipes."
+msgstr "Anzeige von %(rec_first)s - %(rec_last)s von %(rec_count)s Rezepten."
+
+#: app/templates/explore-group.html:51
+msgid "The requested group does not exist or has no recipes."
+msgstr "Die gewünschte Gruppe existiert nicht oder hat keine Rezepte."
+
+#: app/templates/explore-recipe-detail.html:46
+#: app/templates/explore-recipe-detail.html:48
+#: app/templates/recipe-detail.html:105 app/templates/recipe-detail.html:107
+msgid "Nutrition (1 serv.)"
+msgstr "Ernährung (1 Portion)"
+
+#: app/templates/explore-recipe-detail.html:47
+#: app/templates/explore-recipe-detail.html:49
+#: app/templates/recipe-detail.html:106 app/templates/recipe-detail.html:108
+msgid "Amount"
+msgstr "Betrag"
+
+#: app/templates/explore-recipe-detail.html:54
+#: app/templates/explore-recipe-detail.html:76
+#: app/templates/recipe-detail.html:113 app/templates/recipe-detail.html:135
+msgid "Sugar"
+msgstr "Zucker"
+
+#: app/templates/explore-recipe-detail.html:58
+#: app/templates/recipe-detail.html:117
+msgid "Carbs"
+msgstr "Kohlenhydrate"
+
+#: app/templates/explore-recipe-detail.html:60
+#: app/templates/explore-recipe-detail.html:80
+#: app/templates/recipe-detail.html:119 app/templates/recipe-detail.html:139
+msgid "Cholesterol"
+msgstr "Cholesterin"
+
+#: app/templates/explore-recipe-detail.html:64
+#: app/templates/recipe-detail.html:123
+msgid "Protein"
+msgstr "Eiweiß"
+
+#: app/templates/explore-recipe-detail.html:66
+#: app/templates/explore-recipe-detail.html:84
+#: app/templates/recipe-detail.html:125 app/templates/recipe-detail.html:143
+msgid "Sodium"
+msgstr "Natrium"
+
+#: app/templates/explore-recipe-detail.html:70
+#: app/templates/recipe-detail.html:129
+msgid "Fat"
+msgstr "Fett"
+
+#: app/templates/explore-recipe-detail.html:72
+#: app/templates/explore-recipe-detail.html:88
+#: app/templates/recipe-detail.html:131 app/templates/recipe-detail.html:147
+msgid "Fiber"
+msgstr "Faser"
+
+#: app/templates/explore-recipe-detail.html:94
+#: app/templates/recipe-detail.html:153
+msgid "Prep Time"
+msgstr "Vorbereitungszeit"
+
+#: app/templates/explore-recipe-detail.html:95
+#: app/templates/recipe-detail.html:154
+msgid "Cook Time"
+msgstr "Kochzeit"
+
+#: app/templates/explore-recipe-detail.html:96
+#: app/templates/recipe-detail.html:155
+msgid "Total Time"
+msgstr "Zeit insgesamt"
+
+#: app/templates/explore-recipe-detail.html:99
+msgid "Original recipe URL"
+msgstr "URL des Originalrezepts"
+
+#: app/templates/explore-recipe-detail.html:104
+#: app/templates/explore-recipe-detail.html:105
+#: app/templates/explore-recipe-detail.html:106
+msgid "Save Recipe"
+msgstr "Rezept Speichern"
+
+#: app/templates/explore-recipe-detail.html:110
+#: app/templates/explore-recipe-detail.html:111
+#: app/templates/explore-recipe-detail.html:112
+msgid "Login to Save Recipe"
+msgstr "Anmelden, um Rezept zu Speichern"
+
+#: app/templates/explore-recipe-detail.html:128
+#: app/templates/recipe-detail.html:240
+msgid "Step"
+msgstr "Schritt"
+
+#: app/templates/explore-recipe-detail.html:133
+msgid "The retrieval or parsing of data for the requested recipe failed."
+msgstr "Das Abrufen oder Parsen von Daten für das angeforderte Rezept ist fehlgeschlagen."
+
+#: app/templates/explore-recipe-detail.html:134
+msgid "Sometimes, refreshing the page will fix it."
+msgstr "Manchmal hilft es, die Seite zu aktualisieren."
+
+#: app/templates/explore-recipe-detail.html:135
+msgid "If you see this error frequently, opening an Issue Report on Github may help get it resolved."
+msgstr "Wenn dieser Fehler häufig auftritt, kann das Öffnen eines Fehlerberichts auf Github helfen, den Fehler zu beheben."
+
+#: app/templates/explore-recipe-detail.html:139
+msgid "The requested recipe cannot be found."
+msgstr "Das angeforderte Rezept kann nicht gefunden werden."
+
+#: app/templates/explore-search.html:51
+msgid "No recipes were found."
+msgstr "Es wurden keine Rezepte gefunden."
+
+#: app/templates/explore.html:17
+msgid "Search 100,000+ Recipes"
+msgstr "Über 100.000 Rezepte Durchsuchen"
+
+#: app/templates/explore.html:23
+msgid "Browse By Category"
+msgstr "Nach Kategorie suchen"
+
+#: app/templates/explore.html:28
+msgid "30 Minute Meals"
+msgstr "30-Minuten-Mahlzeiten"
+
+#: app/templates/explore.html:172
+msgid "See More"
+msgstr "Mehr Sehen"
+
+#: app/templates/explore.html:181
+msgid "Recipes failed to load."
+msgstr "Rezepte konnten nicht geladen werden."
+
+#: app/templates/favorites.html:118
+msgid "There are no recipes to display.<br><br>On the recipe detail page, click the \"Favorite\" button to add a recipe to your favorites."
+msgstr "Es werden keine Rezepte angezeigt.<br><br> Klicken Sie auf der Rezeptdetailseite auf die Schaltfläche \"Favorit\", um ein Rezept zu Ihren Favoriten hinzuzufügen."
+
+#: app/templates/login.html:36 app/templates/register.html:34
+msgid "Navigate to Sign In page"
+msgstr "Zur Anmeldeseite navigieren"
+
+#: app/templates/login.html:37 app/templates/register.html:35
+msgid "Navigate to Register page"
+msgstr "Navigieren Sie zur Seite Registrieren"
+
+#: app/templates/login.html:66
+msgid "Keep me Signed in"
+msgstr "Angemeldet bleiben"
+
+#: app/templates/login.html:73
+msgid "Reset Password?"
+msgstr "Passwort Zurücksetzen?"
+
+#: app/templates/meal-planner-completed.html:12
+#: app/templates/meal-planner-upcoming.html:12
+msgid "Upcoming"
+msgstr "Demnächst"
+
+#: app/templates/meal-planner-completed.html:12
+#: app/templates/meal-planner-upcoming.html:12
+msgid "Navigate to Meal Planner (Upcoming)"
+msgstr "Gehe zu Essensplaner (Demnächst)"
+
+#: app/templates/meal-planner-completed.html:13
+#: app/templates/meal-planner-upcoming.html:13
+#: app/templates/mobile-shopping-list.html:51
+#: app/templates/shopping-lists.html:73
+msgid "Completed"
+msgstr "Abgeschlossen"
+
+#: app/templates/meal-planner-completed.html:13
+#: app/templates/meal-planner-upcoming.html:13
+msgid "Navigate to Meal Planner (Completed)"
+msgstr "Gehe zu Essensplaner (Abgeschlossen)"
+
+#: app/templates/meal-planner-completed.html:35
+msgid "Statistics"
+msgstr "Statistik"
+
+#: app/templates/meal-planner-completed.html:36
+msgid "Recipes Prepared"
+msgstr "Zubereitete Rezepte"
+
+#: app/templates/meal-planner-completed.html:39
+#: app/templates/meal-planner-completed.html:54
+msgid "Past Week"
+msgstr "Letzte Woche"
+
+#: app/templates/meal-planner-completed.html:43
+#: app/templates/meal-planner-completed.html:58
+msgid "Past Month"
+msgstr "Vergangener Monat"
+
+#: app/templates/meal-planner-completed.html:47
+#: app/templates/meal-planner-completed.html:62
+msgid "Past Year"
+msgstr "Vergangenes Jahr"
+
+#: app/templates/meal-planner-completed.html:69
+msgid "Completed Recipes"
+msgstr "Fertige Rezepte"
+
+#: app/templates/meal-planner-completed.html:89
+msgid "Previously prepared recipes will be displayed here."
+msgstr "Bereits zubereitete Rezepte werden hier angezeigt."
+
+#: app/templates/meal-planner-upcoming.html:36
+msgid "All Upcoming Days"
+msgstr "Alle Bevorstehenden Tage"
+
+#: app/templates/meal-planner-upcoming.html:47
+msgid "All Planned Recipes"
+msgstr "Alle Geplanten Rezepte"
+
+#: app/templates/meal-planner-upcoming.html:56
+#: app/templates/meal-planner-upcoming.html:57
+#: app/templates/meal-planner-upcoming.html:80
+#: app/templates/meal-planner-upcoming.html:81
+msgid "Remove Meal Plan"
+msgstr "Essensplan Entfernen"
+
+#: app/templates/meal-planner-upcoming.html:70
+msgid "You have no recipes saved to the meal planner."
+msgstr "Sie haben keine Rezepte im Essenplaner gespeichert."
+
+#: app/templates/meal-planner-upcoming.html:75
+msgid "There are no meals planned for the selected day."
+msgstr "Für den gewählten Tag sind keine Mahlzeiten vorgesehen."
+
+#: app/templates/meal-planner-upcoming.html:92
+msgid "Invalid Date"
+msgstr "Ungültiges Datum"
+
+#: app/templates/meal-planner-upcoming.html:93
+msgid "The requested date is invalid or cannot be searched."
+msgstr "Das angeforderte Datum ist ungültig oder kann nicht abgefragt werden."
+
+#: app/templates/mobile-category.html:30
+#, python-format
+msgid "Showing %(recipe_count)s recipes in \"%(catname)s\" category."
+msgstr "Zeigt %(recipe_count)s Rezepte in der Kategorie \"%(catname)s\"."
+
+#: app/templates/mobile-category.html:32
+msgid "The requested category could not be found."
+msgstr "Die gewünschte Kategorie konnte nicht gefunden werden."
+
+#: app/templates/mobile-shopping-list.html:31
+#: app/templates/shopping-lists.html:53
+msgid "List"
+msgstr "Liste"
+
+#: app/templates/mobile-shopping-list.html:33
+#: app/templates/shopping-lists.html:55
+msgid "Click an item to add or remove it from Completed."
+msgstr "Klicken Sie auf ein Element, um es zu \"Abgeschlossen\" hinzuzufügen oder zu entfernen."
+
+#: app/templates/mobile-shopping-list.html:35
+#: app/templates/shopping-lists.html:57
+msgid "To Buy"
+msgstr "Zum Kaufen"
+
+#: app/templates/mobile-shopping-list.html:39
+#: app/templates/mobile-shopping-list.html:40
+#: app/templates/mobile-shopping-list.html:55
+#: app/templates/mobile-shopping-list.html:56
+#: app/templates/shopping-lists.html:61 app/templates/shopping-lists.html:62
+#: app/templates/shopping-lists.html:77 app/templates/shopping-lists.html:78
+msgid "Remove List Item"
+msgstr "Listeneintrag Entfernen"
+
+#: app/templates/mobile-shopping-list.html:44
+#: app/templates/mobile-shopping-list.html:60
+#: app/templates/shopping-lists.html:66 app/templates/shopping-lists.html:82
+msgid "For recipe"
+msgstr "Für das Rezept"
+
+#: app/templates/mobile-shopping-list.html:67
+#: app/templates/shopping-lists.html:89
+msgid "This list has no items saved. Add one below or from a Recipe Detail page."
+msgstr "In dieser Liste sind keine Einträge gespeichert. Fügen Sie einen unten oder auf einer Rezept-Detailseite hinzu."
+
+#: app/templates/mobile-shopping-list.html:69
+#: app/templates/shopping-lists.html:91
+msgid "Add an Item"
+msgstr "Ein Element hinzufügen"
+
+#: app/templates/mobile-shopping-list.html:72
+#: app/templates/shopping-lists.html:94
+msgid "(4) yellow squash"
+msgstr "(4) gelber Kürbis"
+
+#: app/templates/mobile-shopping-list.html:76
+#: app/templates/shopping-lists.html:98
+msgid "Are you sure you want to delete the shopping list"
+msgstr "Sind Sie sicher, dass Sie die Einkaufsliste löschen möchten?"
+
+#: app/templates/mobile-shopping-list.html:77
+#: app/templates/shopping-lists.html:99
+msgid "Delete This List"
+msgstr "Diese Liste Löschen"
+
+#: app/templates/navbar.html:352 app/templates/navbar.html:365
+#: app/templates/navbar.html:427
+msgid "My Recipes"
+msgstr "Meine Rezepte"
+
+#: app/templates/navbar.html:355 app/templates/navbar.html:368
+#: app/templates/navbar.html:430
+msgid "Meal Planner"
+msgstr "Essensplaner"
+
+#: app/templates/navbar.html:367
+msgid "Lists"
+msgstr "Verzeichnisse"
+
+#: app/templates/navbar.html:368
+msgid "Planner"
+msgstr "Planer"
+
+#: app/templates/navbar.html:407 app/templates/navbar.html:436
+msgid "Sign Out"
+msgstr "Abmelden"
+
+#: app/templates/navbar.html:412 app/templates/navbar.html:473
+msgid "Login"
+msgstr "Anmeldung"
+
+#: app/templates/recipe-detail.html:13 app/templates/recipe-detail.html:32
+msgid "Close Popup Window"
+msgstr "Popup-Fenster schließen"
+
+#: app/templates/recipe-detail.html:15
+msgid "Add to List"
+msgstr "Zur Liste hinzufügen"
+
+#: app/templates/recipe-detail.html:16
+msgid "Ingredients from this recipe will be added to the following shopping list."
+msgstr "Die Zutaten dieses Rezepts werden der folgenden Einkaufsliste hinzugefügt."
+
+#: app/templates/recipe-detail.html:21
+msgid "Select Shopping List"
+msgstr "Einkaufsliste auswählen"
+
+#: app/templates/recipe-detail.html:34
+msgid "Add to Meal Planner"
+msgstr "Zum Essensplaner Hinzufügen"
+
+#: app/templates/recipe-detail.html:35
+msgid "This recipe will be added to your Meal Plan for the following day."
+msgstr "Dieses Rezept wird Ihrem Essensplan für den nächsten Tag hinzugefügt."
+
+#: app/templates/recipe-detail.html:40
+msgid "Select Date"
+msgstr "Datum auswählen"
+
+#: app/templates/recipe-detail.html:76 app/templates/recipe-detail.html:77
+#: app/templates/recipe-detail.html:202 app/templates/recipe-detail.html:203
+msgid "Toggle Information Modal"
+msgstr "Modal für Informationen umschalten"
+
+#: app/templates/recipe-detail.html:82 app/templates/recipe-detail.html:208
+msgid "Edited"
+msgstr "Bearbeitet"
+
+#: app/templates/recipe-detail.html:85 app/templates/recipe-detail.html:211
+msgid "Times Prepared"
+msgstr "Vorbereitete Zeiten"
+
+#: app/templates/recipe-detail.html:153 app/templates/recipe-detail.html:154
+#: app/templates/recipe-detail.html:155
+msgid "min"
+msgstr "min"
+
+#: app/templates/recipe-detail.html:163
+msgid "Favorite Recipe"
+msgstr "Lieblingsrezept"
+
+#: app/templates/recipe-detail.html:164 app/templates/recipe-detail.html:165
+msgid "Favorite"
+msgstr "Favorit"
+
+#: app/templates/recipe-detail.html:168
+msgid "Unfavorite Recipe"
+msgstr "Unbeliebtes Rezept"
+
+#: app/templates/recipe-detail.html:169 app/templates/recipe-detail.html:170
+msgid "Unfavorite"
+msgstr "Unbeliebt"
+
+#: app/templates/recipe-detail.html:174
+msgid "Make Recipe Public"
+msgstr "Rezept Öffentlich Machen"
+
+#: app/templates/recipe-detail.html:175 app/templates/recipe-detail.html:176
+msgid "Make Public"
+msgstr "Öffentlich Machen"
+
+#: app/templates/recipe-detail.html:179
+msgid "Make Recipe Private"
+msgstr "Rezept Privat Machen"
+
+#: app/templates/recipe-detail.html:180 app/templates/recipe-detail.html:181
+msgid "Make Private"
+msgstr "Privat Machen"
+
+#: app/templates/recipe-detail.html:184
+msgid "Schedule Recipe"
+msgstr "Zeitplan Rezept"
+
+#: app/templates/recipe-detail.html:185 app/templates/recipe-detail.html:186
+msgid "Schedule"
+msgstr "Zeitplan"
+
+#: app/templates/recipe-detail.html:190
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: app/templates/recipe-detail.html:192
+msgid "Are you sure you want to delete this recipe?"
+msgstr "Sind Sie sicher, dass Sie dieses Rezept löschen möchten?"
+
+#: app/templates/recipe-detail.html:193
+msgid "Delete Recipe"
+msgstr "Rezept Löschen"
+
+#: app/templates/recipe-detail.html:194 app/templates/recipe-detail.html:195
+msgid "Delete"
+msgstr "Löschen"
+
+#: app/templates/recipe-detail.html:231
+msgid "Add Items to Shopping List"
+msgstr "Artikel zur Einkaufsliste Hinzufügen"
+
+#: app/templates/recipe-detail.html:246 app/templates/recipe-detail.html:250
+msgid "The requested recipe either cannot be found or you do not have permission to view it."
+msgstr "Das angeforderte Rezept kann entweder nicht gefunden werden oder Sie haben keine Berechtigung, es anzusehen."
+
+#: app/templates/set-password.html:34
+msgid "Set New Password"
+msgstr "Neues Passwort festlegen"
+
+#: app/templates/shopping-lists.html:30
+msgid "Your Lists"
+msgstr "Ihre Listen"
+
+#: app/templates/shopping-lists.html:36 app/templates/shopping-lists.html:37
+msgid "Submit new list"
+msgstr "Neue Liste einreichen"
+
+#: app/templates/shopping-lists.html:103
+msgid "List Not Found"
+msgstr "Liste Nicht Gefunden"
+
+#: app/templates/shopping-lists.html:104
+msgid "The requested shopping list does not exist."
+msgstr "Die angeforderte Einkaufsliste ist nicht vorhanden."
+
+#: app/templates/meal-planner-completed.html:51
+msgid "Days Cooked"
+msgstr "Gekochte Tage"

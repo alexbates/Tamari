@@ -49,7 +49,7 @@
 		{% set first_message = true %}
 		{% for message in messages %}
 		{% if first_message %}
-		{% if 'Error' in message %}
+		{% if 'Error' in message or '错误' in message %}
 		<p id="flashed-err">{{ message }}</p>
 		{% set first_message = false %}
 		{% else %}

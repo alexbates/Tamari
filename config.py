@@ -6,7 +6,7 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app/appdata/app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    LANGUAGES = ['en', 'es', 'de']
+    LANGUAGES = ['en', 'es', 'de', 'zh_Hans']
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None

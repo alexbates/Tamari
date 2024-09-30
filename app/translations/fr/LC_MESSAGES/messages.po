@@ -1319,7 +1319,7 @@ msgstr "La catégorie demandée n'existe pas."
 #: app/templates/categories.html:88
 #, python-format
 msgid "Showing %(recipe_count)d recipes in \"Miscellaneous\" category."
-msgstr "Affichage de %(recipe_count)d recettes dans la catégorie \"Divers\"."
+msgstr "Affichage de %(recipe_count)d recettes dans la catégorie \"Miscellaneous\"."
 
 #: app/templates/explore-group.html:15 app/templates/explore-search.html:15
 #, python-format

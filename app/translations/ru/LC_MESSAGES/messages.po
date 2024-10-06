@@ -485,7 +485,7 @@ msgstr "Добавить категорию"
 #: app/templates/categories.html:13 app/templates/explore.html:154
 #: app/templates/favorites.html:13
 msgid "All Recipes"
-msgstr "Все рецепты"
+msgstr "Все"
 
 #: app/myrecipes/routes.py:212
 msgid "View all recipes saved in your account. This is the home page of the Tamari web app."
@@ -1238,7 +1238,7 @@ msgstr "Добавить новый рецепт"
 #: app/templates/all-recipes.html:39 app/templates/all-recipes.html:40
 #: app/templates/favorites.html:39 app/templates/favorites.html:40
 msgid "Add Recipe"
-msgstr "Добавить рецепт"
+msgstr "Добавить"
 
 #: app/templates/all-recipes.html:43 app/templates/explore-search.html:14
 #: app/templates/explore-search.html:50 app/templates/favorites.html:43

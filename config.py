@@ -16,6 +16,8 @@ class Config(object):
     # If this is left blank, Tamari will use MAIL_USERNAME as the sender email
     # Example: ADMIN = 'default@tamariapp.com'
     ADMIN = ''
+    # Register page, disable new registrations by setting this to True
+    REGISTRATION_DISABLED = False
     # For My Recipes > All Recipes and My Recipes > Favorites
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50

@@ -83,8 +83,9 @@ def rate_limited_registration():
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))
+    reg_disabled = app.config['REGISTRATION_DISABLED']
     form = RegistrationForm()
-    if form.validate_on_submit():
+    if form.validate_on_submit() and not reg_disabled:
         # Call rate limited function to effectively impose rate limit on registration attempts
         if rate_limited_registration():
             # Check if email is already registered
@@ -144,7 +145,7 @@ def register():
                 flash(_('You have been registered! Please sign in.'))
                 return redirect(url_for('account.login'))
     return render_template('register.html', title=_('Register'),
-        mdescription=_('Register an account with the Tamari web app.'), form=form)
+        mdescription=_('Register an account with the Tamari web app.'), form=form, reg_disabled=reg_disabled)
 
 def clean_csv(text):
     try:

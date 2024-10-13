@@ -183,7 +183,11 @@
 				</div>
 				<div class="updatebuttons">
 					{{ form.submit(class="btn btn-default") }}
-					<button class="btn btn-default2" formaction="{{ url_for('account.deleteAccount') }}" formmethod="get" onclick="return confirm('{{ _('Are you sure you want to delete your account? This action cannot be undone.') }}')';">{{ _('Delete Account') }}</button>
+					<button class="btn btn-default2" 
+							type="button" 
+							onclick="if(confirm('{{ _('Are you sure you want to delete your account? This action cannot be undone.') }}')) { window.location.href='{{ url_for('account.deleteAccount') }}'; }">
+						{{ _('Delete Account') }}
+					</button>
 				</div>
 			</form>
 		</div>

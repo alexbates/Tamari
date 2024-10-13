@@ -16,8 +16,10 @@ class Config(object):
     # If this is left blank, Tamari will use MAIL_USERNAME as the sender email
     # Example: ADMIN = 'default@tamariapp.com'
     ADMIN = ''
-    # Register page, disable new registrations by setting this to True
-    REGISTRATION_DISABLED = False
+    # Register page, optionally disable new registrations
+    # To disable registration, change "('REG_DISABLED', 'False')" to "('REG_DISABLED', 'True')"
+    # or set environment variable with Docker run command
+    REGISTRATION_DISABLED = os.environ.get('REG_DISABLED', 'False') == 'True'
     # For My Recipes > All Recipes and My Recipes > Favorites
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50

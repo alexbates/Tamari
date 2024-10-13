@@ -101,6 +101,14 @@
 }
 .logregselector:active, .logregselector.active, .logregselector:hover, .logregselector:focus {outline: none;}
 .logregactive {border-bottom: 3px solid var(--color);}
+#errorregister {
+	background: var(--color-flashed-err); 
+	font-size: 14px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
 .form-group {min-height: 54px; width: 100%;}
 .form-control {
 	background: var(--color-form-control-bg);

@@ -69,8 +69,8 @@
 			<h2>{{ _('Completed Recipes') }}</h2>
 			{% if mealsinyear %} 
 			{% for day in year %}
-			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
-			{% if day[0] in dayswithmeals %}
+			{% if day[0] in mealdatespagainted %}<h3>{{ day[1] }}</h3>{% endif %}
+			{% if day[0] in mealdatespaginated %}
 			<div class="planinner">
 				{% for meal in plannedmeals_paginated %}
 				{% if meal.date == day[0] %}

@@ -152,18 +152,18 @@ def mealPlannerCompleted():
     prev_url = url_for('mealplanner.mealPlannerCompleted', page=page - 1) if start_index > 0 else None
     # Create array that contains all items from "plannedmeals" except those outside 1year/1month/1week window
     mealsinyear = []
-    for meal in plannedmeals_paginated:
+    for meal in plannedmeals:
         if meal.date in compactyear:
             mealsinyear.append(meal)
     mealsinmonth = []
-    for meal in plannedmeals_paginated:
+    for meal in plannedmeals:
         if meal.date in compactmonth:
             mealsinmonth.append(meal)
     mealsinweek = []
-    for meal in plannedmeals_paginated:
+    for meal in plannedmeals:
         if meal.date in compactweek:
             mealsinweek.append(meal)
-    # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
+    # Create 2D array to store recipe info, it will somewhat mirror plannedmeals_paginated
     w2, h2 = 3, len(plannedmeals_paginated)
     recdetails = [[0 for x in range(w2)] for y in range(h2)]
     mealiteration = 0
@@ -173,7 +173,7 @@ def mealPlannerCompleted():
         recdetails[mealiteration][1] = recipe.category
         recdetails[mealiteration][2] = recipe.hex_id
         mealiteration += 1
-    # Create arrays to store dates that meals are planned for, used by template to hide days with no meals
+    # Create arrays to store dates that meals are planned for, used by template to count meals for stats
     dayswithmeals = []
     for meal in mealsinyear:
         if meal.date not in dayswithmeals:
@@ -186,12 +186,18 @@ def mealPlannerCompleted():
     for meal in mealsinweek:
         if meal.date not in dayswithmeals_w:
             dayswithmeals_w.append(meal.date)
+    # This array is used to only show dates on current page for which there are meals in plannedmeals_paginated
+    mealdatespaginated = []
+    for meal in plannedmeals_paginated:
+        if meal.date in compactyear:
+            if meal.date not in mealdatespaginated:
+                mealdatespaginated.append(meal.date)
     return render_template('meal-planner-completed.html', title=_('Meal Planner (Completed)'),
         mdescription=_('View Recipes that have been completed in the Meal Planner.'), plannedmeals=plannedmeals, recdetails=recdetails,
         dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,
         week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
         mealsinmonth=mealsinmonth, mealsinweek=mealsinweek, plannedmeals_paginated=plannedmeals_paginated,
-        next_url=next_url, prev_url=prev_url)
+        next_url=next_url, prev_url=prev_url, mealdatespaginated=mealdatespaginated)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

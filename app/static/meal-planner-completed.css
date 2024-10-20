@@ -128,6 +128,12 @@
 .additem-btn {background-color: var(--color);}
 .additem-btn:hover {background: var(--color-lighter);}
 .additem-btn:active, .additem-btn.active {background: var(--color-darker);}
+.btn-next {background-color: var(--color);}
+.btn-next:hover {background: var(--color-lighter);}
+.btn-next:active, .btn-next.active {background: var(--color-darker);}
+.btn-prev {background-color: var(--color);}
+.btn-prev:hover {background: var(--color-lighter);}
+.btn-prev:active, .btn-prev.active {background: var(--color-darker);}
 @media screen and (max-width: 620px) { 
 	.list-selected {background: var(--color) !important;}
 }
@@ -328,7 +334,12 @@
 .btn4-icon img {height: 100%; width: 100%;}
 
 /* PAGINATION BUTTONS */
-.prevnext {height: 54px; text-align: center; width: 100%;}
+.prevnext {
+	height: 46px; 
+	margin-top: 10px;
+	text-align: center; 
+	width: 100%;
+}
 .btn-next {
 	border: none;
 	border-radius: 7px;

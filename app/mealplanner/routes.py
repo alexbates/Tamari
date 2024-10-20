@@ -86,13 +86,14 @@ def mealPlannerCompleted():
     month = [[0 for x in range(w)] for y in range(month_h)]
     week = [[0 for x in range(w)] for y in range(week_h)]
     curr_dt = datetime.now()
+    fiveyear_timestamp = int(time.mktime(curr_dt.timetuple()))
     year_timestamp = int(time.mktime(curr_dt.timetuple()))
     month_timestamp = int(time.mktime(curr_dt.timetuple()))
     week_timestamp = int(time.mktime(curr_dt.timetuple()))
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     for d in fiveyear:
-        year_timestamp -= 86400
-        date = datetime.fromtimestamp(year_timestamp)
+        fiveyear_timestamp -= 86400
+        date = datetime.fromtimestamp(fiveyear_timestamp)
         intDay = date.weekday()
         full_month = date.strftime("%B")
         full_day = date.strftime("%-d")

@@ -171,7 +171,7 @@ def mealPlannerCompleted():
     mealsinfiveyear = []
     for meal in plannedmeals:
         if meal.date in compactfiveyear:
-            mealsinyear.append(meal)
+            mealsinfiveyear.append(meal)
     mealsinyear = []
     for meal in plannedmeals:
         if meal.date in compactyear:

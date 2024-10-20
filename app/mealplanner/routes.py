@@ -219,7 +219,7 @@ def mealPlannerCompleted():
         week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
         mealsinmonth=mealsinmonth, mealsinweek=mealsinweek, plannedmeals_paginated=plannedmeals_paginated,
         next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated, compactfiveyear=compactfiveyear,
-        mealsinfiveyear=mealsinfiveyear)
+        mealsinfiveyear=mealsinfiveyear, fiveyear=fiveyear)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

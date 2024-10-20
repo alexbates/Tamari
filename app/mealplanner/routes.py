@@ -151,11 +151,23 @@ def mealPlannerCompleted():
     for meal in plannedmeals:
         if meal.date in compactweek:
             mealsinweek.append(meal)
+    # Get page number from URL query string
+    page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MEAL_PLANS_PER_PAGE']
+    # Calculate the start and end indices for pagination
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    # Paginate the sorted_events array
+    plannedmeals_paginated = plannedmeals[start_index:end_index]
+     # Step 6: Create next and previous URLs for pagination
+    next_url = url_for('mealplanner.mealPlannerCompleted', page=page + 1) if end_index < len(plannedmeals) else None
+    prev_url = url_for('mealplanner.mealPlannerCompleted', page=page - 1) if start_index > 0 else None
     # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
-    w2, h2 = 3, len(plannedmeals)
+    w2, h2 = 3, len(plannedmeals_paginated)
     recdetails = [[0 for x in range(w2)] for y in range(h2)]
     mealiteration = 0
-    for meal in plannedmeals:
+    for meal in plannedmeals_paginated:
         recipe = Recipe.query.filter_by(id=meal.recipe_id).first_or_404()
         recdetails[mealiteration][0] = recipe.title
         recdetails[mealiteration][1] = recipe.category
@@ -178,7 +190,7 @@ def mealPlannerCompleted():
         mdescription=_('View Recipes that have been completed in the Meal Planner.'), plannedmeals=plannedmeals, recdetails=recdetails,
         dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,
         week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
-        mealsinmonth=mealsinmonth, mealsinweek=mealsinweek)
+        mealsinmonth=mealsinmonth, mealsinweek=mealsinweek, plannedmeals_paginated=plannedmeals_paginated)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

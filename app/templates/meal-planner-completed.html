@@ -72,7 +72,7 @@
 			{% if day[0] in dayswithmeals %}<h3>{{ day[1] }}</h3>{% endif %}
 			{% if day[0] in dayswithmeals %}
 			<div class="planinner">
-				{% for meal in plannedmeals %}
+				{% for meal in plannedmeals_paginated %}
 				{% if meal.date == day[0] %}
 				<div>
 					<p class="label-inner">
@@ -87,6 +87,22 @@
 			{% endfor %}
 			{% else %}
 			<p id="mealmessage">{{ _('Previously prepared recipes will be displayed here.') }}</p>
+			{% endif %}
+			{% if prev_url or next_url %}
+			<div class="prevnext">
+				{% if prev_url %}
+				<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="{{ _('Navigate to previous page') }}">
+					<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+					<span class="btn-prev-text">{{ _('Previous') }}</span>
+				</button>
+				{% endif %}
+				{% if next_url %}
+				<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="{{ _('Navigate to next page') }}">
+					<span class="btn-next-text">{{ _('Next') }}</span>
+					<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
+				</button>
+				{% endif %}
+			</div>
 			{% endif %}
 		</div>
 

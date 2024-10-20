@@ -78,7 +78,7 @@ def mealPlanner():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mealPlannerCompleted():
     user = User.query.filter_by(email=current_user.email).first_or_404()
-    plannedmeals = user.planned_meals.all()
+    plannedmeals = user.planned_meals.order_by(MealRecipe.date.desc()).all()
     # Create 2D arrays to hold compact date and full date for past year, past month, and past week
     w, year_h, month_h, week_h = 2, 365, 30, 7
     year = [[0 for x in range(w)] for y in range(year_h)]
@@ -147,11 +147,9 @@ def mealPlannerCompleted():
     end_index = start_index + per_page
     # Paginate the sorted_events array
     plannedmeals_paginated = plannedmeals[start_index:end_index]
-    # Create next and previous URLs for pagination (Disabled)
-    # next_url = url_for('mealplanner.mealPlannerCompleted', page=page + 1) if end_index < len(plannedmeals) else None
-    # prev_url = url_for('mealplanner.mealPlannerCompleted', page=page - 1) if start_index > 0 else None
-    next_url = None
-    prev_url = None
+    # Create next and previous URLs for pagination
+    next_url = url_for('mealplanner.mealPlannerCompleted', page=page + 1) if end_index < len(plannedmeals) else None
+    prev_url = url_for('mealplanner.mealPlannerCompleted', page=page - 1) if start_index > 0 else None
     # Create array that contains all items from "plannedmeals" except those outside 1year/1month/1week window
     mealsinyear = []
     for meal in plannedmeals:
@@ -188,12 +186,17 @@ def mealPlannerCompleted():
     for meal in mealsinweek:
         if meal.date not in dayswithmeals_w:
             dayswithmeals_w.append(meal.date)
+    # Array to store dates for template on current page
+    dayspaginated = []
+    for meal in plannedmeals_paginated:
+        if meal.date not in dayspaginated:
+            dayspaginated.append(meal)
     return render_template('meal-planner-completed.html', title=_('Meal Planner (Completed)'),
         mdescription=_('View Recipes that have been completed in the Meal Planner.'), plannedmeals=plannedmeals, recdetails=recdetails,
         dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,
         week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
         mealsinmonth=mealsinmonth, mealsinweek=mealsinweek, plannedmeals_paginated=plannedmeals_paginated,
-        next_url=next_url, prev_url=prev_url)
+        next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

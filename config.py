@@ -24,6 +24,8 @@ class Config(object):
     MAIN_RECIPES_PER_PAGE = 100
     CAT_RECIPES_PER_PAGE = 50
     EXPLORE_RECIPES_PER_PAGE = 32
+    # For Meal Planner (Completed)
+    MEAL_PLANS_PER_PAGE = 20
     # For Account History page event pagination
     ACCOUNT_EVENTS_PER_PAGE = 30
     # For dynamic loading of images

@@ -80,7 +80,8 @@ def mealPlannerCompleted():
     user = User.query.filter_by(email=current_user.email).first_or_404()
     plannedmeals = user.planned_meals.order_by(MealRecipe.date.desc()).all()
     # Create 2D arrays to hold compact date and full date for past year, past month, and past week
-    w, year_h, month_h, week_h = 2, 365, 30, 7
+    w, year_h, month_h, week_h, fiveyear_h = 2, 365, 30, 7, 1825
+    fiveyear = [[0 for x in range(w)] for y in range(fiveyear_h)]
     year = [[0 for x in range(w)] for y in range(year_h)]
     month = [[0 for x in range(w)] for y in range(month_h)]
     week = [[0 for x in range(w)] for y in range(week_h)]
@@ -89,6 +90,19 @@ def mealPlannerCompleted():
     month_timestamp = int(time.mktime(curr_dt.timetuple()))
     week_timestamp = int(time.mktime(curr_dt.timetuple()))
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    for d in fiveyear:
+        year_timestamp -= 86400
+        date = datetime.fromtimestamp(year_timestamp)
+        intDay = date.weekday()
+        full_month = date.strftime("%B")
+        full_day = date.strftime("%-d")
+        compact_month = date.strftime("%m")
+        compact_day = date.strftime("%d")
+        curr_year = date.strftime("%Y")
+        compactdate = curr_year + "-" + compact_month + "-" + compact_day
+        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        d[0] = compactdate
+        d[1] = fulldate
     for d in year:
         year_timestamp -= 86400
         date = datetime.fromtimestamp(year_timestamp)
@@ -128,7 +142,10 @@ def mealPlannerCompleted():
         fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
         d[0] = compactdate
         d[1] = fulldate
-    # Create array to store only compact dates, used to check if meal is from past year
+    # Create array to store only compact dates, used to check if meal is from past five years (or other criteria)
+    compactfiveyear = []
+    for d in fiveyear:
+        compactfiveyear.append(d[0])
     compactyear = []
     for d in year:
         compactyear.append(d[0])
@@ -151,6 +168,10 @@ def mealPlannerCompleted():
     next_url = url_for('mealplanner.mealPlannerCompleted', page=page + 1) if end_index < len(plannedmeals) else None
     prev_url = url_for('mealplanner.mealPlannerCompleted', page=page - 1) if start_index > 0 else None
     # Create array that contains all items from "plannedmeals" except those outside 1year/1month/1week window
+    mealsinfiveyear = []
+    for meal in plannedmeals:
+        if meal.date in compactfiveyear:
+            mealsinyear.append(meal)
     mealsinyear = []
     for meal in plannedmeals:
         if meal.date in compactyear:
@@ -196,7 +217,8 @@ def mealPlannerCompleted():
         dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,
         week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
         mealsinmonth=mealsinmonth, mealsinweek=mealsinweek, plannedmeals_paginated=plannedmeals_paginated,
-        next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated)
+        next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated, compactfiveyear=compactfiveyear,
+        mealsinfiveyear=mealsinfiveyear)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

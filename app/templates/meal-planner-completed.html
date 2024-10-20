@@ -67,8 +67,8 @@
 		</div>
 		<div id="b1right">
 			<h2>{{ _('Completed Recipes') }}</h2>
-			{% if mealsinyear %} 
-			{% for day in year %}
+			{% if mealsinfiveyear %} 
+			{% for day in fiveyear %}
 			{% if day[0] in dayspaginated %}<h3>{{ day[1] }}</h3>{% endif %}
 			{% if day[0] in dayspaginated %}
 			<div class="planinner">

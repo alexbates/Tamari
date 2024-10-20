@@ -190,7 +190,7 @@ def mealPlannerCompleted():
     dayspaginated = []
     for meal in plannedmeals_paginated:
         if meal.date not in dayspaginated:
-            dayspaginated.append(meal)
+            dayspaginated.append(meal.date)
     return render_template('meal-planner-completed.html', title=_('Meal Planner (Completed)'),
         mdescription=_('View Recipes that have been completed in the Meal Planner.'), plannedmeals=plannedmeals, recdetails=recdetails,
         dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,

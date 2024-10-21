@@ -82,7 +82,7 @@ def apiRefresh():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
-def apiRefresh():
+def apiProfile():
     if app.config.get('API_ENABLED', True):
         # Check if there is a request body (there should be none)
         if request.data:

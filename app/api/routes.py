@@ -49,7 +49,6 @@ def apiAuthenticate():
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
 def apiRefresh():
     if app.config.get('API_ENABLED', True):
-        data = request.get_json()
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
         # Require app name to match

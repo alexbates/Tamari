@@ -97,24 +97,34 @@ def apiProfile():
             return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
-        user = User.query.filter_by(email=current_user.email).first_or_404()
-        # Update last visit time in database
-        user.last_time = datetime.utcnow()
-        db.session.commit()
-        recipes = user.recipes.order_by(Recipe.title)
-        rec_count = 0
-        for recipe in recipes:
-            rec_count += 1
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            # Update last visit time in database
+            user.last_time = datetime.utcnow()
+            db.session.commit()
+            u_email = user.email
+            u_reg_time = user.reg_time
+            u_last_time = user.last_time
+            recipes = user.recipes.order_by(Recipe.title)
+            rec_count = 0
+            for recipe in recipes:
+                rec_count += 1
+        else:
+            u_email = None
+            u_reg_time = None
+            u_last_time = None
+            rec_count = 0
         # Build response JSON
         response_data = {
-            "email": user.email,
-            "register_time": user.reg_time,
-            "last_visited": user.last_time,
+            "email": u_email,
+            "register_time": u_reg_time,
+            "last_visited": u_last_time,
             "recipes": rec_count
         }
         # Return response without key sorting
-        response = make_response(jsonify(response_data))
-        response.json.sort_keys = False
+        response_json = json.dumps(response_data, sort_keys=False)
+        response = make_response(response_json)
+        response.headers['Content-Type'] = 'application/json'
         return response
     else:
         return jsonify({"message": "API is disabled"}), 503

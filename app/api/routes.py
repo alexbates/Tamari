@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
+from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response, json
 from flask_babel import _
 from flask_jwt_extended import create_access_token, create_refresh_token
 from flask_jwt_extended import jwt_required, get_jwt_identity

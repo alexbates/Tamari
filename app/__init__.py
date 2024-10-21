@@ -8,6 +8,7 @@ from flask_moment import Moment
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_babel import Babel
+from flask_jwt_extended import JWTManager
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath
@@ -27,6 +28,7 @@ login.login_view = 'account.login'
 mail = Mail(app)
 moment = Moment(app)
 babel = Babel(app, locale_selector=get_locale)
+jwt = JWTManager(app)
 app.config['MAX_CONTENT_LENGTH'] = 350 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg']
@@ -71,6 +73,9 @@ app.register_blueprint(myrecipes_bp)
 
 from app.shoplists import bp as shoplists_bp
 app.register_blueprint(shoplists_bp)
+
+from app.api import bp as api_bp
+app.register_blueprint(api_bp)
 
 if not app.debug:
     if app.config['MAIL_SERVER']:

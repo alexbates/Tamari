@@ -18,8 +18,8 @@ def apiAuthenticate():
         # Call rate limited function to effectively impose rate limit on login attempts
         if rate_limited_login():
             data = request.get_json()
-            app_name = data.get('app_name')
-            app_key = data.get('app_key')
+            app_name = request.headers.get('X-App-Name')
+            app_key = request.headers.get('X-App-Key')
             email = data.get('email').lower()
             password = data.get('password')
             user = User.query.filter_by(email=email).first()
@@ -40,5 +40,32 @@ def apiAuthenticate():
             refresh_token = create_refresh_token(identity=user.id)
             # Return the tokens in JSON response
             return jsonify(message="success", access_token=access_token, refresh_token=refresh_token), 200
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+
+@bp.route('/api/user/refresh', methods=['POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required(refresh=True)
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiRefresh():
+    if app.config.get('API_ENABLED', True):
+        data = request.get_json()
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        # Require app name to match
+        if app_name.lower() != 'tamari':
+            return jsonify({"message": "app_name not recognized"}), 401
+        # Check if the provided app_key matches the one in the configuration
+        if app_key != app.config.get('APP_KEY'):
+            return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        # Create a new access token
+        new_access_token = create_access_token(identity=current_user)
+        # Return the new access token
+        return jsonify({
+            "message": "success",
+            "access_token": new_access_token
+        }), 200
     else:
         return jsonify({"message": "API is disabled"}), 503

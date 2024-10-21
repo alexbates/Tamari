@@ -20,6 +20,9 @@ def apiAuthenticate():
             # Add delay to slow the rate at which login requests can be made
             time.sleep(0.5)
             data = request.get_json()
+            # Validate that 'email' and 'password' fields are present and not empty
+            if not data or not data.get('email') or not data.get('password'):
+                return jsonify({"message": "Email and password are required"}), 400
             app_name = request.headers.get('X-App-Name')
             app_key = request.headers.get('X-App-Key')
             email = data.get('email').lower()

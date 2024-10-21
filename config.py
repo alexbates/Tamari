@@ -46,5 +46,5 @@ class Config(object):
     API_ENABLED = False
     APP_KEY = 'AANmeooubvOOB3LQQeny8e900q35ee804'
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or '1C0D290AC6CF8DC1A9A4'
-    ACCESS_TOKEN_EXPIRES = timedelta(minutes=15)
+    ACCESS_TOKEN_EXPIRES = timedelta(hours=12)
     REFRESH_TOKEN_EXPIRES = timedelta(days=30)

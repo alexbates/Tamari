@@ -8,6 +8,7 @@ from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listit
 from app.account.routes import rate_limited_login
 from werkzeug.urls import url_parse
 import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
+from datetime import datetime
 from app.api import bp
 from config import Config
 
@@ -74,5 +75,46 @@ def apiRefresh():
             "message": "success",
             "access_token": new_access_token
         }), 200
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+
+@bp.route('/api/user/profile', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiRefresh():
+    if app.config.get('API_ENABLED', True):
+        # Check if there is a request body (there should be none)
+        if request.data:
+            return jsonify({"message": "Request body is not allowed"}), 400
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        # Require app name to match
+        if app_name.lower() != 'tamari':
+            return jsonify({"message": "app_name not recognized"}), 401
+        # Check if the provided app_key matches the one in the configuration
+        if app_key != app.config.get('APP_KEY'):
+            return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(email=current_user.email).first_or_404()
+        # Update last visit time in database
+        user.last_time = datetime.utcnow()
+        db.session.commit()
+        recipes = user.recipes.order_by(Recipe.title)
+        rec_count = 0
+        for recipe in recipes:
+            rec_count += 1
+        # Build response JSON
+        response_data = {
+            "email": user.email,
+            "register_time": user.reg_time,
+            "last_visited": user.last_time,
+            "recipes": rec_count
+        }
+        # Return response without key sorting
+        response = make_response(jsonify(response_data))
+        response.json.sort_keys = False
+        return response
     else:
         return jsonify({"message": "API is disabled"}), 503

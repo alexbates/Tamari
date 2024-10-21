@@ -18,7 +18,7 @@ def apiAuthenticate():
         # Call rate limited function to effectively impose rate limit on login attempts
         if rate_limited_login():
             # Add delay to slow the rate at which login requests can be made
-            time.sleep(1)
+            time.sleep(0.5)
             data = request.get_json()
             app_name = request.headers.get('X-App-Name')
             app_key = request.headers.get('X-App-Key')

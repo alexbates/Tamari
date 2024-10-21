@@ -34,6 +34,8 @@ class Config(object):
     DYNAMIC_ROOT_MARGIN = '120px'
     # Rate Limit Settings
     # If you wish to disable rate limiting, set all equal to None (no single quotes)
+    # Note that rate limit will be multiplied by the number of gunicorn worker threads (usually 4)
+    # This issue can be mitigated by used a shared storage backend like redis (configure in __init__.py)
     # Enabled example: DEFAULT_RATE_LIMIT = '1000 per minute'
     DEFAULT_RATE_LIMIT = None
     # Enabled example: LOGIN_RATE_LIMIT = '25 per 10 minutes'

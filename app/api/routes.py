@@ -109,17 +109,29 @@ def apiProfile():
             rec_count = 0
             for recipe in recipes:
                 rec_count += 1
+            lists = user.shop_lists.order_by(Shoplist.label).all()
+            list_count = 0
+            for list in lists:
+                list_count += 1
+            plannedmeals = user.planned_meals.all()
+            meal_count = 0
+            for meal in plannedmeals:
+                meal_count += 1
         else:
             u_email = None
             u_reg_time = None
             u_last_time = None
             rec_count = 0
+            list_count = 0
+            meal_count = 0
         # Build response JSON
         response_data = {
             "email": u_email,
             "register_time": u_reg_time,
             "last_visited": u_last_time,
-            "recipes": rec_count
+            "recipes": rec_count,
+            "shopping_lists": list_count,
+            "recipes_prepared": meal_count
         }
         # Return response without key sorting
         response_json = json.dumps(response_data, sort_keys=False)

@@ -125,6 +125,91 @@ def apiProfile():
             meal_count = 0
             for meal in plannedmeals:
                 meal_count += 1
+            # Create 2D arrays to hold compact date and full date for past year, past month, and past week
+            w, year_h, month_h, week_h = 2, 365, 30, 7
+            year = [[0 for x in range(w)] for y in range(year_h)]
+            month = [[0 for x in range(w)] for y in range(month_h)]
+            week = [[0 for x in range(w)] for y in range(week_h)]
+            curr_dt = datetime.now()
+            year_timestamp = int(time.mktime(curr_dt.timetuple()))
+            month_timestamp = int(time.mktime(curr_dt.timetuple()))
+            week_timestamp = int(time.mktime(curr_dt.timetuple()))
+            days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+            for d in year:
+                year_timestamp -= 86400
+                date = datetime.fromtimestamp(year_timestamp)
+                intDay = date.weekday()
+                full_month = date.strftime("%B")
+                full_day = date.strftime("%-d")
+                compact_month = date.strftime("%m")
+                compact_day = date.strftime("%d")
+                curr_year = date.strftime("%Y")
+                compactdate = curr_year + "-" + compact_month + "-" + compact_day
+                fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+                d[0] = compactdate
+                d[1] = fulldate
+            for d in month:
+                month_timestamp -= 86400
+                date = datetime.fromtimestamp(month_timestamp)
+                intDay = date.weekday()
+                full_month = date.strftime("%B")
+                full_day = date.strftime("%-d")
+                compact_month = date.strftime("%m")
+                compact_day = date.strftime("%d")
+                curr_year = date.strftime("%Y")
+                compactdate = curr_year + "-" + compact_month + "-" + compact_day
+                fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+                d[0] = compactdate
+                d[1] = fulldate
+            for d in week:
+                week_timestamp -= 86400
+                date = datetime.fromtimestamp(week_timestamp)
+                intDay = date.weekday()
+                full_month = date.strftime("%B")
+                full_day = date.strftime("%-d")
+                compact_month = date.strftime("%m")
+                compact_day = date.strftime("%d")
+                curr_year = date.strftime("%Y")
+                compactdate = curr_year + "-" + compact_month + "-" + compact_day
+                fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+                d[0] = compactdate
+                d[1] = fulldate
+            # Create array to store only compact dates, used to check if meal is from past year, month, and week
+            compactyear = []
+            for d in year:
+                compactyear.append(d[0])
+            compactmonth = []
+            for d in month:
+                compactmonth.append(d[0])
+            compactweek = []
+            for d in week:
+                compactweek.append(d[0])
+            # Create array that contains all items from "plannedmeals" except those outside 1year/1month/1week window
+            mealsinyear = []
+            for meal in plannedmeals:
+                if meal.date in compactyear:
+                    mealsinyear.append(meal)
+            mealsinmonth = []
+            for meal in plannedmeals:
+                if meal.date in compactmonth:
+                    mealsinmonth.append(meal)
+            mealsinweek = []
+            for meal in plannedmeals:
+                if meal.date in compactweek:
+                    mealsinweek.append(meal)
+            # Create arrays to store dates that meals are planned for, used by template to count meals for stats
+            dayswithmeals = []
+            for meal in mealsinyear:
+                if meal.date not in dayswithmeals:
+                    dayswithmeals.append(meal.date)
+            dayswithmeals_m = []
+            for meal in mealsinmonth:
+                if meal.date not in dayswithmeals_m:
+                    dayswithmeals_m.append(meal.date)
+            dayswithmeals_w = []
+            for meal in mealsinweek:
+                if meal.date not in dayswithmeals_w:
+                    dayswithmeals_w.append(meal.date)
         else:
             u_email = None
             u_reg_time = None
@@ -143,7 +228,13 @@ def apiProfile():
             "favorites": fav_count,
             "categories": cat_count,
             "shopping_lists": list_count,
-            "recipes_prepared": meal_count
+            "recipes_prepared_total": meal_count,
+            "recipes_prepared_week": len(mealsinweek),
+            "recipes_prepared_month": len(mealsinmonth),
+            "recipes_prepared_year": len(mealsinyear),
+            "days_cooked_week": len(dayswithmeals_w),
+            "days_cooked_month": len(dayswithmeals_m),
+            "days_cooked_year": len(dayswithmeals)
         }
         # Return response without key sorting
         response_json = json.dumps(response_data, sort_keys=False)

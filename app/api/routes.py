@@ -109,6 +109,14 @@ def apiProfile():
             rec_count = 0
             for recipe in recipes:
                 rec_count += 1
+            favorites = user.recipes.order_by(Recipe.title).filter(Recipe.favorite == 1)
+            fav_count = 0
+            for recipe in favorites:
+                fav_count += 1
+            categories = user.categories.order_by(Category.label).all()
+            cat_count = 0
+            for category in categories:
+                cat_count += 1
             lists = user.shop_lists.order_by(Shoplist.label).all()
             list_count = 0
             for list in lists:
@@ -122,6 +130,8 @@ def apiProfile():
             u_reg_time = None
             u_last_time = None
             rec_count = 0
+            fav_count = 0
+            cat_count = 0
             list_count = 0
             meal_count = 0
         # Build response JSON
@@ -130,6 +140,8 @@ def apiProfile():
             "register_time": u_reg_time,
             "last_visited": u_last_time,
             "recipes": rec_count,
+            "favorites": fav_count,
+            "categories": cat_count,
             "shopping_lists": list_count,
             "recipes_prepared": meal_count
         }

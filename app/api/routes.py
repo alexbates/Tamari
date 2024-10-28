@@ -30,8 +30,8 @@ def apiAuthenticate():
             password = data.get('password')
             user = User.query.filter_by(email=email).first()
             # Require app name to match
-            if app_name.lower() != 'tamari':
-                return jsonify({"message": "app_name not recognized"}), 401
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
             if app_key != app.config.get('APP_KEY'):
                 return jsonify({"message": "Invalid app_key"}), 401
@@ -67,8 +67,8 @@ def apiRefresh():
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
         # Require app name to match
-        if app_name.lower() != 'tamari':
-            return jsonify({"message": "app_name not recognized"}), 401
+        if app_name is None or app_name.lower() != 'tamari':
+            return jsonify({"message": "app name is missing or incorrect"}), 401
         # Check if the provided app_key matches the one in the configuration
         if app_key != app.config.get('APP_KEY'):
             return jsonify({"message": "Invalid app_key"}), 401
@@ -99,8 +99,8 @@ def apiProfile():
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
         # Require app name to match
-        if app_name.lower() != 'tamari':
-            return jsonify({"message": "app_name not recognized"}), 401
+        if app_name is None or app_name.lower() != 'tamari':
+            return jsonify({"message": "app name is missing or incorrect"}), 401
         # Check if the provided app_key matches the one in the configuration
         if app_key != app.config.get('APP_KEY'):
             return jsonify({"message": "Invalid app_key"}), 401
@@ -279,8 +279,8 @@ def apiAllRecipes():
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
         # Require app name to match
-        if app_name.lower() != 'tamari':
-            return jsonify({"message": "app_name not recognized"}), 401
+        if app_name is None or app_name.lower() != 'tamari':
+            return jsonify({"message": "app name is missing or incorrect"}), 401
         # Check if the provided app_key matches the one in the configuration
         if app_key != app.config.get('APP_KEY'):
             return jsonify({"message": "Invalid app_key"}), 401

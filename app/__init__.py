@@ -40,8 +40,9 @@ limiter = Limiter(
     storage_uri="memory://"
 )
 
+# Custom message for API routes when token is expired
 @jwt.expired_token_loader
-def custom_expired_token_callback(expired_token):
+def custom_expired_token_callback(jwt_header, jwt_data):
     return jsonify({
         "message": "Token is expired. Please refresh or re-authenticate."
     }), 401

@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from config import Config
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -39,6 +39,12 @@ limiter = Limiter(
     default_limits=[Config.DEFAULT_RATE_LIMIT],
     storage_uri="memory://"
 )
+
+@jwt.expired_token_loader
+def custom_expired_token_callback(expired_token):
+    return jsonify({
+        "message": "Token is expired. Please refresh or re-authenticate."
+    }), 401
 
 # The following two functions are used to reconstruct Demo account data on an interval
 from app.account.demo import reset_demo_account

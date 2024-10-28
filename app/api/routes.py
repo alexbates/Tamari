@@ -42,8 +42,14 @@ def apiAuthenticate():
             if user is None or not user.check_password(password):
                 return jsonify({"message": "Invalid username or password"}), 401
             # Create JWT access and refresh tokens
-            access_token = create_access_token(identity=user.id)
-            refresh_token = create_refresh_token(identity=user.id)
+            access_token = create_access_token(
+                identity=user.id,
+                expires_delta=app.config.get('ACCESS_TOKEN_EXPIRES')
+            )
+            refresh_token = create_refresh_token(
+                identity=user.id,
+                expires_delta=app.config.get('REFRESH_TOKEN_EXPIRES')
+            )
             # Return the tokens in JSON response
             return jsonify(message="success", access_token=access_token, refresh_token=refresh_token), 200
     else:
@@ -69,7 +75,10 @@ def apiRefresh():
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
         # Create a new access token
-        new_access_token = create_access_token(identity=current_user)
+        new_access_token = create_access_token(
+            identity=current_user,
+            expires_delta=app.config.get('ACCESS_TOKEN_EXPIRES')
+        )
         # Return the new access token
         return jsonify({
             "message": "success",

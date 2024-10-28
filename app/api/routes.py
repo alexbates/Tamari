@@ -224,17 +224,25 @@ def apiProfile():
             "email": u_email,
             "register_time": u_reg_time,
             "last_visited": u_last_time,
-            "recipes": rec_count,
-            "favorites": fav_count,
-            "categories": cat_count,
+            "my_recipes": {
+                "recipes": rec_count,
+                "favorites": fav_count,
+                "categories": cat_count
+            },
             "shopping_lists": list_count,
-            "recipes_prepared_total": meal_count,
-            "recipes_prepared_week": len(mealsinweek),
-            "recipes_prepared_month": len(mealsinmonth),
-            "recipes_prepared_year": len(mealsinyear),
-            "days_cooked_week": len(dayswithmeals_w),
-            "days_cooked_month": len(dayswithmeals_m),
-            "days_cooked_year": len(dayswithmeals)
+            "meal_planner": {
+                "recipes_prepared": {
+                    "total": meal_count,
+                    "past_week": len(mealsinweek),
+                    "past_month": len(mealsinmonth),
+                    "past_year": len(mealsinyear)
+                },
+                "days_cooked": {
+                    "past_week": len(dayswithmeals_w),
+                    "past_month": len(dayswithmeals_m),
+                    "past_year": len(dayswithmeals)
+                }
+            }
         }
         # Return response without key sorting
         response_json = json.dumps(response_data, sort_keys=False)

@@ -281,8 +281,13 @@ def apiAllRecipes():
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 20, type=int)
         sort = request.args.get('sort', 'title', type=str)
-        # category query parameter defaults to False
-        category = request.args.get('category', 'False', type=str).lower() == 'true'
+        # these optional query parameters default to True
+        category = request.args.get('category', 'True', type=str).lower() == 'true'
+        photo = request.args.get('photo', 'True', type=str).lower() == 'true'
+        # these optional query parameters default to False
+        prep_times = request.args.get('prep_times', 'True', type=str).lower() == 'true'
+        time_created = request.args.get('time_created', 'True', type=str).lower() == 'true'
+        calories = request.args.get('calories', 'True', type=str).lower() == 'true'
         if user:
             if sort == 'title':
                 recipes_query = db.session.query(
@@ -364,18 +369,30 @@ def apiAllRecipes():
                 ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created.desc())
             # Paginate the queried recipes
             recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+            # Prepare recipes to be displayed as JSON
+            recipe_data = []
+            for recipe in recipes.items:
+                recipe_info = {
+                    "hex_id": recipe.hex_id,
+                    "title": recipe.title
+                }
+                # Include optional data if specified by query parameters
+                if category:
+                    recipe_info["category"] = recipe.category
+                if photo:
+                    recipe_info["photo"] = recipe.photo
+                if prep_times:
+                    recipe_info["prep_time"] = recipe.prep_time
+                    recipe_info["cook_time"] = recipe.cook_time
+                    recipe_info["total_time"] = recipe.total_time
+                if time_created:
+                    recipe_info["time_created"] = recipe.time_created
+                if calories:
+                    recipe_info["calories"] = recipe.calories
+                recipe_data.append(recipe_info)
         else:
-            pass
-        # Prepare recipes to be displayed as JSON
-        recipe_data = []
-        for recipe in recipes.items:
-            recipe_info = {
-                "hex_id": recipe.hex_id,
-                "title": recipe.title
-            }
-            if category:  # Include category if category is True
-                recipe_info["category"] = recipe.category
-            recipe_data.append(recipe_info)
+            # if user is not found, empty array will be used to create JSON response
+            recipe_data = []
         # Return response without key sorting
         response_json = json.dumps({"recipes": recipe_data}, sort_keys=False)
         response = make_response(response_json)

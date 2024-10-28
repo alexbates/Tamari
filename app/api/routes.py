@@ -285,9 +285,9 @@ def apiAllRecipes():
         category = request.args.get('category', 'True', type=str).lower() == 'true'
         photo = request.args.get('photo', 'True', type=str).lower() == 'true'
         # these optional query parameters default to False
-        prep_times = request.args.get('prep_times', 'True', type=str).lower() == 'true'
-        time_created = request.args.get('time_created', 'True', type=str).lower() == 'true'
-        calories = request.args.get('calories', 'True', type=str).lower() == 'true'
+        prep_times = request.args.get('prep_times', 'False', type=str).lower() == 'true'
+        time_created = request.args.get('time_created', 'False', type=str).lower() == 'true'
+        calories = request.args.get('calories', 'False', type=str).lower() == 'true'
         if user:
             if sort == 'title':
                 recipes_query = db.session.query(

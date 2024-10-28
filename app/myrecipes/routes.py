@@ -213,7 +213,7 @@ def allRecipes():
         mdescription=_('View all recipes saved in your account. This is the home page of the Tamari web app.'), user=user,
         recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
-@bp.route('/api/my-recipes/all')
+@bp.route('/old-api/my-recipes/all')
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def apiAllRecipes():

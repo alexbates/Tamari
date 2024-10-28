@@ -219,6 +219,12 @@ def apiProfile():
             cat_count = 0
             list_count = 0
             meal_count = 0
+            mealsinyear = []
+            mealsinmonth = []
+            mealsinweek = []
+            dayswithmeals = []
+            dayswithmeals_m = []
+            dayswithmeals_w = []
         # Build response JSON
         response_data = {
             "email": u_email,
@@ -246,6 +252,132 @@ def apiProfile():
         }
         # Return response without key sorting
         response_json = json.dumps(response_data, sort_keys=False)
+        response = make_response(response_json)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+        
+@bp.route('/api/my-recipes/all', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiAllRecipes():
+    if app.config.get('API_ENABLED', True):
+        # Check if there is a request body (there should be none)
+        if request.data:
+            return jsonify({"message": "Request body is not allowed"}), 400
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        # Require app name to match
+        if app_name.lower() != 'tamari':
+            return jsonify({"message": "app_name not recognized"}), 401
+        # Check if the provided app_key matches the one in the configuration
+        if app_key != app.config.get('APP_KEY'):
+            return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        page = request.args.get('page', 1, type=int)
+        per_page = request.args.get('per_page', 20, type=int)
+        sort = request.args.get('sort', 'title', type=str)
+        # category query parameter defaults to False
+        category = request.args.get('category', 'False', type=str).lower() == 'true'
+        if user:
+            if sort == 'title':
+                recipes_query = db.session.query(
+                    Recipe.id,
+                    Recipe.title,
+                    Recipe.category,
+                    Recipe.hex_id,
+                    Recipe.photo,
+                    Recipe.prep_time,
+                    Recipe.cook_time,
+                    Recipe.total_time,
+                    Recipe.time_created,
+                    NutritionalInfo.calories
+                ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.title)
+            elif sort == 'title_desc':
+                recipes_query = db.session.query(
+                    Recipe.id,
+                    Recipe.title,
+                    Recipe.category,
+                    Recipe.hex_id,
+                    Recipe.photo,
+                    Recipe.prep_time,
+                    Recipe.cook_time,
+                    Recipe.total_time,
+                    Recipe.time_created,
+                    NutritionalInfo.calories
+                ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.title.desc())
+            elif sort == 'category':
+                recipes_query = db.session.query(
+                    Recipe.id,
+                    Recipe.title,
+                    Recipe.category,
+                    Recipe.hex_id,
+                    Recipe.photo,
+                    Recipe.prep_time,
+                    Recipe.cook_time,
+                    Recipe.total_time,
+                    Recipe.time_created,
+                    NutritionalInfo.calories
+                ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.category)
+            elif sort == 'category_desc':
+                recipes_query = db.session.query(
+                    Recipe.id,
+                    Recipe.title,
+                    Recipe.category,
+                    Recipe.hex_id,
+                    Recipe.photo,
+                    Recipe.prep_time,
+                    Recipe.cook_time,
+                    Recipe.total_time,
+                    Recipe.time_created,
+                    NutritionalInfo.calories
+                ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.category.desc())
+            elif sort == 'time_created':
+                recipes_query = db.session.query(
+                    Recipe.id,
+                    Recipe.title,
+                    Recipe.category,
+                    Recipe.hex_id,
+                    Recipe.photo,
+                    Recipe.prep_time,
+                    Recipe.cook_time,
+                    Recipe.total_time,
+                    Recipe.time_created,
+                    NutritionalInfo.calories
+                ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created)
+            else:
+                recipes_query = db.session.query(
+                    Recipe.id,
+                    Recipe.title,
+                    Recipe.category,
+                    Recipe.hex_id,
+                    Recipe.photo,
+                    Recipe.prep_time,
+                    Recipe.cook_time,
+                    Recipe.total_time,
+                    Recipe.time_created,
+                    NutritionalInfo.calories
+                ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created.desc())
+            # Paginate the queried recipes
+            recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+        else:
+            pass
+        # Prepare recipes to be displayed as JSON
+        recipe_data = []
+        for recipe in recipes.items:
+            recipe_info = {
+                "hex_id": recipe.hex_id,
+                "title": recipe.title
+            }
+            if category:  # Include category if category is True
+                recipe_info["category"] = recipe.category
+            recipe_data.append(recipe_info)
+        # Return response without key sorting
+        response_json = json.dumps({"recipes": recipe_data}, sort_keys=False)
         response = make_response(response_json)
         response.headers['Content-Type'] = 'application/json'
         return response

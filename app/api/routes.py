@@ -29,12 +29,13 @@ def apiAuthenticate():
             email = data.get('email').lower()
             password = data.get('password')
             user = User.query.filter_by(email=email).first()
-            # Require app name to match
-            if app_name is None or app_name.lower() != 'tamari':
-                return jsonify({"message": "app name is missing or incorrect"}), 401
-            # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
-                return jsonify({"message": "Invalid app_key"}), 401
+            if app.config.get('REQUIRE_HEADERS', True):
+                # Require app name to match
+                if app_name is None or app_name.lower() != 'tamari':
+                    return jsonify({"message": "app name is missing or incorrect"}), 401
+                # Check if the provided app_key matches the one in the configuration
+                if app_key != app.config.get('APP_KEY'):
+                    return jsonify({"message": "Invalid app_key"}), 401
             # Disallow API login for demo account
             if email == "demo@tamariapp.com":
                 return jsonify({"message": "API access disallowed for demo account"}), 401
@@ -66,12 +67,13 @@ def apiRefresh():
             return jsonify({"message": "Request body is not allowed"}), 400
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
-        # Require app name to match
-        if app_name is None or app_name.lower() != 'tamari':
-            return jsonify({"message": "app name is missing or incorrect"}), 401
-        # Check if the provided app_key matches the one in the configuration
-        if app_key != app.config.get('APP_KEY'):
-            return jsonify({"message": "Invalid app_key"}), 401
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if app_key != app.config.get('APP_KEY'):
+                return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
         # Create a new access token
@@ -98,12 +100,13 @@ def apiProfile():
             return jsonify({"message": "Request body is not allowed"}), 400
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
-        # Require app name to match
-        if app_name is None or app_name.lower() != 'tamari':
-            return jsonify({"message": "app name is missing or incorrect"}), 401
-        # Check if the provided app_key matches the one in the configuration
-        if app_key != app.config.get('APP_KEY'):
-            return jsonify({"message": "Invalid app_key"}), 401
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if app_key != app.config.get('APP_KEY'):
+                return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
@@ -278,12 +281,13 @@ def apiAllRecipes():
             return jsonify({"message": "Request body is not allowed"}), 400
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
-        # Require app name to match
-        if app_name is None or app_name.lower() != 'tamari':
-            return jsonify({"message": "app name is missing or incorrect"}), 401
-        # Check if the provided app_key matches the one in the configuration
-        if app_key != app.config.get('APP_KEY'):
-            return jsonify({"message": "Invalid app_key"}), 401
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if app_key != app.config.get('APP_KEY'):
+                return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
@@ -424,12 +428,13 @@ def apiFavorites():
             return jsonify({"message": "Request body is not allowed"}), 400
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
-        # Require app name to match
-        if app_name is None or app_name.lower() != 'tamari':
-            return jsonify({"message": "app name is missing or incorrect"}), 401
-        # Check if the provided app_key matches the one in the configuration
-        if app_key != app.config.get('APP_KEY'):
-            return jsonify({"message": "Invalid app_key"}), 401
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if app_key != app.config.get('APP_KEY'):
+                return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()

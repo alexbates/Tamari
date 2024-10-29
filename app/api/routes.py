@@ -289,7 +289,10 @@ def apiAllRecipes():
         user = User.query.filter_by(id=current_user).first_or_404()
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 20, type=int)
-        sort = request.args.get('sort', 'title', type=str)
+        sort = request.args.get('sort', 'title', type=str).lower()
+        valid_sort_options = ['title', 'title_desc', 'category', 'category_desc', 'time_created', 'time_created_desc']
+        if sort not in valid_sort_options:
+            return jsonify({"message": "Specified sort option is not recognized"}), 400
         # these optional query parameters default to True
         category = request.args.get('category', 'True', type=str).lower() == 'true'
         photo = request.args.get('photo', 'True', type=str).lower() == 'true'
@@ -432,7 +435,10 @@ def apiFavorites():
         user = User.query.filter_by(id=current_user).first_or_404()
         page = request.args.get('page', 1, type=int)
         per_page = request.args.get('per_page', 20, type=int)
-        sort = request.args.get('sort', 'title', type=str)
+        sort = request.args.get('sort', 'title', type=str).lower()
+        valid_sort_options = ['title', 'title_desc', 'category', 'category_desc', 'time_created', 'time_created_desc']
+        if sort not in valid_sort_options:
+            return jsonify({"message": "Specified sort option is not recognized"}), 400
         # these optional query parameters default to True
         category = request.args.get('category', 'True', type=str).lower() == 'true'
         photo = request.args.get('photo', 'True', type=str).lower() == 'true'

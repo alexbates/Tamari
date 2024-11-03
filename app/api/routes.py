@@ -602,7 +602,7 @@ def apiCategories():
             # if user is not found, empty array will be used to create JSON response
             category_data = []
         # Return response without key sorting
-        response_json = json.dumps({"recipes": recipe_data}, sort_keys=False)
+        response_json = json.dumps({"recipes": category_data}, sort_keys=False)
         response = make_response(response_json)
         response.headers['Content-Type'] = 'application/json'
         return response

@@ -591,7 +591,7 @@ def apiCategories():
             # Prepare recipes to be displayed as JSON
             category_data = []
             for category in categories:
-                recipes = Category.query.filter_by(id=user.id, label=category.label).all()
+                recipes = user.recipes.filter_by(category=category.label).all()
                 category_info = {
                     "hex_id": category.hex_id,
                     "label": category.label,

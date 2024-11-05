@@ -661,3 +661,42 @@ def apiCategoriesAdd():
             return jsonify(message="User not found"), 400
     else:
         return jsonify({"message": "API is disabled"}), 503
+        
+@bp.route('/api/my-recipes/categories/remove/<catid>', methods=['DELETE'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiCategoriesRemove(catid):
+    if app.config.get('API_ENABLED', True):
+        # Check if there is a request body (there should be none)
+        if request.data:
+            return jsonify({"message": "Request body is not allowed"}), 400
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if app_key != app.config.get('APP_KEY'):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            category = Category.query.filter_by(hex_id=catid, user_id=current_user).first()
+            recipes = user.recipes.all()
+            if category is None or category.user_id != current_user.id:
+                return jsonify(message="Category does not exist or you do not have permission to remove it."), 400
+            if category.label == 'Miscellaneous':
+                return jsonify(message="Miscellaneous cannot be deleted because it is the default category."), 400
+            for recipe in recipes:
+                if recipe.category == category.label:
+                    recipe.category = 'Miscellaneous'
+            db.session.delete(category)
+            db.session.commit()
+            return jsonify(message="success"), 200
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503

@@ -608,3 +608,56 @@ def apiCategories():
         return response
     else:
         return jsonify({"message": "API is disabled"}), 503
+        
+@bp.route('/api/my-recipes/categories/add', methods=['POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiCategoriesAdd():
+    if app.config.get('API_ENABLED', True):
+        data = request.get_json()
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        # POST data looks like {"label":"Miscellaneous"}
+        label = data.get('label')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if app_key != app.config.get('APP_KEY'):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            # Paginate the queried recipes
+            categories = user.categories.order_by(Category.label).all()
+            cats = []
+            for cat in categories:
+                curr_cat = cat.label
+                cats.append(curr_cat)
+            if not label:
+                return jsonify(message="Category label is required"), 400
+            if len(cats) > 39:
+                return jsonify(message="You are limited to 40 categories"), 400
+            if label in cats:
+                return jsonify(message="The provided category already exists"), 400
+            if len(label) > 20:
+                return jsonify(message="The category must be less than 20 characters"), 400
+            if len(label) < 3:
+                return jsonify(message="The category must be at least 3 characters"), 400
+            hex_valid = 0
+            while hex_valid == 0:
+                hex_string = secrets.token_hex(4)
+                hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                if hex_exist is None:
+                    hex_valid = 1
+            category = Category(hex_id=hex_string, label=label, user=current_user)
+            db.session.add(category)
+            db.session.commit()
+            return jsonify(message="success"), 200
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503

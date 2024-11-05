@@ -34,7 +34,7 @@ def apiAuthenticate():
                 if app_name is None or app_name.lower() != 'tamari':
                     return jsonify({"message": "app name is missing or incorrect"}), 401
                 # Check if the provided app_key matches the one in the configuration
-                if app_key != app.config.get('APP_KEY'):
+                if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                     return jsonify({"message": "Invalid app_key"}), 401
             # Disallow API login for demo account
             if email == "demo@tamariapp.com":
@@ -72,7 +72,7 @@ def apiRefresh():
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
@@ -105,7 +105,7 @@ def apiProfile():
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
@@ -286,7 +286,7 @@ def apiAllRecipes():
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
@@ -433,7 +433,7 @@ def apiFavorites():
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
@@ -580,7 +580,7 @@ def apiCategories():
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
@@ -625,7 +625,7 @@ def apiCategoriesAdd():
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
@@ -678,7 +678,7 @@ def apiCategoriesRemove(catid):
             if app_name is None or app_name.lower() != 'tamari':
                 return jsonify({"message": "app name is missing or incorrect"}), 401
             # Check if the provided app_key matches the one in the configuration
-            if app_key != app.config.get('APP_KEY'):
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()

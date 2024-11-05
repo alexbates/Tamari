@@ -647,6 +647,9 @@ def apiCategoriesAdd():
                 return jsonify(message="The category must be less than 20 characters"), 400
             if len(label) < 3:
                 return jsonify(message="The category must be at least 3 characters"), 400
+            dis_chars = {'<', '>', '^', '{', '}', '/', '*', ';', '!', '@', '#', '$', '%', '&', '(', ')'}
+            if any(char in dis_chars for char in label):
+                return jsonify(message="Must not contain special characters"), 400
             hex_valid = 0
             while hex_valid == 0:
                 hex_string = secrets.token_hex(4)

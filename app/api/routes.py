@@ -292,7 +292,7 @@ def apiAllRecipes():
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
         page = request.args.get('page', 1, type=int)
-        per_page = request.args.get('per_page', 20, type=int)
+        per_page = request.args.get('per_page', 1000, type=int)
         sort = request.args.get('sort', 'title', type=str).lower()
         valid_sort_options = ['title', 'title_desc', 'category', 'category_desc', 'time_created', 'time_created_desc']
         if sort not in valid_sort_options:
@@ -439,7 +439,7 @@ def apiFavorites():
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
         page = request.args.get('page', 1, type=int)
-        per_page = request.args.get('per_page', 20, type=int)
+        per_page = request.args.get('per_page', 1000, type=int)
         sort = request.args.get('sort', 'title', type=str).lower()
         valid_sort_options = ['title', 'title_desc', 'category', 'category_desc', 'time_created', 'time_created_desc']
         if sort not in valid_sort_options:

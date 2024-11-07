@@ -728,7 +728,7 @@ def apiRecipeDetail(hexid):
         if user:
             recipe = Recipe.query.filter_by(hex_id=hexid).first()
             # Verify that recipe belongs to current user or is public
-            if recipe.user_id != current_user and recipe.public != 1:
+            if recipe and recipe.user_id != current_user and recipe.public != 1:
                 return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
             # Build response JSON
             if recipe.user_id != current_user:

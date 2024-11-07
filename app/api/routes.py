@@ -732,6 +732,9 @@ def apiRecipeDetail(hexid):
                 return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
             if recipe.user_id != current_user and recipe.public != 1:
                 return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
+            # Split ingredients and instructions into lists
+            ingredients_list = [line.strip().replace('"', '') for line in recipe.ingredients.splitlines()]
+            instructions_list = [line.strip().replace('"', '') for line in recipe.instructions.splitlines()]
             # Build response JSON
             if recipe.user_id != current_user:
                 response_data = {
@@ -747,8 +750,8 @@ def apiRecipeDetail(hexid):
                     "prep_time": recipe.prep_time,
                     "cook_time": recipe.cook_time,
                     "total_time": recipe.total_time,
-                    "ingredients": recipe.ingredients,
-                    "instructions": recipe.instructions
+                    "ingredients": ingredients_list,
+                    "instructions": instructions_list
                 }
             else:
                 response_data = {
@@ -766,8 +769,8 @@ def apiRecipeDetail(hexid):
                     "prep_time": recipe.prep_time,
                     "cook_time": recipe.cook_time,
                     "total_time": recipe.total_time,
-                    "ingredients": recipe.ingredients,
-                    "instructions": recipe.instructions
+                    "ingredients": ingredients_list,
+                    "instructions": instructions_list
                 }
             # Return response without key sorting
             response_json = json.dumps(response_data, sort_keys=False)

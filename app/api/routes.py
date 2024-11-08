@@ -13,6 +13,29 @@ from PIL import Image
 from app.api import bp
 from config import Config
 
+@bp.route('/api/info', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiCategories():
+    app_version = 1.0
+    if app.config.get('API_ENABLED', True):
+        api_enabled = True
+    else:
+        api_enabled = False
+    # Check if there is a request body (there should be none)
+    if request.data:
+        return jsonify({"message": "Request body is not allowed"}), 400
+    # Build response JSON
+    response_data = {
+        "api_enabled": api_enabled,
+        "app_version": app_version
+    }
+    # Return response without key sorting
+    response_json = json.dumps(response_data, sort_keys=False)
+    response = make_response(response_json)
+    response.headers['Content-Type'] = 'application/json'
+    return response
+
 @bp.route('/api/user/authenticate', methods=['POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def apiAuthenticate():

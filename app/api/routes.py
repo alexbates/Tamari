@@ -798,9 +798,31 @@ def apiRecipeAdd():
                 except:
                     return jsonify(message="Total Time must be an integer."), 400
             if not ingredients:
-                return jsonify(message="Ingredients is required."), 400
+                return jsonify(message="Ingredients are required."), 400
+            if not isinstance(ingredients, list):
+                return jsonify(message="Ingredients must be an array."), 400
+            ingredients_length = 0
+            for ingredient in ingredients:
+                ingredients_length += len(ingredient)
+                if any(char in dis_chars for char in ingredient):
+                    return jsonify(message="Ingredients may not include special characters."), 400
+            if len(ingredients_length) > 2200:
+                return jsonify(message="Ingredients must be 2200 characters or less."), 400
+            if len(ingredients_length) < 1:
+                return jsonify(message="Ingredients are required."), 400
             if not instructions:
-                return jsonify(message="Instructions is required."), 400
+                return jsonify(message="Instructions are required."), 400
+            if not isinstance(instructions, list):
+                return jsonify(message="Instructions must be an array."), 400
+            instructions_length = 0
+            for instruction in instructions:
+                instructions_length += len(instruction)
+                if any(char in dis_chars for char in instruction):
+                    return jsonify(message="Instructions may not include special characters."), 400
+            if len(instructions_length) > 6600:
+                return jsonify(message="Instructions must be 6600 characters or less."), 400
+            if len(instructions_length) < 1:
+                return jsonify(message="Instructions are required."), 400
             defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png',
                 'default07.png', 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png',
                 'default13.png', 'default14.png', 'default15.png', 'default16.png', 'default17.png', 'default18.png',

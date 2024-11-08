@@ -7,8 +7,9 @@ from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
 from app.account.routes import rate_limited_login
 from werkzeug.urls import url_parse
-import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
+import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile, io, base64
 from datetime import datetime
+from PIL import Image
 from app.api import bp
 from config import Config
 
@@ -631,7 +632,6 @@ def apiCategoriesAdd():
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
         if user:
-            # Paginate the queried recipes
             categories = user.categories.order_by(Category.label).all()
             cats = []
             for cat in categories:
@@ -703,7 +703,172 @@ def apiCategoriesRemove(catid):
             return jsonify(message="User not found"), 400
     else:
         return jsonify({"message": "API is disabled"}), 503
-        
+     
+@bp.route('/api/my-recipes/recipe/add', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiRecipeAdd():
+    if app.config.get('API_ENABLED', True):
+        data = request.get_json()
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        title = data.get('title')
+        category = data.get('category')
+        photo = data.get('photo')
+        description = data.get('description')
+        url = data.get('url')
+        servings = data.get('servings')
+        prep_time = data.get('prep_time')
+        cook_time = data.get('cook_time')
+        total_time = data.get('total_time')
+        ingredients = data.get('ingredients')
+        instructions = data.get('instructions')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            hex_valid = 0
+            while hex_valid == 0:
+                hex_string = secrets.token_hex(4)
+                hex_exist = Recipe.query.filter_by(hex_id=hex_string).first()
+                if hex_exist is None:
+                    hex_valid = 1
+            # List is used to validate submitted data
+            dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
+            if not title:
+                return jsonify(message="Title is required."), 400
+            if len(title) > 80:
+                return jsonify(message="Title must be 80 characters or less."), 400
+            if any(char in dis_chars for char in title):
+                return jsonify(message="Title may not include special characters."), 400
+            categories = user.categories.order_by(Category.label).all()
+            cats = []
+            for cat in categories:
+                curr_cat = cat.label
+                cats.append(curr_cat)
+            if "Miscellaneous" not in cats:
+                cats.append("Miscallaneous")
+            if not category:
+                return jsonify(message="Category is required."), 400
+            if category not in cats:
+                return jsonify(message="Specified category not found."), 400
+            if description and len(description) > 500:
+                return jsonify(message="Description must be 500 characters or less."), 400
+            if description and any(char in dis_chars for char in description):
+                return jsonify(message="Description may not include special characters."), 400
+            if url and len(url) > 200:
+                return jsonify(message="URL must be 200 characters or less."), 400
+            if url and any(char in dis_chars for char in url):
+                return jsonify(message="URL may not include special characters."), 400
+            if servings:
+                try:
+                    servings = int(servings)
+                except:
+                    return jsonify(message="Servings must be an integer."), 400
+            if prep_time:
+                try:
+                    prep_time = int(prep_time)
+                except:
+                    return jsonify(message="Prep Time must be an integer."), 400
+            if cook_time:
+                try:
+                    cook_time = int(cook_time)
+                except:
+                    return jsonify(message="Cook Time must be an integer."), 400
+            if total_time:
+                try:
+                    total_time = int(total_time)
+                except:
+                    return jsonify(message="Total Time must be an integer."), 400
+            if not ingredients:
+                return jsonify(message="Ingredients is required."), 400
+            if not instructions:
+                return jsonify(message="Instructions is required."), 400
+            defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png',
+                'default07.png', 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png',
+                'default13.png', 'default14.png', 'default15.png', 'default16.png', 'default17.png', 'default18.png',
+                'default19.png', 'default20.png', 'default21.png', 'default22.png', 'default23.png', 'default24.png',
+                'default25.png', 'default26.png', 'default27.png']
+            if photo:
+                try:
+                    # Pre-validation of JSON photo value
+                    match = re.match(r'data:image/(png|jpg|jpeg);base64,(.*)', photo)
+                    if not match:
+                        return jsonify(message="Invalid image format"), 400
+                    # Base64 decode and validate image
+                    image_data = base64.b64decode(match.group(2))
+                    image_stream = io.BytesIO(image_data)
+                    validated_extension = validate_image(image_stream)
+                    if not validated_extension:
+                        return jsonify(message="Invalid image data"), 400
+                    image = Image.open(image_stream)
+                    # Generate unique filename
+                    file_extension = f".{match.group(1)}"
+                    hex_valid2 = 0
+                    while hex_valid2 == 0:
+                        hex_string2 = secrets.token_hex(8)
+                        hex_exist2 = Recipe.query.filter(Recipe.photo.contains(hex_string2)).first()
+                        file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string2 + file_extension)
+                        if hex_exist2 is None and not os.path.exists(file_path):
+                            hex_valid2 = 1
+                    new_file = hex_string2 + file_extension
+                    if file_extension not in app.config['UPLOAD_EXTENSIONS']:
+                        return "Invalid image extension", 400
+                    image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
+                    img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
+                    img_width, img_height = img.size
+                    # Resize image if larger than 1500px
+                    if img_width > img_height:
+                        if img_width > 1500:
+                            basewidth = 1500
+                            wpercent = (basewidth/float(img.size[0]))
+                            hsize = int((float(img.size[1])*float(wpercent)))
+                            img = img.resize((basewidth,hsize), Image.Resampling.LANCZOS)
+                    else:
+                        if img_height > 1500:
+                            baseheight = 1500
+                            hpercent = (baseheight/float(img.size[1]))
+                            wsize = int((float(img.size[0])*float(hpercent)))
+                            img = img.resize((wsize,baseheight), Image.Resampling.LANCZOS)
+                    # Fix the orientation of image before saving to avoid unexpectedly rotated images
+                    if hasattr(img, '_getexif'):
+                        orientation = 0x0112
+                        exifdata = img._getexif()
+                        if exifdata is not None and orientation in exifdata:
+                            orientation = exifdata[orientation]
+                            rotations = {
+                                3: Image.ROTATE_180,
+                                6: Image.ROTATE_270,
+                                8: Image.ROTATE_90
+                            }
+                            if orientation in rotations:
+                                img = img.transpose(rotations[orientation])
+                    # Save image to recipe-photos directory
+                    img.save(app.config['UPLOAD_FOLDER'] + '/' + new_file)
+                except (base64.binascii.Error, IOError):
+                    return jsonify(message="Error invalid image data"), 400
+            else:
+                new_file = random.choice(defaults)
+            recipe = Recipe(hex_id=hex_string, title=title, category=category, photo=new_file,
+                description=description, url=url, servings=servings, prep_time=prep_time, cook_time=cook_time,
+                total_time=total_time, ingredients=ingredients, instructions=instructions, favorite=0, public=0, user_id=current_user.id)
+            # Add recipe to database
+            db.session.add(recipe)
+            db.session.commit()
+            return jsonify(message="Success")
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+     
 @bp.route('/api/my-recipes/recipe/<hexid>', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
@@ -781,3 +946,4 @@ def apiRecipeDetail(hexid):
             return jsonify(message="User not found"), 400
     else:
         return jsonify({"message": "API is disabled"}), 503
+        

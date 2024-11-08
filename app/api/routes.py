@@ -1256,6 +1256,7 @@ def apiRecipeEdit(hexid):
             if instructions_string:
                 recipe.instructions = instructions_string    
             # Commit Recipe changes to database
+            recipe.time_edited = datetime.utcnow()
             db.session.commit()
             # If Nutritional Info, add a record to the database that is linked to the recipe
             n_info_present = False

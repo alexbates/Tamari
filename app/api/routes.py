@@ -802,8 +802,11 @@ def apiRecipeAdd():
             if not isinstance(ingredients, list):
                 return jsonify(message="Ingredients must be an array."), 400
             ingredients_length = 0
+            ingredients_string = ""
             for ingredient in ingredients:
                 ingredients_length += len(ingredient)
+                ingredients_string += ingredient
+                ingredients_string += "\r\n"
                 if any(char in dis_chars for char in ingredient):
                     return jsonify(message="Ingredients may not include special characters."), 400
             if ingredients_length > 2200:
@@ -815,8 +818,11 @@ def apiRecipeAdd():
             if not isinstance(instructions, list):
                 return jsonify(message="Instructions must be an array."), 400
             instructions_length = 0
+            instructions_string = ""
             for instruction in instructions:
                 instructions_length += len(instruction)
+                instructions_string += instruction
+                instructions_string += "\r\n"
                 if any(char in dis_chars for char in instruction):
                     return jsonify(message="Instructions may not include special characters."), 400
             if instructions_length > 6600:
@@ -890,7 +896,8 @@ def apiRecipeAdd():
                 new_file = random.choice(defaults)
             recipe = Recipe(hex_id=hex_string, title=title, category=category, photo=new_file,
                 description=description, url=url, servings=servings, prep_time=prep_time, cook_time=cook_time,
-                total_time=total_time, ingredients=ingredients, instructions=instructions, favorite=0, public=0, user_id=current_user)
+                total_time=total_time, ingredients=ingredients_string, instructions=instructions_string, favorite=0,
+                public=0, user_id=current_user)
             # Add recipe to database
             db.session.add(recipe)
             db.session.commit()

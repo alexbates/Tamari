@@ -806,9 +806,9 @@ def apiRecipeAdd():
                 ingredients_length += len(ingredient)
                 if any(char in dis_chars for char in ingredient):
                     return jsonify(message="Ingredients may not include special characters."), 400
-            if len(ingredients_length) > 2200:
+            if ingredients_length > 2200:
                 return jsonify(message="Ingredients must be 2200 characters or less."), 400
-            if len(ingredients_length) < 1:
+            if ingredients_length < 1:
                 return jsonify(message="Ingredients are required."), 400
             if not instructions:
                 return jsonify(message="Instructions are required."), 400
@@ -819,9 +819,9 @@ def apiRecipeAdd():
                 instructions_length += len(instruction)
                 if any(char in dis_chars for char in instruction):
                     return jsonify(message="Instructions may not include special characters."), 400
-            if len(instructions_length) > 6600:
+            if instructions_length > 6600:
                 return jsonify(message="Instructions must be 6600 characters or less."), 400
-            if len(instructions_length) < 1:
+            if instructions_length < 1:
                 return jsonify(message="Instructions are required."), 400
             defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png',
                 'default07.png', 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png',

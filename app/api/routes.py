@@ -704,6 +704,15 @@ def apiCategoriesRemove(catid):
     else:
         return jsonify({"message": "API is disabled"}), 503
      
+# Used to validate base64 encoded photos uploaded by users to RecipeAdd and RecipeEdit API routes
+def validate_image(stream):
+    header = stream.read(512)
+    stream.seek(0)
+    format = imghdr.what(None, header)
+    if not format:
+        return None
+    return '.' + format     
+    
 @bp.route('/api/my-recipes/recipe/add', methods=['POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()

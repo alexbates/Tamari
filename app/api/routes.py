@@ -987,7 +987,310 @@ def apiRecipeAdd():
             return jsonify(message="User not found"), 400
     else:
         return jsonify({"message": "API is disabled"}), 503
-     
+
+@bp.route('/api/my-recipes/recipe/<hexid>/edit', methods=['PUT'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+# Edit Recipe API route works by only updating requested fields in the database
+# If "photo" JSON key is not given, the recipe photo will not be updated
+# If you added calories when initially adding the recipe but would like to remove, submit "n_calories": ""
+# That will also remove NutritionalInfo record in database if n_calories was the only nutrition item previously present
+def apiRecipeEdit():
+    if app.config.get('API_ENABLED', True):
+        data = request.get_json()
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        title = data.get('title')
+        category = data.get('category')
+        photo = data.get('photo')
+        description = data.get('description')
+        url = data.get('url')
+        servings = data.get('servings')
+        prep_time = data.get('prep_time')
+        cook_time = data.get('cook_time')
+        total_time = data.get('total_time')
+        ingredients = data.get('ingredients')
+        instructions = data.get('instructions')
+        # Get optional nutrition data
+        n_calories = data.get('n_calories')
+        n_carbs = data.get('n_carbs')
+        n_protein = data.get('n_protein')
+        n_fat = data.get('n_fat')
+        n_sugar = data.get('n_sugar')
+        n_cholesterol = data.get('n_cholesterol')
+        n_sodium = data.get('n_sodium')
+        n_fiber = data.get('n_fiber')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Verify that JSON is valid (no double quotes or unrecognized keys)
+        try:
+            for key, value in data.items():
+                if isinstance(value, str) and '"' in value:
+                    return jsonify(message=f"Invalid value in key '{key}': double quotes are not allowed"), 400
+        except:
+            return jsonify(message="Invalid JSON format"), 400
+        allowed_keys = {'title', 'category', 'photo', 'description', 'url', 'servings',
+            'prep_time', 'cook_time', 'total_time', 'ingredients', 'instructions', 'n_calories', 'n_carbs',
+            'n_protein', 'n_fat', 'n_sugar', 'n_cholesterol', 'n_sodium', 'n_fiber'}
+        if not set(data.keys()).issubset(allowed_keys):
+            invalid_keys = set(data.keys()) - allowed_keys
+            return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            recipe = Recipe.query.filter_by(hex_id=hexid).first()
+            nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+            # Verify that recipe belongs to current user or is public
+            if not recipe:
+                return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
+            if recipe.user_id != current_user and recipe.public != 1:
+                return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
+            # List is used to validate submitted data
+            dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
+            if title:
+                if len(title) > 80:
+                    return jsonify(message="Title must be 80 characters or less."), 400
+                if any(char in dis_chars for char in title):
+                    return jsonify(message="Title may not include special characters."), 400
+            if category:
+                categories = user.categories.order_by(Category.label).all()
+                cats = []
+                for cat in categories:
+                    curr_cat = cat.label
+                    cats.append(curr_cat)
+                if "Miscellaneous" not in cats:
+                    cats.append("Miscallaneous")
+                if category not in cats:
+                    return jsonify(message="Specified category not found."), 400
+            if description and len(description) > 500:
+                return jsonify(message="Description must be 500 characters or less."), 400
+            if description and any(char in dis_chars for char in description):
+                return jsonify(message="Description may not include special characters."), 400
+            if url and len(url) > 200:
+                return jsonify(message="URL must be 200 characters or less."), 400
+            if url and any(char in dis_chars for char in url):
+                return jsonify(message="URL may not include special characters."), 400
+            if servings:
+                try:
+                    servings = int(servings)
+                except:
+                    return jsonify(message="Servings must be an integer."), 400
+            if prep_time:
+                try:
+                    prep_time = int(prep_time)
+                except:
+                    return jsonify(message="Prep Time must be an integer."), 400
+            if cook_time:
+                try:
+                    cook_time = int(cook_time)
+                except:
+                    return jsonify(message="Cook Time must be an integer."), 400
+            if total_time:
+                try:
+                    total_time = int(total_time)
+                except:
+                    return jsonify(message="Total Time must be an integer."), 400
+            ingredients_string = ""
+            if ingredients:
+                if not isinstance(ingredients, list):
+                    return jsonify(message="Ingredients must be an array."), 400
+                ingredients_length = 0
+                for ingredient in ingredients:
+                    ingredients_length += len(ingredient)
+                    ingredients_string += ingredient
+                    ingredients_string += "\r\n"
+                    if any(char in dis_chars for char in ingredient):
+                        return jsonify(message="Ingredients may not include special characters."), 400
+                if ingredients_length > 2200:
+                    return jsonify(message="Ingredients must be 2200 characters or less."), 400
+            instructions_string = ""
+            if instructions:
+                if not isinstance(instructions, list):
+                    return jsonify(message="Instructions must be an array."), 400
+                instructions_length = 0
+                for instruction in instructions:
+                    instructions_length += len(instruction)
+                    instructions_string += instruction
+                    instructions_string += "\r\n"
+                    if any(char in dis_chars for char in instruction):
+                        return jsonify(message="Instructions may not include special characters."), 400
+                if instructions_length > 6600:
+                    return jsonify(message="Instructions must be 6600 characters or less."), 400
+            if n_calories:
+                try:
+                    n_calories = int(n_calories)
+                except:
+                    return jsonify(message="n_calories must be an integer."), 400
+            if n_carbs:
+                try:
+                    n_carbs = int(n_carbs)
+                except:
+                    return jsonify(message="n_carbs must be an integer."), 400
+            if n_protein:
+                try:
+                    n_protein = int(n_protein)
+                except:
+                    return jsonify(message="n_protein must be an integer."), 400
+            if n_fat:
+                try:
+                    n_fat = int(n_fat)
+                except:
+                    return jsonify(message="n_fat must be an integer."), 400
+            if n_sugar:
+                try:
+                    n_sugar = int(n_sugar)
+                except:
+                    return jsonify(message="n_sugar must be an integer."), 400
+            if n_cholesterol:
+                try:
+                    n_cholesterol = int(n_cholesterol)
+                except:
+                    return jsonify(message="n_cholesterol must be an integer."), 400
+            if n_sodium:
+                try:
+                    n_sodium = int(n_sodium)
+                except:
+                    return jsonify(message="n_sodium must be an integer."), 400
+            if n_fiber:
+                try:
+                    n_fiber = int(n_fiber)
+                except:
+                    return jsonify(message="n_fiber must be an integer."), 400
+            # Handling of base64 encoded photo upload
+            defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png',
+                'default07.png', 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png',
+                'default13.png', 'default14.png', 'default15.png', 'default16.png', 'default17.png', 'default18.png',
+                'default19.png', 'default20.png', 'default21.png', 'default22.png', 'default23.png', 'default24.png',
+                'default25.png', 'default26.png', 'default27.png']
+            if photo:
+                old_path = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo
+                try:
+                    # Pre-validation of JSON photo value
+                    match = re.match(r'data:image/(png|jpg|jpeg);base64,(.*)', photo)
+                    if not match:
+                        return jsonify(message="Invalid image format"), 400
+                    # Base64 decode and validate image
+                    image_data = base64.b64decode(match.group(2))
+                    image_stream = io.BytesIO(image_data)
+                    validated_extension = validate_image(image_stream)
+                    if not validated_extension:
+                        return jsonify(message="Invalid image data"), 400
+                    image = Image.open(image_stream)
+                    # Generate unique filename
+                    file_extension = f".{match.group(1)}"
+                    hex_valid2 = 0
+                    while hex_valid2 == 0:
+                        hex_string2 = secrets.token_hex(8)
+                        hex_exist2 = Recipe.query.filter(Recipe.photo.contains(hex_string2)).first()
+                        file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string2 + file_extension)
+                        if hex_exist2 is None and not os.path.exists(file_path):
+                            hex_valid2 = 1
+                    new_file = hex_string2 + file_extension
+                    if file_extension not in app.config['UPLOAD_EXTENSIONS']:
+                        return "Invalid image extension", 400
+                    image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
+                    img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
+                    img_width, img_height = img.size
+                    # Resize image if larger than 1500px
+                    if img_width > img_height:
+                        if img_width > 1500:
+                            basewidth = 1500
+                            wpercent = (basewidth/float(img.size[0]))
+                            hsize = int((float(img.size[1])*float(wpercent)))
+                            img = img.resize((basewidth,hsize), Image.Resampling.LANCZOS)
+                    else:
+                        if img_height > 1500:
+                            baseheight = 1500
+                            hpercent = (baseheight/float(img.size[1]))
+                            wsize = int((float(img.size[0])*float(hpercent)))
+                            img = img.resize((wsize,baseheight), Image.Resampling.LANCZOS)
+                    # Fix the orientation of image before saving to avoid unexpectedly rotated images
+                    if hasattr(img, '_getexif'):
+                        orientation = 0x0112
+                        exifdata = img._getexif()
+                        if exifdata is not None and orientation in exifdata:
+                            orientation = exifdata[orientation]
+                            rotations = {
+                                3: Image.ROTATE_180,
+                                6: Image.ROTATE_270,
+                                8: Image.ROTATE_90
+                            }
+                            if orientation in rotations:
+                                img = img.transpose(rotations[orientation])
+                    # Save image to recipe-photos directory
+                    img.save(app.config['UPLOAD_FOLDER'] + '/' + new_file)
+                    if recipe.photo not in defaults:
+                        os.remove(old_path)
+                    recipe.photo = new_file
+                except (base64.binascii.Error, IOError):
+                    return jsonify(message="Error invalid image data"), 400
+            # Update recipe data in database
+            if 'title' in data:
+                recipe.title = title
+            if 'category' in data:
+                recipe.category = category
+            if 'description' in data:
+                recipe.description = description
+            if 'url' in data:
+                recipe.url = url
+            if 'servings' in data:
+                recipe.servings = servings
+            if 'prep_time' in data:
+                recipe.prep_time = prep_time
+            if 'cook_time' in data:
+                recipe.cook_time = cook_time
+            if 'total_time' in data:
+                recipe.total_time = total_time
+            if ingredients_string:
+                recipe.ingredients = ingredients_string
+            if instructions_string:
+                recipe.instructions = instructions_string    
+            # Commit Recipe changes to database
+            db.session.commit()
+            # If Nutritional Info, add a record to the database that is linked to the recipe
+            n_info_present = False
+            if 'n_calories' in data or 'n_carbs' in data or 'n_protein' in data or 'n_fat' in data:
+                n_info_present = True
+            if 'n_sugar' in data or 'n_cholesterol' in data or 'n_sodium' in data or 'n_fiber' in data:
+                n_info_present = True
+            if n_info_present:
+                if nutrition is None:
+                    new_nutrition = NutritionalInfo(recipe_id=recipe.id, user_id=current_user.id, calories=n_calories,
+                        carbs=n_carbs, protein=n_protein, fat=n_fat, sugar=n_sugar, cholesterol=n_cholesterol, 
+                        sodium=n_sodium, fiber=n_fiber)
+                    db.session.add(new_nutrition)
+                else:
+                    if 'n_calories' in data:
+                        nutrition.calories = n_calories
+                    if 'n_carbs' in data:
+                        nutrition.carbs = n_carbs
+                    if 'n_protein' in data:
+                        nutrition.protein = n_protein
+                    if 'n_fat' in data:
+                        nutrition.fat = n_fat
+                    if 'n_sugar' in data:
+                        nutrition.sugar = n_sugar
+                    if 'n_cholesterol' in data:
+                        nutrition.cholesterol = n_cholesterol
+                    if 'n_sodium' in data:
+                        nutrition.sodium = n_sodium
+                    if 'n_fiber' in data:
+                        nutrition.fiber = n_fiber
+                # Commit Nutrition Info changes to database
+                db.session.commit()
+            return jsonify(message="Success")
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+
 @bp.route('/api/my-recipes/recipe/<hexid>', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()

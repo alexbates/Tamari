@@ -16,7 +16,7 @@ from config import Config
 @bp.route('/api/info', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
-def apiCategories():
+def apiInfo():
     app_version = 1.0
     if app.config.get('API_ENABLED', True):
         api_enabled = True

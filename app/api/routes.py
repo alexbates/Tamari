@@ -37,6 +37,17 @@ def apiAuthenticate():
                 # Check if the provided app_key matches the one in the configuration
                 if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                     return jsonify({"message": "Invalid app_key"}), 401
+            # Verify that JSON is valid (no double quotes or unrecognized keys)
+            try:
+                for key, value in data.items():
+                    if isinstance(value, str) and '"' in value:
+                        return jsonify(message=f"Invalid value in key '{key}': double quotes are not allowed"), 400
+            except:
+                return jsonify(message="Invalid JSON format"), 400
+            allowed_keys = {'email', 'password'}
+            if not set(data.keys()).issubset(allowed_keys):
+                invalid_keys = set(data.keys()) - allowed_keys
+                return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
             # Disallow API login for demo account
             if email == "demo@tamariapp.com":
                 return jsonify({"message": "API access disallowed for demo account"}), 401
@@ -740,6 +751,18 @@ def apiRecipeAdd():
             # Check if the provided app_key matches the one in the configuration
             if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
+        # Verify that JSON is valid (no double quotes or unrecognized keys)
+        try:
+            for key, value in data.items():
+                if isinstance(value, str) and '"' in value:
+                    return jsonify(message=f"Invalid value in key '{key}': double quotes are not allowed"), 400
+        except:
+            return jsonify(message="Invalid JSON format"), 400
+        allowed_keys = {'title', 'category', 'photo', 'description', 'url', 'servings',
+            'prep_time', 'cook_time', 'total_time', 'ingredients', 'instructions'}
+        if not set(data.keys()).issubset(allowed_keys):
+            invalid_keys = set(data.keys()) - allowed_keys
+            return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
         # Get the identity of the user from the refresh token
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()

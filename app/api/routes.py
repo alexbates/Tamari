@@ -996,7 +996,7 @@ def apiRecipeAdd():
 # If "photo" JSON key is not given, the recipe photo will not be updated
 # If you added calories when initially adding the recipe but would like to remove, submit "n_calories": ""
 # That will also remove NutritionalInfo record in database if n_calories was the only nutrition item previously present
-def apiRecipeEdit():
+def apiRecipeEdit(hexid):
     if app.config.get('API_ENABLED', True):
         data = request.get_json()
         app_name = request.headers.get('X-App-Name')

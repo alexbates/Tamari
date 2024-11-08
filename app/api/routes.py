@@ -1265,13 +1265,14 @@ def apiRecipeEdit(hexid):
             if 'n_sugar' in data or 'n_cholesterol' in data or 'n_sodium' in data or 'n_fiber' in data:
                 n_info_present = True
             if n_info_present:
+                nutrition_keys = ['n_calories', 'n_carbs', 'n_protein', 'n_fat', 'n_sugar', 'n_cholesterol', 'n_sodium', 'n_fiber']
                 if nutrition is None:
-                    new_nutrition = NutritionalInfo(recipe_id=recipe.id, user_id=current_user.id, calories=n_calories,
-                        carbs=n_carbs, protein=n_protein, fat=n_fat, sugar=n_sugar, cholesterol=n_cholesterol, 
-                        sodium=n_sodium, fiber=n_fiber)
-                    db.session.add(new_nutrition)
+                    if all(data.get(key) for key in nutrition_keys):
+                        new_nutrition = NutritionalInfo(recipe_id=recipe.id, user_id=current_user, calories=n_calories,
+                            carbs=n_carbs, protein=n_protein, fat=n_fat, sugar=n_sugar, cholesterol=n_cholesterol, 
+                            sodium=n_sodium, fiber=n_fiber)
+                        db.session.add(new_nutrition)
                 else:
-                    nutrition_keys = ['n_calories', 'n_carbs', 'n_protein', 'n_fat', 'n_sugar', 'n_cholesterol', 'n_sodium', 'n_fiber']
                     if all(not data.get(key) for key in nutrition_keys):
                         db.session.delete(nutrition)
                     else:

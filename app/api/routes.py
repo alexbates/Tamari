@@ -744,6 +744,15 @@ def apiRecipeAdd():
         total_time = data.get('total_time')
         ingredients = data.get('ingredients')
         instructions = data.get('instructions')
+        # Get optional nutrition data
+        n_calories = data.get('n_calories')
+        n_carbs = data.get('n_carbs')
+        n_protein = data.get('n_protein')
+        n_fat = data.get('n_fat')
+        n_sugar = data.get('n_sugar')
+        n_cholesterol = data.get('n_cholesterol')
+        n_sodium = data.get('n_sodium')
+        n_fiber = data.get('n_fiber')
         if app.config.get('REQUIRE_HEADERS', True):
             # Require app name to match
             if app_name is None or app_name.lower() != 'tamari':
@@ -759,7 +768,8 @@ def apiRecipeAdd():
         except:
             return jsonify(message="Invalid JSON format"), 400
         allowed_keys = {'title', 'category', 'photo', 'description', 'url', 'servings',
-            'prep_time', 'cook_time', 'total_time', 'ingredients', 'instructions'}
+            'prep_time', 'cook_time', 'total_time', 'ingredients', 'instructions', 'n_calories', 'n_carbs',
+            'n_protein', 'n_fat', 'n_sugar', 'n_cholesterol', 'n_sodium', 'n_fiber'}
         if not set(data.keys()).issubset(allowed_keys):
             invalid_keys = set(data.keys()) - allowed_keys
             return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
@@ -852,6 +862,47 @@ def apiRecipeAdd():
                 return jsonify(message="Instructions must be 6600 characters or less."), 400
             if instructions_length < 1:
                 return jsonify(message="Instructions are required."), 400
+            if n_calories:
+                try:
+                    n_calories = int(n_calories)
+                except:
+                    return jsonify(message="n_calories must be an integer."), 400
+            if n_carbs:
+                try:
+                    n_carbs = int(n_carbs)
+                except:
+                    return jsonify(message="n_carbs must be an integer."), 400
+            if n_protein:
+                try:
+                    n_protein = int(n_protein)
+                except:
+                    return jsonify(message="n_protein must be an integer."), 400
+            if n_fat:
+                try:
+                    n_fat = int(n_fat)
+                except:
+                    return jsonify(message="n_fat must be an integer."), 400
+            if n_sugar:
+                try:
+                    n_sugar = int(n_sugar)
+                except:
+                    return jsonify(message="n_sugar must be an integer."), 400
+            if n_cholesterol:
+                try:
+                    n_cholesterol = int(n_cholesterol)
+                except:
+                    return jsonify(message="n_cholesterol must be an integer."), 400
+            if n_sodium:
+                try:
+                    n_sodium = int(n_sodium)
+                except:
+                    return jsonify(message="n_sodium must be an integer."), 400
+            if n_fiber:
+                try:
+                    n_fiber = int(n_fiber)
+                except:
+                    return jsonify(message="n_fiber must be an integer."), 400
+            # Handling of base64 encoded photo upload
             defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png',
                 'default07.png', 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png',
                 'default13.png', 'default14.png', 'default15.png', 'default16.png', 'default17.png', 'default18.png',
@@ -924,6 +975,13 @@ def apiRecipeAdd():
             # Add recipe to database
             db.session.add(recipe)
             db.session.commit()
+            # If Nutritional Info, add a record to the database that is linked to the recipe
+            if n_calories or n_carbs or n_protein or n_fat or n_sugar or n_cholesterol or n_sodium or n_fiber:
+                curr_recipe = Recipe.query.filter_by(hex_id=hex_string).first()
+                nutrition = NutritionalInfo(recipe_id=curr_recipe.id, user_id=current_user, calories=n_calories, carbs=n_carbs,
+                    protein=n_protein, fat=n_fat, sugar=n_sugar, cholesterol=n_cholesterol, sodium=n_sodium, fiber=n_fiber)
+                db.session.add(nutrition)
+                db.session.commit()
             return jsonify(message="Success")
         else:
             return jsonify(message="User not found"), 400

@@ -1046,7 +1046,10 @@ def apiRecipeEdit(hexid):
         user = User.query.filter_by(id=current_user).first_or_404()
         if user:
             recipe = Recipe.query.filter_by(hex_id=hexid).first()
-            nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+            try:
+                nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+            except:
+                nutrition = None
             # Verify that recipe belongs to current user or is public
             if not recipe:
                 return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404

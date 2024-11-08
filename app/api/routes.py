@@ -868,7 +868,7 @@ def apiRecipeAdd():
                 new_file = random.choice(defaults)
             recipe = Recipe(hex_id=hex_string, title=title, category=category, photo=new_file,
                 description=description, url=url, servings=servings, prep_time=prep_time, cook_time=cook_time,
-                total_time=total_time, ingredients=ingredients, instructions=instructions, favorite=0, public=0, user_id=current_user.id)
+                total_time=total_time, ingredients=ingredients, instructions=instructions, favorite=0, public=0, user_id=current_user)
             # Add recipe to database
             db.session.add(recipe)
             db.session.commit()

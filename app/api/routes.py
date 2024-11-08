@@ -1270,22 +1270,26 @@ def apiRecipeEdit(hexid):
                         sodium=n_sodium, fiber=n_fiber)
                     db.session.add(new_nutrition)
                 else:
-                    if 'n_calories' in data:
-                        nutrition.calories = n_calories
-                    if 'n_carbs' in data:
-                        nutrition.carbs = n_carbs
-                    if 'n_protein' in data:
-                        nutrition.protein = n_protein
-                    if 'n_fat' in data:
-                        nutrition.fat = n_fat
-                    if 'n_sugar' in data:
-                        nutrition.sugar = n_sugar
-                    if 'n_cholesterol' in data:
-                        nutrition.cholesterol = n_cholesterol
-                    if 'n_sodium' in data:
-                        nutrition.sodium = n_sodium
-                    if 'n_fiber' in data:
-                        nutrition.fiber = n_fiber
+                    nutrition_keys = ['n_calories', 'n_carbs', 'n_protein', 'n_fat', 'n_sugar', 'n_cholesterol', 'n_sodium', 'n_fiber']
+                    if all(not data.get(key) for key in nutrition_keys):
+                        db.session.delete(nutrition)
+                    else:
+                        if 'n_calories' in data:
+                            nutrition.calories = n_calories
+                        if 'n_carbs' in data:
+                            nutrition.carbs = n_carbs
+                        if 'n_protein' in data:
+                            nutrition.protein = n_protein
+                        if 'n_fat' in data:
+                            nutrition.fat = n_fat
+                        if 'n_sugar' in data:
+                            nutrition.sugar = n_sugar
+                        if 'n_cholesterol' in data:
+                            nutrition.cholesterol = n_cholesterol
+                        if 'n_sodium' in data:
+                            nutrition.sodium = n_sodium
+                        if 'n_fiber' in data:
+                            nutrition.fiber = n_fiber
                 # Commit Nutrition Info changes to database
                 db.session.commit()
             return jsonify(message="Success")

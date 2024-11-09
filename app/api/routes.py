@@ -1398,6 +1398,7 @@ def apiFavorite(hexid):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the authorization token
         current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
         recipe = Recipe.query.filter_by(hex_id=hexid).first()
         if recipe is None or recipe.user_id != current_user:
             return jsonify(message="The requested recipe either cannot be found or you do not have permission to modify it."), 404
@@ -1427,6 +1428,7 @@ def apiUnfavorite(hexid):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the authorization token
         current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
         recipe = Recipe.query.filter_by(hex_id=hexid).first()
         if recipe is None or recipe.user_id != current_user:
             return jsonify(message="The requested recipe either cannot be found or you do not have permission to modify it."), 404
@@ -1456,6 +1458,7 @@ def apiMakePublic(hexid):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the authorization token
         current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
         recipe = Recipe.query.filter_by(hex_id=hexid).first()
         if recipe is None or recipe.user_id != current_user:
             return jsonify(message="The requested recipe either cannot be found or you do not have permission to modify it."), 404
@@ -1485,6 +1488,7 @@ def apiMakePrivate(hexid):
                 return jsonify({"message": "Invalid app_key"}), 401
         # Get the identity of the user from the authorization token
         current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
         recipe = Recipe.query.filter_by(hex_id=hexid).first()
         if recipe is None or recipe.user_id != current_user:
             return jsonify(message="The requested recipe either cannot be found or you do not have permission to modify it."), 404

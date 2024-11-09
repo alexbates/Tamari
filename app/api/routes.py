@@ -1378,6 +1378,36 @@ def apiRecipeRemove(hexid):
     else:
         return jsonify({"message": "API is disabled"}), 503
 
+@bp.route('/api/my-recipes/recipe/favorite/<hexid>', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiFavorite(hexid):
+    if app.config.get('API_ENABLED', True):
+        # Check if there is a request body (there should be none)
+        if request.data:
+            return jsonify({"message": "Request body is not allowed"}), 400
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the authorization token
+        current_user = get_jwt_identity()
+        recipe = Recipe.query.filter_by(hex_id=hexid).first()
+        if recipe is None or recipe.user_id != current_user:
+            return jsonify(message="The requested recipe either cannot be found or you do not have permission to modify it."), 404
+        recipe.favorite = 1
+        db.session.commit()
+        return jsonify(message="success"), 200
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+        
+
 @bp.route('/api/my-recipes/recipe/<hexid>', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
@@ -1396,7 +1426,7 @@ def apiRecipeDetail(hexid):
             # Check if the provided app_key matches the one in the configuration
             if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
                 return jsonify({"message": "Invalid app_key"}), 401
-        # Get the identity of the user from the refresh token
+        # Get the identity of the user from the authorization token
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
         if user:

@@ -45,19 +45,7 @@ limiter = Limiter(
 @jwt.expired_token_loader
 def custom_expired_token_callback(jwt_header, jwt_data):
     return jsonify({
-        "message": "Token is expired. Please refresh or re-authenticate."
-    }), 401
-
-# Custom messages for API routes when user is not authorized
-@jwt.unauthorized_loader
-def custom_unauthorized_response(callback):
-    return jsonify({
-        "message": "Missing 'Bearer' type in 'Authorization' header. Expected 'Authorization: Bearer <JWT>'"
-    }), 401
-@app.errorhandler(JWTHeaderError)
-def handle_jwt_header_error(e):
-    return jsonify({
-        "message": str(e)
+        "msg": "Token is expired. Please refresh or re-authenticate."
     }), 401
 
 # The following two functions are used to reconstruct Demo account data on an interval

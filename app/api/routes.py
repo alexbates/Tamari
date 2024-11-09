@@ -1323,11 +1323,11 @@ def apiRecipeEdit(hexid):
     else:
         return jsonify({"message": "API is disabled"}), 503
 
-@bp.route('/api/my-recipes/recipe/remove/<catid>', methods=['DELETE'])
+@bp.route('/api/my-recipes/recipe/remove/<hexid>', methods=['DELETE'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
-def apiRecipeRemove(catid):
+def apiRecipeRemove(hexid):
     if app.config.get('API_ENABLED', True):
         # Check if there is a request body (there should be none)
         if request.data:

@@ -10,7 +10,7 @@ from werkzeug.urls import url_parse
 import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile, io, base64
 from datetime import datetime
 from PIL import Image
-from app.api-account import bp
+from app.api_account import bp
 from config import Config
 
 @bp.route('/api/info', methods=['GET'])

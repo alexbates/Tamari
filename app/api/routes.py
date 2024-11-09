@@ -1650,7 +1650,7 @@ def apiShoppingListDetail(hexid):
             for item in items:
                 item_info = {
                     "hex_id": item.hex_id,
-                    "label": item.item,
+                    "label": item.item.replace("\r", ""),
                     "recipe": item.rec_title,
                     "complete": item.complete
                 }

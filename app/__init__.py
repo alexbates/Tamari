@@ -9,7 +9,6 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_babel import Babel
 from flask_jwt_extended import JWTManager
-from flask_jwt_extended.exceptions import JWTHeaderError
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath

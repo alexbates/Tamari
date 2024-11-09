@@ -1618,3 +1618,50 @@ def apiShoppingLists():
         return response
     else:
         return jsonify({"message": "API is disabled"}), 503
+        
+@bp.route('/api/shopping-lists/<hexid>', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiShoppingListDetail(hexid):
+    if app.config.get('API_ENABLED', True):
+        # Check if there is a request body (there should be none)
+        if request.data:
+            return jsonify({"message": "Request body is not allowed"}), 400
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the authorization token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            list = user.shop_lists.filter_by(hex_id=hexid).first()
+            if list is None:
+                return jsonify(message="Shopping list does not exist or you do not have permission to view it."), 400
+            items = list.list_items.order_by(Listitem.item).all()
+            # Prepare shopping lists to be displayed as JSON
+            item_data = []
+            for item in items:
+                item_info = {
+                    "hex_id": item.hex_id,
+                    "label": item.item,
+                    "recipe": item.rec_title,
+                    "complete": item.complete
+                }
+                item_data.append(item_info)
+        else:
+            # if user is not found, empty array will be used to create JSON response
+            item_data = []
+        # Return response without key sorting
+        response_json = json.dumps({"list_items": item_data}, sort_keys=False)
+        response = make_response(response_json)
+        response.headers['Content-Type'] = 'application/json'
+        return response
+    else:
+        return jsonify({"message": "API is disabled"}), 503

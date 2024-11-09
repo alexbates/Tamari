@@ -1011,7 +1011,7 @@ def apiRecipeAdd():
     else:
         return jsonify({"message": "API is disabled"}), 503
 
-@bp.route('/api/my-recipes/recipe/<hexid>/edit', methods=['PUT'])
+@bp.route('/api/my-recipes/recipe/edit/<hexid>', methods=['PUT'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
@@ -1318,6 +1318,61 @@ def apiRecipeEdit(hexid):
                 # Commit Nutrition Info changes to database
                 db.session.commit()
             return jsonify(message="Success")
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+
+@bp.route('/api/my-recipes/recipe/remove/<catid>', methods=['DELETE'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiRecipeRemove(catid):
+    if app.config.get('API_ENABLED', True):
+        # Check if there is a request body (there should be none)
+        if request.data:
+            return jsonify({"message": "Request body is not allowed"}), 400
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the refresh token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            # Query the recipe by hexid
+            delrecipe = Recipe.query.filter_by(hex_id=hexid).first()
+            if delrecipe is None or delrecipe.user_id != current_user:
+                return jsonify(message="Recipe does not exist or you do not have permission to remove it."), 400
+            defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png',
+                'default07.png', 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png',
+                'default13.png', 'default14.png', 'default15.png', 'default16.png', 'default17.png', 'default18.png',
+                'default19.png', 'default20.png', 'default21.png', 'default22.png', 'default23.png', 'default24.png',
+                'default25.png', 'default26.png', 'default27.png' 'demo1.jpg', 'demo2.jpg', 'demo3.jpg', 'demo4.jpg',
+                'demo5.jpg', 'demo6.jpg', 'demo7.jpg', 'demo8.jpg', 'demo9.jpg', 'demo10.jpg', 'demo11.jpg', 'demo12.jpg']
+            fullpath = app.config['UPLOAD_FOLDER'] + '/' + delrecipe.photo
+            if delrecipe.photo not in defaults:
+                try:
+                    os.remove(fullpath)
+                except:
+                    pass
+            # Query and delete NutritionalInfo for specified recipe
+            delnutrition = NutritionalInfo.query.filter_by(recipe_id=delrecipe.id).first()
+            if delnutrition is not None:
+                db.session.delete(delnutrition)
+            # Query and deleted Meal Plans for specified recipe
+            delmealrecipes = MealRecipe.query.filter_by(recipe_id=delrecipe.id).all()
+            for mealrecipe in delmealrecipes:
+                db.session.delete(mealrecipe)
+            # Delete recipe and commit changes
+            db.session.delete(delrecipe)
+            db.session.commit()
+            return jsonify(message="success"), 200
         else:
             return jsonify(message="User not found"), 400
     else:

@@ -399,6 +399,8 @@ def makePrivate(hexid):
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipeDetail(hexid):
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    # Ensure editedtime exists even when recipe doesn't exist
+    editedtime = None
     form = AddToListForm()
     form2 = AddToMealPlannerForm(prefix='a')
     # Create 2D array that contains compact date and full date for Meal Planner scheduling

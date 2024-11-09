@@ -1378,7 +1378,7 @@ def apiRecipeRemove(hexid):
     else:
         return jsonify({"message": "API is disabled"}), 503
 
-@bp.route('/api/my-recipes/recipe/favorite/<hexid>', methods=['GET'])
+@bp.route('/api/my-recipes/recipe/favorite/<hexid>', methods=['PUT'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
@@ -1407,7 +1407,7 @@ def apiFavorite(hexid):
     else:
         return jsonify({"message": "API is disabled"}), 503
         
-@bp.route('/api/my-recipes/recipe/unfavorite/<hexid>', methods=['GET'])
+@bp.route('/api/my-recipes/recipe/unfavorite/<hexid>', methods=['PUT'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
@@ -1436,7 +1436,7 @@ def apiUnfavorite(hexid):
     else:
         return jsonify({"message": "API is disabled"}), 503
         
-@bp.route('/api/my-recipes/recipe/make-public/<hexid>', methods=['GET'])
+@bp.route('/api/my-recipes/recipe/make-public/<hexid>', methods=['PUT'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
@@ -1465,7 +1465,7 @@ def apiMakePublic(hexid):
     else:
         return jsonify({"message": "API is disabled"}), 503
         
-@bp.route('/api/my-recipes/recipe/make-private/<hexid>', methods=['GET'])
+@bp.route('/api/my-recipes/recipe/make-private/<hexid>', methods=['PUT'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized

@@ -252,7 +252,7 @@ def apiMarkItem(hexid):
                     "complete": listitem.complete
                 }
                 # Return response without key sorting
-                response_json = json.dumps({"list_items": item_data}, sort_keys=False)
+                response_json = json.dumps(response_data, sort_keys=False)
                 response = make_response(response_json)
                 response.headers['Content-Type'] = 'application/json'
                 return response

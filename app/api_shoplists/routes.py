@@ -197,7 +197,7 @@ def apiAddListItem(hexid):
                     hex_valid = 1
             # Add new list to database
             sel_item = Listitem(hex_id=hex_string, item=label, user_id=current_user, complete=0, list_id=list.id)
-            db.session.add(sel_list)
+            db.session.add(sel_item)
             db.session.commit()
             # Build response JSON
             response_data = {

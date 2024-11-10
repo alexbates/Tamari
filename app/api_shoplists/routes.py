@@ -61,13 +61,13 @@ def apiShoppingLists():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
-def apiShoppingListDetail():
+def apiAddShoppingList():
     if app.config.get('API_ENABLED', True):
         data = request.get_json()
         app_name = request.headers.get('X-App-Name')
         app_key = request.headers.get('X-App-Key')
-        # POST data looks like {"label":"Miscellaneous"}
-        label = data.get('label')
+        # POST data looks like {"list":"Miscellaneous"}
+        label = data.get('list')
         if app.config.get('REQUIRE_HEADERS', True):
             # Require app name to match
             if app_name is None or app_name.lower() != 'tamari':
@@ -82,7 +82,7 @@ def apiShoppingListDetail():
                     return jsonify(message=f"Invalid value in key '{key}': double quotes are not allowed"), 400
         except:
             return jsonify(message="Invalid JSON format"), 400
-        allowed_keys = {'label'}
+        allowed_keys = {'list'}
         if not set(data.keys()).issubset(allowed_keys):
             invalid_keys = set(data.keys()) - allowed_keys
             return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
@@ -111,11 +111,92 @@ def apiShoppingListDetail():
             hex_valid = 0
             while hex_valid == 0:
                 hex_string = secrets.token_hex(4)
-                hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                hex_exist = Shoplist.query.filter_by(hex_id=hex_string).first()
                 if hex_exist is None:
                     hex_valid = 1
             # Add new list to database
             sel_list = Shoplist(hex_id=hex_string, label=label, user_id=current_user)
+            db.session.add(sel_list)
+            db.session.commit()
+            # Build response JSON
+            response_data = {
+                "message": "success",
+                "id": hex_string
+            }
+            # Return response without key sorting
+            response_json = json.dumps(response_data, sort_keys=False)
+            response = make_response(response_json)
+            response.headers['Content-Type'] = 'application/json'
+            return response
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+        
+@bp.route('/api/shopping-lists/<hexid>/add', methods=['POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiAddListItem():
+    if app.config.get('API_ENABLED', True):
+        data = request.get_json()
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        # POST data looks like {"item":"yellow squash"}
+        label = data.get('item')
+        rec_title = data.get('rec_title')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Verify that JSON is valid (no double quotes or unrecognized keys)
+        try:
+            for key, value in data.items():
+                if isinstance(value, str) and '"' in value:
+                    return jsonify(message=f"Invalid value in key '{key}': double quotes are not allowed"), 400
+        except:
+            return jsonify(message="Invalid JSON format"), 400
+        allowed_keys = {'item', 'rec_title'}
+        if not set(data.keys()).issubset(allowed_keys):
+            invalid_keys = set(data.keys()) - allowed_keys
+            return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
+        # Get the identity of the user from the authorization token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
+            if any(char in dis_chars for char in label):
+                return jsonify(message="Must not contain special characters"), 400
+            list = user.shop_lists.filter_by(hex_id=hexid).first()
+            if list is None or list.id != current_user:
+                return jsonify(message="The requested list either cannot be found or you do not have permission to view it."), 400
+            try:
+                items = list.list_items.order_by(Listitem.item).all()
+            except:
+                items = []
+            items_labels = []
+            for item in items:
+                curr_item = item.label
+                items_labels.append(curr_item)
+            if not label:
+                return jsonify(message="List item is required"), 400
+            if len(label) > 100:
+                return jsonify(message="The list item must be less than 100 characters"), 400
+            if label in items_labels:
+                return jsonify(message="The list item you entered already exists"), 400
+            if len(items_labels) > 99:
+                return jsonify(message="You are limited to 100 items per list"), 400
+            hex_valid = 0
+            while hex_valid == 0:
+                hex_string = secrets.token_hex(4)
+                hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
+                if hex_exist is None:
+                    hex_valid = 1
+            # Add new list to database
+            sel_item = Listitem(hex_id=hex_string, item=label, user_id=current_user, complete=0, list_id=list.id)
             db.session.add(sel_list)
             db.session.commit()
             # Build response JSON

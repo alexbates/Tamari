@@ -123,7 +123,10 @@ def mobileList(listname):
 def removeList(hexid, mobile):
     list = Shoplist.query.filter_by(hex_id=hexid).first()
     user = User.query.filter_by(email=current_user.email).first()
-    listitems = Listitem.query.filter_by(list_id=list.id).all()
+    try:
+        listitems = Listitem.query.filter_by(list_id=list.id).all()
+    except:
+        listitems = []
     if list is None:
         flash('Error: ' + _('shopping list does not exist.'))
     elif list.label == 'Miscellaneous':

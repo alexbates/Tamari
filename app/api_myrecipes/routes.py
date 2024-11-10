@@ -132,7 +132,7 @@ def apiAllRecipes():
             recipe_data = []
             for recipe in recipes.items:
                 recipe_info = {
-                    "hex_id": recipe.hex_id,
+                    "id": recipe.hex_id,
                     "title": recipe.title
                 }
                 # Include optional data if specified by query parameters
@@ -279,7 +279,7 @@ def apiFavorites():
             recipe_data = []
             for recipe in recipes.items:
                 recipe_info = {
-                    "hex_id": recipe.hex_id,
+                    "id": recipe.hex_id,
                     "title": recipe.title
                 }
                 # Include optional data if specified by query parameters
@@ -335,7 +335,7 @@ def apiCategories():
             for category in categories:
                 recipes = user.recipes.filter_by(category=category.label).all()
                 category_info = {
-                    "hex_id": category.hex_id,
+                    "id": category.hex_id,
                     "label": category.label,
                     "recipes": len(recipes)
                 }
@@ -408,10 +408,20 @@ def apiCategoriesAdd():
                 hex_exist = Category.query.filter_by(hex_id=hex_string).first()
                 if hex_exist is None:
                     hex_valid = 1
+            # Add new category to database
             category = Category(hex_id=hex_string, label=label, user=current_user)
             db.session.add(category)
             db.session.commit()
-            return jsonify(message="success"), 200
+            # Build response JSON
+            response_data = {
+                "message": "success",
+                "id": hex_string
+            }
+            # Return response without key sorting
+            response_json = json.dumps(response_data, sort_keys=False)
+            response = make_response(response_json)
+            response.headers['Content-Type'] = 'application/json'
+            return response
         else:
             return jsonify(message="User not found"), 400
     else:
@@ -723,7 +733,16 @@ def apiRecipeAdd():
                     protein=n_protein, fat=n_fat, sugar=n_sugar, cholesterol=n_cholesterol, sodium=n_sodium, fiber=n_fiber)
                 db.session.add(nutrition)
                 db.session.commit()
-            return jsonify(message="Success")
+            # Build response JSON
+            response_data = {
+                "message": "success",
+                "id": hex_string
+            }
+            # Return response without key sorting
+            response_json = json.dumps(response_data, sort_keys=False)
+            response = make_response(response_json)
+            response.headers['Content-Type'] = 'application/json'
+            return response
         else:
             return jsonify(message="User not found"), 400
     else:

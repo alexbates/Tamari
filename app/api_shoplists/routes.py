@@ -41,7 +41,7 @@ def apiShoppingLists():
             for list in lists:
                 list_length = list.list_items.count()
                 list_info = {
-                    "hex_id": list.hex_id,
+                    "id": list.hex_id,
                     "label": list.label,
                     "list_items": list_length
                 }
@@ -96,7 +96,7 @@ def apiShoppingListDetail():
                 curr_list = list.label
                 lists_labels.append(curr_list)
             if not label:
-                return jsonify(message="Category label is required"), 400
+                return jsonify(message="Shopping list label is required"), 400
             if len(label) > 20:
                 return jsonify(message="The shopping list must be less than 20 characters"), 400
             if len(label) < 3:
@@ -118,7 +118,16 @@ def apiShoppingListDetail():
             sel_list = Shoplist(hex_id=hex_string, label=label, user_id=current_user)
             db.session.add(sel_list)
             db.session.commit()
-            return jsonify(message="success"), 200
+            # Build response JSON
+            response_data = {
+                "message": "success",
+                "id": hex_string
+            }
+            # Return response without key sorting
+            response_json = json.dumps(response_data, sort_keys=False)
+            response = make_response(response_json)
+            response.headers['Content-Type'] = 'application/json'
+            return response
         else:
             return jsonify(message="User not found"), 400
     else:
@@ -154,7 +163,7 @@ def apiShoppingListDetail(hexid):
             item_data = []
             for item in items:
                 item_info = {
-                    "hex_id": item.hex_id,
+                    "id": item.hex_id,
                     "label": item.item.replace("\r", ""),
                     "recipe": item.rec_title,
                     "complete": item.complete

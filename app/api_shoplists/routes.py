@@ -179,7 +179,7 @@ def apiAddListItem(hexid):
                 items = []
             items_labels = []
             for item in items:
-                curr_item = item.label
+                curr_item = item.item
                 items_labels.append(curr_item)
             if not label:
                 return jsonify(message="List item is required"), 400

@@ -171,7 +171,7 @@ def apiAddListItem(hexid):
             if any(char in dis_chars for char in label):
                 return jsonify(message="Must not contain special characters"), 400
             list = user.shop_lists.filter_by(hex_id=hexid).first()
-            if list is None or list.id != current_user:
+            if list is None or list.user_id != current_user:
                 return jsonify(message="The requested list either cannot be found or you do not have permission to view it."), 400
             try:
                 items = list.list_items.order_by(Listitem.item).all()

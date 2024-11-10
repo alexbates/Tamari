@@ -56,7 +56,63 @@ def apiShoppingLists():
         return response
     else:
         return jsonify({"message": "API is disabled"}), 503
-        
+       
+@bp.route('/api/shopping-lists/add', methods=['POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@jwt_required()
+# If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
+def apiShoppingListDetail():
+    if app.config.get('API_ENABLED', True):
+        data = request.get_json()
+        app_name = request.headers.get('X-App-Name')
+        app_key = request.headers.get('X-App-Key')
+        # POST data looks like {"label":"Miscellaneous"}
+        label = data.get('label')
+        if app.config.get('REQUIRE_HEADERS', True):
+            # Require app name to match
+            if app_name is None or app_name.lower() != 'tamari':
+                return jsonify({"message": "app name is missing or incorrect"}), 401
+            # Check if the provided app_key matches the one in the configuration
+            if not secrets.compare_digest(app_key, app.config.get('APP_KEY')):
+                return jsonify({"message": "Invalid app_key"}), 401
+        # Get the identity of the user from the authorization token
+        current_user = get_jwt_identity()
+        user = User.query.filter_by(id=current_user).first_or_404()
+        if user:
+            lists = user.shop_lists.order_by(Shoplist.label).all()
+            lists_labels = []
+            for list in lists:
+                curr_list = list.label
+                lists_labels.append(curr_list)
+            if not label:
+                return jsonify(message="Category label is required"), 400
+            if len(label) > 20:
+                return jsonify(message="The shopping list must be less than 20 characters"), 400
+            if len(label) < 3:
+                return jsonify(message="The shopping list must be at least 3 characters"), 400
+            if label in lists_labels:
+                return jsonify(message="The shopping list you entered already exists"), 400
+            if len(lists_labels) > 19:
+                return jsonify(message="You are limited to 20 shopping lists"), 400
+            dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
+            if any(char in dis_chars for char in label):
+                return jsonify(message="Must not contain special characters"), 400
+            hex_valid = 0
+            while hex_valid == 0:
+                hex_string = secrets.token_hex(4)
+                hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                if hex_exist is None:
+                    hex_valid = 1
+            # Add new list to database
+            sel_list = Shoplist(hex_id=hex_string, label=label, user_id=current_user)
+            db.session.add(sel_list)
+            db.session.commit()
+            return jsonify(message="success"), 200
+        else:
+            return jsonify(message="User not found"), 400
+    else:
+        return jsonify({"message": "API is disabled"}), 503
+       
 @bp.route('/api/shopping-lists/<hexid>', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()

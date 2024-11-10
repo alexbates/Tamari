@@ -237,7 +237,6 @@ def apiMarkItem(hexid):
         user = User.query.filter_by(id=current_user).first_or_404()
         if user:
             listitem = Listitem.query.filter_by(hex_id=hexid).first()
-            list = Shoplist.query.filter_by(id=listitem.list_id).first()
             if listitem is None or listitem.user_id != current_user:
                 return jsonify(message="The requested list item either cannot be found or you do not have permission to modify it."), 400
             try:

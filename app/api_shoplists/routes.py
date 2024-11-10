@@ -120,7 +120,7 @@ def apiAddShoppingList():
             db.session.commit()
             # Build response JSON
             response_data = {
-                "message": "success",
+                "message": "Success",
                 "id": hex_string
             }
             # Return response without key sorting
@@ -201,7 +201,7 @@ def apiAddListItem(hexid):
             db.session.commit()
             # Build response JSON
             response_data = {
-                "message": "success",
+                "message": "Success",
                 "id": hex_string
             }
             # Return response without key sorting
@@ -246,7 +246,16 @@ def apiMarkItem(hexid):
                 else:
                     listitem.complete = 0
                     db.session.commit()
-                return jsonify(message="Success")
+                # Build response JSON
+                response_data = {
+                    "message": "Success",
+                    "complete": listitem.complete
+                }
+                # Return response without key sorting
+                response_json = json.dumps({"list_items": item_data}, sort_keys=False)
+                response = make_response(response_json)
+                response.headers['Content-Type'] = 'application/json'
+                return response
             except:
                 return jsonify(message="Error")
         else:

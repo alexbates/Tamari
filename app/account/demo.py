@@ -28,14 +28,17 @@ def reset_demo_account():
                 'demo3.jpg', 'demo4.jpg', 'demo5.jpg', 'demo6.jpg', 'demo7.jpg', 'demo8.jpg', 'demo9.jpg', 'demo10.jpg', 'demo11.jpg',
                 'demo12.jpg']
             try:
-                for recipe in recipes:
-                    fullpath = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo
-                    if recipe.photo not in defaults:
-                        try:
-                            os.remove(fullpath)
-                        except:
-                            pass
-                    db.session.delete(recipe)
+                if recipes:
+                    for recipe in recipes:
+                        fullpath = app.config['UPLOAD_FOLDER'] + '/' + recipe.photo
+                        if recipe.photo not in defaults:
+                            try:
+                                os.remove(fullpath)
+                            except:
+                                pass
+                        db.session.delete(recipe)
+                    # Commit deleted data
+                    db.session.commit()
             except:
                 pass
             # Delete all other records belonging to the demo user

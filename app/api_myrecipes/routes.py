@@ -427,7 +427,7 @@ def apiCategoriesAdd():
     else:
         return jsonify({"message": "API is disabled"}), 503
         
-@bp.route('/api/my-recipes/categories/remove/<catid>', methods=['DELETE'])
+@bp.route('/api/my-recipes/categories/<catid>/remove', methods=['DELETE'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized

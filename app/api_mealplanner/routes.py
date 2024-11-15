@@ -152,8 +152,6 @@ def apiMealPlannerUpcoming():
                 d[0] = compactdate
                 d[1] = fulldate
                 timestamp += 86400
-                if d[0] == query_string:
-                    query_string_full = d[1]
             # Create array to store only compact month, used to validate query string
             compactmonth = []
             for d in month:

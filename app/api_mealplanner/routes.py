@@ -34,6 +34,8 @@ def apiMealPlannerAll():
         # Get the identity of the user from the authorization token
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
+        page = request.args.get('page', 1, type=int)
+        per_page = request.args.get('per_page', 1000, type=int)
         if user:
             plannedmeals = user.planned_meals.all()
             # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
@@ -77,6 +79,13 @@ def apiMealPlannerAll():
                     "recipe_category": meal[1]
                 }
                 mealplan_data.append(mealplan_info)
+            # Sort events by most recent first
+            mealplan_data = sorted(mealplan_data, key=lambda mealplan: mealplan["date"], reverse=True)
+            # Calculate the start and end indices for pagination
+            start_index = (page - 1) * per_page
+            end_index = start_index + per_page
+            # Paginate the sorted_events array
+            mealplan_data = mealplan_data[start_index:end_index]
         else:
             # if user is not found, empty array will be used to create JSON response
             mealplan_data = []

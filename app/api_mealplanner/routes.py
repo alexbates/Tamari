@@ -103,7 +103,44 @@ def apiMealPlannerAll():
         return response
     else:
         return jsonify({"message": "API is disabled"}), 503
-        
+
+# Used by API Meal Planner Upcoming and Completed routes to filter plannedmeals object by date
+def getMealsInMonth(plannedmeals, upcoming=True):
+    # Create 2D array to hold compact date and full date
+    w, h = 2, 30
+    month = [[0 for x in range(w)] for y in range(h)]
+    curr_dt = datetime.now()
+    timestamp = int(time.mktime(curr_dt.timetuple()))
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    for d in month:
+        date = datetime.fromtimestamp(timestamp)
+        intDay = date.weekday()
+        full_month = date.strftime("%B")
+        full_day = date.strftime("%-d")
+        compact_month = date.strftime("%m")
+        compact_day = date.strftime("%d")
+        curr_year = date.strftime("%Y")
+        compactdate = curr_year + "-" + compact_month + "-" + compact_day
+        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        d[0] = compactdate
+        d[1] = fulldate
+        timestamp += 86400
+    # Create array to store only compact month, used to validate query string
+    compactmonth = []
+    for d in month:
+        compactmonth.append(d[0])
+    # Create array that contains all items from "plannedmeals" except those outside 30 day window
+    mealsinmonth = []
+    if upcoming:
+        for meal in plannedmeals:
+            if meal.date in compactmonth:
+                mealsinmonth.append(meal)
+    if upcoming:
+        for meal in plannedmeals:
+            if meal.date not in compactmonth:
+                mealsinmonth.append(meal)
+    return mealsinmonth
+
 @bp.route('/api/meal-planner/upcoming', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
@@ -133,34 +170,7 @@ def apiMealPlannerUpcoming():
             return jsonify({"message": "Specified sort option is not recognized"}), 400
         if user:
             plannedmeals = user.planned_meals.all()
-            # Create 2D array to hold compact date and full date
-            w, h = 2, 30
-            month = [[0 for x in range(w)] for y in range(h)]
-            curr_dt = datetime.now()
-            timestamp = int(time.mktime(curr_dt.timetuple()))
-            days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-            for d in month:
-                date = datetime.fromtimestamp(timestamp)
-                intDay = date.weekday()
-                full_month = date.strftime("%B")
-                full_day = date.strftime("%-d")
-                compact_month = date.strftime("%m")
-                compact_day = date.strftime("%d")
-                curr_year = date.strftime("%Y")
-                compactdate = curr_year + "-" + compact_month + "-" + compact_day
-                fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
-                d[0] = compactdate
-                d[1] = fulldate
-                timestamp += 86400
-            # Create array to store only compact month, used to validate query string
-            compactmonth = []
-            for d in month:
-                compactmonth.append(d[0])
-            # Create array that contains all items from "plannedmeals" except those outside 30 day window
-            mealsinmonth = []
-            for meal in plannedmeals:
-                if meal.date in compactmonth:
-                    mealsinmonth.append(meal)
+            mealsinmonth = getMealsInMonth(plannedmeals, upcoming=True)
             # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
             # Structure of array:
             # 1 - Recipe title
@@ -252,34 +262,7 @@ def apiMealPlannerCompleted():
             return jsonify({"message": "Specified sort option is not recognized"}), 400
         if user:
             plannedmeals = user.planned_meals.all()
-            # Create 2D array to hold compact date and full date
-            w, h = 2, 30
-            month = [[0 for x in range(w)] for y in range(h)]
-            curr_dt = datetime.now()
-            timestamp = int(time.mktime(curr_dt.timetuple()))
-            days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-            for d in month:
-                date = datetime.fromtimestamp(timestamp)
-                intDay = date.weekday()
-                full_month = date.strftime("%B")
-                full_day = date.strftime("%-d")
-                compact_month = date.strftime("%m")
-                compact_day = date.strftime("%d")
-                curr_year = date.strftime("%Y")
-                compactdate = curr_year + "-" + compact_month + "-" + compact_day
-                fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
-                d[0] = compactdate
-                d[1] = fulldate
-                timestamp += 86400
-            # Create array to store only compact month, used to validate query string
-            compactmonth = []
-            for d in month:
-                compactmonth.append(d[0])
-            # Create array that contains all items from "plannedmeals" except those outside 30 day window
-            mealsinmonth = []
-            for meal in plannedmeals:
-                if meal.date not in compactmonth:
-                    mealsinmonth.append(meal)
+            mealsinmonth = getMealsInMonth(plannedmeals, upcoming=False)
             # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
             # Structure of array:
             # 1 - Recipe title

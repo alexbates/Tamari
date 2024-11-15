@@ -135,7 +135,7 @@ def getMealsInMonth(plannedmeals, upcoming=True):
         for meal in plannedmeals:
             if meal.date in compactmonth:
                 mealsinmonth.append(meal)
-    if upcoming:
+    else:
         for meal in plannedmeals:
             if meal.date not in compactmonth:
                 mealsinmonth.append(meal)

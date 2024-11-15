@@ -13,6 +13,37 @@ from PIL import Image
 from app.api_mealplanner import bp
 from config import Config
 
+# Used by all Meal Planner GET method routes to process meal plan data
+def buildRecDetails(mealsinmonth):
+    # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
+    # Structure of array:
+    # 1 - Recipe title
+    # 2 - Recipe category
+    # 3 - Recipe hex_id
+    # 4 - Meal date
+    # 5 - Meal hex_id
+    w2, h2 = 5, len(mealsinmonth)
+    recdetails = [[0 for x in range(w2)] for y in range(h2)]
+    mealiteration = 0
+    for meal in mealsinmonth:
+        recipe = Recipe.query.filter_by(id=meal.recipe_id).first()
+        try:
+            recdetails[mealiteration][0] = recipe.title
+        except:
+            recdetails[mealiteration][0] = "Unknown Recipe"
+        try:
+            recdetails[mealiteration][1] = recipe.category
+        except:
+            recdetails[mealiteration][1] = "Miscellaneous"
+        try:
+            recdetails[mealiteration][2] = recipe.hex_id
+        except:
+            recdetails[mealiteration][2] = "a3notfound"
+        recdetails[mealiteration][3] = meal.date
+        recdetails[mealiteration][4] = meal.hex_id
+        mealiteration += 1
+    return recdetails
+
 @bp.route('/api/meal-planner/all', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 @jwt_required()
@@ -42,33 +73,7 @@ def apiMealPlannerAll():
             return jsonify({"message": "Specified sort option is not recognized"}), 400
         if user:
             plannedmeals = user.planned_meals.all()
-            # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
-            # Structure of array:
-            # 1 - Recipe title
-            # 2 - Recipe category
-            # 3 - Recipe hex_id
-            # 4 - Meal date
-            # 5 - Meal hex_id
-            w2, h2 = 5, len(plannedmeals)
-            recdetails = [[0 for x in range(w2)] for y in range(h2)]
-            mealiteration = 0
-            for meal in plannedmeals:
-                recipe = Recipe.query.filter_by(id=meal.recipe_id).first()
-                try:
-                    recdetails[mealiteration][0] = recipe.title
-                except:
-                    recdetails[mealiteration][0] = "Unknown Recipe"
-                try:
-                    recdetails[mealiteration][1] = recipe.category
-                except:
-                    recdetails[mealiteration][1] = "Miscellaneous"
-                try:
-                    recdetails[mealiteration][2] = recipe.hex_id
-                except:
-                    recdetails[mealiteration][2] = "a3notfound"
-                recdetails[mealiteration][3] = meal.date
-                recdetails[mealiteration][4] = meal.hex_id
-                mealiteration += 1
+            recdetails = buildRecDetails(plannedmeals)
             # Prepare categories to be displayed as JSON
             mealplan_data = []
             for meal in recdetails:
@@ -171,33 +176,7 @@ def apiMealPlannerUpcoming():
         if user:
             plannedmeals = user.planned_meals.all()
             mealsinmonth = getMealsInMonth(plannedmeals, upcoming=True)
-            # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
-            # Structure of array:
-            # 1 - Recipe title
-            # 2 - Recipe category
-            # 3 - Recipe hex_id
-            # 4 - Meal date
-            # 5 - Meal hex_id
-            w2, h2 = 5, len(mealsinmonth)
-            recdetails = [[0 for x in range(w2)] for y in range(h2)]
-            mealiteration = 0
-            for meal in mealsinmonth:
-                recipe = Recipe.query.filter_by(id=meal.recipe_id).first()
-                try:
-                    recdetails[mealiteration][0] = recipe.title
-                except:
-                    recdetails[mealiteration][0] = "Unknown Recipe"
-                try:
-                    recdetails[mealiteration][1] = recipe.category
-                except:
-                    recdetails[mealiteration][1] = "Miscellaneous"
-                try:
-                    recdetails[mealiteration][2] = recipe.hex_id
-                except:
-                    recdetails[mealiteration][2] = "a3notfound"
-                recdetails[mealiteration][3] = meal.date
-                recdetails[mealiteration][4] = meal.hex_id
-                mealiteration += 1
+            recdetails = buildRecDetails(mealsinmonth)
             # Prepare categories to be displayed as JSON
             mealplan_data = []
             for meal in recdetails:
@@ -263,33 +242,7 @@ def apiMealPlannerCompleted():
         if user:
             plannedmeals = user.planned_meals.all()
             mealsinmonth = getMealsInMonth(plannedmeals, upcoming=False)
-            # Create 2D array to store recipe info, it will somewhat mirror plannedmeals
-            # Structure of array:
-            # 1 - Recipe title
-            # 2 - Recipe category
-            # 3 - Recipe hex_id
-            # 4 - Meal date
-            # 5 - Meal hex_id
-            w2, h2 = 5, len(mealsinmonth)
-            recdetails = [[0 for x in range(w2)] for y in range(h2)]
-            mealiteration = 0
-            for meal in mealsinmonth:
-                recipe = Recipe.query.filter_by(id=meal.recipe_id).first()
-                try:
-                    recdetails[mealiteration][0] = recipe.title
-                except:
-                    recdetails[mealiteration][0] = "Unknown Recipe"
-                try:
-                    recdetails[mealiteration][1] = recipe.category
-                except:
-                    recdetails[mealiteration][1] = "Miscellaneous"
-                try:
-                    recdetails[mealiteration][2] = recipe.hex_id
-                except:
-                    recdetails[mealiteration][2] = "a3notfound"
-                recdetails[mealiteration][3] = meal.date
-                recdetails[mealiteration][4] = meal.hex_id
-                mealiteration += 1
+            recdetails = buildRecDetails(mealsinmonth)
             # Prepare categories to be displayed as JSON
             mealplan_data = []
             for meal in recdetails:

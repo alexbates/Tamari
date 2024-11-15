@@ -87,6 +87,9 @@ app.register_blueprint(api_account_bp)
 from app.api_shoplists import bp as api_shoplists_bp
 app.register_blueprint(api_shoplists_bp)
 
+from app.api_mealplanner import bp as api_mealplanner_bp
+app.register_blueprint(api_mealplanner_bp)
+
 if not app.debug:
     if app.config['MAIL_SERVER']:
         auth = None

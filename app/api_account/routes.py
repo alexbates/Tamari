@@ -16,7 +16,7 @@ from config import Config
 @bp.route('/api', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 # Authorization is not required to view documentation
-def apiInfo():
+def apiDocumentation():
     app_version = 1.0
     if app.config.get('API_ENABLED', True):
         api_enabled = True

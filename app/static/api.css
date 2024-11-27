@@ -1,0 +1,210 @@
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+}
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+}
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+}
+/* ACCENT COLOR APPLICATION */
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: var(--color-block1);
+	font-size: var(--font-block1);
+}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+#block1 h2 {padding: 12px 0px 0px 0px;}
+.errorh2 {padding-left: 0px !important; padding-bottom: 0px !important;}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: var(--color-flashed-err); 
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: var(--color-flashed-norm); 
+	font-size: var(--font-flashed);
+	min-height: var(--font-flashed);
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+
+#endpoints {
+	margin-bottom: 0px;
+}
+details {
+	margin-top: 10px;
+	border-radius: 5px;
+	background-color: #ffffff;
+} 
+summary {
+	background-color: #efefef;
+	border-radius: 5px;
+	color: #000000;
+	padding: 6px 3px 6px 6px; /* Top Right Bottom Left */
+	font-size: 18px;
+	font-family: Inter-Medium;
+	cursor: pointer;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	outline: none;
+	user-select: none;
+}
+summary::marker {
+	display: none; /* Hide the default arrow */
+}
+summary:after {
+	content: '▼';
+	font-size: 1rem;
+	margin-left: auto;
+	padding-left: 4px;
+	padding-right: 4px;
+	transition: transform 0.15s;
+}
+details[open] summary {
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+details[open] summary:after {
+	transform: rotate(180deg);
+}
+.details-content {
+	border-top: 1px solid #e8e8e8;
+	background-color: #ffffff;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+}
+
+.method {
+	border-radius: 4px;
+	font-family: Inter-SemiBold;
+	margin-right: 10px;
+	padding: 4px 0px 4px 0px; /* Top Right Bottom Left */
+	text-align: center;
+	width: 84px;
+}
+.method-get {
+	background: rgb(171, 171, 222);
+}
+.m-get {
+	background: rgb(219, 219, 239);
+}
+.method-post {
+	background: #68c08e;
+}
+.m-post {
+	background: #c9edd9;
+}
+.method-put {
+	background: rgb(226, 213, 140);
+}
+.method-delete {
+	background: var(--color-flashed-err);
+}
+.desc {
+	background: #cfcfcf;
+	border-radius: 14px;
+	font-family: Inter-Regular;
+	font-size: 14px;
+	line-height: 18px;
+	margin-left: 10px;
+	padding: 4px 10px 4px 10px; /* Top Right Bottom Left */
+}
+
+.section-title {
+	font-family: Inter-Medium;
+	padding: 10px;
+}
+.section-title-ct {
+	border-radius: 14px;
+	font-family: Inter-Regular;
+	font-size: 14px;
+	margin-left: 10px;
+	padding: 4px 10px 4px 10px; /* Top Right Bottom Left */
+}
+.section-body {
+	padding: 10px;
+}
+table {
+	border-collapse: collapse;
+}
+td, th {
+	border: 1px solid #e8e8e8;
+	padding: 10px;
+}
+.paramdesc {
+	color: #787878;
+	font-size: 14px;
+	font-style: italic;
+}
+.paramreq {
+	color: #910505;
+	font-size: 14px;
+	font-style: italic;
+}
+.status {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+pre {
+	background: #efefef;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	padding: 10px;
+}
+pre code {
+    white-space: pre-wrap; /* Wraps long text */
+    word-wrap: break-word; /* Breaks long words */
+    overflow: hidden; /* Prevents horizontal scrolling */
+}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	details {margin-left: 10px; margin-right: 10px;}
+}
+@media screen and (max-width: 710px) { 
+	.desc {display: none;}
+}

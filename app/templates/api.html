@@ -1,0 +1,467 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='api.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<h2>Authorization</h2>
+		<p>Every endpoint requires the header "Authorization: Bearer JWT", where JWT is replaced with the token received from Login or Refresh Token endpoints.</p>
+		<p id="endpoints"></p>
+		<h2>About</h2>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/info<span class="desc">View Version</span></summary>
+			<div class="details-content">
+				<div class="section-title m-get">Response Example</div>
+				<div class="section-body">
+					<p class="status">Status: 200</p>
+<pre><code>{
+    "api_enabled": true,
+    "app_version": 1.0
+}</code></pre>
+				</div>
+			</div>
+		</details>
+		<h2>Account</h2>
+		<details>
+			<summary><span class="method method-post">POST</span>/api/user/authenticate<span class="desc">Login</span></summary>
+			<div class="details-content">
+				<div class="section-title m-post">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Default Value</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								Bearer <b>{access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								tamari
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-post">Request Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+<pre><code>{
+    "email": "test@example.com",
+    "password": "1234"
+}</code></pre>
+				</div>
+				<div class="section-title m-post">Response Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMTc3ODM1MSwianRpIjoiZDRlYzdkZmItZTc5Yi00ZTYzLTg1NmEtMTI3YmYwNDRiZDM3IiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTczMTc3ODM1MSwiY3NyZiI6IjcyZmNkMjMyLWNhYjYtNDUzYy05YTIzLTI1ODk0Y2IwMDhjMSIsImV4cCI6MTczMTgyMTU1MX0.Bh4G3UIX4_Dgd-xZqjKZJyGEDwTMghmYHM6mRcihoOY",
+    "message": "success",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMTc3ODM1MSwianRpIjoiMGNjMTE5MTctNDgxMi00NDhhLWEzYzQtNzExZTdiYjg0MDQ4IiwidHlwZSI6InJlZnJlc2giLCJzdWIiOjEwLCJuYmYiOjE3MzE3NzgzNTEsImNzcmYiOiI3YmFmMTkyZi00ZDhiLTQ4ODQtYjhmNS1hOWIwMDQ2YzhhOTEiLCJleHAiOjE3MzQzNzAzNTF9.acT34aDsy7-k-o545-OJ7p1DCvVTvrjEJmFdQwjnp2w"
+}</code></pre>
+				</div>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-post">POST</span>/api/user/refresh<span class="desc">Refresh Token</span></summary>
+			<div class="details-content">
+				<div class="section-title m-post">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Default Value</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								Bearer <b>{access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								tamari
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-post">Response Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTczMTc3OTcyNiwianRpIjoiODUxY2VkNjctNjAxYS00MThlLWI2NmItMzBlNWQ5ODdmYmMyIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6MTAsIm5iZiI6MTczMTc3OTcyNiwiY3NyZiI6ImFhZGZhYTE1LTZiY2ItNGZmYi1hMWYzLTcyNWMxYmY3ZjRjZSIsImV4cCI6MTczMTgyMjkyNn0.Fy8mRRBC-X2tqXZAKflUCqtozksL54Ya9CMgJdGY43M",
+    "message": "success"
+}</code></pre>
+				</div>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/user/profile<span class="desc">View Account Details</span></summary>
+			<div class="details-content">
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Default Value</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								Bearer <b>{access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								tamari
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "email": "test@example.com",
+    "register_time": "Sat, 24 Jun 2023 19:59:15 GMT",
+    "last_visited": "Fri, 15 Nov 2024 18:55:08 GMT",
+    "my_recipes": {
+        "recipes": 78,
+        "favorites": 17,
+        "categories": 7
+    },
+    "shopping_lists": 3,
+    "meal_planner": {
+        "recipes_prepared": {
+            "total": 79,
+            "past_week": 6,
+            "past_month": 15,
+            "past_year": 73
+        },
+        "days_cooked": {
+            "past_week": 5,
+            "past_month": 12,
+            "past_year": 57
+        }
+    }
+}</code></pre>
+				</div>
+			</div>
+		</details>
+		<h2>My Recipes</h2>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/my-recipes/all<span class="desc">View All Recipes</span></summary>
+			<div class="details-content">
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Default Value</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								Bearer <b>{access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								tamari
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+	"recipes": [
+		{
+			"hex_id": "7945a85b",
+			"title": "Almond Flour-Crusted Chicken Piccata",
+			"category": "Entrees",
+			"photo": "a1d9d9369fa0d43c.jpg"
+		},
+		{
+			"hex_id": "2d7b4296",
+			"title": "Balsamic Bacon Brussel Sprouts ",
+			"category": "Sides",
+			"photo": "b47357c12971393c.jpeg"
+		},
+		{
+			"hex_id": "e728b9d0",
+			"title": "Best Beef Enchiladas",
+			"category": "Entrees",
+			"photo": "2a529e97572b7e0a.jpg"
+		}
+	]
+}</code></pre>
+				</div>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/my-recipes/favorites<span class="desc">View Favorites</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-post">POST</span>/api/my-recipes/recipe/add<span class="desc">Add Recipe</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/my-recipes/recipe/{id}<span class="desc">View Recipe</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/my-recipes/recipe/{id}/edit<span class="desc">Edit Recipe</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-delete">DELETE</span>/api/my-recipes/recipe/{id}/remove<span class="desc">Remove Recipe</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-put">PUT</span>/api/my-recipes/recipe/{id}/favorite<span class="desc">Favorite Recipe</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-put">PUT</span>/api/my-recipes/recipe/{id}/unfavorite<span class="desc">Unfavorite Recipe</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-put">PUT</span>/api/my-recipes/recipe/{id}/make-public<span class="desc">Make Recipe Public</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-put">PUT</span>/api/my-recipes/recipe/{id}/make-private<span class="desc">Make Recipe Private</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/my-recipes/categories<span class="desc">View Categories</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-post">POST</span>/api/my-recipes/categories/add<span class="desc">Add Category</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-delete">DELETE</span>/api/my-recipes/categories/{id}/remove<span class="desc">Add Category</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<h2>Shopping Lists</h2>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/shopping-lists<span class="desc">View Shopping Lists</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/shopping-lists/{id}<span class="desc">View List Items</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-post">POST</span>/api/shopping-lists/add<span class="desc">Add Shopping List</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-post">POST</span>/api/shopping-lists/{id}/add<span class="desc">Add Item to List</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-delete">DELETE</span>/api/shopping-lists/{id}/remove<span class="desc">Remove Shopping List</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-put">PUT</span>/api/shopping-lists/item/{id}/mark<span class="desc">Mark List Item</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-delete">DELETE</span>/api/shopping-lists/item/{id}/remove<span class="desc">Remove List Item</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<h2>Meal Planner</h2>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/meal-planner/all<span class="desc">View All Plans</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/meal-planner/upcoming<span class="desc">View Upcoming Plans</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-get">GET</span>/api/meal-planner/completed<span class="desc">View Completed Plans</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<details>
+			<summary><span class="method method-delete">DELETE</span>/api/meal-planner/{id}/remove<span class="desc">Remove Plan</span></summary>
+			<div class="details-content">
+				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+			</div>
+		</details>
+		<p>Version {{app_version}}</p>
+	</div>
+</main>
+{% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+	<script>
+		// CTRL+A keyboard shortcut to redirect to Add Recipe page, only when authenticated
+        $(document).ready(function() {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    window.location.href = '/add-recipe';
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

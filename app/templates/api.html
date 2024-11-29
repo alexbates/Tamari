@@ -344,7 +344,113 @@
 		<details>
 			<summary><span class="method method-get">GET</span>/api/my-recipes/favorites<span class="desc">View Favorites</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								page
+								<br>
+								<span class="paramdesc">(query)</span></span>
+							</td>
+							<td>
+								<b>1</b>
+								<br>
+								<span class="paramdesc">(integer)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								per_page
+								<br>
+								<span class="paramdesc">(query)</span></span>
+							</td>
+							<td>
+								<b>1000</b>
+								<br>
+								<span class="paramdesc">(integer)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								sort
+								<br>
+								<span class="paramdesc">(query)</span></span>
+							</td>
+							<td>
+								<b>title</b>, title_desc, category, category_desc, time_created, time_created_desc
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+	"recipes": [
+		{
+			"hex_id": "045c6509",
+			"title": "Carrabba’s-Style Spiedino Di Mare Scallops",
+			"category": "Entrees",
+			"photo": "c798135ed5a42de2.jpg"
+		},
+		{
+			"hex_id": "e691f3a5",
+			"title": "Cashew Chicken Lettuce Wraps",
+			"category": "Entrees",
+			"photo": "6346812361d9d4ef.jpg"
+		},
+		{
+			"hex_id": "38a8c084",
+			"title": "Cheesy Broccoli Cassrole",
+			"category": "Sides",
+			"photo": "162a3b745e91e1c9.jpeg"
+		}
+	]
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>

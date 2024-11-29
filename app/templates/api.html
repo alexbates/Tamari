@@ -982,7 +982,84 @@
 		<details>
 			<summary><span class="method method-get">GET</span>/api/my-recipes/categories<span class="desc">View Categories</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "categories": [
+        {
+            "hex_id": "0ef03da9",
+            "label": "Breakfast",
+            "recipes": 1
+        },
+        {
+            "hex_id": "6ae1a417",
+            "label": "Entrees",
+            "recipes": 37
+        },
+        {
+            "hex_id": "82deb3d7",
+            "label": "Miscellaneous",
+            "recipes": 4
+        },
+        {
+            "hex_id": "24bfc543",
+            "label": "Sauces",
+            "recipes": 5
+        },
+        {
+            "hex_id": "22dc532c",
+            "label": "Sides",
+            "recipes": 28
+		}
+	]
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>

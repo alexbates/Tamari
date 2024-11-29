@@ -122,17 +122,20 @@ details[open] summary:after {
 	text-align: center;
 	width: 84px;
 }
-.method-get {
-	background: rgb(171, 171, 222);
-}
 .m-get {
 	background: rgb(219, 219, 239);
 }
-.method-post {
-	background: #68c08e;
-}
 .m-post {
 	background: #c9edd9;
+}
+.m-put {
+	background: rgb(243, 237, 201);
+}
+.method-get {
+	background: rgb(171, 171, 222);
+}
+.method-post {
+	background: #68c08e;
 }
 .method-put {
 	background: rgb(226, 213, 140);

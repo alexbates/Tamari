@@ -615,9 +615,77 @@
 			</div>
 		</details>
 		<details>
-			<summary><span class="method method-get">GET</span>/api/my-recipes/recipe/{id}/edit<span class="desc">Edit Recipe</span></summary>
+			<summary><span class="method method-put">PUT</span>/api/my-recipes/recipe/{id}/edit<span class="desc">Edit Recipe</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-post">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-post">Request Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+<pre><code>{
+    "title":"Apple Pie",
+    "category":"Miscellaneous",
+    "ingredients": [
+	    "1 tsp olive oil",
+        "2 tsp honey"
+	],
+    "instructions": [
+        "preheat oven to 425",
+        "bake for 30 mins"
+    ],
+    "n_calories": null,
+    "n_carbs": ""
+}</code></pre>
+				</div>
+				<div class="section-title m-post">Response Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>

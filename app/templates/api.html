@@ -1459,19 +1459,173 @@
 		<details>
 			<summary><span class="method method-delete">DELETE</span>/api/shopping-lists/{id}/remove<span class="desc">Remove Shopping List</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-delete">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-delete">Response Example<span class="section-title-ct method-delete">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>
 			<summary><span class="method method-put">PUT</span>/api/shopping-lists/item/{id}/mark<span class="desc">Mark List Item</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-put">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-put">Response Example<span class="section-title-ct method-put">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success",
+    "complete: 1
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>
 			<summary><span class="method method-delete">DELETE</span>/api/shopping-lists/item/{id}/remove<span class="desc">Remove List Item</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-delete">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-delete">Response Example<span class="section-title-ct method-delete">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<h2>Meal Planner</h2>
@@ -1496,7 +1650,58 @@
 		<details>
 			<summary><span class="method method-delete">DELETE</span>/api/meal-planner/{id}/remove<span class="desc">Remove Plan</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-delete">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-delete">Response Example<span class="section-title-ct method-delete">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<p>Version {{app_version}}</p>

@@ -131,6 +131,9 @@ details[open] summary:after {
 .m-put {
 	background: rgb(243, 237, 201);
 }
+.m-delete {
+	background: #edc3be;
+}
 .method-get {
 	background: rgb(171, 171, 222);
 }
@@ -141,7 +144,7 @@ details[open] summary:after {
 	background: rgb(226, 213, 140);
 }
 .method-delete {
-	background: var(--color-flashed-err);
+	background: #df7c71;
 }
 .desc {
 	background: #cfcfcf;

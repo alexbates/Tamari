@@ -1120,7 +1120,8 @@
 				<div class="section-body">
 				<p class="status">Status: 200</p>
 <pre><code>{
-    "message": "Success"
+    "message": "Success",
+    "id": "78ab350f"
 }</code></pre>
 				</div>
 			</div>
@@ -1186,25 +1187,273 @@
 		<details>
 			<summary><span class="method method-get">GET</span>/api/shopping-lists<span class="desc">View Shopping Lists</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "shopping_lists": [
+        {
+            "hex_id": "a2cef182",
+            "label": "Costco",
+            "list_items": 17
+        },
+        {
+            "hex_id": "3ec2ff29",
+            "label": "Miscellaneous",
+            "list_items": 12
+        }
+    ]
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>
 			<summary><span class="method method-get">GET</span>/api/shopping-lists/{id}<span class="desc">View List Items</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "list_items": [
+        {
+            "id": "cf7536ef05",
+            "label": "(4) yellow squash",
+            "recipe": null,
+            "complete": 1
+        },
+        {
+            "id": "8e4434f3d6",
+            "label": "Grated Parmesan cheese",
+            "recipe": "Air Fryer Potatoes",
+            "complete": 1
+        },
+        {
+            "id": "ade3f63f26",
+            "label": "Kosher Salt",
+            "recipe": "Roasted Asparagus Parmesan",
+            "complete": 0
+        }
+    ]
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>
 			<summary><span class="method method-post">POST</span>/api/shopping-lists/add<span class="desc">Add Shopping List</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-post">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-post">Request Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+<pre><code>{
+    "list": "Walmart"
+}</code></pre>
+				</div>
+				<div class="section-title m-post">Response Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success",
+    "id": "78ab350f"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>
 			<summary><span class="method method-post">POST</span>/api/shopping-lists/{id}/add<span class="desc">Add Item to List</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-post">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-post">Request Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+<pre><code>{
+    "item": "wild caught salmon"
+}</code></pre>
+				</div>
+				<div class="section-title m-post">Response Example<span class="section-title-ct method-post">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success",
+    "id": "78ab350f"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>

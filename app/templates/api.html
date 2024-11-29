@@ -527,7 +527,91 @@
 		<details>
 			<summary><span class="method method-get">GET</span>/api/my-recipes/recipe/{id}<span class="desc">View Recipe</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-get">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-get">Response Example<span class="section-title-ct method-get">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "id": "7945a85b",
+    "time_created": "Sat, 24 Jun 2023 20:35:47 GMT",
+    "time_edited": null,
+    "favorite": 0,
+    "public": 0,
+    "title": "Almond Flour-Crusted Chicken Piccata",
+    "category": "Entrees",
+    "photo": "a1d9d9369fa0d43c.jpg",
+    "description": "Prepare to delight your taste buds with this exquisite Chicken Piccata recipe, offering a gluten-free take on the beloved Italian classic. With a golden almond flour crust and a tangy, flavorful sauce, each bite is a symphony of texture and taste.",
+    "url": "",
+    "servings": null,
+    "prep_time": 15,
+    "cook_time": 15,
+    "total_time": 30,
+    "ingredients": [
+        "2 large eggs",
+        "Kosher salt",
+        "3/4 cup almond flour",
+        "Freshly ground black pepper",
+        "Four 5-ounce chicken breast cutlets",
+        "2 tablespoons extra-virgin olive oil",
+        "1 garlic clove, finely chopped",
+        "1/2 cup white wine",
+        "1/2 cup chicken stock",
+        "3 tablespoons capers, drained",
+        "2 tablespoons lemon juice",
+        "2 tablespoons unsalted butter",
+        "2 tablespoons chopped parsley"
+    ],
+    "instructions": [
+        "In a medium bowl, beat the eggs with 1/2 teaspoon salt. Toss the almond flour with 1/2 teaspoon salt and 1/4 teaspoon pepper and spread the mixture on a large plate. Dip each chicken cutlet in the egg, letting any excess drip back into the bowl, then coat the chicken with the almond flour.",
+        "In a large heavy skillet, heat the oil over medium high heat. Add the chicken and brown it, turning once, 5 to 6 minutes total. Transfer the chicken to a plate.",
+        "Add the garlic to the skillet and cook, stirring, until golden, 2 to 3 minutes. Stir in the wine, stock, capers, lemon juice and 1/4 teaspoon each of salt and pepper; boil until the sauce is reduced by half. Whisk in the butter until combined, then return the chicken to the skillet and let it gently cook through, about 2 minutes. Sprinkle the chicken with the parsley and serve."
+    ]
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<details>

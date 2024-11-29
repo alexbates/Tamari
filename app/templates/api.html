@@ -1126,9 +1126,60 @@
 			</div>
 		</details>
 		<details>
-			<summary><span class="method method-delete">DELETE</span>/api/my-recipes/categories/{id}/remove<span class="desc">Add Category</span></summary>
+			<summary><span class="method method-delete">DELETE</span>/api/my-recipes/categories/{id}/remove<span class="desc">Remove Category</span></summary>
 			<div class="details-content">
-				<p>This section contains details about the HTTP request, including sample JSON response.</p>
+				<div class="section-title m-delete">Parameters</div>
+				<div class="section-body">
+					<table>
+						<tr>
+							<th>Parameter</th>
+							<th>Values</th>
+						</tr>
+						<tr>
+							<td>
+								Authorization
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>Bearer {access_token}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Name
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>tamari</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								X-App-Key
+								<br>
+								<span class="paramdesc">(header)</span> <span class="paramreq">(required)</span>
+							</td>
+							<td>
+								<b>{app_key}</b>
+								<br>
+								<span class="paramdesc">(string)</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="section-title m-delete">Response Example<span class="section-title-ct method-delete">application/json</span></div>
+				<div class="section-body">
+				<p class="status">Status: 200</p>
+<pre><code>{
+    "message": "Success"
+}</code></pre>
+				</div>
 			</div>
 		</details>
 		<h2>Shopping Lists</h2>

@@ -22,12 +22,16 @@ def apiDocumentation():
         api_enabled = True
     else:
         api_enabled = False
+    if app.config.get('REQUIRE_HEADERS', True):
+        headers_required = True
+    else:
+        headers_required = False
     # Check if there is a request body (there should be none)
     if request.data:
         return jsonify({"message": "Request body is not allowed"}), 400
     return render_template('api.html', title=_('API Documentation'),
         mdescription=_('View API endpoint details and config info.'),
-        app_version=app_version)
+        app_version=app_version, headers_required=headers_required)
 
 @bp.route('/api/info', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

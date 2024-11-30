@@ -266,7 +266,13 @@
 		// Additional check after a longer delay to catch any late-loading content
 		setTimeout(checkScroll, 2000);  // 2 second delay
 	});
-	
+	// If #endpoints exists, count number of <details> elements, update #endpoints span
+	$(document).ready(function() {
+		if ($('#endpoints').length > 0) {
+			var detailsCount = $('details').length;
+			$('#endpoints').html(detailsCount + ' endpoints found.');
+		}
+	});
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}

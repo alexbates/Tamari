@@ -98,6 +98,30 @@
 	padding: 6px;
 }
 
+.generalinfo {
+	background: var(--color-summary);
+	border-radius: 8px;
+	display: block;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 12px;
+
+}
+.apistatus {
+	border-radius: 18px;
+	display: inline-block;
+	font-family: Inter-Medium;
+	font-size: 20px;
+	margin-top: 10px;
+	margin-bottom: 6px;
+	padding: 6px 14px 6px 14px; /* Top Right Bottom Left */
+}
+.apistatus-d {
+	background: var(--color-method-delete);
+}
+.apistatus-e {
+	background: var(--color-method-post);
+}
 #endpoints {
 	margin-bottom: 0px;
 }
@@ -242,6 +266,7 @@ pre code {
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
 	details {margin-left: 10px; margin-right: 10px;}
+	.apistatus, .generalinfo {margin-left: 10px; margin-right: 10px;}
 }
 @media screen and (max-width: 710px) { 
 	.desc {display: none;}

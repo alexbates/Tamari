@@ -3,14 +3,34 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='api.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<script>
+		// Count number of <details> elements, update #endpoints span
+		$(document).ready(function() {
+			var detailsCount = $('details').length;
+			if ($('#endpoints').length) {
+				$('#endpoints').html(detailsCount + ' endpoints found.');
+			}
+		});
+	</script>
 {% endblock %}
 
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>Authorization</h2>
-		<p>Every endpoint requires the header "Authorization: Bearer JWT", where JWT is replaced with the token received from Login or Refresh Token endpoints.</p>
-		<p id="endpoints"></p>
+		<h2>API Staus</h2>
+		{% if api_enabled %}
+		<span class="apistatus apistatus-e">ENABLED</span>
+		{% else %}
+		<span class="apistatus apistatus-d">DISABLED</span>
+		{% endif %}
+		<h2>General Info</h2>
+		<p class="generalinfo">
+			This is a REST API which can be used to interact with the Tamari application.
+			<br><br>
+			<span id="endpoints"></span>
+			<br><br>
+			X-App-Name and X-App-Key headers are {% if headers_required %}required for all endpoints{% else %}not required{% endif %}, as configured in config.py.
+		</p>
 		<h2>About</h2>
 		<details>
 			<summary><span class="method method-get">GET</span>/api/info<span class="desc">View Version</span></summary>

@@ -31,7 +31,7 @@ def apiDocumentation():
         return jsonify({"message": "Request body is not allowed"}), 400
     return render_template('api.html', title=_('API Documentation'),
         mdescription=_('View API endpoint details and config info.'),
-        app_version=app_version, headers_required=headers_required)
+        app_version=app_version, headers_required=headers_required, api_enabled=api_enabled)
 
 @bp.route('/api/info', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

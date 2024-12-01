@@ -42,12 +42,17 @@ def apiInfo():
         api_enabled = True
     else:
         api_enabled = False
+    if app.config.get('REQUIRE_HEADERS', True):
+        headers_required = True
+    else:
+        headers_required = False
     # Check if there is a request body (there should be none)
     if request.data:
         return jsonify({"message": "Request body is not allowed"}), 400
     # Build response JSON
     response_data = {
         "api_enabled": api_enabled,
+        "headers_required": headers_required,
         "app_version": float(app_version)
     }
     # Return response without key sorting

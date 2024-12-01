@@ -1,3 +1,4 @@
+.mt-tam {display: block !important;}
 /* THEMES */
 :root {
 	--color-active-bg: #111111;
@@ -48,6 +49,22 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-details :#000000;
+	--color-summary: #101010;
+	--color-font-summary: #ffffff;
+	--color-details-content-bg: #000000;
+	--color-details-content-border: #171717;
+	--color-m-get: #41417d;
+	--color-m-post: #095126;
+	--color-m-put: #827730;
+	--color-m-delete: #802116;
+	--color-method-get: #6b6bbc;
+	--color-method-post: #1c7e45;
+	--color-method-put: #b3a64f;
+	--color-method-delete: #ac3426;
+	--color-desc: #2b2b2b;
+	--color-thtd: #242424;
+	--color-pre: #171717;
 }
 /* SCALING */
 :root {

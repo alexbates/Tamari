@@ -14,6 +14,7 @@ from urllib.request import urlopen, Request
 import secrets, time, random, os, imghdr, requests, re, urllib.request, zipfile
 from app.account import bp
 from config import Config
+from version import __version__
 
 @bp.before_request
 def before_request():
@@ -40,7 +41,7 @@ def favicon():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def about():
     return render_template('about.html', title=_('About'),
-        mdescription=_('Credits, changelog, and other information about the Tamari web app.'))
+        mdescription=_('Credits, changelog, and other information about the Tamari web app.'), app_version=__version__)
 
 @limiter.limit(Config.LOGIN_RATE_LIMIT)
 def rate_limited_login():

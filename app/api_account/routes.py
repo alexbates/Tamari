@@ -12,12 +12,12 @@ from datetime import datetime
 from PIL import Image
 from app.api_account import bp
 from config import Config
+from version import __version__
 
 @bp.route('/api', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 # Authorization is not required to view documentation
 def apiDocumentation():
-    app_version = 1.0
     if app.config.get('API_ENABLED', True):
         api_enabled = True
     else:
@@ -31,13 +31,13 @@ def apiDocumentation():
         return jsonify({"message": "Request body is not allowed"}), 400
     return render_template('api.html', title=_('API Documentation'),
         mdescription=_('View API endpoint details and config info.'),
-        app_version=app_version, headers_required=headers_required, api_enabled=api_enabled)
+        app_version=__version__, headers_required=headers_required, api_enabled=api_enabled)
 
 @bp.route('/api/info', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 # If provided token in Authorization header is an access_token, it will fail with 401 Unauthorized
 def apiInfo():
-    app_version = 1.0
+    app_version = __version__
     if app.config.get('API_ENABLED', True):
         api_enabled = True
     else:

@@ -48,7 +48,7 @@ def apiInfo():
     # Build response JSON
     response_data = {
         "api_enabled": api_enabled,
-        "app_version": app_version
+        "app_version": float(app_version)
     }
     # Return response without key sorting
     response_json = json.dumps(response_data, sort_keys=False)

@@ -49,5 +49,5 @@ class Config(object):
     # Default is False if env variable not set, can change ", 'False')" to ", 'True')"
     REQUIRE_HEADERS = os.environ.get('API_HEADERS', 'False') == 'True'
     JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or '1C0D290AC6CF8DC1A9A4'
-    ACCESS_TOKEN_EXPIRES = timedelta(hours=12)
-    REFRESH_TOKEN_EXPIRES = timedelta(days=30)
+    ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
+    REFRESH_TOKEN_EXPIRES = timedelta(days=60)

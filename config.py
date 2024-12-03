@@ -43,7 +43,7 @@ class Config(object):
     # Enabled example: REGISTRATION_RATE_LIMIT = '3 per 10 minutes'
     REGISTRATION_RATE_LIMIT = None
     # API CONFIGURATION (disabled by default)
-    API_ENABLED = False
+    API_ENABLED = os.environ.get('API_ENABLED', 'False') == 'True'
     APP_KEY = os.environ.get('APP_KEY') or 'AANmeooubvOOB3LQQeny8e900q35ee804'
     # If True, X-App-Name header must have value 'tamari' and X-App-Key must equal APP_KEY
     # Default is False if env variable not set, can change ", 'False')" to ", 'True')"

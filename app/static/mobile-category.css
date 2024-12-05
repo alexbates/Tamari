@@ -303,7 +303,7 @@
 #recipecount {
 	background: var(--color-recipecount); 
 	font-size: var(--font-recipe-count);
-	height: var(--height-recipe-count);
+	min-height: var(--height-recipe-count);
 	margin-bottom: 12px;
 	margin-top: 12px;
 	padding: 6px;

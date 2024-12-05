@@ -84,6 +84,9 @@ app.register_blueprint(shoplists_bp)
 from app.api_account import bp as api_account_bp
 app.register_blueprint(api_account_bp)
 
+from app.api_myrecipes import bp as api_myrecipes_bp
+app.register_blueprint(api_myrecipes_bp)
+
 from app.api_shoplists import bp as api_shoplists_bp
 app.register_blueprint(api_shoplists_bp)
 

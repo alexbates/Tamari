@@ -496,7 +496,7 @@ def exploreRecipeDetail(rec_group, recnum):
         readfile = open(app.root_path + '/static/explore-beef-randomized.txt', "r")
     elif rec_group == "breakfast":
         readfile = open(app.root_path + '/static/explore-breakfast-randomized.txt', "r")
-    elif rec_group == "chicken-entrees":
+    elif rec_group == "chicken":
         readfile = open(app.root_path + '/static/explore-chicken-randomized.txt', "r")
     elif rec_group == "dessert":
         readfile = open(app.root_path + '/static/explore-dessert-randomized.txt', "r")
@@ -524,13 +524,11 @@ def exploreRecipeDetail(rec_group, recnum):
         readfile = open(app.root_path + '/static/explore-blank.txt', "r")
     filelines = readfile.readlines()
     lines = []
-    for line in filelines:
-        x = line.split(";")
-        try:
+    if len(filelines) > 2:
+        for line in filelines:
+            x = line.split(";")
             newline = [x[0], x[1]]
-        except:
-            newline = ["https://tamariapp.com", "Unknown Recipe"]
-        lines.append(newline)
+            lines.append(newline)
     readfile.close()
     try:
         rec_num = int(recnum)

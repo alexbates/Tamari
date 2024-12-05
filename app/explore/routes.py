@@ -526,7 +526,10 @@ def exploreRecipeDetail(rec_group, recnum):
     lines = []
     for line in filelines:
         x = line.split(";")
-        newline = [x[0], x[1]]
+        try:
+            newline = [x[0], x[1]]
+        except:
+            newline = ["https://tamariapp.com", "Unknown Recipe"]
         lines.append(newline)
     readfile.close()
     try:

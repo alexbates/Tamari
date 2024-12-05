@@ -150,7 +150,10 @@ def removeList(hexid, mobile):
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removeListitem(hexid, mobile):
     listitem = Listitem.query.filter_by(hex_id=hexid).first()
-    list = Shoplist.query.filter_by(id=listitem.list_id).first()
+    try:
+        list = Shoplist.query.filter_by(id=listitem.list_id).first()
+    except:
+        list = None
     if listitem is None:
         flash('Error: ' + _('item does not exist.'))
     else:

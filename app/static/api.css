@@ -165,6 +165,9 @@ summary {
 summary::marker {
 	display: none; /* Hide the default arrow */
 }
+summary::-webkit-details-marker {
+	display: none;
+}
 summary:after {
 	content: '▼';
 	font-size: 1rem;
@@ -189,6 +192,8 @@ details[open] summary:after {
 
 .method {
 	border-radius: 4px;
+	display: inline-block;
+	flex-shrink: 0;
 	font-family: Inter-SemiBold;
 	margin-right: 10px;
 	padding: 4px 0px 4px 0px; /* Top Right Bottom Left */

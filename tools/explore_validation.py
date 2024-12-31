@@ -201,31 +201,35 @@ def get_wprm_instructions(soup):
 
 # Main function to process the file
 def process_file(input_file, valid_file, invalid_file):
-    with open(input_file, "r") as infile, \
-         open(valid_file, "w") as valid_out, \
-         open(invalid_file, "w") as invalid_out:
+    with open(input_file, "r", encoding="utf-8") as infile, \
+         open(valid_file, "w", encoding="utf-8") as valid_out, \
+         open(invalid_file, "w", encoding="utf-8") as invalid_out:
 
-        for line in infile:
-            parts = line.strip().split(";")
-            if len(parts) < 3:  # Ensure URL, title, and image are present
-                invalid_out.write(line)
-                continue
+        for line_number, line in enumerate(infile, 1):
+            try:
+                parts = line.strip().split(";")
+                if len(parts) < 3:  # Ensure URL, title, and image are present
+                    invalid_out.write(line)
+                    continue
 
-            url, title, image = parts[0], parts[1], parts[2]
+                url, title, image = parts[0], parts[1], parts[2]
             
-            # Add delay before processing each URL
-            time.sleep(5)
-            ingredients, instructions = parse_recipe(url)
+                # Add delay before processing each URL
+                time.sleep(4)
+                ingredients, instructions = parse_recipe(url)
 
-            if ingredients and instructions:
-                valid_out.write(line)  # Write valid line as is
-            else:
-                invalid_out.write(line)  # Write invalid line as is
+                if ingredients and instructions:
+                    valid_out.write(line)  # Write valid line as is
+                else:
+                    invalid_out.write(line)  # Write invalid line as is
+            except Exception as e:
+                invalid_out.write(line)
+                print(f"Error processing line {line_number}: {e}")
 
 # File paths
-input_file = "explore-all-randomized.txt"
-valid_file = "explore-all-randomized-valid.txt"
-invalid_file = "explore-all-randomized-invalid.txt"
+input_file = "explore-all-randomized-2.txt"
+valid_file = "explore-all-randomized-valid-2.txt"
+invalid_file = "explore-all-randomized-invalid-2.txt"
 
 # Process the file
 process_file(input_file, valid_file, invalid_file)

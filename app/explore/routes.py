@@ -1196,6 +1196,56 @@ def exploreRecipeDetail(rec_group, recnum):
         # Extract ingredients and instructions
         ingredients = get_wprm_ingredients(soup)
         instructions = get_wprm_instructions(soup)
+    elif "easypeasyfoodie.com" in rec_url:
+        scraper = cloudscraper.create_scraper()
+        try:
+            page = scraper.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            page = None
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings = get_wprm_servings(soup)
+        # Assign Nutrition Facts to integer variables if listed on page
+        calories = get_wprm_calories(soup)
+        carbs = get_wprm_carbs(soup)
+        protein = get_wprm_protein(soup)
+        fat = get_wprm_fat(soup)
+        sugar = get_wprm_sugar(soup)
+        cholesterol = get_wprm_cholesterol(soup)
+        sodium = get_wprm_sodium(soup)
+        fiber = get_wprm_fiber(soup)
+        # Extract prep time, cook time, total time
+        preptime = get_wprm_preptime(soup)
+        cooktime = get_wprm_cooktime(soup)
+        totaltime = get_wprm_totaltime(soup)
+        # Extract description
+        description = get_wprm_description(soup)
+        # Extract ingredients and instructions
+        ingredients = get_wprm_ingredients(soup)
+        instructions = []
+        # Find the main container for instructions
+        instructions_container = soup.find('div', class_='wprm-recipe-instructions-container')
+        if instructions_container:
+            instruction_groups = instructions_container.find_all('div', class_='wprm-recipe-instruction-group')
+            for group in instruction_groups:
+                # Find all instruction list items within the group
+                instruction_steps = group.find_all('li', class_='wprm-recipe-instruction')
+                for step in instruction_steps:
+                    # Extract the instruction text
+                    instruction_text = step.find('div', class_='wprm-recipe-instruction-text')
+                    if instruction_text:
+                        # If there are nested <span> tags, extract their text
+                        span = instruction_text.find('span')
+                        if span:
+                            instructions.append(span.text.strip())
+                        else:
+                            instructions.append(instruction_text.text.strip())
     elif any(link in rec_url for link in wprm_sites):
         headers = {
             'User-Agent': UserAgent().random,

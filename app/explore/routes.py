@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-import secrets, time, random, os, imghdr, requests, re, urllib.request, io, base64
+import secrets, time, random, os, imghdr, requests, re, urllib.request, io, base64, cloudscraper
 from app.explore import bp
 from config import Config
 
@@ -1163,6 +1163,39 @@ def exploreRecipeDetail(rec_group, recnum):
                 instr = instruction.text
                 instr = instr.strip()
                 instructions.append(instr)
+    elif "damndelicious.net" in rec_url:
+        scraper = cloudscraper.create_scraper()
+        try:
+            page = scraper.get(rec_url, timeout=16)
+            soup = BeautifulSoup(page.text, 'html.parser')
+        except:
+            page = None
+            soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
+        photo_1 = soup.find('meta',attrs={"property": "og:image"})
+        if photo_1:
+            photo = photo_1['content']
+        else:
+            photo = ''
+        # Assign Servings to integer variable if it is listed on page
+        servings = get_wprm_servings(soup)
+        # Assign Nutrition Facts to integer variables if listed on page
+        calories = get_wprm_calories(soup)
+        carbs = get_wprm_carbs(soup)
+        protein = get_wprm_protein(soup)
+        fat = get_wprm_fat(soup)
+        sugar = get_wprm_sugar(soup)
+        cholesterol = get_wprm_cholesterol(soup)
+        sodium = get_wprm_sodium(soup)
+        fiber = get_wprm_fiber(soup)
+        # Extract prep time, cook time, total time
+        preptime = get_wprm_preptime(soup)
+        cooktime = get_wprm_cooktime(soup)
+        totaltime = get_wprm_totaltime(soup)
+        # Extract description
+        description = get_wprm_description(soup)
+        # Extract ingredients and instructions
+        ingredients = get_wprm_ingredients(soup)
+        instructions = get_wprm_instructions(soup)
     elif any(link in rec_url for link in wprm_sites):
         headers = {
             'User-Agent': UserAgent().random,

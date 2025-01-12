@@ -1,8 +1,9 @@
 # This script validates the URLs found in Explore text files.
-# The purpose is to ensure that every recipe in each text file is capable of parsing ingredients and instructions.
+# The purpose is to ensure that parsing of ingredients and instructions is successful
+# for every URL.
 # To use, place explore-all-randomized.txt in same directory as this python script.
 
-import requests
+import requests, cloudscraper
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 import time
@@ -22,7 +23,7 @@ wprm_sites = [
 ]
 
 # Site-specific parsing logic
-def parse_recipe(url, retries=3):
+def parse_recipe(url, retries=0):
     headers = {
         'User-Agent': UserAgent().random,
         'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -35,14 +36,19 @@ def parse_recipe(url, retries=3):
         try:
             # Fetch the page
             print(f"Fetching {url} (Attempt {attempt + 1}/{retries + 1})...")
-            page = requests.get(url, timeout=16, headers=headers)
-            soup = BeautifulSoup(page.text, 'html.parser')
-
             ingredients, instructions = [], []
             if "cookinglsl.com" in url or "lanascooking.com" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = get_wprm_ingredients(soup)
                 instructions = get_wprm_instructions(soup)
             elif "justapinch.com" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = []
                 ingredients_1 = soup.find('ul', {'id': 'recipe-ingredients-list'})
                 if ingredients_1:
@@ -66,6 +72,10 @@ def parse_recipe(url, retries=3):
                         instr = instr.strip()
                         instructions.append(instr)
             elif "pinchofyum.com" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = []
                 ingredients_1 = soup.find_all('li',attrs={'data-tr-ingredient-checkbox': True})
                 if ingredients_1:
@@ -82,6 +92,10 @@ def parse_recipe(url, retries=3):
                         instr = instr.strip()
                         instructions.append(instr)
             elif "tasty.co" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = []
                 ingredients_1 = soup.find('div',class_='ingredients__section')
                 if ingredients_1:
@@ -99,6 +113,10 @@ def parse_recipe(url, retries=3):
                         instr = instr.strip()
                         instructions.append(instr)
             elif "food52.com" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = []
                 ingredients_1 = soup.find('div',class_='recipe__list--ingredients')
                 if ingredients_1:
@@ -117,6 +135,10 @@ def parse_recipe(url, retries=3):
                         instr = instr.strip()
                         instructions.append(instr)
             elif "tasteofhome.com" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = []
                 ingredients_1 = soup.find('ul',class_='recipe-ingredients__list')
                 if ingredients_1:
@@ -134,6 +156,10 @@ def parse_recipe(url, retries=3):
                         instr = instr.strip()
                         instructions.append(instr)
             elif "taste.com.au" in url:
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = []
                 ingredients_1 = soup.find('div',class_='recipe-ingredients-section')
                 if ingredients_1:
@@ -150,7 +176,47 @@ def parse_recipe(url, retries=3):
                         instr = instruction.text
                         instr = instr.strip()
                         instructions.append(instr)
+            elif "easypeasyfoodie.com" in url:
+                scraper = cloudscraper.create_scraper()
+                page = scraper.get(url, timeout=16)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
+                instructions = []
+                # Find the main container for instructions
+                instructions_container = soup.find('div', class_='wprm-recipe-instructions-container')
+                if instructions_container:
+                    # Find all instruction groups within the container
+                    instruction_groups = instructions_container.find_all('div', class_='wprm-recipe-instruction-group')
+                    
+                    for group in instruction_groups:
+                        # Find all instruction list items within the group
+                        instruction_steps = group.find_all('li', class_='wprm-recipe-instruction')
+                        
+                        for step in instruction_steps:
+                            # Extract the instruction text
+                            instruction_text = step.find('div', class_='wprm-recipe-instruction-text')
+                            
+                            if instruction_text:
+                                # If there are nested <span> tags, extract their text
+                                span = instruction_text.find('span')
+                                if span:
+                                    instructions.append(span.text.strip())
+                                else:
+                                    instructions.append(instruction_text.text.strip())
+            elif "damndelicious.net" in url:
+                scraper = cloudscraper.create_scraper()
+                page = scraper.get(url, timeout=16)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
+                ingredients = get_wprm_ingredients(soup)
+                instructions = get_wprm_instructions(soup)
             elif any(link in url for link in wprm_sites):
+                page = requests.get(url, timeout=16, headers=headers)
+                # UNCOMMENT FOR DEBUGGING
+                #print("PAGE: " + page.text)
+                soup = BeautifulSoup(page.text, 'html.parser')
                 ingredients = get_wprm_ingredients(soup)
                 instructions = get_wprm_instructions(soup)
             else:
@@ -190,12 +256,13 @@ def get_wprm_instructions(soup):
     if instructions_1:
         instructions_2 = instructions_1.find_all('div', class_='wprm-recipe-instruction-group')
         for group in instructions_2:
-            instructions_h4 = group.find('h4')
+            instructions_h4 = group.find('li')
             if instructions_h4:
                 content = str(instructions_h4.contents[0]).replace("<strong>", "").replace("</strong>", "")
                 instructions.append(content.strip())
             inst_steps = group.find_all('div', class_='wprm-recipe-instruction-text')
-            for step in inst_steps:
+            inst_steps_2 = inst_steps.find('span')
+            for step in inst_steps_2:
                 instructions.append(step.text.strip())
     return instructions
 
@@ -215,9 +282,11 @@ def process_file(input_file, valid_file, invalid_file):
                 url, title, image = parts[0], parts[1], parts[2]
             
                 # Add delay before processing each URL
-                time.sleep(4)
+                time.sleep(3)
                 ingredients, instructions = parse_recipe(url)
-
+                # UNCOMMENT FOR DEBUGGING
+                #print("Ingredients: " + str(ingredients))
+                #print("Instructions: " + str(instructions))
                 if ingredients and instructions:
                     valid_out.write(line)  # Write valid line as is
                 else:
@@ -227,9 +296,9 @@ def process_file(input_file, valid_file, invalid_file):
                 print(f"Error processing line {line_number}: {e}")
 
 # File paths
-input_file = "explore-all-randomized-2.txt"
-valid_file = "explore-all-randomized-valid-2.txt"
-invalid_file = "explore-all-randomized-invalid-2.txt"
+input_file = "explore-all-randomized.txt"
+valid_file = "valid.txt"
+invalid_file = "invalid.txt"
 
 # Process the file
 process_file(input_file, valid_file, invalid_file)

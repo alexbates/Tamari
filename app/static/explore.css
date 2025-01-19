@@ -478,6 +478,10 @@
 		outline: 3px solid var(--color-iconcontainer-outline);
 		width: calc(100% - 6px); /* Compensate for outline */
 	}
+	.iconcontainer:hover {
+		outline: 3px solid var(--color-darker);
+		transition: 0.15s;
+	}
 	.recipe2cont {width: calc(100% - 10px);}
 	.recipe2 {
 		width: calc(50% - 10px); 

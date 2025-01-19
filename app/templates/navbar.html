@@ -134,7 +134,7 @@
         			}
       			});
     		}
-    		const headers = document.querySelectorAll('.recipe3');
+    		const headers = document.querySelectorAll('.r3inner');
     		const observer = new IntersectionObserver(
       			handleIntersection,
       			{ rootMargin: "{{ dynrootmargin }}" }
@@ -142,7 +142,7 @@
     		headers.forEach(header => observer.observe(header));
 		});
 	} else { // else load all images at once
-		const headers = document.querySelectorAll('.recipe3');
+		const headers = document.querySelectorAll('.r3inner');
 		headers.forEach(header => {
     		header.style.backgroundImage = "url('"+header.dataset.bgimage+"')";
   		});

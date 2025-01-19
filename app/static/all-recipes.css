@@ -753,9 +753,6 @@
 .recipe3continner:after {clear: both; content: ""; display: table;}
 .recipe3 {
 	aspect-ratio: 4 / 3;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: center;
 	border-radius: 15px;
 	float: left;
 	padding-top: 0;
@@ -784,12 +781,20 @@
 .recipe3:hover::before {
 	transform: translate(-5px, 5px);
 }
+.r3inner {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: inherit;
+	width: 100%;
+	height: 100%;
+}
 .r3bottom {
 	background: linear-gradient(to bottom, transparent 0%, var(--color-r3bottom) 100%);
 	border-bottom-left-radius: 14.5px;
 	border-bottom-right-radius: 14.5px;
-	height: 80%;
-	margin-top: 20%;
+	height: 100%;
+	margin-top: 0%;
 	width: 100%;
 	position: relative;
 }

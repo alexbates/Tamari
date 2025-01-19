@@ -285,10 +285,10 @@
 	transition: transform 0.15s;
   }
 .recipe2:hover {
-	transform: translate(6px, -6px);
+	transform: translate(5px, -5px);
 }
 .recipe2:hover::before {
-	transform: translate(-6px, 6px);
+	transform: translate(-5px, 5px);
 }
 .recipe2cont .r2a:nth-of-type(4n) .recipe2 {
     margin-right: 0; /* Remove margin-right from every 4th item */

@@ -171,6 +171,7 @@
 	position: relative; /* important so the pseudo-element can be positioned behind it */
 	float: left;
 	padding-top: 0;
+	border-radius: 15px;
 	width: 235px;
 	margin-left: 0px;
 	margin-right: 20px;

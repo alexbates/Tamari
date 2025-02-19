@@ -90,3 +90,13 @@ function closeModal() {
       Quagga.stop();
     }
 }
+
+// Provide error message to user if Tamari instance is not running on HTTPS, as required for the barcode scanner
+if (window.location.protocol !== 'https:') {
+    const scannerContainer = document.getElementById('scanner-container');
+    if (scannerContainer) {
+      const warningMessage = document.createElement('span');
+      warningMessage.textContent = 'HTTPS is required for this feature.';
+      scannerContainer.appendChild(warningMessage);
+    }
+  }

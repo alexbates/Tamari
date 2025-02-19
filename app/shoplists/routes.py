@@ -91,7 +91,7 @@ def mobileList(listname):
     items = list.list_items.order_by(Listitem.item).all()
     items_tobuy = user.list_items.filter_by(list_id=list.id, complete=0).all()
     items_comp = user.list_items.filter_by(list_id=list.id, complete=1).all()
-    form = AddListItemForm()
+    form = AddListItemForm(prefix='a')
     items_arr = []
     for thing in items:
         curr_item = thing.item

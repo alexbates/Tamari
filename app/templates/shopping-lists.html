@@ -104,7 +104,7 @@
 				{{ form2.hidden_tag() }}
 				{{ form2.newitem(class="additem-input", placeholder=_('(4) yellow squash')) }}
 				<button type="button" id="scan-btn" class="additem-camera" onclick="openModal()">
-					<span class="additem-camera-icon"><img src="{{ url_for('static', filename='barcode-camera.png', _external=True) }}" alt=""></span>
+					<span class="additem-camera-icon"><img id="barcodecameraimg" src="{{ url_for('static', filename='barcode-camera.png', _external=True) }}" alt=""></span>
 				</button>
 				{{ form2.submititem(class="additem-btn") }}
 			</form>

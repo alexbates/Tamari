@@ -43,8 +43,13 @@ function fetchProductDetails(upc) {
       .then(response => response.json())
       .then(data => {
         if (data.code === "OK" && data.total > 0 && data.items && data.items.length > 0) {
-          let productName = data.items[0].title || upc;
-          document.getElementById("a-newitem").value = productName;
+          let title = data.items[0].title;
+          if (title && title.trim() !== "") {
+            document.getElementById("a-newitem").value = title;
+          } else {
+            // UPCitemdb returned a valid response but with an empty title; fallback to Open Food Facts
+            fetchOpenFoodFacts(upc);
+          }
         } else {
           // Fallback to Open Food Facts API if UPCitemdb did not return a result
           fetchOpenFoodFacts(upc);

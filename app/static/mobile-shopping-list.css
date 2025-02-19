@@ -10,6 +10,11 @@
 	--color-active-bg: #111111;
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
+	--color-popupwindow-bg: rgba(0,0,0,0.76);
+	--color-popupwindow-content-bg: #2b2b2b;
+	--color-popupwindow-content-font: #ffffff;
+	--color-popupwindow-close: #ffffff;
+	--color-popupwindow-close-hover: #cfcfcf;
 	--color-block1: #ffffff;
 	--color-listhowto: #111111;
 	--color-ingredinner-bg: #111111;
@@ -21,12 +26,18 @@
 	--color-additem-input-bg: #1c1c1c;
 	--color-additem-input-font: #d1d1d1;
 	--color-additem-input-placeholder: #545454;
+	--color-bg-additem-camera: #111111;
 	--color-additem-btn: #ffffff;
 }
 [data-theme="light"] {
 	--color-active-bg: #efefef;
 	--color-active-bg-hover: rgb(229, 229, 229);
 	--color-active-bottom: #000000;
+	--color-popupwindow-bg: rgba(255,255,255,0.76);
+	--color-popupwindow-content-bg: #cfcfcf;
+	--color-popupwindow-content-font: #000000;
+	--color-popupwindow-close: #000000;
+	--color-popupwindow-close-hover: #2b2b2b;
 	--color-block1: #000000;
 	--color-listhowto: #efefef;
 	--color-ingredinner-bg: #efefef;
@@ -38,12 +49,18 @@
 	--color-additem-input-bg: #e3e3e3;
 	--color-additem-input-font: #2e2e2e;
 	--color-additem-input-placeholder: #a4a4a4;
+	--color-bg-additem-camera: #efefef;
 	--color-additem-btn: #000000;
 }
 [data-theme="dark"] {
 	--color-active-bg: #111111;
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
+	--color-popupwindow-bg: rgba(0,0,0,0.76);
+	--color-popupwindow-content-bg: #2b2b2b;
+	--color-popupwindow-content-font: #ffffff;
+	--color-popupwindow-close: #ffffff;
+	--color-popupwindow-close-hover: #cfcfcf;
 	--color-block1: #ffffff;
 	--color-listhowto: #111111;
 	--color-ingredinner-bg: #111111;
@@ -55,10 +72,14 @@
 	--color-additem-input-bg: #1c1c1c;
 	--color-additem-input-font: #d1d1d1;
 	--color-additem-input-placeholder: #545454;
+	--color-bg-additem-camera: #111111;
 	--color-additem-btn: #ffffff;
 }
 /* SCALING */
 :root {
+	--font-modal: 16x;
+	--height-popupwindow: 240px;
+	--margin-top-popupwindow: -132px;
 	--font-block1: 16px;
 	--font-flashed: 14px;
 	--height-flashed: 17px;
@@ -77,6 +98,9 @@
 	--height-btn-delete: 40px;
 }
 [data-scaling="normal"] {
+	--font-modal: 16x;
+	--height-popupwindow: 240px;
+	--margin-top-popupwindow: -132px;
 	--font-block1: 16px;
 	--font-flashed: 14px;
 	--height-flashed: 17px;
@@ -95,6 +119,9 @@
 	--height-btn-delete: 40px;
 }
 [data-scaling="large"] {
+	--font-modal: 18px;
+	--height-popupwindow: 248px;
+	--margin-top-popupwindow: -136px;
 	--font-block1: 18px;
 	--font-flashed: 16px;
 	--height-flashed: 19px;
@@ -120,6 +147,73 @@
 .additem-btn:active, .additem-btn.active {background: var(--color-darker);}
 @media screen and (max-width: 620px) { 
 	.list-selected {background: var(--color) !important;}
+}
+/* BARCODE SCANNER MODAL */
+#barcodescanner {
+    font-size: var(--font-modal);
+    margin: 0 auto;
+}
+.popupwindow {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--color-popupwindow-bg);
+}
+.popupwindow-content {
+    background-color: var(--color-popupwindow-content-bg);
+	border-radius: 10px;
+	color: var(--color-popupwindow-content-font);
+    height: var(--height-popupwindow);
+    margin: 0 auto;
+    width: 340px;
+    left: 50%;
+	position: absolute;
+	top: 50%;
+    margin-top: var(--margin-top-popupwindow);
+    margin-left: -182px;
+	padding: 12px;
+}
+.popupwindow-content h2 {
+	font-size: 28px;
+	margin-bottom: 12px;
+}
+.closebutton {position: relative;}
+.close {
+    position: absolute;
+    right: 0;
+    top: -14px;
+    color: var(--color-popupwindow-close);
+    font-size: 44px;
+    font-weight: bold;
+}
+.close:hover, .close:focus {color: var(--color-popupwindow-close-hover); cursor: pointer;}
+.animate {
+    -webkit-animation: animatezoom 0.3s;
+    animation: animatezoom 0.3s
+}
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+#scanner-container {
+	width: 100%;
+	height: calc(100% - 45px);
+	overflow: hidden;
+}
+#scanner-container video,
+#scanner-container canvas {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* could also be 'contain' */
 }
 /* BLOCK 1 */ 
 #block1 {
@@ -234,33 +328,58 @@
 }
 .btn4-icon img {height: 100%; width: 100%;}
 .completed {text-decoration: line-through;}
+.additemform {
+	height: var(--height-additem-input);
+	margin-top: 10px;
+}
 .additem-input {
 	background: var(--color-additem-input-bg);
 	border: none;
 	border-radius: 0;
 	box-shadow: none;
 	color: var(--color-additem-input-font);
+	float: left;
 	font-size: var(--font-additem-input);
 	height: var(--height-additem-input);
-	margin-right: 5px;
+	margin-right: 10px;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
-	width: calc(100% - 122px);
+	width: calc(100% - 176px);
 	-webkit-box-shadow: none;
 }
 .additem-input:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
 .additem-input::placeholder {color: var(--color-additem-input-placeholder);}
+.additem-camera {
+	background-color: var(--color-bg-additem-camera);
+	border: none;
+	cursor: pointer;
+	height: var(--height-additem-btn);
+	float: left;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 44px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.additem-camera:hover {background: var(--color-bg-additem-camera);}
+.additem-camera:active, .additem-camera.active {background: var(--color-bg-additem-camera);}
+.additem-camera:active, .additemcamera.active, .additem-camera:hover, .additemcamera:focus {outline: none;}
+.additem-camera-icon {
+	display: block; 
+}
+.additem-camera-icon img {height: 60%; width: 60%;}
 .additem-btn {
 	border: none;
 	border-radius: 0;
 	color: var(--color-additem-btn);
 	cursor: pointer;
+	float: left;
 	font-size: var(--font-additem-btn);
 	height: var(--height-additem-btn);
 	margin-bottom: 26px;
-	margin-top: 10px;
+	margin-top: 0px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
 	width: 90px;

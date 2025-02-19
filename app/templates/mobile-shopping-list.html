@@ -3,9 +3,20 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='mobile-shopping-list.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<script src="{{ url_for('static', filename='quagga.min.js', _external=True) }}"></script>
+	<script defer src="{{ url_for('static', filename='barcodescanner.js', _external=True) }}"></script>
 {% endblock %}
 
 {% block content %}
+<section id="barcodescanner" class="popupwindow">
+    <div class="popupwindow-content animate">
+        <div class="closebutton">
+            <span onclick="closeModal()" class="close">&times;</span>
+        </div>
+        <h2>Barcode Scanner</h2>
+		<div id="scanner-container"></div>
+    </div>
+</section>
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
 		{% with messages = get_flashed_messages() %}
@@ -67,9 +78,12 @@
 			<p id="listhowto">{{ _('This list has no items saved. Add one below or from a Recipe Detail page.') }}</p>
 			{% endif %}
 			<h3>{{ _('Add an Item') }}</h3>
-			<form method="post" class="form">
+			<form method="post" class="form additemform">
 				{{ form.hidden_tag() }}
 				{{ form.newitem(class="additem-input", placeholder=_('(4) yellow squash')) }}
+				<button type="button" id="scan-btn" class="additem-camera" onclick="openModal()">
+					<span class="additem-camera-icon"><img src="{{ url_for('static', filename='barcode-camera.png', _external=True) }}" alt=""></span>
+				</button>
 				{{ form.submititem(class="additem-btn") }}
 			</form>
 			<div class="deletelist">

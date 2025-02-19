@@ -389,7 +389,7 @@
 }
 .additem-btn:active, .additem-btn.active, .additem-btn:hover, .additem-btn:focus {outline: none;}
 .deletelist {
-	height: 66px;
+	height: 96px;
 	margin: 0 auto;
 	width: 136px;
 }

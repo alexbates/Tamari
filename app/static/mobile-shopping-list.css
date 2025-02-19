@@ -378,6 +378,7 @@
 	float: left;
 	font-size: var(--font-additem-btn);
 	height: var(--height-additem-btn);
+	margin-left: 10px;
 	margin-bottom: 26px;
 	margin-top: 0px;
 	padding: 0;

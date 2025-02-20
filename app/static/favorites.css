@@ -706,12 +706,14 @@
 	background: var(--color-darker);
 	z-index: -1; /* behind recipe2’s content */
 	transition: transform 0.15s;
-  }
-.recipe2:hover {
-	transform: translate(5px, -5px);
 }
-.recipe2:hover::before {
-	transform: translate(-5px, 5px);
+@media (hover: hover) and (pointer: fine) {
+	.recipe2:hover {
+		transform: translate(5px, -5px);
+	}
+	.recipe2:hover::before {
+		transform: translate(-5px, 5px);
+	}
 }
 .recipe2inner {
 	background-color: var(--color-recipe2inner);
@@ -774,12 +776,14 @@
 	background: var(--color-darker);
 	z-index: -1; /* behind recipe3’s content */
 	transition: transform 0.15s;
-  }
-.recipe3:hover {
-	transform: translate(5px, -5px);
 }
-.recipe3:hover::before {
-	transform: translate(-5px, 5px);
+@media (hover: hover) and (pointer: fine) {
+	.recipe3:hover {
+		transform: translate(5px, -5px);
+	}
+	.recipe3:hover::before {
+		transform: translate(-5px, 5px);
+	}
 }
 .r3inner {
 	background-repeat: no-repeat;

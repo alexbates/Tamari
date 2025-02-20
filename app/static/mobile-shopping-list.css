@@ -204,6 +204,13 @@
     from {transform: scale(0)} 
     to {transform: scale(1)}
 }
+#httpserror {
+	background: var(--color-listhowto); 
+	font-size: var(--font-listhowto);
+	min-height: var(--height-listhowto);
+	margin: 0;
+	padding: 6px;
+}
 #scanner-container {
 	width: 100%;
 	height: calc(100% - 45px);

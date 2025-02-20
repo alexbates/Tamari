@@ -103,6 +103,7 @@ select {font-family: Inter-Regular;}
 #addtolist, #scheduler {font-family: Inter-Regular;} /* Recipe Detail */
 #addtolist h2, #scheduler h2 {font-family: Inter-Medium; font-weight: normal;} /* Recipe Detail */
 .timebold {font-family: Inter-Medium;} /* Recipe Detail */
+#barcodescanner {font-family: Inter-Regular;} /* Shopping Lists */
 #barcodescanner h2 {font-family: Inter-Medium; font-weight: normal;} /* Shopping Lists */
 
 /* THEMES */

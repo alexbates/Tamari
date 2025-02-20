@@ -102,6 +102,7 @@ if (window.location.protocol !== 'https:') {
     if (scannerContainer) {
       const warningMessage = document.createElement('span');
       warningMessage.textContent = 'HTTPS is required for this feature.';
+      warningMessage.id = 'httpserror';
       scannerContainer.appendChild(warningMessage);
     }
   }

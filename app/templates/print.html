@@ -93,12 +93,16 @@
 			{% endif %}
 		</div>
 		{% else %}
+		<div class="block1inner">
 		<h3 class="recipe-error">{{ _('Error') }}</h3>
 		<p class="recipe-error">{{ _('The requested recipe either cannot be found or you do not have permission to view it.') }}</p>
+		</div>
 		{% endif %}
 		{% else %}
+		<div class="block1inner">
 		<h3 class="recipe-error">{{ _('Error') }}</h3>
 		<p class="recipe-error">{{ _('The requested recipe either cannot be found or you do not have permission to view it.') }}</p>
+		</div>
 		{% endif %}
 	</div>
 </main>

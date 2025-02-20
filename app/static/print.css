@@ -62,6 +62,12 @@
 	margin: revert;
 	padding: revert;
 }
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	padding-top: 20px;
+	width: 1000px;
+}
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);
@@ -131,4 +137,9 @@
 	  width: 100%;
 	  padding: 0px;
 	}
+}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) {
+	.block1inner {width: 100%;}
 }

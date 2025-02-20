@@ -29,7 +29,7 @@
 		{% if recipe %}
 		{% if owner == current_user.id or recipe.public == 1 %}
 		<div class="no-print">
-			<button class="btn btn-default" onclick="window.print()">
+			<button class="btn btn-default" onclick="window.print()" aria-label="{{ _('Print Recipe') }}">
 				<span class="btn-icon"><img id="printimg" src="{{ url_for('static', filename='print.png', _external=True) }}" alt="{{ _('Print') }}"></span>
 				<span class="btn-text">{{ _('Print') }}</span>
 			</button>

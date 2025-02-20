@@ -157,8 +157,8 @@
 			{% if recipe.url %}
 			<p><a class="urla" href="{{ recipe.url }}" target="_blank">{{ recipe.url }}</a></p>
 			{% endif %}
-			{% if current_user.is_authenticated and current_user.id == owner %}
 			<div class="btncontainer">
+			{% if current_user.is_authenticated and current_user.id == owner %}
 				{% if recipe.favorite == 0 %}
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.favorite', hexid=recipe.hex_id) }}';" aria-label="{{ _('Favorite Recipe') }}">
 					<span class="btn-icon"><img id="favoriteimg" src="{{ url_for('static', filename='favorite-recipe.png', _external=True) }}" alt="{{ _('Favorite') }}"></span>
@@ -185,6 +185,12 @@
 					<span class="btn-icon3"><img id="scheduleimg" src="{{ url_for('static', filename='schedule.png', _external=True) }}" alt="{{ _('Schedule') }}"></span>
 					<span class="btn-text">{{ _('Schedule') }}</span>
 				</button>
+			{% endif %}
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.printRecipe', hexid=recipe.hex_id) }}';" aria-label="{{ _('Print Recipe') }}">
+					<span class="btn-icon"><img id="printimg" src="{{ url_for('static', filename='print.png', _external=True) }}" alt="{{ _('Print') }}"></span>
+					<span class="btn-text">{{ _('Print') }}</span>
+				</button>
+			{% if current_user.is_authenticated and current_user.id == owner %}
 				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.editRecipe', hexid=recipe.hex_id) }}';" aria-label="{{ _('Edit Recipe') }}">
 					<span class="btn-icon3"><img id="editimg" src="{{ url_for('static', filename='edit-recipe.png', _external=True) }}" alt=""></span>
 					<span class="btn-text">{{ _('Edit') }}</span>
@@ -195,8 +201,8 @@
 						<span class="btn-text">{{ _('Delete') }}</span>
 					</button>
 				</form>
-			</div>
 			{% endif %}
+			</div>
 		</div>
 		<div id="r-image" style="background-image: url({{ url_for('myrecipes.recipePhotos', filename=recipe.photo, _external=True) }});">
 			<button class="btn-information" id="infbutton" onclick="toggleInformation()" aria-label="{{ _('Toggle Information Modal') }}">

@@ -395,6 +395,47 @@ def makePrivate(hexid):
     flash(_('The recipe URL can no longer be shared.'))
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
+@bp.route('/recipe/<hexid>/print', methods=['GET'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def printRecipe(hexid):
+    recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    if recipe is None:
+        recipe_title = 'Recipe Not Found'
+        owner = 0
+        ingredients = ''
+        instructions = ''
+        nutrition = None
+    else:
+        recipe_title = recipe.title
+        owner = recipe.user_id
+        ingred = recipe.ingredients
+        ingredientsdirty = ingred.split('\n')
+        # Remove all kinds of line breaks from ingredients
+        ingredients = []
+        for item in ingredientsdirty:
+            item = item.replace('\n','')
+            item = item.replace('\r','')
+            item = item.replace('\f','')
+            item = item.replace('\u2028','')
+            item = item.replace('\u2029','')
+            ingredients.append(item)
+        instruc = recipe.instructions
+        instructionsdirty = instruc.split('\n')
+        # Remove all kinds of line breaks from instructions
+        instructions = []
+        for item in instructionsdirty:
+            item = item.replace('\n','')
+            item = item.replace('\r','')
+            item = item.replace('\f','')
+            item = item.replace('\u2028','')
+            item = item.replace('\u2029','')
+            instructions.append(item)
+        nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+    return render_template('print.html', title="Print - " + recipe_title,
+        mdescription=_('View details for the selected recipe saved in My Recipes.'), recipe=recipe,
+        owner=owner, ingredients=ingredients, instructions=instructions,
+        nutrition=nutrition, hexid=hexid) 
+
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipeDetail(hexid):

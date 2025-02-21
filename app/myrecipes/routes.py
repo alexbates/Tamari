@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-import secrets, time, random, os, imghdr, requests, re, urllib.request
+import secrets, time, random, os, imghdr, requests, re, urllib.request, pdfkit
 from app.myrecipes import bp
 from config import Config
 
@@ -394,6 +394,55 @@ def makePrivate(hexid):
     db.session.commit()
     flash(_('The recipe URL can no longer be shared.'))
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
+
+@bp.route("/recipe/<hexid>/pdf")
+def generatePDF(hexid):
+    # Retrieve recipe data
+    recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    if recipe is None:
+        recipe_title = 'Recipe Not Found'
+        owner = 0
+        ingredients = ''
+        instructions = ''
+        nutrition = None
+    else:
+        recipe_title = recipe.title
+        owner = recipe.user_id
+        ingred = recipe.ingredients
+        ingredientsdirty = ingred.split('\n')
+        # Remove all kinds of line breaks from ingredients
+        ingredients = []
+        for item in ingredientsdirty:
+            item = item.replace('\n','')
+            item = item.replace('\r','')
+            item = item.replace('\f','')
+            item = item.replace('\u2028','')
+            item = item.replace('\u2029','')
+            ingredients.append(item)
+        instruc = recipe.instructions
+        instructionsdirty = instruc.split('\n')
+        # Remove all kinds of line breaks from instructions
+        instructions = []
+        for item in instructionsdirty:
+            item = item.replace('\n','')
+            item = item.replace('\r','')
+            item = item.replace('\f','')
+            item = item.replace('\u2028','')
+            item = item.replace('\u2029','')
+            instructions.append(item)
+        nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+    # Render it with the same template used for printing
+    html = render_template("print.html", title="Print - " + recipe_title,
+        mdescription=_('View details for the selected recipe saved in My Recipes.'), recipe=recipe,
+        owner=owner, ingredients=ingredients, instructions=instructions,
+        nutrition=nutrition, hexid=hexid)
+    # Use pdfkit to convert HTML -> PDF (in-memory)
+    pdf = pdfkit.from_string(html, False)  # returns PDF as bytes
+    # Return PDF as a download
+    response = make_response(pdf)
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = "attachment; filename=recipe.pdf"
+    return response
 
 @bp.route('/recipe/<hexid>/print', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

@@ -33,6 +33,10 @@
 				<span class="btn-icon"><img id="printimg" src="{{ url_for('static', filename='print.png', _external=True) }}" alt="{{ _('Print') }}"></span>
 				<span class="btn-text">{{ _('Print') }}</span>
 			</button>
+			<button class="btn btn-default" aria-label="{{ _('Download PDF') }}">
+				<span class="btn-icon"><img id="pdfimg" src="{{ url_for('static', filename='download.png', _external=True) }}" alt="{{ _('Download PDF') }}"></span>
+				<span class="btn-text">{{ _('Download PDF') }}</span>
+			</button>
 		</div>
 		<div class="print-container">
 			<h1>{{ recipe.title }}</h1>

@@ -145,6 +145,7 @@ function themeElements() {
 	const scrollLeft = document.getElementById("scroll-left");
 	const barcodeCameraImg = document.getElementById("barcodecameraimg");
 	const printImg = document.getElementById("printimg");
+	const pdfImg = document.getElementById("pdfimg");
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
         // If light, switch icons
@@ -177,6 +178,7 @@ function themeElements() {
 		if (scrollLeft !== null) {scrollLeft.src = "/static/navbar-scroll-left-light.png";}
 		if (barcodeCameraImg !== null) {barcodeCameraImg.src = "/static/barcode-camera-light.png";}
 		if (printImg !== null) {printImg.src = "/static/print-light.png";}
+		if (pdfImg !== null) {pdfImg.src = "/static/download-light.png";}
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
@@ -210,5 +212,6 @@ function themeElements() {
 		if (scrollLeft !== null) {scrollLeft.src = "/static/navbar-scroll-left-dark.png";}
 		if (barcodeCameraImg !== null) {barcodeCameraImg.src = "/static/barcode-camera-dark.png";}
 		if (printImg !== null) {printImg.src = "/static/print-dark.png";}
+		if (pdfImg !== null) {pdfImg.src = "/static/download-dark.png";}
     }
 }

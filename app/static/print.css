@@ -119,12 +119,6 @@
     margin-bottom: 0.5em;
     padding: 0;
 }
-
-
-.no-print {
-	display: none;
-}
-#block1 {padding: 0;}
 /* When printing, hide everything except the container */
 @media print {
 	body {

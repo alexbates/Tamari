@@ -12,7 +12,8 @@ from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
-import secrets, time, random, os, imghdr, requests, re, urllib.request, pdfkit
+from weasyprint import HTML
+import secrets, time, random, os, imghdr, requests, re, urllib.request
 from app.myrecipes import bp
 from config import Config
 
@@ -436,8 +437,8 @@ def generatePDF(hexid):
         mdescription=_('View details for the selected recipe saved in My Recipes.'), recipe=recipe,
         owner=owner, ingredients=ingredients, instructions=instructions,
         nutrition=nutrition, hexid=hexid)
-    # Use pdfkit to convert HTML -> PDF (in-memory)
-    pdf = pdfkit.from_string(html, False)  # returns PDF as bytes
+    # Convert the HTML to PDF using WeasyPrint
+    pdf = HTML(string=html_str).write_pdf()
     # Return PDF as a download
     response = make_response(pdf)
     response.headers["Content-Type"] = "application/pdf"

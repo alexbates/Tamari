@@ -134,6 +134,7 @@
 	}
 	.print-container {
 		background-color: #ffffff;
+		color: #000000 !important;
 		position: absolute;
 		left: 0;
 		top: 0;

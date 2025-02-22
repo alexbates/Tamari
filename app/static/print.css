@@ -119,12 +119,25 @@
     padding: 0;
 }
 
+
+.no-print {
+	display: none;
+}
+#block1 {padding: 0;}
 /* When printing, hide everything except the container */
 @media print {
 	body {
 		background-color: #ffffff;
 	}
-	.no-print {
+	#block1 {
+		padding: 0;
+	}
+	.block1inner {
+		width: 100% !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+	.no-print, header {
 		display: none;
 	}
 	body * {
@@ -136,18 +149,11 @@
 	.print-container {
 		background-color: #ffffff;
 		color: #000000 !important;
-		position: absolute;
-		left: 0;
-		top: 0;
 		width: 100%;
+		max-width: none;
 		padding: 0px;
+		margin: 0;
 	}
-}
-
-/* Styles for WeasyPrint */
-@page {
-	size: letter;
-	margin: 1in;
 }
 
 /* RESPONSIVE */

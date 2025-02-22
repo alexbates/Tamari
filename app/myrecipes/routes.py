@@ -433,7 +433,7 @@ def generatePDF(hexid):
             instructions.append(item)
         nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
     # Render it with the same template used for printing
-    html = render_template("print.html", title="Print - " + recipe_title,
+    html_str = render_template("print.html", title="Print - " + recipe_title,
         mdescription=_('View details for the selected recipe saved in My Recipes.'), recipe=recipe,
         owner=owner, ingredients=ingredients, instructions=instructions,
         nutrition=nutrition, hexid=hexid)

@@ -112,6 +112,33 @@
                 <span class="btn-text">{{ _('Login to Save Recipe') }}</span>
             </button>
 			{% endif %}
+			<!-- Regardless of whether user is signed in, a Print Recipe button is displayed -->
+			<!-- Upon clicking this button, a POST request is submitted to explorePrintRecipe route -->
+			<form action="{{ url_for('explore.explorePrintRecipe') }}" method="POST" style="display:inline;">
+				<input type="hidden" name="rec_title" value="{{ rec_title|e }}">
+				<input type="hidden" name="description" value="{{ description|e }}">
+				<input type="hidden" name="preptime" value="{{ preptime|e }}">
+				<input type="hidden" name="cooktime" value="{{ cooktime|e }}">
+				<input type="hidden" name="totaltime" value="{{ totaltime|e }}">
+				<input type="hidden" name="servings" value="{{ servings|e }}">
+				<input type="hidden" name="calories" value="{{ calories|e }}">
+				<input type="hidden" name="carbs" value="{{ carbs|e }}">
+				<input type="hidden" name="protein" value="{{ protein|e }}">
+				<input type="hidden" name="fat" value="{{ fat|e }}">
+				<input type="hidden" name="sugar" value="{{ sugar|e }}">
+				<input type="hidden" name="cholesterol" value="{{ cholesterol|e }}">
+				<input type="hidden" name="sodium" value="{{ sodium|e }}">
+				<input type="hidden" name="fiber" value="{{ fiber|e }}">
+
+				<!-- Using textarea instead because input is very long -->
+				<textarea name="ingredients" style="display:none;">{{ ingredients|join('\n')|e }}</textarea>
+				<textarea name="instructions" style="display:none;">{{ instructions|join('\n')|e }}</textarea>
+
+				<button class="btn btn-default" type="submit" aria-label="{{ _('Print Recipe') }}">
+					<span class="btn-icon"><img id="printimg" src="{{ url_for('static', filename='print.png', _external=True) }}" alt="{{ _('Print') }}"></span>
+					<span class="btn-text">{{ _('Print') }}</span>
+				</button>
+			</form>
 		</div>
 		<div id="r-image" style="background-image: url('{{ photo_server }}');"></div>
 		<div id="ingredients">

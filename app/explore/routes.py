@@ -1492,6 +1492,7 @@ def explorePrintRecipe():
     cooktime = none_to_empty(request.form.get('cooktime', ''))
     totaltime = none_to_empty(request.form.get('totaltime', ''))
     servings = none_to_empty(request.form.get('servings', ''))
+    rec_url = none_to_empty(request.form.get('rec_url', ''))
     raw_ingredients = request.form.get('ingredients', '')
     ingredientsdirty = raw_ingredients.split('\n')
     ingredients = []
@@ -1532,6 +1533,7 @@ def exploreGeneratePDF():
     cooktime = none_to_empty(request.form.get('cooktime', ''))
     totaltime = none_to_empty(request.form.get('totaltime', ''))
     servings = none_to_empty(request.form.get('servings', ''))
+    rec_url = none_to_empty(request.form.get('rec_url', ''))
     raw_ingredients = none_to_empty(request.form.get('ingredients', ''))
     ingredientsdirty = raw_ingredients.split('\n')
     # Remove all kinds of line breaks from ingredients

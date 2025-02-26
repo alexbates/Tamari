@@ -46,6 +46,7 @@
                 <input type="hidden" name="cooktime" value="{{ cooktime|e }}">
                 <input type="hidden" name="totaltime" value="{{ totaltime|e }}">
                 <input type="hidden" name="servings" value="{{ servings|e }}">
+				<input type="hidden" name="rec_url" value="{{ rec_url|e }}">
                 <input type="hidden" name="calories" value="{{ nutrition.calories|e }}">
                 <input type="hidden" name="carbs" value="{{ nutrition.carbs|e }}">
                 <input type="hidden" name="protein" value="{{ nutrition.protein|e }}">
@@ -94,6 +95,10 @@
 					<strong>{{ _('Servings') }}:</strong> {{ servings }}
 				{% endif %}
 			</p>
+			{% endif %}
+			
+			{% if rec_url %}
+			<p>{{ rec_url }}</p>
 			{% endif %}
 			
 			<h2>{{ _('Ingredients') }}</h2>

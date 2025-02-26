@@ -1526,13 +1526,13 @@ def exploreGeneratePDF():
     if request.method == 'GET':
         return "Invalid access: PDF generation requires POST data.", 400
     # Handle POST data received, prepare for display on template
-    rec_title = request.form.get('rec_title', '')
-    description = request.form.get('description', '')
-    preptime = request.form.get('preptime', '')
-    cooktime = request.form.get('cooktime', '')
-    totaltime = request.form.get('totaltime', '')
-    servings = request.form.get('servings', '')
-    raw_ingredients = request.form.get('ingredients', '')
+    rec_title = none_to_empty(request.form.get('rec_title', ''))
+    description = none_to_empty(request.form.get('description', ''))
+    preptime = none_to_empty(request.form.get('preptime', ''))
+    cooktime = none_to_empty(request.form.get('cooktime', ''))
+    totaltime = none_to_empty(request.form.get('totaltime', ''))
+    servings = none_to_empty(request.form.get('servings', ''))
+    raw_ingredients = none_to_empty(request.form.get('ingredients', ''))
     ingredientsdirty = raw_ingredients.split('\n')
     # Remove all kinds of line breaks from ingredients
     ingredients = []
@@ -1548,14 +1548,14 @@ def exploreGeneratePDF():
         item = item.replace('\r', '').replace('\f', '').replace('\u2028', '').replace('\u2029', '')
         instructions.append(item)
     nutrition = {
-        'calories': request.form.get('calories', ''),
-        'carbs': request.form.get('carbs', ''),
-        'protein': request.form.get('protein', ''),
-        'fat': request.form.get('fat', ''),
-        'sugar': request.form.get('sugar', ''),
-        'cholesterol': request.form.get('cholesterol', ''),
-        'sodium': request.form.get('sodium', ''),
-        'fiber': request.form.get('fiber', '')
+        'calories': none_to_empty(request.form.get('calories', '')),
+        'carbs': none_to_empty(request.form.get('carbs', '')),
+        'protein': none_to_empty(request.form.get('protein', '')),
+        'fat': none_to_empty(request.form.get('fat', '')),
+        'sugar': none_to_empty(request.form.get('sugar', '')),
+        'cholesterol': none_to_empty(request.form.get('cholesterol', '')),
+        'sodium': none_to_empty(request.form.get('sodium', '')),
+        'fiber': none_to_empty(request.form.get('fiber', ''))
     }
     # Render it with the same template used for printing
     html_str = render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),

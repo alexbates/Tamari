@@ -11,6 +11,7 @@ from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
+from weasyprint import HTML
 import secrets, time, random, os, imghdr, requests, re, urllib.request, io, base64, cloudscraper
 from app.explore import bp
 from config import Config

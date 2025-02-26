@@ -1519,7 +1519,7 @@ def explorePrintRecipe():
     }
     return render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),
         rec_title=rec_title, description=description, preptime=preptime, cooktime=cooktime, totaltime=totaltime,
-        servings=servings, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
+        servings=servings, rec_url=rec_url, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
         
 @bp.route("/explore/recipe/pdf", methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -1562,7 +1562,7 @@ def exploreGeneratePDF():
     # Render it with the same template used for printing
     html_str = render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),
         rec_title=rec_title, description=description, preptime=preptime, cooktime=cooktime, totaltime=totaltime,
-        servings=servings, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
+        servings=servings, rec_url=rec_url, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
     # Convert the HTML to PDF using WeasyPrint
     pdf = HTML(string=html_str).write_pdf()
     # Return PDF as a download

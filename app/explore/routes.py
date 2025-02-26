@@ -1511,3 +1511,52 @@ def explorePrintRecipe():
     return render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),
         rec_title=rec_title, description=description, preptime=preptime, cooktime=cooktime, totaltime=totaltime,
         servings=servings, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
+        
+@bp.route("/explore/recipe/pdf", methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def exploreGeneratePDF():
+    if request.method == 'GET':
+        return "Invalid access: PDF generation requires POST data.", 400
+    # Handle POST data received, prepare for display on template
+    rec_title = request.form.get('rec_title', '')
+    description = request.form.get('description', '')
+    preptime = request.form.get('preptime', '')
+    cooktime = request.form.get('cooktime', '')
+    totaltime = request.form.get('totaltime', '')
+    servings = request.form.get('servings', '')
+    raw_ingredients = request.form.get('ingredients', '')
+    ingredientsdirty = raw_ingredients.split('\n')
+    # Remove all kinds of line breaks from ingredients
+    ingredients = []
+    for item in ingredientsdirty:
+        item = item.replace('\r', '').replace('\f', '').replace('\u2028', '').replace('\u2029', '')
+        ingredients.append(item)
+
+    raw_instructions = request.form.get('instructions', '')
+    instructionsdirty = raw_instructions.split('\n')
+    # Remove all kinds of line breaks from instructions
+    instructions = []
+    for item in instructionsdirty:
+        item = item.replace('\r', '').replace('\f', '').replace('\u2028', '').replace('\u2029', '')
+        instructions.append(item)
+    nutrition = {
+        'calories': request.form.get('calories', ''),
+        'carbs': request.form.get('carbs', ''),
+        'protein': request.form.get('protein', ''),
+        'fat': request.form.get('fat', ''),
+        'sugar': request.form.get('sugar', ''),
+        'cholesterol': request.form.get('cholesterol', ''),
+        'sodium': request.form.get('sodium', ''),
+        'fiber': request.form.get('fiber', '')
+    }
+    # Render it with the same template used for printing
+    html_str = render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),
+        rec_title=rec_title, description=description, preptime=preptime, cooktime=cooktime, totaltime=totaltime,
+        servings=servings, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
+    # Convert the HTML to PDF using WeasyPrint
+    pdf = HTML(string=html_str).write_pdf()
+    # Return PDF as a download
+    response = make_response(pdf)
+    response.headers["Content-Type"] = "application/pdf"
+    response.headers["Content-Disposition"] = "attachment; filename=explore-recipe.pdf"
+    return response

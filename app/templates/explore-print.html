@@ -1,0 +1,143 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='print.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% set first_message = true %}
+		{% for message in messages %}
+		{% if first_message %}
+		{% if 'Error' in message or '错误' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% set first_message = false %}
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% set first_message = false %}
+		{% endif %}
+		{% else %}
+		<p style="display: none;">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+		
+		{# If "error" is set or rec_title is missing, display an error. #}
+        {% if error or not rec_title %}
+            <div class="block1inner">
+                <h3 class="recipe-error">{{ _('Error') }}</h3>
+                <p class="recipe-error">{{ _('The requested recipe is not available or no data was provided.') }}</p>
+            </div>
+        {% else %}
+        <div class="no-print">
+            <button class="btn btn-default" onclick="window.print()" aria-label="{{ _('Print Recipe') }}">
+                <span class="btn-icon"><img id="printimg" src="{{ url_for('static', filename='print.png', _external=True) }}" alt="{{ _('Print') }}"></span>
+                <span class="btn-text">{{ _('Print') }}</span>
+            </button>
+            <form method="POST" action="{{ url_for('explore.exploreGeneratePDF') }}" style="display:inline; margin:0; padding:0;">
+                <input type="hidden" name="rec_title" value="{{ rec_title|e }}">
+                <input type="hidden" name="description" value="{{ description|e }}">
+                <input type="hidden" name="preptime" value="{{ preptime|e }}">
+                <input type="hidden" name="cooktime" value="{{ cooktime|e }}">
+                <input type="hidden" name="totaltime" value="{{ totaltime|e }}">
+                <input type="hidden" name="servings" value="{{ servings|e }}">
+                <input type="hidden" name="calories" value="{{ nutrition.calories|e }}">
+                <input type="hidden" name="carbs" value="{{ nutrition.carbs|e }}">
+                <input type="hidden" name="protein" value="{{ nutrition.protein|e }}">
+                <input type="hidden" name="fat" value="{{ nutrition.fat|e }}">
+                <input type="hidden" name="sugar" value="{{ nutrition.sugar|e }}">
+                <input type="hidden" name="cholesterol" value="{{ nutrition.cholesterol|e }}">
+                <input type="hidden" name="sodium" value="{{ nutrition.sodium|e }}">
+                <input type="hidden" name="fiber" value="{{ nutrition.fiber|e }}">
+                <textarea name="ingredients" style="display:none;">{{ ingredients|join('\n')|e }}</textarea>
+                <textarea name="instructions" style="display:none;">{{ instructions|join('\n')|e }}</textarea>
+                <button type="submit" class="btn btn-default" aria-label="{{ _('Download PDF') }}">
+                    <span class="btn-icon"><img id="pdfimg" src="{{ url_for('static', filename='download.png', _external=True) }}" alt="{{ _('Download PDF') }}"></span>
+                    <span class="btn-text">{{ _('Download PDF') }}</span>
+                </button>
+            </form>
+        </div>
+		
+		<div class="print-container">
+			<h1>{{ rec_title }}</h1>
+			
+			{% if description %}
+			<p>{{ description }}</p>
+			{% endif %}
+			
+			{% if preptime or cooktime or totaltime or servings %}
+			<p>
+				{% if preptime %}
+					<strong>{{ _('Prep Time') }}:</strong> {{ preptime }} {{ _('min') }}
+					{% if cooktime or totaltime or servings %}
+					<br>
+					{% endif %}
+				{% endif %}
+				{% if cooktime %}
+					<strong>{{ _('Cook Time') }}:</strong> {{ cooktime }} {{ _('min') }}
+					{% if totaltime or servings %}
+					<br>
+					{% endif %}
+				{% endif %}
+				{% if totaltime %}
+					<strong>{{ _('Total Time') }}:</strong> {{ totaltime }} {{ _('min') }}
+					{% if servings %}
+					<br>
+					{% endif %}
+				{% endif %}
+				{% if servings %}
+					<strong>{{ _('Servings') }}:</strong> {{ servings }}
+				{% endif %}
+			</p>
+			{% endif %}
+			
+			<h2>{{ _('Ingredients') }}</h2>
+			<ul>
+				{% for item in ingredients %}
+				{% if item | length > 0 %}
+				<li>{{ item }}</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+			
+			<h2>{{ _('Instructions') }}</h2>
+			<ol>
+				{% for item in instructions %}
+				{% if item | length > 0 %}
+				<li>{{ item }}</li>
+				{% endif %}
+				{% endfor %}
+			</ol>
+			
+			{% if nutrition %}
+			<h2>Nutrition Facts</h2>
+			<p>
+				Per serving: {% if nutrition.calories %}calories {{ nutrition.calories }} kcal; {% endif %}{% if nutrition.carbs %}carbs {{ nutrition.carbs }} g; {% endif %}{% if nutrition.protein %}protein {{ nutrition.protein }} g; {% endif %}{% if nutrition.fat %}fat {{ nutrition.fat }} g; {% endif %}{% if nutrition.sugar %}sugar {{ nutrition.sugar }} g; {% endif %}{% if nutrition.cholesterol %}cholesterol {{ nutrition.cholesterol }} mg; {% endif %}{% if nutrition.sodium %}sodium {{ nutrition.sodium }} mg; {% endif %}{% if nutrition.fiber %}fiber {{ nutrition.fiber }} g{% endif %}.
+			</p>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+	<script>
+		// CTRL+A keyboard shortcut to redirect to Add Recipe page, only when authenticated
+        $(document).ready(function() {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    window.location.href = '/add-recipe';
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

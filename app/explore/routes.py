@@ -1469,3 +1469,45 @@ def exploreRecipeDetail(rec_group, recnum):
         photo=photo, ingredients=ingredients, instructions=instructions, form=form, calories=calories, carbs=carbs,
         protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition,
         servings=servings, photo_server=photo_server, responsecode=responsecode)
+
+# Displays a print-friendly version of explore page
+@bp.route('/explore/recipe/print', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def explorePrintRecipe():
+    if request.method == 'GET':
+        # If someone visits directly (no POST data), just show an error in the template
+        return render_template('explore-print.html', error=True), 400
+    # Handle POST data received, prepare for display on template
+    rec_title = request.form.get('rec_title', '')
+    description = request.form.get('description', '')
+    preptime = request.form.get('preptime', '')
+    cooktime = request.form.get('cooktime', '')
+    totaltime = request.form.get('totaltime', '')
+    servings = request.form.get('servings', '')      
+    raw_ingredients = request.form.get('ingredients', '')
+    ingredientsdirty = raw_ingredients.split('\n')
+    ingredients = []
+    for item in ingredientsdirty:
+        item = item.replace('\r', '').replace('\f', '').replace('\u2028', '').replace('\u2029', '')
+        ingredients.append(item)
+    raw_instructions = request.form.get('instructions', '')
+    instructionsdirty = raw_instructions.split('\n')
+    instructions = []
+    for item in instructionsdirty:
+        item = item.replace('\r', '').replace('\f', '').replace('\u2028', '').replace('\u2029', '')
+        instructions.append(item)
+    # Dictionary for nutrition details
+    # This enables Nutrition Facts section of Explore Print template to remain same as print.html
+    nutrition = {
+        'calories': request.form.get('calories', ''),
+        'carbs': request.form.get('carbs', ''),
+        'protein': request.form.get('protein', ''),
+        'fat': request.form.get('fat', ''),
+        'sugar': request.form.get('sugar', ''),
+        'cholesterol': request.form.get('cholesterol', ''),
+        'sodium': request.form.get('sodium', ''),
+        'fiber': request.form.get('fiber', '')
+    }
+    return render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),
+        rec_title=rec_title, description=description, preptime=preptime, cooktime=cooktime, totaltime=totaltime,
+        servings=servings, ingredients=ingredients, instructions=instructions, nutrition=nutrition)

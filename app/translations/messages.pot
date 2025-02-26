@@ -1783,3 +1783,21 @@ msgstr ""
 #: app/templates/meal-planner-completed.html:51
 msgid "Days Cooked"
 msgstr ""
+
+msgid "Print"
+msgstr ""
+
+msgid "Download PDF"
+msgstr ""
+
+msgid "Print Recipe"
+msgstr ""
+
+msgid "Nutrition Facts"
+msgstr ""
+
+msgid "Per serving"
+msgstr ""
+
+msgid "The requested recipe is not available or no data was provided."
+msgstr ""

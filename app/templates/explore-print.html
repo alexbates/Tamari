@@ -120,9 +120,9 @@
 			</ol>
 			
 			{% if nutrition and (nutrition.calories or nutrition.carbs or nutrition.protein or nutrition.fat or nutrition.sugar or nutrition.cholesterol or nutrition.sodium or nutrition.fiber) %}
-			<h2>Nutrition Facts</h2>
+			<h2>{{ _('Nutrition Facts') }}</h2>
 			<p>
-				Per serving: {% if nutrition.calories %}calories {{ nutrition.calories }} kcal; {% endif %}{% if nutrition.carbs %}carbs {{ nutrition.carbs }} g; {% endif %}{% if nutrition.protein %}protein {{ nutrition.protein }} g; {% endif %}{% if nutrition.fat %}fat {{ nutrition.fat }} g; {% endif %}{% if nutrition.sugar %}sugar {{ nutrition.sugar }} g; {% endif %}{% if nutrition.cholesterol %}cholesterol {{ nutrition.cholesterol }} mg; {% endif %}{% if nutrition.sodium %}sodium {{ nutrition.sodium }} mg; {% endif %}{% if nutrition.fiber %}fiber {{ nutrition.fiber }} g{% endif %}.
+				{{ _('Per serving') }}: {% if nutrition.calories %}calories {{ nutrition.calories }} kcal; {% endif %}{% if nutrition.carbs %}carbs {{ nutrition.carbs }} g; {% endif %}{% if nutrition.protein %}protein {{ nutrition.protein }} g; {% endif %}{% if nutrition.fat %}fat {{ nutrition.fat }} g; {% endif %}{% if nutrition.sugar %}sugar {{ nutrition.sugar }} g; {% endif %}{% if nutrition.cholesterol %}cholesterol {{ nutrition.cholesterol }} mg; {% endif %}{% if nutrition.sodium %}sodium {{ nutrition.sodium }} mg; {% endif %}{% if nutrition.fiber %}fiber {{ nutrition.fiber }} g{% endif %}.
 			</p>
 			{% endif %}
 		</div>

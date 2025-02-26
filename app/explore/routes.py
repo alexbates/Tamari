@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, make_response
 from flask_babel import _
 from app import app, db, limiter
 from app.explore.forms import ExploreSearchForm, EmptyForm

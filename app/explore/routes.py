@@ -1471,6 +1471,13 @@ def exploreRecipeDetail(rec_group, recnum):
         protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition,
         servings=servings, photo_server=photo_server, responsecode=responsecode)
 
+# The function is used by explorePrintRecipe and exploreGeneratePDF routes
+# to transform variables from None to empty string if data not provided
+def none_to_empty(val):
+    if val is None or val == 'None':
+        return ''
+    return val
+
 # Displays a print-friendly version of explore page
 @bp.route('/explore/recipe/print', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -1479,12 +1486,12 @@ def explorePrintRecipe():
         # If someone visits directly (no POST data), just show an error in the template
         return render_template('explore-print.html', error=True), 400
     # Handle POST data received, prepare for display on template
-    rec_title = request.form.get('rec_title', '')
-    description = request.form.get('description', '')
-    preptime = request.form.get('preptime', '')
-    cooktime = request.form.get('cooktime', '')
-    totaltime = request.form.get('totaltime', '')
-    servings = request.form.get('servings', '')      
+    rec_title = none_to_empty(request.form.get('rec_title', ''))
+    description = none_to_empty(request.form.get('description', ''))
+    preptime = none_to_empty(request.form.get('preptime', ''))
+    cooktime = none_to_empty(request.form.get('cooktime', ''))
+    totaltime = none_to_empty(request.form.get('totaltime', ''))
+    servings = none_to_empty(request.form.get('servings', ''))
     raw_ingredients = request.form.get('ingredients', '')
     ingredientsdirty = raw_ingredients.split('\n')
     ingredients = []
@@ -1500,14 +1507,14 @@ def explorePrintRecipe():
     # Dictionary for nutrition details
     # This enables Nutrition Facts section of Explore Print template to remain same as print.html
     nutrition = {
-        'calories': request.form.get('calories', ''),
-        'carbs': request.form.get('carbs', ''),
-        'protein': request.form.get('protein', ''),
-        'fat': request.form.get('fat', ''),
-        'sugar': request.form.get('sugar', ''),
-        'cholesterol': request.form.get('cholesterol', ''),
-        'sodium': request.form.get('sodium', ''),
-        'fiber': request.form.get('fiber', '')
+        'calories': none_to_empty(request.form.get('calories', '')),
+        'carbs': none_to_empty(request.form.get('carbs', '')),
+        'protein': none_to_empty(request.form.get('protein', '')),
+        'fat': none_to_empty(request.form.get('fat', '')),
+        'sugar': none_to_empty(request.form.get('sugar', '')),
+        'cholesterol': none_to_empty(request.form.get('cholesterol', '')),
+        'sodium': none_to_empty(request.form.get('sodium', '')),
+        'fiber': none_to_empty(request.form.get('fiber', ''))
     }
     return render_template('explore-print.html', title="Explore Print - " + (rec_title if rec_title else "Unknown"),
         rec_title=rec_title, description=description, preptime=preptime, cooktime=cooktime, totaltime=totaltime,

@@ -416,14 +416,12 @@ https://www.iheartnaptime.net/homemade-ice-cream/;Homemade Vanilla Ice Cream;htt
 https://tasty.co/recipe/cauliflower-tots;Cauliflower Tots;https://img.buzzfeed.com/video-api-prod/assets/fdb51cbc504140228b53aa0f06f5365c/Square_Thumb_Option_1.jpg
 https://www.skinnytaste.com/low-fat-chewy-chocolate-chip-oatmeal/;Oatmeal Chocolate Chip Cookies;https://www.skinnytaste.com/wp-content/uploads/2019/12/Low-FatChewyChocolateChipOatmealCookies-18.jpg
 https://www.iheartnaptime.net/chocolate-mint-cookies/;Chocolate Mint Cookies;https://www.iheartnaptime.net/wp-content/uploads/2021/11/I-Heart-Naptime-chocolate-mint-cookies-4.jpg
-https://www.skinnytaste.com/roasted-yellow-squash/;Roasted Yellow Squash;https://www.skinnytaste.com/wp-content/uploads/2012/08/roasted-squash.jpg
 https://www.iheartnaptime.net/mini-mm-cookies/;Mini M&M Cookies;https://www.iheartnaptime.net/wp-content/uploads/2022/02/I-Heart-Naptime-mini-mm-cookies-6.jpg
 https://www.iheartnaptime.net/mini-cheesecakes-with-graham-cracker-crust/;Mini Cheesecakes with Graham Cracker Crust;https://www.iheartnaptime.net/wp-content/uploads/2021/09/I-Heart-Naptime-mini-cheesecake-with-graham-cracker-crust-2.jpg
 https://www.skinnytaste.com/zucchini-waffles/;Savory Zucchini Waffles;https://www.skinnytaste.com/wp-content/uploads/2023/07/Savory-Zucchini-Waffle-Recipe-7.jpg
 https://www.skinnytaste.com/arroz-con-gandules-rice-and-pigeon-peas/;Arroz Con Gandules (Rice and Pigeon Peas);https://www.skinnytaste.com/wp-content/uploads/2009/07/arroz-con-gandules.jpg
 https://tasty.co/recipe/cheese-fondue-bread-boat;Cheese Fondue Bread Boat;https://img.buzzfeed.com/video-api-prod/assets/80eb5dd5db0449a9ba3f1cbdd25adb40/fb.jpg
 https://www.skinnytaste.com/lentil-bolognese/;Lentil Bolognese;https://www.skinnytaste.com/wp-content/uploads/2024/01/Lentil-Bolognese-7.jpg
-https://www.skinnytaste.com/very-berry-banana-fro-yo-shake/;Very Berry Banana Fro Yo Shake;https://www.skinnytaste.com/wp-content/uploads/2012/05/Very-Berry-Banana-Fro-Yo-Shake.jpg
 https://www.iheartnaptime.net/caramel-apple-monkey-bread/;Caramel Apple Monkey Bread;https://www.iheartnaptime.net/wp-content/uploads/2022/09/I-Heart-Naptime-caramel-apple-monkey-bread-17.jpg
 https://www.skinnytaste.com/roasted-sweet-potatoes/;Roasted Sweet Potatoes;https://www.skinnytaste.com/wp-content/uploads/2023/09/Roasted-Sweet-Potatoes-10.jpg
 https://www.iheartnaptime.net/christmas-sugar-cookies/;Christmas Sugar Cookies;https://www.iheartnaptime.net/wp-content/uploads/2020/07/christmas-sugar-cookies-1.jpg
@@ -1085,7 +1083,6 @@ https://www.skinnytaste.com/easy-trail-mix-recipe-tips-on-making/;Easy Trail Mix
 https://tasty.co/recipe/low-carb-eggplant-parmesan;Low-Carb Eggplant Parmesan;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/192136.jpg
 https://www.iheartnaptime.net/mexican-salad/;Mexican Salad Recipe;https://www.iheartnaptime.net/wp-content/uploads/2022/07/I-Heart-Naptime-mexican-salad-recipe.jpg
 https://tasty.co/recipe/ultimate-mashed-potatoes;Ultimate Mashed Potatoes;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/add60faa04424d5594fe11cd05c22ad1/101potatoesfinal.jpg
-https://www.skinnytaste.com/fruit-kabobs/;Fruit Kabobs;https://www.skinnytaste.com/wp-content/uploads/2010/07/fruit-kabobs.jpg
 https://tasty.co/recipe/rice-cooker-orange-upside-down-cake;Rice Cooker Orange Upside-Down Cake;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/6b52c493d5694447bab01377af4b5ff3/final.jpg
 https://www.skinnytaste.com/tofu-poke-bowl/;Tofu Poke Bowl;https://www.skinnytaste.com/wp-content/uploads/2023/03/Tofu-Poke-Bowl-8.jpg
 https://www.skinnytaste.com/skinny-strawberries-romanoff/;3-Ingredient Strawberries Romanoff;https://www.skinnytaste.com/wp-content/uploads/2019/04/Skinny-Strawberries-Romanoff-7.jpg
@@ -1667,7 +1664,6 @@ https://www.skinnytaste.com/spinach-artichoke-lasagna-roll-up/;Spinach Artichoke
 https://www.skinnytaste.com/raspberry-coconut-chia-pudding-pops/;Raspberry Coconut Chia Pudding Popsicles;https://www.skinnytaste.com/wp-content/uploads/2012/08/Raspberry-Coconut-Chia-Pudding-Pops-_FINAL09.jpg
 https://tasty.co/recipe/easy-microwave-potato-chips;Easy Microwave Potato Chips;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/7c144888ae87461eb024043e1a1375e1/Chips_FB.jpg
 https://www.skinnytaste.com/apple-cranberry-crumble/;Apple Cranberry Crumble;https://www.skinnytaste.com/wp-content/uploads/2011/12/Apple-Cranberry-Crumble_-5.jpg
-https://www.skinnytaste.com/quick-marinara-sauce/;Quick Marinara Sauce;https://www.skinnytaste.com/wp-content/uploads/2011/09/Quick-Marinara-Sauce.jpg
 https://www.skinnytaste.com/roasted-heirloom-carrots-with-feta/;Roasted Carrots with Feta, Truffle and Lemon;https://www.skinnytaste.com/wp-content/uploads/2015/08/RoastedHeirloomCarrotswithFeta2CTruffleandLemonZest.jpg
 https://tasty.co/recipe/kenyan-masala-chips;Kenyan Masala Chips;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/85270dba19364afcad9f50e5c91fbe2e/Fries_FB.jpg
 https://www.skinnytaste.com/skinnyer-shamrock-shake/;Shamrock Shake;https://www.skinnytaste.com/wp-content/uploads/2013/03/skinny-shamrock-shake.jpg
@@ -1712,7 +1708,6 @@ https://www.iheartnaptime.net/mini-smores-cups/;Mini S’mores Cups (5-Ingredien
 https://www.skinnytaste.com/vegan-caesar-salad/;Vegan Caesar Salad;https://www.skinnytaste.com/wp-content/uploads/2019/06/Grilled-Romaine-Vegan-Caesar-Wedges-9.jpg
 https://tasty.co/recipe/sweet-potato-wedges;Sweet Potato Wedges;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/c24672b906424da3ba06722f3c235566/veggiewedges-fb.jpg
 https://www.iheartnaptime.net/pumpkin-chocolate-chip-cookies/;BEST Pumpkin Chocolate Chip Cookies;https://www.iheartnaptime.net/wp-content/uploads/2018/10/pumpkin-chocolate-chip-cookies.jpg
-https://tasty.co/recipe/simple-shakshuka;Simple Shakshuka;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/658d135d9eea4fa0b342ccc4426d78a2/FACEBOOK.jpg
 https://tasty.co/recipe/pad-thai-spaghetti-squash;Pad Thai Spaghetti Squash;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/e093bb6ec56d480badc5bda35b3d4fa3/fb.jpg
 https://www.iheartnaptime.net/hard-candy/;Homemade Hard Candy Recipe;https://www.iheartnaptime.net/wp-content/uploads/2023/11/Hard-Candy-Recipe-I-Heart-Naptime-13.jpg
 https://tasty.co/recipe/mushroom-meat-balls;Mushroom “Meat”balls;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/2ccd4f57ec8a496dafce17c4e575e666/BFV34061_MeatlessMeatballs4Ways_YT-Upload.jpg
@@ -1736,7 +1731,6 @@ https://tasty.co/recipe/chocolate-palmiers;Chocolate Palmiers;https://img.buzzfe
 https://www.skinnytaste.com/avocado-quinoa-salad/;Avocado Quinoa Salad;https://www.skinnytaste.com/wp-content/uploads/2022/04/Avocado-Quinoa-Salad-5-e1650895580821.jpg
 https://tasty.co/recipe/brownie-carrot-cake;Brownie Carrot Cake;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/0b3bf188572f406aa09f32890d9749f5/BFV43049_HowToMakeMesmerizingBrazilianDesserts_FINAL.jpg
 https://tasty.co/recipe/spicy-sesame-cauliflower;Spicy Sesame Cauliflower;https://img.buzzfeed.com/video-api-prod/assets/6ff2cecaf8214a45839049ebd61a572f/BFV5623_Spicy-Sesame-Cauliflower_Thumb.jpg
-https://www.iheartnaptime.net/healthy-smoothies/;Healthy Smoothie Recipes;https://www.iheartnaptime.net/wp-content/uploads/2021/06/healthy-smoothie-recipes-1.jpg
 https://www.skinnytaste.com/asparagus-and-swiss-cheese-frittata/;Asparagus and Swiss Cheese Frittata;https://www.skinnytaste.com/wp-content/uploads/2013/05/Asparagus-and-Swiss-Cheese-Frittata-7.jpg
 https://tasty.co/recipe/deep-fried-deviled-eggs;Deep-Fried Deviled Eggs;https://img.buzzfeed.com/video-api-prod/assets/c77b8dc2bac84a0983c4a665d5a31b98/BFV6651_DEEPFRIEDDEVILEDEGGS_THUMBCnew.jpg
 https://tasty.co/recipe/cream-cheese-filled-banana-bread-muffins;Cream Cheese-Filled Banana Bread Muffins;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/dd75a8779ee14bed8599ae5ee7a949b1/BFV8810_Cream_Cheese-Filled_Banana_Bread_Muffins_FB_w-Bien_End_Card.jpg
@@ -2377,7 +2371,6 @@ https://tasty.co/recipe/broccoli-soup;Broccoli Soup;https://img.buzzfeed.com/thu
 https://www.skinnytaste.com/zesty-avocado-cilantro-buttermilk/;Zesty Avocado Cilantro Buttermilk Dressing;https://www.skinnytaste.com/wp-content/uploads/2012/04/Zesty-Avocado-Cilantro-Buttermilk-Dressing.jpg
 https://tasty.co/recipe/hidden-veggie-mac-cheese;Hidden Veggie Mac & Cheese;https://img.buzzfeed.com/video-api-prod/assets/5c5e2462361242ea9a854850df73a570/thumb.jpg
 https://www.skinnytaste.com/cauliflower-leek-soup/;Cauliflower Leek Soup;https://www.skinnytaste.com/wp-content/uploads/2014/11/cauliflower-leek-soup.jpg
-https://tasty.co/recipe/strawberry-cheesecake-crescent-rolls;Strawberry Cheesecake Crescent Rolls;https://img.buzzfeed.com/video-api-prod/assets/2b8ff32ba6db4d018200b305b586e689/StrawberryCheesecakeCrescentRolls_ThumbB.jpg
 https://tasty.co/recipe/pesto-chickpea-snack-salad;Pesto Chickpea Snack Salad;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/a987fdb2ccef4cb0b34ca121fe8ced51/BFV22999_6EasyHigh-ProteinSnacksUnder150Calroies_FB1080SQ.jpg
 https://www.skinnytaste.com/banana-cranberry-bread/;Banana Cranberry Bread;https://www.skinnytaste.com/wp-content/uploads/2013/12/Banana-Cranberry-Bread.jpg
 https://tasty.co/recipe/easy-homemade-potato-gnocchi;Easy Homemade Potato Gnocchi;https://img.buzzfeed.com/video-api-prod/assets/926dbe7dcb454e079331930ced3b4e5c/FB_Thumb.jpg
@@ -2392,7 +2385,6 @@ https://www.skinnytaste.com/pasta-with-roasted-broccoli/;Pasta with Roasted Broc
 https://www.iheartnaptime.net/smores-dip/;Ultimate S’mores Dip;https://www.iheartnaptime.net/wp-content/uploads/2023/09/smores-dip-recipe-i-heart-naptime.jpg
 https://tasty.co/recipe/spinach-artichoke-mac-cheese;Spinach Artichoke Mac & Cheese;https://img.buzzfeed.com/video-api-prod/assets/70d1a6f23a26461f8910340b22d37427/BFV8271_SpinachAndArtichokeMacNCheese-Thumb1080.jpg
 https://tasty.co/recipe/beer-battered-onion-rings-by-martha-stewart;Beer-battered Onion Rings By Martha Stewart;https://img.buzzfeed.com/video-api-prod/assets/c45616cce83745c6ab1d4f5e394137fa/BFV13675_MarthaStewartOnionRings-ThumbTextless1080.jpg
-https://www.skinnytaste.com/15-light-and-healthy-vegetarian-recipes/;15 Light and Healthy Vegetarian Recipes;https://www.skinnytaste.com/wp-content/uploads/2015/10/15image_Roundup_Template_Vegetarian_G.jpg
 https://www.skinnytaste.com/mexican-cauliflower-rice/;Mexican Cauliflower “Rice”;https://www.skinnytaste.com/wp-content/uploads/2016/06/Mexican-Cauliflower-Rice-6.jpg
 https://tasty.co/recipe/orange-cauliflower-chicken;Orange Cauliflower “Chicken”;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/250813.jpg
 https://www.skinnytaste.com/avocado-toast-with-sunny-side-egg/;Avocado Toast with Egg – Four (4) Ways;https://www.skinnytaste.com/wp-content/uploads/2015/01/Avocado-Toast-with-Egg-7.jpg

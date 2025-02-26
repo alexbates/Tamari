@@ -21,7 +21,6 @@ https://www.dinneratthezoo.com/slow-cooker-mongolian-beef/;Slow Cooker Mongolian
 https://www.dinneratthezoo.com/crockpot-meatloaf-with-vegetables/;Crockpot Meatloaf with Vegetables;https://www.dinneratthezoo.com/wp-content/uploads/2019/09/crockpot-meatloaf-4.jpg
 https://therecipecritic.com/slow-cooker-beef-carnitas-tacos/;Slow Cooker Beef Carnitas Tacos;https://therecipecritic.com/wp-content/uploads/2012/09/slowcookerbeefcarnitas1.jpg
 https://www.thereciperebel.com/slow-cooker-honey-lemon-chicken-recipe-video/;Slow Cooker Honey Lemon Chicken Breast;https://www.thereciperebel.com/wp-content/uploads/2017/10/slow-cooker-honey-lemon-chicken-www.thereciperebel.com-1200-15-of-29.jpg
-https://www.dinneratthezoo.com/slow-cooker-chili-recipes/;20 Slow Cooker Chili Recipes;https://www.dinneratthezoo.com/wp-content/uploads/2023/03/slow-cooker-chili-recipes-featured-new.jpg
 https://www.dinneratthezoo.com/slow-cooker-mac-cheese/;Slow Cooker Mac and Cheese;https://www.dinneratthezoo.com/wp-content/uploads/2019/10/slow-cooker-mac-and-cheese-final-1.jpg
 https://www.thereciperebel.com/slow-cooker-baked-ziti/;Slow Cooker Baked Ziti Recipe;https://www.thereciperebel.com/wp-content/uploads/2016/10/slow-cooker-baked-ziti-www.thereciperebel.com-1200-5-of-22.jpg
 https://www.dinneratthezoo.com/chicken-tortellini-soup-slow-cooker/;Chicken Tortellini Soup (Slow Cooker);https://www.dinneratthezoo.com/wp-content/uploads/2017/09/chicken-tortellini-soup-2.jpg
@@ -36,7 +35,6 @@ https://therecipecritic.com/slow-cooker-macaroni-cheese/;Slow Cooker Macaroni an
 https://www.dinneratthezoo.com/slow-cooker-brisket/;Slow Cooker Brisket;https://www.dinneratthezoo.com/wp-content/uploads/2019/11/slow-cooker-brisket-4.jpg
 https://www.dinneratthezoo.com/crock-pot-stuffing/;Crock Pot Stuffing;https://www.dinneratthezoo.com/wp-content/uploads/2021/04/crock-pot-stuffing-4.jpg
 https://www.wellplated.com/crock-pot-chicken-pot-pie/;Crock Pot Chicken Pot Pie;https://www.wellplated.com/wp-content/uploads/2020/02/Slow-Cooker-Chicken-Pot-Pie.jpg
-https://therecipecritic.com/amazing-slow-cooker-meal-ideas/;Amazing Slow Cooker Meals;https://therecipecritic.com/wp-content/uploads/2022/10/Roundup-Collage-6.png
 https://www.thereciperebel.com/slow-cooker-three-bean-beef-chili/;Slow Cooker Three Bean Beef Chili;https://www.thereciperebel.com/wp-content/uploads/2017/02/slow-cooker-chili-www.thereciperebel.com-600-26-of-27.jpg
 https://www.wellplated.com/crockpot-tortellini-soup/;Crockpot Tortellini Soup;https://www.wellplated.com/wp-content/uploads/2018/10/Crockpot-Tortellini-Soup-with-Sausage.jpg
 https://www.dinneratthezoo.com/crock-pot-baked-potatoes/;Crock Pot Baked Potatoes;https://www.dinneratthezoo.com/wp-content/uploads/2022/09/crock-pot-baked-potatoes-final-3.jpg
@@ -61,7 +59,6 @@ https://www.wellplated.com/crockpot-meatballs/;Crockpot Meatballs;https://www.we
 https://therecipecritic.com/3-packet-roast/;3 Packet Roast;https://therecipecritic.com/wp-content/uploads/2023/08/3-packet-roast-.jpg
 https://therecipecritic.com/mississippi-pork-roast/;Slow Cooker Mississippi Pork Roast;https://therecipecritic.com/wp-content/uploads/2019/02/mississippiporkroast.jpg
 https://www.thereciperebel.com/crockpot-chicken-stew/;Crockpot Chicken Stew;https://www.thereciperebel.com/wp-content/uploads/2023/05/crockpot-chicken-stew-TRR-1200-23-of-33.jpg
-https://www.dinneratthezoo.com/slow-cooker-soup-recipes/;20 Slow Cooker Soup Recipes;https://www.dinneratthezoo.com/wp-content/uploads/2023/02/slow-cooker-soup-recipes-featured-new.jpg
 https://therecipecritic.com/slow-cooker-lemon-chicken-piccata/;Slow Cooker Lemon Chicken Piccata;https://therecipecritic.com/wp-content/uploads/2017/04/slow-cooker-lemon-piccata-2sm.jpg
 https://therecipecritic.com/slow-cooker-beef-and-broccoli/;Slow Cooker Beef and Broccoli;https://therecipecritic.com/wp-content/uploads/2012/11/Slow-Cooker-Beef-and-Broccoli-1.png
 https://therecipecritic.com/salsa-chicken/;Crockpot Salsa Chicken;https://therecipecritic.com/wp-content/uploads/2012/05/Screenshot-2024-04-02-at-12.05.01-AM.png
@@ -102,11 +99,8 @@ https://www.thereciperebel.com/slow-cooker-vegetarian-burritos/;Slow Cooker Vege
 https://therecipecritic.com/slow-cooker-sausage-herb-stuffing/;Slow Cooker Sausage Herb Stuffing;https://therecipecritic.com/wp-content/uploads/2015/11/Sausage-Stuffing.png
 https://www.wellplated.com/slow-cooker-chicken-enchilada-soup/;Crockpot Chicken Enchilada Soup;https://www.wellplated.com/wp-content/uploads/2021/10/CrockPot-Chicken-Enchilada-Soup-Recipe-Easy.jpg
 https://www.thereciperebel.com/no-cream-slow-cooker-creamed-corn/;No Cream Slow Cooker Creamed Corn;https://www.thereciperebel.com/wp-content/uploads/2015/10/No-Cream-Slow-Cooker-Creamed-Corn-www.thereciperebel.com-4-of-6.jpg
-https://www.thereciperebel.com/easy-crockpot-meals/;30+ Easy Crockpot Meals;https://www.thereciperebel.com/wp-content/uploads/2021/09/easy-crockpot-meals-TRR.jpg
 https://therecipecritic.com/crockpot-chicken-fajitas/;Crockpot Chicken Fajitas;https://therecipecritic.com/wp-content/uploads/2021/01/crockpot-chicken-fajitas.png
 https://therecipecritic.com/slow-cooker-creamy-ranch-potatoes/;Slow Cooker Creamy Ranch Potatoes;https://therecipecritic.com/wp-content/uploads/2015/04/slow-cooker-ranch-potatoes-11.jpg
-https://www.thereciperebel.com/30-crockpot-chicken-recipes/;40+ Crockpot Chicken Recipes;https://www.thereciperebel.com/wp-content/uploads/2018/09/crockpot-chicken-recipes-www.thereciperebel.com-square.jpg
-https://www.wellplated.com/slow-cooker-weekly-meal-plan-bonus-1/;Slow Cooker Weekly Meal Plan – 1;https://www.wellplated.com/wp-content/uploads/2023/10/Slow-Cooker-Meal-Plan.jpg
 https://therecipecritic.com/easy-crockpot-candy/;Easy Crockpot Candy;https://therecipecritic.com/wp-content/uploads/2018/12/Screen-Shot-2022-12-10-at-9.07.30-AM.png
 https://www.dinneratthezoo.com/crock-pot-chicken-noodle-soup/;Crock Pot Chicken Noodle Soup;https://www.dinneratthezoo.com/wp-content/uploads/2019/02/crockpot-chicken-noodle-soup-4.jpg
 https://www.wellplated.com/easy-slow-cooker-pulled-pork/;Chile Verde Pork;https://www.wellplated.com/wp-content/uploads/2015/01/Easy-Salsa-Verde-Slow-Cooker-Pulled-Pork.jpg
@@ -208,7 +202,6 @@ https://therecipecritic.com/crockpot-spinach-artichoke-dip/;Crockpot Spinach Art
 https://therecipecritic.com/slow-cooker-korean-beef/;Slow Cooker Korean Beef;https://therecipecritic.com/wp-content/uploads/2015/10/Slow-Cooker-Korean-Beef-Facebook-Image.png
 https://therecipecritic.com/crockpot-buffalo-chicken-dip/;Easy Crockpot Buffalo Chicken Dip;https://therecipecritic.com/wp-content/uploads/2021/04/Crockpot-Buffalo-Chicken-Dip.png
 https://therecipecritic.com/slow-cooker-honey-teriyaki-chicken/;Slow Cooker Honey Teriyaki Chicken;https://therecipecritic.com/wp-content/uploads/2015/03/honeyteriyakichickentitle.jpg
-https://therecipecritic.com/30-must-make-slow-cooker-recipes/;30 MUST Try Slow Cooker Recipes;https://therecipecritic.com/wp-content/uploads/2015/10/slow-cooker-collage.jpg
 https://www.dinneratthezoo.com/slow-cooker-chicken-tacos/;Slow Cooker Chicken Tacos;https://www.dinneratthezoo.com/wp-content/uploads/2017/10/slow-cooker-chicken-tacos-14.jpg
 https://www.thereciperebel.com/crockpot-chicken-and-dumplings/;Crockpot Chicken and Dumplings;https://www.thereciperebel.com/wp-content/uploads/2021/10/crockpot-chicken-and-dumplings-www.thereciperebel.com-1200-8-of-27.jpg
 https://www.thereciperebel.com/instant-pot-pulled-pork-cranberry-bbq-sauce/;Instant Pot Pulled Pork with Cranberry BBQ Sauce;https://www.thereciperebel.com/wp-content/uploads/2018/05/instant-pot-pulled-pork-cranberry-bbq-sauce-www.thereciperebel.com-600-5.jpg
@@ -231,7 +224,6 @@ https://therecipecritic.com/slow-cooker-creamy-cilantro-lime-chicken/;Slow Cooke
 https://www.thereciperebel.com/slow-cooker-pineapple-glazed-carrots/;Slow Cooker Pineapple Glazed Carrots;https://www.thereciperebel.com/wp-content/uploads/2016/12/Slow-Cooker-Pineapple-Glazed-Carrots-www.thereciperebel.com-2-of-6.jpg
 https://www.wellplated.com/pumpkin-overnight-oats/;Pumpkin Overnight Oats;https://www.wellplated.com/wp-content/uploads/2016/10/Slow-Cooker-Pumpkin-Overnight-Steel-Cut-Oats-recipe.jpg
 https://therecipecritic.com/slow-cooker-chicken-tikka-masala/;Slow Cooker Chicken Tikka Masala;https://therecipecritic.com/wp-content/uploads/2020/02/Screen-Shot-2023-01-19-at-3.00.46-PM.png
-https://www.dinneratthezoo.com/slow-cooker-pasta-recipes/;14 Slow Cooker Pasta Recipes;https://www.dinneratthezoo.com/wp-content/uploads/2023/03/slow-cooker-pasta-recipes-featured-new.jpg
 https://www.dinneratthezoo.com/pork-tenderloin-tacos/;Pork Tacos (Slow Cooker);https://www.dinneratthezoo.com/wp-content/uploads/2016/04/pork-tacos-4.jpg
 https://www.wellplated.com/slow-cooker-turkey-meatballs/;Crock Pot Turkey Meatballs;https://www.wellplated.com/wp-content/uploads/2016/09/Crock-Pot-Turkey-Meatballs.jpg
 https://therecipecritic.com/coconut-curry-chicken/;Coconut Curry Chicken;https://therecipecritic.com/wp-content/uploads/2023/05/c-curry-crop.png
@@ -239,7 +231,6 @@ https://www.wellplated.com/slow-cooker-stuffing/;Crock Pot Stuffing;https://www.
 https://therecipecritic.com/slow-cooker-honey-garlic-sriracha-wings/;Slow Cooker Honey Garlic Sriracha Wings;https://therecipecritic.com/wp-content/uploads/2017/12/Slow-Cooker-Honey-Garlic-Sriracha-Wings.png
 https://www.thereciperebel.com/sweet-and-sour-crockpot-meatballs-video/;Sweet and Sour Crockpot Meatballs + VIDEO;https://www.thereciperebel.com/wp-content/uploads/2018/12/sweet-and-sour-crockpot-meatballs-www.thereciperebel.com-1200-4-of-32.jpg
 https://www.thereciperebel.com/honey-balsamic-slow-cooker-beef-stew-recipe-video/;Honey Balsamic Slow Cooker Beef Stew;https://www.thereciperebel.com/wp-content/uploads/2024/03/honey-balsamic-slow-cooker-beef-stew-TRR-1200-28-of-34.jpg
-https://www.thereciperebel.com/crockpot-soup-recipes/;35+ Crockpot Soup Recipes;https://www.thereciperebel.com/wp-content/uploads/2019/01/crockpot-soup-recipes-www.thereciperebel.com-square.jpg
 https://www.dinneratthezoo.com/crock-pot-sweet-potato-casserole/;Crock Pot Sweet Potato Casserole;https://www.dinneratthezoo.com/wp-content/uploads/2021/03/crock-pot-sweet-potato-casserole-4.jpg
 https://www.dinneratthezoo.com/slow-cooker-meatballs/;Slow Cooker Meatballs (Italian Style);https://www.dinneratthezoo.com/wp-content/uploads/2018/07/slow-cooker-meatballs-5.jpg
 https://www.thereciperebel.com/bbq-chili-cheese-lasagna/;BBQ Chili Cheese Lasagna;https://www.thereciperebel.com/wp-content/uploads/2014/03/BBQ-Chili-Cheese-Lasagna-www.thereciperebel.com-9-of-13.jpg
@@ -305,7 +296,6 @@ https://therecipecritic.com/crock-pot-huli-huli-chicken/;Crockpot Huli Huli Chic
 https://therecipecritic.com/crockpot-tuscan-chicken/;Crockpot Tuscan Chicken;https://therecipecritic.com/wp-content/uploads/2023/02/Screen-Shot-2023-02-15-at-6.02.45-PM.png
 https://www.thereciperebel.com/slow-cooker-swedish-meatballs/;Slow Cooker Swedish Meatballs;https://www.thereciperebel.com/wp-content/uploads/2019/11/slow-cooker-swedish-meatballs-www.thereciperebel.com-600-18-of-19.jpg
 https://www.dinneratthezoo.com/slow-cooker-hot-chocolate/;Slow Cooker Hot Chocolate;https://www.dinneratthezoo.com/wp-content/uploads/2017/10/slow-cooker-hot-chocolate-3.jpg
-https://www.thereciperebel.com/ground-beef-crock-pot-recipes/;25+ Ground Beef Crock Pot Recipes;https://www.thereciperebel.com/wp-content/uploads/2018/10/ground-beef-crock-pot-recipes-sq-1.jpg
 https://www.wellplated.com/buffalo-chicken-meatballs/;Buffalo Chicken Meatballs;https://www.wellplated.com/wp-content/uploads/2018/09/Buffalo-Chicken-Meatballs-Crockpot.jpg
 https://www.wellplated.com/maple-bourbon-crockpot-bbq-chicken-sandwiches-apple-slaw/;Pulled Chicken Sandwich;https://www.wellplated.com/wp-content/uploads/2015/10/Step-by-Step-video-to-make-the-BEST-Crock-Pot-BBQ-Chicken-ever-and-a-crunchy-apple-slaw.jpg
 https://www.thereciperebel.com/crockpot-chicken-noodle-soup/;Crockpot Chicken Noodle Soup;https://www.thereciperebel.com/wp-content/uploads/2023/06/crockpot-chicken-noodle-soup-TRR-31-of-32.jpg
@@ -357,13 +347,11 @@ https://therecipecritic.com/slow-cooker-cinnamon-almonds/;Slow Cooker Cinnamon A
 https://therecipecritic.com/slow-cooker-brown-sugar-balsamic-chicken-vegetables/;Slow Cooker Brown Sugar Balsamic Chicken and Vegetables;https://therecipecritic.com/wp-content/uploads/2017/02/0C4A7731.jpg
 https://www.dinneratthezoo.com/slow-cooker-chicken-wings/;Slow Cooker Chicken Wings;https://www.dinneratthezoo.com/wp-content/uploads/2017/08/slow-cooker-chicken-wings-3.jpg
 https://www.thereciperebel.com/garlic-butter-chicken-and-potatoes/;Slow Cooker Garlic Butter Chicken & Potatoes;https://www.thereciperebel.com/wp-content/uploads/2020/01/crockpot-garlic-butter-chicken-and-potatoes-www.thereciperebel.com-600-9-of-23.jpg
-https://therecipecritic.com/best-ever-slow-cooker-dinner-recipes/;Best Ever Slow Cooker Dinner Recipes;https://therecipecritic.com/wp-content/uploads/2017/11/Roundup-Collage-6.png
 https://therecipecritic.com/slow-cooker-mongolian-beef/;Slow Cooker Mongolian Beef;https://therecipecritic.com/wp-content/uploads/2020/08/Screenshot-2023-11-05-at-4.07.04-PM.png
 https://www.dinneratthezoo.com/slow-cooker-chicken-drumsticks/;Slow Cooker Chicken Drumsticks;https://www.dinneratthezoo.com/wp-content/uploads/2018/12/slow-cooker-chicken-drumsticks-4.jpg
 https://therecipecritic.com/slow-cooker-balsamic-beef/;Slow Cooker Balsamic Beef;https://therecipecritic.com/wp-content/uploads/2023/11/balsamic_beef-1.jpg
 https://www.wellplated.com/crockpot-potato-soup-recipe/;Crockpot Potato Soup;https://www.wellplated.com/wp-content/uploads/2019/01/Healthy-Crockpot-Potato-Soup.jpg
 https://therecipecritic.com/slow-cooker-chicken-taco-chili/;Slow Cooker Chicken Taco Chili;https://therecipecritic.com/wp-content/uploads/2012/10/chicktacp34.jpg
-https://www.thereciperebel.com/crockpot-chicken-breast-recipes/;Easy Crockpot Chicken Breast Recipes;https://www.thereciperebel.com/wp-content/uploads/2022/02/crockpot-chicken-breast-recipes-TRR-squareFB.jpg
 https://therecipecritic.com/slow-cooker-kalua-pulled-pork/;Slow Cooker Kalua Pulled Pork;https://therecipecritic.com/wp-content/uploads/2020/09/Screenshot-2024-02-14-at-9.45.31-AM.png
 https://www.thereciperebel.com/grilled-pulled-pork-stuffed-peppers-and-a-giveaway/;Grilled Pulled Pork Stuffed Peppers;https://www.thereciperebel.com/wp-content/uploads/2015/06/Grilled-Pulled-Pork-Stuffed-Peppers-www.thereciperebel.com-7-of-13.jpg
 https://www.wellplated.com/spiced-wine/;Mulled Wine;https://www.wellplated.com/wp-content/uploads/2014/12/Slow-Cooker-Spiced-Wine.jpg
@@ -419,7 +407,6 @@ https://www.thereciperebel.com/slow-cooker-pot-roast/;Slow Cooker Pot Roast with
 https://www.thereciperebel.com/slow-cooker-honey-sriracha-chicken-tacos/;Slow Cooker Honey Sriracha Chicken Tacos;https://www.thereciperebel.com/wp-content/uploads/2015/09/Slow-Cooker-Honey-Sriracha-Tacos-www.thereciperebel.com-4.jpg
 https://therecipecritic.com/slow-cooker-chicken-mushroom-stroganoff/;Slow Cooker Chicken and Mushroom Stroganoff;https://therecipecritic.com/wp-content/uploads/2016/09/93622807-70CC-4784-BE48-51B717C90B2F.jpeg
 https://therecipecritic.com/crockpot-parmesan-garlic-chicken-pasta/;Crockpot Parmesan Garlic Chicken Pasta;https://therecipecritic.com/wp-content/uploads/2023/07/8422686C-C1AA-432F-B9B2-C8CE13280633.jpeg
-https://www.thereciperebel.com/best-crockpot-recipes/;Best Crockpot Recipes;https://www.thereciperebel.com/wp-content/uploads/2024/03/best-crockpot-recipes-TRR-square.jpg
 https://www.wellplated.com/crock-pot-shredded-chicken/;Crockpot Shredded Chicken;https://www.wellplated.com/wp-content/uploads/2022/07/Crockpot-chicken-shredded.jpg
 https://therecipecritic.com/slow-cooker-honey-sriracha-chicken/;Slow Cooker Honey Sriracha Chicken;https://therecipecritic.com/wp-content/uploads/2015/06/Slow-Cooker-Honey-Sriracha-Chicken-text.jpg
 https://www.dinneratthezoo.com/slow-cooker-turkey-chili/;Slow Cooker Turkey Chili;https://www.dinneratthezoo.com/wp-content/uploads/2017/10/slow-cooker-turkey-chili-15.jpg
@@ -434,18 +421,15 @@ https://www.wellplated.com/crockpot-vegetable-beef-soup/;Crockpot Vegetable Beef
 https://www.wellplated.com/buffalo-chicken-taquitos/;Slow Cooker Buffalo Chicken Taquitos;https://www.wellplated.com/wp-content/uploads/2016/10/Buffalo-Chicken-Taquitos-Recipe.jpg
 https://www.wellplated.com/slow-cooker-turkey-quinoa-chili/;Slow Cooker Turkey Chili with Sweet Potatoes;https://www.wellplated.com/wp-content/uploads/2015/10/The-BEST-Slow-Cooker-Turkey-Chili-with-Quinoa-Sweet-Potatoes-and-Black-Beans.jpg
 https://www.thereciperebel.com/crockpot-chicken-taco-soup/;Crockpot Chicken Taco Soup;https://www.thereciperebel.com/wp-content/uploads/2023/10/crockpot-chicken-taco-soup-TRR-22-of-28.jpg
-https://therecipecritic.com/slow-cooker-recipes/;30 Slow Cooker Recipes;
 https://www.dinneratthezoo.com/crock-pot-ham/;Crock Pot Ham with Brown Sugar Glaze;https://www.dinneratthezoo.com/wp-content/uploads/2018/10/crock-pot-ham-5.jpg
 https://www.dinneratthezoo.com/slow-cooker-pork-tenderloin/;Slow Cooker Pork Tenderloin;https://www.dinneratthezoo.com/wp-content/uploads/2018/07/slow-cooker-pork-tenderloin-5.jpg
 https://www.thereciperebel.com/slow-cooker-mongolian-beef/;Slow Cooker Mongolian Beef;https://www.thereciperebel.com/wp-content/uploads/2023/10/slow-cooker-mongolian-beef-TRR-38-of-38.jpg
 https://www.thereciperebel.com/crockpot-lasagna-soup/;Crockpot Lasagna Soup (quick & easy!);https://www.thereciperebel.com/wp-content/uploads/2022/12/crockpot-lasagna-soup-TRR-1200-18-of-36.jpg
 https://www.thereciperebel.com/crockpot-potato-soup/;Crockpot Potato Soup;https://www.thereciperebel.com/wp-content/uploads/2019/10/crockpot-potato-soup-www.thereciperebel.com-600-1-of-12.jpg
 https://www.dinneratthezoo.com/slow-cooker-pot-roast/;Slow Cooker Pot Roast;https://www.dinneratthezoo.com/wp-content/uploads/2019/12/slow-cooker-pot-roast-5.jpg
-https://therecipecritic.com/delicious-slow-cooker-meal-ideas/;Delicious Slow Cooker Meal Ideas;https://therecipecritic.com/wp-content/uploads/2023/01/Roundup-Collage-12.png
 https://www.thereciperebel.com/slow-cooker-bbq-chicken-chili-mac/;{Slow Cooker} BBQ Chicken Chili Mac;https://www.thereciperebel.com/wp-content/uploads/2015/01/Slow-Cooker-BBQ-Chicken-Chili-Mac-www.thereciperebel.com-5-of-7.jpg
 https://www.wellplated.com/slow-cooker-thai-chicken/;Slow Cooker Thai Peanut Chicken;https://www.wellplated.com/wp-content/uploads/2022/02/Thai-Peanut-Chicken-Recipe.jpg
 https://therecipecritic.com/slow-cooker-cherry-chocolate-hot-fudge-cake/;Slow Cooker Cherry Chocolate Hot Fudge Cake;https://therecipecritic.com/wp-content/uploads/2016/12/Slow-Cooker-Cherry-Chocolate-Hot-Fudge-Cake.png
-https://www.thereciperebel.com/dump-and-go-slow-cooker-recipes/;30+ Dump and Go Slow Cooker Recipes (Easy Crock Pot Dump Meals);https://www.thereciperebel.com/wp-content/uploads/2018/02/dump-n-go-slow-cooker-recipes-square.jpg
 https://www.thereciperebel.com/sausage-potato-soup-with-kale/;Sausage Potato Soup with Kale;https://www.thereciperebel.com/wp-content/uploads/2019/01/sausage-potato-soup-with-kale-TRR-1200-9-of-23.jpg
 https://therecipecritic.com/overnight-cinnamon-apple-oatmeal/;Slow Cooker Cinnamon Apple Oatmeal;https://therecipecritic.com/wp-content/uploads/2012/11/slow-cooker-oatmeal-crop.png
 https://www.wellplated.com/slow-cooker-bbq-pork-chops/;Crock Pot Pork Chops;https://www.wellplated.com/wp-content/uploads/2023/09/Crock-Pot-Pork-Chops-recipe-with-BBQ.jpg

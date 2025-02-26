@@ -409,7 +409,6 @@ https://tasty.co/recipe/easy-zesty-salmon-burgers;Easy Zesty Salmon Burgers;http
 https://tasty.co/recipe/bacon-and-cheese-in-a-mug;Bacon And Cheese In A Mug;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/01c7840ebcec49be9ae67afc2235654b/Breakfast_mug_4_way-FB_final.jpg
 https://www.skinnytaste.com/zucchini-rollatini/;Zucchini Rollatini;https://www.skinnytaste.com/wp-content/uploads/2017/07/noodle-less-zucchini-rollatini-1.jpg
 https://www.iheartnaptime.net/cilantro-lime-crema/;Cilantro Lime Crema;https://www.iheartnaptime.net/wp-content/uploads/2021/05/I-Heart-Naptime-Cilantro-Lime-Crema-Recipe-1.jpg
-https://www.skinnytaste.com/lettuce-wraps/;11 Easy Lettuce Wraps;https://www.skinnytaste.com/wp-content/uploads/2023/03/easy-lettuce-wrap-recipes.png
 https://tasty.co/recipe/fresh-basil-parmesan-pesto;Fresh Basil & Parmesan Pesto;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/c4bdaa0c3e0a441d9ab90be8700e9aab.jpeg
 https://tasty.co/recipe/garlic-knots;Garlic Knots;https://img.buzzfeed.com/video-api-prod/assets/bad73c35cc4949fc8c9485bcc97b119d/BFV14526_Garlic_Knots_ThumbTextless.jpg
 https://tasty.co/recipe/hummus-caesar-salad;Hummus Caesar Salad;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/31c7c2021bee4fc4b108aee4b65f7281.jpeg
@@ -428,7 +427,6 @@ https://www.skinnytaste.com/autumn-salad-with-pears-and-gorgonzola/;Autumn Salad
 https://www.iheartnaptime.net/balsamic-chicken/;One-Pan Balsamic Chicken and Veggies;https://www.iheartnaptime.net/wp-content/uploads/2017/02/Sheet-pan-balsamic-chicken-recipe-I-Heart-Naptime-4.jpg
 https://www.skinnytaste.com/zucchini-noodles-zoodles-with-lemon/;Zucchini Noodles with Lemon-Garlic Spicy Shrimp;https://www.skinnytaste.com/wp-content/uploads/2014/04/Zoodles-with-Spicy-Shrimp.jpg
 https://tasty.co/recipe/cherry-vanilla-soda;Cherry Vanilla Soda;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/11cf5c647f4642d1aee7e73d9c8c8fb7/FB_BFV50829_NaturalFruitHerbSodasXWays_FB_FINAL.jpg
-https://tasty.co/recipe/recipe-title-crispy-twisted-bacon-sticks;Crispy Twisted Bacon Sticks;
 https://www.skinnytaste.com/italian-antipasto-salad/;Antipasto Salad;https://www.skinnytaste.com/wp-content/uploads/2013/04/Italian-Antipasto-Salad.jpg
 https://www.iheartnaptime.net/greek-seasoning-recipe/;Greek Seasoning Recipe;https://www.iheartnaptime.net/wp-content/uploads/2022/04/I-Heart-Naptime-greek-seasoning-recipe.jpg
 https://www.skinnytaste.com/creamy-cauliflower-mash-with-kale-low/;Creamy Cauliflower Mash with Kale (Low-Carb Colcannon);https://www.skinnytaste.com/wp-content/uploads/2016/03/CreamyCauliflowerMashwithKale-2.jpg
@@ -452,7 +450,6 @@ https://tasty.co/recipe/salmon-patty-bowl;Salmon Patty Bowl;https://img.buzzfeed
 https://tasty.co/recipe/the-debt-payer;The Debt Payer;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211009.jpg
 https://www.askchefdennis.com/i-love-zucchini-blossoms/;How to Make Stuffed Zucchini Blossoms – an Italian Classic;https://www.askchefdennis.com/wp-content/uploads/2015/10/zucchini-blossoms-10.jpg
 https://tasty.co/recipe/creamy-pecan-stuffed-mushrooms;Creamy Pecan-Stuffed Mushrooms;https://img.buzzfeed.com/video-api-prod/assets/8e2264f6e8c949ed8e1c23bd7dceac70/mushroom.jpg
-https://tasty.co/recipe/filipino-style-bbq-skewers;Filipino-Style BBQ Skewers;
 https://www.skinnytaste.com/shrimp-ceviche-and-avocado-salad/;Shrimp Ceviche and Avocado Salad;https://www.skinnytaste.com/wp-content/uploads/2015/08/ShrimpCevicheandAvocadoSalad-2.jpg
 https://tasty.co/recipe/whipped-cream;Whipped Cream;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/ff436808402144968aced4f5a6d2c3bc/finalFB.jpg
 https://tasty.co/recipe/western-omelet;Western Omelet;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/f9b2c409d8124f1d97f145acd523bd79/BFV77395_HowToCookAPerfectOmelet_ADB_032221_V06l_16x9_YT.jpg
@@ -499,7 +496,6 @@ https://www.skinnytaste.com/skinny-cucumber-ranch-dressing/;Skinny Cucumber Ranc
 https://tasty.co/recipe/easy-glazed-pork-chops;Easy Glazed Pork Chops;https://img.buzzfeed.com/video-api-prod/assets/0ddb27186a9249a583b790ebaf9e137a/Thumb_A_-_FB.jpg
 https://tasty.co/recipe/egg-salad-crostini;Egg Salad Crostini;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/6a6cd94dd7504a89bc932f7725c0a894/OO.jpg
 https://tasty.co/recipe/asparagus-and-mushroom-pesto-spaghetti-squash;Asparagus And Mushroom Pesto Spaghetti Squash;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/3e2512f1d8954ffabd263ad54643909c/fb.jpg
-https://tasty.co/recipe/strawberry-cheesecake-crescent-rolls;Strawberry Cheesecake Crescent Rolls;https://img.buzzfeed.com/video-api-prod/assets/2b8ff32ba6db4d018200b305b586e689/StrawberryCheesecakeCrescentRolls_ThumbB.jpg
 https://tasty.co/recipe/creamy-chipotle-chicken-lettuce-cups;Creamy Chipotle Chicken Lettuce Cups;https://img.buzzfeed.com/video-api-prod/assets/fa16b6e831fe4b64a0a828b6f3a858ab/BFV11194_CreamyChipotleChickenLettuceCupsThumb.jpg
 https://www.iheartnaptime.net/chicken-meatballs/;Chicken Meatballs;https://www.iheartnaptime.net/wp-content/uploads/2020/12/chicken-meatballs-5.jpg
 https://www.askchefdennis.com/roasted-eggplant-dip/;Roasted Eggplant Dip;https://www.askchefdennis.com/wp-content/uploads/2023/05/roasted-eggplant-dip-hero-10a.jpg
@@ -1461,7 +1457,6 @@ https://www.skinnytaste.com/freshly-brewed-ice-tea-with-fresh-mint/;Freshly Brew
 https://tasty.co/recipe/nutritious-nut-balls;Nutritious Nut Balls;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/4b4d9398a8cb442396644c5580fc0985.jpeg
 https://www.skinnytaste.com/peruvian-green-sauce/;Peruvian Green Sauce;https://www.skinnytaste.com/wp-content/uploads/2018/05/peruvian-green-sauce-1-7.jpg
 https://tasty.co/recipe/microwave-spaghetti-squash-meatballs;Microwave Spaghetti Squash & Meatballs;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/600cd3acd17442c98a59439e0d32205b/BFV28873_6MicrowaveMealsHACK.jpg
-https://tasty.co/recipe/rotisserie-chicken-dinner-the-garden-lover;Rotisserie Chicken Dinner: The Garden-Lover;
 https://tasty.co/recipe/4-ingredient-squid-ink-pasta;4-Ingredient Squid Ink Pasta;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/3878e914f7d0413f9dd89dfdbc141f6f/Tasty_03_Queens_Gambit_FB.jpg
 https://tasty.co/recipe/spicy-crab-curry;Spicy Crab Curry;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/5a7c04b5fa404c6488c6e4ae9314fc57.jpeg
 https://tasty.co/recipe/sausage-french-toast-roll-up;Sausage French Toast Roll-Ups;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/a9fd0aad236149dc816b4d8b5b066932/frenchtoastrollups4ways-fb.jpg
@@ -1731,7 +1726,6 @@ https://tasty.co/recipe/pan-fried-salmon;Pan-Fried Salmon;https://img.buzzfeed.c
 https://tasty.co/recipe/sushi-style-salmon;Sushi-Style Salmon;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/e449ed57a7654a22820e01b4a58fbe0f.jpeg
 https://tasty.co/recipe/ham-cheddar-wrapped-breakfast-burrito;Ham & Cheddar Wrapped Breakfast Burrito;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/7b4e8180f6d54515af8f408adc876d26/BFV39535_EggBurritos_FB1080SQ.jpg
 https://tasty.co/recipe/beef-beer-goulash;Beef Beer Goulash;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/114453.jpg
-https://www.skinnytaste.com/roasted-yellow-squash/;Roasted Yellow Squash;https://www.skinnytaste.com/wp-content/uploads/2012/08/roasted-squash.jpg
 https://tasty.co/recipe/new-crispy-potato-puffs;Crispy Potato Puffs;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/435716.jpg
 https://www.skinnytaste.com/cheesy-stuffed-chicken-breast-with-zucchini/;Cheesy Stuffed Chicken Breast with Zucchini;https://www.skinnytaste.com/wp-content/uploads/2023/05/Cheesy-Stuffed-Chicken-Breast-with-Zucchini-8.jpg
 https://www.iheartnaptime.net/pico-de-gallo/;Pico de Gallo;https://www.iheartnaptime.net/wp-content/uploads/2019/02/pico-de-gallo-recipe-1.jpg
@@ -2093,7 +2087,6 @@ https://tasty.co/recipe/cauliflower-crust-pizza-bites;Cauliflower Crust Pizza Bi
 https://www.skinnytaste.com/air-fried-shishito-peppers/;Air Fryer Shishito Peppers;https://www.skinnytaste.com/wp-content/uploads/2019/08/Air-Fryer-Blistered-Shishito-Peppers-4.jpg
 https://tasty.co/recipe/avocado-egg-cups;Avocado Egg Cups;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/290d1a3f2f6841b09e038c02f25e7f65/FACEBOOK.jpg
 https://www.skinnytaste.com/spanakopita-baked-eggs/;Spanakopita Baked Eggs;https://www.skinnytaste.com/wp-content/uploads/2021/03/SPANAKOPITA-26.jpg
-https://www.skinnytaste.com/low-carb-dinner-ideas/;33 Easy Low Carb Dinner Ideas;https://www.skinnytaste.com/wp-content/uploads/2024/01/low-carb-dinner-ideas.png
 https://tasty.co/recipe/mochi-sesame-balls;Mochi Sesame Balls;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/2fff3cc98c104857860da169f5735285/BFV51758_MochiDesserts_YT.jpg
 https://www.skinnytaste.com/lighter-spinach-frittata-235-pts/;Spinach Feta Frittata;https://www.skinnytaste.com/wp-content/uploads/2008/11/spinach-frittata.jpg
 https://tasty.co/recipe/pesto-chicken-garlic-knot-sliders;Pesto Chicken Garlic Knot Sliders;https://img.buzzfeed.com/video-api-prod/assets/3e077a1d6c6444d2ac57d505d62a4149/FB_2.jpg

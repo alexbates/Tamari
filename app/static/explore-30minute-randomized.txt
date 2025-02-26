@@ -26,7 +26,6 @@ https://therecipecritic.com/chicken-and-garden-vegetable-skillet/;Chicken and Ga
 https://www.thereciperebel.com/chicken-and-noodles-recipe/;Chicken and Noodles Recipe;https://www.thereciperebel.com/wp-content/uploads/2024/01/one-pan-chicken-and-noodles-TRR-26-of-32.jpg
 https://www.thereciperebel.com/pasta-carbonara-recipe/;Pasta Carbonara Recipe;https://www.thereciperebel.com/wp-content/uploads/2023/12/spaghetti-carbonara-TRR-12-of-28.jpg
 https://therecipecritic.com/20-minute-skillet-blackened-shrimp-fajitas/;20 Minute Skillet Blackened Shrimp Fajitas;https://therecipecritic.com/wp-content/uploads/2017/09/0C4A0020.jpg
-https://www.thereciperebel.com/air-fryer-recipes-for-beginners/;Best Air Fryer Recipes for Beginners;https://www.thereciperebel.com/wp-content/uploads/2021/11/air-fryer-recipes-for-beginners-www.thereciperebel.com-square.jpg
 https://www.wellplated.com/soy-ginger-salmon/;Soy Ginger Salmon;https://www.wellplated.com/wp-content/uploads/2017/04/Baked-Soy-Ginger-Salmon.jpg
 https://www.wellplated.com/chicken-sweet-potato-kale-skillet/;Quick Chicken Sweet Potato Kale Skillet with Cranberries and Goat Cheese;https://www.wellplated.com/wp-content/uploads/2018/12/Easy-Healthy-Chicken-Skillet-Dinner-with-Sweet-Potatoes.jpg
 https://www.wellplated.com/shrimp-tacos/;Shrimp Tacos;https://www.wellplated.com/wp-content/uploads/2018/04/Healthy-Shrimp-Tacos-with-Shrimp-Taco-Sauce.jpg
@@ -172,7 +171,6 @@ https://www.thereciperebel.com/dorito-taco-salad/;Dorito Taco Salad;https://www.
 https://therecipecritic.com/creamy-garlic-pork-marsala/;Creamy Garlic Pork Marsala;https://therecipecritic.com/wp-content/uploads/2018/08/unnamed.jpg
 https://www.wellplated.com/tempeh-tacos/;Tempeh Tacos;https://www.wellplated.com/wp-content/uploads/2020/05/Best-Tempeh-Tacos-Recipe.jpg
 https://therecipecritic.com/buffalo-chicken-pasta/;Creamy Buffalo Chicken Pasta;https://therecipecritic.com/wp-content/uploads/2022/08/Screen-Shot-2022-08-09-at-6.46.09-AM.png
-https://www.thereciperebel.com/25-of-the-best-air-fryer-chicken-recipes/;25 of the Best Air Fryer Chicken Recipes;https://www.thereciperebel.com/wp-content/uploads/2021/12/air-fryer-chicken-recipes-3.jpg
 https://www.wellplated.com/avocado-burger/;Avocado Burger with Chipotle Yogurt Sauce;https://www.wellplated.com/wp-content/uploads/2017/06/Chicken-Avocado-Burger-with-Chiptole-Yogurt-Sauce.jpg
 https://therecipecritic.com/buddha-bowl/;Buddha Bowl;https://therecipecritic.com/wp-content/uploads/2020/06/buddha-bowl-3.jpg
 https://www.wellplated.com/garlic-shrimp-pasta/;Garlic Shrimp Pasta;https://www.wellplated.com/wp-content/uploads/2018/02/Healthy-Garlic-Shrimp-Pasta-with-Lemon.jpg
@@ -193,7 +191,6 @@ https://www.thereciperebel.com/honey-garlic-chicken-foil-packets/;Honey Garlic C
 https://www.thereciperebel.com/one-pot-sausage-tomato-pesto-pasta/;One Pot Sausage, Tomato and Pesto Pasta;https://www.thereciperebel.com/wp-content/uploads/2014/11/sausage-tomato-pesto-pasta-www.thereciperebel.com-600-8-of-30.jpg
 https://therecipecritic.com/burrata-appetizer/;Burrata Appetizer;https://therecipecritic.com/wp-content/uploads/2023/07/burrata-appetizer-crop.png
 https://therecipecritic.com/egg-roll-in-a-bowl/;Egg Roll in a Bowl;https://therecipecritic.com/wp-content/uploads/2022/09/Screen-Shot-2022-09-15-at-5.01.23-PM.png
-https://www.greedygirlgourmet.com/naeng-myeon-korean-instant-cold-noodles-review/;Naeng Myeon (Instant Noodles Review);https://www.greedygirlgourmet.com/wp-content/uploads/2021/11/korean-instant-noodles-review.jpg
 https://www.wellplated.com/miso-ramen/;Miso Ramen;https://www.wellplated.com/wp-content/uploads/2023/08/Miso-Ramen-Toppings.jpg
 https://therecipecritic.com/fried-avocado-tacos/;Amazing Fried Avocado Tacos;https://therecipecritic.com/wp-content/uploads/2022/08/avocado-taco-crop.png
 https://www.thereciperebel.com/easy-instant-pot-risotto/;Easy Instant Pot Risotto;https://www.thereciperebel.com/wp-content/uploads/2020/09/instant-pot-risotto-www.thereciperebel.com-n-600-21-of-23.jpg
@@ -254,7 +251,6 @@ https://therecipecritic.com/vegetable-curry/;One Pan Vegetable Curry;https://the
 https://therecipecritic.com/honey-glazed-salmon-bowl/;Honey Glazed Salmon Bowl;https://therecipecritic.com/wp-content/uploads/2024/03/teriyaki_salmon_bites-1200x1799-1.jpg
 https://www.thereciperebel.com/air-fryer-meatballs/;Air Fryer Meatballs;https://www.thereciperebel.com/wp-content/uploads/2021/01/air-fryer-meatballs-www.thereciperebel.com-600-20-of-37.jpg
 https://therecipecritic.com/instant-pot-chicken-and-rice/;Instant Pot Creamy Parmesan Chicken and Rice;https://therecipecritic.com/wp-content/uploads/2021/01/instant-pot-chicken-and-rice.png
-https://www.greedygirlgourmet.com/no-cook-thanksgiving-appetisers/;10 No-Cook Thanksgiving Appetisers;https://www.greedygirlgourmet.com/wp-content/uploads/2022/06/3-ingredient-olive-cream-cheese-spread.jpg
 https://www.wellplated.com/pan-fried-cod/;Pan Fried Cod;https://www.wellplated.com/wp-content/uploads/2020/09/Easy-Pan-Fried-Cod.jpg
 https://therecipecritic.com/20-minute-italian-bread-twists/;20 Minute Italian Bread Twists;https://therecipecritic.com/wp-content/uploads/2022/08/breadtwists-1-2.jpg
 https://www.thereciperebel.com/sweet-and-sour-pork/;Sweet and Sour Pork;https://www.thereciperebel.com/wp-content/uploads/2023/01/sweet-and-sour-pork-TRR-1200-19-of-27.jpg
@@ -295,7 +291,6 @@ https://www.wellplated.com/pumpkin-curry-soup/;Pumpkin Curry Soup;https://www.we
 https://www.wellplated.com/spinach-strawberry-salad/;Spinach Strawberry Salad with Balsamic Poppy Seed Dressing;https://www.wellplated.com/wp-content/uploads/2019/04/Spinach-Strawberry-Salad.jpg
 https://www.wellplated.com/peanut-chicken-with-veggies/;Peanut Butter Chicken;https://www.wellplated.com/wp-content/uploads/2023/08/Peanut-Butter-Chicken-Recipe.jpg
 https://therecipecritic.com/poutine/;Poutine;https://therecipecritic.com/wp-content/uploads/2023/02/Screen-Shot-2023-02-06-at-7.05.43-PM.png
-https://www.thereciperebel.com/25-instant-pot-soup-recipes/;25 Best Instant Pot Soup Recipes;https://www.thereciperebel.com/wp-content/uploads/2021/10/instant-pot-soup-recipes-TRR-square.jpg
 https://www.thereciperebel.com/make-ahead-breakfast-quesadillas-4-ways-video/;Make Ahead Breakfast Quesadillas 4 Ways + VIDEO;https://www.thereciperebel.com/wp-content/uploads/2018/01/breakfast-quesadillas-4-ways-www.thereciperebel.com-15-of-17.jpg
 https://therecipecritic.com/pesto-salmon/;Pesto Salmon;https://therecipecritic.com/wp-content/uploads/2023/01/Screen-Shot-2023-01-12-at-12.18.30-PM.png
 https://www.greedygirlgourmet.com/easy-chinese-cabbage-soup-recipe-20-min/;Easy Chinese Cabbage Soup Recipe (20 min);https://www.greedygirlgourmet.com/wp-content/uploads/2021/12/dabacai-soup-recipe.jpg
@@ -349,7 +344,6 @@ https://www.thereciperebel.com/bbq-chicken-pasta-salad-with-tomatoes-zucchini-co
 https://therecipecritic.com/pan-fried-potatoes/;Pan Fried Potatoes;https://therecipecritic.com/wp-content/uploads/2022/04/pan-fried-potatoes-cropped.png
 https://www.greedygirlgourmet.com/thai-vermicelli-noodle-salad-with-abalone/;Thai Vermicelli Noodle Salad with Abalone;https://www.greedygirlgourmet.com/wp-content/uploads/2023/01/chinese-new-year-abalone-salad-with-glass-noodles.jpg
 https://www.thereciperebel.com/one-pot-turkey-chili-mac-recipe-video/;One Pot Turkey Chili Mac Recipe + VIDEO;https://www.thereciperebel.com/wp-content/uploads/2017/09/one-pot-turkey-chili-mac-www.thereciperebel.com-11-of-13.jpg
-https://www.greedygirlgourmet.com/chinese-sauces/;25 Chinese Sauces;https://www.greedygirlgourmet.com/wp-content/uploads/2021/12/chinese-sauce-doubanjiang.jpg
 https://www.thereciperebel.com/bacon-and-egg-breakfast-nachos/;Bacon and Egg Breakfast Nachos;https://www.thereciperebel.com/wp-content/uploads/2016/03/Bacon-and-Egg-Breakfast-Nachos-www.thereciperebel.com-10-of-10.jpg
 https://www.wellplated.com/salmon-salad/;Salmon Salad;https://www.wellplated.com/wp-content/uploads/2021/05/Salmon-Salad.jpg
 https://www.thereciperebel.com/breakfast-tacos/;Easy Breakfast Tacos;https://www.thereciperebel.com/wp-content/uploads/2023/02/breakfast-tacos-TRR-1200-12-of-26.jpg
@@ -583,7 +577,6 @@ https://therecipecritic.com/pesto-chicken/;Easy Baked Pesto Chicken;https://ther
 https://www.greedygirlgourmet.com/teriyaki-pasta/;Teriyaki Pasta (20 minutes);https://www.greedygirlgourmet.com/wp-content/uploads/2024/01/penne-pasta-in-teriyaki-sauce.jpg
 https://www.wellplated.com/pumpkin-pasta-sauce/;Pumpkin Pasta Sauce;https://www.wellplated.com/wp-content/uploads/2016/09/Easy-Pumpkin-Pasta-Sauce.jpg
 https://www.thereciperebel.com/how-to-reheat-pizza-in-the-air-fryer/;How to Reheat Pizza in the Air Fryer;https://www.thereciperebel.com/wp-content/uploads/2023/12/how-to-reheat-pizza-TRR-16-of-26.jpg
-https://www.thereciperebel.com/30-easy-ground-turkey-recipes/;30+ Easy Ground Turkey Recipes;https://www.thereciperebel.com/wp-content/uploads/2021/12/ground-turkey-recipes-3.jpg
 https://www.greedygirlgourmet.com/creamy-gochujang-pasta/;Creamy Gochujang Pasta;https://www.greedygirlgourmet.com/wp-content/uploads/2022/12/creamy-gochujang-pasta.jpg
 https://therecipecritic.com/marry-me-salmon/;Marry Me Salmon;https://therecipecritic.com/wp-content/uploads/2023/08/marry-me-salmon-crop.png
 https://www.wellplated.com/poached-salmon/;Poached Salmon;https://www.wellplated.com/wp-content/uploads/2024/04/easy-poached-salmon-in-water.jpg
@@ -741,11 +734,9 @@ https://therecipecritic.com/one-pot-cajun-chicken-alfredo-pasta/;One Pot Cajun C
 https://therecipecritic.com/mongolian-chicken-noodles/;Mongolian Chicken Noodles;https://therecipecritic.com/wp-content/uploads/2018/01/Mongolian-Chicken-Noodles-recipe-picture-photo-2.jpg
 https://www.wellplated.com/chicken-quesadilla/;Chicken Quesadilla Recipe;https://www.wellplated.com/wp-content/uploads/2022/10/best-chicken-quesadilla.jpg
 https://www.wellplated.com/tuscan-chicken/;Tuscan Chicken;https://www.wellplated.com/wp-content/uploads/2023/08/creamy-tuscan-chicken-recipe.jpg
-https://www.greedygirlgourmet.com/fall-popcorn-recipes/;12 Easy Fall Popcorn Recipes (Asian);https://www.greedygirlgourmet.com/wp-content/uploads/2022/05/Soy-sauce-butter-popcorn-for-fall.jpg
 https://www.thereciperebel.com/mango-salsa-chicken-and-rice/;Mango Salsa Chicken and Rice;https://www.thereciperebel.com/wp-content/uploads/2020/03/mango-salsa-chicken-and-rice-www.thereciperebel.com-600-20-of-27.jpg
 https://www.thereciperebel.com/one-pot-bbq-chicken-chili-mac-30-minute-thursday/;One Pot BBQ Chicken Chili Mac;https://www.thereciperebel.com/wp-content/uploads/2017/01/One-Pot-BBQ-Chicken-Chili-Mac-www.thereciperebel.com-4-of-9.jpg
 https://therecipecritic.com/greek-orzo-salad/;Greek Orzo Salad;https://therecipecritic.com/wp-content/uploads/2022/07/orzogreeksalad-1-1-scaled.jpg
-https://www.thereciperebel.com/whats-for-dinner-tonight/;What’s For Dinner Tonight?;https://www.thereciperebel.com/wp-content/uploads/2022/01/whats-for-dinner-tonight-1.jpg
 https://therecipecritic.com/easy-bbq-chicken-pizza/;Easy BBQ Chicken Pizza;https://therecipecritic.com/wp-content/uploads/2022/05/Screen-Shot-2022-05-05-at-6.37.07-PM.png
 https://www.wellplated.com/mediterranean-chickpea-salad/;Chickpea Salad;https://www.wellplated.com/wp-content/uploads/2017/07/Healthy-Mediterranean-Chickpea-Salad.jpg
 https://www.wellplated.com/salmon-quinoa-bowl/;Salmon Bowl;https://www.wellplated.com/wp-content/uploads/2024/02/Best-Salmon-Bowl-Recipe.jpg

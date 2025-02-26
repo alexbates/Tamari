@@ -23,7 +23,6 @@ https://thestayathomechef.com/air-fryer-naked-chicken-tenders/;Air Fryer Naked C
 https://therecipecritic.com/air-fryer-tilapia/;Air Fryer Cajun Garlic Butter Tilapia;https://therecipecritic.com/wp-content/uploads/2022/01/Air-Fryer-Tilapia.png
 https://www.spendwithpennies.com/crispy-hot-wings/;Crispy Homemade Hot Wings;https://www.spendwithpennies.com/wp-content/uploads/2023/01/1200-Crispy-Homemade-Hot-Wings-SpendWithPennies.jpg
 https://lifemadesweeter.com/air-fryer-avocado-fries/;Air Fryer Avocado Fries;https://lifemadesweeter.com/wp-content/uploads/Air-Fryer-Avocado-Fries-Recipe-Photo.jpg
-https://therecipecritic.com/best-small-air-fryers/;The 7 Best Small Air Fryers of 2024;https://therecipecritic.com/wp-content/uploads/2023/12/Air-Fryer.jpeg
 https://therecipecritic.com/air-fryer-chicken-nuggets/;Air Fryer Chicken Nuggets;https://therecipecritic.com/wp-content/uploads/2021/09/Air-Fryer-Chicken-Nuggets.png
 https://iamhomesteader.com/air-fryer-salmon-bites/;Air Fryer Salmon Bites with Garlic Cream Sauce;https://iamhomesteader.com/wp-content/uploads/2022/04/salmon-bites-2.jpg
 https://www.thereciperebel.com/air-fryer-pork-chops/;Air Fryer Pork Chops;https://www.thereciperebel.com/wp-content/uploads/2021/02/air-fryer-pork-chops-www.thereciperebel.com-600-23-of-30.jpg
@@ -236,12 +235,10 @@ https://addapinch.com/air-fryer-chicken-tenders-recipe/;Air Fryer Chicken Tender
 https://www.spendwithpennies.com/air-fryer-cauliflower/;Air Fryer Cauliflower;https://www.spendwithpennies.com/wp-content/uploads/2021/02/FT-Air-Fryer-Cauliflower-2-SpendWithPennies-2.jpg
 https://www.noracooks.com/air-fryer-asparagus/;Air Fryer Asparagus;https://www.noracooks.com/wp-content/uploads/2021/04/sq-5.jpg
 https://therecipecritic.com/air-fryer-zucchini-fries/;Air Fryer Zucchini Fries;https://therecipecritic.com/wp-content/uploads/2022/07/air-fryer-zucchini-fries-cropped.png
-https://www.spendwithpennies.com/chicken-wing-recipes/;Our Very Best Chicken Wing Recipes;https://www.spendwithpennies.com/wp-content/uploads/2022/01/Chicken-Wing-Recipes-.jpeg
 https://www.spendwithpennies.com/air-fryer-grilled-cheese/;Air Fryer Grilled Cheese;https://www.spendwithpennies.com/wp-content/uploads/2023/01/1200-Air-Fryer-Grilled-Cheese-SpendWithPennies.jpg
 https://thestayathomechef.com/air-fryer-asparagus/;Air Fryer Asparagus;https://thestayathomechef.com/wp-content/uploads/2023/02/Air-Fryer-Asparagus-7.jpg
 https://thestayathomechef.com/air-fryer-green-beans/;Air Fryer Green Beans;https://thestayathomechef.com/wp-content/uploads/2023/03/Air-Fryer-Green-Beans-7.jpg
 https://www.spendwithpennies.com/air-fryer-whole-chicken/;Air Fryer Whole Chicken;https://www.spendwithpennies.com/wp-content/uploads/2020/07/1200-Air-Fryer-Whole-Chicken-SpendWithPennies-3.jpeg
-https://therecipecritic.com/healthy-air-fryer-recipes-roundup/;Healthy Air Fryer Recipes Roundup;https://therecipecritic.com/wp-content/uploads/2022/07/Roundup-Collage-6-3.png
 https://therecipecritic.com/air-fryer-frozen-broccoli/;Air Fryer Frozen Broccoli;https://therecipecritic.com/wp-content/uploads/2022/05/Screen-Shot-2022-05-09-at-10.21.32-AM.png
 https://www.spendwithpennies.com/air-fryer-roasted-carrots/;Air Fryer Roasted Carrots;https://www.spendwithpennies.com/wp-content/uploads/2020/10/FT-Air-Fryer-Carrots-SpendWithPennies-5.jpg
 https://iamhomesteader.com/pickle-egg-rolls/;Air Fryer Pickle Egg Rolls;https://iamhomesteader.com/wp-content/uploads/2022/02/dill-pickle-eggroll.jpg
@@ -249,7 +246,6 @@ https://addapinch.com/air-fryer-potato-wedges-recipe/;Air Fryer Potato Wedges Re
 https://www.spendwithpennies.com/air-fryer-zucchini/;Air Fryer Zucchini;https://www.spendwithpennies.com/wp-content/uploads/2023/08/Air-Fryer-Zucchini-SpendWithPennies-108-800x1200.jpg
 https://bellyfull.net/crab-rangoon-recipe/;Air Fryer Crab Rangoon;https://bellyfull.net/wp-content/uploads/2022/07/Air-Fryer-Crab-Rangoon-blog-3.jpg
 https://therecipecritic.com/air-fryer-mozzarella-sticks/;Air Fryer Mozzarella Sticks;https://therecipecritic.com/wp-content/uploads/2022/01/Air-Fryer-Mozzarella-Sticks.png
-https://www.thereciperebel.com/best-air-fryer-recipes/;50 Best Air Fryer Recipes;https://www.thereciperebel.com/wp-content/uploads/2021/12/50-best-air-fryer-recipes-www.thereciperebel.com-square.jpg
 https://www.spendwithpennies.com/frozen-air-fryer-tater-tots/;Frozen Air Fryer Tater Tots;https://www.spendwithpennies.com/wp-content/uploads/2021/05/Air-Fryer-Frozen-Tater-Tots-SpendWithPennies-4.jpg
 https://www.spendwithpennies.com/air-fryer-chicken-breasts/;Air Fryer Chicken Breasts;https://www.spendwithpennies.com/wp-content/uploads/2022/01/Air-Fryer-Chicken-Breasts-SpendWithPennies-1.jpg
 https://www.skinnytaste.com/air-fryer-bacon-wrapped-pork-tenderloin/;Air Fryer Bacon Wrapped Pork Tenderloin;https://www.skinnytaste.com/wp-content/uploads/2021/04/Bacon-Wrapped-Pork-Loin-7.jpg
@@ -344,7 +340,6 @@ https://www.skinnytaste.com/air-fryer-peanut-curry-tofu/;Air Fryer Peanut Curry 
 https://therecipecritic.com/air-fryer-coconut-shrimp/;Insanely Delicious Air Fryer Coconut Shrimp;https://therecipecritic.com/wp-content/uploads/2021/08/Air-Fryer-Coconut-Shrimp.png
 https://food52.com/recipes/89467-air-fryer-chicken-wings-recipe;Air Fryer Chicken Wings Recipe;https://images.food52.com/d0TgRzbLKSe2vXqdiqpN4-TDYBw=/fit-in/1200x1200/7f8974f0-8acb-4bd5-b7df-9c11cf34fa66--HR_258.jpg
 https://www.spendwithpennies.com/air-fryer-broccolini/;Air Fryer Broccolini;https://www.spendwithpennies.com/wp-content/uploads/2021/06/Air-Fryer-Broccolini-SpendWithPennies-6.jpg
-https://www.thereciperebel.com/25-of-the-best-air-fryer-chicken-recipes/;25 of the Best Air Fryer Chicken Recipes;https://www.thereciperebel.com/wp-content/uploads/2021/12/air-fryer-chicken-recipes-3.jpg
 https://www.wellplated.com/air-fryer-pickles/;Air Fryer Pickles;https://www.wellplated.com/wp-content/uploads/2022/05/Air-Fry-Dill-Pickles.jpg
 https://therecipecritic.com/air-fryer-fried-chicken/;Crispy Air Fryer “Fried” Chicken;https://therecipecritic.com/wp-content/uploads/2021/01/Crispy-Air-Fryer-22Fried22-Chicken-2.png
 https://www.spendwithpennies.com/air-fryer-chicken-drumsticks/;Air Fryer Chicken Drumsticks;https://www.spendwithpennies.com/wp-content/uploads/2021/02/Air-Fryer-Chicken-Drumsticks-SpendWithPennies-6.jpg
@@ -399,7 +394,6 @@ https://www.spendwithpennies.com/air-fryer-croutons/;Air Fryer Croutons;https://
 https://bellyfull.net/air-fryer-coconut-shrimp/;Air Fryer Coconut Shrimp;https://bellyfull.net/wp-content/uploads/2021/01/Air-Fryer-Coconut-Shrimp-blog.jpg
 https://www.gonnawantseconds.com/air-fryer-hard-boiled-eggs/;Air Fryer Hard Boiled Eggs;https://www.gonnawantseconds.com/wp-content/uploads/2022/05/Air-Fryer-hard-Boiled-Eggs-4.jpg
 https://therecipecritic.com/air-fryer-biscuit-pizzas/;5 Minute Air Fryer Biscuit Pizzas;https://therecipecritic.com/wp-content/uploads/2021/02/Air-Fryer-Biscuit-Pizzas-2.png
-https://therecipecritic.com/air-fryer-recipe-round-up/;Air Fryer Recipe Round-Up;https://therecipecritic.com/wp-content/uploads/2022/04/Roundup-Collage-2.png
 https://tasty.co/recipe/air-fryer-coconut-shrimp;Air Fryer Coconut Shrimp;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/319281.jpg
 https://www.thereciperebel.com/air-fryer-hot-dogs/;Air Fryer Hot Dogs;https://www.thereciperebel.com/wp-content/uploads/2022/04/air-fryer-hot-dogs-TRR-1200-14-of-15.jpg
 https://therecipecritic.com/air-fryer-frozen-onion-rings/;Air Fryer Frozen Onion Rings;https://therecipecritic.com/wp-content/uploads/2023/01/Screen-Shot-2023-01-18-at-3.19.59-PM.png
@@ -437,7 +431,6 @@ https://lifemadesweeter.com/air-fryer-roasted-vegetables/;Air Fryer Roasted Vege
 https://www.spendwithpennies.com/air-fryer-corn-on-the-cob/;Air Fryer Corn on the Cob;https://www.spendwithpennies.com/wp-content/uploads/2022/02/Air-Fryer-Corn-on-the-Cob-SpendWithPennies-5.jpg
 https://www.skinnytaste.com/air-fryer-roasted-cauliflower-tacos/;Air Fryer Roasted Cauliflower Tacos;https://www.skinnytaste.com/wp-content/uploads/2021/08/Air-Fryer-Roasted-Cauliflower-Tacos-6.jpg
 https://thestayathomechef.com/air-fryer-broccolini/;Air Fryer Broccolini;https://thestayathomechef.com/wp-content/uploads/2023/03/Air-Fryer-Broccolini-7.jpg
-https://www.thereciperebel.com/air-fryer-recipes-for-beginners/;Best Air Fryer Recipes for Beginners;https://www.thereciperebel.com/wp-content/uploads/2021/11/air-fryer-recipes-for-beginners-www.thereciperebel.com-square.jpg
 https://therecipecritic.com/air-fryer-hasselback-potatoes/;Air Fryer Garlic Butter Hasselback Potatoes;https://therecipecritic.com/wp-content/uploads/2021/03/Air-Fryer-hasselback-potatoes-2.png
 https://therecipecritic.com/air-fryer-chicken-wings/;Crispy Air Fryer Chicken Wings;https://therecipecritic.com/wp-content/uploads/2020/12/Crispy-Air-Fryer-Chicken-Wings-2.png
 https://www.spendwithpennies.com/air-fryer-spaghetti-squash/;Air Fryer Spaghetti Squash;https://www.spendwithpennies.com/wp-content/uploads/2022/02/Air-Fryer-Spaghetti-Squash-SpendWithPennies-9.jpg
@@ -688,7 +681,6 @@ https://therecipecritic.com/air-fryer-chicken-breast/;Tender and Juicy Air Fryer
 https://food52.com/recipes/89287-air-fryer-snapper-with-cauliflower;AIR FRYER SNAPPER WITH CAULIFLOWER;https://images.food52.com/gtUM2zI-B42JwXyFrZhgCARTXsg=/fit-in/1200x1200/daa26ea2-d96f-45f1-8861-80469cadb454--cauliflower-air-fryer.6787.jpg
 https://www.skinnytaste.com/air-fryer-asian-meatballs/;Air Fryer Asian Meatballs;https://www.skinnytaste.com/wp-content/uploads/2023/07/Asian-Meatball-Rice-Bowls-7.jpg
 https://lilluna.com/air-fryer-zucchini/;Air Fryer Zucchini;https://lilluna.com/wp-content/uploads/2020/08/air-fryer-zucchini-resize-10.jpg
-https://www.spendwithpennies.com/air-fryer-recipes-for-beginners/;Easy Air Fryer Recipes for Beginners;https://www.spendwithpennies.com/wp-content/uploads/2021/12/Air-Fryer-Recipes-for-Beginners.jpeg
 https://fedandfit.com/air-fryer-bbq-chicken-wings/;How to Make Honey BBQ Wings in Air Fryer;https://fedandfit.com/wp-content/uploads/2021/11/211121_Air-Fryer-BBQ-Wings-06.jpg
 https://www.skinnytaste.com/air-fryer-chicken-milanese-with-mediterranean-salad/;Air Fryer Chicken Milanese with Mediterranean Salad;https://www.skinnytaste.com/wp-content/uploads/2021/09/Air-Fryer-Chicken-Milanese-8.jpg
 https://www.iheartnaptime.net/air-fryer-potato-skins/;Air Fryer Potato Skins;https://www.iheartnaptime.net/wp-content/uploads/2022/02/I-Heart-Naptime-air-fryer-potato-skins-7.jpg

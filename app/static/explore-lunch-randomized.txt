@@ -128,7 +128,6 @@ https://tasty.co/recipe/shredded-chicken-tacos;Shredded Chicken Tacos;https://im
 https://www.spendwithpennies.com/quick-broccoli-pasta/;Quick Broccoli Pasta;https://www.spendwithpennies.com/wp-content/uploads/2021/06/Quick-Broccoli-Pasta-SpendWithPennies-22.jpg
 https://tasty.co/recipe/mussel-sinigang-sour-soup-as-made-by-chef-tara-monsod;Mussel Sinigang (Sour Soup) As Made By Chef Tara Monsod;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/5daa3e9549524d37ab7188ffbe107372.jpeg
 https://www.spendwithpennies.com/blueberry-brie-grilled-cheese/;Blueberry Brie Grilled Cheese;https://www.spendwithpennies.com/wp-content/uploads/2021/02/Blueberry-Brie-Grilled-Cheese-SpendWithPennies-5.jpg
-https://tasty.co/recipe/cheesy-jalapeno-corn-dogs;Cheesy Jalapeño Corn Dogs;https://img.buzzfeed.com/video-api-prod/assets/381777cc1cf44c03ac298d7411d39b0c/corn_dog_fb_thumb.jpg
 https://tasty.co/recipe/3-minute-burger;3-Minute Burger;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/231542.jpg
 https://tasty.co/recipe/grilled-corn-and-zoodle-salad-with-avocado-yogurt-sauce;Grilled Corn And Zoodle Salad With Avocado-Yogurt Sauce;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/bc8f18300c094fb9bba05dcdc6f84b5f.jpeg
 https://tasty.co/recipe/copycat-texas-roadhouse-rolls;Copycat Texas Roadhouse Rolls;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/432156.jpg
@@ -444,7 +443,6 @@ https://tasty.co/recipe/deep-fried-shrimp-potato-balls;Deep-fried Shrimp Potato 
 https://tasty.co/recipe/chili-cheese-mac-n-cheese;Chili Cheese Mac 'n' Cheese;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/d4cdbd5b401e484b8bd171f066aac01e/BFv24153BetterBoxedMacNCheeseFBFinal.jpg
 https://tasty.co/recipe/top-chef-junior-citrus-salmon-burger;Top Chef Junior Citrus Salmon Burger;https://img.buzzfeed.com/video-api-prod/assets/f3de621211f54712a539793233f44568/topchefjr-salmonbeauty.jpg
 https://tasty.co/recipe/spring-vegetable-chowder;Spring Vegetable Chowder;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/208371.jpg
-https://www.skinnytaste.com/rice-bowl-recipes/;21 Healthy Rice Bowl Recipes;https://www.skinnytaste.com/wp-content/uploads/2023/06/ricce-bowl-recipes.png
 https://tasty.co/recipe/southwestern-style-quinoa-salad;Southwestern-Style Quinoa Salad;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/8c49611d7f6740d3bdf7195f79460fdd/Facebook.jpg
 https://www.spendwithpennies.com/roasted-tomatoes/;Roasted Tomatoes;https://www.spendwithpennies.com/wp-content/uploads/2019/01/SpendWithPennies-Oven-Roasted-Tomatoes-24.jpg
 https://tasty.co/recipe/waffle-grilled-cheese;Waffle Grilled Cheese;https://img.buzzfeed.com/video-api-prod/assets/3969dc20ce2044eba0b6ca766a31a5fd/BFV8792_WaffleGrilledCheese_ThumbB_copy.jpg
@@ -686,7 +684,6 @@ https://tasty.co/recipe/classic-caesar-salad;Classic Caesar Salad;https://img.bu
 https://tasty.co/recipe/thai-green-chicken-curry;Thai Green Chicken Curry;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/265385c4e7fd45ebacb535dafc17ad75.png
 https://tasty.co/recipe/fried-rice-the-meme-supreme;Fried Rice: The Meme Supreme;https://img.buzzfeed.com/video-api-prod/assets/98a23937dea3472f8427283d36733843/V5H.jpg
 https://tasty.co/recipe/cheese-swirl-bread;Cheese Swirl Bread;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/302785.jpg
-https://www.spendwithpennies.com/easy-lunch-ideas-for-kids/;Easy Lunch Ideas for Kids;https://www.spendwithpennies.com/wp-content/uploads/2017/07/Easy-Lunch-Ideas-for-Kids.png
 https://tasty.co/recipe/spaghetti-squash-pasta-meal-prep-2-ways;Spaghetti Squash “Pasta” Meal Prep 2 Ways;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/137809.jpg
 https://tasty.co/recipe/scorpio-tea-blend;Scorpio Tea Blend;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/2d05cc440bb24b74bf9a72b71d9022be/BFV60838_TeaBlendsForYourZodiacSigns_FB-Final.jpg
 https://www.skinnytaste.com/high-protein-bread-oat-sandwich-rolls/;High Protein Bread (Oat Sandwich Rolls);https://www.skinnytaste.com/wp-content/uploads/2021/01/High-Protein-Oat-Rolls-11.jpg
@@ -704,7 +701,6 @@ https://tasty.co/recipe/grilled-peach-panini;Grilled Peach Panini;https://img.bu
 https://tasty.co/recipe/chipotle-chicken-burrito-bowl;Chipotle Chicken Burrito Bowl;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/c8359e616252479e8d71f4f9e44a0bb0/finalFB5.jpg
 https://tasty.co/recipe/grilled-smoked-mozzarella-salad-with-balsamic-vinaigrette;Grilled Smoked-Mozzarella Salad With Balsamic Vinaigrette;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/2975c584fca445b1b8e925b1aa846171/Tasty_-_Facebook_-_1080x1080.jpg
 https://tasty.co/recipe/coconut-chia-pudding-with-oranges-pineapple-and-dried-cherries;Coconut Chia Pudding With Oranges, Pineapple And Dried Cherries;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/276560.jpg
-https://www.spendwithpennies.com/easy-morning-smoothie-recipes/;Easy Morning Smoothie Recipes;https://www.spendwithpennies.com/wp-content/uploads/2023/07/PIN-Roundup-The-Best-Smoothie-Recipes-SpendWithPennies-.jpg
 https://tasty.co/recipe/air-fryer-popcorn-chicken;Air Fryer Popcorn Chicken;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/330869.jpg
 https://tasty.co/recipe/pineapple-bbq-bacon-burgers;Pineapple BBQ Bacon Burgers;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/d39d38248e8542beb9d7e33f6108af30/BFV70332_ITriedToMAkeABBQDinnerFor4People_FB_0827520_YT_1.jpg
 https://tasty.co/recipe/quick-pickled-veggies;Quick Pickled Veggies;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/211734.jpg
@@ -809,7 +805,6 @@ https://www.spendwithpennies.com/lemon-garlic-butter-baked-cod/;Lemon Garlic But
 https://tasty.co/recipe/skillet-cornbread;Skillet Cornbread;https://img.buzzfeed.com/video-api-prod/assets/5ce5ff1b8e3b4f45b000f13edf89f208/BFV4336_SkilletCornbread-Thumb1080_c.jpg
 https://www.skinnytaste.com/dads-creamy-cauliflower-soup-1-p/;Dad’s Creamy Cauliflower Soup;https://www.skinnytaste.com/wp-content/uploads/2013/11/Cauliflower-Soup.jpg
 https://tasty.co/recipe/meatball-stuffed-garlic-bread;Meatball-Stuffed Garlic Bread;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/c674c89ac9d740539f2beaa2c2a2bfbc/BFV15294_Meatball-Stuffed_Garlic_Bread_FB.jpg
-https://tasty.co/recipe/filipino-style-bbq-skewers;Filipino-Style BBQ Skewers;
 https://www.spendwithpennies.com/ranch-7-layer-salad/;Ranch 7 Layer Salad;https://www.spendwithpennies.com/wp-content/uploads/2016/01/Ranch-7-Layer-Salad-SpendWithPennies-24.jpg
 https://tasty.co/recipe/black-bean-burgers;Black Bean Burgers;https://img.buzzfeed.com/video-api-prod/assets/53125c5621bf480d8ae4f02b1cf4ea78/BFV8045_BlackBeanBurgers-Thumb1080B.jpg
 https://tasty.co/recipe/chili-cheese-dog-bake;Chili Cheese Dog Bake;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/121175.jpg
@@ -1394,7 +1389,6 @@ https://tasty.co/recipe/roasted-delicata-squash-and-farro-salad;Roasted Delicata
 https://tasty.co/recipe/chicken-wings-the-blue-benjamins;Chicken Wings: The Blue Benjamins;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/217258.jpg
 https://tasty.co/recipe/shrimp-toast;Shrimp Toast;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/229004.jpg
 https://tasty.co/recipe/margarita-burger;Margarita Burger;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/326224.jpg
-https://addapinch.com/potato-salad-recipes/;Potato Salad Recipes;https://addapinch.com/wp-content/uploads/2014/06/potato-salad-recipes-DSC_6792-1.jpg
 https://tasty.co/recipe/super-simple-citrus-and-fennel-salad;Super Simple Citrus And Fennel Salad;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/ef8950db515e4e8195572848390c0a88.jpeg
 https://www.skinnytaste.com/spring-pea-soup-with-fresh-herbs/;Spring Green Pea Soup with Fresh Herbs;https://www.skinnytaste.com/wp-content/uploads/2021/03/Spring-Pea-and-Fresh-Herbs-Soup-7.jpg
 https://www.skinnytaste.com/air-fryer-burst-tomato-burrata-caprese-salad/;Air Fryer Burst Tomato Burrata Caprese Salad;https://www.skinnytaste.com/wp-content/uploads/2021/07/Air-Fryer-Burst-Tomato-Burrata-Caprese-Salad-5.jpg
@@ -1403,7 +1397,6 @@ https://tasty.co/recipe/bacon-and-brussels-mini-cups;Bacon And Brussels Mini Cup
 https://tasty.co/recipe/sofritas-burrito-bowl;Sofritas Burrito Bowl;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/f4a003406c30412ba569d7ff08c839e5/HowToEatVeganOnABudgetFBFinalNEW.jpg
 https://tasty.co/recipe/sweet-potato-and-chickpea-salad;Sweet Potato And Chickpea Salad;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/158420.jpg
 https://tasty.co/recipe/honey-mustard-chicken-bacon-and-avocado-salad;Honey Mustard Chicken, Bacon, And Avocado Salad;https://img.buzzfeed.com/video-api-prod/assets/35ebc85fc8bf40889056cf4b1d0d97c5/FB_Thumb.jpg
-https://tasty.co/recipe/mushroom-bacon-pasta-salad;Mushroom & Bacon Pasta Salad;
 https://www.skinnytaste.com/asian-chicken-lettuce-wraps/;Asian Chicken Lettuce Wraps;https://www.skinnytaste.com/wp-content/uploads/2012/01/Asian-Chicken-Lettuce-Wraps-5.jpg
 https://tasty.co/recipe/summer-panzanella;Summer Panzanella;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/213961.jpg
 https://tasty.co/recipe/instant-pot-birria-tacos;Instant Pot Birria Tacos;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/365263.jpg
@@ -2031,7 +2024,6 @@ https://tasty.co/recipe/rotisserie-chicken-dinner-squash-squad;Rotisserie Chicke
 https://tasty.co/recipe/chicken-and-corn-salad;Chicken And Corn Salad;https://img.buzzfeed.com/video-api-prod/assets/e5974fb26cf04be092e1ec7b16eda3af/1522106270_00001.jpg
 https://www.skinnytaste.com/eggplant-panini-with-pesto/;Eggplant Panini with Pesto;https://www.skinnytaste.com/wp-content/uploads/2013/07/eggplant-panini-with-pesto.jpg
 https://tasty.co/recipe/raw-pecan-tacos;How To Make Raw Pecan Tacos With Tabitha Brown;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/221614.jpg
-https://tasty.co/recipe/gideons-honey-garlic-chicken;Gideon’s Honey Garlic Chicken;https://tasty.co/static-assets/tasty-ui/_next/static/images/tasty_main_image-83c5a0a87299c2860eed7f604c249952.png
 https://tasty.co/recipe/sourdough-bread-for-beginners;Sourdough Bread For Beginners;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/262863.jpg
 https://tasty.co/recipe/skillet-chicken-breasts;Skillet Chicken Breasts;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/331363.jpg
 https://www.spendwithpennies.com/harvest-farro-salad/;Harvest Farro Salad;https://www.spendwithpennies.com/wp-content/uploads/2020/11/Harvest-Farro-Salad-SpendWithPennies-10.jpg
@@ -2113,7 +2105,6 @@ https://tasty.co/recipe/sushi-rice-dip;Sushi Rice Dip;https://img.buzzfeed.com/v
 https://tasty.co/recipe/avocado-chicken-salad;Avocado Chicken Salad;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/1211.jpg
 https://www.skinnytaste.com/seared-tuna-salad-with-wasabi-butter-sauce/;Seared Tuna Salad with Wasabi Butter Sauce;https://www.skinnytaste.com/wp-content/uploads/2017/07/Sarah-Fennel-SkinnyTaste-ahi-tuna-salads-4.jpg
 https://tasty.co/recipe/philly-cheesesteak-cups;Philly Cheesesteak Bagel Cups;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/3c1f28170814484fa120eb9180a0ccd9/BFV3518_PhillyCheesesteakCups-FB1080.jpg
-https://tasty.co/recipe/katies-one-pot-sausage-gnocchi-bake;Katie’s One-Pot Sausage Gnocchi Bake;https://tasty.co/static-assets/tasty-ui/_next/static/images/tasty_main_image-83c5a0a87299c2860eed7f604c249952.png
 https://tasty.co/recipe/korean-style-pork-belly-nachos;Korean-Style Pork Belly Nachos;https://img.buzzfeed.com/video-api-prod/assets/2cc17c1d94ce42c1b9994918819eeaea/BFV5966_Korean_Style_Pork_Belly_Nachos_ThumbB.jpg
 https://www.skinnytaste.com/chili-lime-air-fryer-salmon/;Chili-Lime Air Fryer Salmon;https://www.skinnytaste.com/wp-content/uploads/2022/05/Chili-_-Lime-Air-Fryer-Salmon-6.jpg
 https://tasty.co/recipe/spicy-fried-chicken;Spicy Fried Chicken;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/f696b90d8c22401b9a7fb041102a2f32/Final.jpg
@@ -2186,7 +2177,6 @@ https://tasty.co/recipe/hotdog-twists;Hotdog Twists;https://img.buzzfeed.com/thu
 https://tasty.co/recipe/steak-tacos-next-day-grain-bowl;Steak Tacos & Next Day Grain Bowl;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/206574.jpg
 https://tasty.co/recipe/turkey-burgers;Turkey Burgers;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/321844.jpg
 https://tasty.co/recipe/turkey-cream-cheese-pinwheels;Turkey & Cream Cheese Pinwheels;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/3708ac489c394a189ad1958be7b1d05c/BFV24144_4BackToSchoolLunches_FB1080SQ.jpg
-https://tasty.co/recipe/ries-japanese-cooking-starter-pantry-kit-and-tool-guide;Rie’s Japanese Cooking Starter Pantry Kit And Tool Guide;https://tasty.co/static-assets/tasty-ui/_next/static/images/tasty_main_image-83c5a0a87299c2860eed7f604c249952.png
 https://tasty.co/recipe/kickin-cajun-pasta;Kickin Cajun Pasta;https://img.buzzfeed.com/tasty-app-user-assets-prod-us-east-1/recipes/25a9763b380049e9bc86ff0b7512e91c.png
 https://tasty.co/recipe/pulled-pork-stuffed-milk-buns;Pulled Pork-Stuffed Milk Buns;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/156527.jpg
 https://tasty.co/recipe/kale-sweet-potato-salad;Kale & Sweet Potato Salad;https://img.buzzfeed.com/thumbnailer-prod-us-east-1/f2bc5630200b4288a45be24846e1ae50/ProteinPackedSaladsFBFINAL.jpg

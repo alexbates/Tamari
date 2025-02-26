@@ -37,6 +37,7 @@ def calculate_percentages(valid_counts, invalid_counts):
 def main():
     valid_file = "valid.txt"
     invalid_file = "invalid.txt"
+    output_file = "percent-valid.txt"
 
     # Parse the valid and invalid files
     valid_counts = parse_file(valid_file)
@@ -44,6 +45,11 @@ def main():
 
     # Calculate percentages
     percentages = calculate_percentages(valid_counts, invalid_counts)
+
+    # Save results to a file
+    with open(output_file, "w", encoding="utf-8") as outfile:
+        outfile.write("Percent Valid\n")
+        outfile.write("\n".join(percentages) + "\n")
 
     # Print results
     print("Percent Valid")

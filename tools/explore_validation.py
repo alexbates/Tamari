@@ -296,7 +296,7 @@ def process_file(input_file, valid_file, invalid_file):
                 print(f"Error processing line {line_number}: {e}")
 
 # File paths
-input_file = "explore-all-randomized.txt"
+input_file = "explore-all-randomized-v1.0.txt"
 valid_file = "valid.txt"
 invalid_file = "invalid.txt"
 

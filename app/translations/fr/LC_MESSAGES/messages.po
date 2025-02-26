@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2024-09-30 13:25-0400\n"
+"PO-Revision-Date: 2025-02-26 13:25-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans <LL@li.org>\n"
 "Language: zh_Hans\n"
@@ -1784,3 +1784,21 @@ msgstr "La liste de courses demandée n'existe pas."
 #: app/templates/meal-planner-completed.html:51
 msgid "Days Cooked"
 msgstr "Jours de cuisson"
+
+msgid "Print"
+msgstr "Imprimer"
+
+msgid "Download PDF"
+msgstr "Télécharger le PDF"
+
+msgid "Print Recipe"
+msgstr "Imprimer la Recette"
+
+msgid "Nutrition Facts"
+msgstr "Valeurs Nutritionnelles"
+
+msgid "Per serving"
+msgstr "Par portion"
+
+msgid "The requested recipe is not available or no data was provided."
+msgstr "La recette demandée n'est pas disponible ou aucune donnée n'a été fournie."

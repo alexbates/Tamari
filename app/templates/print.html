@@ -71,6 +71,10 @@
 			</p>
 			{% endif %}
 			
+			{% if recipe.url %}
+			<p>{{ recipe.url }}</p>
+			{% endif %}
+			
 			<h2>{{ _('Ingredients') }}</h2>
 			<ul>
 				{% for item in ingredients %}

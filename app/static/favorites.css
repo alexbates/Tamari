@@ -32,6 +32,7 @@
 	--color-cust-select-after-border: #ffffff;
 	--color-btn3-default: #ffffff;
 	--color-norecipes: #111111;
+	--color-shadow: #000000;
 	--color-recipe1: #ffffff;
 	--color-r1bottom: rgba(20, 20, 20, 0.82);
 	--color-recipe2inner: #111111;
@@ -66,11 +67,12 @@
 	--color-cust-select-after-border: #141414;
 	--color-btn3-default: #000000;
 	--color-norecipes: #efefef;
+	--color-shadow: #ffffff;
 	--color-recipe1: #000000;
 	--color-r1bottom: rgba(232, 232, 232, 0.86);
 	--color-recipe2inner: #efefef;
 	--color-r2bottom-span: #5c5c5c;
-	--color-r3bottom: rgba(232, 232, 232, 0.86);
+	--color-r3bottom: rgba(232, 232, 232, 0.96);
 	--color-r3bottom-span: #424242;
 	--color-r3span: #efefef;
 	--color-btn-paginate: #000000;
@@ -100,6 +102,7 @@
 	--color-cust-select-after-border: #ffffff;
 	--color-btn3-default: #ffffff;
 	--color-norecipes: #111111;
+	--color-shadow: #000000;
 	--color-recipe1: #ffffff;
 	--color-r1bottom: rgba(20, 20, 20, 0.82);
 	--color-recipe2inner: #111111;
@@ -674,6 +677,11 @@
 	vertical-align: middle;
 }
 .recipe1-text div {
+	text-shadow: 0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow),
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow); 
 	display: inline-block;
 	display: -webkit-inline-box;
 	max-height: 100%;
@@ -811,6 +819,11 @@
     transform: translateX(-50%);
 }
 .r3binner div {
+	text-shadow: 0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow),
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow); 
 	display: -webkit-box;
 	-webkit-line-clamp: 2;
 	-webkit-box-orient: vertical;

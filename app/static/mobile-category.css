@@ -348,16 +348,21 @@
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 }
-.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
+.recipe2cont {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	margin: 0 auto; 
+	width: 100%;
+}
 .recipe2cont:after {clear: both; content: ""; display: table;}
 .recipe2 {
 	border-radius: 15px;
-	float: left;
+	flex-basis: calc(25% - 15.2px);
 	padding-top: 0;
-	width: calc(25% - 20px);
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-bottom: 20px;
+	margin-left: 0px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 	position: relative; /* important so the pseudo-element can be positioned behind it */
 	transition: transform 0.15s;
 }
@@ -372,12 +377,17 @@
 	background: var(--color-darker);
 	z-index: -1; /* behind recipe2’s content */
 	transition: transform 0.15s;
-  }
-.recipe2:hover {
-	transform: translate(5px, -5px);
 }
-.recipe2:hover::before {
-	transform: translate(-5px, 5px);
+@media (hover: hover) and (pointer: fine) {
+	.recipe2:hover {
+		transform: translate(5px, -5px);
+	}
+	.recipe2:hover::before {
+		transform: translate(-5px, 5px);
+	}
+}
+.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+    margin-right: 0; /* Remove margin-right from every 3rd item */
 }
 .recipe2inner {
 	background-color: var(--color-recipe2inner);
@@ -574,6 +584,7 @@
 	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
 	#recipecount {margin-left: 10px; margin-right: 10px;}
 	.recipe1 {width: 33.33%;}
+	.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
 	.recipe3continner {margin-left: 0px; width: 100%;}
 }
 @media screen and (max-width: 960px) { 
@@ -608,7 +619,13 @@
 	.recipe1-text {padding-top: var(--w800-padding-top-recipe1-text);}
 }
 @media screen and (max-width: 770px) { 
-	.recipe2 {width: calc(33.33% - 20px);}
+	.recipe2 {flex-basis: calc(33.33% - 14.2px);}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 20px; /* Add margin-right to every 3rd item */
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 0; /* Remove margin-right from every 2nd item */
+	}
 	.r2bottom {height: var(--height-r2bottom);}
 	.r2bottom div {
 		font-size: var(--font-r2bottom-div); 
@@ -634,12 +651,16 @@
 		padding-top: var(--w700-padding-top-recipe1-text);
 		width: calc(100% - 30px);
 	}
-	.recipe2cont {width: calc(100% - 16px);}
 	.recipe2 {
-		width: calc(33.33% - 16px); 
-		padding-left: 8px; 
-		padding-right: 8px; 
-		padding-bottom: 16px;
+		flex-basis: calc(33.33% - 11.3px);
+		margin-right: 16px;
+		margin-bottom: 16px;
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 0; /* Remove margin-right from every 2nd item */
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 16px; /* Add margin-right to every 3rd item */
 	}
 	.recipe3 {width: calc(50% - 20px);}
 	.r3binner div {
@@ -690,7 +711,16 @@
 		font-size: var(--w530-font-recipe1-text); 
 		height: var(--w530-height-recipe1-text);
 	}
-	.recipe2 {width: calc(50% - 16px);}
+	.recipe2 {flex-basis: calc(50% - 9px);}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 16px; /* Add margin-right to every 3rd item */
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 16px; /* Add margin-right to every 3rd item */
+	}
+	.recipe2cont .r2a:nth-of-type(2n) .recipe2 {
+		margin-right: 0; /* Remove margin-right from every 2nd item */
+	}
 	.r2bottom {height: var(--height-r2bottom);}
 	.r2bottom div {
 		font-size: var(--font-r2bottom-div); 
@@ -738,12 +768,19 @@
 }
 @media screen and (max-width: 400px) { 
 	.recipe1-text {padding-top: var(--w400-padding-top-recipe1-text);}
-	.recipe2cont {width: calc(100% - 10px);}
 	.recipe2 {
-		width: calc(50% - 10px); 
-		padding-left: 5px;
-		padding-right: 5px;
-		padding-bottom: 10px;
+		flex-basis: calc(50% - 6px);
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 10px; /* Add margin-right to every 3rd item */
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 10px; /* Add margin-right to every 3rd item */
+	}
+	.recipe2cont .r2a:nth-of-type(2n) .recipe2 {
+		margin-right: 0; /* Remove margin-right from every 2nd item */
 	}
 }
 @media screen and (max-width: 385px) { 

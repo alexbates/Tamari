@@ -7,7 +7,7 @@ Tamari is a fully-featured recipe manager web application built using Python and
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/alexbates/Tamari?color=red&style=plastic)
 
-![Tamari Screenshot](https://bates.gg/mockup-tamari.png)
+![Tamari Screenshot](https://tamariapp.com/images/mockup-tamari.png)
 
 ## Live Demo and Public Instance
 
@@ -41,10 +41,11 @@ docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1
 
 ## Manual Installation
 
-### Install on Debian 11
-Use a virtual environment to ensure that dependencies don't interfere with other software on your system.
+### Instructions for Debian 12 and Ubuntu 24.10
+This uses a virtual environment to ensure that dependencies don't interfere with other software on your system.
 ```
 sudo apt install python3 python3-venv git
+sudo apt install libpango-1.0-0 libcairo2 libgdk-pixbuf2.0-0 libffi-dev libpangocairo-1.0-0
 git clone https://github.com/alexbates/Tamari
 cd Tamari
 python3 -m venv venv
@@ -62,18 +63,7 @@ Tamari is now running! Go to http://localhost:4888
 For more information regarding usage, installation, and upgrading, check out the documentation at https://tamariapp.com/docs/
 
 ## Backups
+Please make backups of your data to prevent data loss. Details about where user data is stored can be found at https://tamariapp.com/docs/backups/
 
-Please make backups of your data. As of Version 0.5, all user data is stored in app/appdata. 
-```
-Tamari/app/appdata/app.db
-Tamari/app/appdata/migrations
-Tamari/app/appdata/recipe-photos
-```
-With Version 0.4, migrations directory is located at "Tamari/migrations" and recipe-photos is located at "Tamari/app/recipe-photos". app.db is found in either the Tamari or app directory.
-
-For Docker, if using tamariappdata (previously tamaristorage) volume, files may be mounted at the following locations.
-```
-/var/lib/docker/volumes/tamariappdata/_data/app.db
-/var/lib/docker/volumes/tamariappdata/_data/migrations
-/var/lib/docker/volumes/tamariappdata/_data/recipe-photos
-```
+## Contribute
+Have ideas for new features, improvements, or found a bug? Feel free to open an issue! I am looking for ways to improve the app, and your feedback is appreciated.

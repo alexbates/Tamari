@@ -328,6 +328,11 @@
 	width: 100%;
 }
 .recipe1-text {
+	text-shadow: 0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow),
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow); 
 	height: var(--height-recipe1-text);
 	overflow: hidden;
 	font-size: var(--font-recipe1-text);
@@ -403,7 +408,10 @@
 	aspect-ratio: 4 / 3;
 }
 .r2bottom {
+	display: flex; /* Used for vertical centering */
+	flex-direction: column; /* Stacks the child elements vertically */
 	height: var(--height-r2bottom);
+	justify-content: center; /* Vertically center the items */
 	padding-left: 10px;
 	padding-right: 10px;
 	overflow: hidden;

@@ -477,7 +477,7 @@
 			<div class="mobilebg">
 				<section>
 					{% if current_user.is_authenticated %}
-					<ul class="mobilebg-top">
+					<ul class="mobilebg-top" style="margin: 0; padding: 0;">
 						<li><a href="{{ url_for('myrecipes.allRecipes') }}">{{ _('My Recipes') }}</a></li>
 						<li><a href="{{ url_for('explore.explore') }}">{{ _('Explore') }}</a></li>
 						<li><a href="{{ url_for('shoplists.shoppingLists') }}">{{ _('Shopping Lists') }}</a></li>

@@ -64,6 +64,7 @@ div.column7 { background: inherit; display: inline-block; font-size: 1rem; width
     src: url('/static/fonts/Inter-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/static/fonts/Inter-Regular.woff') format('woff'), /* Most Browsers */
          url('/static/fonts/Inter-Regular.ttf')  format('truetype'); /* Most Except IE */
+	font-display: swap;
 }
 @font-face {
     font-family: Inter-Medium;
@@ -71,6 +72,7 @@ div.column7 { background: inherit; display: inline-block; font-size: 1rem; width
     src: url('/static/fonts/Inter-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/static/fonts/Inter-Medium.woff') format('woff'), /* Most Browsers */
          url('/static/fonts/Inter-Medium.ttf')  format('truetype'); /* Most Except IE */
+	font-display: swap;
 }
 @font-face {
     font-family: Inter-SemiBold;
@@ -78,6 +80,7 @@ div.column7 { background: inherit; display: inline-block; font-size: 1rem; width
     src: url('/static/fonts/Inter-SemiBold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
          url('/static/fonts/Inter-SemiBold.woff') format('woff'), /* Most Browsers */
          url('/static/fonts/Inter-SemiBold.ttf')  format('truetype'); /* Most Except IE */
+	font-display: swap;
 }
 
 button:not(.logregselector) {font-family: Inter-Regular;}

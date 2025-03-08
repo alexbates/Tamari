@@ -668,11 +668,11 @@
 		margin-right: 16px;
 		margin-bottom: 16px;
 	}
-	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
-		margin-right: 0; /* Remove margin-right from every 2nd item */
-	}
 	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
 		margin-right: 16px; /* Add margin-right to every 3rd item */
+	}
+	.recipe2cont .r2a:nth-of-type(3n) .recipe2 {
+		margin-right: 0; /* Remove margin-right from every 2nd item */
 	}
 	.recipe3 {width: calc(50% - 20px);}
 	.r3binner div {

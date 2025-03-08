@@ -49,7 +49,7 @@
 		{% elif user.pref_size == 1 %}
 		<div id="recipecont" class="recipe2cont">
 		{% for item in recipes %}
-		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" tabindex="-1">
+		<a style="display: contents;" href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a" tabindex="-1">
 		<div class="recipe2">
 			<div class="recipe2inner">
 				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>

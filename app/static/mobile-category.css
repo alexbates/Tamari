@@ -408,10 +408,7 @@
 	aspect-ratio: 4 / 3;
 }
 .r2bottom {
-	display: flex; /* Used for vertical centering */
-	flex-direction: column; /* Stacks the child elements vertically */
 	height: var(--height-r2bottom);
-	justify-content: center; /* Vertically center the items */
 	padding-left: 10px;
 	padding-right: 10px;
 	overflow: hidden;

@@ -20,7 +20,7 @@ Create your own account or sign in with the demo credentials.
 - **Store, View, Search, and Share Recipes.** For a single recipe, you can save a title, category, description, time estimates, servings, URL, nutrition info, ingredients, instructions, and a photo. If no photo is uploaded, a random cooking-themed placeholder is assigned. Mark off completed ingredients on the recipe detail page for seamless cooking. Quickly find recipes with real-time "search-as-you-type" functionality. Recipes are only visible while logged in by default, however you can make a recipe public and share the URL with anyone.
 - **Organize.** Mark recipes as Favorites for quick access. Categorize recipes and browse by category.
 - **Explore.** Browse and search a collection of over 109,000 recipes from 50 recipe sharing websites. Import a recipe into "My Recipes" with one click.
-- **Create Shopping Lists.** Organize shopping lists for each store. Add all ingredients from a recipe to a shopping list with one click. Check off items as you shop.
+- **Create Shopping Lists.** Organize shopping lists for each store. Add all ingredients from a recipe to a shopping list with one click. Check off items as you shop. Scan barcodes to add list items.
 - **Plan Meals.** Plan your meals for the week using the Meal Planner. Assign recipes to specific dates up to 30 days in advance.
 - **Customize.** Choose to display large photos to show off your recipes to friends, or smaller photos to fit more recipes on the screen. Sort recipes by title or date added. Switch between light and dark themes. Pick from four profile pictures and customize your account's accent color. Configure instance-wide settings like recipes per page or dynamic image loading.
 - **REST API.** Access a comprehensive API to manage recipes, shopping lists, and meal plans programmatically.
@@ -29,14 +29,14 @@ Create your own account or sign in with the demo credentials.
 ## Installing with Docker 🐳
 This creates a 'tamariappdata' volume for persistent storage.
 ```
-docker run -d --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.0
+docker run -d --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.1
 ```
 Tamari is now running! Go to http://localhost:4888
 
 ### Alternative Command with Mail Settings
 Use this command instead if you wish to enable password reset requests via email. Replace variables with settings for an email account you control.
 ```
-docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.0
+docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.1
 ```
 
 ## Manual Installation

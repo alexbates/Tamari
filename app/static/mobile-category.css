@@ -464,11 +464,13 @@
 	z-index: -1; /* behind recipe2’s content */
 	transition: transform 0.15s;
 }
-.recipe3:hover {
-	transform: translate(5px, -5px);
-}
-.recipe3:hover::before {
-	transform: translate(-5px, 5px);
+@media (hover: hover) and (pointer: fine) {
+	.recipe3:hover {
+		transform: translate(5px, -5px);
+	}
+	.recipe3:hover::before {
+		transform: translate(-5px, 5px);
+	}
 }
 .r3bottom {
 	background: linear-gradient(to bottom, transparent 0%, var(--color-r3bottom) 100%);

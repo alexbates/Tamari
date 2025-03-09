@@ -204,10 +204,10 @@ def user():
             # Verify that passwords match
             if form.password.data == form.password2.data:
                 passwords_match = True
-        # Validate email
-        newemail = request.form.get('email')
+        # Validate email, convert to lowercase
+        newemail = request.form.get('email').lower()
         regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-        emailisvalid = re.fullmatch(regex, form.email.data)
+        emailisvalid = re.fullmatch(regex, newemail)
         if emailisvalid is None:
             emailisvalid = False
         # Check length of email
@@ -233,7 +233,7 @@ def user():
                 user.set_password(form.password.data)
                 # Update time in database for account password change
                 user.p_change_time = datetime.utcnow()
-            if newemail != current_user.email:
+            if current_user.email != newemail:
                 current_user.email = newemail
                 # Update time in database for account email change
                 user.e_change_time = datetime.utcnow()

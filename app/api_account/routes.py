@@ -75,9 +75,12 @@ def apiAuthenticate():
                 return jsonify({"message": "Email and password are required"}), 400
             app_name = request.headers.get('X-App-Name')
             app_key = request.headers.get('X-App-Key')
+            email_input = data.get('email')
             email = data.get('email').lower()
             password = data.get('password')
-            user = User.query.filter_by(email=email).first()
+            user = User.query.filter_by(email=email_input).first()
+            if user is None:
+                user = User.query.filter_by(email=email).first()
             if app.config.get('REQUIRE_HEADERS', True):
                 # Require app name to match
                 if app_name is None or app_name.lower() != 'tamari':
@@ -97,7 +100,7 @@ def apiAuthenticate():
                 invalid_keys = set(data.keys()) - allowed_keys
                 return jsonify(message=f"Unrecognized keys: {', '.join(invalid_keys)}"), 400
             # Disallow API login for demo account
-            if email == "demo@tamariapp.com":
+            if user and user.email == "demo@tamariapp.com":
                 return jsonify({"message": "API access disallowed for demo account"}), 401
             # Check login
             if user is None or not user.check_password(password):

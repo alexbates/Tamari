@@ -694,11 +694,14 @@ def request_reset():
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        # If Demo Account, users cannot delete account
-        if user.email == 'demo@tamariapp.com':
-            flash(_('Password reset disabled for demo.'))
-            return redirect(url_for('account.login'))
+        if not user:
+            email_lower = form.email.data.lower()
+            user = User.query.filter_by(email=email_lower).first()
         if user:
+            # If Demo Account, users cannot delete account
+            if user.email.lower() == 'demo@tamariapp.com':
+                flash(_('Password reset disabled for demo.'))
+                return redirect(url_for('account.login'))
             send_password_reset_email(user)
         flash(_('Check your email for instructions.'))
         return redirect(url_for('account.login'))

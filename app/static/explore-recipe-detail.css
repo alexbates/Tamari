@@ -188,6 +188,7 @@ tr:nth-child(odd) {
 .urla:hover {color: var(--color-urla); text-decoration: none;}
 .urla:active {color: var(--color-urla); text-decoration: none;}
 .btncontainer {margin-top: 12px;}
+.buttonform {display: inline-block;}
 .btn-default {
 	border: none;
 	color: var(--color-btn-default);

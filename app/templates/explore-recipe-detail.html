@@ -99,7 +99,7 @@
 			<p><a class="urla" href="{{ rec_url }}" target="_blank" aria-label="{{ _('Original recipe URL') }}">{{ rec_url }}</a></p>
 			{% endif %}
 			{% if current_user.is_authenticated %}
-			<form method="post" novalidate>
+			<form method="post" class="buttonform" novalidate>
 				{{ form.hidden_tag() }}
 				<button class="btn btn-default" name="submit" type="submit" aria-label="{{ _('Save Recipe') }}">
                     <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="{{ _('Save Recipe') }}"></span>
@@ -107,14 +107,14 @@
                 </button>
 			</form>
 			{% else %}
-			<button class="btn btn-default" name="submit" type="submit" disabled style="cursor: not-allowed;" aria-label="{{ _('Login to Save Recipe') }}">
+			<button class="btn btn-default buttonform" name="submit" type="submit" disabled style="cursor: not-allowed;" aria-label="{{ _('Login to Save Recipe') }}">
                 <span class="btn-icon"><img id="saveimg" src="{{ url_for('static', filename='save.png', _external=True) }}" alt="{{ _('Login to Save Recipe') }}"></span>
                 <span class="btn-text">{{ _('Login to Save Recipe') }}</span>
             </button>
 			{% endif %}
 			<!-- Regardless of whether user is signed in, a Print Recipe button is displayed -->
 			<!-- Upon clicking this button, a POST request is submitted to explorePrintRecipe route -->
-			<form action="{{ url_for('explore.explorePrintRecipe') }}" method="POST" style="display:inline;">
+			<form action="{{ url_for('explore.explorePrintRecipe') }}" method="POST" class="buttonform" style="display:inline;">
 				<input type="hidden" name="rec_title" value="{{ rec_title|e }}">
 				<input type="hidden" name="description" value="{{ description|e }}">
 				<input type="hidden" name="preptime" value="{{ preptime|e }}">

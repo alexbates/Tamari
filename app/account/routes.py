@@ -53,10 +53,23 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))
     form = LoginForm()
+    # Minor redundancy in login process is intentional
+    # This is due to previously allowing duplicate email accounts with different cases
+    # The current solution allows existing duplicates to log in but prevents new duplicates from being registered
     if form.validate_on_submit():
         # Call rate limited function to effectively impose rate limit on registration attempts
         if rate_limited_login():
+            # Attempt login with exact email provided by the user
             user = User.query.filter_by(email=form.email.data).first()
+            # If not found, attempt login with lowercase email
+            if user is None or not user.check_password(form.password.data):
+                email_lower = form.email.data.lower()
+                # Only check lowercase if it's different from original input
+                if email_lower != form.email.data:
+                    user_lower = User.query.filter_by(email=email_lower).first()
+                    # If a lowercase email exists, check its password
+                    if user_lower and user_lower.check_password(form.password.data):
+                        user = user_lower
             # Check login
             if user is None or not user.check_password(form.password.data):
                 flash(_('Invalid email or password'))
@@ -91,6 +104,11 @@ def register():
         if rate_limited_registration():
             # Check if email is already registered
             checkemail = User.query.filter_by(email=form.email.data).first()
+            # Check if email in lowercase is already registered
+            # This redundant check exists because account emails were originally case sensitive
+            # It is necessary to check whether either variant exists in database
+            email_lower = form.email.data.lower()
+            checkemail2 = User.query.filter_by(email=email_lower).first()
             # Validate email
             regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
             emailisvalid = re.fullmatch(regex, form.email.data)
@@ -98,7 +116,7 @@ def register():
             if len(form.email.data) < 3 or len(form.email.data) > 254:
                 emailisvalid = False        
             # Error if email is registered
-            if checkemail:
+            if checkemail or checkemail2:
                 flash('Error: ' + _('email is already taken.'))
             # Error if email is invalid for any reason
             elif emailisvalid is None or emailisvalid == False:
@@ -112,7 +130,7 @@ def register():
             # Process registration
             else:
                 logout_user()
-                user = User(email=form.email.data)
+                user = User(email=email_lower)
                 user.set_password(form.password.data)
                 user.reg_time = datetime.utcnow()
                 user.pref_size = 0

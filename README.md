@@ -63,7 +63,7 @@ Tamari is now running! Go to http://localhost:4888
 For more information regarding usage, installation, and upgrading, check out the documentation at https://tamariapp.com/docs/
 
 ## Backups
-Please make backups of your data to prevent data loss. Details about where user data is stored can be found at https://tamariapp.com/docs/backups/
+Please make backups of your data to prevent data loss. Details about the location of user data can be found at https://tamariapp.com/docs/backups/
 
 ## Contribute
 Have ideas for new features, improvements, or found a bug? Feel free to open an issue! I am looking for ways to improve the app, and your feedback is appreciated.

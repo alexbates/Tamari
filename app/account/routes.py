@@ -61,19 +61,16 @@ def login():
         if rate_limited_login():
             # Attempt login with exact email provided by the user
             user = User.query.filter_by(email=form.email.data).first()
-            # If not found, attempt login with lowercase email
-            if user is None or not user.check_password(form.password.data):
+            # If no matching user is found, check using the lowercase email
+            if user is None:
                 email_lower = form.email.data.lower()
-                # Only check lowercase if it's different from original input
                 if email_lower != form.email.data:
-                    user_lower = User.query.filter_by(email=email_lower).first()
-                    # If a lowercase email exists, check its password
-                    if user_lower and user_lower.check_password(form.password.data):
-                        user = user_lower
+                    user = User.query.filter_by(email=email_lower).first()
             # Check login
             if user is None or not user.check_password(form.password.data):
                 flash(_('Invalid email or password'))
                 return redirect(url_for('account.login'))
+            # Login the found user
             login_user(user, remember=form.remember_me.data)
             next_page = request.args.get('next')
             if not next_page or url_parse(next_page).netloc != '':

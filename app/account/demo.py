@@ -1,8 +1,15 @@
 from flask import render_template
 from app import app, db
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
-import os, secrets
+import os, secrets, warnings
 from config import Config
+
+# Hide warnings for DELETE statements for this file
+try:
+    from sqlalchemy.exc import SAWarning
+    warnings.filterwarnings("ignore", category=SAWarning)
+except ImportError:
+    pass
 
 # This python file is used to reconstruct the data in the Demo account.
 # In Tamari instances, a Demo account can be created using the email address 'demo@tamariapp.com'.

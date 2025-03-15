@@ -241,10 +241,8 @@
 		</div>
 		<div id="instructions">
 			<h3>{{ _('Instructions') }}</h3>
-			{% for item in instructions %}
-			{% if item | length > 0 %}
+			{% for item in instructions if item %}
 			<div class="steps"><b>{{ _('Step') }} {{ loop.index }}</b><p>{{ item }}</p></div>
-			{% endif %}
 			{% endfor %}
 		</div>
 		{% else %}

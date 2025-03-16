@@ -429,16 +429,22 @@
 	margin-top: 9px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 40px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
-.btn-text {float: left; padding-left: 8px; padding-right: 8px;}
+.btn-text {
+	display: none; /* Hide on all screen sizes as of Tamari version 1.2 */
+	float: left; 
+	padding-left: 8px; 
+	padding-right: 8px;
+}
 .btn-icon {
 	display: block; 
 	float: right; 
 	height: var(--size-btn-icon); 
-	padding-right: 8px; 
+	padding-right: var(--padding-right-btn-icon);
 	width: var(--size-btn-icon);
 }
 .btn-icon img {
@@ -988,11 +994,10 @@
 }
 @media screen and (max-width: 750px) { 
 	#recipenav {height: 97px;}
-	.recipenavleft {float: none; text-align: center;}
+	.recipenavleft {float: none; text-align: left;}
 	.recbtn {margin-top: 10px;}
 	.recipenavright {width: 100%;}
 	.btn-default {width: 40px;}
-	.btn-text {display: none;}
 	.btn-icon {padding-right: var(--padding-right-btn-icon);}
 	.search-cont {width: var(--width-search-cont-mobile);}
 	.recipe1-text {

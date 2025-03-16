@@ -2,7 +2,7 @@
 
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
-	<link href="{{ url_for('static', filename='all-recipes.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='recipe-index.css', _external=True) }}" rel='stylesheet' type='text/css'>
 {% endblock %}
 
 {% block content %}
@@ -10,9 +10,9 @@
 	<div class="block1inner">
 		<div id="recipenav">
 			<div class="recipenavleft">
-				<input type="button" class="recbtn recbtn1 recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="{{ _('All Recipes') }}" aria-label="{{ _('Navigate to All Recipes') }}"
-				><input type="button" class="recbtn recbtn2" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="{{ _('Favorites') }}" aria-label="{{ _('Navigate to Favorites') }}"
-				><input type="button" class="recbtn recbtn3" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="{{ _('Categories') }}" aria-label="{{ _('Navigate to Categories') }}">
+				<input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="{{ _('All Recipes') }}" aria-label="{{ _('Navigate to All Recipes') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="{{ _('Favorites') }}" aria-label="{{ _('Navigate to Favorites') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="{{ _('Categories') }}" aria-label="{{ _('Navigate to Categories') }}">
 			</div>
 			<div class="recipenavright">
 				<div class="settingsbtn">

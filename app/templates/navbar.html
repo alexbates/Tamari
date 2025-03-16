@@ -266,6 +266,66 @@
 		// Additional check after a longer delay to catch any late-loading content
 		setTimeout(checkScroll, 2000);  // 2 second delay
 	});
+	
+	// This code is for handling the horizontal scrolling of All Recipes, Favorites, Categories, and Recents
+	// Also used in Meal Planner and Account
+	document.addEventListener('DOMContentLoaded', function() {
+		const containerRecip = document.querySelector('.recipenavleft');
+		const navRecip       = document.querySelector('.recipenavleft-inner');
+		const rightArrowRecip = document.querySelector('.scroll-right-recip');
+		const leftArrowRecip  = document.querySelector('.scroll-left-recip');
+
+		// Adjust how close to the edge we consider "end" or "start":
+		const EDGE_THRESHOLD = 2;  // or 3, 5, etc.  
+
+		function checkScrollRecip() {
+			if (!containerRecip || !navRecip || !rightArrowRecip || !leftArrowRecip) return;
+
+			const scrollLeftPlusWidth = navRecip.scrollLeft + navRecip.clientWidth;
+			const maxScroll           = navRecip.scrollWidth;
+			
+			// If within a few pixels of maxScroll, treat as "scrolled to end."
+			const isScrolledToEnd   = (scrollLeftPlusWidth >= (maxScroll - EDGE_THRESHOLD));
+			const isScrolledToStart = (navRecip.scrollLeft <= EDGE_THRESHOLD);
+
+			const isScrollable = (maxScroll > containerRecip.clientWidth);
+
+			rightArrowRecip.style.display = (isScrollable && !isScrolledToEnd) ? 'block' : 'none';
+			leftArrowRecip.style.display  = (isScrollable && !isScrolledToStart) ? 'block' : 'none';
+		}
+
+		// Clamp the scroll so we never overshoot:
+		function scrollRight() {
+			const maxLeft = navRecip.scrollWidth - navRecip.clientWidth;
+			const newLeft = Math.min(navRecip.scrollLeft + 300, maxLeft);
+			navRecip.scrollTo({ left: newLeft, behavior: 'smooth' });
+		}
+
+		function scrollLeft() {
+			const newLeft = Math.max(navRecip.scrollLeft - 300, 0);
+			navRecip.scrollTo({ left: newLeft, behavior: 'smooth' });
+		}
+
+		// Set up arrow events
+		if (rightArrowRecip && leftArrowRecip) {
+			rightArrowRecip.addEventListener('click', function() {
+			if (navRecip) scrollRight();
+			});
+			leftArrowRecip.addEventListener('click', function() {
+			if (navRecip) scrollLeft();
+			});
+		}
+
+		// Re-check on scroll or resize
+		if (navRecip) {
+			navRecip.addEventListener('scroll', checkScrollRecip);
+		}
+		window.addEventListener('resize', checkScrollRecip);
+
+		// Initial checks with delay
+		setTimeout(checkScrollRecip, 100);
+		setTimeout(checkScrollRecip, 2000);
+	});
 	// If #endpoints exists, count number of <details> elements, update #endpoints span
 	$(document).ready(function() {
 		if ($('#endpoints').length > 0) {

@@ -12,7 +12,7 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
-	--color-recbtn-bg: #2b2b2b;
+	--color-recbtn-bg: #111111;
 	--color-recbtn-font: #ffffff;
 	--color-btn-default: #ffffff;
 	--color-btn2-default-bg: #111111;
@@ -47,7 +47,7 @@
 	--color-active-bg-hover: rgb(229, 229, 229);
 	--color-active-bottom: #000000;
 	--color-block1: #000000;
-	--color-recbtn-bg: #cfcfcf;
+	--color-recbtn-bg: #efefef;
 	--color-recbtn-font: #000000;
 	--color-btn-default: #000000;
 	--color-btn2-default-bg: #efefef;
@@ -82,7 +82,7 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
-	--color-recbtn-bg: #2b2b2b;
+	--color-recbtn-bg: #111111;
 	--color-recbtn-font: #ffffff;
 	--color-btn-default: #ffffff;
 	--color-btn2-default-bg: #111111;
@@ -402,9 +402,31 @@
 }
 .recipenavleft {
 	float: left;
-	height: 40px;
-}
-.recbtn {
+	position: relative;
+	overflow: hidden;          /* Hide overflow behind arrow areas */
+	text-align: left;
+	margin-top: var(--margin-recbtn);
+	width: calc(100% - 280px);
+  }
+  
+  /* Scrollable inner container (like “ul” in the navbar) */
+  .recipenavleft-inner {
+	float: none;       /* Not strictly required unless you want to mirror the original */
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: none;    /* Hide scrollbar in Firefox */
+	-ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+	height: 100%;
+  }
+  
+  /* Hide scrollbars in Chrome/Safari/Opera */
+  .recipenavleft-inner::-webkit-scrollbar {
+	display: none;
+  }
+  
+  /* Use the same .recbtn styles you already have */
+  .recbtn {
+	display: inline-block;
 	background-color: var(--color-recbtn-bg);
 	border: none;
 	border-radius: 15px;
@@ -412,12 +434,66 @@
 	cursor: pointer;
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
-	margin-top: var(--margin-recbtn);
-	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
+	margin-right: 8px;
+	padding: 0px 10px; /* top/bottom, left/right */
 	-webkit-font-smoothing: subpixel-antialiased;
-} 
-.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-/* add .recbtn1 {} and .recbtn2 {} and .recbtn3 {} here if needed */
+	white-space: nowrap; /* Keep button text on a single line */
+  }
+  .recbtn:last-child {
+	margin-right: 0px;
+  }
+  .recbtn:active,
+  .recbtn.active,
+  .recbtn:hover,
+  .recbtn:focus {
+	outline: none;
+  }
+  .recbtn-active {
+	/* If you want a distinct “active” styling, put it here */
+  }
+  
+  /* Arrow containers (parallel to “.scroll-arrow” in the original) */
+  .scroll-arrow-recip {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	display: none; /* Show only if scroll is needed */
+	height: 100%;
+  }
+  
+.scroll-arrow-recip img {
+	margin-top: 6px;
+	height: var(--height-recbtn) - 12px;
+	width: calc((var(--height-recbtn) - 12px) * (12 / 20)); /* ratio-based width */
+}
+  
+  /* Right arrow */
+  .scroll-right-recip {
+	right: 0;
+	background: linear-gradient(
+	  to right,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 8px;
+  }
+  
+  /* Left arrow */
+  .scroll-left-recip {
+	left: 0;
+	background: linear-gradient(
+	  to left,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 8px;
+  }
+
 .recipenavright {content: ""; height: var(--height-recipenav);}
 .btn-default {
 	border: none;
@@ -945,7 +1021,11 @@
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
 	#flashed-norm {margin-left: 10px; margin-right: 10px;}
-	.recipenavleft {padding-left: 10px;}
+	.recipenavleft {
+		margin-left: 10px; 
+		margin-right: 10px;
+		width: calc(100% - 305px);
+	}
 	.btn2 {margin-right: 10px;}
 	.settingsbtn {margin-right: 10px;}
 	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
@@ -993,9 +1073,13 @@
 	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 750px) { 
-	#recipenav {height: 97px;}
-	.recipenavleft {float: none; text-align: left;}
-	.recbtn {margin-top: 10px;}
+	#recipenav {height: 92px;}
+	.recipenavleft {
+		float: none; 
+		text-align: left; 
+		margin-top: 10px;
+		width: calc(100% - 20px);
+	}
 	.recipenavright {width: 100%;}
 	.btn-default {width: 40px;}
 	.btn-icon {padding-right: var(--padding-right-btn-icon);}

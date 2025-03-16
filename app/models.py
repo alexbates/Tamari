@@ -67,6 +67,7 @@ class Recipe(db.Model):
     instructions = db.Column(db.String(6600))
     time_created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     time_edited = db.Column(db.DateTime)
+    last_time_viewed = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     favorite = db.Column(db.Integer)
     public = db.Column(db.Integer)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))

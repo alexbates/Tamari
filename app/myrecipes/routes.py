@@ -520,6 +520,10 @@ def recipeDetail(hexid):
     choices = []
     if current_user.is_authenticated:
         user = User.query.filter_by(email=current_user.email).first_or_404()
+        # Update last time viewed in database, which is used for Recents page
+        if current_user.id == recipe.user_id:
+            recipe.last_time_viewed = datetime.utcnow()
+            db.session.commit()
         lists = user.shop_lists.all()
         select_length = 0
         for list in lists:

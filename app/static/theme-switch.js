@@ -143,6 +143,8 @@ function themeElements() {
 	var informationImages = document.querySelectorAll('img.inf-image');
 	const scrollRight = document.getElementById("scroll-right");
 	const scrollLeft = document.getElementById("scroll-left");
+	const scrollRightRecip = document.getElementById("scroll-right-recip");
+	const scrollLeftRecip = document.getElementById("scroll-left-recip");
 	const barcodeCameraImg = document.getElementById("barcodecameraimg");
 	const printImg = document.getElementById("printimg");
 	const pdfImg = document.getElementById("pdfimg");
@@ -176,6 +178,8 @@ function themeElements() {
         }
 		if (scrollRight !== null) {scrollRight.src = "/static/navbar-scroll-right-light.png";}
 		if (scrollLeft !== null) {scrollLeft.src = "/static/navbar-scroll-left-light.png";}
+		if (scrollRightRecip !== null) {scrollRightRecip.src = "/static/navbar-scroll-right-light.png";}
+		if (scrollLeftRecip !== null) {scrollLeftRecip.src = "/static/navbar-scroll-left-light.png";}
 		if (barcodeCameraImg !== null) {barcodeCameraImg.src = "/static/barcode-camera-light.png";}
 		if (printImg !== null) {printImg.src = "/static/print-light.png";}
 		if (pdfImg !== null) {pdfImg.src = "/static/download-light.png";}
@@ -210,6 +214,8 @@ function themeElements() {
         }
 		if (scrollRight !== null) {scrollRight.src = "/static/navbar-scroll-right-dark.png";}
 		if (scrollLeft !== null) {scrollLeft.src = "/static/navbar-scroll-left-dark.png";}
+		if (scrollRightRecip !== null) {scrollRightRecip.src = "/static/navbar-scroll-right-dark.png";}
+		if (scrollLeftRecip !== null) {scrollLeftRecip.src = "/static/navbar-scroll-left-dark.png";}
 		if (barcodeCameraImg !== null) {barcodeCameraImg.src = "/static/barcode-camera-dark.png";}
 		if (printImg !== null) {printImg.src = "/static/print-dark.png";}
 		if (pdfImg !== null) {pdfImg.src = "/static/download-dark.png";}

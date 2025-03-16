@@ -344,6 +344,52 @@ def favorites():
         mdescription=_('View all recipes that have been marked as favorites in your Tamari account.'), user=user,
         recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
 
+@bp.route('/my-recipes/recents', methods=['GET', 'POST'])
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def recents():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Query recipes for the current user depending on user sort preference
+    # Select specific fields from Recipe and NutritionalInfo tables
+    # Use outer join (left join) to prevent recipes that don't have calories from being excluded
+    recipes_query = db.session.query(
+        Recipe.id,
+        Recipe.title,
+        Recipe.category,
+        Recipe.hex_id,
+        Recipe.photo,
+        Recipe.prep_time,
+        Recipe.cook_time,
+        Recipe.total_time,
+        Recipe.time_created,
+        Recipe.last_time_viewed,
+        NutritionalInfo.calories
+    ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.last_time_viewed.isnot(None)).order_by(Recipe.last_time_viewed)
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Build recipe_info array using external function
+    recipe_info = get_recipe_info(recipes)
+    # Paginate the recipe_info array in the same way that recipes is paginated
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    recipe_info_paginated = recipe_info[start_index:end_index]
+    next_url = url_for('myrecipes.recents', page=recipes.next_num) \
+        if recipes.has_next else None
+    prev_url = url_for('myrecipes.recents', page=recipes.prev_num) \
+        if recipes.has_prev else None
+    form = DisplaySettingsForm()
+    if form.validate_on_submit():
+        user.pref_size = form.recipe_size.data
+        user.pref_sort = form.sort_by.data
+        db.session.commit()
+        return redirect(url_for('myrecipes.recents'))
+    return render_template('recents.html', title=_('Recents'),
+        mdescription=_('See all recently viewed recipes.'), user=user,
+        recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
+
 @bp.route('/recipe/<hexid>/favorite')
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

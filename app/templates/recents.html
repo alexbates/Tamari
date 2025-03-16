@@ -1,0 +1,157 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='recipe-index.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<div id="recipenav">
+			<div class="recipenavleft">
+				<input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="{{ _('All Recipes') }}" aria-label="{{ _('Navigate to All Recipes') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="{{ _('Favorites') }}" aria-label="{{ _('Navigate to Favorites') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="{{ _('Categories') }}" aria-label="{{ _('Navigate to Categories') }}">
+				><input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.recents') }}';" value="{{ _('Recents') }}" aria-label="{{ _('Navigate to Recents') }}">
+			</div>
+			<div class="recipenavright">
+				<div class="settingsbtn">
+					<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="{{ _('Toggle display settings') }}">
+						<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt="{{ _('Settings') }}"></span>
+					</button>
+					<div class="settings-content" id="settingsDrop">
+						<h3>{{ _('Display Settings') }}</h3>
+						<form method="post" novalidate>
+							{{ form.hidden_tag() }}
+							<label>{{ _('Recipe Type') }}</label>
+							{{ form.recipe_size }}
+							<div class="custom-select">
+								<div class="cust-select">
+									<label class="control-label">{{ _('Sort By') }}</label><br>
+									{{ form.sort_by }}
+								</div>
+							</div>
+							{{ form.submit(class="btn btn3-default") }}
+						</form>
+					</div>
+				</div>
+				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.addRecipe') }}';" aria-label="{{ _('Add a new recipe') }}">
+                                        <span class="btn-text">{{ _('Add Recipe') }}</span>
+                                        <span class="btn-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="{{ _('Add Recipe') }}"></span>
+				</button>
+				<div class="search-cont">
+					<input class="search-box" id="search" name="search" placeholder="{{ _('Search') }}" value="" aria-label="{{ _('Search recipes') }}">
+				</div>
+			</div>
+		</div>
+		{% if recipes %}
+		{% if user.pref_size == 0 %}
+		<div id="recipecont" class="recipe1cont">
+		{% for item in recipes %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" tabindex="-1">
+		<div class="recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
+			<div class="r1bottom">
+				<div class="recipe1-text">
+					<div tabindex="0">{{ item.title }}</div>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		{% elif user.pref_size == 1 %}
+		<div id="recipecont" class="recipe2cont">
+		<div class="recipe2continner">
+		{% for item in recipes %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a" tabindex="-1">
+		<div class="recipe2">
+			<div class="recipe2inner">
+				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
+				<div class="r2bottom">
+					<div tabindex="0">{{ item.title }}</div>
+					<span>{{ item.category }}</span>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		</div>
+		{% else %}
+		<div id="recipecont" class="recipe3cont">
+		<div class="recipe3continner">
+		{% for item in recipes %}
+		{% set idx = loop.index0 %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a" tabindex="-1">
+		<div class="recipe3">
+			<div class="r3inner" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
+			<div class="r3bottom">
+				<div class="r3binner">
+					<div tabindex="0">{{ item.title }}</div>
+					<span class="r3category r3span">{{ item.category }}</span>
+					<br>
+					{% if item.prep_time or item.cook_time or item.total_time %}
+					{% if item.prep_time %}<span class="r3time r3span">{{ _('Prep') }}: {{ item.prep_time }}m</span>{% endif %}
+					{% if item.cook_time %}<span class="r3time r3span">{{ _('Cook') }}: {{ item.cook_time }}m</span>{% endif %}
+					{% if item.total_time %}<span class="r3time r3span">{{ _('Total') }}: {{ item.total_time }}m</span>{% endif %}
+					<br>
+					{% endif %}
+					{% if item.calories %}
+					<span class="r3calories r3span">{{ _('Calories') }}: {{ item.calories }}</span>
+					<br>
+					{% endif %}
+					{% if recipe_info_paginated[idx][0] %}
+					<span class="r3created r3spanscheduled">{{ _('Scheduled For') }}: {{ recipe_info_paginated[idx][0] }}</span>
+					{% elif recipe_info_paginated[idx][1] %}
+					<span class="r3created r3span">{{ _('Last Prepared') }}: {{ recipe_info_paginated[idx][1] }}</span>
+					{% else %}
+					<span class="r3created r3span">{{ _('Created') }}: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
+					{% endif %}
+				</div>
+			</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		</div>
+		{% endif %}
+		{% else %}
+		<p id="norecipes">{{ _('There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe.') }}</p>
+		{% endif %}
+		{% if prev_url or next_url %}
+		<div class="prevnext">
+			{% if prev_url %}
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="{{ _('Navigate to previous page') }}">
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+				<span class="btn-prev-text">{{ _('Previous') }}</span>
+			</button>
+			{% endif %}
+			{% if next_url %}
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="{{ _('Navigate to next page') }}">
+				<span class="btn-next-text">{{ _('Next') }}</span>
+				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
+			</button>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+	<script>
+		// CTRL+A keyboard shortcut to redirect to Add Recipe page, only when authenticated
+        $(document).ready(function() {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    window.location.href = '/add-recipe';
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

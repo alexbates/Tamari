@@ -1,0 +1,1173 @@
+
+.myrecipes-active {
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
+}
+.myrecipes-active:hover {
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
+}
+.mt-myrecipes {display: block !important;}
+/* THEMES */
+:root {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-recbtn-bg: #2b2b2b;
+	--color-recbtn-font: #ffffff;
+	--color-btn-default: #ffffff;
+	--color-btn2-default-bg: #111111;
+	--color-btn2-default-font: #ffffff;
+	--color-btn2-default-hover: #161616;
+	--color-btn2-default-active: #0c0c0c;
+	--color-search-box-bg: #1c1c1c;
+	--image-search-box-bg: url(data:image/png;base64,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);
+	--color-search-box-font: #d1d1d1;
+	--color-search-box-placeholder: #545454;
+	--color-settingsbtn-bg: #111111;
+	--color-settings-content-bg: #1a1a1a;
+	--color-settings-content-boxshadow: rgba(0,0,0,0.2);
+	--color-set-cont-bef-border: #1a1a1a;
+	--color-cust-select-bg: #2b2b2b;
+	--color-cust-select-font: #d1d1d1;
+	--color-cust-select-after-border: #ffffff;
+	--color-btn3-default: #ffffff;
+	--color-norecipes: #111111;
+	--color-shadow: #000000;
+	--color-recipe1: #ffffff;
+	--color-r1bottom: rgba(20, 20, 20, 0.82);
+	--color-recipe2inner: #111111;
+	--color-r2bottom-span: #aeaeae;
+	--color-r3bottom: rgba(20, 20, 20, 0.82);
+	--color-r3bottom-span: #bdbdbd;
+	--color-r3span: #111111;
+	--color-btn-paginate: #ffffff;
+}
+[data-theme="light"] {
+	--color-active-bg: #efefef;
+	--color-active-bg-hover: rgb(229, 229, 229);
+	--color-active-bottom: #000000;
+	--color-block1: #000000;
+	--color-recbtn-bg: #cfcfcf;
+	--color-recbtn-font: #000000;
+	--color-btn-default: #000000;
+	--color-btn2-default-bg: #efefef;
+	--color-btn2-default-font: #000000;
+	--color-btn2-default-hover: #ececec;
+	--color-btn2-default-active: #f4f4f4;
+	--color-search-box-bg: #e4e4e4;
+	--image-search-box-bg: url(data:image/png;base64,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);
+	--color-search-box-font: #3e3e3e;
+	--color-search-box-placeholder: #a0a0a0;
+	--color-settingsbtn-bg: #efefef;
+	--color-settings-content-bg: #e5e5e5;
+	--color-settings-content-boxshadow: rgba(255,255,255,0.2);
+	--color-set-cont-bef-border: #e5e5e5;
+	--color-cust-select-bg: #cfcfcf;
+	--color-cust-select-font: #3e3e3e;
+	--color-cust-select-after-border: #141414;
+	--color-btn3-default: #000000;
+	--color-norecipes: #efefef;
+	--color-shadow: #ffffff;
+	--color-recipe1: #000000;
+	--color-r1bottom: rgba(232, 232, 232, 0.86);
+	--color-recipe2inner: #efefef;
+	--color-r2bottom-span: #5c5c5c;
+	--color-r3bottom: rgba(232, 232, 232, 0.86);
+	--color-r3bottom-span: #424242;
+	--color-r3span: #efefef;
+	--color-btn-paginate: #000000;
+}
+[data-theme="dark"] {
+	--color-active-bg: #111111;
+	--color-active-bg-hover: rgb(26, 26, 26);
+	--color-active-bottom: #ffffff;
+	--color-block1: #ffffff;
+	--color-recbtn-bg: #2b2b2b;
+	--color-recbtn-font: #ffffff;
+	--color-btn-default: #ffffff;
+	--color-btn2-default-bg: #111111;
+	--color-btn2-default-font: #ffffff;
+	--color-btn2-default-hover: #161616;
+	--color-btn2-default-active: #0c0c0c;
+	--color-search-box-bg: #1c1c1c;
+	--image-search-box-bg: url(data:image/png;base64,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);
+	--color-search-box-font: #d1d1d1;
+	--color-search-box-placeholder: #545454;
+	--color-settingsbtn-bg: #111111;
+	--color-settings-content-bg: #1a1a1a;
+	--color-settings-content-boxshadow: rgba(0,0,0,0.2);
+	--color-set-cont-bef-border: #1a1a1a;
+	--color-cust-select-bg: #2b2b2b;
+	--color-cust-select-font: #d1d1d1;
+	--color-cust-select-after-border: #ffffff;
+	--color-btn3-default: #ffffff;
+	--color-norecipes: #111111;
+	--color-shadow: #000000;
+	--color-recipe1: #ffffff;
+	--color-r1bottom: rgba(20, 20, 20, 0.82);
+	--color-recipe2inner: #111111;
+	--color-r2bottom-span: #aeaeae;
+	--color-r3bottom: rgba(20, 20, 20, 0.82);
+	--color-r3bottom-span: #bdbdbd;
+	--color-r3span: #111111;
+	--color-btn-paginate: #ffffff;
+}
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--font-btn-default: 16px;
+	--height-btn-default: 38px;
+	--size-btn-icon: 20px;
+	--padding-right-btn-icon: 10px;
+	--padding-btn2-icon: 9px;
+	--width-search-cont: 140px;
+	--width-search-cont-mobile: calc(100% - 163px);
+	--size-bg-search-box: 22px;
+	--font-search-box: 18px;
+	--height-search-box: 38px;
+	--padding-search-box: 36px;
+	--font-settings-content: 16px;
+	--margin-settings-content: -148px;
+	--font-settings-content-h3: 18px;
+	--font-cust-select: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+	--height-recipe1-text: 56px;
+	--font-recipe1-text: 22px;
+	--padding-top-recipe1-text: 34px;
+	--w960-padding-top-recipe1-text: 27px;
+	--w910-font-recipe1-text: 20px;
+	--w910-height-recipe1-text: 52px;
+	--w910-padding-top-recipe1-text: 23px;
+	--w800-padding-top-recipe1-text: 17px;
+	--w750-padding-top-recipe1-text: 13px;
+	--w700-font-recipe1-text: 22px;
+	--w700-height-recipe1-text: 56px;
+	--w700-padding-top-recipe1-text: 32px;
+	--w640-font-recipe1-text: 20px;
+	--w640-height-recipe1-text: 52px;
+	--w640-padding-top-recipe1-text: 29px;
+	--w565-padding-top-recipe1-text: 18px;
+	--w530-font-recipe1-text: 18px;
+	--w530-height-recipe1-text: 46px;
+	--w500-padding-top-recipe1-text: 14px;
+	--w470-font-recipe1-text: 24px;
+	--w470-height-recipe1-text: 60px;
+	--w470-padding-top-recipe1-text: 58px;
+	--w440-padding-top-recipe1-text: 50px;
+	--w410-font-recipe1-text: 22px;
+	--w410-height-recipe1-text: 56px;
+	--w400-padding-top-recipe1-text: 46px;
+	--w385-padding-top-recipe1-text: 42px;
+	--w370-padding-top-recipe1-text: 38px;
+	--w350-font-recipe1-text: 18px;
+	--w350-height-recipe1-text: 46px;
+	--w330-padding-top-recipe1-text: 32px;
+	--w310-padding-top-recipe1-text: 26px;
+	--w290-padding-top-recipe1-text: 22px;
+	--w270-padding-top-recipe1-text: 17px;
+	--w250-padding-top-recipe1-text: 12px;
+	--height-r2bottom: 80px;
+	--font-r2bottom-div: 18px;
+	--height-r2bottom-div: 40px;
+	--font-r2bottom-span: 14px;
+	--w860-height-r2bottom: 75px;
+	--w860-font-r2bottom-div: 16px;
+	--w860-height-r2bottom-div: 36px;
+	--w860-font-r2bottom-span: 12px;
+	--w330-height-r2bottom: 69px;
+	--w330-font-r2bottom-div: 14px;
+	--w330-height-r2bottom-div: 30px;
+	--w330-font-r2bottom-span: 10px;
+	--font-r3binner-div: 18px;
+	--height-r3binner-div: 40px;
+	--font-r3category: 14px;
+	--font-r3small: 12px;
+	--w820-font-r3binner-div: 16px;
+	--w820-height-r3binner-div: 36px;
+	--w820-font-r3category: 12px;
+	--w820-font-r3small: 10px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--font-btn-default: 16px;
+	--height-btn-default: 38px;
+	--size-btn-icon: 20px;
+	--padding-right-btn-icon: 10px;
+	--padding-btn2-icon: 9px;
+	--width-search-cont: 140px;
+	--width-search-cont-mobile: calc(100% - 163px);
+	--size-bg-search-box: 22px;
+	--font-search-box: 18px;
+	--height-search-box: 38px;
+	--padding-search-box: 36px;
+	--font-settings-content: 16px;
+	--margin-settings-content: -148px;
+	--font-settings-content-h3: 18px;
+	--font-cust-select: 16px;
+	--font-flashed: 14px;
+	--height-flashed: 17px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+	--height-recipe1-text: 56px;
+	--font-recipe1-text: 22px;
+	--padding-top-recipe1-text: 34px;
+	--w960-padding-top-recipe1-text: 27px;
+	--w910-font-recipe1-text: 20px;
+	--w910-height-recipe1-text: 52px;
+	--w910-padding-top-recipe1-text: 23px;
+	--w800-padding-top-recipe1-text: 17px;
+	--w750-padding-top-recipe1-text: 13px;
+	--w700-font-recipe1-text: 22px;
+	--w700-height-recipe1-text: 56px;
+	--w700-padding-top-recipe1-text: 32px;
+	--w640-font-recipe1-text: 20px;
+	--w640-height-recipe1-text: 52px;
+	--w640-padding-top-recipe1-text: 29px;
+	--w565-padding-top-recipe1-text: 18px;
+	--w530-font-recipe1-text: 18px;
+	--w530-height-recipe1-text: 46px;
+	--w500-padding-top-recipe1-text: 14px;
+	--w470-font-recipe1-text: 24px;
+	--w470-height-recipe1-text: 60px;
+	--w470-padding-top-recipe1-text: 58px;
+	--w440-padding-top-recipe1-text: 50px;
+	--w410-font-recipe1-text: 22px;
+	--w410-height-recipe1-text: 56px;
+	--w400-padding-top-recipe1-text: 46px;
+	--w385-padding-top-recipe1-text: 42px;
+	--w370-padding-top-recipe1-text: 38px;
+	--w350-font-recipe1-text: 18px;
+	--w350-height-recipe1-text: 46px;
+	--w330-padding-top-recipe1-text: 32px;
+	--w310-padding-top-recipe1-text: 26px;
+	--w290-padding-top-recipe1-text: 22px;
+	--w270-padding-top-recipe1-text: 17px;
+	--w250-padding-top-recipe1-text: 12px;
+	--height-r2bottom: 80px;
+	--font-r2bottom-div: 18px;
+	--height-r2bottom-div: 40px;
+	--font-r2bottom-span: 14px;
+	--w860-height-r2bottom: 75px;
+	--w860-font-r2bottom-div: 16px;
+	--w860-height-r2bottom-div: 36px;
+	--w860-font-r2bottom-span: 12px;
+	--w330-height-r2bottom: 69px;
+	--w330-font-r2bottom-div: 14px;
+	--w330-height-r2bottom-div: 30px;
+	--w330-font-r2bottom-span: 10px;
+	--font-r3binner-div: 18px;
+	--height-r3binner-div: 40px;
+	--font-r3category: 14px;
+	--font-r3small: 12px;
+	--w820-font-r3binner-div: 16px;
+	--w820-height-r3binner-div: 36px;
+	--w820-font-r3category: 12px;
+	--w820-font-r3small: 10px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-recbtn: 18px;
+	--height-recipenav: 59px;
+	--height-recbtn: 32px;
+	--margin-recbtn: 13px;
+	--font-btn-default: 18px;
+	--height-btn-default: 40px;
+	--size-btn-icon: 22px;
+	--padding-right-btn-icon: 8px;
+	--padding-btn2-icon: 8px;
+	--width-search-cont: 128px;
+	--width-search-cont-mobile: calc(100% - 163px);
+	--size-bg-search-box: 24px;
+	--font-search-box: 20px;
+	--height-search-box: 40px;
+	--padding-search-box: 38px;
+	--font-settings-content: 18px;
+	--margin-settings-content: -146px;
+	--font-settings-content-h3: 20px;
+	--font-cust-select: 18px;
+	--font-flashed: 16px;
+	--height-flashed: 19px;
+	--font-pagination: 18px;
+	--height-pagination: 36px;
+	--width-next: 79px;
+	--width-prev: 110px;
+	--height-recipe1-text: 60px;
+	--font-recipe1-text: 24px;
+	--padding-top-recipe1-text: 30px;
+	--w960-padding-top-recipe1-text: 23px;
+	--w910-font-recipe1-text: 22px;
+	--w910-height-recipe1-text: 56px;
+	--w910-padding-top-recipe1-text: 19px;
+	--w800-padding-top-recipe1-text: 13px;
+	--w750-padding-top-recipe1-text: 9px;
+	--w700-font-recipe1-text: 24px;
+	--w700-height-recipe1-text: 60px;
+	--w700-padding-top-recipe1-text: 28px;
+	--w640-font-recipe1-text: 22px;
+	--w640-height-recipe1-text: 56px;
+	--w640-padding-top-recipe1-text: 25px;
+	--w565-padding-top-recipe1-text: 14px;
+	--w530-font-recipe1-text: 20px;
+	--w530-height-recipe1-text: 50px;
+	--w500-padding-top-recipe1-text: 10px;
+	--w470-font-recipe1-text: 26px;
+	--w470-height-recipe1-text: 64px;
+	--w470-padding-top-recipe1-text: 54px;
+	--w440-padding-top-recipe1-text: 46px;
+	--w410-font-recipe1-text: 24px;
+	--w410-height-recipe1-text: 60px;
+	--w400-padding-top-recipe1-text: 42px;
+	--w385-padding-top-recipe1-text: 38px;
+	--w370-padding-top-recipe1-text: 34px;
+	--w350-font-recipe1-text: 20px;
+	--w350-height-recipe1-text: 50px;
+	--w330-padding-top-recipe1-text: 28px;
+	--w310-padding-top-recipe1-text: 22px;
+	--w290-padding-top-recipe1-text: 18px;
+	--w270-padding-top-recipe1-text: 13px;
+	--w250-padding-top-recipe1-text: 8px;
+	--height-r2bottom: 86px;
+	--font-r2bottom-div: 20px;
+	--height-r2bottom-div: 44px;
+	--font-r2bottom-span: 16px;
+	--w860-height-r2bottom: 81px;
+	--w860-font-r2bottom-div: 18px;
+	--w860-height-r2bottom-div: 40px;
+	--w860-font-r2bottom-span: 14px;
+	--w330-height-r2bottom: 75px;
+	--w330-font-r2bottom-div: 16px;
+	--w330-height-r2bottom-div: 34px;
+	--w330-font-r2bottom-span: 12px;
+	--font-r3binner-div: 20px;
+	--height-r3binner-div: 44px;
+	--font-r3category: 16px;
+	--font-r3small: 14px;
+	--w820-font-r3binner-div: 18px;
+	--w820-height-r3binner-div: 40px;
+	--w820-font-r3category: 14px;
+	--w820-font-r3small: 12px;
+}
+/* ACCENT COLOR APPLICATION */
+.recbtn-active {background-color: var(--color) !important;}
+.btn-default {background-color: var(--color);}
+.btn-default:hover {background: var(--color-lighter);}
+.btn-default:active, .btn-default.active {background: var(--color-darker);}
+.btn3-default {background-color: var(--color);}
+.btn3-default:hover {background: var(--color-lighter);}
+.btn3-default:active, .btn3-default.active {background: var(--color-darker);}
+.btn-next {background-color: var(--color);}
+.btn-next:hover {background: var(--color-lighter);}
+.btn-next:active, .btn-next.active {background: var(--color-darker);}
+.btn-prev {background-color: var(--color);}
+.btn-prev:hover {background: var(--color-lighter);}
+.btn-prev:active, .btn-prev.active {background: var(--color-darker);}
+.btn-submit {background-color: var(--color);}
+.btn-submit:hover {background: var(--color-lighter);}
+.btn-submit:active, .btn-submit.active {background: var(--color-darker);}
+.btn-addtolist {background-color: var(--color);}
+.btn-addtolist:hover {background: var(--color-lighter);}
+.btn-addtolist:active, .btn-addtolist.active {background: var(--color-darker);}
+/* BLOCK 1 */
+#block1 {
+	height: 100px;
+	width: 100%;
+	color: var(--color-block1);
+	font-size: var(--font-block1);
+}
+#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	width: 1000px;
+}
+#recipenav {
+	height: var(--height-recipenav);
+	text-align: right;
+	width: 100%;
+}
+.recipenavleft {
+	float: left;
+	height: 40px;
+}
+.recbtn {
+	background-color: var(--color-recbtn-bg);
+	border: none;
+	border-radius: 15px;
+	color: var(--color-recbtn-font);
+	cursor: pointer;
+	font-size: var(--font-recbtn);
+	height: var(--height-recbtn);
+	margin-top: var(--margin-recbtn);
+	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
+	-webkit-font-smoothing: subpixel-antialiased;
+} 
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
+/* add .recbtn1 {} and .recbtn2 {} and .recbtn3 {} here if needed */
+.recipenavright {content: ""; height: var(--height-recipenav);}
+.btn-default {
+	border: none;
+	color: var(--color-btn-default);
+	cursor: pointer;
+	float: right;
+	font-size: var(--font-btn-default);
+	height: var(--height-btn-default);
+	margin-top: 9px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
+.btn-text {float: left; padding-left: 8px; padding-right: 8px;}
+.btn-icon {
+	display: block; 
+	float: right; 
+	height: var(--size-btn-icon); 
+	padding-right: 8px; 
+	width: var(--size-btn-icon);
+}
+.btn-icon img {
+	height: 100%; 
+	width: 100%; 
+}
+.btn2-default {
+	background-color: var(--color-btn2-default-bg);
+	border: none;
+	color: var(--color-btn2-default-font);
+	cursor: pointer;
+	height: var(--height-btn-default);
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 38px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn2-default:hover {background: var(--color-btn2-default-hover);}
+.btn2-default:active, .btn2-default.active {background: var(--color-btn2-default-active);}
+.btn2-default:active, .btn2-default.active, .btn2-default:hover, .btn2-default:focus {outline: none;}
+.btn2-icon {
+	display: block; 
+	height: var(--size-btn-icon); 
+	padding-left: var(--padding-btn2-icon); 
+	width: var(--size-btn-icon);
+}
+.btn2-icon img {height: 100%; width: 100%;}
+.search-cont {
+	float: right; 
+	margin-right: 56px;
+	width: var(--width-search-cont);
+}
+.search-box {
+	background: var(--color-search-box-bg);
+	background-image: var(--image-search-box-bg);
+	background-repeat: no-repeat;
+	background-size: var(--size-bg-search-box) var(--size-bg-search-box);
+	-moz-background-size: var(--size-bg-search-box) var(--size-bg-search-box);
+	-webkit-background-size: var(--size-bg-search-box) var(--size-bg-search-box);
+	background-position: left 8px top 8px;
+	border: none;
+	border-radius: 0;
+	box-shadow: none;
+	color: var(--color-search-box-font);
+	font-size: var(--font-search-box);
+	height: var(--height-search-box);
+	padding-left: var(--padding-search-box);
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 9px;
+	width: 100%;
+	-webkit-box-shadow: none;
+}
+.search-box:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+.search-box::placeholder {color: var(--color-search-box-placeholder);}
+/* DISPLAY SETTINGS MENU */
+.settingsbtn {
+	background-color: var(--color-settingsbtn-bg);
+	float: right;
+	height: var(--height-btn-default);
+	margin-left: 9px;
+	margin-top: 9px;
+	width: var(--height-btn-default);
+}
+.settings-content {
+	background-color: var(--color-settings-content-bg);
+	border-radius: 8px;
+	box-shadow: 0px 8px 16px 0px var(--color-settings-content-boxshadow);
+	display: none;
+	padding: 8px;
+	position: absolute;
+	font-size: var(--font-settings-content);
+	width: 170px;
+	margin-left: var(--margin-settings-content);
+    margin-top: 10px;
+	text-align: left;
+	z-index: 1;
+}
+.settings-content:before,
+.settings-content:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-top: 0;
+}
+.settings-content:before {
+  top: -10px;
+  left: 156px;
+  border-bottom-color: var(--color-set-cont-bef-border);
+  border-width: 10px;
+}
+.settings-content h3 {
+	font-size: var(--font-settings-content-h3);
+	margin-bottom: 12px;
+}
+.showsettings {display: block;}
+#recipe_size {
+	margin-bottom: 10px;
+	width: 100%;
+}
+#recipe_size li {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 5px;
+	margin-top: 4px;
+}
+#recipe_size label {
+	margin-left: 5px;
+	margin-top: 3px;
+}
+#recipe_size-0 {
+	border: 0px;
+	display: table-cell;
+	height: 20px;
+	width: 20px;
+	margin-left: 0px;
+}
+#recipe_size-1 {
+	border: 0px;
+	display: table-cell;
+	height: 20px;
+	width: 20px;
+	margin-left: 0px;
+}
+#recipe_size-2 {
+	border: 0px;
+	display: table-cell;
+	height: 20px;
+	width: 20px;
+	margin-left: 0px;
+}
+.custom-select {margin-bottom: 0px; margin-top: 14px;}
+.cust-select select {
+	background: var(--color-cust-select-bg);
+    border: none;
+    box-shadow: none;
+	color: var(--color-cust-select-font);
+	height: 38px;
+	font-size: var(--font-cust-select);
+	margin-right: 0px;
+	margin-top: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 100%;
+	-moz-appearance:none;
+    -webkit-appearance:none;
+    appearance:none;
+}
+.cust-select:after {
+    content: "";
+    position: absolute;
+    bottom: 70px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    pointer-events: none; /* Prevent interaction */
+    border: 6px solid transparent;
+    border-color: var(--color-cust-select-after-border) transparent transparent transparent;
+}
+.btn3-default {
+	border: none;
+	border-radius: 7px;
+	color: var(--color-btn3-default);
+	cursor: pointer;
+	font-size: var(--font-btn-default);
+	height: 38px;
+	margin-top: 14px;
+	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
+	transition: background-color 0.08s linear, border 0.08s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn3-default:active, .btn3-default.active, .btn3-default:hover, .btn3-default:focus {outline: none;}
+/* FLASHED MESSAGES */
+#flashed-err {
+	background: var(--color-flashed-err); 
+	font-size: var(--font-flashed);
+	height: var(--height-flashed);
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: var(--color-flashed-norm); 
+	font-size: var(--font-flashed);
+	height: var(--height-flashed);
+	margin-bottom: 12px;
+	margin-top: 0px;
+	padding: 6px;
+}
+/* IF NO SAVED RECIPES */
+#norecipes {
+	background: var(--color-norecipes);
+	margin-top: 0px;
+	padding: 10px;
+}
+/* RECIPE LIST */
+.recipe1cont {margin-bottom: 20px;}
+.recipe1cont:after {clear: both; content: ""; display: table;}
+.recipe1 {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	color: var(--color-recipe1);
+	float: left;
+	padding-top: 0%;
+	width: 33.333%;
+	aspect-ratio: 4 / 3;
+}
+.r1bottom {
+	background: linear-gradient(to bottom, transparent 0%, var(--color-r1bottom) 100%);
+	height: 40%;
+	margin-top: 45%;
+	width: 100%;
+}
+.recipe1-text {
+	height: var(--height-recipe1-text);
+	overflow: hidden;
+	font-size: var(--font-recipe1-text);
+	width: calc(100% - 30px);
+	line-height: 1.2;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: var(--padding-top-recipe1-text);
+}
+.recipe1-text:after {
+	content: "";
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+.recipe1-text div {
+	text-shadow: 0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow),
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow); 
+	display: inline-block;
+	display: -webkit-inline-box;
+	max-height: 100%;
+	vertical-align: middle;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+}
+.recipe2cont {margin: 0 auto; width: 100%;}
+.recipe2continner {margin-left: -10px; width: calc(100% + 20px);}
+.recipe2continner:after {clear: both; content: ""; display: table;}
+.recipe2 {
+	position: relative; /* important so the pseudo-element can be positioned behind it */
+	float: left;
+	padding-top: 0;
+	border-radius: 15px;
+	width: calc(25% - 20px);
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	transition: transform 0.15s;
+}
+.recipe2::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit; /* same 15px corner rounding */
+	background: var(--color-darker);
+	z-index: -1; /* behind recipe2’s content */
+	transition: transform 0.15s;
+}
+@media (hover: hover) and (pointer: fine) {
+	.recipe2:hover {
+		transform: translate(5px, -5px);
+	}
+	.recipe2:hover::before {
+		transform: translate(-5px, 5px);
+	}
+}
+.recipe2inner {
+	background-color: var(--color-recipe2inner);
+	border-radius: 15px;
+}
+.r2top {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: 15px 15px 0px 0px;
+	aspect-ratio: 4 / 3;
+}
+.r2bottom {
+	display: flex; /* Used for vertical centering */
+	flex-direction: column; /* Stacks the child elements vertically */
+	height: var(--height-r2bottom);
+	justify-content: center; /* Vertically center the items */
+	padding-left: 10px;
+	padding-right: 10px;
+	overflow: hidden;
+}
+.r2bottom div {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	font-size: var(--font-r2bottom-div);
+	margin: 0;
+	padding-bottom: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-height: var(--height-r2bottom-div);
+}
+.r2bottom span {
+	color: var(--color-r2bottom-span); 
+	font-size: var(--font-r2bottom-span);
+}
+.recipe3cont {margin: 0 auto; width: 100%;}
+.recipe3continner {margin-left: -10px; width: calc(100% + 20px);}
+.recipe3continner:after {clear: both; content: ""; display: table;}
+.recipe3 {
+	aspect-ratio: 4 / 3;
+	border-radius: 15px;
+	float: left;
+	padding-top: 0;
+	position: relative; /* important so the pseudo-element can be positioned behind it */
+	width: calc(33.33% - 20px);
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 20px;
+	transition: transform 0.15s;
+}
+.recipe3::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit; /* same 15px corner rounding */
+	background: var(--color-darker);
+	z-index: -1; /* behind recipe3’s content */
+	transition: transform 0.15s;
+}
+@media (hover: hover) and (pointer: fine) {
+	.recipe3:hover {
+		transform: translate(5px, -5px);
+	}
+	.recipe3:hover::before {
+		transform: translate(-5px, 5px);
+	}
+}
+.r3inner {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	border-radius: inherit;
+	width: 100%;
+	height: 100%;
+}
+.r3bottom {
+	background: linear-gradient(to bottom, transparent 0%, var(--color-r3bottom) 100%);
+	border-bottom-left-radius: 14.5px;
+	border-bottom-right-radius: 14.5px;
+	height: 100%;
+	margin-top: 0%;
+	width: 100%;
+	position: relative;
+}
+.r3binner {
+	width: 100%;
+	width: calc(100% - 20px);
+	position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.r3binner div {
+	text-shadow: 0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow),
+		0 0 5px var(--color-shadow), 
+		0 0 5px var(--color-shadow); 
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	font-size: var(--font-r3binner-div);
+	margin: 0;
+	padding-bottom: 5px;
+	padding-top: 24px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-height: var(--height-r3binner-div);
+}
+.r3span {
+	background: var(--color-r3span); 
+	color: var(--color-r3bottom-span); 
+	display: inline-block;
+}
+.r3spanscheduled {
+	background: var(--color); 
+	color: var(--color-r3bottom-span); 
+	display: inline-block;
+}
+.r3category {
+	border-radius: 10px;
+	font-size: var(--font-r3category); 
+	padding: 2px 8px 2px 8px; /* Top right bottom left */
+}
+.r3time {
+	border-radius: 5px;
+	font-size: var(--font-r3small);
+	margin-top: 4px;
+	padding: 2px;
+}
+.r3calories {
+	border-radius: 5px;
+	font-size: var(--font-r3small);
+	margin-top: 4px;
+	padding: 2px;
+}
+.r3created {
+	border-radius: 5px;
+	font-size: var(--font-r3small);
+	padding: 2px;
+	margin-top: 4px;
+}
+/* PAGINATION BUTTONS */
+.prevnext {height: 54px; text-align: center; width: 100%;}
+.btn-next {
+	border: none;
+	border-radius: 7px;
+	color: var(--color-btn-paginate);
+	cursor: pointer;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
+	margin-left: 6px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: var(--width-next);
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-next:active, .btn-next.active, .btn-next:hover, .btn-next:focus {outline: none;}
+.btn-next-text {float: left; padding-left: 8px;}
+.btn-next-icon {
+	display: block; 
+	float: right; 
+	height: 16px; 
+	padding-right: 8px; 
+	padding-top: 2px;
+	width: 10px;
+}
+.btn-next-icon img {height: 100%; width: 100%;}
+.btn-prev {
+	border: none;
+	border-radius: 7px;
+	color: var(--color-btn-paginate);
+	cursor: pointer;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
+	margin-right: 6px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: var(--width-prev);
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-prev:active, .btn-prev.active, .btn-prev:hover, .btn-prev:focus {outline: none;}
+.btn-prev-text {float: right; padding-right: 8px;}
+.btn-prev-icon {
+	display: block; 
+	float: left; 
+	height: 16px; 
+	padding-left: 8px; 
+	padding-top: 2px;
+	width: 10px;
+}
+.btn-prev-icon img {height: 100%; width: 100%;}
+
+/* RESPONSIVE */
+@media screen and (max-width: 1020px) { 
+	.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
+	.recipe2continner {margin-left: 0px; width: 100%;}
+	.recipe2 {
+		width: calc(25% - 20px);
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 10px;
+	}
+}
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#flashed-err {margin-left: 10px; margin-right: 10px;}
+	#flashed-norm {margin-left: 10px; margin-right: 10px;}
+	.recipenavleft {padding-left: 10px;}
+	.btn2 {margin-right: 10px;}
+	.settingsbtn {margin-right: 10px;}
+	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
+	.recipe1 {width: 33.33%;}
+	.recipe3continner {margin-left: 0px; width: 100%;}
+}
+@media screen and (max-width: 960px) { 
+	.recipe1-text {padding-top: var(--w960-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 910px) { 
+	.recipe1-text {
+		font-size: var(--w910-font-recipe1-text); 
+		height: var(--w910-height-recipe1-text); 
+		padding-top: var(--w910-padding-top-recipe1-text);
+	}
+}
+@media screen and (max-width: 860px) { 
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
+}
+@media screen and (max-width: 820px) { 
+	.r3binner div {
+		font-size: var(--w820-font-r3binner-div); 
+		max-height: var(--w820-height-r3binner-div);
+	}
+	.r3category {font-size: var(--w820-font-r3category); }
+	.r3time {font-size: var(--w820-font-r3small);}
+	.r3calories {font-size: var(--w820-font-r3small);}
+	.r3created {font-size: var(--w820-font-r3small);}
+}
+@media screen and (max-width: 800px) { 
+	.recipe1-text {padding-top: var(--w800-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 770px) { 
+	.recipe2 {width: calc(33.33% - 20px);}
+	.r2bottom {height: var(--height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--font-r2bottom-div); 
+		max-height: var(--height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--font-r2bottom-span);}
+}
+@media screen and (max-width: 750px) { 
+	#recipenav {height: 97px;}
+	.recipenavleft {float: none; text-align: center;}
+	.recbtn {margin-top: 10px;}
+	.recipenavright {width: 100%;}
+	.btn-default {width: 40px;}
+	.btn-text {display: none;}
+	.btn-icon {padding-right: var(--padding-right-btn-icon);}
+	.search-cont {width: var(--width-search-cont-mobile);}
+	.recipe1-text {
+		padding-left: 12px; 
+		padding-right: 12px; 
+		padding-top: var(--w750-padding-top-recipe1-text); 
+		width: calc(100% - 24px);
+	}
+}
+@media screen and (max-width: 700px) { 
+	.recipe1 {width: 50%;}
+	.recipe1-text {
+		font-size: var(--w700-font-recipe1-text); 
+		height: var(--w700-height-recipe1-text); 
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: var(--w700-padding-top-recipe1-text);
+		width: calc(100% - 30px);
+	}
+	.recipe2cont {width: calc(100% - 16px);}
+	.recipe2 {
+		width: calc(33.33% - 16px); 
+		margin-left: 8px;
+		margin-right: 8px;
+		margin-bottom: 16px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 8px;
+	}
+	.recipe3 {width: calc(50% - 20px);}
+	.r3binner div {
+		font-size: var(--font-r3binner-div); 
+		max-height: var(--height-r3binner-div);
+	}
+	.r3category {font-size: var(--font-r3category); }
+	.r3time {font-size: var(--font-r3small);}
+	.r3calories {font-size: var(--font-r3small);}
+	.r3created {font-size: var(--font-r3small);}
+}
+@media screen and (max-width: 640px) { 
+	.recipe1-text {
+		font-size: var(--w640-font-recipe1-text); 
+		height: var(--w640-height-recipe1-text); 
+		padding-top: var(--w640-padding-top-recipe1-text);
+	}
+}
+@media screen and (max-width: 620px) { 
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
+}
+@media screen and (max-width: 600px) { 
+	.recipe1-text {padding-top: 23px;}
+	.r3binner div {
+		font-size: var(--w820-font-r3binner-div); 
+		max-height: var(--w820-height-r3binner-div);
+	}
+	.r3category {font-size: var(--w820-font-r3category);}
+	.r3time {font-size: var(--w820-font-r3small);}
+	.r3calories {font-size: var(--w820-font-r3small);}
+	.r3created {font-size: var(--w820-font-r3small);}
+}
+@media screen and (max-width: 565px) { 
+	.recipe1-text {
+		padding-left: 12px;
+		padding-right: 12px;
+		padding-top: var(--w565-padding-top-recipe1-text);
+		width: calc(100% - 24px);
+	}
+}
+@media screen and (max-width: 530px) { 
+	.recipe1-text {
+		font-size: var(--w530-font-recipe1-text); 
+		height: var(--w530-height-recipe1-text);
+	}
+	.recipe2 {width: calc(50% - 16px);}
+	.r2bottom {height: var(--height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--font-r2bottom-div); 
+		max-height: var(--height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--font-r2bottom-span);}
+}
+@media screen and (max-width: 500px) { 
+	.recipe1-text {padding-top: var(--w500-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 470px) { 
+	.recipe1 {width: 100%;}
+	.recipe1-text {
+		font-size: var(--w470-font-recipe1-text); 
+		height: var(--w470-height-recipe1-text); 
+		padding-left: 15px;
+		padding-right: 15px;
+		padding-top: var(--w470-padding-top-recipe1-text);
+		width: calc(100% - 30px);
+	}
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
+	.recipe3 {width: calc(100% - 20px); margin-bottom: 10px;}
+	.r3binner div {
+		font-size: var(--font-r3binner-div); 
+		max-height: var(--height-r3binner-div);
+	}
+	.r3category {font-size: var(--font-r3category); }
+	.r3time {font-size: var(--font-r3small);}
+	.r3calories {font-size: var(--font-r3small);}
+	.r3created {font-size: var(--font-r3small);}
+}
+@media screen and (max-width: 440px) { 
+	.recipe1-text {padding-top: var(--w440-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 410px) { 
+	.recipe1-text {
+		font-size: var(--w410-font-recipe1-text); 
+		height: var(--w410-height-recipe1-text); 
+	}
+}
+@media screen and (max-width: 400px) { 
+	.recipe1-text {padding-top: var(--w400-padding-top-recipe1-text);}
+	.recipe2cont {width: calc(100% - 10px);}
+	.recipe2 {
+		width: calc(50% - 10px); 
+		margin-left: 5px;
+		margin-right: 5px;
+		margin-bottom: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+		margin-right: 5px;
+	}
+}
+@media screen and (max-width: 385px) { 
+	.recipe1-text {padding-top: var(--w385-padding-top-recipe1-text);}
+	.r3binner div {
+		font-size: var(--w820-font-r3binner-div); 
+		max-height: var(--w820-height-r3binner-div);
+	}
+	.r3category {font-size: var(--w820-font-r3category);}
+	.r3time {font-size: var(--w820-font-r3small);}
+	.r3calories {font-size: var(--w820-font-r3small);}
+	.r3created {font-size: var(--w820-font-r3small);}
+}
+@media screen and (max-width: 370px) { 
+	.recipe1-text {padding-top: var(--w370-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 350px) { 
+	.recipe1-text {
+		font-size: var(--w350-font-recipe1-text); 
+		height: var(--w350-height-recipe1-text);
+	}
+}
+@media screen and (max-width: 330px) { 
+	.recipe1-text {padding-top: var(--w330-padding-top-recipe1-text);}
+	.r2bottom {height: var(--w330-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w330-font-r2bottom-div); 
+		max-height: var(--w330-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w330-font-r2bottom-span);}
+}
+@media screen and (max-width: 310px) { 
+	.recipe1-text {padding-top: var(--w310-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 290px) { 
+	.recipe1-text {padding-top: var(--w290-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 270px) { 
+	.recipe1-text {padding-top: var(--w270-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 250px) { 
+	.recipe1-text {padding-top: var(--w250-padding-top-recipe1-text);}
+}

@@ -12,7 +12,8 @@
 			<div class="recipenavleft">
 				<input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';" value="{{ _('All Recipes') }}" aria-label="{{ _('Navigate to All Recipes') }}"
 				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.favorites') }}';" value="{{ _('Favorites') }}" aria-label="{{ _('Navigate to Favorites') }}"
-				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="{{ _('Categories') }}" aria-label="{{ _('Navigate to Categories') }}">
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.categories') }}';" value="{{ _('Categories') }}" aria-label="{{ _('Navigate to Categories') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('myrecipes.recents') }}';" value="{{ _('Recents') }}" aria-label="{{ _('Navigate to Recents') }}">
 			</div>
 			<div class="recipenavright">
 				<div class="settingsbtn">

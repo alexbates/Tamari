@@ -325,6 +325,12 @@
 		// Initial checks with delay
 		setTimeout(checkScrollRecip, 100);
 		setTimeout(checkScrollRecip, 2000);
+		
+		// Scroll the active button into view
+		const activeButton = document.querySelector('.recbtn-active');
+		if (activeButton) {
+			activeButton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+		}
 	});
 	// If #endpoints exists, count number of <details> elements, update #endpoints span
 	$(document).ready(function() {

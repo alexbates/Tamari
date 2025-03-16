@@ -367,7 +367,7 @@ def recents():
         Recipe.time_created,
         Recipe.last_time_viewed,
         NutritionalInfo.calories
-    ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.last_time_viewed.isnot(None)).order_by(Recipe.last_time_viewed)
+    ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.last_time_viewed.isnot(None)).order_by(Recipe.last_time_viewed.desc())
     # Paginate the queried recipes
     recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
     # Build recipe_info array using external function

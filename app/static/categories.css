@@ -362,15 +362,32 @@
 	width: 1000px;
 }
 #recipenav {
-	height: var(--height-recipenav);
+	display: flow-root;
 	text-align: right;
 	width: 100%;
+	margin-bottom: 10px;
 }
 .recipenavleft {
 	float: left;
+	position: relative;
+	overflow: hidden;
+	text-align: left;
+	margin-top: var(--margin-recbtn);
+	width: calc(100% - 80px);
+}
+.recipenavleft-inner {
+	float: none;
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 	height: 100%;
 }
+.recipenavleft-inner::-webkit-scrollbar {
+	display: none;
+}
 .recbtn {
+	display: inline-block;
 	background-color: var(--color-recbtn-bg);
 	border: none;
 	border-radius: 15px;
@@ -378,12 +395,53 @@
 	cursor: pointer;
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
-	margin-top: var(--margin-recbtn);
-	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
+	margin-right: 8px;
+	padding: 0px 10px; /* top/bottom, left/right */
 	-webkit-font-smoothing: subpixel-antialiased;
+	white-space: nowrap; /* Keep button text on a single line */
 }
-.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-/* add .recbtn1 {} and .recbtn2 {} and .recbtn3 {} here if needed */
+.recbtn:last-child {
+	margin-right: 0px;
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {
+	outline: none;
+}
+.scroll-arrow-recip {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	display: none; /* Show only if scroll is needed */
+	height: 100%;
+}
+.scroll-arrow-recip img {
+	margin-top: 6px;
+	height: var(--height-recbtn) - 12px;
+	width: calc((var(--height-recbtn) - 12px) * (12 / 20)); /* ratio-based width */
+}
+.scroll-right-recip {
+	right: 0;
+	background: linear-gradient(
+	  to right,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 0px 10px 8px; /* Top right bottom left */
+}
+.scroll-left-recip {
+	left: 0;
+	background: linear-gradient(
+	  to left,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 8px 10px 0px; /* Top right bottom left */
+}
+
 .btn2-default {
 	background-color: var(--color-btn2-default-bg);
 	border: none;
@@ -410,7 +468,7 @@
 #flashed-err {
 	background: var(--color-flashed-err);
 	font-size: var(--font-flashed);
-	height: var(--height-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
@@ -418,7 +476,7 @@
 #flashed-norm {
 	background: var(--color-flashed-norm);
 	font-size: var(--font-flashed);
-	height: var(--height-flashed);
+	min-height: var(--height-flashed);
 	margin-bottom: 12px;
 	margin-top: 0px;
 	padding: 6px;
@@ -958,6 +1016,9 @@
 @media screen and (max-width: 1000px) { 
 	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}
 	#block1 p {padding-left: 10px;}
+	.recipenavleft {
+		width: calc(100% - 60px);
+	}
 }
 @media screen and (max-width: 950px) { 
 	.recipe1-text {padding-top: var(--w950-padding-top-recipe1-text);}
@@ -1052,9 +1113,12 @@
 	.recipe1-text {padding-top: var(--w770-padding-top-recipe1-text);}
 }
 @media screen and (max-width: 750px) { 
-	#recipenav {height: 49px;}
-	.recipenavleft {float: none; height: 40px; text-align: center;}
-	.recbtn {margin-top: 10px;}
+	.recipenavleft {
+		float: none; 
+		text-align: left; 
+		margin-top: 10px;
+		width: 100%;
+	}
 	.settingsbtn {display: none;}
 	.recipe1-text {
 		font-size: var(--w750-font-recipe1-text);
@@ -1087,17 +1151,11 @@
 }
 @media screen and (max-width: 620px) { 
 	#b1left {width: 100%; text-align: center;}
-	.b1leftinner {display: inline-block;}
-	.b1leftinner div {width: 350px;}
-	.form-control {width: 285px;}
+	.b1leftinner {display: block;}
+	.b1leftinner div {width: 100%;}
+	.form-control {width: calc(100% - 65px);}
 	.cat-selected {background: var(--color-catselected-mobile) !important;}
-	.cat-label {display: none; width: 285px;}
-	.cat-label2 {display: inline-block; width: 285px;}
+	.cat-label {display: none; width: calc(100% - 65px);}
+	.cat-label2 {display: inline-block; width: calc(100% - 65px);}
 	#b1right {display: none;}
-}
-@media screen and (max-width: 380px) { 
-	.b1leftinner div {width: 268px;}
-	.form-control {width: 205px;}
-	.cat-label {width: 205px;}
-	.cat-label2 {width: 205px;}
 }

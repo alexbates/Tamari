@@ -403,29 +403,23 @@
 .recipenavleft {
 	float: left;
 	position: relative;
-	overflow: hidden;          /* Hide overflow behind arrow areas */
+	overflow: hidden;
 	text-align: left;
 	margin-top: var(--margin-recbtn);
 	width: calc(100% - 280px);
-  }
-  
-  /* Scrollable inner container (like “ul” in the navbar) */
-  .recipenavleft-inner {
-	float: none;       /* Not strictly required unless you want to mirror the original */
+}
+.recipenavleft-inner {
+	float: none;
 	white-space: nowrap;
 	overflow-x: auto;
-	scrollbar-width: none;    /* Hide scrollbar in Firefox */
-	-ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 	height: 100%;
-  }
-  
-  /* Hide scrollbars in Chrome/Safari/Opera */
-  .recipenavleft-inner::-webkit-scrollbar {
+}
+.recipenavleft-inner::-webkit-scrollbar {
 	display: none;
-  }
-  
-  /* Use the same .recbtn styles you already have */
-  .recbtn {
+}
+.recbtn {
 	display: inline-block;
 	background-color: var(--color-recbtn-bg);
 	border: none;
@@ -438,38 +432,27 @@
 	padding: 0px 10px; /* top/bottom, left/right */
 	-webkit-font-smoothing: subpixel-antialiased;
 	white-space: nowrap; /* Keep button text on a single line */
-  }
-  .recbtn:last-child {
+}
+.recbtn:last-child {
 	margin-right: 0px;
-  }
-  .recbtn:active,
-  .recbtn.active,
-  .recbtn:hover,
-  .recbtn:focus {
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {
 	outline: none;
-  }
-  .recbtn-active {
-	/* If you want a distinct “active” styling, put it here */
-  }
-  
-  /* Arrow containers (parallel to “.scroll-arrow” in the original) */
-  .scroll-arrow-recip {
+}
+.scroll-arrow-recip {
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
 	cursor: pointer;
 	display: none; /* Show only if scroll is needed */
 	height: 100%;
-  }
-  
+}
 .scroll-arrow-recip img {
 	margin-top: 6px;
 	height: var(--height-recbtn) - 12px;
 	width: calc((var(--height-recbtn) - 12px) * (12 / 20)); /* ratio-based width */
 }
-  
-  /* Right arrow */
-  .scroll-right-recip {
+.scroll-right-recip {
 	right: 0;
 	background: linear-gradient(
 	  to right,
@@ -478,11 +461,9 @@
 	  var(--color-body-bg) 50%,
 	  var(--color-body-bg) 100%
 	);
-	padding: 10px 8px;
-  }
-  
-  /* Left arrow */
-  .scroll-left-recip {
+	padding: 10px 0px 10px 8px; /* Top right bottom left */
+}
+.scroll-left-recip {
 	left: 0;
 	background: linear-gradient(
 	  to left,
@@ -491,8 +472,8 @@
 	  var(--color-body-bg) 50%,
 	  var(--color-body-bg) 100%
 	);
-	padding: 10px 8px;
-  }
+	padding: 10px 8px 10px 0px; /* Top right bottom left */
+}
 
 .recipenavright {content: ""; height: var(--height-recipenav);}
 .btn-default {

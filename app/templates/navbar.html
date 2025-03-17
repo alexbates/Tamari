@@ -267,8 +267,8 @@
 		setTimeout(checkScroll, 2000);  // 2 second delay
 	});
 	
-	// This code is for handling the horizontal scrolling of All Recipes, Favorites, Categories, and Recents
-	// Also used in Meal Planner and Account
+	// Handle the horizontal scrolling of page buttons
+	// These buttons All Recipes, Favorites, Categories, and Recents
 	document.addEventListener('DOMContentLoaded', function() {
 		const containerRecip = document.querySelector('.recipenavleft');
 		const navRecip       = document.querySelector('.recipenavleft-inner');
@@ -325,11 +325,35 @@
 		// Initial checks with delay
 		setTimeout(checkScrollRecip, 100);
 		setTimeout(checkScrollRecip, 2000);
-		
-		// Scroll the active button into view
+	});
+	// Auto scroll active page button into view
+	window.addEventListener('load', function() {
+		const containerRecip = document.querySelector('.recipenavleft');
+		const navRecip = document.querySelector('.recipenavleft-inner');
 		const activeButton = document.querySelector('.recbtn-active');
-		if (activeButton) {
+		if (!containerRecip || !navRecip || !activeButton) return;
+		
+		// Get bounding rectangles for the visible container and the active button.
+		const containerRect = containerRecip.getBoundingClientRect();
+		const buttonRect = activeButton.getBoundingClientRect();
+		
+		// Check if the active button is fully visible within the container.
+		const fullyVisible = buttonRect.left >= containerRect.left &&
+							buttonRect.right <= containerRect.right;
+		
+		// Only if it's not fully visible, scroll it into view and (if movement happens) adjust by extra 140px.
+		if (!fullyVisible) {
+			const initialScroll = navRecip.scrollLeft;
 			activeButton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+			
+			setTimeout(() => {
+			const finalScroll = navRecip.scrollLeft;
+			// If the scroll changed significantly (i.e. scrollIntoView moved the container),
+			// add an extra 140px to the right.
+			if (Math.abs(finalScroll - initialScroll) > 10) {
+				navRecip.scrollLeft = finalScroll + 140;
+			}
+			}, 500); // Adjust this delay to match your smooth scrolling timing if needed.
 		}
 	});
 	// If #endpoints exists, count number of <details> elements, update #endpoints span

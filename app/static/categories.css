@@ -32,7 +32,7 @@
 	--color-catselected-mobile: #111111;
 	--color-cat-label: #ffffff;
 	--color-cat-label-hover: #f1f1f1;
-	--color-form-control-border: #818181;
+	--color-form-control-border: #4b4b4b;
 	--color-form-control-font: #d1d1d1;
 	--color-recipecount: #111111;
 	--color-shadow: #000000;
@@ -70,7 +70,7 @@
 	--color-catselected-mobile: #efefef;
 	--color-cat-label: #000000;
 	--color-cat-label-hover: #0e0e0e;
-	--color-form-control-border: #7e7e7e;
+	--color-form-control-border: #b4b4b4;
 	--color-form-control-font: #3e3e3e;
 	--color-recipecount: #efefef;
 	--color-shadow: #ffffff;
@@ -108,7 +108,7 @@
 	--color-catselected-mobile: #111111;
 	--color-cat-label: #ffffff;
 	--color-cat-label-hover: #f1f1f1;
-	--color-form-control-border: #818181;
+	--color-form-control-border: #4b4b4b;
 	--color-form-control-font: #d1d1d1;
 	--color-recipecount: #111111;
 	--color-shadow: #000000;
@@ -662,7 +662,7 @@
 	border-bottom: 1px solid var(--color-form-control-border);
 	border-radius: 0;
     box-shadow: none;
-	color: var(--color-form-control-font);
+	color: var(--color-cat-label);
     font-size: var(--font-form-control);
 	height: 34px;
 	margin-left: 9px;
@@ -675,7 +675,7 @@
 	-webkit-box-shadow: none;
 } 
 .form-control:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
-.form-control::placeholder {color: var(--color-form-control-font);}
+.form-control::placeholder {color: var(--color-form-control-border);}
 .btn4-default {
 	background: none;
 	border: none;

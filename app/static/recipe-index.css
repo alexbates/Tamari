@@ -681,6 +681,7 @@
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
 .btn3-default:active, .btn3-default.active, .btn3-default:hover, .btn3-default:focus {outline: none;}
+.btn3-recents {margin-top: 0px !important;}
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err); 

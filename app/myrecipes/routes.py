@@ -1689,6 +1689,8 @@ def addRecipe():
         image = request.files['image']
         if request.files and image.filename != '':
             filename, file_extension = os.path.splitext(image.filename)
+            # Convert the file extension to lowercase to handle case variations like ".JPG"
+            file_extension = file_extension.lower()
             hex_valid2 = 0
             while hex_valid2 == 0:
                 hex_string2 = secrets.token_hex(8)
@@ -1813,6 +1815,8 @@ def editRecipe(hexid):
                 'demo3.jpg', 'demo4.jpg', 'demo5.jpg', 'demo6.jpg', 'demo7.jpg', 'demo8.jpg', 'demo9.jpg', 'demo10.jpg', 'demo11.jpg',
                 'demo12.jpg']
             filename, file_extension = os.path.splitext(image.filename)
+            # Convert the file extension to lowercase to handle case variations like ".JPG"
+            file_extension = file_extension.lower()
             hex_valid = 0
             while hex_valid == 0:
                 hex_string = secrets.token_hex(8)

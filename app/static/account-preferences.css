@@ -2,6 +2,8 @@
 /* THEMES */
 :root {
 	--color-block1: #ffffff;
+	--color-recbtn-bg: #111111;
+	--color-recbtn-font: #ffffff;
 	--color-userstats-bg: #111111;
 	--color-userstats-font: #ffffff;
 	--color-cust-select-bg: #1c1c1c;
@@ -17,6 +19,8 @@
 }
 [data-theme="light"] {
 	--color-block1: #000000;
+	--color-recbtn-bg: #efefef;
+	--color-recbtn-font: #000000;
 	--color-userstats-bg: #efefef;
 	--color-userstats-font: #000000;
 	--color-cust-select-bg: #e3e3e3;
@@ -32,6 +36,8 @@
 }
 [data-theme="dark"] {
 	--color-block1: #ffffff;
+	--color-recbtn-bg: #111111;
+	--color-recbtn-font: #ffffff;
 	--color-userstats-bg: #111111;
 	--color-userstats-font: #ffffff;
 	--color-cust-select-bg: #1c1c1c;
@@ -122,15 +128,27 @@
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 0px;}
 .block1inner h3 {line-height: 46px; padding-left: 12px;}
-#recipenav {
-	height: var(--height-recipenav);
+
+.recipenavleft {
+	position: relative;
+	overflow: hidden;
+	text-align: left;
+	margin-top: var(--margin-recbtn);
+	margin-bottom: var(--margin-recbtn);
 	width: 100%;
 }
-.recipenavleft {
-	float: left;
+.recipenavleft-inner {
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 	height: 100%;
 }
+.recipenavleft-inner::-webkit-scrollbar {
+	display: none;
+}
 .recbtn {
+	display: inline-block;
 	background-color: var(--color-recbtn-bg);
 	border: none;
 	border-radius: 15px;
@@ -138,12 +156,53 @@
 	cursor: pointer;
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
-	margin-top: var(--margin-recbtn);
-	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
+	margin-right: 8px;
+	padding: 0px 10px; /* top/bottom, left/right */
 	-webkit-font-smoothing: subpixel-antialiased;
+	white-space: nowrap; /* Keep button text on a single line */
 }
-.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-/* add .recbtn1 {} and .recbtn2 {} here if needed */
+.recbtn:last-child {
+	margin-right: 0px;
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {
+	outline: none;
+}
+.scroll-arrow-recip {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	display: none; /* Show only if scroll is needed */
+	height: 100%;
+}
+.scroll-arrow-recip img {
+	margin-top: 6px;
+	height: var(--height-recbtn) - 12px;
+	width: calc((var(--height-recbtn) - 12px) * (12 / 20)); /* ratio-based width */
+}
+.scroll-right-recip {
+	right: 0;
+	background: linear-gradient(
+	  to right,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 0px 10px 8px; /* Top right bottom left */
+}
+.scroll-left-recip {
+	left: 0;
+	background: linear-gradient(
+	  to left,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 8px 10px 0px; /* Top right bottom left */
+}
+
 .userstats {
 	background-color: var(--color-userstats-bg);
 	border-radius: 10px;
@@ -396,7 +455,11 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
-	#recipenav {padding-left: 10px; padding-right: 10px;}
+	.recipenavleft {
+		margin-left: 10px;
+		margin-right: 10px;
+		width: calc(100% - 20px);
+	}
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
 	#flashed-norm {margin-left: 10px; margin-right: 10px;}
 	.userstats {margin-left: 10px; width: calc(50% - 15px);}

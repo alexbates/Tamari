@@ -11,6 +11,8 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-recbtn-bg: #111111;
+	--color-recbtn-font: #ffffff;
 	--color-daylabel: #ffffff;
 	--color-daylabel-hover: #f1f1f1;
 	--color-mealmessage: #111111;
@@ -26,6 +28,8 @@
 	--color-active-bg-hover: rgb(229, 229, 229);
 	--color-active-bottom: #000000;
 	--color-block1: #000000;
+	--color-recbtn-bg: #efefef;
+	--color-recbtn-font: #000000;
 	--color-daylabel: #000000;
 	--color-daylabel-hover: #0e0e0e;
 	--color-mealmessage: #efefef;
@@ -41,6 +45,8 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-recbtn-bg: #111111;
+	--color-recbtn-font: #ffffff;
 	--color-daylabel: #ffffff;
 	--color-daylabel-hover: #f1f1f1;
 	--color-mealmessage: #111111;
@@ -126,15 +132,27 @@
 	margin: 0 auto;
 	width: 1000px;
 }
-#recipenav {
-	height: var(--height-recipenav);
+
+.recipenavleft {
+	position: relative;
+	overflow: hidden;
+	text-align: left;
+	margin-top: var(--margin-recbtn);
+	margin-bottom: var(--margin-recbtn);
 	width: 100%;
 }
-.recipenavleft {
-	float: left;
+.recipenavleft-inner {
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
 	height: 100%;
 }
+.recipenavleft-inner::-webkit-scrollbar {
+	display: none;
+}
 .recbtn {
+	display: inline-block;
 	background-color: var(--color-recbtn-bg);
 	border: none;
 	border-radius: 15px;
@@ -142,12 +160,53 @@
 	cursor: pointer;
 	font-size: var(--font-recbtn);
 	height: var(--height-recbtn);
-	margin-top: var(--margin-recbtn);
-	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
+	margin-right: 8px;
+	padding: 0px 10px; /* top/bottom, left/right */
 	-webkit-font-smoothing: subpixel-antialiased;
+	white-space: nowrap; /* Keep button text on a single line */
 }
-.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {outline: none;}
-/* add .recbtn1 {} and .recbtn2 {} here if needed */
+.recbtn:last-child {
+	margin-right: 0px;
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {
+	outline: none;
+}
+.scroll-arrow-recip {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	display: none; /* Show only if scroll is needed */
+	height: 100%;
+}
+.scroll-arrow-recip img {
+	margin-top: 6px;
+	height: var(--height-recbtn) - 12px;
+	width: calc((var(--height-recbtn) - 12px) * (12 / 20)); /* ratio-based width */
+}
+.scroll-right-recip {
+	right: 0;
+	background: linear-gradient(
+	  to right,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 0px 10px 8px; /* Top right bottom left */
+}
+.scroll-left-recip {
+	left: 0;
+	background: linear-gradient(
+	  to left,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 8px 10px 0px; /* Top right bottom left */
+}
+
 /* FLASHED MESSAGES */
 #flashed-err {
 	background: var(--color-flashed-err);

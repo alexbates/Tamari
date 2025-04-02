@@ -384,7 +384,6 @@ def recents():
     form = DisplaySettingsForm()
     if form.validate_on_submit():
         user.pref_size = form.recipe_size.data
-        user.pref_sort = form.sort_by.data
         db.session.commit()
         return redirect(url_for('myrecipes.recents'))
     return render_template('recents.html', title=_('Recents'),

@@ -1699,7 +1699,7 @@ def addRecipe():
                 if hex_exist2 is None and not os.path.exists(file_path):
                     hex_valid2 = 1
             val_ext = validate_image(image.stream)
-            new_file = hex_string2 + file_extension
+            new_file = hex_string2 + val_ext
             if not val_ext or val_ext not in app.config['UPLOAD_EXTENSIONS']:
                 return "Invalid image: must be JPG, PNG, or WEBP", 400
             # Rewind then save

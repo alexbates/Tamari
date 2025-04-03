@@ -1698,19 +1698,12 @@ def addRecipe():
                 file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string2 + file_extension)
                 if hex_exist2 is None and not os.path.exists(file_path):
                     hex_valid2 = 1
-            new_file = hex_string2 + file_extension
             val_ext = validate_image(image.stream)
-            val_exts = []
-            if val_ext == '.jpg':
-                val_exts.append(val_ext)
-                val_exts.append('.jpeg')
-            elif val_ext == '.jpeg':
-                val_exts.append(val_ext)
-                val_exts.append('.jpg')
-            else:
-                val_exts.append(val_ext)
-            if file_extension not in app.config['UPLOAD_EXTENSIONS'] or file_extension not in val_exts:
-                return "Invalid image: must be JPG or PNG", 400
+            new_file = hex_string2 + file_extension
+            if not val_ext or val_ext not in app.config['UPLOAD_EXTENSIONS']:
+                return "Invalid image: must be JPG, PNG, or WEBP", 400
+            # Rewind then save
+            image.stream.seek(0)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
             img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             img_width, img_height = img.size
@@ -1824,19 +1817,12 @@ def editRecipe(hexid):
                 file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string + file_extension)
                 if hex_exist is None and not os.path.exists(file_path):
                     hex_valid = 1
-            new_file = hex_string + file_extension
             val_ext = validate_image(image.stream)
-            val_exts = []
-            if val_ext == '.jpg':
-                val_exts.append(val_ext)
-                val_exts.append('.jpeg')
-            elif val_ext == '.jpeg':
-                val_exts.append(val_ext)
-                val_exts.append('.jpg')
-            else:
-                val_exts.append(val_ext)
-            if file_extension not in app.config['UPLOAD_EXTENSIONS'] or file_extension not in val_exts:
-                return "Invalid image: must be JPG or PNG", 400
+            new_file = hex_string + val_ext
+            if not val_ext or val_ext not in app.config['UPLOAD_EXTENSIONS']:
+                return "Invalid image: must be JPG, PNG, or WEBP", 400
+            # Rewind then save
+            image.stream.seek(0)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
             img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             img_width, img_height = img.size

@@ -1710,7 +1710,7 @@ def addRecipe():
             else:
                 val_exts.append(val_ext)
             if file_extension not in app.config['UPLOAD_EXTENSIONS'] or file_extension not in val_exts:
-                return "Invalid image", 400
+                return "Invalid image: must be JPG or PNG", 400
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
             img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             img_width, img_height = img.size
@@ -1836,7 +1836,7 @@ def editRecipe(hexid):
             else:
                 val_exts.append(val_ext)
             if file_extension not in app.config['UPLOAD_EXTENSIONS'] or file_extension not in val_exts:
-                return "Invalid image", 400
+                return "Invalid image: must be JPG or PNG", 400
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
             img = Image.open(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             img_width, img_height = img.size

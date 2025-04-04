@@ -4,18 +4,21 @@
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-btn-default: #ffffff;
 }
 [data-theme="light"] {
 	--color-active-bg: #efefef;
 	--color-active-bg-hover: rgb(229, 229, 229);
 	--color-active-bottom: #000000;
 	--color-block1: #000000;
+	--color-btn-default: #000000;
 }
 [data-theme="dark"] {
 	--color-active-bg: #111111;
 	--color-active-bg-hover: rgb(26, 26, 26);
 	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
+	--color-btn-default: #ffffff;
 }
 /* SCALING */
 :root {
@@ -49,6 +52,26 @@
 	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
 }
 .mt-tam {display: block !important;}
+
+.btn-default {
+	background-color: var(--color);
+	border: none;
+	border-radius: 7px;
+	color: var(--color-btn-default);
+	cursor: pointer;
+	font-size: 16px;
+	height: 40px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 140px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-default:hover {background: var(--color-lighter);}
+.btn-default:active, .btn-default.active, .btn-default:hover, .btn-default:focus {outline: none;}
 
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) { 

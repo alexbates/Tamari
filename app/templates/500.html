@@ -9,7 +9,12 @@
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
 		<h2>{{ _('Error') }}</h2>
-		<p>{{ _('An unexpected error has occurred. Sorry for the inconvenience!') }} <a href="{{ url_for('myrecipes.allRecipes') }}">{{ _('Go home.') }}</a></p>
+		<p>{{ _('An unexpected error has occurred. Sorry for the inconvenience!') }}</p>
+		<button class="btn btn-default" 
+				type="button" 
+				onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';">
+			{{ _('Go home.') }}
+		</button>
 	</div>
 </main>
 {% endblock %}

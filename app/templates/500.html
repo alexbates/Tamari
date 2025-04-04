@@ -10,11 +10,14 @@
 	<div class="block1inner">
 		<h2>{{ _('Error') }}</h2>
 		<p>{{ _('An unexpected error has occurred. Sorry for the inconvenience!') }}</p>
+		{% set go_home = _('Go home.') %}
+		{% if go_home.endswith('.') %}
+			{% set go_home = go_home[:-1] %}
+		{% endif %}
 		<button class="btn btn-default" 
 				type="button" 
 				onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';">
-			{{ _('Go home.') }}
-		</button>
+			{{ go_home }}
 	</div>
 </main>
 {% endblock %}

@@ -23,13 +23,17 @@ def inject_dynrootmargin():
     dynrootmargin = app.config['DYNAMIC_ROOT_MARGIN']
     return dict(dynrootmargin=dynrootmargin)
 
+# New validation function for validating images on Add Recipe and Edit Recipe pages
 def validate_image(stream):
-    header = stream.read(512)
-    stream.seek(0)
-    format = imghdr.what(None, header)
-    if not format:
+    try:
+        img = Image.open(stream)
+        img.verify()
+        format = img.format.lower()
+        if format == 'jpeg':
+            return '.jpg'
+        return f'.{format}'
+    except:
         return None
-    return '.' + format
 
 @bp.route('/recipe-photos/<path:filename>')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -1691,17 +1695,22 @@ def addRecipe():
             filename, file_extension = os.path.splitext(image.filename)
             # Convert the file extension to lowercase to handle case variations like ".JPG"
             file_extension = file_extension.lower()
+            # Validate image
             val_ext = validate_image(image.stream)
+            if file_extension not in app.config['UPLOAD_EXTENSIONS']:
+                return "Invalid image: must be a .png, .jpg, .jpeg, .gif, or .webp file", 400
+            if not val_ext:
+                return "Image validation failed: image is corrupt or format could not be identified", 400
+            if val_ext not in app.config['UPLOAD_EXTENSIONS']:
+                return "Image validation failed: must be JPG, PNG, GIF, or WEBP format", 400
             hex_valid2 = 0
             while hex_valid2 == 0:
                 hex_string2 = secrets.token_hex(8)
                 hex_exist2 = Recipe.query.filter(Recipe.photo.contains(hex_string2)).first()
-                file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string2 + val_ext)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string2 + file_extension)
                 if hex_exist2 is None and not os.path.exists(file_path):
                     hex_valid2 = 1
-            new_file = hex_string2 + val_ext
-            if not val_ext or val_ext not in app.config['UPLOAD_EXTENSIONS']:
-                return "Invalid image: must be JPG, PNG, or WEBP", 400
+            new_file = hex_string2 + file_extension
             # Rewind then save
             image.stream.seek(0)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))
@@ -1804,23 +1813,28 @@ def editRecipe(hexid):
             defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
                 'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
                 'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
-                'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png' 'demo1.jpg', 'demo2.jpg',
+                'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png', 'demo1.jpg', 'demo2.jpg',
                 'demo3.jpg', 'demo4.jpg', 'demo5.jpg', 'demo6.jpg', 'demo7.jpg', 'demo8.jpg', 'demo9.jpg', 'demo10.jpg', 'demo11.jpg',
                 'demo12.jpg']
             filename, file_extension = os.path.splitext(image.filename)
             # Convert the file extension to lowercase to handle case variations like ".JPG"
             file_extension = file_extension.lower()
+            # Validate image
             val_ext = validate_image(image.stream)
+            if file_extension not in app.config['UPLOAD_EXTENSIONS']:
+                return "Invalid image: must be a .png, .jpg, .jpeg, .gif, or .webp file", 400
+            if not val_ext:
+                return "Image validation failed: image is corrupt or format could not be identified", 400
+            if val_ext not in app.config['UPLOAD_EXTENSIONS']:
+                return "Image validation failed: must be JPG, PNG, GIF, or WEBP format", 400
             hex_valid = 0
             while hex_valid == 0:
                 hex_string = secrets.token_hex(8)
                 hex_exist = Recipe.query.filter(Recipe.photo.contains(hex_string)).first()
-                file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string + val_ext)
+                file_path = os.path.join(app.config['UPLOAD_FOLDER'], hex_string + file_extension)
                 if hex_exist is None and not os.path.exists(file_path):
                     hex_valid = 1
-            new_file = hex_string + val_ext
-            if not val_ext or val_ext not in app.config['UPLOAD_EXTENSIONS']:
-                return "Invalid image: must be JPG, PNG, or WEBP", 400
+            new_file = hex_string + file_extension
             # Rewind then save
             image.stream.seek(0)
             image.save(os.path.join(app.config['UPLOAD_FOLDER'], new_file))

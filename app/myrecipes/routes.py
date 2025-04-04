@@ -1099,7 +1099,7 @@ def removeRecipe(hexid):
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
         'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',
-        'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png' 'demo1.jpg', 'demo2.jpg',
+        'default22.png', 'default23.png', 'default24.png', 'default25.png', 'default26.png', 'default27.png', 'demo1.jpg', 'demo2.jpg',
         'demo3.jpg', 'demo4.jpg', 'demo5.jpg', 'demo6.jpg', 'demo7.jpg', 'demo8.jpg', 'demo9.jpg', 'demo10.jpg', 'demo11.jpg', 'demo12.jpg']
     fullpath = app.config['UPLOAD_FOLDER'] + '/' + delrecipe.photo
     if delrecipe.photo not in defaults:

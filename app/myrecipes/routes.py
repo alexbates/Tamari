@@ -1978,10 +1978,21 @@ def advancedSearch():
     start_index = (page - 1) * per_page
     end_index = start_index + per_page
     recipe_info_paginated = recipe_info[start_index:end_index]
-    next_url = url_for('myrecipes.advancedSearch', page=recipes.next_num) \
-        if recipes.has_next else None
-    prev_url = url_for('myrecipes.advancedSearch', page=recipes.prev_num) \
-        if recipes.has_prev else None
+    next_url = url_for('myrecipes.advancedSearch',
+        query=query_string,
+        o_title=o_title,
+        o_category=o_category,
+        o_ingredients=o_ingredients,
+        o_instructions=o_instructions,
+        page=recipes.next_num) if recipes.has_next else None
+
+    prev_url = url_for('myrecipes.advancedSearch',
+        query=query_string,
+        o_title=o_title,
+        o_category=o_category,
+        o_ingredients=o_ingredients,
+        o_instructions=o_instructions,
+        page=recipes.prev_num) if recipes.has_prev else None
     form = AdvancedSearchForm()
     # Only prepopulate the search field from GET when handling a GET request.
     if request.method == "GET" and query_string:

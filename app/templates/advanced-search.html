@@ -63,7 +63,7 @@
 		</div>
 
 		{% if recipes %}
-		<div id="showing-msg">Showing 1 - 32 of 16736 recipes.</div>
+		<div id="showing-msg">{{ _('Showing %(rec_first)s - %(rec_last)s of %(rec_count)s recipes.', rec_first=rec_first, rec_last=rec_last, rec_count=rec_count) }}</div>
 		{% if user.pref_size == 0 %}
 		<div id="recipecont" class="recipe1cont">
 		{% for item in recipes %}

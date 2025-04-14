@@ -1978,6 +1978,13 @@ def advancedSearch():
     start_index = (page - 1) * per_page
     end_index = start_index + per_page
     recipe_info_paginated = recipe_info[start_index:end_index]
+    # Compute "showing" message numbers.
+    if recipes.total > 0:
+        rec_first = (page - 1) * per_page + 1
+        rec_last = (page - 1) * per_page + len(recipes.items)
+    else:
+        rec_first, rec_last = 0, 0
+    rec_count = recipes.total
     next_url = url_for('myrecipes.advancedSearch',
         query=query_string,
         o_title=o_title,
@@ -2009,4 +2016,5 @@ def advancedSearch():
         return redirect(url_for('myrecipes.advancedSearch', **args))
     return render_template('advanced-search.html', title=_('Advanced Search'),
         mdescription=_('Search your recipes by title, category, ingredients, and instructions.'), user=user, query_string=query_string,
-        recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)
+        recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated,
+        rec_first=rec_first, rec_last=rec_last, rec_count=rec_count)

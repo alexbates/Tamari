@@ -135,7 +135,10 @@
 		</div>
 		</div>
 		{% endif %}
+		{% elif query_string|trim %}
+		<p id="showing-msg">{{ _('No results found for search term.') }}</p>
 		{% endif %}
+		
 		{% if prev_url or next_url %}
 		<div class="prevnext">
 			{% if prev_url %}

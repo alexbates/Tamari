@@ -1923,7 +1923,7 @@ def advancedSearch():
     query_string = request.args.get('query', '')
     page = request.args.get('page', 1, type=int)
     # per_page variable is used for paginating the recipes object
-    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    per_page = app.config['ADV_SEARCH_RECIPES_PER_PAGE']
     # Base query (all recipes belonging to the user)
     recipes_query = db.session.query(
         Recipe.id,

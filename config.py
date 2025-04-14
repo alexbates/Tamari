@@ -23,6 +23,7 @@ class Config(object):
     REGISTRATION_DISABLED = os.environ.get('REG_DISABLED', 'False') == 'True'
     # For My Recipes > All Recipes and My Recipes > Favorites
     MAIN_RECIPES_PER_PAGE = 100
+    ADV_SEARCH_RECIPES_PER_PAGE = 50
     CAT_RECIPES_PER_PAGE = 50
     EXPLORE_RECIPES_PER_PAGE = 32
     # For Meal Planner (Completed)

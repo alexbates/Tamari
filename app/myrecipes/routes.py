@@ -1983,7 +1983,8 @@ def advancedSearch():
     prev_url = url_for('myrecipes.advancedSearch', page=recipes.prev_num) \
         if recipes.has_prev else None
     form = AdvancedSearchForm()
-    if query_string:
+    # Only prepopulate the search field from GET when handling a GET request.
+    if request.method == "GET" and query_string:
         form.search.data = query_string
     if form.validate_on_submit():
         # Argument dictionary always includes checkbox states

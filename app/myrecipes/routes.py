@@ -1938,24 +1938,29 @@ def advancedSearch():
         Recipe.ingredients,
         Recipe.instructions
     ).filter(Recipe.user_id == user.id).order_by(func.lower(Recipe.title))
+    # Read checkbox values from GET parameters; default to "y" (checked).
+    o_title = request.args.get('o_title', 'y')
+    o_category = request.args.get('o_category', 'y')
+    o_ingredients = request.args.get('o_ingredients', 'y')
+    o_instructions = request.args.get('o_instructions', 'y')
     # If a query string is provided, split it into terms and build search filters
     if query_string and query_string.strip():
         query_terms = query_string.split()
         search_conditions = []
-        # Check each search option from GET parameters; default to 'y' (selected)
-        if request.args.get('o_title', 'y') == 'y':
+        # Check each search option from GET parameters
+        if o_title == 'y':
             search_conditions.append(
                 and_(*[func.lower(Recipe.title).contains(term.lower()) for term in query_terms])
             )
-        if request.args.get('o_category', 'y') == 'y':
+        if o_category == 'y':
             search_conditions.append(
                 and_(*[func.lower(Recipe.category).contains(term.lower()) for term in query_terms])
             )
-        if request.args.get('o_ingredients', 'y') == 'y':
+        if o_ingredients == 'y':
             search_conditions.append(
                 and_(*[func.lower(Recipe.ingredients).contains(term.lower()) for term in query_terms])
             )
-        if request.args.get('o_instructions', 'y') == 'y':
+        if o_instructions == 'y':
             search_conditions.append(
                 and_(*[func.lower(Recipe.instructions).contains(term.lower()) for term in query_terms])
             )
@@ -1981,18 +1986,14 @@ def advancedSearch():
     if query_string:
         form.search.data = query_string
     if form.validate_on_submit():
-        # When the form is submitted, capture the state of each checkbox.
-        args = {'query': form.search.data}
-        # Include each checkbox parameter if it was checked.
-        if request.form.get('o_title'):
-            args['o_title'] = request.form.get('o_title')
-        if request.form.get('o_category'):
-            args['o_category'] = request.form.get('o_category')
-        if request.form.get('o_ingredients'):
-            args['o_ingredients'] = request.form.get('o_ingredients')
-        if request.form.get('o_instructions'):
-            args['o_instructions'] = request.form.get('o_instructions')
-        # Redirect to the GET route with the search query and checkbox states.
+        # Argument dictionary always includes checkbox states
+        args = {
+            'query': form.search.data.strip(),
+            'o_title': "y" if request.form.get('o_title') == "y" else "n",
+            'o_category': "y" if request.form.get('o_category') == "y" else "n",
+            'o_ingredients': "y" if request.form.get('o_ingredients') == "y" else "n",
+            'o_instructions': "y" if request.form.get('o_instructions') == "y" else "n"
+        }
         return redirect(url_for('myrecipes.advancedSearch', **args))
     return render_template('advanced-search.html', title=_('Advanced Search'),
         mdescription=_('Search your recipes by title, category, ingredients, and instructions.'), user=user, query_string=query_string,

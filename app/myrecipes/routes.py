@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
 from flask_babel import _
 from app import app, db, limiter
-from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, AutofillRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm
+from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, AutofillRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm, AdvancedSearchForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
 from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe, NutritionalInfo
@@ -1911,3 +1911,85 @@ def editRecipe(hexid):
     return render_template('edit-recipe.html', title=_('Edit Recipe'),
         mdescription=_('Use the provided form to edit details for the requested recipe.'), form=form, recipe=recipe,
         nutrition=nutrition, choices=choices)
+
+@bp.route('/my-recipes/search', methods=['GET', 'POST'])
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def advancedSearch():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    # the query, example is search?query=garlic+shrimp which translates to "garlic shrimp"
+    # this defaults to empty string if not provided
+    query_string = request.args.get('query', '')
+    page = request.args.get('page', 1, type=int)
+    # per_page variable is used for paginating the recipes object
+    per_page = app.config['MAIN_RECIPES_PER_PAGE']
+    # Base query (all recipes belonging to the user)
+    recipes_query = db.session.query(
+        Recipe.id,
+        Recipe.title,
+        Recipe.category,
+        Recipe.hex_id,
+        Recipe.photo,
+        Recipe.prep_time,
+        Recipe.cook_time,
+        Recipe.total_time,
+        Recipe.time_created,
+        Recipe.ingredients,
+        Recipe.instructions
+    ).filter(Recipe.user_id == user.id).order_by(func.lower(Recipe.title))
+    # If a query string is provided, split it into terms and build search filters.
+    if query_string:
+        query_terms = query_string.split()
+        search_conditions = []
+        # Check each search option from GET parameters; default to 'y' (selected).
+        if request.args.get('o_title', 'y') == 'y':
+            search_conditions.append(
+                and_(*[func.lower(Recipe.title).contains(term.lower()) for term in query_terms])
+            )
+        if request.args.get('o_category', 'y') == 'y':
+            search_conditions.append(
+                and_(*[func.lower(Recipe.category).contains(term.lower()) for term in query_terms])
+            )
+        if request.args.get('o_ingredients', 'y') == 'y':
+            search_conditions.append(
+                and_(*[func.lower(Recipe.ingredients).contains(term.lower()) for term in query_terms])
+            )
+        if request.args.get('o_instructions', 'y') == 'y':
+            search_conditions.append(
+                and_(*[func.lower(Recipe.instructions).contains(term.lower()) for term in query_terms])
+            )
+        # If at least one option is enabled, filter the query.
+        if search_conditions:
+            recipes_query = recipes_query.filter(or_(*search_conditions))
+    # Paginate the queried recipes
+    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+    # Build recipe_info array using external function
+    recipe_info = get_recipe_info(recipes)
+    # Paginate the recipe_info array in the same way that recipes is paginated
+    start_index = (page - 1) * per_page
+    end_index = start_index + per_page
+    recipe_info_paginated = recipe_info[start_index:end_index]
+    next_url = url_for('myrecipes.advancedSearch', page=recipes.next_num) \
+        if recipes.has_next else None
+    prev_url = url_for('myrecipes.advancedSearch', page=recipes.prev_num) \
+        if recipes.has_prev else None
+    form = AdvancedSearchForm()
+    if query_string:
+        form.search.data = query_string
+    if form.validate_on_submit():
+        # When the form is submitted, capture the state of each checkbox.
+        args = {'query': form.search.data}
+        # Include each checkbox parameter if it was checked.
+        if request.form.get('o_title'):
+            args['o_title'] = request.form.get('o_title')
+        if request.form.get('o_category'):
+            args['o_category'] = request.form.get('o_category')
+        if request.form.get('o_ingredients'):
+            args['o_ingredients'] = request.form.get('o_ingredients')
+        if request.form.get('o_instructions'):
+            args['o_instructions'] = request.form.get('o_instructions')
+        # Redirect to the GET route with the search query and checkbox states.
+        return redirect(url_for('myrecipes.advancedSearch', **args))
+    return render_template('advanced-search.html', title=_('Advanced Search'),
+        mdescription=_('Search your recipes by title, category, ingredients, and instructions.'), user=user, query_string=query_string,
+        recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated)

@@ -1,0 +1,173 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='advanced-search.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		{% set first_message = true %}
+		{% for message in messages %}
+		{% if first_message %}
+		{% if 'Error' in message or '错误' in message %}
+		<p id="flashed-err">{{ message }}</p>
+		{% set first_message = false %}
+		{% else %}
+		<p id="flashed-norm">{{ message }}</p>
+		{% set first_message = false %}
+		{% endif %}
+		{% else %}
+		<p style="display: none;">{{ message }}</p>
+		{% endif %}
+		{% endfor %}
+		{% endif %}
+		{% endwith %}
+
+		<h2>Advanced Search</h2>
+		<div class="searchform">
+			<form method="post" class="form">
+				{{ form.hidden_tag() }}
+				<div class="searchprefs">
+					<span>Find By:</span>
+					<label class="checkbox">
+						<input class="rememberme" name="o_title" type="checkbox" value="y" {% if request.args.get('o_title', 'y') == 'y' %}checked{% endif %}>
+						<span class="checkmark"></span>
+						Title
+					</label>
+					<label class="checkbox">
+						<input class="rememberme" name="o_category" type="checkbox" value="y" {% if request.args.get('o_category', 'y') == 'y' %}checked{% endif %}>
+						<span class="checkmark"></span>
+						Category
+					</label>
+					<label class="checkbox">
+						<input class="rememberme" name="o_ingredients" type="checkbox" value="y" {% if request.args.get('o_ingredients', 'y') == 'y' %}checked{% endif %}>
+						<span class="checkmark"></span>
+						Ingredients
+					</label>
+					<label class="checkbox">
+						<input class="rememberme" name="o_instructions" type="checkbox" value="y" {% if request.args.get('o_instructions', 'y') == 'y' %}checked{% endif %}>
+						<span class="checkmark"></span>
+						Instructions
+					</label>
+				</div>
+				{{ form.search(class="search-input", id="s_input", placeholder=_('Search')) }}
+				<button class="search-btn" name="submit" type="submit">
+					<span class="searchbtn-icon"><img src="{{ url_for('static', filename='search.png', _external=True) }}" alt=""></span>
+				</button>
+			</form> 
+		</div>
+
+		{% if recipes %}
+		<div id="showing-msg">Showing 1 - 32 of 16736 recipes.</div>
+		{% if user.pref_size == 0 %}
+		<div id="recipecont" class="recipe1cont">
+		{% for item in recipes %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" tabindex="-1">
+		<div class="recipe1" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
+			<div class="r1bottom">
+				<div class="recipe1-text">
+					<div tabindex="0">{{ item.title }}</div>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		{% elif user.pref_size == 1 %}
+		<div id="recipecont" class="recipe2cont">
+		<div class="recipe2continner">
+		{% for item in recipes %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r2a" tabindex="-1">
+		<div class="recipe2">
+			<div class="recipe2inner">
+				<div class="r2top" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}"></div>
+				<div class="r2bottom">
+					<div tabindex="0">{{ item.title }}</div>
+					<span>{{ item.category }}</span>
+				</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		</div>
+		{% else %}
+		<div id="recipecont" class="recipe3cont">
+		<div class="recipe3continner">
+		{% for item in recipes %}
+		{% set idx = loop.index0 %}
+		<a href="{{ url_for('myrecipes.recipeDetail', hexid=item.hex_id) }}" class="r3a" tabindex="-1">
+		<div class="recipe3">
+			<div class="r3inner" data-bgimage="{{ url_for('myrecipes.recipePhotos', filename=item.photo, _external=True) }}">
+			<div class="r3bottom">
+				<div class="r3binner">
+					<div tabindex="0">{{ item.title }}</div>
+					<span class="r3category r3span">{{ item.category }}</span>
+					<br>
+					{% if item.prep_time or item.cook_time or item.total_time %}
+					{% if item.prep_time %}<span class="r3time r3span">{{ _('Prep') }}: {{ item.prep_time }}m</span>{% endif %}
+					{% if item.cook_time %}<span class="r3time r3span">{{ _('Cook') }}: {{ item.cook_time }}m</span>{% endif %}
+					{% if item.total_time %}<span class="r3time r3span">{{ _('Total') }}: {{ item.total_time }}m</span>{% endif %}
+					<br>
+					{% endif %}
+					{% if item.calories %}
+					<span class="r3calories r3span">{{ _('Calories') }}: {{ item.calories }}</span>
+					<br>
+					{% endif %}
+					{% if recipe_info_paginated[idx][0] %}
+					<span class="r3created r3spanscheduled">{{ _('Scheduled For') }}: {{ recipe_info_paginated[idx][0] }}</span>
+					{% elif recipe_info_paginated[idx][1] %}
+					<span class="r3created r3span">{{ _('Last Prepared') }}: {{ recipe_info_paginated[idx][1] }}</span>
+					{% else %}
+					<span class="r3created r3span">{{ _('Created') }}: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
+					{% endif %}
+				</div>
+			</div>
+			</div>
+		</div>
+		</a>
+		{% endfor %}
+		</div>
+		</div>
+		{% endif %}
+		{% endif %}
+		{% if prev_url or next_url %}
+		<div class="prevnext">
+			{% if prev_url %}
+			<button class="btn-prev" onclick="window.location.href='{{ prev_url }}';" aria-label="{{ _('Navigate to previous page') }}">
+				<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+				<span class="btn-prev-text">{{ _('Previous') }}</span>
+			</button>
+			{% endif %}
+			{% if next_url %}
+			<button class="btn-next" onclick="window.location.href='{{ next_url }}';" aria-label="{{ _('Navigate to next page') }}">
+				<span class="btn-next-text">{{ _('Next') }}</span>
+				<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
+			</button>
+			{% endif %}
+		</div>
+		{% endif %}
+	</div>
+</main>
+{% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+	<script>
+		// CTRL+A keyboard shortcut to redirect to Add Recipe page, only when authenticated
+        $(document).ready(function() {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    window.location.href = '/add-recipe';
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

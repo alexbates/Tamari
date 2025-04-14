@@ -90,3 +90,7 @@ class AddToMealPlannerForm(FlaskForm):
 
 class EmptyForm(FlaskForm):
     submit = SubmitField(_l('Submit'))
+
+class AdvancedSearchForm(FlaskForm):
+    search = StringField(validators=[DataRequired(),disallowed_chars])
+    submit = SubmitField(_l('Submit'))

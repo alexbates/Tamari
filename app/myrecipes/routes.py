@@ -8,7 +8,8 @@ from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe, N
 from werkzeug.urls import url_parse
 from datetime import datetime
 from PIL import Image
-from sqlalchemy import func
+from sqlalchemy import func, and_, or_
+from sqlalchemy.sql import false
 from urllib.parse import urlparse
 from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
@@ -1937,11 +1938,11 @@ def advancedSearch():
         Recipe.ingredients,
         Recipe.instructions
     ).filter(Recipe.user_id == user.id).order_by(func.lower(Recipe.title))
-    # If a query string is provided, split it into terms and build search filters.
-    if query_string:
+    # If a query string is provided, split it into terms and build search filters
+    if query_string and query_string.strip():
         query_terms = query_string.split()
         search_conditions = []
-        # Check each search option from GET parameters; default to 'y' (selected).
+        # Check each search option from GET parameters; default to 'y' (selected)
         if request.args.get('o_title', 'y') == 'y':
             search_conditions.append(
                 and_(*[func.lower(Recipe.title).contains(term.lower()) for term in query_terms])
@@ -1958,9 +1959,12 @@ def advancedSearch():
             search_conditions.append(
                 and_(*[func.lower(Recipe.instructions).contains(term.lower()) for term in query_terms])
             )
-        # If at least one option is enabled, filter the query.
+        # If at least one option is enabled, filter the query
         if search_conditions:
             recipes_query = recipes_query.filter(or_(*search_conditions))
+    else:
+        # No valid search term provided, query will return no recipes
+        recipes_query = recipes_query.filter(false())
     # Paginate the queried recipes
     recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
     # Build recipe_info array using external function

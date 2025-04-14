@@ -57,7 +57,7 @@
 				</div>
 				{{ form.search(class="search-input", id="s_input", placeholder=_('Search')) }}
 				<button class="search-btn" name="submit" type="submit">
-					<span class="searchbtn-icon"><img src="{{ url_for('static', filename='search.png', _external=True) }}" alt=""></span>
+					<span class="searchbtn-icon"><img id="searchimg" src="{{ url_for('static', filename='search.png', _external=True) }}" alt="{{ _('Search recipes') }}"></span>
 				</button>
 			</form> 
 		</div>

@@ -124,8 +124,9 @@
 	--size-btn-icon: 20px;
 	--padding-right-btn-icon: 10px;
 	--padding-btn2-icon: 9px;
-	--width-search-cont: 140px;
-	--width-search-cont-mobile: calc(100% - 163px);
+	--padding-btn4-icon: 8px;
+	--width-search-cont: 126px;
+	--width-search-cont-mobile: calc(100% - 177px);
 	--size-bg-search-box: 22px;
 	--font-search-box: 18px;
 	--height-search-box: 38px;
@@ -148,6 +149,7 @@
 	--w910-height-recipe1-text: 52px;
 	--w910-padding-top-recipe1-text: 23px;
 	--w800-padding-top-recipe1-text: 17px;
+	--w750-recipenav-mobile: 87px;
 	--w750-padding-top-recipe1-text: 13px;
 	--w700-font-recipe1-text: 22px;
 	--w700-height-recipe1-text: 56px;
@@ -207,8 +209,9 @@
 	--size-btn-icon: 20px;
 	--padding-right-btn-icon: 10px;
 	--padding-btn2-icon: 9px;
-	--width-search-cont: 140px;
-	--width-search-cont-mobile: calc(100% - 163px);
+	--padding-btn4-icon: 8px;
+	--width-search-cont: 126px;
+	--width-search-cont-mobile: calc(100% - 177px);
 	--size-bg-search-box: 22px;
 	--font-search-box: 18px;
 	--height-search-box: 38px;
@@ -231,6 +234,7 @@
 	--w910-height-recipe1-text: 52px;
 	--w910-padding-top-recipe1-text: 23px;
 	--w800-padding-top-recipe1-text: 17px;
+	--w750-recipenav-mobile: 87px;
 	--w750-padding-top-recipe1-text: 13px;
 	--w700-font-recipe1-text: 22px;
 	--w700-height-recipe1-text: 56px;
@@ -290,8 +294,9 @@
 	--size-btn-icon: 22px;
 	--padding-right-btn-icon: 8px;
 	--padding-btn2-icon: 8px;
-	--width-search-cont: 128px;
-	--width-search-cont-mobile: calc(100% - 163px);
+	--padding-btn4-icon: 8px;
+	--width-search-cont: 114px;
+	--width-search-cont-mobile: calc(100% - 177px);
 	--size-bg-search-box: 24px;
 	--font-search-box: 20px;
 	--height-search-box: 40px;
@@ -314,6 +319,7 @@
 	--w910-height-recipe1-text: 56px;
 	--w910-padding-top-recipe1-text: 19px;
 	--w800-padding-top-recipe1-text: 13px;
+	--w750-recipenav-mobile: 92px;
 	--w750-padding-top-recipe1-text: 9px;
 	--w700-font-recipe1-text: 24px;
 	--w700-height-recipe1-text: 60px;
@@ -530,14 +536,38 @@
 	width: var(--size-btn-icon);
 }
 .btn2-icon img {height: 100%; width: 100%;}
+.btn4-default {
+	background-color: var(--color-btn2-default-bg);
+	border: none;
+	color: var(--color-btn2-default-font);
+	cursor: pointer;
+	float: right;
+	height: var(--height-btn-default);
+	margin-top: 9px;
+	margin-right: 10px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 38px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn4-default:hover {background: var(--color-btn2-default-hover);}
+.btn4-default:active, .btn4-default.active {background: var(--color-btn2-default-active);}
+.btn4-default:active, .btn4-default.active, .btn4-default:hover, .btn4-default:focus {outline: none;}
+.btn4-icon {
+	display: block; 
+	height: 24px; 
+	padding-left: var(--padding-btn4-icon); 
+	width: 24px;
+}
+.btn4-icon img {height: 100%; width: 100%;}
 .search-cont {
 	float: right; 
-	margin-right: 56px;
+	margin-right: 0px;
 	width: var(--width-search-cont);
 }
 .search-box {
 	background: var(--color-search-box-bg);
-	background-image: var(--image-search-box-bg);
 	background-repeat: no-repeat;
 	background-size: var(--size-bg-search-box) var(--size-bg-search-box);
 	-moz-background-size: var(--size-bg-search-box) var(--size-bg-search-box);
@@ -548,8 +578,9 @@
 	box-shadow: none;
 	color: var(--color-search-box-font);
 	font-size: var(--font-search-box);
+	float: right;
 	height: var(--height-search-box);
-	padding-left: var(--padding-search-box);
+	padding-left: 10px;
 	padding-right: 10px;
 	padding-top: 0px;
 	padding-bottom: 0px;
@@ -1055,7 +1086,7 @@
 	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 750px) { 
-	#recipenav {height: 92px;}
+	#recipenav {height: var(--w750-recipenav-mobile);}
 	.recipenavleft {
 		float: none; 
 		text-align: left; 

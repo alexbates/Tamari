@@ -363,6 +363,21 @@
 			$('#endpoints').html(detailsCount + ' endpoints found.');
 		}
 	});
+	// Advanced Search button on All Recipes, Favorites, and Recents
+	$(document).ready(function() {
+		var searchBtn = document.getElementById('indexSearchBtn');
+		if (searchBtn) {
+			searchBtn.addEventListener('click', function() {
+				// Get the text from the search box and trim whitespace.
+				var searchTerm = document.getElementById('search').value.trim();
+				// Build the URL and redirect.
+				var url = '/my-recipes/search?query=' + encodeURIComponent(searchTerm);
+				window.location.href = url;
+			});
+		} else {
+			console.error("Element with id 'indexSearchBtn' not found!");
+		}
+	});
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}

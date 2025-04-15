@@ -33,26 +33,26 @@
 			<form method="post" class="form">
 				{{ form.hidden_tag() }}
 				<div class="searchprefs">
-					<span>Find By:</span>
+					<span>{{ _('Find By') }}:</span>
 					<label class="checkbox">
 						<input class="rememberme" name="o_title" type="checkbox" value="y" {% if request.args.get('o_title', 'y') == 'y' %}checked{% endif %}>
 						<span class="checkmark"></span>
-						Title
+						{{ _('Title') }}
 					</label>
 					<label class="checkbox">
 						<input class="rememberme" name="o_category" type="checkbox" value="y" {% if request.args.get('o_category', 'y') == 'y' %}checked{% endif %}>
 						<span class="checkmark"></span>
-						Category
+						{{ _('Category') }}
 					</label>
 					<label class="checkbox">
 						<input class="rememberme" name="o_ingredients" type="checkbox" value="y" {% if request.args.get('o_ingredients', 'y') == 'y' %}checked{% endif %}>
 						<span class="checkmark"></span>
-						Ingredients
+						{{ _('Ingredients') }}
 					</label>
 					<label class="checkbox">
 						<input class="rememberme" name="o_instructions" type="checkbox" value="y" {% if request.args.get('o_instructions', 'y') == 'y' %}checked{% endif %}>
 						<span class="checkmark"></span>
-						Instructions
+						{{ _('Instructions') }}
 					</label>
 				</div>
 				{{ form.search(class="search-input", id="s_input", placeholder=_('Search')) }}

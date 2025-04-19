@@ -1,0 +1,378 @@
+.mealplanner-active {
+	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
+}
+.mealplanner-active:hover {
+	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
+} 
+.mt-mealplanner {display: block !important;}
+/* THEMES */
+:root {
+	--color-block1: #ffffff;
+	--color-recbtn-bg: #111111;
+	--color-recbtn-font: #ffffff;
+	--color-btn-paginate: #ffffff;
+	--color-calendar-grid-border: #5b5b5b;
+	--color-calendar-cell: #111111;
+	--color-other-month: #1e1e1e;
+	--color-calendar-day-hover: #2b2b2b;
+	--color-day-number: #ffffff;
+	--color-recipe: #d8d8d8;
+	--color-more-recipes: #989898;
+}
+[data-theme="light"] {
+	--color-block1: #000000;
+	--color-recbtn-bg: #efefef;
+	--color-recbtn-font: #000000;
+	--color-btn-paginate: #000000;
+	--color-calendar-grid-border: #a4a4a4;
+	--color-calendar-cell: #efefef;
+	--color-other-month: #dfdfdf;
+	--color-calendar-day-hover: #cfcfcf;
+	--color-day-number: #000000;
+	--color-recipe: #272727;
+	--color-more-recipes: #676767;
+}
+[data-theme="dark"] {
+	--color-block1: #ffffff;
+	--color-recbtn-bg: #111111;
+	--color-recbtn-font: #ffffff;
+	--color-btn-paginate: #ffffff;
+	--color-calendar-grid-border: #5b5b5b;
+	--color-calendar-cell: #111111;
+	--color-other-month: #1e1e1e;
+	--color-calendar-day-hover: #2b2b2b;
+	--color-day-number: #ffffff;
+	--color-recipe: #d8d8d8;
+	--color-more-recipes: #989898;
+}
+/* SCALING */
+:root {
+	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+}
+[data-scaling="normal"] {
+	--font-block1: 16px;
+	--font-recbtn: 16px;
+	--height-recipenav: 57px;
+	--height-recbtn: 30px;
+	--margin-recbtn: 14px;
+	--font-pagination: 16px;
+	--height-pagination: 34px;
+	--width-next: 76px;
+	--width-prev: 107px;
+}
+[data-scaling="large"] {
+	--font-block1: 18px;
+	--font-recbtn: 18px;
+	--height-recipenav: 59px;
+	--height-recbtn: 32px;
+	--margin-recbtn: 13px;
+	--font-pagination: 18px;
+	--height-pagination: 36px;
+	--width-next: 79px;
+	--width-prev: 110px;
+}
+/* ACCENT COLOR APPLICATION */
+.recbtn-active {background-color: var(--color) !important;}
+.btn-next {background-color: var(--color);}
+.btn-next:hover {background: var(--color-lighter);}
+.btn-next:active, .btn-next.active {background: var(--color-darker);}
+.btn-prev {background-color: var(--color);}
+.btn-prev:hover {background: var(--color-lighter);}
+.btn-prev:active, .btn-prev.active {background: var(--color-darker);}
+/* BLOCK 1 */
+#block1 {
+	width: 100%;
+	color: var(--color-block1);
+	font-size: var(--font-block1);
+}
+.block1inner {
+	height: 100%;
+	margin: 0 auto;
+	padding-bottom: 20px;
+	overflow-x: hidden;
+	width: 1000px;
+}
+.block1inner h3 {line-height: 46px; padding-left: 12px;}
+
+.recipenavleft {
+	position: relative;
+	overflow: hidden;
+	text-align: left;
+	margin-top: var(--margin-recbtn);
+	margin-bottom: var(--margin-recbtn);
+	width: 100%;
+}
+.recipenavleft-inner {
+	white-space: nowrap;
+	overflow-x: auto;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	height: 100%;
+}
+.recipenavleft-inner::-webkit-scrollbar {
+	display: none;
+}
+.recbtn {
+	display: inline-block;
+	background-color: var(--color-recbtn-bg);
+	border: none;
+	border-radius: 15px;
+	color: var(--color-recbtn-font);
+	cursor: pointer;
+	font-size: var(--font-recbtn);
+	height: var(--height-recbtn);
+	margin-right: 8px;
+	padding: 0px 10px; /* top/bottom, left/right */
+	-webkit-font-smoothing: subpixel-antialiased;
+	white-space: nowrap; /* Keep button text on a single line */
+}
+.recbtn:last-child {
+	margin-right: 0px;
+}
+.recbtn:active, .recbtn.active, .recbtn:hover, .recbtn:focus {
+	outline: none;
+}
+.scroll-arrow-recip {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	display: none; /* Show only if scroll is needed */
+	height: 100%;
+}
+.scroll-arrow-recip img {
+	margin-top: 6px;
+	height: var(--height-recbtn) - 12px;
+	width: calc((var(--height-recbtn) - 12px) * (12 / 20)); /* ratio-based width */
+}
+.scroll-right-recip {
+	right: 0;
+	background: linear-gradient(
+	  to right,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 0px 10px 8px; /* Top right bottom left */
+}
+.scroll-left-recip {
+	left: 0;
+	background: linear-gradient(
+	  to left,
+	  transparent 0%,
+	  var(--color-body-bg) 25%,
+	  var(--color-body-bg) 50%,
+	  var(--color-body-bg) 100%
+	);
+	padding: 10px 8px 10px 0px; /* Top right bottom left */
+}
+
+#flashed-err {
+	background: var(--color-flashed-err); 
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
+	margin-bottom: 12px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 6px;
+}
+#flashed-norm {
+	background: var(--color-flashed-norm); 
+	font-size: var(--font-flashed);
+	min-height: var(--height-flashed);
+	margin-bottom: 12px;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	padding: 6px;
+}
+
+/* PAGINATION BUTTONS */
+.prevnext {height: 54px; text-align: center; width: 100%;}
+.btn-next {
+	border: none;
+	border-radius: 7px;
+	color: var(--color-btn-paginate);
+	cursor: pointer;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
+	margin-left: 6px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-next:active, .btn-next.active, .btn-next:hover, .btn-next:focus {outline: none;}
+.btn-next-icon {
+	display: block; 
+	float: right; 
+	height: 16px; 
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 10px;
+}
+.btn-next-icon img {height: 100%; width: 100%;}
+.btn-prev {
+	border: none;
+	border-radius: 7px;
+	color: var(--color-btn-paginate);
+	cursor: pointer;
+	font-size: var(--font-pagination);
+	height: var(--height-pagination);
+	margin-right: 6px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-prev:active, .btn-prev.active, .btn-prev:hover, .btn-prev:focus {outline: none;}
+.btn-prev-icon {
+	display: block; 
+	float: left; 
+	height: 16px; 
+	padding-left: 10px;
+	padding-right: 10px; 
+	width: 10px;
+}
+.btn-prev-icon img {height: 100%; width: 100%;}
+
+/* MONTH VIEW CALENDAR */
+.calendar-container{
+	margin: 0 auto;
+}
+.calendar-container h2 {
+	border-radius: 7px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.calendar-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.calendar-header h2 {margin: 0;}
+  
+  /* ====== GRID & BORDERS ====== */
+  .calendar-grid{
+	display:grid;
+	grid-template-columns:repeat(7,1fr);
+	border:1px solid var(--color-calendar-grid-border);           /* full outer border */
+  }
+  .day-name,
+  .calendar-day{
+	border-right:1px solid var(--color-calendar-grid-border);
+	border-bottom:1px solid var(--color-calendar-grid-border);
+	box-sizing:border-box;
+  }
+  .day-name:nth-child(7n),
+  .calendar-day:nth-child(7n){border-right:none;} /* avoid double line */
+  
+  /* ====== DAY NAME ROW ====== */
+  .day-name{
+	text-align:center;
+	font-weight:bold;
+	padding:.5rem 0;
+	background: var(--color-calendar-cell);                 /* match calendar-day background */
+  }
+  
+  /* ====== DAY CELLS ====== */
+  .calendar-day{
+	background: var(--color-calendar-cell);
+	min-height:120px;
+	padding:.5rem;
+	display:flex;
+	flex-direction:column;
+	text-decoration:none;
+	color:inherit;
+	transition: background .15s;
+  }
+  .calendar-day:hover{background: var(--color-calendar-day-hover);}           /* hover colour */
+  .other-month{background: var(--color-other-month);}
+  /* clickability */
+  .calendar-day:active{background: var(--color-calendar-day-hover);}
+  
+  /* ====== DAY NUMBER CIRCLE ====== */
+.day-number-wrap{
+	width:30px;height:30px;border-radius:50%;background:transparent;color: var(--color-day-number);
+	display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:.3rem;
+}
+.calendar-day.today .day-number-wrap {
+	background: var(--color);
+}
+  
+  /* ====== RECIPE LISTS ====== */
+  .recipes{display:flex;flex-direction:column;flex:1;}
+  .recipe{
+	display:-webkit-box;
+	color: var(--color-recipe);
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	margin-bottom:10px;
+  }
+  .more-recipes {
+	margin-top:auto;
+	font-size:.9rem;
+	color: var(--color-more-recipes);
+}
+  
+  /* ====== DOTS FOR SMALL SCREENS ====== */
+  .dots{display:none;margin-top:auto;}
+  .dot{display:inline-block;width:8px;height:8px;background: var(--color);border-radius:50%;margin-right:4px;}
+
+  .calendar-container a:hover {text-decoration: none;}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1000px) { 
+	.block1inner {width: 100%;}
+	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	.recipenavleft {
+		margin-left: 10px;
+		margin-right: 10px;
+		width: calc(100% - 20px);
+	}
+	#flashed-err {margin-left: 10px; margin-right: 10px;}
+	#flashed-norm {margin-left: 10px; margin-right: 10px;}
+	.calendar-container {width: calc(100% - 20px);}
+}
+@media screen and (max-width:815px) {
+	.recipes,.more-recipes {display:none;}
+	.dots {display:block;}
+}
+@media screen and (max-width: 700px) {
+	#flashed-err {margin-top: 16px;}
+    #flashed-norm {margin-top: 16px;}
+}
+@media screen and (max-width: 640px) {
+	.day-number-wrap{
+		margin-bottom: .05rem;          /* tighten gap between number & dots */
+		width: 26px;
+		height: 26px;
+		font-size: .85rem;
+	}
+	.dot{margin-right:2px;}          /* keep tighter dot spacing */
+	.calendar-day{
+		min-height: 90px;
+	}
+  }
+@media screen and (max-width: 520px) {
+	.calendar-day{
+		min-height:70px;
+	}
+}

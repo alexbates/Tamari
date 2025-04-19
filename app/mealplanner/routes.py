@@ -8,6 +8,100 @@ import secrets, time, random, requests, re, urllib.request
 from app.mealplanner import bp
 from config import Config
 
+# The calendar page displays upcoming and completed recipes for the current month (month view)
+# When viewing on a desktop, up to two recipes are listed for any given day
+# If a day has more than two recipes, "N more recipes" message will be displayed
+# at the bottom of the cell below the first two recipe titles.
+# When viewing on mobile, instead of recipe titles, dots are displayed with the cell (up
+# to 3 dots per cell, color of dots is user accent color)
+# Previous and Next buttons allow switching between months
+@bp.route('/meal-planner/calendar')
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def mealPlannerCalendar():
+    # Determine which month to show
+    # optional ?year=YYYY&month=MM query; defaults to current month
+    try:
+        year  = int(request.args.get('year',  datetime.now().year))
+        month = int(request.args.get('month', datetime.now().month))
+    except ValueError:
+        year, month = datetime.now().year, datetime.now().month
+
+    first_of_month = date(year, month, 1)
+    _, num_days_in_month = calendar.monthrange(year, month)
+
+    # python weekday: Monday=0 … Sunday=6
+    first_weekday = first_of_month.weekday()  # 0‑6
+    days_back = (first_weekday + 1) % 7       # 0 if Sunday, 1 if Mon, etc.
+    start_date = first_of_month - timedelta(days=days_back)
+
+    last_of_month = date(year, month, num_days_in_month)
+    last_weekday = last_of_month.weekday()    # 0‑6
+    days_forward = (5 - last_weekday) % 7     # Saturday in same / next week
+    end_date = last_of_month + timedelta(days=days_forward)
+
+    # Gather all dates in the grid
+    total_days = (end_date - start_date).days + 1
+    grid_dates = [start_date + timedelta(days=i) for i in range(total_days)]
+
+    # Fetch user's meal plans that fall inside the grid
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    date_strings_in_grid = {d.strftime("%Y-%m-%d") for d in grid_dates}
+    plans_in_month = [p for p in user.planned_meals.all() if p.date in date_strings_in_grid]
+
+    # Build a dict  { "YYYY-MM-DD": [Recipe, …] }
+    plans_by_date = {}
+    for plan in plans_in_month:
+        plans_by_date.setdefault(plan.date, []).append(plan)
+
+    # Assemble structures to feed the template
+    calendar_days = []
+    today_str = datetime.now().date().strftime("%Y-%m-%d")
+
+    for d in grid_dates:
+        iso = d.strftime("%Y-%m-%d")
+        # First two recipe titles
+        recipe_titles = []
+        more_count = 0
+
+        if iso in plans_by_date:
+            # Fetch Recipe rows only once each
+            for plan in plans_by_date[iso][:2]:
+                r = Recipe.query.get(plan.recipe_id)
+                recipe_titles.append(r.title if r else "Recipe")
+            more_count = max(0, len(plans_by_date[iso]) - 2)
+			
+		# Calculate how many dots to show (up to 3)
+        dot_count = min(3, len(recipe_titles) + more_count)
+
+        calendar_days.append({
+            "iso": iso,                         # "2025-04-15"
+            "day": d.day,                       # 15
+            "in_month": (d.month == month),     # True if belongs to current month
+            "is_today": (iso == today_str),
+            "titles": recipe_titles,            # up to 2 titles
+            "more": more_count,                 # 0,1,2,or higher
+			"dot_count": dot_count
+        })
+
+    month_label = f"{calendar.month_name[month]} {year}"
+    prev_month = (first_of_month - timedelta(days=1))
+    next_month = (last_of_month + timedelta(days=1))
+
+    return render_template('meal-planner-calendar.html', month_label=month_label, calendar_days=calendar_days,
+        prev_year=prev_month.year, prev_month=prev_month.month, next_year=next_month.year, next_month=next_month.month)
+
+# The purpose of this page is to view recipes for a specific day
+# When clicking a day on the calendar, will be directed to this page
+@bp.route('/meal-planner/calendar/details')
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def mealPlannerCalendarDetails():
+	try:
+        date = request.args.get('date')
+    except:
+        date = None
+
 @bp.route('/meal-planner/upcoming')
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

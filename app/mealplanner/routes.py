@@ -28,7 +28,7 @@ def mealPlannerCalendar():
         year, month = datetime.now().year, datetime.now().month
 
     first_of_month = date(year, month, 1)
-    _, num_days_in_month = calendar.monthrange(year, month)
+    first_weekday_num, num_days_in_month = calendar.monthrange(year, month)
 
     # python weekday: Monday=0 … Sunday=6
     first_weekday = first_of_month.weekday()  # 0‑6

@@ -140,7 +140,7 @@ def mealPlannerCalendarDetails():
         timestamp += 86400
     return render_template('meal-planner-calendar-details.html', title=_('Meal Planner Calendar Details'),
         mdescription=_('View recipes planned for a specific day.'), plannedmeals=plannedmeals,
-        full_date=full_date, recdetails=recdetails, date_str=date_str)
+        full_date=full_date, recdetails=recdetails, date_str=date_str, days30=days30)
 
 @bp.route('/meal-planner/upcoming')
 @login_required

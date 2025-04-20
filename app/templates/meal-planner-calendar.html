@@ -78,7 +78,7 @@
 
 						<div class="dots">
 							{% if day.titles %}  {# at least 1 recipe #}
-							{% for _ in range(day.dot_count) %}
+							{% for i in range(day.dot_count) %}
 							<span class="dot"></span>
 							{% endfor %}
 							{% endif %}

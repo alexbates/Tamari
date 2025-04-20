@@ -61,8 +61,8 @@
 				{# Day cells #}
 				{% for day in calendar_days %}
 					{% set cls = [] %}
-					{% if not day.in_month %} {% set _ = cls.append('other-month') %}{% endif %}
-					{% if day.is_today %}   {% set _ = cls.append('today') %}{% endif %}
+					{% if not day.in_month %} {% set __x = cls.append('other-month') %}{% endif %}
+					{% if day.is_today %}   {% set __x = cls.append('today') %}{% endif %}
 
 					<a href="{{ url_for('mealplanner.mealPlannerCalendarDetails', date=day.iso) }}" class="calendar-day {{ ' '.join(cls) }}">
 						<div class="day-number-wrap"><span>{{ day.day }}</span></div>

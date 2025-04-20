@@ -97,7 +97,7 @@ def mealPlannerCalendar():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mealPlannerCalendarDetails():
-	try:
+    try:
         date = request.args.get('date')
     except:
         date = None

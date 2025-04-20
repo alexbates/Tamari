@@ -521,7 +521,7 @@
 				<li class="myrecipes-active"><a href="{{ url_for('myrecipes.allRecipes') }}"><span>{{ _('My Recipes') }}</span></a></li
 				><li class="explore-active"><a href="{{ url_for('explore.explore') }}"><span>{{ _('Explore') }}</span></a></li
 				><li class="shoplist-active"><a href="{{ url_for('shoplists.shoppingLists') }}"><span class="linkfull">{{ _('Shopping Lists') }}</span><span class="linkshort">{{ _('Lists') }}</span></a></li
-				><li class="mealplanner-active"><a href="{{ url_for('mealplanner.mealPlanner') }}"><span class="linkfull">{{ _('Meal Planner') }}</span><span class="linkshort">{{ _('Planner') }}</span></a></li
+				><li class="mealplanner-active"><a href="{{ url_for('mealplanner.mealPlannerCalendar') }}"><span class="linkfull">{{ _('Meal Planner') }}</span><span class="linkshort">{{ _('Planner') }}</span></a></li
 				><li class="about-active"><a href="{{ url_for('account.about') }}"><span>{{ _('About') }}</span></a></li>
 			</ul>
 			<div class="scroll-arrow scroll-right"><img id="scroll-right" src="{{ url_for('static', filename='navbar-scroll-right.png', _external=True) }}" alt="Scroll Right"></div>
@@ -586,7 +586,7 @@
 						<li><a href="{{ url_for('myrecipes.allRecipes') }}">{{ _('My Recipes') }}</a></li>
 						<li><a href="{{ url_for('explore.explore') }}">{{ _('Explore') }}</a></li>
 						<li><a href="{{ url_for('shoplists.shoppingLists') }}">{{ _('Shopping Lists') }}</a></li>
-						<li><a href="{{ url_for('mealplanner.mealPlanner') }}">{{ _('Meal Planner') }}</a></li>
+						<li><a href="{{ url_for('mealplanner.mealPlannerCalendar') }}">{{ _('Meal Planner') }}</a></li>
 						<li><a href="{{ url_for('account.about') }}">{{ _('About') }} Tamari</a></li>
 					</ul>
 					<hr>

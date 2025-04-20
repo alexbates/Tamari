@@ -88,8 +88,10 @@ def mealPlannerCalendar():
     prev_month = (first_of_month - timedelta(days=1))
     next_month = (last_of_month + timedelta(days=1))
 
-    return render_template('meal-planner-calendar.html', month_label=month_label, calendar_days=calendar_days,
-        prev_year=prev_month.year, prev_month=prev_month.month, next_year=next_month.year, next_month=next_month.month)
+    return render_template('meal-planner-calendar.html', title=_('Meal Planner Calendar'), 
+        mdescription=_('View recipes planned for the current month.'), month_label=month_label, 
+        calendar_days=calendar_days, prev_year=prev_month.year, prev_month=prev_month.month, next_year=next_month.year,
+        next_month=next_month.month)
 
 # The purpose of this page is to view recipes for a specific day
 # When clicking a day on the calendar, will be directed to this page
@@ -97,10 +99,26 @@ def mealPlannerCalendar():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mealPlannerCalendarDetails():
+    date_str = request.args.get('date')
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    plannedmeals = user.planned_meals.filter_by(date=date_str).all()
+    recdetails = []
+    for meal in plannedmeals:
+        recipe = Recipe.query.get_or_404(meal.recipe_id)
+        recdetails.append({
+            'title':    recipe.title,
+            'category': recipe.category,
+            'hex_id':   recipe.hex_id
+        })
+    # Format the date for display
     try:
-        date = request.args.get('date')
+        d = datetime.strptime(date_str, '%Y-%m-%d')
+        full_date = f"{d.strftime('%A')}, {d.strftime('%B')} {d.day}, {d.year}"
     except:
-        date = None
+        full_date = date_str or _('Invalid date')
+    return render_template('meal-planner-calendar-details.html', title=_('Meal Planner Calendar Details'),
+        mdescription=_('View recipes planned for a specific day.'), plannedmeals=plannedmeals,
+        full_date=full_date, recdetails=recdetails)
 
 @bp.route('/meal-planner/upcoming')
 @login_required

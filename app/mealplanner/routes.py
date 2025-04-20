@@ -116,9 +116,31 @@ def mealPlannerCalendarDetails():
         full_date = f"{d.strftime('%A')}, {d.strftime('%B')} {d.day}, {d.year}"
     except:
         full_date = date_str or _('Invalid date')
+    # Create 2D array that contains compact date and full date for Meal Planner scheduling
+    w, h = 2, 30
+    month = [[0 for x in range(w)] for y in range(h)]
+    curr_dt = datetime.now()
+    timestamp = int(time.mktime(curr_dt.timetuple()))
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    # Create array that is used for checking whether meal is past or future
+    days30 = []
+    for d in month:
+        date = datetime.fromtimestamp(timestamp)
+        intDay = date.weekday()
+        full_month = date.strftime("%B")
+        full_day = date.strftime("%-d")
+        compact_month = date.strftime("%m")
+        compact_day = date.strftime("%d")
+        curr_year = date.strftime("%Y")
+        compactdate = curr_year + "-" + compact_month + "-" + compact_day
+        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        d[0] = compactdate
+        d[1] = fulldate
+        days30.append(compactdate)
+        timestamp += 86400
     return render_template('meal-planner-calendar-details.html', title=_('Meal Planner Calendar Details'),
         mdescription=_('View recipes planned for a specific day.'), plannedmeals=plannedmeals,
-        full_date=full_date, recdetails=recdetails)
+        full_date=full_date, recdetails=recdetails, date_str=date_str)
 
 @bp.route('/meal-planner/upcoming')
 @login_required

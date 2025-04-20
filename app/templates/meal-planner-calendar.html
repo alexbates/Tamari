@@ -1,0 +1,108 @@
+{% extends "navbar.html" %}
+
+{% block styles %}
+	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
+	<link href="{{ url_for('static', filename='meal-planner-calendar.css', _external=True) }}" rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block content %}
+<main id="block1" onclick="closeDropdown()">
+	<div class="block1inner">
+		<div class="recipenavleft">
+            <div class="recipenavleft-inner">
+                <input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar') }}';" value="{{ _('Calendar') }}" aria-label="{{ _('Navigate to Meal Planner (Calendar)') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Upcoming)') }}"
+                ><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Completed)') }}">
+            </div>
+            <div class="scroll-arrow-recip scroll-right-recip">
+                <img id="scroll-right-recip" src="{{ url_for('static', filename='navbar-scroll-right.png', _external=True) }}" alt="Scroll Right">
+            </div>
+            <div class="scroll-arrow-recip scroll-left-recip">
+                <img id="scroll-left-recip" src="{{ url_for('static', filename='navbar-scroll-left.png', _external=True) }}" alt="Scroll Left">
+            </div>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% set first_message = true %}
+        {% for message in messages %}
+        {% if first_message %}
+        {% if 'Error' in message or '错误' in message %}
+        <p id="flashed-err">{{ message }}</p>
+        {% set first_message = false %}
+        {% else %}
+        <p id="flashed-norm">{{ message }}</p>
+        {% set first_message = false %}
+        {% endif %}
+        {% else %}
+        <p style="display: none;">{{ message }}</p>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+	
+		<div class="calendar-container">
+			<!-- Header with Prev/Next -->
+			<div class="calendar-header">
+				<button class="btn-prev" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar', year=prev_year, month=prev_month) }}';" aria-label="{{ _('Previous') }}">
+					<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
+				</button>
+				<h2>{{ month_label }}</h2>
+				<button class="btn-next" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar', year=next_year, month=next_month) }}';" aria-label="{{ _('Next') }}">
+					<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
+				</button>
+			</div>
+
+			<div class="calendar-grid">
+				{# Weekday labels #}
+				{% for wd in ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] %}
+					<div class="day-name">{{ wd }}</div>
+				{% endfor %}
+
+				{# Day cells #}
+				{% for day in calendar_days %}
+					{% set cls = [] %}
+					{% if not day.in_month %} {% set _ = cls.append('other-month') %}{% endif %}
+					{% if day.is_today %}   {% set _ = cls.append('today') %}{% endif %}
+
+					<a href="{{ url_for('mealplanner.mealPlannerCalendarDetails', date=day.iso) }}" class="calendar-day {{ ' '.join(cls) }}">
+						<div class="day-number-wrap"><span>{{ day.day }}</span></div>
+
+						<div class="recipes">
+							{% for title in day.titles %}
+							<div class="recipe">{{ title }}</div>
+							{% endfor %}
+							{% if day.more %}
+							<div class="more-recipes">{{ day.more }} more recipes</div>
+							{% endif %}
+						</div>
+
+						<div class="dots">
+							{% if day.titles %}  {# at least 1 recipe #}
+							{% for _ in range(day.dot_count) %}
+							<span class="dot"></span>
+							{% endfor %}
+							{% endif %}
+						</div>
+					</a>
+				{% endfor %}
+			</div><!-- .calendar-grid -->
+		</div> <!-- .calendar-container -->
+	</div>
+</main>
+{% endblock %}
+
+{% block shortcuts %}
+{% if current_user.is_authenticated %}
+    <script>
+        // CTRL+A keyboard shortcut to redirect to Add Recipe page, only when authenticated
+        $(document).ready(function() {
+            $(document).keydown(function(e) {
+                if (e.ctrlKey && e.key === 'a') {
+                    e.preventDefault();
+                    window.location.href = '/add-recipe';
+                }
+            });
+        });
+    </script>
+{% endif %}
+{% endblock %}

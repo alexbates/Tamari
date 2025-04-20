@@ -11,7 +11,7 @@
 		<div class="recipenavleft">
             <div class="recipenavleft-inner">
                 <input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar') }}';" value="{{ _('Calendar') }}" aria-label="{{ _('Navigate to Meal Planner (Calendar)') }}"
-				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Upcoming)') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="{{ _('Upcoming') }}" aria-label="{{ _('Navigate to Meal Planner (Upcoming)') }}"
                 ><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Completed)') }}">
             </div>
             <div class="scroll-arrow-recip scroll-right-recip">

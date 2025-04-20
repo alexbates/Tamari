@@ -250,6 +250,14 @@
 
 .block1inner h2 {padding-top: 0px; padding-bottom: 4px;}
 .block1inner h3 {padding-bottom: 0px; padding-top: 16px;}
+#mealmessage {
+	background: var(--color-mealmessage); 
+	font-size: var(--font-mealmessage);
+	min-height: var(--height-mealmessage);
+	margin-bottom: 2px;
+	margin-top: 10px;
+	padding: 6px;
+}
 .planinner {margin-top: 10px;}
 .planinner div {
 	background: var(--color-planinner-bg);

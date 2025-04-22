@@ -45,7 +45,7 @@
 		<div class="planinner">
 			{% for detail in recdetails %}
 			<div class="calendar-detail-item">
-				{% if date_str in days30 %}
+				{% if date_str in days365 %}
 				<button class="btn4-default" onclick="window.location.href='{{ url_for('mealplanner.removePlan', hexid=detail.hex_id) }}';" aria-label="{{ _('Remove Meal Plan') }} {{ detail.title }}">
 					<span class="btn4-icon">
 						<img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="{{ _('Remove Meal Plan') }} {{ detail.title }}">

@@ -145,13 +145,13 @@
 }
 /* BLOCK 1 */ 
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
+	display: flow-root;
 	height: 100%;
 	margin: 0 auto;
 	width: 1000px;

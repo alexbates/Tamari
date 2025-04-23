@@ -147,7 +147,7 @@ def mealPlannerCalendarDetails():
         fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
         d[0] = compactdate
         d[1] = fulldate
-        days30.append(compactdate)
+        days365.append(compactdate)
         timestamp += 86400
     return render_template('meal-planner-calendar-details.html', title=_('Meal Planner Calendar Details'),
         mdescription=_('View recipes planned for a specific day.'), plannedmeals=plannedmeals,

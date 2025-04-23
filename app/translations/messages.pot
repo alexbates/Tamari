@@ -1831,3 +1831,45 @@ msgstr ""
 
 msgid "Sat"
 msgstr ""
+
+msgid "Recents"
+msgstr ""
+
+msgid "See all recently viewed recipes."
+msgstr ""
+
+msgid "Navigate to Recents"
+msgstr ""
+
+msgid "There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe."
+msgstr ""
+
+msgid "Advanced Search"
+msgstr ""
+
+msgid "Search your recipes by title, category, ingredients, and instructions."
+msgstr ""
+
+msgid "No results found for search term."
+msgstr ""
+
+msgid "Find By"
+msgstr ""
+
+msgid "Invalid recipe selected."
+msgstr ""
+
+msgid "no date specified."
+msgstr ""
+
+msgid "Meal Planner Calendar"
+msgstr ""
+
+msgid "View recipes planned for the current month."
+msgstr ""
+
+msgid "Meal Planner Calendar Details"
+msgstr ""
+
+msgid "View recipes planned for a specific day."
+msgstr ""

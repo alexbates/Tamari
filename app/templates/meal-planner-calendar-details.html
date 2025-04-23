@@ -68,16 +68,11 @@
 		{% if date_str in days365 %}
 		<form id="mp-add-meal-form" method="post" action="">
 			<input type="hidden" name="hex_id" id="mp-selected-hex-id">
-			<input type="hidden" name="date"    value="{{ date_str }}">
-
-			<label for="mp-recipe-search">{{ _('Add recipe:') }}</label>
-			<input
-				type="text"
-				id="mp-recipe-search"
-				placeholder="{{ _('Type to search recipes…') }}"
-				autocomplete="off"
-			>
+			<input type="hidden" name="date" value="{{ date_str }}">
+			<h3>{{ _('Add Recipe for Selected Day') }}</h3>
+			<input type="text" id="mp-recipe-search" placeholder="{{ _('Search') }}" autocomplete="off">
 			<ul id="mp-search-results" class="mp-search-results"></ul>
+			<button type="submit" class="btn">{{ _('Submit') }}</button>
 		</form>
 		{% endif %}
 

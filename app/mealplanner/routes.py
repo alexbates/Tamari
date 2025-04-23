@@ -185,7 +185,7 @@ def mealPlannerListAllRecipes():
         recipe_data = []
         for recipe in recipes_query.all():
             recipe_info = {
-                "id": recipe.hex_id,
+                "hex_id": recipe.hex_id,
                 "title": recipe.title
             }
             recipe_data.append(recipe_info)

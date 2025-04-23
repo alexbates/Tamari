@@ -1832,3 +1832,45 @@ msgstr "Пт"
 
 msgid "Sat"
 msgstr "Сб"
+
+msgid "Recents"
+msgstr "Недавние"
+
+msgid "See all recently viewed recipes."
+msgstr "Смотреть все недавно просмотренные рецепты."
+
+msgid "Navigate to Recents"
+msgstr "Перейти к недавним"
+
+msgid "There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe."
+msgstr "Нет последних элементов для отображения.<br><br>Перейдите на страницу Все рецепты и нажмите на рецепт."
+
+msgid "Advanced Search"
+msgstr "Расширенный поиск"
+
+msgid "Search your recipes by title, category, ingredients, and instructions."
+msgstr "Ищите свои рецепты по названию, категории, ингредиентам и инструкциям."
+
+msgid "No results found for search term."
+msgstr "По вашему запросу ничего не найдено."
+
+msgid "Find By"
+msgstr "Найти по"
+
+msgid "Invalid recipe selected."
+msgstr "Выбран недопустимый рецепт."
+
+msgid "no date specified."
+msgstr "Дата не указана."
+
+msgid "Meal Planner Calendar"
+msgstr "Календарь планировщика питания"
+
+msgid "View recipes planned for the current month."
+msgstr "Просмотреть рецепты, запланированные на текущий месяц."
+
+msgid "Meal Planner Calendar Details"
+msgstr "Детали календаря планировщика питания"
+
+msgid "View recipes planned for a specific day."
+msgstr "Просмотреть рецепты, запланированные на конкретный день."

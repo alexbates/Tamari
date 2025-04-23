@@ -1832,3 +1832,45 @@ msgstr "Ven"
 
 msgid "Sat"
 msgstr "Sam"
+
+msgid "Recents"
+msgstr "Récents"
+
+msgid "See all recently viewed recipes."
+msgstr "Voir toutes les recettes récemment consultées."
+
+msgid "Navigate to Recents"
+msgstr "Aller aux Récents"
+
+msgid "There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe."
+msgstr "Aucun élément récent à afficher.<br><br>Allez à la page Toutes les Recettes et cliquez sur une recette."
+
+msgid "Advanced Search"
+msgstr "Recherche avancée"
+
+msgid "Search your recipes by title, category, ingredients, and instructions."
+msgstr "Recherchez vos recettes par titre, catégorie, ingrédients et instructions."
+
+msgid "No results found for search term."
+msgstr "Aucun résultat trouvé pour le terme de recherche."
+
+msgid "Find By"
+msgstr "Rechercher Par"
+
+msgid "Invalid recipe selected."
+msgstr "Recette sélectionnée non valide."
+
+msgid "no date specified."
+msgstr "Aucune date spécifiée."
+
+msgid "Meal Planner Calendar"
+msgstr "Calendrier du planificateur de repas"
+
+msgid "View recipes planned for the current month."
+msgstr "Afficher les recettes prévues pour le mois en cours."
+
+msgid "Meal Planner Calendar Details"
+msgstr "Détails du calendrier du planificateur de repas"
+
+msgid "View recipes planned for a specific day."
+msgstr "Afficher les recettes prévues pour un jour spécifique."

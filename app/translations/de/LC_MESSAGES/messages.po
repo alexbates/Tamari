@@ -1832,3 +1832,45 @@ msgstr "Fr"
 
 msgid "Sat"
 msgstr "Sa"
+
+msgid "Recents"
+msgstr "Zuletzt Angesehen"
+
+msgid "See all recently viewed recipes."
+msgstr "Alle kürzlich angesehenen Rezepte anzeigen."
+
+msgid "Navigate to Recents"
+msgstr "Zu Zuletzt angesehen navigieren"
+
+msgid "There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe."
+msgstr "Es sind keine zuletzt angesehenen Rezepte vorhanden.<br><br>Gehen Sie zur Seite Alle Rezepte und klicken Sie auf ein Rezept."
+
+msgid "Advanced Search"
+msgstr "Erweiterte Suche"
+
+msgid "Search your recipes by title, category, ingredients, and instructions."
+msgstr "Durchsuchen Sie Ihre Rezepte nach Titel, Kategorie, Zutaten und Anweisungen."
+
+msgid "No results found for search term."
+msgstr "Für den Suchbegriff wurden keine Ergebnisse gefunden."
+
+msgid "Find By"
+msgstr "Suchen nach"
+
+msgid "Invalid recipe selected."
+msgstr "Ungültiges Rezept ausgewählt."
+
+msgid "no date specified."
+msgstr "Kein Datum angegeben."
+
+msgid "Meal Planner Calendar"
+msgstr "Essensplan-Kalender"
+
+msgid "View recipes planned for the current month."
+msgstr "Geplante Rezepte für den aktuellen Monat anzeigen."
+
+msgid "Meal Planner Calendar Details"
+msgstr "Essensplan-Kalender Details"
+
+msgid "View recipes planned for a specific day."
+msgstr "Geplante Rezepte für einen bestimmten Tag anzeigen."

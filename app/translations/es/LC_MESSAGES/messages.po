@@ -1833,3 +1833,45 @@ msgstr "Vie"
 
 msgid "Sat"
 msgstr "Sáb"
+
+msgid "Recents"
+msgstr "Recientes"
+
+msgid "See all recently viewed recipes."
+msgstr "Ver todas las recetas vistas recientemente."
+
+msgid "Navigate to Recents"
+msgstr "Ir a Recientes"
+
+msgid "There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe."
+msgstr "No hay elementos recientes para mostrar.<br><br>Vaya a la página Todas Recetas y haga clic en una receta."
+
+msgid "Advanced Search"
+msgstr "Búsqueda Avanzada"
+
+msgid "Search your recipes by title, category, ingredients, and instructions."
+msgstr "Busque sus recetas por título, categoría, ingredientes e instrucciones."
+
+msgid "No results found for search term."
+msgstr "No se encontraron resultados para el término de búsqueda."
+
+msgid "Find By"
+msgstr "Buscar Por"
+
+msgid "Invalid recipe selected."
+msgstr "Receta seleccionada no válida."
+
+msgid "no date specified."
+msgstr "No se especificó fecha."
+
+msgid "Meal Planner Calendar"
+msgstr "Calendario del planificador de comidas"
+
+msgid "View recipes planned for the current month."
+msgstr "Ver las recetas planificadas para el mes actual."
+
+msgid "Meal Planner Calendar Details"
+msgstr "Detalles del calendario del planificador de comidas"
+
+msgid "View recipes planned for a specific day."
+msgstr "Ver las recetas planificadas para un día específico."

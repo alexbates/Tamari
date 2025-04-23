@@ -1832,3 +1832,45 @@ msgstr "周五"
 
 msgid "Sat"
 msgstr "周六"
+
+msgid "Recents"
+msgstr "最近浏览"
+
+msgid "See all recently viewed recipes."
+msgstr "查看所有最近浏览的食谱。"
+
+msgid "Navigate to Recents"
+msgstr "转到最近浏览"
+
+msgid "There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe."
+msgstr "没有可显示的最近浏览记录。<br><br>请转到“全部食谱”页面并点击一个食谱。"
+
+msgid "Advanced Search"
+msgstr "高级搜索"
+
+msgid "Search your recipes by title, category, ingredients, and instructions."
+msgstr "按标题、类别、配料和说明搜索您的食谱。"
+
+msgid "No results found for search term."
+msgstr "未找到符合搜索条件的结果。"
+
+msgid "Find By"
+msgstr "按条件查找"
+
+msgid "Invalid recipe selected."
+msgstr "选择的食谱无效。"
+
+msgid "no date specified."
+msgstr "未指定日期。"
+
+msgid "Meal Planner Calendar"
+msgstr "餐食规划日历"
+
+msgid "View recipes planned for the current month."
+msgstr "查看本月计划的食谱。"
+
+msgid "Meal Planner Calendar Details"
+msgstr "餐食规划日历详情"
+
+msgid "View recipes planned for a specific day."
+msgstr "查看特定日期计划的食谱。"

@@ -95,12 +95,23 @@ def mealPlannerCalendar():
 
 # The purpose of this page is to view recipes for a specific day
 # When clicking a day on the calendar, will be directed to this page
-@bp.route('/meal-planner/calendar/details')
+# This page has a form that allows adding meal plan by selecting a recipe
+@bp.route('/meal-planner/calendar/details', methods=['GET','POST'])
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def mealPlannerCalendarDetails():
     date_str = request.args.get('date')
     user = User.query.filter_by(email=current_user.email).first_or_404()
+    if request.method == 'POST':
+        hex_id = request.form.get('hex_id')
+        recipe = Recipe.query.filter_by(hex_id=hex_id, user_id=user.id).first()
+        if not recipe:
+            # TO-DO: change this message
+            flash(_('Invalid recipe selected.'))
+        else:
+            # TO-DO: implement Meal Plan adding logic, change message
+            flash(_('Recipe added!'))
+        return redirect(url_for('mealplanner.mealPlannerCalendarDetails', date=date_str))
     plannedmeals = user.planned_meals.filter_by(date=date_str).all()
     recdetails = []
     for meal in plannedmeals:

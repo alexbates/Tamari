@@ -142,6 +142,35 @@ def mealPlannerCalendarDetails():
         mdescription=_('View recipes planned for a specific day.'), plannedmeals=plannedmeals,
         full_date=full_date, recdetails=recdetails, date_str=date_str, days365=days365)
 
+@bp.route('/meal-planner/list-all-recipes', methods=['GET'])
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def mealPlannerListAllRecipes():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    if user:
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id
+        ).filter(Recipe.user_id == user.id).order_by(func.lower(Recipe.title))
+        # Prepare recipes to be displayed as JSON
+        recipe_data = []
+        for recipe in recipes_query.all():
+            recipe_info = {
+                "id": recipe.hex_id,
+                "title": recipe.title
+            }
+            recipe_data.append(recipe_info)
+    else:
+        # if user is not found, empty array will be used to create JSON response
+        recipe_data = []
+    # Return response without key sorting
+    response_json = json.dumps({"recipes": recipe_data}, sort_keys=False)
+    response = make_response(response_json)
+    response.headers['Content-Type'] = 'application/json'
+    return response
+
 @bp.route('/meal-planner/upcoming')
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)

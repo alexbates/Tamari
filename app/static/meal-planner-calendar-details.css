@@ -23,6 +23,10 @@
 	--color-plancategory: #b0b0b0;
 	--color-plancategory-a: #f1f1f1;
 	--color-btn-paginate: #ffffff;
+	--color-additem-input-bg: #1c1c1c;
+	--color-additem-input-font: #d1d1d1;
+	--color-additem-input-placeholder: #545454;
+	--color-additem-btn: #ffffff;
 }
 [data-theme="light"] {
 	--color-active-bg: #efefef;
@@ -41,6 +45,10 @@
 	--color-plancategory: #4f4f4f;
 	--color-plancategory-a: #0e0e0e;
 	--color-btn-paginate: #000000;
+	--color-additem-input-bg: #e3e3e3;
+	--color-additem-input-font: #2e2e2e;
+	--color-additem-input-placeholder: #a4a4a4;
+	--color-additem-btn: #000000;
 }
 [data-theme="dark"] {
 	--color-active-bg: #111111;
@@ -59,6 +67,10 @@
 	--color-plancategory: #b0b0b0;
 	--color-plancategory-a: #f1f1f1;
 	--color-btn-paginate: #ffffff;
+	--color-additem-input-bg: #1c1c1c;
+	--color-additem-input-font: #d1d1d1;
+	--color-additem-input-placeholder: #545454;
+	--color-additem-btn: #ffffff;
 }
 /* SCALING */
 :root {
@@ -82,6 +94,10 @@
 	--height-pagination: 34px;
 	--width-next: 76px;
 	--width-prev: 107px;
+	--font-additem-input: 18px;
+	--height-additem-input: 44px;
+	--font-additem-btn: 16px;
+	--height-additem-btn: 44px;
 }
 [data-scaling="normal"] {
 	--font-block1: 16px;
@@ -104,6 +120,10 @@
 	--height-pagination: 34px;
 	--width-next: 76px;
 	--width-prev: 107px;
+	--font-additem-input: 18px;
+	--height-additem-input: 44px;
+	--font-additem-btn: 16px;
+	--height-additem-btn: 44px;
 }
 [data-scaling="large"] {
 	--font-block1: 18px;
@@ -126,6 +146,10 @@
 	--height-pagination: 36px;
 	--width-next: 79px;
 	--width-prev: 110px;
+	--font-additem-input: 20px;
+	--height-additem-input: 46px;
+	--font-additem-btn: 18px;
+	--height-additem-btn: 46px;
 }
 /* ACCENT COLOR APPLICATION */
 .recbtn-active {background-color: var(--color) !important;}
@@ -140,19 +164,23 @@
 .btn-prev {background-color: var(--color);}
 .btn-prev:hover {background: var(--color-lighter);}
 .btn-prev:active, .btn-prev.active {background: var(--color-darker);}
+.btn-addmealplan {background-color: var(--color);}
+.btn-addmealplan:hover {background: var(--color-lighter);}
+.btn-addmealplan:active, .btn-addmealplan.active {background: var(--color-darker);}
 @media screen and (max-width: 620px) { 
 	.list-selected {background: var(--color) !important;}
 }
 /* BLOCK 1 */ 
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
 }
 .block1inner {
+	display: flow-root;
 	height: 100%;
 	margin: 0 auto;
+	padding-bottom: 20px;
 	width: 1000px;
 }
 
@@ -385,16 +413,60 @@
 }
 .btn-prev-icon img {height: 100%; width: 100%;}
 
+#mp-add-meal-form {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#mp-recipe-search {
+	background: var(--color-additem-input-bg);
+    border: none;
+	border-radius: 0;
+    box-shadow: none;
+	color: var(--color-additem-input-font);
+	float: left;
+    font-size: var(--font-additem-input);
+	height: var(--height-additem-input);
+	padding-top: 0px;
+	padding-bottom: 0px;
+    padding-left: 10px;
+    padding-right: 10px;
+	width: calc(100% - 140px);
+	-webkit-box-shadow: none;
+}
+#mp-recipe-search:focus {box-shadow: none; outline: 0; -webkit-box-shadow: none;}
+#mp-recipe-search::placeholder {color: var(--color-additem-input-placeholder);}
+.btn-addmealplan {
+	border: none;
+	border-radius: 0;
+	color: var(--color-additem-btn);
+	cursor: pointer;
+	float: left;
+	font-size: var(--font-additem-btn);
+	height: var(--height-additem-btn);
+	margin-left: 10px;
+	margin-top: 0px;
+	padding: 0;
+	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 110px;
+	-webkit-font-smoothing: subpixel-antialiased;
+	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
+}
+.btn-addmealplan:active, .btn-addmealplan.active, .btn-addmealplan:hover, .btn-addmealplan:focus {outline: none;}
 .mp-search-results {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-	border: 1px solid #ccc;
 	max-height: 200px;
+	margin-top: var(--height-additem-btn);
+	margin-bottom: 10px;
+	border: 1px solid #ccc;
 	overflow-y: auto;
 	position: absolute;
 	background: #fff;
-	width: 300px;
+	top: 100%;
+  	left: 0;
+	width: 100%;
 	z-index: 10;
 }
 .mp-search-results li {

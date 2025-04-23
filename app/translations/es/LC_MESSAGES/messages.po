@@ -1,6 +1,6 @@
 # Spanish translations for Tamari Recipe Manager.
 # Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the Tamari Recipe Manager project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-02-26 20:27-0400\n"
+"PO-Revision-Date: 2025-04-23 20:27-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
 "Language: es\n"
@@ -1803,3 +1803,33 @@ msgstr "Por ración"
 
 msgid "The requested recipe is not available or no data was provided."
 msgstr "La receta solicitada no está disponible o no se proporcionaron datos."
+
+msgid "Calendar"
+msgstr "Calendario"
+
+msgid "Navigate to Meal Planner (Calendar)"
+msgstr "Navegar hasta Planificador de Comidas (Calendario)"
+
+msgid "Add Recipe for Selected Day"
+msgstr "Agregar Receta para el Día Seleccionado"
+
+msgid "Sun"
+msgstr "Dom"
+
+msgid "Mon"
+msgstr "Lun"
+
+msgid "Tue"
+msgstr "Mar"
+
+msgid "Wed"
+msgstr "Mié"
+
+msgid "Thu"
+msgstr "Jue"
+
+msgid "Fri"
+msgstr "Vie"
+
+msgid "Sat"
+msgstr "Sáb"

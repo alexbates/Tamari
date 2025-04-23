@@ -1,6 +1,6 @@
-# German translations for PROJECT.
+# German translations for Tamari Recipe Manager.
 # Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the Tamari Recipe Manager project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-02-26 10:34-0400\n"
+"PO-Revision-Date: 2025-04-23 10:34-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
 "Language: de\n"
@@ -1802,3 +1802,33 @@ msgstr "Pro portion"
 
 msgid "The requested recipe is not available or no data was provided."
 msgstr "Das gewünschte Rezept ist nicht verfügbar oder es wurden keine Daten übermittelt."
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Navigate to Meal Planner (Calendar)"
+msgstr "Gehe zu Essensplaner (Kalender)"
+
+msgid "Add Recipe for Selected Day"
+msgstr "Rezept für Ausgewählten Tag Hinzufügen"
+
+msgid "Sun"
+msgstr "So"
+
+msgid "Mon"
+msgstr "Mo"
+
+msgid "Tue"
+msgstr "Di"
+
+msgid "Wed"
+msgstr "Mi"
+
+msgid "Thu"
+msgstr "Do"
+
+msgid "Fri"
+msgstr "Fr"
+
+msgid "Sat"
+msgstr "Sa"

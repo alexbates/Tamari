@@ -1,6 +1,6 @@
-# Chinese (Simplified) translations for PROJECT.
+# Chinese (Simplified) translations for Tamari Recipe Manager.
 # Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the Tamari Recipe Manager project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-02-26 19:05-0400\n"
+"PO-Revision-Date: 2025-04-23 19:05-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans <LL@li.org>\n"
 "Language: zh_Hans\n"
@@ -1802,3 +1802,33 @@ msgstr "每份"
 
 msgid "The requested recipe is not available or no data was provided."
 msgstr "请求的配方不可用或未提供数据。"
+
+msgid "Calendar"
+msgstr "日历"
+
+msgid "Navigate to Meal Planner (Calendar)"
+msgstr "导航至膳食计划器（日历）"
+
+msgid "Add Recipe for Selected Day"
+msgstr "添加选定日期的食谱"
+
+msgid "Sun"
+msgstr "周日"
+
+msgid "Mon"
+msgstr "周一"
+
+msgid "Tue"
+msgstr "周二"
+
+msgid "Wed"
+msgstr "周三"
+
+msgid "Thu"
+msgstr "周四"
+
+msgid "Fri"
+msgstr "周五"
+
+msgid "Sat"
+msgstr "周六"

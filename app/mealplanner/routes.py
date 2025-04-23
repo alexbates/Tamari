@@ -104,14 +104,29 @@ def mealPlannerCalendarDetails():
     date_str = request.args.get('date')
     user = User.query.filter_by(email=current_user.email).first_or_404()
     if request.method == 'POST':
+        if not date_str:
+            flash('Error: ' + _('no date specified.'))
+            return redirect(url_for('mealplanner.mealPlannerCalendarDetails', date=date_str))
         hex_id = request.form.get('hex_id')
         recipe = Recipe.query.filter_by(hex_id=hex_id, user_id=user.id).first()
         if not recipe:
-            # TO-DO: change this message
             flash(_('Invalid recipe selected.'))
         else:
-            # TO-DO: implement Meal Plan adding logic, change message
-            flash(_('Recipe added!'))
+            hex_valid2 = 0
+            while hex_valid2 == 0:
+                hex_string2 = secrets.token_hex(5)
+                hex_exist2 = MealRecipe.query.filter_by(hex_id=hex_string2).first()
+                if hex_exist2 is None:
+                    hex_valid2 = 1
+            newmealplan = MealRecipe(hex_id=hex_string2, date=date_str, recipe_id=recipe.id, user_id=current_user.id)
+            # Verify that the recipe does not already exist in Meal Planner for selected day
+            planexist = MealRecipe.query.filter_by(user_id=current_user.id, recipe_id=recipe.id, date=date_str).first()
+            if planexist is None:
+                db.session.add(newmealplan)
+                db.session.commit()
+                flash(_('This recipe has been added to your meal plan.'))
+            else:
+                flash('Error: ' + _('this recipe is already scheduled for the selected date.'))
         return redirect(url_for('mealplanner.mealPlannerCalendarDetails', date=date_str))
     plannedmeals = user.planned_meals.filter_by(date=date_str).all()
     recdetails = []
@@ -124,8 +139,8 @@ def mealPlannerCalendarDetails():
         })
     # Format the date for display
     try:
-        d = datetime.strptime(date_str, '%Y-%m-%d')
-        full_date = f"{d.strftime('%A')}, {d.strftime('%B')} {d.day}, {d.year}"
+        d_d = datetime.strptime(date_str, '%Y-%m-%d')
+        full_date = f"{d_d.strftime('%A')}, {d_d.strftime('%B')} {d_d.day}, {d_d.year}"
     except:
         full_date = date_str or _('Invalid date')
     # Create 2D array that contains compact date and full date for Meal Planner scheduling

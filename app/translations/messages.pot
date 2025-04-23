@@ -1,6 +1,6 @@
-# Translations template for PROJECT.
+# Translations template for Tamari Recipe Manager.
 # Copyright (C) 2024 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
+# This file is distributed under the same license as the Tamari Recipe Manager project.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
 #
 #, fuzzy
@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-09-02 20:27-0400\n"
+"POT-Creation-Date: 2025-04-23 20:27-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1800,4 +1800,34 @@ msgid "Per serving"
 msgstr ""
 
 msgid "The requested recipe is not available or no data was provided."
+msgstr ""
+
+msgid "Calendar"
+msgstr ""
+
+msgid "Navigate to Meal Planner (Calendar)"
+msgstr ""
+
+msgid "Add Recipe for Selected Day"
+msgstr ""
+
+msgid "Sun"
+msgstr ""
+
+msgid "Mon"
+msgstr ""
+
+msgid "Tue"
+msgstr ""
+
+msgid "Wed"
+msgstr ""
+
+msgid "Thu"
+msgstr ""
+
+msgid "Fri"
+msgstr ""
+
+msgid "Sat"
 msgstr ""

@@ -54,7 +54,12 @@
 
 			<div class="calendar-grid">
 				{# Weekday labels #}
-				{% for wd in ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'] %}
+				{% set weekdays = [
+					_('Sun'), _('Mon'), _('Tue'),
+					_('Wed'), _('Thu'), _('Fri'),
+					_('Sat')
+				] %}
+				{% for wd in weekdays %}
 					<div class="day-name">{{ wd }}</div>
 				{% endfor %}
 

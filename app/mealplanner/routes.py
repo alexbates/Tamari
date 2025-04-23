@@ -133,9 +133,10 @@ def mealPlannerCalendarDetails():
     for meal in plannedmeals:
         recipe = Recipe.query.get_or_404(meal.recipe_id)
         recdetails.append({
-            'title':    recipe.title,
+            'title': recipe.title,
             'category': recipe.category,
-            'hex_id':   recipe.hex_id
+            'hex_id': recipe.hex_id,
+            'plan_hex': meal.hex_id
         })
     # Format the date for display
     try:

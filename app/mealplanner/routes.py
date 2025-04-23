@@ -416,7 +416,15 @@ def mealPlannerCompleted():
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def removePlan(hexid):
+    # Get optional parameters
+    date_str = request.args.get('date')
+    is_calendar = request.args.get('calendar')
+    # Find the meal plan
     mealplan = MealRecipe.query.filter_by(hex_id=hexid).first()
+    try:
+        plan_date = mealplan.date
+    except:
+        plan_date = None
     if mealplan is None:
         flash('Error: ' + _('meal plan does not exist or you lack permission to remove it.'))
     else:
@@ -426,7 +434,9 @@ def removePlan(hexid):
             flash(_('The meal plan has been deleted.'))
         else:
             flash('Error: ' + _('meal plan does not exist or you lack permission to remove it.'))
-    if mealplan.date is not None:
-        return redirect(url_for('mealplanner.mealPlanner', day=mealplan.date))
+    if plan_date and is_calendar:
+        return redirect(url_for('mealplanner.mealPlannerCalendarDetails', date=plan_date))
+    elif plan_date:
+        return redirect(url_for('mealplanner.mealPlanner', day=plan_date))
     else:
         return redirect(url_for('mealplanner.mealPlanner'))

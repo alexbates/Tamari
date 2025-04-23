@@ -385,6 +385,26 @@
 }
 .btn-prev-icon img {height: 100%; width: 100%;}
 
+.mp-search-results {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	max-height: 200px;
+	overflow-y: auto;
+	position: absolute;
+	background: #fff;
+	width: 300px;
+	z-index: 10;
+}
+.mp-search-results li {
+	padding: 0.4rem;
+	cursor: pointer;
+}
+.mp-search-results li:hover {
+	background: #f0f0f0;
+}
+
 /* RESPONSIVE */
 @media screen and (max-width: 1000px) { 
 	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}

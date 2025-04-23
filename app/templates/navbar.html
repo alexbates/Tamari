@@ -378,6 +378,58 @@
 			console.error("Element with id 'indexSearchBtn' not found!");
 		}
 	});
+	// Add recipes to Meal Plan from Meal Planner page
+	// Only run if fields are present on the page
+	document.addEventListener('DOMContentLoaded', function() {
+		const input = document.getElementById('mp-recipe-search');
+		if (!input) return;
+
+		const list   = document.getElementById('mp-search-results');
+		const hidden = document.getElementById('mp-selected-hex-id');
+		let recipes  = [];
+
+		// Retrieve JSON from mealPlannerListAllRecipes route
+		fetch("{{ url_for('mealplanner.mealPlannerListAllRecipes') }}", {
+			credentials: 'same-origin'
+		})
+		.then(r => r.json())
+		.then(data => { recipes = data.recipes; })
+		.catch(() => { /* silent fail: list stays empty */ });
+
+		// Filter search results
+		input.addEventListener('input', () => {
+			const q = input.value.trim().toLowerCase();
+			list.innerHTML = '';
+			if (!q) return;
+
+			const matches = recipes
+				.filter(r => r.title.toLowerCase().includes(q))
+				.slice(0, 10);
+
+			for (const r of matches) {
+				const li = document.createElement('li');
+				li.textContent      = r.title;
+				li.dataset.hex      = r.hex_id;
+				list.appendChild(li);
+			}
+		});
+
+		// This processes the clicking of a result
+		list.addEventListener('click', function(e) {
+			if (e.target.tagName !== 'LI') return;
+			input.value    = e.target.textContent;
+			hidden.value   = e.target.dataset.hex;
+			list.innerHTML = '';
+		});
+
+		// Hide results when clicking outside
+		document.addEventListener('click', function(e) {
+			if (!input.contains(e.target)) {
+				list.innerHTML = '';
+			}
+		});
+
+	});
 </script>
 {% if current_user.is_authenticated %}
 {% if current_user.pref_theme == 1 and current_user.pref_color == 0 %}

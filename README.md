@@ -31,6 +31,7 @@ This creates a 'tamariappdata' volume for persistent storage.
 ```
 docker run -d --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.2
 ```
+You can also pull ghcr.io/alexbates/tamari:latest or alexbates/tamari:latest.
 Tamari is now running! Go to http://localhost:4888
 
 ### Alternative Command with Mail Settings

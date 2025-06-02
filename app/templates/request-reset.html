@@ -11,6 +11,7 @@
 <script src="{{ url_for('static', filename='request-reset.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='scaling.js', _external=True) }}"></script>
+<script defer src="{{ url_for('static', filename='star-canvas.js', _external=True) }}"></script> 
 <script defer>
 	document.addEventListener("DOMContentLoaded", function() {
 		themeNoAuth();
@@ -26,6 +27,7 @@
 
 {% block content %}
 <main id="block1">
+	<canvas id="starCanvas"></canvas>
 	<div id="b1box" class="block1box">
 		<div class="block1top">
 			<div class="b1logo"></div>

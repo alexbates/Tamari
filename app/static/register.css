@@ -1,5 +1,7 @@
 /* THEMES */
 :root {
+	--color-small-star: #bbbbbb;
+    --color-large-star: #dddddd;
 	--color-block1-bg: #252525;
 	--color-block1-font: #ffffff;
 	--background-b1logo: url("/static/logo-dark.png");
@@ -15,6 +17,8 @@
 	--color-btn-default: #ffffff;
 }
 [data-theme="light"] {
+	--color-small-star: #444444;
+    --color-large-star: #222222;
 	--color-block1-bg: #d4d4d4;
 	--color-block1-font: #000000;
 	--background-b1logo: url("/static/logo-light.png");
@@ -30,6 +34,8 @@
 	--color-btn-default: #000000;
 }
 [data-theme="dark"] {
+	--color-small-star: #bbbbbb;
+    --color-large-star: #dddddd;
 	--color-block1-bg: #252525;
 	--color-block1-font: #ffffff;
 	--background-b1logo: url("/static/logo-dark.png");
@@ -51,6 +57,14 @@
 	width: 100%;
 	color: var(--color-block1-font);
 	font-size: 16px;
+}
+#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
 .block1box { 
 	height: 327px;

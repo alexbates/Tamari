@@ -17,11 +17,6 @@ class Config(object):
     # If this is left blank, Tamari will use MAIL_USERNAME as the sender email
     # Example: ADMIN = 'default@tamariapp.com'
     ADMIN = ''
-    # Running Tamari behind a reverse proxy can sometimes cause HTTP resources to be blocked
-    # To force HTTPS, change "('FORCE_HTTPS', 'False')" to "('FORCE_HTTPS', 'True')"
-    # or set environment variable with Docker run command
-    FORCE_HTTPS = os.environ.get('FORCE_HTTPS', 'False') == 'True'
-    PREFERRED_URL_SCHEME = 'https' if FORCE_HTTPS else 'http'
     # Register page, optionally disable new registrations
     # To disable registration, change "('REG_DISABLED', 'False')" to "('REG_DISABLED', 'True')"
     # or set environment variable with Docker run command

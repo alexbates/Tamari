@@ -4,32 +4,32 @@ function msgtoggle() {
     var passworderror = document.getElementById('errorpassword');
     if (loginerror != null && emailerror == null && passworderror == null)
     {
-        document.getElementById("b1box").style.height="345px";
-        document.getElementById("b1box").style.marginTop="-172px";
-        document.getElementById("b1bottom").style.height="291px";
+        document.getElementById("b1box").style.height="353px";
+        document.getElementById("b1box").style.marginTop="-176px";
+        document.getElementById("b1bottom").style.height="299px";
     }
     if (loginerror == null && emailerror != null && passworderror == null)
     {
-        document.getElementById("b1box").style.height="321px";
-        document.getElementById("b1box").style.marginTop="-160px";
-        document.getElementById("b1bottom").style.height="267px";
+        document.getElementById("b1box").style.height="329px";
+        document.getElementById("b1box").style.marginTop="-164px";
+        document.getElementById("b1bottom").style.height="275px";
     }
     if (loginerror == null && emailerror == null && passworderror != null)
     {
-        document.getElementById("b1box").style.height="321px";
-        document.getElementById("b1box").style.marginTop="-160px";
-        document.getElementById("b1bottom").style.height="267px";
+        document.getElementById("b1box").style.height="329px";
+        document.getElementById("b1box").style.marginTop="-164px";
+        document.getElementById("b1bottom").style.height="275px";
     }
     if (loginerror == null && emailerror != null && passworderror != null)
     {
-        document.getElementById("b1box").style.height="336px";
-        document.getElementById("b1box").style.marginTop="-168px";
-        document.getElementById("b1bottom").style.height="282px";
+        document.getElementById("b1box").style.height="344px";
+        document.getElementById("b1box").style.marginTop="-172px";
+        document.getElementById("b1bottom").style.height="290px";
     }
     if (loginerror != null && emailerror != null && passworderror != null)
     {
-        document.getElementById("b1box").style.height="377px";
-        document.getElementById("b1box").style.marginTop="-188px";
-        document.getElementById("b1bottom").style.height="323px";
+        document.getElementById("b1box").style.height="385px";
+        document.getElementById("b1box").style.marginTop="-192px";
+        document.getElementById("b1bottom").style.height="331px";
     }
 }

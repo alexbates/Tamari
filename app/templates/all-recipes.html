@@ -25,7 +25,7 @@
 			</div>
 			<div class="recipenavright">
 				<div class="settingsbtn">
-					<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="{{ _('Toggle display settings') }}">
+					<button title="{{ _('Display Settings') }}" class="btn2 btn2-default" onclick="toggleSettings()" aria-label="{{ _('Toggle display settings') }}">
 						<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt="Settings"></span>
 					</button>
 					<div class="settings-content" id="settingsDrop">
@@ -44,7 +44,7 @@
 						</form>
 					</div>
 				</div>
-				<button class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.addRecipe') }}';" aria-label="{{ _('Add a new recipe') }}">
+				<button title="{{ _('Add Recipe') }}" class="btn btn-default" onclick="window.location.href='{{ url_for('myrecipes.addRecipe') }}';" aria-label="{{ _('Add a new recipe') }}">
                                         <span class="btn-text">{{ _('Add Recipe') }}</span>
                                         <span class="btn-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="{{ _('Add Recipe') }}"></span>
 				</button>

@@ -43,11 +43,11 @@
 		<div class="calendar-container">
 			<!-- Header with Prev/Next -->
 			<div class="calendar-header">
-				<button class="btn-prev" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar', year=prev_year, month=prev_month) }}';" aria-label="{{ _('Previous') }}">
+				<button title="{{ _('Previous') }}" class="btn-prev" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar', year=prev_year, month=prev_month) }}';" aria-label="{{ _('Previous') }}">
 					<span class="btn-prev-icon"><img id="previmg" src="{{ url_for('static', filename='prev.png', _external=True) }}" alt="{{ _('Previous') }}"></span>
 				</button>
 				<h2>{{ month_label }}</h2>
-				<button class="btn-next" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar', year=next_year, month=next_month) }}';" aria-label="{{ _('Next') }}">
+				<button title="{{ _('Next') }}" class="btn-next" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar', year=next_year, month=next_month) }}';" aria-label="{{ _('Next') }}">
 					<span class="btn-next-icon"><img id="nextimg" src="{{ url_for('static', filename='next.png', _external=True) }}" alt="{{ _('Next') }}"></span>
 				</button>
 			</div>

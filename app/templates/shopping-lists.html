@@ -13,7 +13,7 @@
         <div class="closebutton">
             <span onclick="closeModal()" class="close">&times;</span>
         </div>
-        <h2>Barcode Scanner</h2>
+        <h2>{{ _('Barcode Scanner') }}</h2>
 		<div id="scanner-container"></div>
     </div>
 </section>
@@ -69,7 +69,7 @@
 			<div class="ingredinner">
 				{% for item in items_tobuy %}
 				<div>
-					<button class="btn4-default" onclick="window.location.href='{{ url_for('shoplists.removeListitem', hexid=item.hex_id, mobile=0) }}';" aria-label="{{ _('Remove List Item') }} {{ item.item }}">
+					<button title="{{ _('Remove List Item') }}" class="btn4-default" onclick="window.location.href='{{ url_for('shoplists.removeListitem', hexid=item.hex_id, mobile=0) }}';" aria-label="{{ _('Remove List Item') }} {{ item.item }}">
 						<span class="btn4-icon"><img class="trashimg" src="{{ url_for('static', filename='trash.png', _external=True) }}" alt="{{ _('Remove List Item') }} {{ item.item }}"></span>
 					</button>
 					<p class="label-inner">
@@ -103,7 +103,7 @@
 			<form method="post" class="form additemform">
 				{{ form2.hidden_tag() }}
 				{{ form2.newitem(class="additem-input", placeholder=_('(4) yellow squash')) }}
-				<button type="button" id="scan-btn" class="additem-camera" onclick="openModal()">
+				<button title="{{ _('Barcode Scanner') }}" type="button" id="scan-btn" class="additem-camera" onclick="openModal()">
 					<span class="additem-camera-icon"><img id="barcodecameraimg" src="{{ url_for('static', filename='barcode-camera.png', _external=True) }}" alt=""></span>
 				</button>
 				{{ form2.submititem(class="additem-btn") }}

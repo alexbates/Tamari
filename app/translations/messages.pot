@@ -1873,3 +1873,6 @@ msgstr ""
 
 msgid "View recipes planned for a specific day."
 msgstr ""
+
+msgid "Barcode Scanner"
+msgstr ""

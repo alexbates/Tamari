@@ -213,7 +213,8 @@
 }
 .close:hover, .close:focus {color: var(--color-popupwindow-close-hover); cursor: pointer;}
 .animate {
-	animation: scaleUp .3s cubic-bezier(0.165, 0.840, 0.440, 1.000) 
+	-webkit-animation: scaleUp .3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
+	animation: scaleUp .3s cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 @keyframes scaleUp {
   0% {

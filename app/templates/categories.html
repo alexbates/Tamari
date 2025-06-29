@@ -68,7 +68,7 @@
 					<form method="post" novalidate>
 						{{ form2.hidden_tag() }}
 						{{ form2.category(class="form-control", placeholder=_('Add a Category')) }}
-						<button class="btn5-default" id="submitcat" name="submitcat" value="submitcat" aria-label="{{ _('Submit new category') }}">
+						<button title="{{ _('Submit new category') }}" class="btn5-default" id="submitcat" name="submitcat" value="submitcat" aria-label="{{ _('Submit new category') }}">
 							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="{{ _('Submit Category') }}"></span>
 						</button>
 					</form> 

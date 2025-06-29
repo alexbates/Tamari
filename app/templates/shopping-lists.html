@@ -44,7 +44,7 @@
 					<form method="post" novalidate>
 						{{ form.hidden_tag() }}
 						{{ form.newlist(class="form-control", placeholder=_('Add a List')) }}
-						<button class="btn5-default" id="submitlist" name="submitlist" value="submitlist" aria-label="{{ _('Submit new list') }}">
+						<button title="{{ _('Submit new list') }}" class="btn5-default" id="submitlist" name="submitlist" value="submitlist" aria-label="{{ _('Submit new list') }}">
 							<span class="btn5-icon"><img id="addrecipeimg" src="{{ url_for('static', filename='add-recipe-button.png', _external=True) }}" alt="{{ _('Submit new list') }}"></span>
 						</button>
 					</form> 

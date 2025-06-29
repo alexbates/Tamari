@@ -24,7 +24,7 @@
 				</div>
 			</div>
 			<div class="settingsbtn">
-				<button class="btn2 btn2-default" onclick="toggleSettings()" aria-label="{{ _('Toggle display settings') }}">
+				<button title="{{ _('Display Settings') }}" class="btn2 btn2-default" onclick="toggleSettings()" aria-label="{{ _('Toggle display settings') }}">
 					<span class="btn2-icon"><img id="settingsimg" src="{{ url_for('static', filename='settings.png', _external=True) }}" alt="{{ _('Settings') }}"></span>
 				</button>
 				<div class="settings-content" id="settingsDrop">

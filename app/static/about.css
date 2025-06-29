@@ -3,7 +3,7 @@
 }
 .about-active:hover {
 	background: linear-gradient(to bottom, var(--color-active-bg-hover) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom !important;
-}
+} 
 .mt-about {display: block !important;}
 /* THEMES */
 :root {
@@ -39,7 +39,6 @@
 }
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
@@ -47,6 +46,7 @@
 .block1inner {
 	height: 100%;
 	margin: 0 auto;
+	padding-bottom: 20px;
 	width: 1000px;
 }
 .block1inner h3 {padding-top: 8px;}

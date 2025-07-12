@@ -45,7 +45,7 @@
 			{{ form.hidden_tag() }}
 			<div class="form-group ">
 				<label class="control-label" for="recipe_name">{{ _('Recipe Name') }}</label><br>
-				{{ form.recipe_name(class="form-control fc1", placeholder="Air Fryer Squash", aria_label=_('Recipe Name'), value=recipe.title) }}
+				{{ form.recipe_name(class="form-control fc1", placeholder=_('Air Fryer Squash'), aria_label=_('Recipe Name'), value=recipe.title) }}
 				{% for error in form.recipe_name.errors %} 
 				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}  

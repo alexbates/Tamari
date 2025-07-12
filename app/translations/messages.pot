@@ -1876,3 +1876,6 @@ msgstr ""
 
 msgid "Barcode Scanner"
 msgstr ""
+
+msgid "Air Fryer Squash"
+msgstr ""

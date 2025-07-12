@@ -128,6 +128,9 @@
 #errorlogin {
 	background: var(--color-flashed-err); 
 	font-size: 14px;
+	overflow: hidden;
+  	white-space: nowrap;
+  	text-overflow: ellipsis;
 	height: 17px;
 	margin-bottom: 12px;
 	margin-top: 0px;

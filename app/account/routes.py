@@ -100,17 +100,17 @@ def register():
         # Call rate limited function to effectively impose rate limit on registration attempts
         if rate_limited_registration():
             # Check if email is already registered
-            checkemail = User.query.filter_by(email=form.email.data).first()
+            checkemail = User.query.filter_by(email=form.email.data.strip()).first()
             # Check if email in lowercase is already registered
             # This redundant check exists because account emails were originally case sensitive
             # It is necessary to check whether either variant exists in database
-            email_lower = form.email.data.lower()
+            email_lower = form.email.data.lower().strip()
             checkemail2 = User.query.filter_by(email=email_lower).first()
             # Validate email
             regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-            emailisvalid = re.fullmatch(regex, form.email.data)
+            emailisvalid = re.fullmatch(regex, form.email.data.strip())
             # Check length of email
-            if len(form.email.data) < 3 or len(form.email.data) > 254:
+            if len(form.email.data.strip()) < 3 or len(form.email.data.strip()) > 254:
                 emailisvalid = False        
             # Error if email is registered
             if checkemail or checkemail2:
@@ -119,16 +119,16 @@ def register():
             elif emailisvalid is None or emailisvalid == False:
                 flash('Error: ' + _('email is invalid.'))
             # Error if passwords do not match
-            elif form.password.data != form.password2.data:
+            elif form.password.data.strip() != form.password2.data.strip():
                 flash('Error: ' + _('passwords do not match.'))
             # Error if password length out of range
-            elif len(form.password.data) < 3 or len(form.password.data) > 64:
+            elif len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64:
                 flash('Error: ' + _('password must be 3-64 characters.'))
             # Process registration
             else:
                 logout_user()
                 user = User(email=email_lower)
-                user.set_password(form.password.data)
+                user.set_password(form.password.data.strip())
                 user.reg_time = datetime.utcnow()
                 user.pref_size = 0
                 user.pref_sort = 0

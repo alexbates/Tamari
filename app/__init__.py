@@ -7,7 +7,7 @@ from flask_mail import Mail
 from flask_moment import Moment
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from flask_babel import Babel
+from flask_babel import Babel, lazy_gettext as _l
 from flask_jwt_extended import JWTManager
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
@@ -25,6 +25,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db, directory='app/appdata/migrations', render_as_batch=True)
 login = LoginManager(app)
 login.login_view = 'account.login'
+login.login_message = _('Please log in to access this page')
+login.login_message = _l('Please log in to access this page')
 mail = Mail(app)
 moment = Moment(app)
 babel = Babel(app, locale_selector=get_locale)

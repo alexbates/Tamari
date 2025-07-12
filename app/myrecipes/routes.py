@@ -185,7 +185,7 @@ def allRecipes():
             Recipe.time_created,
             NutritionalInfo.calories
         ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created)
-    else:
+    elif user.pref_sort == 5:
         recipes_query = db.session.query(
             Recipe.id,
             Recipe.title,
@@ -198,14 +198,74 @@ def allRecipes():
             Recipe.time_created,
             NutritionalInfo.calories
         ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(Recipe.time_created.desc())
-    # Paginate the queried recipes
-    recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
-    # Build recipe_info array using external function
-    recipe_info = get_recipe_info(recipes)
-    # Paginate the recipe_info array in the same way that recipes is paginated
-    start_index = (page - 1) * per_page
-    end_index = start_index + per_page
-    recipe_info_paginated = recipe_info[start_index:end_index]
+    else:
+        recipes_query = db.session.query(
+            Recipe.id,
+            Recipe.title,
+            Recipe.category,
+            Recipe.hex_id,
+            Recipe.photo,
+            Recipe.prep_time,
+            Recipe.cook_time,
+            Recipe.total_time,
+            Recipe.time_created,
+            NutritionalInfo.calories
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id).order_by(func.lower(Recipe.title))
+        # Fetch all so we can see every last-prepared date
+        all_recipes = recipes_query.all()
+        all_info = get_recipe_info(all_recipes)
+        # Pair & sort, newest “last prepared” first, then by title
+        paired = list(zip(all_recipes, all_info))
+        def sort_key(pair):
+            # “MM/DD/YYYY” or ""
+            last = pair[1][1] 
+            if last:
+                dt = datetime.strptime(last, '%m/%d/%Y')
+                # If previously prepared, time descending
+                return (0, -dt.timestamp())
+            # If never prepared, title
+            return (1, pair[0].title.lower())
+        paired.sort(key=sort_key)
+        # Unzip back to recipes only, and compute total
+        sorted_recipes = [r for r, _ in paired]
+        total = len(sorted_recipes)
+        # Manual slice for this page
+        start_idx = (page - 1) * per_page
+        end_idx = start_idx + per_page
+        page_items = sorted_recipes[start_idx:end_idx]
+        # Build a tiny “Pagination-like” wrapper so template still sees .items, .has_next, etc.
+        class SimplePage:
+            def __init__(self, items, page, per_page, total):
+                self.items    = items
+                self.page     = page
+                self.per_page = per_page
+                self.total    = total
+            @property
+            def has_next(self):
+                return self.page * self.per_page < self.total
+            @property
+            def has_prev(self):
+                return self.page > 1
+            @property
+            def next_num(self):
+                return self.page + 1
+            @property
+            def prev_num(self):
+                return self.page - 1
+        recipes = SimplePage(page_items, page, per_page, total)
+        # Build the helper array
+        recipe_info = get_recipe_info(recipes.items)
+    if user.pref_sort == 6:
+        recipe_info_paginated = recipe_info
+    else:
+        # Paginate the queried recipes
+        recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
+        # Build recipe_info array using external function
+        recipe_info = get_recipe_info(recipes)
+        # Paginate the recipe_info array in the same way that recipes is paginated
+        start_index = (page - 1) * per_page
+        end_index = start_index + per_page
+        recipe_info_paginated = recipe_info[start_index:end_index]
     next_url = url_for('myrecipes.allRecipes', page=recipes.next_num) \
         if recipes.has_next else None
     prev_url = url_for('myrecipes.allRecipes', page=recipes.prev_num) \

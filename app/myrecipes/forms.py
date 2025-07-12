@@ -27,7 +27,7 @@ def valid_url(form, field):
 
 class DisplaySettingsForm(FlaskForm):
     recipe_size = RadioField(_l('Recipe Size'), choices=[(0, _l('Large')),(1, _l('Small')),(2, _l('Details'))], default=lambda: current_user.pref_size)
-    sort_by = SelectField(choices=[(0, _l('Title')),(1, _l('Title (desc)')),(2, _l('Category')),(3, _l('Category (desc)')),(4, _l('Oldest first')),(5, _l('Newest first'))], default=lambda: current_user.pref_sort)
+    sort_by = SelectField(choices=[(0, _l('Title')),(1, _l('Title (desc)')),(2, _l('Category')),(3, _l('Category (desc)')),(4, _l('Oldest first')),(5, _l('Newest first')),(6, _l('Recently Prepared'))], default=lambda: current_user.pref_sort)
     submit = SubmitField(_l('Save'))
 
 class AddCategoryForm(FlaskForm):

@@ -181,7 +181,7 @@
 			<div class="form-group2">
 				<div>
 					<label class="control-label" for="ingredients">{{ _('Ingredients') }}</label><br>
-					<textarea class="form-control fc3" id="ingredients" maxlength="2200" minlength="1" name="ingredients" aria-label="{{ _('Ingredients separated by line break') }}" placeholder="{{ _('2 Tbsp olive oil') }}" required>
+					<textarea class="form-control fc3" id="ingredients" maxlength="2200" minlength="1" name="ingredients" aria-label="{{ _('Ingredients separated by line break') }}" placeholder="{{ _('(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano') }}" required>
 {{ recipe.ingredients }}</textarea>
 					{% for error in form.ingredients.errors %}
 					<span class="errorrequired">{{ error }}</span>
@@ -189,7 +189,7 @@
 				</div>
 				<div>
 					<label class="control-label" for="instructions">{{ _('Instructions') }}</label><br>
-					<textarea class="form-control fc3" id="instructions" maxlength="6600" minlength="1" name="instructions" aria-label="{{ _('Instructions separated by line break') }}" placeholder="{{ _('Wash squash in sink to prepare.') }}" required>
+					<textarea class="form-control fc3" id="instructions" maxlength="6600" minlength="1" name="instructions" aria-label="{{ _('Instructions separated by line break') }}" placeholder="{{ _('Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil.') }}" required>
 {{ recipe.instructions }}</textarea>
 					{% for error in form.instructions.errors %}
 					<span class="errorrequired">{{ error }}</span>

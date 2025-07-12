@@ -1879,3 +1879,9 @@ msgstr ""
 
 msgid "Air Fryer Squash"
 msgstr ""
+
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
+msgstr ""
+
+msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
+msgstr ""

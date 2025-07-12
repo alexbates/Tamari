@@ -678,7 +678,7 @@ def recipeDetail(hexid):
             a_listitems.append(curr_item)
         count = 0
         for ingred_item in ingredients:
-            if ingred_item not in a_listitems:
+            if ingred_item.strip() != '' and ingred_item not in a_listitems:
                 hex_valid = 0
                 while hex_valid == 0:
                     hex_string = secrets.token_hex(5)

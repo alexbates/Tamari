@@ -180,14 +180,14 @@
 			<div class="form-group2">
 				<div>
 					<label class="control-label" for="ingredients">{{ _('Ingredients') }}</label><br>
-					{{ form.ingredients(class="form-control fc3", placeholder=_('2 Tbsp olive oil'), aria_label=_('Ingredients separated by line break')) }}
+					{{ form.ingredients(class="form-control fc3", placeholder=_('(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano'), aria_label=_('Ingredients separated by line break')) }}
 					{% for error in form.ingredients.errors %}
 					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}  
 				</div>
 				<div>
 					<label class="control-label" for="instructions">{{ _('Instructions') }}</label><br>
-					{{ form.instructions(class="form-control fc3", placeholder=_('Wash squash in sink to prepare.'), aria_label=_('Instructions separated by line break')) }}
+					{{ form.instructions(class="form-control fc3", placeholder=_('Wash squash in sink to prepare.\n\nCut squash into thin circles\n\nMix in bowl with olive oil'), aria_label=_('Instructions separated by line break')) }}
 					{% for error in form.instructions.errors %}
 					<span class="errorrequired">{{ error }}</span>
 					{% endfor %}  

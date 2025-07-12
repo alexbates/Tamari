@@ -955,7 +955,7 @@ def categories():
                 Recipe.total_time,
                 Recipe.time_created,
                 NutritionalInfo.calories
-            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == 'Miscellaenous').order_by(func.lower(Recipe.title))
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == 'Miscellaneous').order_by(func.lower(Recipe.title))
             # Fetch all so we can see every last-prepared date
             all_recipes = recipes_query.all()
             all_info = get_recipe_info(all_recipes)

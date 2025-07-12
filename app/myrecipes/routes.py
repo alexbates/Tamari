@@ -275,7 +275,7 @@ def favorites():
             Recipe.total_time,
             Recipe.time_created,
             NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(func.lower(Recipe.title.desc()))
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(func.lower(Recipe.title).desc())
     elif user.pref_sort == 2:
         recipes_query = db.session.query(
             Recipe.id,
@@ -301,7 +301,7 @@ def favorites():
             Recipe.total_time,
             Recipe.time_created,
             NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(func.lower(Recipe.category.desc()))
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(func.lower(Recipe.category).desc())
     elif user.pref_sort == 4:
         recipes_query = db.session.query(
             Recipe.id,
@@ -327,7 +327,7 @@ def favorites():
             Recipe.total_time,
             Recipe.time_created,
             NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(Recipe.time_created.desc())
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.favorite == 1).order_by(Recipe.time_created).desc())
     # Paginate the queried recipes
     recipes = recipes_query.paginate(page=page, per_page=per_page, error_out=False)
     # Build recipe_info array using external function

@@ -60,14 +60,14 @@ def login():
         # Call rate limited function to effectively impose rate limit on registration attempts
         if rate_limited_login():
             # Attempt login with exact email provided by the user
-            user = User.query.filter_by(email=form.email.data).first()
+            user = User.query.filter_by(email=form.email.data.strip()).first()
             # If no matching user is found, check using the lowercase email
             if user is None:
-                email_lower = form.email.data.lower()
-                if email_lower != form.email.data:
+                email_lower = form.email.data.lower().strip()
+                if email_lower != form.email.data.strip():
                     user = User.query.filter_by(email=email_lower).first()
             # Check login
-            if user is None or not user.check_password(form.password.data):
+            if user is None or not user.check_password(form.password.data.strip()):
                 flash(_('Invalid email or password'))
                 return redirect(url_for('account.login'))
             # Login the found user

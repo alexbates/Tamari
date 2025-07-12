@@ -1885,3 +1885,6 @@ msgstr ""
 
 msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
 msgstr ""
+
+msgid "Please log in to access this page"
+msgstr ""

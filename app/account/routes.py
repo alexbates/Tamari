@@ -196,13 +196,13 @@ def user():
         has_passwords = False
         passwords_match = False
         # Check if form has passwords
-        if form.password.data or form.password2.data:
+        if form.password.data.strip() or form.password2.data.strip():
             has_passwords = True
             # Verify that passwords match
-            if form.password.data == form.password2.data:
+            if form.password.data.strip() == form.password2.data.strip():
                 passwords_match = True
         # Validate email, convert to lowercase
-        newemail = request.form.get('email').lower()
+        newemail = request.form.get('email').lower().strip()
         regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
         emailisvalid = re.fullmatch(regex, newemail)
         if emailisvalid is None:
@@ -222,12 +222,12 @@ def user():
         elif emailisvalid == False:
             flash('Error: ' + _('email is invalid.'))
         # Error if password length out of range
-        elif has_passwords and (len(form.password.data) < 3 or len(form.password.data) > 64):
+        elif has_passwords and (len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64):
             flash('Error: ' + _('password must be between 3 and 64 characters.'))
         # Process changes
         elif has_passwords or newemail != current_user.email:
             if has_passwords:
-                user.set_password(form.password.data)
+                user.set_password(form.password.data.strip())
                 # Update time in database for account password change
                 user.p_change_time = datetime.utcnow()
             if current_user.email != newemail:
@@ -693,9 +693,9 @@ def request_reset():
         return redirect(url_for('myrecipes.allRecipes'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter_by(email=form.email.data.strip()).first()
         if not user:
-            email_lower = form.email.data.lower()
+            email_lower = form.email.data.lower().strip()
             user = User.query.filter_by(email=email_lower).first()
         if user:
             # If Demo Account, users cannot delete account
@@ -721,7 +721,7 @@ def set_password(token):
         return redirect(url_for('account.login'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
-        user.set_password(form.password.data)
+        user.set_password(form.password.data.strip())
         db.session.commit()
         flash(_('Your new password has been set.'))
         return redirect(url_for('account.login'))

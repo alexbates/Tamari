@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-04-23 10:34-0400\n"
+"PO-Revision-Date: 2025-07-12 10:34-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
 "Language: de\n"
@@ -1874,3 +1874,21 @@ msgstr "Essensplan-Kalender Details"
 
 msgid "View recipes planned for a specific day."
 msgstr "Geplante Rezepte für einen bestimmten Tag anzeigen."
+
+msgid "Barcode Scanner"
+msgstr "Barcode-Scanner"
+
+msgid "Air Fryer Squash"
+msgstr "Luftfrittierte Zucchini"
+
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
+msgstr "(3) gelbe Zucchini\n\n2 EL Olivenöl\n\n3/4 TL Oregano"
+
+msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
+msgstr "Zucchini im Spülbecken waschen.\n\nIn dünne Scheiben schneiden.\n\nIn einer Schüssel mit Olivenöl vermengen."
+
+msgid "Please log in to access this page"
+msgstr "Bitte anmelden, um diese Seite zu sehen"
+
+msgid "Recently Prepared"
+msgstr "Kürzlich Zubereitet"

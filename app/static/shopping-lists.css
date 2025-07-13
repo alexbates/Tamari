@@ -296,7 +296,7 @@
 	padding-left: 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 205px;
+	width: calc(100% - 20px);
 }
 .list-label:hover {color: var(--color-list-label-hover);}
 .list-label a:hover {text-decoration: none;}
@@ -310,7 +310,7 @@
 	padding-left: 10px;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	width: 205px;
+	width: calc(100% - 20px);
 }
 .list-label2:hover {color: var(--color-list-label-hover);}
 .list-label2 a:hover {text-decoration: none;}
@@ -537,16 +537,10 @@
 }
 @media screen and (max-width: 620px) { 
 	#b1left {width: 100%; text-align: center;}
-	.b1leftinner {display: inline-block;}
-	.b1leftinner div {width: 350px;}
-	.form-control {width: 285px;}
-	.list-label {display: none; width: 285px;}
-	.list-label2 {display: inline-block; width: 285px;}
+	.b1leftinner {display: block;}
+	.b1leftinner div {width: 100%;}
+	.form-control {width: calc(100% - 65px);}
+	.list-label {display: none; width: calc(100% - 20px);}
+	.list-label2 {display: inline-block; width: calc(100% - 20px);}
 	#b1right {display: none;}
-}
-@media screen and (max-width: 380px) { 
-	.b1leftinner div {width: 268px;}
-	.form-control {width: 205px;}
-	.list-label {width: 205px;}
-	.list-label2 {width: 205px;}
 }

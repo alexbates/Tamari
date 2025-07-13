@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-04-23 19:05-0400\n"
+"PO-Revision-Date: 2025-07-12 19:05-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans <LL@li.org>\n"
 "Language: zh_Hans\n"
@@ -1874,3 +1874,21 @@ msgstr "餐食规划日历详情"
 
 msgid "View recipes planned for a specific day."
 msgstr "查看特定日期计划的食谱。"
+
+msgid "Barcode Scanner"
+msgstr "条码扫描器"
+
+msgid "Air Fryer Squash"
+msgstr "空气炸锅南瓜"
+
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
+msgstr "（3个）黄南瓜\n\n2汤匙橄榄油\n\n3/4茶匙牛至"
+
+msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
+msgstr "在水槽中清洗南瓜。\n\n切成薄片。\n\n在碗中与橄榄油混合。"
+
+msgid "Please log in to access this page"
+msgstr "请登录以查看此页面"
+
+msgid "Recently Prepared"
+msgstr "最近制作"

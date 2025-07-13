@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-04-23 19:05-0400\n"
+"PO-Revision-Date: 2025-07-12 19:05-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans <LL@li.org>\n"
 "Language: zh_Hans\n"
@@ -1874,3 +1874,21 @@ msgstr "Детали календаря планировщика питания"
 
 msgid "View recipes planned for a specific day."
 msgstr "Просмотреть рецепты, запланированные на конкретный день."
+
+msgid "Barcode Scanner"
+msgstr "Сканер штрихкодов"
+
+msgid "Air Fryer Squash"
+msgstr "Кабачки в аэрофритюрнице"
+
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
+msgstr "(3) жёлтых кабачка\n\n2 ст. л. оливкового масла\n\n3/4 ч. л. орегано"
+
+msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
+msgstr "Промойте кабачки в раковине.\n\nНарежьте тонкими кружками.\n\nСмешайте в миске с оливковым маслом."
+
+msgid "Please log in to access this page"
+msgstr "Войдите, чтобы просмотреть страницу"
+
+msgid "Recently Prepared"
+msgstr "Недавно приготовлено"

@@ -1310,7 +1310,7 @@ msgstr "删除类别"
 #: app/templates/categories.html:83
 #, python-format
 msgid "Showing %(recipe_count)d recipes in \"%(query_string)s\" category."
-msgstr "显示\"%(query_string)s \"类别中的 %(recipe_count)d 食谱。"
+msgstr "显示\"%(query_string)s\"类别中的 %(recipe_count)d 食谱。"
 
 #: app/templates/categories.html:85
 msgid "The requested category does not exist."

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-04-23 20:27-0400\n"
+"PO-Revision-Date: 2025-07-12 20:27-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: es <LL@li.org>\n"
 "Language: es\n"
@@ -1875,3 +1875,21 @@ msgstr "Detalles del calendario del planificador de comidas"
 
 msgid "View recipes planned for a specific day."
 msgstr "Ver las recetas planificadas para un día específico."
+
+msgid "Barcode Scanner"
+msgstr "Escáner de código"
+
+msgid "Air Fryer Squash"
+msgstr "Calabacín en freidora de aire"
+
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
+msgstr "(3) calabacines amarillos\n\n2 cucharadas de aceite de oliva\n\n3/4 cucharadita de orégano"
+
+msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
+msgstr "Lava el calabacín en el fregadero.\n\nCórtalo en rodajas finas.\n\nMézclalo en un tazón con aceite de oliva."
+
+msgid "Please log in to access this page"
+msgstr "Inicia sesión para ver esta página"
+
+msgid "Recently Prepared"
+msgstr "Recientemente Preparado"

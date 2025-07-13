@@ -1891,3 +1891,6 @@ msgstr ""
 
 msgid "Recently Prepared"
 msgstr ""
+
+msgid "Credits"
+msgstr ""

@@ -2271,10 +2271,10 @@ def photoTest():
             # Validate image
             val_ext = validate_image(image.stream)
             # Extension not in allowed list
-            if file_extension not in current_app.config['UPLOAD_EXTENSIONS']:
+            if file_extension not in app.config['UPLOAD_EXTENSIONS']:
                 return (
                     f"Invalid image: '{file_extension}'. "
-                    f"Allowed extensions: {current_app.config['UPLOAD_EXTENSIONS']}", 
+                    f"Allowed extensions: {app.config['UPLOAD_EXTENSIONS']}", 
                     400
                 )
             # validate_image failed
@@ -2285,10 +2285,10 @@ def photoTest():
                     400
                 )
             # Detected format not allowed
-            if val_ext not in current_app.config['UPLOAD_EXTENSIONS']:
+            if val_ext not in app.config['UPLOAD_EXTENSIONS']:
                 return (
                     f"Image validation failed: detected format '{val_ext}' not in "
-                    f"allowed list {current_app.config['UPLOAD_EXTENSIONS']}. "
+                    f"allowed list {app.config['UPLOAD_EXTENSIONS']}. "
                     f"file_extension='{file_extension}'", 
                     400
                 )

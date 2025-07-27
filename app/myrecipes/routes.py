@@ -2263,6 +2263,7 @@ def advancedSearch():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def photoTest():
     if request.method == 'POST':
+        image = request.files['image']
         if image and image.filename != '':
             filename, file_extension = os.path.splitext(image.filename)
             # Convert the file extension to lowercase to handle case variations like ".JPG"

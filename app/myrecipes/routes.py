@@ -2255,3 +2255,52 @@ def advancedSearch():
         mdescription=_('Search your recipes by title, category, ingredients, and instructions.'), user=user, query_string=query_string,
         recipes=recipes.items, form=form, next_url=next_url, prev_url=prev_url, recipe_info_paginated=recipe_info_paginated,
         rec_first=rec_first, rec_last=rec_last, rec_count=rec_count)
+        
+# The following page is used to debug photo uploads
+# Much of the same photo upload code is used in the Add Recipe and Edit Recipe Routes
+@bp.route('/photo-test', methods=['GET', 'POST'])
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def photoTest():
+    if request.method == 'POST':
+        if image and image.filename != '':
+            filename, file_extension = os.path.splitext(image.filename)
+            # Convert the file extension to lowercase to handle case variations like ".JPG"
+            file_extension = file_extension.lower()
+            # Validate image
+            val_ext = validate_image(image.stream)
+            # Extension not in allowed list
+            if file_extension not in current_app.config['UPLOAD_EXTENSIONS']:
+                return (
+                    f"Invalid image: '{file_extension}'. "
+                    f"Allowed extensions: {current_app.config['UPLOAD_EXTENSIONS']}", 
+                    400
+                )
+            # validate_image failed
+            if not val_ext:
+                return (
+                    f"Image validation failed (corrupt or unknown format). "
+                    f"file_extension='{file_extension}', val_ext={val_ext}", 
+                    400
+                )
+            # Detected format not allowed
+            if val_ext not in current_app.config['UPLOAD_EXTENSIONS']:
+                return (
+                    f"Image validation failed: detected format '{val_ext}' not in "
+                    f"allowed list {current_app.config['UPLOAD_EXTENSIONS']}. "
+                    f"file_extension='{file_extension}'", 
+                    400
+                )
+            # Success
+            return (
+                f"Upload successful! file_extension='{file_extension}', val_ext='{val_ext}'",
+                200
+            )
+        else:
+            return "No image was attached", 400
+    return '''
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="image" accept=".png,.jpg,.jpeg,.gif,.webp">
+            <button type="submit">Upload</button>
+        </form>
+    '''

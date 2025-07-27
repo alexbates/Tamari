@@ -127,7 +127,7 @@
 					{% if item.total_time %}<span class="r3time r3span">{{ _('Total') }}: {{ item.total_time }}m</span>{% endif %}
 					<br>
 					{% endif %}
-					{% if item.calories %}
+					{% if item.calories and not (item.prep_time or item.cook_time or item.total_time) %}
 					<span class="r3calories r3span">{{ _('Calories') }}: {{ item.calories }}</span>
 					<br>
 					{% endif %}

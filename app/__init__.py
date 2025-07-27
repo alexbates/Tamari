@@ -32,7 +32,7 @@ babel = Babel(app, locale_selector=get_locale)
 jwt = JWTManager(app)
 app.config['MAX_CONTENT_LENGTH'] = 350 * 1024 * 1024
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg', '.gif', '.webp']
+app.config['UPLOAD_EXTENSIONS'] = ['.png', '.jpg', '.jpeg', '.gif', '.webp', '.mpo', '.dng', '.jfif', '.heic', '.heif']
 
 limiter = Limiter(
     get_remote_address,

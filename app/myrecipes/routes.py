@@ -2259,7 +2259,6 @@ def advancedSearch():
 # The following page is used to debug photo uploads
 # Much of the same photo upload code is used in the Add Recipe and Edit Recipe Routes
 @bp.route('/photo-test', methods=['GET', 'POST'])
-@login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def photoTest():
     if request.method == 'POST':

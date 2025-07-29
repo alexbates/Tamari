@@ -124,7 +124,7 @@
 	margin: 0 auto;
 	padding-bottom: 20px;
 	overflow-x: hidden;
-	width: 1000px;
+	width: 1300px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 0px;}
 .block1inner h3 {line-height: 46px; padding-left: 12px;}
@@ -451,7 +451,7 @@ input[type=radio] + label>img {width: 60px; height: 60px;}
 .btn-upload {margin-bottom: 14px; margin-top: 5px;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}

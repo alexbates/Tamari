@@ -164,7 +164,7 @@
 	margin: 0 auto;
 	padding-bottom: 20px;
 	overflow-x: hidden;
-	width: 1000px;
+	width: 1300px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 0px;}
 
@@ -477,7 +477,7 @@
 .btn-prev-icon img {height: 100%; width: 100%;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
 	.recipenavleft {

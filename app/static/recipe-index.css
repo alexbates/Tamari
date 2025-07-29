@@ -126,6 +126,7 @@
 	--padding-btn2-icon: 9px;
 	--padding-btn4-icon: 8px;
 	--width-search-cont: 126px;
+	--width-search-cont-desktop: 180px;
 	--width-search-cont-mobile: calc(100% - 177px);
 	--size-bg-search-box: 22px;
 	--font-search-box: 18px;
@@ -144,6 +145,15 @@
 	--height-recipe1-text: 56px;
 	--font-recipe1-text: 22px;
 	--padding-top-recipe1-text: 34px;
+	--w1290-padding-top-recipe1-text: 25px;
+	--w1200-padding-top-recipe1-text: 19px;
+	--w1150-font-recipe1-text: 20px;
+	--w1150-height-recipe1-text: 52px;
+	--w1150-padding-top-recipe1-text: 16px;
+	--w1080-padding-top-recipe1-text: 12px;
+	--w1000-font-recipe1-text: 22px;
+	--w1000-height-recipe1-text: 56px;
+	--w1000-padding-top-recipe1-text: 34px;
 	--w960-padding-top-recipe1-text: 27px;
 	--w910-font-recipe1-text: 20px;
 	--w910-height-recipe1-text: 52px;
@@ -211,6 +221,7 @@
 	--padding-btn2-icon: 9px;
 	--padding-btn4-icon: 8px;
 	--width-search-cont: 126px;
+	--width-search-cont-desktop: 180px;
 	--width-search-cont-mobile: calc(100% - 177px);
 	--size-bg-search-box: 22px;
 	--font-search-box: 18px;
@@ -229,6 +240,15 @@
 	--height-recipe1-text: 56px;
 	--font-recipe1-text: 22px;
 	--padding-top-recipe1-text: 34px;
+	--w1290-padding-top-recipe1-text: 25px;
+	--w1200-padding-top-recipe1-text: 19px;
+	--w1150-font-recipe1-text: 20px;
+	--w1150-height-recipe1-text: 52px;
+	--w1150-padding-top-recipe1-text: 16px;
+	--w1080-padding-top-recipe1-text: 12px;
+	--w1000-font-recipe1-text: 22px;
+	--w1000-height-recipe1-text: 56px;
+	--w1000-padding-top-recipe1-text: 34px;
 	--w960-padding-top-recipe1-text: 27px;
 	--w910-font-recipe1-text: 20px;
 	--w910-height-recipe1-text: 52px;
@@ -296,6 +316,7 @@
 	--padding-btn2-icon: 8px;
 	--padding-btn4-icon: 8px;
 	--width-search-cont: 114px;
+	--width-search-cont-desktop: 180px;
 	--width-search-cont-mobile: calc(100% - 177px);
 	--size-bg-search-box: 24px;
 	--font-search-box: 20px;
@@ -314,6 +335,15 @@
 	--height-recipe1-text: 60px;
 	--font-recipe1-text: 24px;
 	--padding-top-recipe1-text: 30px;
+	--w1290-padding-top-recipe1-text: 23px;
+	--w1200-padding-top-recipe1-text: 19px;
+	--w1150-font-recipe1-text: 22px;
+	--w1150-height-recipe1-text: 56px;
+	--w1150-padding-top-recipe1-text: 16px;
+	--w1080-padding-top-recipe1-text: 12px;
+	--w1000-font-recipe1-text: 24px;
+	--w1000-height-recipe1-text: 60px;
+	--w1000-padding-top-recipe1-text: 30px;
 	--w960-padding-top-recipe1-text: 23px;
 	--w910-font-recipe1-text: 22px;
 	--w910-height-recipe1-text: 56px;
@@ -399,7 +429,7 @@
 .block1inner {
 	height: 100%;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 }
 #recipenav {
 	height: var(--height-recipenav);
@@ -412,7 +442,7 @@
 	overflow: hidden;
 	text-align: left;
 	margin-top: var(--margin-recbtn);
-	width: calc(100% - 280px);
+	width: calc(100% - 334px);
 }
 .recipenavleft-inner {
 	float: none;
@@ -564,7 +594,7 @@
 .search-cont {
 	float: right; 
 	margin-right: 0px;
-	width: var(--width-search-cont);
+	width: var(--width-search-cont-desktop);
 }
 .search-box {
 	background: var(--color-search-box-bg);
@@ -746,7 +776,7 @@
 	color: var(--color-recipe1);
 	float: left;
 	padding-top: 0%;
-	width: 33.333%;
+	width: 25%;
 	aspect-ratio: 4 / 3;
 }
 .r1bottom {
@@ -792,7 +822,7 @@
 	float: left;
 	padding-top: 0;
 	border-radius: 15px;
-	width: calc(25% - 20px);
+	width: calc(20% - 20px);
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 20px;
@@ -862,7 +892,7 @@
 	float: left;
 	padding-top: 0;
 	position: relative; /* important so the pseudo-element can be positioned behind it */
-	width: calc(33.33% - 20px);
+	width: calc(25% - 20px);
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 20px;
@@ -1017,19 +1047,19 @@
 .btn-prev-icon img {height: 100%; width: 100%;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1020px) { 
+@media screen and (max-width: 1320px) { 
 	.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
 	.recipe2continner {margin-left: 0px; width: 100%;}
 	.recipe2 {
-		width: calc(25% - 20px);
+		width: calc(20% - 20px);
 		margin-left: 10px;
 		margin-right: 10px;
 	}
-	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
 		margin-right: 10px;
 	}
 }
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
@@ -1037,13 +1067,76 @@
 	.recipenavleft {
 		margin-left: 10px; 
 		margin-right: 10px;
-		width: calc(100% - 305px);
+		width: calc(100% - 359px);
 	}
 	.btn2 {margin-right: 10px;}
 	.settingsbtn {margin-right: 10px;}
 	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
-	.recipe1 {width: 33.33%;}
 	.recipe3continner {margin-left: 0px; width: 100%;}
+}
+@media screen and (max-width: 1290px) { 
+	.recipe1-text {padding-top: var(--w1290-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 1200px) { 
+	.recipe1-text {padding-top: var(--w1200-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 1150px) { 
+	.recipe1-text {
+		font-size: var(--w1150-font-recipe1-text);
+		padding-top: var(--w1150-padding-top-recipe1-text);
+	}
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
+	.r3binner div {
+		font-size: var(--w820-font-r3binner-div); 
+		max-height: var(--w820-height-r3binner-div);
+	}
+	.r3category {font-size: var(--w820-font-r3category); }
+	.r3time {font-size: var(--w820-font-r3small);}
+	.r3calories {font-size: var(--w820-font-r3small);}
+	.r3created {font-size: var(--w820-font-r3small);}
+}
+@media screen and (max-width: 1080px) { 
+	.recipe1-text {padding-top: var(--w1080-padding-top-recipe1-text);}
+}
+@media screen and (max-width: 1020px) { 
+	.recipe2 {
+		width: calc(25% - 20px);
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.r2bottom {height: var(--height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--font-r2bottom-div); 
+		max-height: var(--height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--font-r2bottom-span);}
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
+		margin-right: 10px;
+	}
+}
+@media screen and (max-width: 1000px) { 
+	.recipe1 {width: 33.33%;}
+	.recipe1-text {
+		font-size: var(--w1000-font-recipe1-text);
+		padding-top: var(--w1000-padding-top-recipe1-text);
+		height: var(--w1000-height-recipe1-text);
+	}
+	.recipe3 {width: calc(33.33% - 20px);}
+	.r3binner div {
+		font-size: var(--font-r3binner-div); 
+		max-height: var(--height-r3binner-div);
+	}
+	.r3category {font-size: var(--font-r3category); }
+	.r3time {font-size: var(--font-r3small);}
+	.r3calories {font-size: var(--font-r3small);}
+	.r3created {font-size: var(--font-r3small);}
+	.search-cont {width: var(--width-search-cont);}
+	.recipenavleft {width: calc(100% - 305px);}
 }
 @media screen and (max-width: 960px) { 
 	.recipe1-text {padding-top: var(--w960-padding-top-recipe1-text);}
@@ -1121,7 +1214,7 @@
 		margin-right: 8px;
 		margin-bottom: 16px;
 	}
-	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
 		margin-right: 8px;
 	}
 	.recipe3 {width: calc(50% - 20px);}
@@ -1228,7 +1321,7 @@
 		margin-right: 5px;
 		margin-bottom: 10px;
 	}
-	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
 		margin-right: 5px;
 	}
 }

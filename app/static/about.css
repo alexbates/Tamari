@@ -47,7 +47,7 @@
 	height: 100%;
 	margin: 0 auto;
 	padding-bottom: 20px;
-	width: 1000px;
+	width: 1300px;
 }
 .block1inner h3 {padding-top: 8px;}
 .block1inner p {margin-bottom: 8px;}
@@ -73,7 +73,7 @@
 .changelog {margin-bottom: 20px;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	.block1inner h3 {padding-left: 10px; padding-right: 10px;}

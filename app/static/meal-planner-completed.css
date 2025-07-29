@@ -154,7 +154,7 @@
 	display: flow-root;
 	height: 100%;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 }
 
 .recipenavleft {
@@ -451,7 +451,7 @@
 .btn-prev-icon img {height: 100%; width: 100%;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {padding-left: 10px; padding-right: 10px; width: calc(100% - 20px);}
 	#block1 p {padding-left: 10px;}
 	.plan-label {padding-left: 0px;}

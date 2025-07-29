@@ -356,7 +356,7 @@ select {font-family: Inter-Regular;}
 	width: 100%;
 	font-size: var(--font-navbar);
 }
-.navbarinner {height: 100%; margin: 0 auto; width: 1000px;}
+.navbarinner {height: 100%; margin: 0 auto; width: 1300px;}
 #navbar ul {list-style: none; line-height: 64px;}
 #navbar li {display: inline-block;}
 #navbar li a:hover {color: var(--color-navbar-li-a-hover); text-decoration: none;}
@@ -563,7 +563,7 @@ select {font-family: Inter-Regular;}
 }
 
 /* NAVBAR RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.navbarinner {width: 100%;}
 	.navlogo {margin-left: 12px;}
 	.navleft {

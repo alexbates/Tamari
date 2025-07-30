@@ -771,13 +771,19 @@
 .recipe1cont:after {clear: both; content: ""; display: table;}
 .recipe1 {
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100% auto;
 	background-position: center;
 	color: var(--color-recipe1);
 	float: left;
 	padding-top: 0%;
 	width: 25%;
 	aspect-ratio: 4 / 3;
+	transition: background-size 0.15s ease-in-out;
+}
+@media (hover: hover) and (pointer: fine) {
+    .recipe1:hover {
+        background-size: 105% auto;
+    }
 }
 .r1bottom {
 	background: linear-gradient(to bottom, transparent 0%, var(--color-r1bottom) 100%);

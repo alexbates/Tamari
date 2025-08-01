@@ -163,7 +163,7 @@
 	aspect-ratio: 4 / 3;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100% auto;
 	border-radius: 8px;
 	display: none;
 	width: 70%;
@@ -259,7 +259,7 @@ tr:nth-child(odd) {
 	aspect-ratio: 4 / 3;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100% auto;
 	border-radius: 8px;
 	float: left;
 	width: 35%;

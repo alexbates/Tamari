@@ -136,7 +136,7 @@
 .block1inner {
 	height: 100%;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 }
 .errorh2 {padding-left: 0px !important; padding-bottom: 0px !important;}
 /* MESSAGES */
@@ -172,7 +172,7 @@
 	float: left;
 	padding-top: 0;
 	border-radius: 15px;
-	width: 235px;
+	width: 243.5px;
 	margin-left: 0px;
 	margin-right: 20px;
 	margin-bottom: 20px;
@@ -198,7 +198,7 @@
 		transform: translate(-5px, 5px);
 	}
 }
-.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
     margin-right: 0; /* Remove margin-right from every 4th item */
 }
 .recipe2inner {
@@ -293,20 +293,41 @@
 .btn-prev-icon img {height: 100%; width: 100%;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
 	#showing-msg {margin-left: 10px; margin-right: 10px;}
 	.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
 	.recipe2 {
+		width: calc(20% - 20px);
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
+		margin-right: 10px;
+	}
+}
+@media screen and (max-width: 1150px) { 
+	.r2bottom {height: var(--w860-height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--w860-font-r2bottom-div); 
+		max-height: var(--w860-height-r2bottom-div);
+	}
+	.r2bottom span {font-size: var(--w860-font-r2bottom-span);}
+}
+@media screen and (max-width: 1000px) { 
+	.recipe2 {
 		width: calc(25% - 20px);
 		margin-left: 10px;
 		margin-right: 10px;
 	}
-	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
-		margin-right: 10px;
+	.r2bottom {height: var(--height-r2bottom);}
+	.r2bottom div {
+		font-size: var(--font-r2bottom-div); 
+		max-height: var(--height-r2bottom-div);
 	}
+	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 860px) { 
 	.r2bottom {height: var(--w860-height-r2bottom);}
@@ -333,7 +354,7 @@
 		margin-right: 8px;
 		margin-bottom: 16px;
 	}
-	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
 		margin-right: 8px;
 	}
 }
@@ -370,7 +391,7 @@
 		margin-right: 5px;
 		margin-bottom: 10px;
 	}
-	.recipe2cont .r2a:nth-of-type(4n) .recipe2 {
+	.recipe2cont .r2a:nth-of-type(5n) .recipe2 {
 		margin-right: 5px;
 	}
 }

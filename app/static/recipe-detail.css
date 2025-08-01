@@ -279,7 +279,7 @@
 	height: 100%;
 	margin: 0 auto;
 	padding-top: 20px;
-	width: 1000px;
+	width: 1300px;
 }
 /* FLASHED MESSAGES */
 #flashed-err {
@@ -377,10 +377,16 @@
 	aspect-ratio: 4 / 3;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100% auto;
 	border-radius: 8px;
 	display: none;
 	width: 70%;
+	transition: background-size 0.15s ease-in-out;
+}
+@media (hover: hover) and (pointer: fine) {
+    .mobile-image:hover {
+        background-size: 105% auto;
+    }
 }
 .timeouter {padding-right: 20px;}
 table { 
@@ -467,10 +473,16 @@ tr:nth-child(odd) {
 	aspect-ratio: 4 / 3;
 	background-position: center;
 	background-repeat: no-repeat;
-	background-size: cover;
+	background-size: 100% auto;
 	border-radius: 8px;
 	float: left;
 	width: 35%;
+	transition: background-size 0.15s ease-in-out;
+}
+@media (hover: hover) and (pointer: fine) {
+    #r-image:hover {
+        background-size: 105% auto;
+    }
 }
 #ingredients {
 	float: left;
@@ -541,7 +553,7 @@ tr:nth-child(odd) {
 .steps p {margin-bottom: 0; margin-top: 6px;}
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
 	#flashed-norm {margin-left: 10px; margin-right: 10px;}
 	.block1inner {width: 100%;}

@@ -18,8 +18,8 @@ a:visited { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 a:active { text-decoration: underline; }
 
-::selection { background: #2980b9; color: #ffffff; }
-::-moz-selection { background: #2980b9; color: #ffffff; }
+::selection { background: #2980b9; color: #ffffff; text-shadow: none;}
+::-moz-selection { background: #2980b9; color: #ffffff; text-shadow: none;}
 
 div.column1 { background: inherit; display: inline-block; font-size: 1rem; width:100%; }
 div.column2 { background: inherit; display: inline-block; font-size: 1rem; width:50%; }

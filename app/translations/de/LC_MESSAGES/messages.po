@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-07-12 10:34-0400\n"
+"PO-Revision-Date: 2025-08-03 10:34-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
 "Language: de\n"
@@ -1892,3 +1892,9 @@ msgstr "Bitte anmelden, um diese Seite zu sehen"
 
 msgid "Recently Prepared"
 msgstr "Kürzlich Zubereitet"
+
+msgid "Credits"
+msgstr "Impressum"
+
+msgid "To try a demo, use the username \"demo@tamariapp.com\" and password \"demo\"."
+msgstr "Um eine Demo auszuprobieren, verwenden Sie den Benutzernamen \"demo@tamariapp.com\" und das Passwort \"demo\"."

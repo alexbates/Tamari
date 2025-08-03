@@ -143,8 +143,6 @@
 	--height-recipe-count: 17px;
 	--font-pagination: 16px;
 	--height-pagination: 34px;
-	--width-next: 76px;
-	--width-prev: 107px;
 	--height-recipe1-text: 56px;
 	--font-recipe1-text: 22px;
 	--padding-top-recipe1-text: 34px;
@@ -221,8 +219,6 @@
 	--height-recipe-count: 17px;
 	--font-pagination: 16px;
 	--height-pagination: 34px;
-	--width-next: 76px;
-	--width-prev: 107px;
 	--height-recipe1-text: 56px;
 	--font-recipe1-text: 22px;
 	--padding-top-recipe1-text: 34px;
@@ -299,8 +295,6 @@
 	--height-recipe-count: 19px;
 	--font-pagination: 18px;
 	--height-pagination: 36px;
-	--width-next: 79px;
-	--width-prev: 110px;
 	--height-recipe1-text: 60px;
 	--font-recipe1-text: 24px;
 	--padding-top-recipe1-text: 30px;
@@ -1004,7 +998,6 @@
 	margin-left: 6px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 76px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -1014,6 +1007,7 @@
 	display: block; 
 	float: right; 
 	height: 16px; 
+	padding-left: 8px;
 	padding-right: 8px; 
 	padding-top: 2px;
 	width: 10px;
@@ -1029,7 +1023,6 @@
 	margin-right: 6px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 107px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -1039,6 +1032,7 @@
 	display: block; 
 	float: left; 
 	height: 16px; 
+	padding-right: 8px;
 	padding-left: 8px; 
 	padding-top: 2px;
 	width: 10px;

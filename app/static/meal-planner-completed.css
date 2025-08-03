@@ -80,8 +80,6 @@
 	--size-btn4-icon: 20px;
 	--font-pagination: 16px;
 	--height-pagination: 34px;
-	--width-next: 76px;
-	--width-prev: 107px;
 }
 [data-scaling="normal"] {
 	--font-block1: 16px;
@@ -102,8 +100,6 @@
 	--size-btn4-icon: 20px;
 	--font-pagination: 16px;
 	--height-pagination: 34px;
-	--width-next: 76px;
-	--width-prev: 107px;
 }
 [data-scaling="large"] {
 	--font-block1: 18px;
@@ -124,8 +120,6 @@
 	--size-btn4-icon: 22px;
 	--font-pagination: 18px;
 	--height-pagination: 36px;
-	--width-next: 79px;
-	--width-prev: 110px;
 }
 /* ACCENT COLOR APPLICATION */
 .recbtn-active {background-color: var(--color) !important;}
@@ -409,7 +403,6 @@
 	margin-left: 6px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: var(--width-next);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -419,6 +412,7 @@
 	display: block; 
 	float: right; 
 	height: 16px; 
+	padding-left: 8px;
 	padding-right: 8px; 
 	padding-top: 2px;
 	width: 10px;
@@ -434,7 +428,6 @@
 	margin-right: 6px;
 	padding: 0;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: var(--width-prev);
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }
@@ -444,6 +437,7 @@
 	display: block; 
 	float: left; 
 	height: 16px; 
+	padding-right: 8px;
 	padding-left: 8px; 
 	padding-top: 2px;
 	width: 10px;

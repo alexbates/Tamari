@@ -1894,3 +1894,6 @@ msgstr ""
 
 msgid "Credits"
 msgstr ""
+
+msgid "To try a demo, use the username \"demo@tamariapp.com\" and password \"demo\"."
+msgstr ""

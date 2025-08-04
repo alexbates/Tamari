@@ -1,5 +1,6 @@
 from flask import render_template, flash, redirect, url_for, request, jsonify, make_response, json
-from flask_babel import _
+from flask_babel import _, get_locale
+from babel.dates import format_date
 from app import app, db, limiter
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, Shoplist, Listitem, MealRecipe
@@ -141,7 +142,7 @@ def mealPlannerCalendarDetails():
     # Format the date for display
     try:
         d_d = datetime.strptime(date_str, '%Y-%m-%d')
-        full_date = f"{d_d.strftime('%A')}, {d_d.strftime('%B')} {d_d.day}, {d_d.year}"
+        full_date = format_date(d_d, format='full', locale=str(get_locale()))
     except:
         full_date = date_str or _('Invalid date')
     # Create 2D array that contains compact date and full date for Meal Planner scheduling

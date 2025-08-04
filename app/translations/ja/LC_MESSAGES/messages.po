@@ -1475,7 +1475,7 @@ msgstr "サインインしたままにする"
 
 #: app/templates/login.html:73
 msgid "Reset Password?"
-msgstr "パスワードをリセットしますか？"
+msgstr "パスワード再設定？"
 
 #: app/templates/meal-planner-completed.html:12
 #: app/templates/meal-planner-upcoming.html:12

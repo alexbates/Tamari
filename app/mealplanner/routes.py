@@ -293,7 +293,8 @@ def mealPlannerCompleted():
         compact_day = date.strftime("%d")
         curr_year = date.strftime("%Y")
         compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        # Save full date translated in correct language
+        fulldate = format_date(date, format='full', locale=str(get_locale()))
         d[0] = compactdate
         d[1] = fulldate
     for d in year:
@@ -306,7 +307,8 @@ def mealPlannerCompleted():
         compact_day = date.strftime("%d")
         curr_year = date.strftime("%Y")
         compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        # Save full date translated in correct language
+        fulldate = format_date(date, format='full', locale=str(get_locale()))
         d[0] = compactdate
         d[1] = fulldate
     for d in month:
@@ -319,7 +321,8 @@ def mealPlannerCompleted():
         compact_day = date.strftime("%d")
         curr_year = date.strftime("%Y")
         compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        # Save full date translated in correct language
+        fulldate = format_date(date, format='full', locale=str(get_locale()))
         d[0] = compactdate
         d[1] = fulldate
     for d in week:
@@ -332,7 +335,8 @@ def mealPlannerCompleted():
         compact_day = date.strftime("%d")
         curr_year = date.strftime("%Y")
         compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        fulldate = days[intDay] + ", " + full_month + " " + full_day + ", " + curr_year
+        # Save full date translated in correct language
+        fulldate = format_date(date, format='full', locale=str(get_locale()))
         d[0] = compactdate
         d[1] = fulldate
     # Create array to store only compact dates, used to check if meal is from past five years (or other criteria)

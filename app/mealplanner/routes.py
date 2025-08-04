@@ -86,7 +86,9 @@ def mealPlannerCalendar():
 			"dot_count": dot_count
         })
 
-    month_label = f"{calendar.month_name[month]} {year}"
+    # Translate month and year
+    first_of_month = date(year, month, 1)
+    month_label = format_date(first_of_month, format="LLLL y", locale=str(get_locale()))
     prev_month = (first_of_month - timedelta(days=1))
     next_month = (last_of_month + timedelta(days=1))
 

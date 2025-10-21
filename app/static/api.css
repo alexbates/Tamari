@@ -93,7 +93,7 @@
 .block1inner {
 	height: 100%;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 }
 #block1 h2 {padding: 12px 0px 0px 0px;}
 .errorh2 {padding-left: 0px !important; padding-bottom: 0px !important;}
@@ -283,7 +283,7 @@ pre code {
 
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) { 
+@media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}

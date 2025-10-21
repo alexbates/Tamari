@@ -3,7 +3,7 @@
 {% block scripts %}
 {{ super() }}
 {{ moment.include_moment() }}
-<script>window.DYN_ROOT_MARGIN = {{ dynrootmargin|tojson }};</script>
+<script>window.DYN_ROOT_MARGIN = {{ dynrootmargin|default("120px", true)|tojson }};</script>
 <script src="{{ url_for('static', filename='theme-switch.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='scaling.js', _external=True) }}"></script>
 <script src="{{ url_for('static', filename='jquery-3.7.0.min.js', _external=True) }}"></script>

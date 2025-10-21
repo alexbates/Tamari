@@ -92,7 +92,7 @@ if ('IntersectionObserver' in window) { // if IntersectionObserver support in br
     	const headers = document.querySelectorAll('.recipe1');
     	const observer = new IntersectionObserver(
       		handleIntersection,
-      		{ rootMargin: "{{ dynrootmargin }}" }
+      		{ rootMargin: window.DYN_ROOT_MARGIN }
     	);
     	headers.forEach(header => observer.observe(header));
 	});
@@ -119,7 +119,7 @@ if ('IntersectionObserver' in window) { // if IntersectionObserver support in br
     	const headers = document.querySelectorAll('.r2top');
     	const observer = new IntersectionObserver(
       		handleIntersection,
-      		{ rootMargin: "{{ dynrootmargin }}" }
+      		{ rootMargin: window.DYN_ROOT_MARGIN }
     	);
     	headers.forEach(header => observer.observe(header));
 	});
@@ -146,7 +146,7 @@ if ('IntersectionObserver' in window) { // if IntersectionObserver support in br
     	const headers = document.querySelectorAll('.r3inner');
     	const observer = new IntersectionObserver(
       		handleIntersection,
-      		{ rootMargin: "{{ dynrootmargin }}" }
+      		{ rootMargin: window.DYN_ROOT_MARGIN }
     	);
     	headers.forEach(header => observer.observe(header));
 	});

@@ -3,7 +3,7 @@ from flask_babel import _, get_locale
 from babel.dates import format_date
 from app import app, db, limiter
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Recipe, Shoplist, Listitem, MealRecipe
+from app.models import User, Recipe, Shoplist, Listitem, MealRecipe, Calendar
 from sqlalchemy import func, and_, or_
 from datetime import datetime, timedelta, date
 import secrets, time, random, requests, re, urllib.request, calendar
@@ -447,3 +447,66 @@ def removePlan(hexid):
         return redirect(url_for('mealplanner.mealPlanner', day=plan_date))
     else:
         return redirect(url_for('mealplanner.mealPlanner'))
+
+# This route returns JSON which includes data about the days cooked each of the past
+# 12 months and most common categories for recipes prepared over the last 12 months.
+# It is used in the mealPlannerStatistics route to build charts using chart.js.
+@bp.route('/meal-planner/stat-data')
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def mealPlannerStatData():
+    user = User.query.filter_by(email=current_user.email).first_or_404()
+    plannedmeals = user.planned_meals.order_by(MealRecipe.date.desc()).all()
+    def month_key(d: date) -> str:
+        return f"{d.year:04d}-{d.month:02d}"
+    def shift_month(d: date, delta: int) -> date:
+        y = d.year + (d.month - 1 + delta) // 12
+        m = (d.month - 1 + delta) % 12 + 1
+        day = min(d.day, calendar.monthrange(y, m)[1])
+        return date(y, m, day)
+    today = date.today()
+    start_month = date(today.year, today.month, 1)
+    last12_month_keys = [month_key(shift_month(start_month, i)) for i in range(-11, 1)]
+    last12_month_labels = [
+        format_date(date(int(k[:4]), int(k[5:7]), 1), format='MMM yyyy', locale=str(get_locale()))
+        for k in last12_month_keys
+    ]
+	# Unique days cooked per month
+    days_per_month = {k: set() for k in last12_month_keys}
+    # Category counts for pie chart
+    category_counts = {}
+    for meal in plannedmeals:
+        try:
+            y, m, d = map(int, meal.date.split('-'))
+            meal_dt = date(y, m, d)
+        except Exception:
+            continue
+        ym = f"{meal_dt.year:04d}-{meal_dt.month:02d}"
+        if ym in days_per_month:
+            days_per_month[ym].add(meal.date)
+            recipe = Recipe.query.filter_by(id=meal.recipe_id).first()
+            if not recipe or recipe.category is None:
+                continue
+            cat = Category.query.filter_by(id=recipe.category).first()
+            if not cat:
+                continue
+            category_counts[cat.label] = category_counts.get(cat.label, 0) + 1
+    line_values = [len(days_per_month[k]) for k in last12_month_keys]
+    pie_items = sorted(category_counts.items(), key=lambda kv: (-kv[1], kv[0]))
+    pie_labels = [lbl for (lbl, _) in pie_items]
+    pie_values = [val for (_, val) in pie_items]
+    # JSON payload
+    payload = {
+        "line": {
+            "legend": _("Days Cooked"),
+            "xAxisTitle": _("Months"),
+            "yAxisTitle": _("Days"),
+            "labels": last12_month_labels,
+            "values": line_values
+        },
+        "pie": {
+            "labels": pie_labels,
+            "values": pie_values
+        }
+    }
+    return jsonify(payload)

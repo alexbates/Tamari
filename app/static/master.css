@@ -456,8 +456,8 @@ select {font-family: Inter-Regular;}
 	display: none;
 	position: absolute;
 	font-size: var(--font-dropdown-content);
-	width: 154px;
-	margin-left: -90px;
+	width: 164px;
+	margin-left: -100px;
     margin-top: 2px;
 	z-index: 1;
 }

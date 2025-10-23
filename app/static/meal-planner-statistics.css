@@ -15,16 +15,11 @@
 	--color-recbtn-font: #ffffff;
 	--color-daylabel: #ffffff;
 	--color-daylabel-hover: #f1f1f1;
-	--color-mealmessage: #111111;
 	--color-planinner-bg: #111111;
 	--color-planinner-border: #202020;
-	--color-planlabel: #ffffff;
-	--color-planlabel-a: #f1f1f1;
-	--color-plancategory: #b0b0b0;
-	--color-plancategory-a: #f1f1f1;
 	--color-b1right-p: #bdbdbd;
 	--color-chart-text: #808080;
-	--colors-pie-chart: #2980b9, #218c74, #7b00bb, #ae0085, #d46a47;
+	--colors-pie-chart: #2980b9, #218c74, #7b00bb, #ae0085, #d46a47, #70b751;
 	--color-btn-paginate: #ffffff;
 }
 [data-theme="light"] {
@@ -36,16 +31,11 @@
 	--color-recbtn-font: #000000;
 	--color-daylabel: #000000;
 	--color-daylabel-hover: #0e0e0e;
-	--color-mealmessage: #efefef;
 	--color-planinner-bg: #efefef;
 	--color-planinner-border: #e3e3e3;
-	--color-planlabel: #000000;
-	--color-planlabel-a: #0e0e0e;
-	--color-plancategory: #4f4f4f;
-	--color-plancategory-a: #0e0e0e;
 	--color-b1right-p: #525252;
 	--color-chart-text: #808080;
-	--colors-pie-chart: #81c7f5, #53cab0, #c47aec, #e570ca, #e7805e;
+	--colors-pie-chart: #81c7f5, #53cab0, #c47aec, #e570ca, #e7805e, #c4e464;
 	--color-btn-paginate: #000000;
 }
 [data-theme="dark"] {
@@ -57,13 +47,11 @@
 	--color-recbtn-font: #ffffff;
 	--color-daylabel: #ffffff;
 	--color-daylabel-hover: #f1f1f1;
-	--color-mealmessage: #111111;
 	--color-planinner-bg: #111111;
 	--color-planinner-border: #202020;
-	--color-planlabel: #ffffff;
-	--color-planlabel-a: #f1f1f1;
-	--color-plancategory: #b0b0b0;
-	--color-plancategory-a: #f1f1f1;
+	--color-b1right-p: #bdbdbd;
+	--color-chart-text: #808080;
+	--colors-pie-chart: #2980b9, #218c74, #7b00bb, #ae0085, #d46a47, #70b751;
 	--color-btn-paginate: #ffffff;
 }
 /* SCALING */
@@ -79,8 +67,6 @@
 	--line-height-day-label: 43px;
 	--line-height-day-label-2: 50px;
 	--margin-top-statsbox-number: 7px;
-	--font-mealmessage: 14px;
-	--height-mealmessage: 17px;
 	--font-plan-label: 18px;
 	--font-plan-category: 12px;
 	--size-btn4-icon: 20px;
@@ -99,8 +85,6 @@
 	--line-height-day-label: 43px;
 	--line-height-day-label-2: 50px;
 	--margin-top-statsbox-number: 7px;
-	--font-mealmessage: 14px;
-	--height-mealmessage: 17px;
 	--font-plan-label: 18px;
 	--font-plan-category: 12px;
 	--size-btn4-icon: 20px;
@@ -119,8 +103,6 @@
 	--line-height-day-label: 45px;
 	--line-height-day-label-2: 50px;
 	--margin-top-statsbox-number: 7px;
-	--font-mealmessage: 16px;
-	--height-mealmessage: 19px;
 	--font-plan-label: 20px;
 	--font-plan-category: 14px;
 	--size-btn4-icon: 22px;
@@ -255,15 +237,6 @@
 }
 #b1left h3 {padding-bottom: 8px; padding-top: 0px;}
 .b1leftinner {margin-bottom: 20px;}
-#statsmessage {
-	background: var(--color-mealmessage); 
-	font-size: var(--font-mealmessage);
-	min-height: var(--height-mealmessage);
-	margin-bottom: 2px;
-	margin-top: 10px;
-	padding: 6px;
-	width: 286px;
-}
 .statsbox {margin-bottom: 10px;}
 .statsbox div {
 	background: var(--color-planinner-bg);
@@ -321,14 +294,6 @@
 	padding-top: 0px;
 	padding-left: 0px !important;
 	padding-right: 0px;
-}
-#mealmessage {
-	background: var(--color-mealmessage); 
-	font-size: var(--font-mealmessage);
-	min-height: var(--height-mealmessage);
-	margin-bottom: 2px;
-	margin-top: 10px;
-	padding: 6px;
 }
 
 .mealplannerchart {

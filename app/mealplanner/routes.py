@@ -3,7 +3,7 @@ from flask_babel import _, get_locale
 from babel.dates import format_date
 from app import app, db, limiter
 from flask_login import current_user, login_user, logout_user, login_required
-from app.models import User, Recipe, Shoplist, Listitem, MealRecipe, Calendar
+from app.models import User, Recipe, Shoplist, Listitem, MealRecipe, Category
 from sqlalchemy import func, and_, or_
 from datetime import datetime, timedelta, date
 import secrets, time, random, requests, re, urllib.request, calendar

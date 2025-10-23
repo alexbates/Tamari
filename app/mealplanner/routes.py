@@ -471,8 +471,17 @@ def mealPlannerStatData():
         format_date(date(int(k[:4]), int(k[5:7]), 1), format='MMM yyyy', locale=str(get_locale()))
         for k in last12_month_keys
     ]
-	# Unique days cooked per month
+    # Unique days cooked per month
     days_per_month = {k: set() for k in last12_month_keys}
+    for meal in plannedmeals:
+        try:
+            y, m, d = map(int, meal.date.split('-'))
+            meal_dt = date(y, m, d)
+        except Exception:
+            continue
+        ym = f"{meal_dt.year:04d}-{meal_dt.month:02d}"
+        if ym in days_per_month:
+            days_per_month[ym].add(meal.date)
     line_values = [len(days_per_month[k]) for k in last12_month_keys]
     # Category counts for pie chart
     # Create 2D arrays to hold compact date and full date for past year
@@ -509,10 +518,7 @@ def mealPlannerStatData():
         meal_query = Recipe.query.filter_by(id=meal.recipe_id).first()
         if not meal_query or meal_query.category is None:
             continue
-        cat = Category.query.filter_by(id=meal_query.category).first()
-        if not cat:
-            continue
-        category_counts[cat.label] = category_counts.get(cat.label, 0) + 1
+        category_counts[meal_query.category] = category_counts.get(meal_query.category, 0) + 1
     pie_items = sorted(category_counts.items(), key=lambda kv: (-kv[1], kv[0]))
     pie_labels = [lbl for (lbl, _) in pie_items]
     pie_values = [val for (_, val) in pie_items]

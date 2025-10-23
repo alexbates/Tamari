@@ -474,24 +474,44 @@ def mealPlannerStatData():
 	# Unique days cooked per month
     days_per_month = {k: set() for k in last12_month_keys}
     # Category counts for pie chart
-    category_counts = {}
+    # Create 2D arrays to hold compact date and full date for past year
+    w, year_h = 2, 365
+    year = [[0 for x in range(w)] for y in range(year_h)]
+    curr_dt = datetime.now()
+    year_timestamp = int(time.mktime(curr_dt.timetuple()))
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    for d in year:
+        year_timestamp -= 86400
+        date = datetime.fromtimestamp(year_timestamp)
+        intDay = date.weekday()
+        full_month = date.strftime("%B")
+        full_day = date.strftime("%-d")
+        compact_month = date.strftime("%m")
+        compact_day = date.strftime("%d")
+        curr_year = date.strftime("%Y")
+        compactdate = curr_year + "-" + compact_month + "-" + compact_day
+        # Save full date translated in correct language
+        fulldate = format_date(date, format='full', locale=str(get_locale()))
+        d[0] = compactdate
+        d[1] = fulldate
+    # Create array to store only compact dates, used to check if meal is from past year year
+    compactyear = []
+    for d in year:
+        compactyear.append(d[0])
+    # Create array that contains all items from "plannedmeals" except those outside 1year window
+    mealsinyear = []
     for meal in plannedmeals:
-        try:
-            y, m, d = map(int, meal.date.split('-'))
-            meal_dt = date(y, m, d)
-        except Exception:
+        if meal.date in compactyear:
+            mealsinyear.append(meal)
+    category_counts = {}
+    for meal in mealsinyear:
+        meal_query = Recipe.query.filter_by(id=meal.recipe_id).first()
+        if not meal_query or meal_query.category is None:
             continue
-        ym = f"{meal_dt.year:04d}-{meal_dt.month:02d}"
-        if ym in days_per_month:
-            days_per_month[ym].add(meal.date)
-            recipe = Recipe.query.filter_by(id=meal.recipe_id).first()
-            if not recipe or recipe.category is None:
-                continue
-            cat = Category.query.filter_by(id=recipe.category).first()
-            if not cat:
-                continue
-            category_counts[cat.label] = category_counts.get(cat.label, 0) + 1
-    line_values = [len(days_per_month[k]) for k in last12_month_keys]
+        cat = Category.query.filter_by(id=meal_query.category).first()
+        if not cat:
+            continue
+        category_counts[cat.label] = category_counts.get(cat.label, 0) + 1
     pie_items = sorted(category_counts.items(), key=lambda kv: (-kv[1], kv[0]))
     pie_labels = [lbl for (lbl, _) in pie_items]
     pie_values = [val for (_, val) in pie_items]

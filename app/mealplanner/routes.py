@@ -482,16 +482,16 @@ def mealPlannerStatData():
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     for d in year:
         year_timestamp -= 86400
-        date = datetime.fromtimestamp(year_timestamp)
-        intDay = date.weekday()
-        full_month = date.strftime("%B")
-        full_day = date.strftime("%-d")
-        compact_month = date.strftime("%m")
-        compact_day = date.strftime("%d")
-        curr_year = date.strftime("%Y")
+        dt = datetime.fromtimestamp(year_timestamp)
+        intDay = dt.weekday()
+        full_month = dt.strftime("%B")
+        full_day = dt.strftime("%-d")
+        compact_month = dt.strftime("%m")
+        compact_day = dt.strftime("%d")
+        curr_year = dt.strftime("%Y")
         compactdate = curr_year + "-" + compact_month + "-" + compact_day
         # Save full date translated in correct language
-        fulldate = format_date(date, format='full', locale=str(get_locale()))
+        fulldate = format_date(dt, format='full', locale=str(get_locale()))
         d[0] = compactdate
         d[1] = fulldate
     # Create array to store only compact dates, used to check if meal is from past year year

@@ -12,7 +12,8 @@
 			<div class="recipenavleft-inner">
 				<input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar') }}';" value="{{ _('Calendar') }}" aria-label="{{ _('Navigate to Meal Planner (Calendar)') }}"
 				><input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlanner') }}';" value="{{ _('Upcoming') }}" aria-label="{{ _('Navigate to Meal Planner (Upcoming)') }}"
-                ><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Completed)') }}">
+                ><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCompleted') }}';" value="{{ _('Completed') }}" aria-label="{{ _('Navigate to Meal Planner (Completed)') }}"
+				><input type="button" class="recbtn" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerStatistics') }}';" value="{{ _('Statistics') }}" aria-label="{{ _('Navigate to Meal Planner (Statistics)') }}">
 			</div>
 			<div class="scroll-arrow-recip scroll-right-recip">
 				<img id="scroll-right-recip" src="{{ url_for('static', filename='navbar-scroll-right.png', _external=True) }}" alt="Scroll Right">

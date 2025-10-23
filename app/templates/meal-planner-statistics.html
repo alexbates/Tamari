@@ -3,9 +3,6 @@
 {% block styles %}
 	<link href="{{ url_for('static', filename='master.css', _external=True) }}" rel='stylesheet' type='text/css'>
 	<link href="{{ url_for('static', filename='meal-planner-statistics.css', _external=True) }}" rel='stylesheet' type='text/css'>
-{% endblock %}
-
-{% block extrastyles %}
 	<script src="{{ url_for('static', filename='chart.js', _external=True) }}"></script>
 	<script src="{{ url_for('static', filename='meal-planner-statistics.js', _external=True) }}" defer></script>
 {% endblock %}

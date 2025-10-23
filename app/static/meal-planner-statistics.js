@@ -22,14 +22,15 @@
     const initial = readVars();
 
     const readyNow = () => {
-      const cur = readVars();
-      const colorReady = !!cur.COLOR;
-      const paletteReady = !!cur.PIE_COLORS_RAW;
-      const changed =
-        (cur.COLOR && cur.COLOR !== initial.COLOR) ||
-        (cur.PIE_COLORS_RAW && cur.PIE_COLORS_RAW !== initial.PIE_COLORS_RAW) ||
-        (cur.theme && cur.theme !== initial.theme);
-      return colorReady || changed || paletteReady;
+        const cur = readVars();
+        const colorReady = !!cur.COLOR;
+        const paletteReady = !!cur.PIE_COLORS_RAW;
+        const changed =
+            (cur.COLOR && cur.COLOR !== initial.COLOR) ||
+            (cur.PIE_COLORS_RAW && cur.PIE_COLORS_RAW !== initial.PIE_COLORS_RAW) ||
+            (cur.theme && cur.theme !== initial.theme);
+        const themeApplied = ['light','dark'].includes(cur.theme);
+        return themeApplied && (colorReady || paletteReady);
     };
 
     if (readyNow()) return;

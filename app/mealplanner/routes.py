@@ -473,6 +473,7 @@ def mealPlannerStatData():
     ]
 	# Unique days cooked per month
     days_per_month = {k: set() for k in last12_month_keys}
+    line_values = [len(days_per_month[k]) for k in last12_month_keys]
     # Category counts for pie chart
     # Create 2D arrays to hold compact date and full date for past year
     w, year_h = 2, 365

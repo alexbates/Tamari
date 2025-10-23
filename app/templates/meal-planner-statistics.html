@@ -43,7 +43,6 @@
 		{% endwith %}
 		<div id="b1left">
 			<div class="b1leftinner">
-				<h2>{{ _('Statistics') }}</h2>
 				<h3>{{ _('Recipes Prepared') }}</h3>
 				<div class="statsbox">
 					<div>
@@ -83,7 +82,7 @@
 				<canvas id="lineChart" aria-label="Line chart of days cooked per month" role="img"></canvas>
 			</div>
 			<h3>{{ _('Most Popular Recipe Categories') }}</h3>
-			<p>{{ _('Most common categories for recipes prepared over the last 12 months.') }}</p>
+			<p>{{ _('Most common categories for recipes prepared over the last 12 months. Excludes upcoming meals.') }}</p>
 			<div class="mealplannerchart">
 				<canvas id="pieChart" aria-label="Pie chart of recipe categories" role="img"></canvas>
 			</div>

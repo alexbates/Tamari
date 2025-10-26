@@ -65,6 +65,8 @@
 	padding-bottom: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
 	transition: background-color 0.08s linear, border 0.08s linear;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;

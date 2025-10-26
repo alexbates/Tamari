@@ -143,12 +143,12 @@
 	color: var(--color-block1);
 	font-size: var(--font-block1);
 }
-#block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
 	display: flow-root;
 	height: 100%;
 	margin: 0 auto;
 	width: 1300px;
+	padding-bottom: 20px;
 }
 
 .recipenavleft {
@@ -243,72 +243,8 @@
 	padding: 6px;
 }
 
-#b1left {
-	float: left;
-	width: 310px;
-}
-#b1left h2 {padding-top: 0px; padding-bottom: 4px;}
-#b1left h3 {padding-bottom: 0px; padding-top: 16px;}
-.b1leftinner {margin-bottom: 20px;}
-#statsmessage {
-	background: var(--color-mealmessage); 
-	font-size: var(--font-mealmessage);
-	min-height: var(--height-mealmessage);
-	margin-bottom: 2px;
-	margin-top: 10px;
-	padding: 6px;
-	width: 286px;
-}
-.statsbox {margin-top: 10px;}
-.statsbox div {
-	background: var(--color-planinner-bg);
-	border-bottom: solid 1px var(--color-planinner-border);
-	height: var(--line-height-day-label);
-	text-align: left;
-	width: 298px;
-}
-.statsbox div:first-child {
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
-}
-.statsbox div:last-child {
-	border-bottom: none !important;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-}
-.statsbox-label {
-	color: var(--color-daylabel);
-	display: inline-block;
-	font-size: var(--font-day-label);
-	line-height: var(--line-height-day-label);
-	margin: 0;
-	overflow: hidden;
-	padding-left: 10px;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	width: 180px;
-}
-.statsbox-label:hover {color: var(--color-daylabel-hover);}
-.statsbox-label a:hover {text-decoration: none;}
-.statsbox-number {
-	border-radius: 14px;
-	display: block;
-	float: right;
-	margin-right: 10px;
-	margin-top: var(--margin-top-statsbox-number);
-	padding-top: 4px;
-	padding-bottom: 4px;
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
-#b1right {
-	float: left;
-	margin-bottom: 20px;
-	width: calc(100% - 310px);
-}
-#b1right h2 {padding-top: 0px; padding-bottom: 4px;}
-#b1right h3 {padding-bottom: 0px; padding-top: 16px;}
+.block1inner h2 {padding-top: 0px; padding-bottom: 4px;}
+.block1inner h3 {padding-bottom: 0px; padding-top: 16px;}
 #mealmessage {
 	background: var(--color-mealmessage); 
 	font-size: var(--font-mealmessage);

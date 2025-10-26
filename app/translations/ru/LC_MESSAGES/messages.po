@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-08-03 19:05-0400\n"
+"PO-Revision-Date: 2025-10-26 19:05-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_Hans <LL@li.org>\n"
 "Language: zh_Hans\n"
@@ -1898,3 +1898,30 @@ msgstr "Авторы"
 
 msgid "To try a demo, use the username \"demo@tamariapp.com\" and password \"demo\"."
 msgstr "Чтобы попробовать демо, используйте имя пользователя \"demo@tamariapp.com\" и пароль \"demo\"."
+
+msgid "Navigate to Meal Planner (Statistics)"
+msgstr "Перейти к планировщику питания (Статистика)"
+
+msgid "Days Cooked Per Month"
+msgstr "Дней приготовления в месяц"
+
+msgid "Total days cooked per month over the last 12 months."
+msgstr "Общее количество дней приготовления пищи в месяц за последние 12 месяцев."
+
+msgid "Most Popular Recipe Categories"
+msgstr "Самые популярные категории рецептов"
+
+msgid "Most common categories for recipes prepared over the last 12 months. Excludes upcoming meals."
+msgstr "Наиболее распространённые категории рецептов, приготовленных за последние 12 месяцев. Исключая предстоящие блюда."
+
+msgid "Line chart of days cooked per month"
+msgstr "Линейный график количества дней приготовления пищи в месяц"
+
+msgid "Pie chart of recipe categories"
+msgstr "Круговая диаграмма категорий рецептов"
+
+msgid "Months"
+msgstr "Месяцы"
+
+msgid "Days"
+msgstr "Дни"

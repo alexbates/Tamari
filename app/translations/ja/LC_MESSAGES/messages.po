@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-08-03 15:31-0400\n"
+"PO-Revision-Date: 2025-10-26 15:31-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: ja <LL@li.org>\n"
 "Language: ja\n"
@@ -1898,3 +1898,30 @@ msgstr "クレジット"
 
 msgid "To try a demo, use the username \"demo@tamariapp.com\" and password \"demo\"."
 msgstr "デモを試すには、ユーザー名「demo@tamariapp.com」、パスワード「demo」を使用します。"
+
+msgid "Navigate to Meal Planner (Statistics)"
+msgstr "ミールプランナーに移動する（統計）"
+
+msgid "Days Cooked Per Month"
+msgstr "月あたりの調理日数"
+
+msgid "Total days cooked per month over the last 12 months."
+msgstr "過去 12 か月間の月ごとの調理日数合計。"
+
+msgid "Most Popular Recipe Categories"
+msgstr "最も人気のあるレシピカテゴリー"
+
+msgid "Most common categories for recipes prepared over the last 12 months. Excludes upcoming meals."
+msgstr "過去12ヶ月間に調理されたレシピの最も一般的なカテゴリー。今後の料理は除きます。"
+
+msgid "Line chart of days cooked per month"
+msgstr "月ごとの調理日数の折れ線グラフ"
+
+msgid "Pie chart of recipe categories"
+msgstr "レシピカテゴリーの円グラフ"
+
+msgid "Months"
+msgstr "月"
+
+msgid "Days"
+msgstr "日数"

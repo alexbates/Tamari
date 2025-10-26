@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2024-09-02 20:27-0400\n"
-"PO-Revision-Date: 2025-08-03 10:34-0400\n"
+"PO-Revision-Date: 2025-10-26 10:34-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: de <LL@li.org>\n"
 "Language: de\n"
@@ -1898,3 +1898,30 @@ msgstr "Impressum"
 
 msgid "To try a demo, use the username \"demo@tamariapp.com\" and password \"demo\"."
 msgstr "Um eine Demo auszuprobieren, verwenden Sie den Benutzernamen \"demo@tamariapp.com\" und das Passwort \"demo\"."
+
+msgid "Navigate to Meal Planner (Statistics)"
+msgstr "Gehe zu Essensplaner (Statistik)"
+
+msgid "Days Cooked Per Month"
+msgstr "Kochtage pro Monat"
+
+msgid "Total days cooked per month over the last 12 months."
+msgstr "Gesamtzahl der Kochtage pro Monat in den letzten 12 Monaten."
+
+msgid "Most Popular Recipe Categories"
+msgstr "Beliebteste Rezeptkategorien"
+
+msgid "Most common categories for recipes prepared over the last 12 months. Excludes upcoming meals."
+msgstr "Die häufigsten Kategorien für in den letzten 12 Monaten zubereitete Rezepte. Ausgenommen sind kommende Mahlzeiten."
+
+msgid "Line chart of days cooked per month"
+msgstr "Liniendiagramm der Kochtage pro Monat"
+
+msgid "Pie chart of recipe categories"
+msgstr "Kreisdiagramm der Rezeptkategorien"
+
+msgid "Months"
+msgstr "Monate"
+
+msgid "Days"
+msgstr "Tage"

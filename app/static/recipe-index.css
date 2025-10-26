@@ -764,20 +764,33 @@
 .recipe1cont {margin-bottom: 20px;}
 .recipe1cont:after {clear: both; content: ""; display: table;}
 .recipe1 {
-	background-repeat: no-repeat;
-	background-size: 100% auto;
-	background-position: center;
 	color: var(--color-recipe1);
 	float: left;
 	padding-top: 0%;
 	width: 25%;
 	aspect-ratio: 4 / 3;
-	transition: background-size 0.15s ease-in-out;
+	position: relative;
+	overflow: hidden;
 }
+/* Render Type 1 recipe background on a scalable layer */
+.recipe1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: scale(1);
+  transition: transform 150ms ease-in-out;
+  will-change: transform;
+  z-index: 0;
+}
+.recipe1 > * { position: relative; z-index: 1; }
 @media (hover: hover) and (pointer: fine) {
-    .recipe1:hover {
-        background-size: 105% auto;
-    }
+  .recipe1:hover::before {
+    transform: scale(1.05);
+  }
 }
 .r1bottom {
 	background: linear-gradient(to bottom, transparent 0%, var(--color-r1bottom) 100%);

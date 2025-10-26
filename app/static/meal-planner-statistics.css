@@ -298,7 +298,7 @@
 
 .mealplannerchart {
 	background: var(--color-planinner-bg);
-	padding: 20px;
+	padding: 10px;
 	border-radius: 10px;
 	box-sizing: border-box;      /* include padding in width/height */
 	width: 100%;

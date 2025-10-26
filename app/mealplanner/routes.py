@@ -331,9 +331,8 @@ def mealPlannerCompleted():
             dayspaginated.append(meal.date)
     return render_template('meal-planner-completed.html', title=_('Meal Planner (Completed)'),
         mdescription=_('View Recipes that have been completed in the Meal Planner.'), plannedmeals=plannedmeals, recdetails=recdetails,
-        year=year, month=month, week=week, plannedmeals_paginated=plannedmeals_paginated,
-        next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated, compactfiveyear=compactfiveyear,
-        mealsinfiveyear=mealsinfiveyear, fiveyear=fiveyear)
+        plannedmeals_paginated=plannedmeals_paginated, next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated, 
+        compactfiveyear=compactfiveyear, mealsinfiveyear=mealsinfiveyear, fiveyear=fiveyear)
 
 @bp.route('/remove-plan/<hexid>')
 @login_required

@@ -1897,3 +1897,30 @@ msgstr ""
 
 msgid "To try a demo, use the username \"demo@tamariapp.com\" and password \"demo\"."
 msgstr ""
+
+msgid "Navigate to Meal Planner (Statistics)"
+msgstr ""
+
+msgid "Days Cooked Per Month"
+msgstr ""
+
+msgid "Total days cooked per month over the last 12 months."
+msgstr ""
+
+msgid "Most Popular Recipe Categories"
+msgstr ""
+
+msgid "Most common categories for recipes prepared over the last 12 months. Excludes upcoming meals."
+msgstr ""
+
+msgid "Line chart of days cooked per month"
+msgstr ""
+
+msgid "Pie chart of recipe categories"
+msgstr ""
+
+msgid "Months"
+msgstr ""
+
+msgid "Days"
+msgstr ""

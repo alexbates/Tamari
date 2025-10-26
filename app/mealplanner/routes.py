@@ -276,14 +276,8 @@ def mealPlannerCompleted():
     # Create 2D arrays to hold compact date and full date for past year, past month, and past week
     w, year_h, month_h, week_h, fiveyear_h = 2, 365, 30, 7, 1825
     fiveyear = [[0 for x in range(w)] for y in range(fiveyear_h)]
-    year = [[0 for x in range(w)] for y in range(year_h)]
-    month = [[0 for x in range(w)] for y in range(month_h)]
-    week = [[0 for x in range(w)] for y in range(week_h)]
     curr_dt = datetime.now()
     fiveyear_timestamp = int(time.mktime(curr_dt.timetuple()))
-    year_timestamp = int(time.mktime(curr_dt.timetuple()))
-    month_timestamp = int(time.mktime(curr_dt.timetuple()))
-    week_timestamp = int(time.mktime(curr_dt.timetuple()))
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     for d in fiveyear:
         fiveyear_timestamp -= 86400
@@ -299,61 +293,10 @@ def mealPlannerCompleted():
         fulldate = format_date(date, format='full', locale=str(get_locale()))
         d[0] = compactdate
         d[1] = fulldate
-    for d in year:
-        year_timestamp -= 86400
-        date = datetime.fromtimestamp(year_timestamp)
-        intDay = date.weekday()
-        full_month = date.strftime("%B")
-        full_day = date.strftime("%-d")
-        compact_month = date.strftime("%m")
-        compact_day = date.strftime("%d")
-        curr_year = date.strftime("%Y")
-        compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        # Save full date translated in correct language
-        fulldate = format_date(date, format='full', locale=str(get_locale()))
-        d[0] = compactdate
-        d[1] = fulldate
-    for d in month:
-        month_timestamp -= 86400
-        date = datetime.fromtimestamp(month_timestamp)
-        intDay = date.weekday()
-        full_month = date.strftime("%B")
-        full_day = date.strftime("%-d")
-        compact_month = date.strftime("%m")
-        compact_day = date.strftime("%d")
-        curr_year = date.strftime("%Y")
-        compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        # Save full date translated in correct language
-        fulldate = format_date(date, format='full', locale=str(get_locale()))
-        d[0] = compactdate
-        d[1] = fulldate
-    for d in week:
-        week_timestamp -= 86400
-        date = datetime.fromtimestamp(week_timestamp)
-        intDay = date.weekday()
-        full_month = date.strftime("%B")
-        full_day = date.strftime("%-d")
-        compact_month = date.strftime("%m")
-        compact_day = date.strftime("%d")
-        curr_year = date.strftime("%Y")
-        compactdate = curr_year + "-" + compact_month + "-" + compact_day
-        # Save full date translated in correct language
-        fulldate = format_date(date, format='full', locale=str(get_locale()))
-        d[0] = compactdate
-        d[1] = fulldate
     # Create array to store only compact dates, used to check if meal is from past five years (or other criteria)
     compactfiveyear = []
     for d in fiveyear:
         compactfiveyear.append(d[0])
-    compactyear = []
-    for d in year:
-        compactyear.append(d[0])
-    compactmonth = []
-    for d in month:
-        compactmonth.append(d[0])
-    compactweek = []
-    for d in week:
-        compactweek.append(d[0])
     # Get page number from URL query string
     page = request.args.get('page', 1, type=int)
     # per_page variable is used for paginating the recipes object
@@ -371,18 +314,6 @@ def mealPlannerCompleted():
     for meal in plannedmeals:
         if meal.date in compactfiveyear:
             mealsinfiveyear.append(meal)
-    mealsinyear = []
-    for meal in plannedmeals:
-        if meal.date in compactyear:
-            mealsinyear.append(meal)
-    mealsinmonth = []
-    for meal in plannedmeals:
-        if meal.date in compactmonth:
-            mealsinmonth.append(meal)
-    mealsinweek = []
-    for meal in plannedmeals:
-        if meal.date in compactweek:
-            mealsinweek.append(meal)
     # Create 2D array to store recipe info, it will somewhat mirror plannedmeals_paginated
     w2, h2 = 3, len(plannedmeals)
     recdetails = [[0 for x in range(w2)] for y in range(h2)]
@@ -393,19 +324,6 @@ def mealPlannerCompleted():
         recdetails[mealiteration][1] = recipe.category
         recdetails[mealiteration][2] = recipe.hex_id
         mealiteration += 1
-    # Create arrays to store dates that meals are planned for, used by template to count meals for stats
-    dayswithmeals = []
-    for meal in mealsinyear:
-        if meal.date not in dayswithmeals:
-            dayswithmeals.append(meal.date)
-    dayswithmeals_m = []
-    for meal in mealsinmonth:
-        if meal.date not in dayswithmeals_m:
-            dayswithmeals_m.append(meal.date)
-    dayswithmeals_w = []
-    for meal in mealsinweek:
-        if meal.date not in dayswithmeals_w:
-            dayswithmeals_w.append(meal.date)
     # Array to store dates for template on current page
     dayspaginated = []
     for meal in plannedmeals_paginated:
@@ -413,9 +331,7 @@ def mealPlannerCompleted():
             dayspaginated.append(meal.date)
     return render_template('meal-planner-completed.html', title=_('Meal Planner (Completed)'),
         mdescription=_('View Recipes that have been completed in the Meal Planner.'), plannedmeals=plannedmeals, recdetails=recdetails,
-        dayswithmeals=dayswithmeals, dayswithmeals_m=dayswithmeals_m, dayswithmeals_w=dayswithmeals_w, year=year, month=month,
-        week=week, compactyear=compactyear, compactmonth=compactmonth, compactweek=compactweek, mealsinyear=mealsinyear,
-        mealsinmonth=mealsinmonth, mealsinweek=mealsinweek, plannedmeals_paginated=plannedmeals_paginated,
+        year=year, month=month, week=week, plannedmeals_paginated=plannedmeals_paginated,
         next_url=next_url, prev_url=prev_url, dayspaginated=dayspaginated, compactfiveyear=compactfiveyear,
         mealsinfiveyear=mealsinfiveyear, fiveyear=fiveyear)
 

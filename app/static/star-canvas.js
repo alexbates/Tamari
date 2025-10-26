@@ -103,5 +103,19 @@ function animate() {
 }
 
 // Start animation
-initStars();
-animate();
+function startStars() {
+  initStars();
+  animate();
+}
+window.addEventListener('load', startStars);
+
+// Restart animation when data-theme flips
+const themeObserver = new MutationObserver((muts) => {
+  for (const m of muts) {
+    if (m.attributeName === 'data-theme') {
+      initStars(); // pick up new CSS var colors
+      return;
+    }
+  }
+});
+themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });

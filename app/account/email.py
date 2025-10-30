@@ -1,6 +1,7 @@
 from flask import render_template
 from app import app
 from app.email import send_email
+from flask_babel import _
 
 def send_password_reset_email(user):
     token = user.get_reset_password_token()

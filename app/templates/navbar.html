@@ -192,7 +192,7 @@
 			<div class="dropdown-content" id="myDropdown">
 				<a href="{{ url_for('account.user') }}">{{ _('My Account') }}</a>
 				<a href="{{ url_for('account.about') }}">{{ _('About') }}</a>
-				<a href="{{ url_for('account.logout') }}">{{ _('Sign Out') }}</a>
+				<a href="{{ url_for('account.logout') }}" class="navrightsignout">{{ _('Sign Out') }}</a>
 			</div>
 		</nav>
 		{% else %}

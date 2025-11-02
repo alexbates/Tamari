@@ -438,6 +438,7 @@ select {font-family: Inter-Regular;}
 	width: 64px;
 }
 .navright:hover {background: var(--color-navright-hover);}
+.navrightsignout {color: var(--color-flashed-err) !important;}
 .navrighticon {
 	border-radius: 50%;
 	background-size: 38px 38px;

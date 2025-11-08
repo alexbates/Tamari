@@ -85,10 +85,10 @@
 /* ACCENT COLOR APPLICATION */
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: 64px;
 }
 .block1inner {
 	height: 100%;
@@ -290,6 +290,11 @@ pre code {
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
 	details {margin-left: 10px; margin-right: 10px;}
 	.apistatus, .generalinfo {margin-left: 10px; margin-right: 10px;}
+}
+@media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: var(--height-mobile-navbar);
+	}
 }
 @media screen and (max-width: 710px) { 
 	.desc {display: none;}

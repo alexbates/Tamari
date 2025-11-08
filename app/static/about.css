@@ -42,6 +42,7 @@
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: 64px;
 }
 .block1inner {
 	height: 100%;
@@ -79,4 +80,9 @@
 	.block1inner h3 {padding-left: 10px; padding-right: 10px;}
 	.version {margin-left: 10px; margin-right: 10px;}
 	.pblock {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
+}
+@media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: var(--height-mobile-navbar);
+	}
 }

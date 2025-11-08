@@ -355,6 +355,8 @@ select {font-family: Inter-Regular;}
 	min-height: 64px;
 	width: 100%;
 	font-size: var(--font-navbar);
+	position: fixed;
+	z-index: 1000;
 }
 .navbarinner {height: 100%; margin: 0 auto; width: 1300px;}
 #navbar ul {list-style: none; line-height: 64px;}
@@ -371,7 +373,11 @@ select {font-family: Inter-Regular;}
 	margin-top: 17px;
 }
 .navlogo h1 {font-size: 28px;}
-.mobile-title {display: none; height: var(--height-mobile-navbar);}
+.mobile-title {
+	display: none; 
+	height: var(--height-mobile-navbar);
+	max-width: calc(100% - var(--height-mobile-navbar));
+}
 .mobile-title h1 {
 	display: none; 
 	font-size: var(--font-mobile-title-h1); 
@@ -460,7 +466,7 @@ select {font-family: Inter-Regular;}
 	width: 164px;
 	margin-left: -100px;
     margin-top: 2px;
-	z-index: 1;
+	z-index: 1100;
 }
 .dropdown-content a {
 	color: var(--color-dropdown-content-a);
@@ -581,11 +587,19 @@ select {font-family: Inter-Regular;}
     #navbar {min-height: var(--height-mobile-navbar);}
 	.navlogo {display: none; height: var(--height-mobile-navbar);}
 	.navlogo h1 {font-size: 26px; line-height: 26px; padding-left: 40px; padding-top: 9px;}
-	.mobile-title {display: block;}
+	.mobile-title {display: inline-block;}
     .navbarinner { width: 100%;}
 	.navnoauth {display: none;}
 	.navleft {display: none;}
-	.navright {display: none;}
+	.navright {height: var(--height-mobile-navbar); width: var(--height-mobile-navbar);}
+	.navrighticon {
+		background-size: calc(var(--height-mobile-navbar) - 12px) calc(var(--height-mobile-navbar) - 12px);
+		height: calc(var(--height-mobile-navbar) - 12px);
+		margin-left: 6px;
+		margin-top: 6px;
+		margin-bottom: 4px;
+		width: calc(var(--height-mobile-navbar) - 12px);
+	}
 	.mobile-dropdown {display: block;}
 	.hamburger {display: block !important;}
 }

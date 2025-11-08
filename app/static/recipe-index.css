@@ -430,9 +430,12 @@
 	height: var(--height-recipenav);
 	text-align: right;
 	width: 100%;
+	max-width: 1300px;
 	position: fixed;
 	z-index: 900;
 	top: 64px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .recipenavleft {
 	float: left;

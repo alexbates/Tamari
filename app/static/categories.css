@@ -371,10 +371,10 @@
 .btn-addtolist:active, .btn-addtolist.active {background: var(--color-darker);}
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: calc(64px + var(--height-recipenav));
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
@@ -383,10 +383,16 @@
 	width: 1300px;
 }
 #recipenav {
+	background-color: var(--color-body-bg);
+	height: var(--height-recipenav);
 	display: flow-root;
 	text-align: right;
-	width: 100%;
-	margin-bottom: 10px;
+	width: min(1301px, calc(100% - 20px));
+	position: fixed;
+	z-index: 900;
+	top: 64px;
+	left: 50%;
+	transform: translateX(-50%);
 }
 .recipenavleft {
 	float: left;
@@ -1224,7 +1230,6 @@
 	.recipenavleft {
 		float: none; 
 		text-align: left; 
-		margin-top: 10px;
 		width: 100%;
 	}
 	.settingsbtn {display: none;}
@@ -1233,6 +1238,12 @@
 		height: var(--w750-height-recipe1-text);
 		padding-top: var(--w750-padding-top-recipe1-text);
 	}
+}
+@media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: calc(var(--height-mobile-navbar) + var(--height-recipenav));
+	}
+	#recipenav {top: var(--height-mobile-navbar);}
 }
 @media screen and (max-width: 730px) { 
 	.recipe1-text {

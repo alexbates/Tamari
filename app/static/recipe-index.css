@@ -1,4 +1,4 @@
-
+/* Used by All Recipes, Favorites, and Recents pages */
 .myrecipes-active {
 	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
@@ -157,7 +157,7 @@
 	--w910-height-recipe1-text: 52px;
 	--w910-padding-top-recipe1-text: 23px;
 	--w800-padding-top-recipe1-text: 17px;
-	--w750-recipenav-mobile: 87px;
+	--w750-recipenav-mobile: 97px;
 	--w750-padding-top-recipe1-text: 13px;
 	--w700-font-recipe1-text: 22px;
 	--w700-height-recipe1-text: 56px;
@@ -250,7 +250,7 @@
 	--w910-height-recipe1-text: 52px;
 	--w910-padding-top-recipe1-text: 23px;
 	--w800-padding-top-recipe1-text: 17px;
-	--w750-recipenav-mobile: 87px;
+	--w750-recipenav-mobile: 97px;
 	--w750-padding-top-recipe1-text: 13px;
 	--w700-font-recipe1-text: 22px;
 	--w700-height-recipe1-text: 56px;
@@ -343,7 +343,7 @@
 	--w910-height-recipe1-text: 56px;
 	--w910-padding-top-recipe1-text: 19px;
 	--w800-padding-top-recipe1-text: 13px;
-	--w750-recipenav-mobile: 92px;
+	--w750-recipenav-mobile: 102px;
 	--w750-padding-top-recipe1-text: 9px;
 	--w700-font-recipe1-text: 24px;
 	--w700-height-recipe1-text: 60px;
@@ -414,10 +414,10 @@
 .btn-addtolist:active, .btn-addtolist.active {background: var(--color-darker);}
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: calc(64px + var(--height-recipenav));
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 16px;}
 .block1inner {
@@ -426,9 +426,13 @@
 	width: 1300px;
 }
 #recipenav {
+	background-color: var(--color-body-bg);
 	height: var(--height-recipenav);
 	text-align: right;
 	width: 100%;
+	position: fixed;
+	z-index: 900;
+	top: 64px;
 }
 .recipenavleft {
 	float: left;
@@ -476,6 +480,7 @@
 	cursor: pointer;
 	display: none; /* Show only if scroll is needed */
 	height: 100%;
+	margin-top: 10px;
 }
 .scroll-arrow-recip img {
 	margin-top: 6px;
@@ -1192,11 +1197,15 @@
 	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 750px) { 
+	#block1 {
+		padding-top: calc(64px + var(--w750-recipenav-mobile));
+	}
 	#recipenav {height: var(--w750-recipenav-mobile);}
 	.recipenavleft {
 		float: none; 
 		text-align: left; 
-		margin-top: 10px;
+		margin-top: 0px;
+		padding-top: 10px;
 		width: calc(100% - 20px);
 	}
 	.recipenavright {width: 100%;}
@@ -1211,6 +1220,10 @@
 	}
 }
 @media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: calc(var(--height-mobile-navbar) + var(--w750-recipenav-mobile));
+	}
+	#recipenav {top: var(--height-mobile-navbar);}
 	.recipe1 {width: 50%;}
 	.recipe1-text {
 		font-size: var(--w700-font-recipe1-text); 

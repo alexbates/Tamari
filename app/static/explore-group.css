@@ -122,6 +122,7 @@
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: 64px;
 }
 #block1 h2 {
 	padding-top: 12px; 
@@ -341,6 +342,9 @@
 	.r2bottom span {font-size: var(--font-r2bottom-span);}
 }
 @media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: var(--height-mobile-navbar);
+	}
 	#recipe2container {width: calc(100% - 16px);}
 	.recipe2 {
 		width: calc(33.33% - 16px); 

@@ -117,6 +117,7 @@
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: 64px;
 }
 .block1inner {
 	height: 100%;
@@ -337,6 +338,9 @@ tr:nth-child(odd) {
 	.t-col-2 {display: table-row;}
 }
 @media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: var(--height-mobile-navbar);
+	}
 	.t-col-4 {display: table-cell;}
 	.t-col-2 {display: none;}
 	#r-detail {float: none; padding-right: 10px; width: calc(100% - 20px);}

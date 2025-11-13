@@ -8,21 +8,25 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>API Staus</h2>
+		<h2>{{ _('API Status') }}</h2>
 		{% if api_enabled %}
-		<span class="apistatus apistatus-e">ENABLED</span>
+		<span class="apistatus apistatus-e">{{ _('ENABLED') }}</span>
 		{% else %}
-		<span class="apistatus apistatus-d">DISABLED</span>
+		<span class="apistatus apistatus-d">{{ _('DISABLED') }}</span>
 		{% endif %}
-		<h2>General Info</h2>
+		<h2>{{ _('General Info') }}</h2>
 		<p class="generalinfo">
-			This is a REST API which can be used to interact with the Tamari application.
+			{{ _('This is a REST API which can be used to interact with the Tamari application.') }}
 			<br><br>
 			<span id="endpoints">Number of endpoints is unknown.</span>
 			<br><br>
-			X-App-Name and X-App-Key headers are {% if headers_required %}required for all endpoints{% else %}not required{% endif %}, as configured in config.py.
+			{% if headers_required %}
+			{{ _('X-App-Name and X-App-Key headers are required for all endpoints, as configured in config.py.') }}
+			{% else %}
+			{{ _('X-App-Name and X-App-Key headers are not required, as configured in config.py.') }}
+			{% endif %}
 		</p>
-		<h2>About</h2>
+		<h2>{{ _('About') }}</h2>
 		<details>
 			<summary><span class="method method-get">GET</span>/api/info<span class="desc">View Version</span></summary>
 			<div class="details-content">
@@ -37,7 +41,7 @@
 				</div>
 			</div>
 		</details>
-		<h2>Account</h2>
+		<h2>{{ _('My Account') }}</h2>
 		<details>
 			<summary><span class="method method-post">POST</span>/api/user/authenticate<span class="desc">Login</span></summary>
 			<div class="details-content">
@@ -234,7 +238,7 @@
 				</div>
 			</div>
 		</details>
-		<h2>My Recipes</h2>
+		<h2>{{ _('My Recipes') }}</h2>
 		<details>
 			<summary><span class="method method-get">GET</span>/api/my-recipes/all<span class="desc">View All Recipes</span></summary>
 			<div class="details-content">
@@ -1215,7 +1219,7 @@
 				</div>
 			</div>
 		</details>
-		<h2>Shopping Lists</h2>
+		<h2>{{ _('Shopping Lists') }}</h2>
 		<details>
 			<summary><span class="method method-get">GET</span>/api/shopping-lists<span class="desc">View Shopping Lists</span></summary>
 			<div class="details-content">
@@ -1674,7 +1678,7 @@
 				</div>
 			</div>
 		</details>
-		<h2>Meal Planner</h2>
+		<h2>{{ _('Meal Planner') }}</h2>
 		<details>
 			<summary><span class="method method-get">GET</span>/api/meal-planner/all<span class="desc">View All Plans</span></summary>
 			<div class="details-content">
@@ -2085,7 +2089,7 @@
 				</div>
 			</div>
 		</details>
-		<p>Version {{app_version}}</p>
+		<p>{{ _('Version') }} {{app_version}}</p>
 	</div>
 </main>
 {% endblock %}

@@ -1924,3 +1924,27 @@ msgstr ""
 
 msgid "Days"
 msgstr ""
+
+msgid "API Status"
+msgstr ""
+
+msgid "ENABLED"
+msgstr ""
+
+msgid "DISABLED"
+msgstr ""
+
+msgid "General Info"
+msgstr ""
+
+msgid "This is a REST API which can be used to interact with the Tamari application."
+msgstr ""
+
+msgid "X-App-Name and X-App-Key headers are required for all endpoints, as configured in config.py."
+msgstr ""
+
+msgid "X-App-Name and X-App-Key headers are not required, as configured in config.py."
+msgstr ""
+
+msgid "API Info"
+msgstr ""

@@ -269,3 +269,40 @@
 </header>
 {% endblock %}
 
+{% block footer %}
+<footer>
+	<nav class="mobile-tab-bar">
+		{% if current_user.is_authenticated %}
+		<button class="mobile-tab-button tab-recipes-active">
+			<span class="tab-btn-icon"><img src="footer-recipes.png" alt="{{ _('My Recipes') }}"></span>
+			<span class="tab-btn-text">{{ _('Recipes') }}</span>
+		</button>
+		<button class="mobile-tab-button tab-explore-active">
+			<span class="tab-btn-icon"><img src="footer-explore.png" alt="{{ _('Explore') }}"></span>
+			<span class="tab-btn-text">{{ _('Explore') }}</span>
+		</button>
+		<button class="mobile-tab-button tab-lists-active">
+			<span class="tab-btn-icon"><img src="footer-lists.png" alt="{{ _('Shopping Lists') }}"></span>
+			<span class="tab-btn-text">{{ _('Lists') }}</span>
+		</button>
+		<button class="mobile-tab-button tab-planner-active">
+			<span class="tab-btn-icon"><img src="footer-planner.png" alt="{{ _('Meal Planner') }}"></span>
+			<span class="tab-btn-text">{{ _('Planner') }}</span>
+		</button>
+		{% else %}
+		<button class="mobile-tab-button tab-explore-active">
+			<span class="tab-btn-icon"><img src="footer-explore.png" alt="{{ _('Explore') }}"></span>
+			<span class="tab-btn-text">{{ _('Explore') }}</span>
+		</button>
+		<button class="mobile-tab-button">
+			<span class="tab-btn-icon"><img src="footer-login.png" alt="{{ _('Login') }}"></span>
+			<span class="tab-btn-text">{{ _('Login') }}</span>
+		</button>
+		<button class="mobile-tab-button">
+			<span class="tab-btn-icon"><img src="footer-register.png" alt="{{ _('Register') }}"></span>
+			<span class="tab-btn-text">{{ _('Register') }}</span>
+		</button>
+		{% endif %}
+	</nav>
+</footer>
+{% endblock %}

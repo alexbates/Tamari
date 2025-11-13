@@ -92,6 +92,7 @@
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: calc(64px + var(--height-recipenav));
 }
 .block1inner {
 	height: 100%;
@@ -102,12 +103,26 @@
 }
 .block1inner h3 {line-height: 46px; padding-left: 12px;}
 
+#recipenav {
+    background-color: var(--color-body-bg);
+    height: var(--height-recipenav);
+    display: flow-root;
+    text-align: right;
+    position: fixed;
+    z-index: 900;
+    top: 64px;
+    left: 0;
+    right: 0;
+    max-width: 1300px;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+}
 .recipenavleft {
+	float: left;
 	position: relative;
 	overflow: hidden;
 	text-align: left;
 	margin-top: var(--margin-recbtn);
-	margin-bottom: var(--margin-recbtn);
 	width: 100%;
 }
 .recipenavleft-inner {
@@ -264,32 +279,26 @@
 	margin-bottom: 10px;
 }
 .calendar-header h2 {margin: 0;}
-  
-  /* ====== GRID & BORDERS ====== */
-  .calendar-grid{
-	display:grid;
-	grid-template-columns:repeat(7,1fr);
-	border:1px solid var(--color-calendar-grid-border);           /* full outer border */
-  }
-  .day-name,
-  .calendar-day{
-	border-right:1px solid var(--color-calendar-grid-border);
-	border-bottom:1px solid var(--color-calendar-grid-border);
-	box-sizing:border-box;
-  }
-  .day-name:nth-child(7n),
-  .calendar-day:nth-child(7n){border-right:none;} /* avoid double line */
-  
-  /* ====== DAY NAME ROW ====== */
-  .day-name{
-	text-align:center;
-	font-weight:bold;
-	padding:.5rem 0;
-	background: var(--color-calendar-cell);                 /* match calendar-day background */
-  }
-  
-  /* ====== DAY CELLS ====== */
-  .calendar-day{
+.calendar-grid{
+	display: grid;
+	grid-template-columns: repeat(7,1fr);
+	border: 1px solid var(--color-calendar-grid-border);
+}
+.day-name,
+.calendar-day{
+	border-right: 1px solid var(--color-calendar-grid-border);
+	border-bottom: 1px solid var(--color-calendar-grid-border);
+	box-sizing: border-box;
+}
+.day-name:nth-child(7n),
+.calendar-day:nth-child(7n){border-right:none;}
+.day-name{
+	text-align: center;
+	font-weight: bold;
+	padding: .5rem 0;
+	background: var(--color-calendar-cell);
+}
+.calendar-day{
 	background: var(--color-calendar-cell);
 	min-height:120px;
 	padding:.5rem;
@@ -298,43 +307,57 @@
 	text-decoration:none;
 	color:inherit;
 	transition: background .15s;
-  }
-  .calendar-day:hover{background: var(--color-calendar-day-hover);}           /* hover colour */
-  .other-month{background: var(--color-other-month);}
-  /* clickability */
-  .calendar-day:active{background: var(--color-calendar-day-hover);}
-  
-  /* ====== DAY NUMBER CIRCLE ====== */
+}
+.calendar-day:hover{background: var(--color-calendar-day-hover);}           /* hover colour */
+.other-month{background: var(--color-other-month);}
+.calendar-day:active{background: var(--color-calendar-day-hover);}
 .day-number-wrap{
-	width:30px;height:30px;border-radius:50%;background:transparent;color: var(--color-day-number);
-	display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:.3rem;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background: transparent;
+	color: var(--color-day-number);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: bold;
+	margin-bottom: .3rem;
 }
 .calendar-day.today .day-number-wrap {
 	background: var(--color);
 }
-  
-  /* ====== RECIPE LISTS ====== */
-  .recipes{display:flex;flex-direction:column;flex:1;}
-  .recipe{
+.recipes{
+	display: flex;
+	flex-direction: column;
+	flex:1;
+}
+.recipe{
 	display:-webkit-box;
 	color: var(--color-recipe);
-	-webkit-line-clamp:3;
-	-webkit-box-orient:vertical;
-	overflow:hidden;
-	text-overflow:ellipsis;
-	margin-bottom:10px;
-  }
-  .more-recipes {
-	margin-top:auto;
-	font-size:.9rem;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-bottom: 10px;
+}
+.more-recipes {
+	margin-top: auto;
+	font-size: .9rem;
 	color: var(--color-more-recipes);
 }
-  
-  /* ====== DOTS FOR SMALL SCREENS ====== */
-  .dots{display:none;margin-top:auto;}
-  .dot{display:inline-block;width:8px;height:8px;background: var(--color);border-radius:50%;margin-right:4px;}
-
-  .calendar-container a:hover {text-decoration: none;}
+.dots {
+	display: none;
+	margin-top: auto;
+}
+.dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background: var(--color);
+	border-radius: 50%;
+	margin-right: 4px;
+}
+.calendar-container a:hover {text-decoration: none;}
 
 
 /* RESPONSIVE */
@@ -342,11 +365,6 @@
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
-	.recipenavleft {
-		margin-left: 10px;
-		margin-right: 10px;
-		width: calc(100% - 20px);
-	}
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
 	#flashed-norm {margin-left: 10px; margin-right: 10px;}
 	.calendar-container {width: calc(100% - 20px);}
@@ -356,6 +374,10 @@
 	.dots {display:block;}
 }
 @media screen and (max-width: 700px) {
+	#block1 {
+		padding-top: calc(var(--height-mobile-navbar) + var(--height-recipenav));
+	}
+	#recipenav {top: var(--height-mobile-navbar);}
 	#flashed-err {margin-top: 16px;}
     #flashed-norm {margin-top: 16px;}
 }

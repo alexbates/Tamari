@@ -383,16 +383,18 @@
 	width: 1300px;
 }
 #recipenav {
-	background-color: var(--color-body-bg);
-	height: var(--height-recipenav);
-	display: flow-root;
-	text-align: right;
-	width: min(1301px, calc(100% - 20px));
-	position: fixed;
-	z-index: 900;
-	top: 64px;
-	left: 50%;
-	transform: translateX(-50%);
+    background-color: var(--color-body-bg);
+    height: var(--height-recipenav);
+    display: flow-root;
+    text-align: right;
+    position: fixed;
+    z-index: 900;
+    top: 64px;
+    left: 0;
+    right: 0;
+    max-width: 1300px;
+    width: calc(100% - 20px);
+    margin: 0 auto;
 }
 .recipenavleft {
 	float: left;

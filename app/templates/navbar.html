@@ -273,32 +273,32 @@
 <footer>
 	<nav class="mobile-tab-bar">
 		{% if current_user.is_authenticated %}
-		<button class="mobile-tab-button tab-recipes-active">
+		<button class="mobile-tab-button tab-recipes-active" onclick="window.location.href='{{ url_for('myrecipes.allRecipes') }}';">
 			<span class="tab-btn-icon"><img src="footer-recipes.png" alt="{{ _('My Recipes') }}"></span>
 			<span class="tab-btn-text">{{ _('Recipes') }}</span>
 		</button>
-		<button class="mobile-tab-button tab-explore-active">
+		<button class="mobile-tab-button tab-explore-active" onclick="window.location.href='{{ url_for('explore.explore') }}';">
 			<span class="tab-btn-icon"><img src="footer-explore.png" alt="{{ _('Explore') }}"></span>
 			<span class="tab-btn-text">{{ _('Explore') }}</span>
 		</button>
-		<button class="mobile-tab-button tab-lists-active">
+		<button class="mobile-tab-button tab-lists-active" onclick="window.location.href='{{ url_for('shoplists.shoppingLists') }}';">
 			<span class="tab-btn-icon"><img src="footer-lists.png" alt="{{ _('Shopping Lists') }}"></span>
 			<span class="tab-btn-text">{{ _('Lists') }}</span>
 		</button>
-		<button class="mobile-tab-button tab-planner-active">
+		<button class="mobile-tab-button tab-planner-active" onclick="window.location.href='{{ url_for('mealplanner.mealPlannerCalendar') }}';">
 			<span class="tab-btn-icon"><img src="footer-planner.png" alt="{{ _('Meal Planner') }}"></span>
 			<span class="tab-btn-text">{{ _('Planner') }}</span>
 		</button>
 		{% else %}
-		<button class="mobile-tab-button tab-explore-active">
+		<button class="mobile-tab-button tab-explore-active" onclick="window.location.href='{{ url_for('explore.explore') }}';">
 			<span class="tab-btn-icon"><img src="footer-explore.png" alt="{{ _('Explore') }}"></span>
 			<span class="tab-btn-text">{{ _('Explore') }}</span>
 		</button>
-		<button class="mobile-tab-button">
+		<button class="mobile-tab-button" onclick="window.location.href='{{ url_for('account.login') }}';">
 			<span class="tab-btn-icon"><img src="footer-login.png" alt="{{ _('Login') }}"></span>
 			<span class="tab-btn-text">{{ _('Login') }}</span>
 		</button>
-		<button class="mobile-tab-button">
+		<button class="mobile-tab-button" onclick="window.location.href='{{ url_for('account.register') }}';">
 			<span class="tab-btn-icon"><img src="footer-register.png" alt="{{ _('Register') }}"></span>
 			<span class="tab-btn-text">{{ _('Register') }}</span>
 		</button>

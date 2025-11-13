@@ -8,19 +8,21 @@
 {% block content %}
 <main id="block1" onclick="closeDropdown()">
 	<div class="block1inner">
-		<h2>{{ _('My Account') }}</h2>
-		<div class="recipenavleft">
-			<div class="recipenavleft-inner">
-				<input type="button" class="recbtn" onclick="window.location.href='{{ url_for('account.user') }}';" value="{{ _('Preferences') }}" aria-label="{{ _('Navigate to Account Preferences') }}"
-				><input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('account.accountHistory') }}';" value="{{ _('History') }}" aria-label="{{ _('Navigate to Account History') }}">
-			</div>
-			<div class="scroll-arrow-recip scroll-right-recip">
-				<img id="scroll-right-recip" src="{{ url_for('static', filename='navbar-scroll-right.png', _external=True) }}" alt="Scroll Right">
-			</div>
-			<div class="scroll-arrow-recip scroll-left-recip">
-				<img id="scroll-left-recip" src="{{ url_for('static', filename='navbar-scroll-left.png', _external=True) }}" alt="Scroll Left">
+		<div id="recipenav"> 
+			<div class="recipenavleft">
+				<div class="recipenavleft-inner">
+					<input type="button" class="recbtn" onclick="window.location.href='{{ url_for('account.user') }}';" value="{{ _('Preferences') }}" aria-label="{{ _('Navigate to Account Preferences') }}"
+					><input type="button" class="recbtn recbtn-active" onclick="window.location.href='{{ url_for('account.accountHistory') }}';" value="{{ _('History') }}" aria-label="{{ _('Navigate to Account History') }}">
+				</div>
+				<div class="scroll-arrow-recip scroll-right-recip">
+					<img id="scroll-right-recip" src="{{ url_for('static', filename='navbar-scroll-right.png', _external=True) }}" alt="Scroll Right">
+				</div>
+				<div class="scroll-arrow-recip scroll-left-recip">
+					<img id="scroll-left-recip" src="{{ url_for('static', filename='navbar-scroll-left.png', _external=True) }}" alt="Scroll Left">
+				</div>
 			</div>
 		</div>
+		<h2>{{ _('My Account') }}</h2>
 		{% with messages = get_flashed_messages() %}
 		{% if messages %}
 		{% set first_message = true %}

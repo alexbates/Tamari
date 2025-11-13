@@ -152,7 +152,7 @@
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
-	padding-top: 64px;
+	padding-top: calc(64px + var(--height-recipenav));
 }
 .block1inner {
 	height: 100%;
@@ -161,14 +161,28 @@
 	overflow-x: hidden;
 	width: 1300px;
 }
-#block1 h2 {padding-top: 12px; padding-bottom: 0px;}
+#block1 h2 {padding-top: 0px; padding-bottom: 12px;}
 
+#recipenav {
+    background-color: var(--color-body-bg);
+    height: var(--height-recipenav);
+    display: flow-root;
+    text-align: right;
+    position: fixed;
+    z-index: 900;
+    top: 64px;
+    left: 0;
+    right: 0;
+    max-width: 1300px;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+}
 .recipenavleft {
+	float: left;
 	position: relative;
 	overflow: hidden;
 	text-align: left;
 	margin-top: var(--margin-recbtn);
-	margin-bottom: var(--margin-recbtn);
 	width: 100%;
 }
 .recipenavleft-inner {
@@ -475,11 +489,6 @@
 @media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
-	.recipenavleft {
-		margin-left: 10px;
-		margin-right: 10px;
-		width: calc(100% - 20px);
-	}
 	#historynotice {margin-left: 10px; margin-right: 10px;}
 	#flashed-err {margin-left: 10px; margin-right: 10px;}
 	#flashed-norm {margin-left: 10px; margin-right: 10px;}
@@ -535,9 +544,22 @@
 }
 @media screen and (max-width: 700px) {
 	#block1 {
-		padding-top: var(--height-mobile-navbar);
+		padding-top: calc(var(--height-mobile-navbar) + var(--height-recipenav));
 	}
+	#recipenav {top: var(--height-mobile-navbar);}
 	.block1inner h2 {display: none;}
-	#flashed-err {margin-top: 16px;}
-    #flashed-norm {margin-top: 16px;}
+	#flashed-err {margin-top: 0px;}
+    #flashed-norm {margin-top: 0px;}
+}
+@media only screen and (max-width: 435px) {
+	.year {
+		width: 45px;
+		margin-left: -20px;
+	}
+}
+@media only screen and (max-width: 300px) {
+	.year {
+		width: 45px;
+		margin-left: -14px;
+	}
 }

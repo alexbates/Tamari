@@ -681,5 +681,5 @@ footer {display: none;}
 	footer{display: block;}
 }
 @media screen and (max-width: 400px) { 
-	.mobile-title h1 {padding-top: 10px;}
+	.navlogo h1 {padding-top: 10px;}
 }

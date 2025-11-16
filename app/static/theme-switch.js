@@ -148,6 +148,12 @@ function themeElements() {
 	const barcodeCameraImg = document.getElementById("barcodecameraimg");
 	const printImg = document.getElementById("printimg");
 	const pdfImg = document.getElementById("pdfimg");
+	const footerRecipes = document.getElementById("footerRecipes");
+	const footerExplore = document.getElementById("footerExplore");
+	const footerLists = document.getElementById("footerLists");
+	const footerPlanner = document.getElementById("footerPlanner");
+	const footerLogin = document.getElementById("footerLogin");
+	const footerRegister = document.getElementById("footerRegister");
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
         // If light, switch icons
@@ -183,6 +189,12 @@ function themeElements() {
 		if (barcodeCameraImg !== null) {barcodeCameraImg.src = "/static/barcode-camera-light.png";}
 		if (printImg !== null) {printImg.src = "/static/print-light.png";}
 		if (pdfImg !== null) {pdfImg.src = "/static/download-light.png";}
+		if (footerRecipes !== null) {footerRecipes.src = "/static/footer-recipes-light.png";}
+		if (footerExplore !== null) {footerExplore.src = "/static/footer-explore-light.png";}
+		if (footerLists !== null) {footerLists.src = "/static/footer-lists-light.png";}
+		if (footerPlanner !== null) {footerPlanner.src = "/static/footer-planner-light.png";}
+		if (footerLogin !== null) {footerLogin.src = "/static/footer-login-light.png";}
+		if (footerRegister !== null) {footerRegister.src = "/static/footer-register-light.png";}
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
@@ -219,5 +231,11 @@ function themeElements() {
 		if (barcodeCameraImg !== null) {barcodeCameraImg.src = "/static/barcode-camera-dark.png";}
 		if (printImg !== null) {printImg.src = "/static/print-dark.png";}
 		if (pdfImg !== null) {pdfImg.src = "/static/download-dark.png";}
+		if (footerRecipes !== null) {footerRecipes.src = "/static/footer-recipes-dark.png";}
+		if (footerExplore !== null) {footerExplore.src = "/static/footer-explore-dark.png";}
+		if (footerLists !== null) {footerLists.src = "/static/footer-lists-dark.png";}
+		if (footerPlanner !== null) {footerPlanner.src = "/static/footer-planner-dark.png";}
+		if (footerLogin !== null) {footerLogin.src = "/static/footer-login-dark.png";}
+		if (footerRegister !== null) {footerRegister.src = "/static/footer-register-dark.png";}
     }
 }

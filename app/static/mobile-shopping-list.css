@@ -1,3 +1,4 @@
+.tab-lists-active {background: var(--color) !important;}
 .shoplist-active {
 	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
@@ -224,7 +225,6 @@
 }
 /* BLOCK 1 */ 
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
@@ -434,5 +434,6 @@
 @media screen and (max-width: 700px) { 
 	#block1 {
 		padding-top: var(--height-mobile-navbar);
+		padding-bottom: 76px;
 	}
 }

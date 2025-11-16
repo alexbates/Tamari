@@ -578,7 +578,7 @@ footer {display: none;}
     position: fixed;
     left: 16px;
     right: 16px;
-    bottom: 10px;
+    bottom: 16px;
     z-index: 20;
     background: var(--color-footer);
     backdrop-filter: blur(6px) saturate(140%) contrast(0.9) brightness(1.05);

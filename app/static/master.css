@@ -451,7 +451,11 @@ select {font-family: Inter-Regular;}
 	vertical-align: middle;
 	width: 64px;
 }
-.navright:hover {background: var(--color-navright-hover);}
+@media (hover: hover) and (pointer: fine) {
+	.navright:hover {
+		background: var(--color-navright-hover);
+	}
+}
 .navrightsignout {color: var(--color-flashed-err) !important;}
 .navrighticon {
 	border-radius: 50%;

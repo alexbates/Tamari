@@ -590,6 +590,7 @@ footer {display: none;}
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
     height: 54px;
+	box-shadow: 0 0 10px 0 var(--color-body-bg);
 }
 .mobile-tab-button {
     appearance: none;

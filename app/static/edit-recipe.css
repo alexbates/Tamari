@@ -1,3 +1,4 @@
+.tab-recipes-active {background: var(--color) !important;}
 .myrecipes-active {
 	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
@@ -106,10 +107,10 @@
 .btn-default:active, .btn-default.active {background: var(--color-darker);}
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
+	padding-top: 64px;
 }
 #block1 h2 {padding-top: 12px; padding-bottom: 12px;}
 #block1 hr {
@@ -292,4 +293,10 @@
 	.form-group4 div:nth-child(7) {margin-right: 2.5%;}
 	.form-group4 div:nth-child(3) {margin-top: 10px;}
 	.form-group4 div:nth-child(4) {margin-top: 10px;}
+}
+@media screen and (max-width: 700px) { 
+	#block1 {
+		padding-top: var(--height-mobile-navbar);
+		padding-bottom: 156px;
+	}
 }

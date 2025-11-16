@@ -294,6 +294,7 @@ pre code {
 @media screen and (max-width: 700px) { 
 	#block1 {
 		padding-top: var(--height-mobile-navbar);
+		padding-bottom: 76px;
 	}
 }
 @media screen and (max-width: 710px) { 

@@ -584,20 +584,20 @@ footer {display: none;}
     backdrop-filter: blur(6px) saturate(140%) contrast(0.9) brightness(1.05);
 	-webkit-backdrop-filter: blur(6px) saturate(140%) contrast(0.9) brightness(1.05);
     color: var(--color-navbar-font);
-    border-radius: 30px;
+    border-radius: 32px;
     padding: 5px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0;
-    height: 48px;
+    height: 54px;
 }
 .mobile-tab-button {
     appearance: none;
     border: 0;
     background: transparent;
     color: inherit;
-    border-radius: 24px;
-    height: 48px;
+    border-radius: 27px;
+    height: 54px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -623,8 +623,9 @@ footer {display: none;}
     background: var(--color);
 }
 .tab-btn-icon img {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
+	padding-bottom: 4px;
     display: block;
     object-fit: contain;
 }

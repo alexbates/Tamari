@@ -598,7 +598,7 @@ footer {display: none;}
     color: inherit;
     border-radius: 27px;
     height: 54px;
-    width: 100%;
+    width: calc(100% + 10px);
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -148,7 +148,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #1a1a1a;
 	--color-mobile-dropdown-hr: #ffffff;
 	--color-hamburger-line: #d6d6d6;
-	--color-footer: rgba(0,0,0,0.75);
+	--color-footer: rgba(15, 15, 15, 0.75);
 }
 [data-theme="light"] {
 	--icon-1-blue: url("/static/icon-1-blue-light.png");
@@ -188,7 +188,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #e5e5e5;
 	--color-mobile-dropdown-hr: #000000;
 	--color-hamburger-line: #222222;
-	--color-footer: rgba(255,255,255,0.75);
+	--color-footer: rgba(245, 245, 245, 0.75);
 }
 [data-theme="dark"] {
 	--icon-1-blue: url("/static/icon-1-blue-dark.png");
@@ -228,7 +228,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #1a1a1a;
 	--color-mobile-dropdown-hr: #ffffff;
 	--color-hamburger-line: #d6d6d6;
-	--color-footer: rgba(0,0,0,0.75);
+	--color-footer: rgba(15, 15, 15, 0.75);
 }
 /* ACCENT COLORS */
 :root {

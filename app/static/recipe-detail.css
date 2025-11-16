@@ -1,3 +1,4 @@
+.tab-recipes-active {background: var(--color) !important;}
 .myrecipes-active {
 	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
@@ -270,7 +271,6 @@
 .btn-submit:active, .btn-submit.active, .btn-submit:hover, .btn-submit:focus {outline: none;}
 /* BLOCK 1 */
 #block1 {
-	height: 100px;
 	width: 100%;
 	color: var(--color-block1);
 	font-size: var(--font-block1);
@@ -571,6 +571,7 @@ tr:nth-child(odd) {
 @media screen and (max-width: 700px) { 
 	#block1 {
 		padding-top: var(--height-mobile-navbar);
+		padding-bottom: 76px;
 	}
 	.t-col-4 {display: table-cell;}
 	.t-col-2 {display: none;}

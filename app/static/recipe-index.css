@@ -1,4 +1,5 @@
 /* Used by All Recipes, Favorites, and Recents pages */
+.tab-recipes-active {background: var(--color) !important;}
 .myrecipes-active {
 	background: linear-gradient(to bottom, var(--color-active-bg) calc(100% - 2px), var(--color-active-bottom) 5px) no-repeat left bottom;
 }
@@ -1225,6 +1226,7 @@
 @media screen and (max-width: 700px) { 
 	#block1 {
 		padding-top: calc(var(--height-mobile-navbar) + var(--w750-recipenav-mobile));
+		padding-bottom: 76px;
 	}
 	#recipenav {top: var(--height-mobile-navbar);}
 	.recipe1 {width: 50%;}

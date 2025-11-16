@@ -384,9 +384,14 @@ select {font-family: Inter-Regular;}
 .mobile-title h1 {
 	display: none; 
 	font-size: var(--font-mobile-title-h1); 
-	line-height: 26px; 
+	line-height: var(--height-mobile-navbar); 
 	padding-left: var(--padding-left-mobile-title-h1); 
-	padding-top: var(--padding-top-mobile-title-h1);
+	padding-top: 0px;
+	margin: 0;
+	max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .mt-tamari {display: block !important;}
 .navleft {
@@ -651,7 +656,7 @@ footer {display: none;}
 	.linkshort {display: inline;}
 }
 @media screen and (max-width: 700px) { 
-    #navbar {min-height: var(--height-mobile-navbar);}
+    #navbar {height: var(--height-mobile-navbar); min-height: auto;}
 	.navlogo {display: none; height: var(--height-mobile-navbar);}
 	.navlogo h1 {font-size: 26px; line-height: 26px; padding-left: 40px; padding-top: 9px;}
 	.mobile-title {display: inline-block;}
@@ -672,6 +677,5 @@ footer {display: none;}
 	footer{display: block;}
 }
 @media screen and (max-width: 400px) { 
-	.navlogo h1 {padding-top: 10px;}
 	.mobile-title h1 {padding-top: 10px;}
 }

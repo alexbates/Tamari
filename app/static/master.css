@@ -299,7 +299,7 @@ select {font-family: Inter-Regular;}
 	--font-dropdown-content: 16px;
 	--font-navbar: 18px;
 	--font-mobile-title-h1: 26px;
-	--padding-left-mobile-title-h1: 44px;
+	--padding-left-mobile-title-h1: 10px; /* Change to 44px when using hamburger */
 	--padding-top-mobile-title-h1: 9px;
 	--height-mobile-navbar: 44px;
 	--width-hamburger-line: 18px;
@@ -312,7 +312,7 @@ select {font-family: Inter-Regular;}
 	--font-dropdown-content: 16px;
 	--font-navbar: 18px;
 	--font-mobile-title-h1: 26px;
-	--padding-left-mobile-title-h1: 44px;
+	--padding-left-mobile-title-h1: 10px; /* Change to 44px when using hamburger */
 	--padding-top-mobile-title-h1: 9px;
 	--height-mobile-navbar: 44px;
 	--width-hamburger-line: 18px;
@@ -325,7 +325,7 @@ select {font-family: Inter-Regular;}
 	--font-dropdown-content: 18px;
 	--font-navbar: 20px;
 	--font-mobile-title-h1: 28px;
-	--padding-left-mobile-title-h1: 48px;
+	--padding-left-mobile-title-h1: 10px; /* Change to 48px when using hamburger */
 	--padding-top-mobile-title-h1: 10px;
 	--height-mobile-navbar: 48px;
 	--width-hamburger-line: 22px;
@@ -667,8 +667,8 @@ footer {display: none;}
 		margin-bottom: 4px;
 		width: calc(var(--height-mobile-navbar) - 12px);
 	}
-	.mobile-dropdown {display: block;}
-	.hamburger {display: block !important;}
+	.mobile-dropdown {display: none;} /* Disabled since Version 1.5 */
+	.hamburger {display: none !important;} /* Disabled since Version 1.5 */
 	footer{display: block;}
 }
 @media screen and (max-width: 400px) { 

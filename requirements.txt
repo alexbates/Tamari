@@ -19,5 +19,6 @@ pillow
 pyjwt==2.6.0
 python-dotenv
 requests
+standard-imghdr
 WeasyPrint==64.1
 werkzeug==2.3.0

@@ -154,8 +154,13 @@ function themeElements() {
 	const footerPlanner = document.getElementById("footerPlanner");
 	const footerLogin = document.getElementById("footerLogin");
 	const footerRegister = document.getElementById("footerRegister");
+	const themeMeta = document.querySelector('meta[name="theme-color"]');
     // Check if data-theme attribute is set to light
     if (document.documentElement.getAttribute("data-theme") === "light") {
+		if (themeMeta) {
+            themeMeta.setAttribute("content", "#efefef");
+            themeMeta.setAttribute("media", "(prefers-color-scheme: light)");
+        }
         // If light, switch icons
         if (settingsImg !== null) {settingsImg.src = "/static/settings-light.png";}
         if (addRecipeImg !== null) {addRecipeImg.src = "/static/add-recipe-button-light.png";}
@@ -198,6 +203,10 @@ function themeElements() {
     }
     // Check if data-theme attribute is set to dark
     if (document.documentElement.getAttribute("data-theme") === "dark") {
+		if (themeMeta) {
+            themeMeta.setAttribute("content", "#111111");
+            themeMeta.setAttribute("media", "(prefers-color-scheme: dark)");
+        }
         // If dark, switch icons
         if (settingsImg !== null) {settingsImg.src = "/static/settings-dark.png";}
         if (addRecipeImg !== null) {addRecipeImg.src = "/static/add-recipe-button-dark.png";}

@@ -8,9 +8,6 @@
 .mt-myrecipes {display: block !important;}
 /* THEMES */
 :root {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-form-control-bg: #1c1c1c;
 	--color-form-control-font: #d1d1d1;
@@ -23,9 +20,6 @@
 	--color-toggle-label-hover: #151515;
 }
 [data-theme="light"] {
-	--color-active-bg: #efefef;
-	--color-active-bg-hover: rgb(229, 229, 229);
-	--color-active-bottom: #000000;
 	--color-block1: #000000;
 	--color-form-control-bg: #e3e3e3;
 	--color-form-control-font: #2e2e2e;
@@ -38,9 +32,6 @@
 	--color-toggle-label-hover: #f3f3f3;
 }
 [data-theme="dark"] {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-form-control-bg: #1c1c1c;
 	--color-form-control-font: #d1d1d1;

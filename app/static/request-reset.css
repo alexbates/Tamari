@@ -2,7 +2,7 @@
 :root {
 	--color-small-star: #bbbbbb;
     --color-large-star: #dddddd;
-	--color-block1-bg: #252525;
+	--color-block1-bg: #282a2c;
 	--color-block1-font: #ffffff;
 	--background-b1logo: url("/static/logo-dark.png");
 	--color-block1bottom-bg: #111111;
@@ -14,7 +14,7 @@
 [data-theme="light"] {
 	--color-small-star: #444444;
     --color-large-star: #222222;
-	--color-block1-bg: #d4d4d4;
+	--color-block1-bg: #d5d0c8;
 	--color-block1-font: #000000;
 	--background-b1logo: url("/static/logo-light.png");
 	--color-block1bottom-bg: #efefef;
@@ -26,7 +26,7 @@
 [data-theme="dark"] {
 	--color-small-star: #bbbbbb;
     --color-large-star: #dddddd;
-	--color-block1-bg: #252525;
+	--color-block1-bg: #282a2c;
 	--color-block1-font: #ffffff;
 	--background-b1logo: url("/static/logo-dark.png");
 	--color-block1bottom-bg: #111111;

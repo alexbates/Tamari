@@ -8,9 +8,6 @@
 .mt-explore {display: block !important;}
 /* THEMES */
 :root {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-norecipes: #111111;
 	--color-search-input-bg: #1c1c1c;
@@ -25,9 +22,6 @@
 	--color-r2bottom-span: #aeaeae;
 }
 [data-theme="light"] {
-	--color-active-bg: #efefef;
-	--color-active-bg-hover: rgb(229, 229, 229);
-	--color-active-bottom: #000000;
 	--color-block1: #000000;
 	--color-norecipes: #cfcfcf;
 	--color-search-input-bg: #e3e3e3;
@@ -42,9 +36,6 @@
 	--color-r2bottom-span: #5c5c5c;
 }
 [data-theme="dark"] {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-norecipes: #111111;
 	--color-search-input-bg: #1c1c1c;

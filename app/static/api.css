@@ -1,9 +1,6 @@
 .mt-tam {display: block !important;}
 /* THEMES */
 :root {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-details :#000000;
 	--color-summary: #101010;
@@ -23,9 +20,6 @@
 	--color-pre: #171717;
 }
 [data-theme="light"] {
-	--color-active-bg: #efefef;
-	--color-active-bg-hover: rgb(229, 229, 229);
-	--color-active-bottom: #000000;
 	--color-block1: #000000;
 	--color-details: #ffffff;
 	--color-summary: #efefef;
@@ -45,9 +39,6 @@
 	--color-pre: #efefef;
 }
 [data-theme="dark"] {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-details :#000000;
 	--color-summary: #101010;

@@ -127,20 +127,21 @@ select {font-family: Inter-Regular;}
 	--icon-4-green: url("/static/icon-4-green.png");
 	--icon-4-purple: url("/static/icon-4-purple.png");
 	--icon-4-pink: url("/static/icon-4-pink.png");
-	--color-body-bg: #2b2b2b;
+	--color-body-bg: #282a2c;
 	--color-flashed-err: #ac3426;
 	--color-flashed-err-lighter: #b1382b;
 	--color-flashed-err-darker: #a83123;
 	--color-flashed-norm: #1c7e45;
-	--color-navbar-bg: #111111;
+	--color-navbar-bg: #282a2c;
+	--color-navbar-border-bottom: #434548;
 	--color-navbar-font: #ffffff;
 	--color-navbar-li-a-hover: #f1f1f1;
 	--background-navlogo: url("/static/logo-dark.png");
-	--color-navleft-li-hover: #1a1a1a;
-	--color-active-bg: #111111;
-	--color-active-bg-hover: #1a1a1a;
+	--color-navleft-li-hover: #313436;
+	--color-active-bg: #282a2c;
+	--color-active-bg-hover: #313436;
 	--color-active-bottom: #ffffff;
-	--color-navright-hover: #1a1a1a;
+	--color-navright-hover: #313436;
 	--color-dropdown-content-bg: #1a1a1a;
 	--color-dropdown-content-boxshadow: rgba(0,0,0,0.2);
 	--color-dropdown-content-a: #ffffff;
@@ -167,18 +168,19 @@ select {font-family: Inter-Regular;}
 	--icon-4-green: url("/static/icon-4-green-light.png");
 	--icon-4-purple: url("/static/icon-4-purple-light.png");
 	--icon-4-pink: url("/static/icon-4-pink-light.png");
-	--color-body-bg: #cfcfcf;
+	--color-body-bg: #d5d0c8;
 	--color-flashed-err: #df7c71;
 	--color-flashed-err-lighter: #e28075;
 	--color-flashed-err-darker: #dc786d;
 	--color-flashed-norm: #68c08e;
-	--color-navbar-bg: #efefef;
+	--color-navbar-bg: #d5d0c8;
+	--color-navbar-border-bottom: #aea9a3;
 	--color-navbar-font: #000000;
 	--color-navbar-li-a-hover: #0e0e0e;
 	--background-navlogo: url("/static/logo-light.png");
-	--color-navleft-li-hover: #e5e5e5;
-	--color-active-bg: #efefef;
-	--color-active-bg-hover: #e5e5e5;
+	--color-navleft-li-hover: #c9c3bc;
+	--color-active-bg: #d5d0c8;
+	--color-active-bg-hover: #c9c3bc;
 	--color-active-bottom: #000000;
 	--color-navright-hover: #e5e5e5;
 	--color-dropdown-content-bg: #e5e5e5;
@@ -207,20 +209,21 @@ select {font-family: Inter-Regular;}
 	--icon-4-green: url("/static/icon-4-green-dark.png");
 	--icon-4-purple: url("/static/icon-4-purple-dark.png");
 	--icon-4-pink: url("/static/icon-4-pink-dark.png");
-	--color-body-bg: #2b2b2b;
+	--color-body-bg: #282a2c;
 	--color-flashed-err: #ac3426;
 	--color-flashed-err-lighter: #b1382b;
 	--color-flashed-err-darker: #a83123;
 	--color-flashed-norm: #1c7e45;
-	--color-navbar-bg: #111111;
+	--color-navbar-bg: #282a2c;
+	--color-navbar-border-bottom: #434548;
 	--color-navbar-font: #ffffff;
 	--color-navbar-li-a-hover: #f1f1f1;
 	--background-navlogo: url("/static/logo-dark.png");
-	--color-navleft-li-hover: #1a1a1a;
-	--color-active-bg: #111111;
-	--color-active-bg-hover: #1a1a1a;
+	--color-navleft-li-hover: #313436;
+	--color-active-bg: #282a2c;
+	--color-active-bg-hover: #313436;
 	--color-active-bottom: #ffffff;
-	--color-navright-hover: #1a1a1a;
+	--color-navright-hover: #313436;
 	--color-dropdown-content-bg: #1a1a1a;
 	--color-dropdown-content-boxshadow: rgba(0,0,0,0.2);
 	--color-dropdown-content-a: #ffffff;
@@ -228,7 +231,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #1a1a1a;
 	--color-mobile-dropdown-hr: #ffffff;
 	--color-hamburger-line: #d6d6d6;
-	--color-footer: rgba(15, 15, 15, 0.75);
+	--color-footer:  rgba(15, 15, 15, 0.75);
 }
 /* ACCENT COLORS */
 :root {
@@ -354,6 +357,7 @@ select {font-family: Inter-Regular;}
 /* NAVBAR MENU */
 #navbar {
 	background-color: var(--color-navbar-bg);
+	border-bottom: 1px solid var(--color-navbar-border-bottom);
 	color: var(--color-navbar-font);
 	min-height: 64px;
 	width: 100%;
@@ -477,7 +481,7 @@ select {font-family: Inter-Regular;}
 	font-size: var(--font-dropdown-content);
 	width: 164px;
 	margin-left: -100px;
-    margin-top: 2px;
+    margin-top: 3px;
 	z-index: 1100;
 }
 .dropdown-content a {

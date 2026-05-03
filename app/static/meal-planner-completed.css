@@ -8,9 +8,6 @@
 .mt-mealplanner {display: block !important;}
 /* THEMES */
 :root {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-recbtn-bg: #111111;
 	--color-recbtn-font: #ffffff;
@@ -26,9 +23,6 @@
 	--color-btn-paginate: #ffffff;
 }
 [data-theme="light"] {
-	--color-active-bg: #efefef;
-	--color-active-bg-hover: rgb(229, 229, 229);
-	--color-active-bottom: #000000;
 	--color-block1: #000000;
 	--color-recbtn-bg: #efefef;
 	--color-recbtn-font: #000000;
@@ -44,9 +38,6 @@
 	--color-btn-paginate: #000000;
 }
 [data-theme="dark"] {
-	--color-active-bg: #111111;
-	--color-active-bg-hover: rgb(26, 26, 26);
-	--color-active-bottom: #ffffff;
 	--color-block1: #ffffff;
 	--color-recbtn-bg: #111111;
 	--color-recbtn-font: #ffffff;

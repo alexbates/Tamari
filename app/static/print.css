@@ -50,6 +50,10 @@
 .btn-default {background-color: var(--color);}
 .btn-default:hover {background: var(--color-lighter);}
 .btn-default:active, .btn-default.active {background: var(--color-darker);}
+/* NAVBAR */
+#navbar {
+	display: none;
+}
 /* BLOCK 1 */
 #block1 {
 	margin: 0;
@@ -60,7 +64,7 @@
 .block1inner {
 	min-height: 100%;
 	margin: 0 auto;
-	width: 1000px;
+	width: 1300px;
 }
 /* FLASHED MESSAGES */
 #flashed-err {
@@ -159,6 +163,6 @@
 }
 
 /* RESPONSIVE */
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1300px) {
 	.block1inner {width: 100%;}
 }

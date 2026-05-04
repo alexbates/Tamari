@@ -450,6 +450,7 @@ select {font-family: Inter-Regular;}
 .linkfull {display: inline;}
 .linkshort {display: none;}
 .navright {
+	cursor: pointer;
 	float: right;
 	height: 64px;
 	vertical-align: middle;

@@ -149,7 +149,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #1a1a1a;
 	--color-mobile-dropdown-hr: #ffffff;
 	--color-hamburger-line: #d6d6d6;
-	--color-footer: rgba(15, 15, 15, 0.75);
+	--color-footer: rgba(40, 42, 44, 0.75);
 }
 [data-theme="light"] {
 	--icon-1-blue: url("/static/icon-1-blue-light.png");
@@ -190,7 +190,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #e5e5e5;
 	--color-mobile-dropdown-hr: #000000;
 	--color-hamburger-line: #222222;
-	--color-footer: rgba(245, 245, 245, 0.75);
+	--color-footer: rgba(213, 208, 200, 0.75);
 }
 [data-theme="dark"] {
 	--icon-1-blue: url("/static/icon-1-blue-dark.png");
@@ -231,7 +231,7 @@ select {font-family: Inter-Regular;}
 	--color-mobilebg: #1a1a1a;
 	--color-mobile-dropdown-hr: #ffffff;
 	--color-hamburger-line: #d6d6d6;
-	--color-footer:  rgba(15, 15, 15, 0.75);
+	--color-footer: rgba(40, 42, 44, 0.75);
 }
 /* ACCENT COLORS */
 :root {
@@ -589,6 +589,7 @@ select {font-family: Inter-Regular;}
 /* MOBILE FOOTER */
 footer {display: none;}
 .mobile-tab-bar {
+	border: 1px solid var(--color-navbar-border-bottom);
     position: fixed;
     left: 16px;
     right: 16px;

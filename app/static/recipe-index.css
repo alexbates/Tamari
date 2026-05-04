@@ -626,6 +626,7 @@
 .settings-content {
 	background-color: var(--color-settings-content-bg);
 	border-radius: 8px;
+	border: 1px solid var(--color-navbar-border-bottom);
 	box-shadow: 0px 8px 16px 0px var(--color-settings-content-boxshadow);
 	display: none;
 	padding: 8px;
@@ -639,19 +640,25 @@
 }
 .settings-content:before,
 .settings-content:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-color: transparent;
-  border-top: 0;
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-color: transparent;
+	pointer-events: none;
 }
 .settings-content:before {
-  top: -10px;
-  left: 156px;
-  border-bottom-color: var(--color-set-cont-bef-border);
-  border-width: 10px;
+	top: -11px;
+	left: 155px;
+	border-width: 0 11px 11px 11px;
+	border-bottom-color: var(--color-navbar-border-bottom);
+}
+.settings-content:after {
+	top: -10px;
+	left: 156px;
+	border-width: 0 10px 10px 10px;
+	border-bottom-color: var(--color-settings-content-bg);
 }
 .settings-content h3 {
 	font-size: var(--font-settings-content-h3);
@@ -697,7 +704,7 @@
 .custom-select {margin-bottom: 0px; margin-top: 14px;}
 .cust-select select {
 	background: var(--color-cust-select-bg);
-    border: none;
+    border: 1px solid var(--color-navbar-border-bottom);
     box-shadow: none;
 	color: var(--color-cust-select-font);
 	height: 38px;
@@ -732,6 +739,7 @@
 	margin-top: 14px;
 	padding: 0px 10px 0px 10px; /* Top Right Bottom Left */
 	transition: background-color 0.08s linear, border 0.08s linear;
+	width: 100%;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }

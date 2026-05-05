@@ -17,7 +17,7 @@
 	--color-form-control-bg: #202020;
 	--color-form-control-font: #d1d1d1;
 	--color-btn-font: #ffffff;
-	--color-timeline: #5e5e5e;
+	--color-timeline: var(--color-navbar-border-bottom);
 	--color-eventinner-li: #ffffff;
 	--color-eventinner-li-bg: #111111;
 	--color-btn-paginate: #ffffff;
@@ -39,7 +39,7 @@
 	--color-form-control-bg: #dfdfdf;
 	--color-form-control-font: #3e3e3e;
 	--color-btn-font: #000000;
-	--color-timeline: #a1a1a1;
+	--color-timeline: var(--color-navbar-border-bottom);
 	--color-eventinner-li: #000000;
 	--color-eventinner-li-bg: #efefef;
 	--color-btn-paginate: #000000;
@@ -61,7 +61,7 @@
 	--color-form-control-bg: #202020;
 	--color-form-control-font: #d1d1d1;
 	--color-btn-font: #ffffff;
-	--color-timeline: #5e5e5e;
+	--color-timeline: var(--color-navbar-border-bottom);
 	--color-eventinner-li: #ffffff;
 	--color-eventinner-li-bg: #111111;
 	--color-btn-paginate: #ffffff;

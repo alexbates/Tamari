@@ -55,7 +55,8 @@
 	padding-top: 5px;
 }
 .pblock {
-	background-color: var(--color-version);
+	background-color: var(--color-dropdown-content-bg);
+	border: 1px solid var(--color-navbar-border-bottom);
 	border-radius: 10px;
 	margin-top: 14px;
 	padding: 10px;

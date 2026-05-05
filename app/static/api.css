@@ -108,7 +108,8 @@
 }
 
 .generalinfo {
-	background: var(--color-summary);
+	background-color: var(--color-dropdown-content-bg);
+	border: 1px solid var(--color-navbar-border-bottom);
 	border-radius: 8px;
 	display: block;
 	margin-top: 10px;

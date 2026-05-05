@@ -388,6 +388,16 @@
     width: calc(100% - 20px);
     margin: 0 auto;
 }
+#recipenav::after {
+	background: var(--color-body-bg);
+	content: "";
+	position: absolute;
+	top: 0;
+	right: -8px;
+	width: 8px;
+	height: 100%;
+	pointer-events: none;
+}
 .recipenavleft {
 	float: left;
 	position: relative;

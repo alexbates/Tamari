@@ -694,6 +694,7 @@ footer {display: none;}
 	}
 	.mobile-dropdown {display: none;} /* Disabled since Version 1.5 */
 	.hamburger {display: none !important;} /* Disabled since Version 1.5 */
+	.dropdown-content {margin-left: -116px;}
 	footer{display: block;}
 }
 @media screen and (max-width: 400px) { 

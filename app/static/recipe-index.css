@@ -792,23 +792,40 @@
 }
 /* Render Type 1 recipe background on a scalable layer */
 .recipe1::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: inherit;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  transform: scale(1);
-  transition: transform 150ms ease-in-out;
-  will-change: transform;
-  z-index: 0;
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  	background-image: inherit;
+  	background-position: center;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+  	transform: scale(1);
+  	transition: transform 150ms ease-in-out;
+  	will-change: transform;
+  	z-index: 0;
 }
 .recipe1 > * { position: relative; z-index: 1; }
 @media (hover: hover) and (pointer: fine) {
-  .recipe1:hover::before {
-    transform: scale(1.05);
-  }
+  	.recipe1:hover::before {
+    	transform: scale(1.05);
+  	}
+}
+@media (hover: none) and (pointer: coarse) {
+	.recipe1 {
+		background-repeat: no-repeat;
+		background-size: cover;
+		background-position: center;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.recipe1::before {
+		content: none;
+		background: none;
+		transform: none;
+		transition: none;
+		will-change: auto;
+	}
 }
 .r1bottom {
 	background: linear-gradient(to bottom, transparent 0%, var(--color-r1bottom) 100%);

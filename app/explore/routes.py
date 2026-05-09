@@ -663,42 +663,48 @@ def exploreRecipeDetail(rec_group, recnum):
         fiber = None
         preptime_1 = soup.find('span', string='prep time')
         if preptime_1:
-            preptime_2 = preptime_1.find_next_siblings('span')
-            preptime_3 = preptime_2[0].text
-            if "Hr" in preptime_3:
-                pt_h = preptime_3[0]
-                pt_h = int(pt_h)
-                if "Min" in preptime_3:
-                    pt_mins = re.search('Hr (.*)Min', preptime_3)
-                    pt_m = pt_mins.group(1)
-                    pt_m = int(pt_m)
+            try:
+                preptime_2 = preptime_1.find_next_siblings('span')
+                preptime_3 = preptime_2[0].text
+                if "Hr" in preptime_3:
+                    pt_h = preptime_3[0]
+                    pt_h = int(pt_h)
+                    if "Min" in preptime_3:
+                        pt_mins = re.search('Hr (.*)Min', preptime_3)
+                        pt_m = pt_mins.group(1)
+                        pt_m = int(pt_m)
+                    else:
+                        pt_m = 0
                 else:
-                    pt_m = 0
-            else:
-                pt_h = 0
-                pt_m = preptime_3.replace(" Min","")
-                pt_m = int(pt_m)
-            preptime = pt_m + (pt_h * 60)
+                    pt_h = 0
+                    pt_m = preptime_3.replace(" Min","")
+                    pt_m = int(pt_m)
+                preptime = pt_m + (pt_h * 60)
+            except:
+                preptime = ''
         else:
             preptime = ''
         cooktime_1 = soup.find('span', string='cook time')
         if cooktime_1:
-            cooktime_2 = cooktime_1.find_next_siblings('span')
-            cooktime_3 = cooktime_2[0].text
-            if "Hr" in cooktime_3:
-                ct_h = cooktime_3[0]
-                ct_h = int(ct_h)
-                if "Min" in cooktime_3:
-                    ct_mins = re.search('Hr (.*)Min', cooktime_3)
-                    ct_m = ct_mins.group(1)
-                    ct_m = int(ct_m)
+            try:
+                cooktime_2 = cooktime_1.find_next_siblings('span')
+                cooktime_3 = cooktime_2[0].text
+                if "Hr" in cooktime_3:
+                    ct_h = cooktime_3[0]
+                    ct_h = int(ct_h)
+                    if "Min" in cooktime_3:
+                        ct_mins = re.search('Hr (.*)Min', cooktime_3)
+                        ct_m = ct_mins.group(1)
+                        ct_m = int(ct_m)
+                    else:
+                        ct_m = 0
                 else:
-                    ct_m = 0
-            else:
-                ct_h = 0
-                ct_m = cooktime_3.replace(" Min","")
-                ct_m = int(ct_m)
-            cooktime = ct_m + (ct_h * 60)
+                    ct_h = 0
+                    ct_m = cooktime_3.replace(" Min","")
+                    ct_m = int(ct_m)
+                cooktime = ct_m + (ct_h * 60)
+            except:
+                cooktime = ''
         else:
             cooktime = ''
         if preptime and cooktime:

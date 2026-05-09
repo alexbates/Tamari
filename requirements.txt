@@ -18,6 +18,7 @@ gunicorn
 pillow
 pyjwt==2.6.0
 python-dotenv
+recipe-scrapers==15.11.0
 requests
 standard-imghdr
 WeasyPrint==64.1

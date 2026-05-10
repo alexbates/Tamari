@@ -19,27 +19,23 @@ from config import Config
 @bp.route('/explore', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def explore():
-    files = ['/static/explore-all-randomized.txt']
-    recipes = []
-    for file in files:
-        readfile_all = open(app.root_path + file, "r")
-        filelines_all = readfile_all.readlines()
-        recipes_all = []
-        count_all = 1
-        for line in filelines_all:
-            x_all = line.split(";")
+    recipes_all = []
+    count_all = 1
+    with open(app.root_path + '/static/explore-all-randomized.txt', 'r', encoding='utf-8') as readfile_all:
+        for line in readfile_all:
+            x_all = line.split(';', 2)
             if len(x_all) == 2:
-                x_all.append(" ")
+                x_all.append(' ')
+            if len(x_all) < 2:
+                continue
             url_all = urlparse(x_all[0]).netloc
-            new_url_all = url_all.replace("www.","")
+            new_url_all = url_all.replace('www.', '')
             newline_all = [x_all[1], new_url_all, x_all[0], count_all, x_all[2]]
             recipes_all.append(newline_all)
             count_all += 1
             if count_all > 15:
                 break
-        readfile_all.close()
-        recipes.append(recipes_all)
-    rec_all = recipes[0]
+    rec_all = recipes_all
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',
         'default08.png', 'default09.png', 'default10.png', 'default11.png', 'default12.png', 'default13.png', 'default14.png',
         'default15.png', 'default16.png', 'default17.png', 'default18.png', 'default19.png', 'default20.png', 'default21.png',

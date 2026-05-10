@@ -483,64 +483,60 @@ def get_wprm_instructions(soup):
 @bp.route('/explore/recipe/<rec_group>/<recnum>', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def exploreRecipeDetail(rec_group, recnum):
-    if rec_group == "all":
-        readfile = open(app.root_path + '/static/explore-all-randomized.txt', "r")
-    elif rec_group == "30-minute":
-        readfile = open(app.root_path + '/static/explore-30minute-randomized.txt', "r")
-    elif rec_group == "air-fryer":
-        readfile = open(app.root_path + '/static/explore-airfryer-randomized.txt', "r")
-    elif rec_group == "beef":
-        readfile = open(app.root_path + '/static/explore-beef-randomized.txt', "r")
-    elif rec_group == "breakfast":
-        readfile = open(app.root_path + '/static/explore-breakfast-randomized.txt', "r")
-    elif rec_group == "chicken":
-        readfile = open(app.root_path + '/static/explore-chicken-randomized.txt', "r")
-    elif rec_group == "dessert":
-        readfile = open(app.root_path + '/static/explore-dessert-randomized.txt', "r")
-    elif rec_group == "dinner":
-        readfile = open(app.root_path + '/static/explore-dinner-randomized.txt', "r")
-    elif rec_group == "drinks":
-        readfile = open(app.root_path + '/static/explore-drinks-randomized.txt', "r")
-    elif rec_group == "low-carb":
-        readfile = open(app.root_path + '/static/explore-lowcarb-randomized.txt', "r")
-    elif rec_group == "lunch":
-        readfile = open(app.root_path + '/static/explore-lunch-randomized.txt', "r")
-    elif rec_group == "salads":
-        readfile = open(app.root_path + '/static/explore-salads-randomized.txt', "r")
-    elif rec_group == "seafood":
-        readfile = open(app.root_path + '/static/explore-seafood-randomized.txt', "r")
-    elif rec_group == "slow-cooker":
-        readfile = open(app.root_path + '/static/explore-slowcooker-randomized.txt', "r")
-    elif rec_group == "snacks":
-        readfile = open(app.root_path + '/static/explore-snacks-randomized.txt', "r")
-    elif rec_group == "soup":
-        readfile = open(app.root_path + '/static/explore-soup-randomized.txt', "r")
-    elif rec_group == "vegetarian":
-        readfile = open(app.root_path + '/static/explore-vegetarian-randomized.txt', "r")
-    else:
-        readfile = open(app.root_path + '/static/explore-blank.txt', "r")
-    filelines = readfile.readlines()
-    lines = []
-    if len(filelines) > 2:
-        for line in filelines:
-            x = line.split(";")
-            newline = [x[0], x[1]]
-            lines.append(newline)
-    readfile.close()
     try:
         rec_num = int(recnum)
     except:
-        rec_url = ''
-        rec_title = ''
+        rec_num = 0
+    if rec_group == "all":
+        file_path = app.root_path + '/static/explore-all-randomized.txt'
+    elif rec_group == "30-minute":
+        file_path = app.root_path + '/static/explore-30minute-randomized.txt'
+    elif rec_group == "air-fryer":
+        file_path = app.root_path + '/static/explore-airfryer-randomized.txt'
+    elif rec_group == "beef":
+        file_path = app.root_path + '/static/explore-beef-randomized.txt'
+    elif rec_group == "breakfast":
+        file_path = app.root_path + '/static/explore-breakfast-randomized.txt'
+    elif rec_group == "chicken":
+        file_path = app.root_path + '/static/explore-chicken-randomized.txt'
+    elif rec_group == "dessert":
+        file_path = app.root_path + '/static/explore-dessert-randomized.txt'
+    elif rec_group == "dinner":
+        file_path = app.root_path + '/static/explore-dinner-randomized.txt'
+    elif rec_group == "drinks":
+        file_path = app.root_path + '/static/explore-drinks-randomized.txt'
+    elif rec_group == "low-carb":
+        file_path = app.root_path + '/static/explore-lowcarb-randomized.txt'
+    elif rec_group == "lunch":
+        file_path = app.root_path + '/static/explore-lunch-randomized.txt'
+    elif rec_group == "salads":
+        file_path = app.root_path + '/static/explore-salads-randomized.txt'
+    elif rec_group == "seafood":
+        file_path = app.root_path + '/static/explore-seafood-randomized.txt'
+    elif rec_group == "slow-cooker":
+        file_path = app.root_path + '/static/explore-slowcooker-randomized.txt'
+    elif rec_group == "snacks":
+        file_path = app.root_path + '/static/explore-snacks-randomized.txt'
+    elif rec_group == "soup":
+        file_path = app.root_path + '/static/explore-soup-randomized.txt'
+    elif rec_group == "vegetarian":
+        file_path = app.root_path + '/static/explore-vegetarian-randomized.txt'
     else:
-        try:
-            rec_line = lines[rec_num - 1]
-        except:
-            rec_url = ''
-            rec_title = ''
-        else:
-            rec_url = rec_line[0]
-            rec_title = rec_line[1].rstrip()
+        file_path = app.root_path + '/static/explore-blank.txt'
+    rec_url = ''
+    rec_title = ''
+    if rec_num > 0:
+        target_line = None
+        with open(file_path, 'r', encoding='utf-8') as readfile:
+            for current_num, line in enumerate(readfile, start=1):
+                if current_num == rec_num:
+                    target_line = line
+                    break
+        if target_line:
+            rec_line = target_line.split(';', 2)
+            if len(rec_line) >= 2:
+                rec_url = rec_line[0]
+                rec_title = rec_line[1].rstrip()
     # List of wprm sites that can be parsed using get_wprm functions, checked with elif statement below
     wprm_sites = ["wellplated.com", "fedandfit.com", "damndelicious.net", "recipetineats.com", "skinnytaste.com",
         "therecipecritic.com", "spendwithpennies.com", "bellyfull.net", "iheartnaptime.net", "daringgourmet.com",

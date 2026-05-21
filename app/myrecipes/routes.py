@@ -707,6 +707,7 @@ def recipeDetail(hexid):
         recipe_title = 'Error'
         owner = 0
         ingredients = ''
+        ing_sections = []
         instructions = ''
         nutrition = None
         creationtime = None
@@ -720,13 +721,24 @@ def recipeDetail(hexid):
         ingredientsdirty = ingred.split('\n')
         # Remove all kinds of line breaks from ingredients
         ingredients = []
+        ing_sections = []
+        ing_current_section = []
         for item in ingredientsdirty:
             item = item.replace('\n','')
             item = item.replace('\r','')
             item = item.replace('\f','')
             item = item.replace('\u2028','')
             item = item.replace('\u2029','')
-            ingredients.append(item)
+            if not item:
+                continue
+            if item.startswith('#'):
+                ing_section_title = item[1:].strip()
+                if ing_current_section['items'] or ing_current_section['title']:
+                    ing_sections.append(ing_current_section)
+            else:
+                ing_current_section['items'].append(item)
+        if ing_current_section['items'] or ing_current_section['title']:
+            ing_sections.append(ing_current_section)
         instruc = recipe.instructions
         instructionsdirty = instruc.split('\n')
         # Remove all kinds of line breaks from instructions
@@ -846,8 +858,8 @@ def recipeDetail(hexid):
                 flash('Error: ' + _('this recipe is already scheduled for the selected date.'))
     return render_template('recipe-detail.html', title=recipe_title,
         mdescription=_('View details for the selected recipe saved in My Recipes.'), recipe=recipe, choices=choices,
-        owner=owner, ingredients=ingredients, instructions=instructions, form=form, form2=form2, month=month, 
-        nutrition=nutrition, creationtime=creationtime, editedtime=editedtime, meal_count=meal_count, 
+        owner=owner, ingredients=ingredients, ing_sections=ing_sections, instructions=instructions, form=form, form2=form2, 
+        month=month, nutrition=nutrition, creationtime=creationtime, editedtime=editedtime, meal_count=meal_count, 
         last_prepared=last_prepared, scheduled=scheduled, hexid=hexid) 
 
 @bp.route('/my-recipes/categories', methods=['GET', 'POST'])

@@ -227,11 +227,11 @@
 		<div id="ingredients">
 			<h3>{{ _('Ingredients') }}</h3>
 			{% for section in ing_sections %}
-			{% if section.title %}
-			<h4>{{ section.title }}</h4>
+			{% if section['title'] %}
+			<h4>{{ section['title'] }}</h4>
 			{% endif %}
 			<div class="inginner">
-				{% for item in section.items %}
+				{% for item in section['items'] %}
 				{% if item | length > 0 %}
 				<div><p class="ing">{{ item }}</p></div>
 				{% endif %}

@@ -487,6 +487,9 @@ tr:nth-child(odd) {
 	margin-bottom: 16px;
 	margin-top: 34px;
 }
+#ingredients h4 {
+	margin-bottom: 12px;
+}
 .inginner {margin-bottom: 10px;}
 .inginner div {
 	background: var(--color-inginner-bg);

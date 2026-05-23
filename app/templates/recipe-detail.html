@@ -229,6 +229,7 @@
 			{% for section in ing_sections %}
 			{% if section.title %}
 			<h4>{{ section.title }}</h4>
+			{% endif %}
 			<div class="inginner">
 				{% for item in section.items %}
 				{% if item | length > 0 %}
@@ -236,6 +237,7 @@
 				{% endif %}
 				{% endfor %}
 			</div>
+			{% endfor %}
 			{% if current_user.is_authenticated and current_user.id == owner %}
 			<div>
 				<button class="btn-addtolist" onclick="document.getElementById('addtolist').style.display='block'">{{ _('Add Items to Shopping List') }}</button>

@@ -722,7 +722,7 @@ def recipeDetail(hexid):
         # Remove all kinds of line breaks from ingredients
         ingredients = []
         ing_sections = []
-        ing_current_section = []
+        ing_current_section = {'title': None, 'items': []}
         for item in ingredientsdirty:
             item = item.replace('\n','')
             item = item.replace('\r','')
@@ -735,7 +735,9 @@ def recipeDetail(hexid):
                 ing_section_title = item[1:].strip()
                 if ing_current_section['items'] or ing_current_section['title']:
                     ing_sections.append(ing_current_section)
+                ing_current_section = {'title': ing_section_title, 'items': []}
             else:
+                ingredients.append(item)
                 ing_current_section['items'].append(item)
         if ing_current_section['items'] or ing_current_section['title']:
             ing_sections.append(ing_current_section)

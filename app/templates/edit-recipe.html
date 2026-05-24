@@ -198,7 +198,8 @@
 			</div>
 			<div class="form-group">
 				<label class="control-label" for="notes">{{ _('Notes') }}</label><br>
-				{{ form.notes(class="form-control fc3") }}
+				<textarea class="form-control fc3" id="notes" maxlength="6600" minlength="0" name="notes" required>
+{{ recipe.notes }}</textarea>
 				{% for error in form.notes.errors %}
 				<span class="errorrequired">{{ error }}</span>
 				{% endfor %}  

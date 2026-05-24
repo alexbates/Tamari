@@ -598,6 +598,9 @@ tr:nth-child(odd) {
 		padding-left: 10px; 
 		width: calc(100% - 20px);
 	}
+	#notes {
+		padding-top: 8px;
+	}
 }
 @media screen and (max-width: 500px) { 
 	.t-col-4 {display: none;}

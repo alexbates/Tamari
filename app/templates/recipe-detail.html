@@ -258,8 +258,10 @@
 			{% endfor %}
 		</div>
 		{% if recipe.notes %}
-		<h3>{{ _('Notes') }}</h3>
-		<p>{{ recipe.notes }}</p>
+		<div id="notes">
+			<h3>{{ _('Notes') }}</h3>
+			<p>{{ recipe.notes }}</p>
+		</div>
 		{% endif %}
 		{% else %}
 		<h3 class="recipe-error">{{ _('Error') }}</h3>

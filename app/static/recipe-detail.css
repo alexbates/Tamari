@@ -518,8 +518,6 @@ tr:nth-child(odd) {
 	cursor: pointer;
 	font-size: var(--font-btn-addtolist);
 	height: var(--height-btn-addtolist);
-	margin-bottom: 8px;
-	margin-left: 10px;
 	margin-top: 8px;
 	padding-left: 8px;
 	padding-right: 8px;

@@ -551,6 +551,8 @@ tr:nth-child(odd) {
 #notes {
 	width: 100%;
 	clear: both;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 
 /* RESPONSIVE */

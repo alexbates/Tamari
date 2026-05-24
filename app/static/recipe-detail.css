@@ -535,6 +535,9 @@ tr:nth-child(odd) {
 	margin-bottom: 16px;
 	margin-top: 34px;
 }
+#instructions h4 {
+	margin-bottom: 12px;
+}
 .steps {
 	background: var(--color-steps);
 	border-radius: 10px;

@@ -65,6 +65,7 @@ class Recipe(db.Model):
     total_time = db.Column(db.Integer)
     ingredients = db.Column(db.String(2200))
     instructions = db.Column(db.String(6600))
+    notes = db.Column(db.String(6600))
     time_created = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     time_edited = db.Column(db.DateTime)
     last_time_viewed = db.Column(db.DateTime, index=True, default=datetime.utcnow)

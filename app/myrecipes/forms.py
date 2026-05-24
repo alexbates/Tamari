@@ -53,6 +53,7 @@ class AddRecipeForm(FlaskForm):
     n_fiber = IntegerField(validators=[Optional()])
     ingredients = TextAreaField(validators=[DataRequired(),Length(1,2200),disallowed_chars])
     instructions = TextAreaField(validators=[DataRequired(),Length(1,6600),disallowed_chars])
+    notes = TextAreaField(validators=[Length(0,6600),disallowed_chars])
     submit = SubmitField(_l('Submit'))
     
 class AutofillRecipeForm(FlaskForm):
@@ -78,6 +79,7 @@ class EditRecipeForm(FlaskForm):
     n_fiber = IntegerField(validators=[Optional()])
     ingredients = TextAreaField(validators=[DataRequired(),Length(1,2200),disallowed_chars])
     instructions = TextAreaField(validators=[DataRequired(),Length(1,6600),disallowed_chars])
+    notes = TextAreaField(validators=[Length(0,6600),disallowed_chars])
     submit = SubmitField(_l('Save'))
 
 class AddToListForm(FlaskForm):

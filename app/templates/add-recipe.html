@@ -193,6 +193,13 @@
 					{% endfor %}  
 				</div>
 			</div>
+			<div class="form-group">
+				<label class="control-label" for="notes">{{ _('Notes') }}</label><br>
+				{{ form.notes(class="form-control fc3") }}
+				{% for error in form.notes.errors %}
+				<span class="errorrequired">{{ error }}</span>
+				{% endfor %}  
+			</div>
 			<div class="submitdiv">
 				{{ form.submit(class="btn btn-default manual-btn") }}
 			</div>

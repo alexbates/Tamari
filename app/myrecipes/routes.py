@@ -2012,11 +2012,11 @@ def addRecipe():
             img.save(app.config['UPLOAD_FOLDER'] + '/' + new_file)
             recipe = Recipe(hex_id=hex_string, title=form.recipe_name.data, category=form.category.data, photo=new_file,
                 description=form.description.data, url=form.url.data, servings=form.servings.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
-                total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, favorite=0, public=0, user_id=current_user.id)
+                total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, notes=form.notes.data, favorite=0, public=0, user_id=current_user.id)
         else:
             recipe = Recipe(hex_id=hex_string, title=form.recipe_name.data, category=form.category.data, photo=rand_default,
                 description=form.description.data, url=form.url.data, servings=form.servings.data, prep_time=form.prep_time.data, cook_time=form.cook_time.data,
-                total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, favorite=0, public=0, user_id=current_user.id)
+                total_time=form.total_time.data, ingredients=form.ingredients.data, instructions=form.instructions.data, notes=form.notes.data, favorite=0, public=0, user_id=current_user.id)
         # Add recipe to database
         db.session.add(recipe)
         db.session.commit()
@@ -2072,6 +2072,7 @@ def editRecipe(hexid):
         recipe.total_time = form.total_time.data
         recipe.ingredients = form.ingredients.data
         recipe.instructions = form.instructions.data
+        recipe.notes = form.notes.data
         recipe.time_edited = datetime.utcnow()
         image = request.files['image']
         if request.files and image.filename != '':

@@ -1881,11 +1881,11 @@ msgstr "Barcode-Scanner"
 msgid "Air Fryer Squash"
 msgstr "Luftfrittierte Zucchini"
 
-msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
-msgstr "(3) gelbe Zucchini\n\n2 EL Olivenöl\n\n3/4 TL Oregano"
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n# Optional Seasoning\n\n3/4 Tsp Oregano\n\n1/2 Tsp garlic powder"
+msgstr "(3) gelbe Zucchini\n\n2 EL Olivenöl\n\n# Optionale Würzung\n\n3/4 TL Oregano\n\n1/2 TL Knoblauchpulver"
 
-msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
-msgstr "Zucchini im Spülbecken waschen.\n\nIn dünne Scheiben schneiden.\n\nIn einer Schüssel mit Olivenöl vermengen."
+msgid "# Prepare\n\nWash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix all ingredients in bowl.\n\n# Cook\n\nCook at 375F for 25 minutes."
+msgstr "# Zubereiten\n\nZucchini im Waschbecken waschen.\n\nZucchini in dünne Scheiben schneiden.\n\nAlle Zutaten in einer Schüssel vermischen.\n\n# Garen\n\nBei 375 °F 25 Minuten garen."
 
 msgid "Please log in to access this page"
 msgstr "Bitte anmelden, um diese Seite zu sehen"

@@ -1882,11 +1882,11 @@ msgstr "Escáner de código"
 msgid "Air Fryer Squash"
 msgstr "Calabacín en freidora de aire"
 
-msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
-msgstr "(3) calabacines amarillos\n\n2 cucharadas de aceite de oliva\n\n3/4 cucharadita de orégano"
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n# Optional Seasoning\n\n3/4 Tsp Oregano\n\n1/2 Tsp garlic powder"
+msgstr "(3) calabazas amarillas\n\n2 cucharadas de aceite de oliva\n\n# Condimento opcional\n\n3/4 cucharadita de orégano\n\n1/2 cucharadita de ajo en polvo"
 
-msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
-msgstr "Lava el calabacín en el fregadero.\n\nCórtalo en rodajas finas.\n\nMézclalo en un tazón con aceite de oliva."
+msgid "# Prepare\n\nWash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix all ingredients in bowl.\n\n# Cook\n\nCook at 375F for 25 minutes."
+msgstr "# Preparar\n\nLave la calabaza en el fregadero.\n\nCorte la calabaza en rodajas finas.\n\nMezcle todos los ingredientes en un tazón.\n\n# Cocinar\n\nCocine a 375 °F durante 25 minutos."
 
 msgid "Please log in to access this page"
 msgstr "Inicia sesión para ver esta página"

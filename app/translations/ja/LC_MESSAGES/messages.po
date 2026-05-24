@@ -1881,11 +1881,11 @@ msgstr "バーコードスキャナー"
 msgid "Air Fryer Squash"
 msgstr "エアフライヤーカボチャ"
 
-msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
-msgstr "(3) イエロースカッシュ\n\nオリーブオイル 大さじ2\n\nオレガノ 小さじ3/4"
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n# Optional Seasoning\n\n3/4 Tsp Oregano\n\n1/2 Tsp garlic powder"
+msgstr "黄ズッキーニ 3本\n\nオリーブオイル 大さじ2\n\n# お好みの調味料\n\nオレガノ 小さじ3/4\n\nガーリックパウダー 小さじ1/2"
 
-msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
-msgstr "カボチャをシンクで洗って準備する。\n\nカボチャを薄く輪切りにする。\n\nボウルにオリーブオイルを入れて混ぜる。"
+msgid "# Prepare\n\nWash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix all ingredients in bowl.\n\n# Cook\n\nCook at 375F for 25 minutes."
+msgstr "# 下準備\n\nズッキーニをシンクで洗います。\n\nズッキーニを薄い輪切りにします。\n\nすべての材料をボウルで混ぜます。\n\n# 調理\n\n375°Fで25分加熱します。"
 
 msgid "Please log in to access this page"
 msgstr "このページにアクセスするにはログインしてください"

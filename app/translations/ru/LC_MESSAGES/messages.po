@@ -1881,11 +1881,11 @@ msgstr "Сканер штрихкодов"
 msgid "Air Fryer Squash"
 msgstr "Кабачки в аэрофритюрнице"
 
-msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
-msgstr "(3) жёлтых кабачка\n\n2 ст. л. оливкового масла\n\n3/4 ч. л. орегано"
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n# Optional Seasoning\n\n3/4 Tsp Oregano\n\n1/2 Tsp garlic powder"
+msgstr "(3) жёлтых кабачка\n\n2 ст. л. оливкового масла\n\n# Дополнительная приправа\n\n3/4 ч. л. орегано\n\n1/2 ч. л. чесночного порошка"
 
-msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
-msgstr "Промойте кабачки в раковине.\n\nНарежьте тонкими кружками.\n\nСмешайте в миске с оливковым маслом."
+msgid "# Prepare\n\nWash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix all ingredients in bowl.\n\n# Cook\n\nCook at 375F for 25 minutes."
+msgstr "# Подготовка\n\nВымойте кабачки в раковине.\n\nНарежьте кабачки тонкими кружочками.\n\nСмешайте все ингредиенты в миске.\n\n# Приготовление\n\nГотовьте при 375 °F в течение 25 минут."
 
 msgid "Please log in to access this page"
 msgstr "Войдите, чтобы просмотреть страницу"

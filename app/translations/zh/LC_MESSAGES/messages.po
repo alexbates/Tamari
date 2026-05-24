@@ -1881,11 +1881,11 @@ msgstr "条码扫描器"
 msgid "Air Fryer Squash"
 msgstr "空气炸锅南瓜"
 
-msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
-msgstr "（3个）黄南瓜\n\n2汤匙橄榄油\n\n3/4茶匙牛至"
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n# Optional Seasoning\n\n3/4 Tsp Oregano\n\n1/2 Tsp garlic powder"
+msgstr "(3) 个黄南瓜\n\n2 汤匙橄榄油\n\n# 可选调味料\n\n3/4 茶匙牛至\n\n1/2 茶匙蒜粉"
 
-msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
-msgstr "在水槽中清洗南瓜。\n\n切成薄片。\n\n在碗中与橄榄油混合。"
+msgid "# Prepare\n\nWash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix all ingredients in bowl.\n\n# Cook\n\nCook at 375F for 25 minutes."
+msgstr "# 准备\n\n在水槽中清洗黄南瓜，以备使用。\n\n将黄南瓜切成薄圆片。\n\n将所有食材放入碗中混合均匀。\n\n# 烹饪\n\n以 375°F 的温度烘烤 25 分钟。"
 
 msgid "Please log in to access this page"
 msgstr "请登录以查看此页面"

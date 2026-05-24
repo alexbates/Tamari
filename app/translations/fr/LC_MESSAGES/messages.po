@@ -1881,11 +1881,11 @@ msgstr "Lecteur de code-barres"
 msgid "Air Fryer Squash"
 msgstr "Courgettes à la friteuse à air"
 
-msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n3/4 Tsp Oregano"
-msgstr "(3) courgettes jaunes\n\n2 c. à soupe d’huile d’olive\n\n3/4 c. à café d’origan"
+msgid "(3) yellow squash\n\n2 Tbsp olive oil\n\n# Optional Seasoning\n\n3/4 Tsp Oregano\n\n1/2 Tsp garlic powder"
+msgstr "(3) courgettes jaunes\n\n2 c. à soupe d’huile d’olive\n\n# Assaisonnement facultatif\n\n3/4 c. à café d’origan\n\n1/2 c. à café d’ail en poudre"
 
-msgid "Wash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix in bowl with olive oil."
-msgstr "Laver les courgettes dans l’évier.\n\nLes couper en rondelles fines.\n\nMélanger dans un bol avec l’huile d’olive."
+msgid "# Prepare\n\nWash squash in sink to prepare.\n\nCut squash into thin circles.\n\nMix all ingredients in bowl.\n\n# Cook\n\nCook at 375F for 25 minutes."
+msgstr "# Préparer\n\nLavez les courgettes dans l’évier.\n\nCoupez les courgettes en fines rondelles.\n\nMélangez tous les ingrédients dans un bol.\n\n# Cuire\n\nFaites cuire à 375 °F pendant 25 minutes."
 
 msgid "Please log in to access this page"
 msgstr "Connectez-vous pour voir cette page"

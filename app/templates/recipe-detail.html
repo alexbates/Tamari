@@ -246,8 +246,15 @@
 		</div>
 		<div id="instructions">
 			<h3>{{ _('Instructions') }}</h3>
-			{% for item in instructions if item %}
+			{% for section in ins_sections %}
+			{% if section['title'] %}
+			<h4>{{ section['title'] }}</h4>
+			{% endif %}
+			{% for item in section['items'] %}
+			{% if item | length > 0 %}
 			<div class="steps"><b>{{ _('Step') }} {{ loop.index }}</b><p>{{ item }}</p></div>
+			{% endif %}
+			{% endfor %}
 			{% endfor %}
 		</div>
 		{% else %}

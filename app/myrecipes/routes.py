@@ -709,6 +709,7 @@ def recipeDetail(hexid):
         ingredients = ''
         ing_sections = []
         instructions = ''
+        ins_sections = []
         nutrition = None
         creationtime = None
         meal_count = None
@@ -719,11 +720,11 @@ def recipeDetail(hexid):
         owner = recipe.user_id
         ingred = recipe.ingredients
         ingredientsdirty = ingred.split('\n')
-        # Remove all kinds of line breaks from ingredients
         ingredients = []
         ing_sections = []
         ing_current_section = {'title': None, 'items': []}
         for item in ingredientsdirty:
+            # Remove all kinds of line breaks from ingredients
             item = item.replace('\n','')
             item = item.replace('\r','')
             item = item.replace('\f','')
@@ -743,15 +744,28 @@ def recipeDetail(hexid):
             ing_sections.append(ing_current_section)
         instruc = recipe.instructions
         instructionsdirty = instruc.split('\n')
-        # Remove all kinds of line breaks from instructions
         instructions = []
+        ins_sections = []
+        ins_current_section = {'title': None, 'items': []}
         for item in instructionsdirty:
+            # Remove all kinds of line breaks from instructions
             item = item.replace('\n','')
             item = item.replace('\r','')
             item = item.replace('\f','')
             item = item.replace('\u2028','')
             item = item.replace('\u2029','')
-            instructions.append(item)
+            if not item:
+                continue
+            if item.startswith('#'):
+                ins_section_title = item[1:].strip()
+                if ins_current_section['items'] or ins_current_section['title']:
+                    ins_sections.append(ins_current_section)
+                ins_current_section = {'title': ins_section_title, 'items': []}
+            else:
+                instructions.append(item)
+                ins_current_section['items'].append(item)
+        if ins_current_section['items'] or ins_current_section['title']:
+            ins_sections.append(ins_current_section)
         nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
         # creationtime is the date of recipe creation, used for Information modal
         try:

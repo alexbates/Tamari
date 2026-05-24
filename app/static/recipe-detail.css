@@ -548,6 +548,9 @@ tr:nth-child(odd) {
 }
 .steps b {color: var(--color-steps-b);}
 .steps p {margin-bottom: 0; margin-top: 6px;}
+#notes {
+	width: 100%;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width: 1300px) {
@@ -558,6 +561,7 @@ tr:nth-child(odd) {
 	#r-image {width: calc(35% - 10px);}
 	#ingredients {padding-left: 10px; width: calc(50% - 30px);}
 	#instructions {padding-right: 10px; width: calc(50% - 10px);}
+	#notes {padding-left: 10px; padding-right: 10px;}
 	.recipe-error {padding-left: 10px; padding-right: 10px;}
 }
 @media screen and (max-width: 830px) {

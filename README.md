@@ -7,7 +7,7 @@ Tamari is a fully-featured recipe manager web application built using Python and
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/alexbates/Tamari?color=red&style=plastic)
 
-![Tamari Screenshot](https://tamariapp.com/images/tamari-cover-2026.png)
+![Tamari Screenshot](github/mockup-tamari-desktop-smartphone-may2026.png)
 
 ## Live Demo and Public Instance
 
@@ -29,16 +29,16 @@ Create your own account or sign in with the demo credentials.
 ## Installing with Docker 🐳
 This creates a 'tamariappdata' volume for persistent storage.
 ```
-docker run -d --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.5
+docker run -d --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.6
 ```
-You can also pull ghcr.io/alexbates/tamari:latest or alexbates/tamari:latest.
+You can also pull alexbates/tamari:latest or ghcr.io/alexbates/tamari:latest.
 
 Tamari is now running! Go to http://localhost:4888
 
 ### Alternative Command with Mail Settings
 Use this command instead if you wish to enable password reset requests via email. Replace variables with settings for an email account you control.
 ```
-docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.5
+docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.6
 ```
 
 ## Manual Installation

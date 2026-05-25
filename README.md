@@ -7,7 +7,7 @@ Tamari is a fully-featured recipe manager web application built using Python and
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 ![GitHub last commit](https://img.shields.io/github/last-commit/alexbates/Tamari?color=red&style=plastic)
 
-![Tamari Screenshot](https://tamariapp.com/images/tamari-cover-2026.png)
+![Tamari Screenshot](github/mockup-tamari-desktop-smartphone-may2026.png)
 
 ## Live Demo and Public Instance
 

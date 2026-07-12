@@ -8,6 +8,7 @@ from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe, N
 from werkzeug.urls import url_parse
 from datetime import datetime
 from fractions import Fraction
+from unicodedata import normalize
 from PIL import Image
 from sqlalchemy import func, and_, or_
 from sqlalchemy.sql import false
@@ -660,30 +661,8 @@ def printRecipe(hexid):
 
 # Ingredient parsing and combining functions
 # These are used by the recipe detail page to combine ingredients when adding to a shopping list
-UNICODE_FRACTIONS = {
-    '¼': '1/4',
-    '½': '1/2',
-    '¾': '3/4',
-    '⅓': '1/3',
-    '⅔': '2/3',
-    '⅛': '1/8',
-    '⅜': '3/8',
-    '⅝': '5/8',
-    '⅞': '7/8',
-}
-INGREDIENT_PATTERN = re.compile(
-    r'^\s*'
-    r'(?P<amount>\d+(?:\.\d+)?|\d+/\d+|[¼½¾⅓⅔⅛⅜⅝⅞])'
-    r'(?P<separator>\s*)'
-    r'(?P<unit>'
-        r'kilograms?|kgs?|kg|grams?|g|'
-        r'millilit(?:er|re)s?|ml|lit(?:er|re)s?|l|'
-        r'cups?|tablespoons?|tbsp|teaspoons?|tsp'
-    r')\b\.?'
-    r'(?P<tail>\s+.+?)\s*$',
-    re.IGNORECASE
-)
 UNIT_ALIASES = {
+    # English
     'g': 'g',
     'gram': 'g',
     'grams': 'g',
@@ -709,14 +688,179 @@ UNIT_ALIASES = {
     'tsp': 'tsp',
     'teaspoon': 'tsp',
     'teaspoons': 'tsp',
+
+    # Spanish
+    'gramo': 'g',
+    'gramos': 'g',
+    'kilogramo': 'kg',
+    'kilogramos': 'kg',
+    'mililitro': 'ml',
+    'mililitros': 'ml',
+    'litro': 'l',
+    'litros': 'l',
+    'taza': 'cup',
+    'tazas': 'cup',
+    'cucharada': 'tbsp',
+    'cucharadas': 'tbsp',
+    'cucharadita': 'tsp',
+    'cucharaditas': 'tsp',
+
+    # French
+    'gramme': 'g',
+    'grammes': 'g',
+    'kilogramme': 'kg',
+    'kilogrammes': 'kg',
+    'millilitre': 'ml',
+    'millilitres': 'ml',
+    'litre': 'l',
+    'litres': 'l',
+    'tasse': 'cup',
+    'tasses': 'cup',
+    'cuillère à soupe': 'tbsp',
+    'cuillères à soupe': 'tbsp',
+    'cuillère à café': 'tsp',
+    'cuillères à café': 'tsp',
+
+    # German
+    'gramm': 'g',
+    'kilogramm': 'kg',
+    'milliliter': 'ml',
+    'liter': 'l',
+    'tasse': 'cup',
+    'tassen': 'cup',
+    'esslöffel': 'tbsp',
+    'el': 'tbsp',
+    'teelöffel': 'tsp',
+    'tl': 'tsp',
+
+    # Russian
+    'г': 'g',
+    'гр': 'g',
+    'грамм': 'g',
+    'грамма': 'g',
+    'граммов': 'g',
+    'кг': 'kg',
+    'килограмм': 'kg',
+    'килограмма': 'kg',
+    'мл': 'ml',
+    'л': 'l',
+    'литр': 'l',
+    'литра': 'l',
+    'стакан': 'cup',
+    'стакана': 'cup',
+    'чашка': 'cup',
+    'чашки': 'cup',
+    'столовая ложка': 'tbsp',
+    'столовые ложки': 'tbsp',
+    'чайная ложка': 'tsp',
+    'чайные ложки': 'tsp',
+
+    # Japanese
+    'グラム': 'g',
+    'キログラム': 'kg',
+    'ミリリットル': 'ml',
+    'リットル': 'l',
+    'カップ': 'cup',
+    '大さじ': 'tbsp',
+    '小さじ': 'tsp',
+
+    # Chinese
+    '克': 'g',
+    '公克': 'g',
+    '千克': 'kg',
+    '公斤': 'kg',
+    '毫升': 'ml',
+    '升': 'l',
+    '杯': 'cup',
+    '大匙': 'tbsp',
+    '大勺': 'tbsp',
+    '小匙': 'tsp',
+    '小勺': 'tsp',
 }
+CJK_UNITS = frozenset(
+    unit for unit in UNIT_ALIASES
+    if any(
+        '\u3040' <= char <= '\u30ff'  # Hiragana and Katakana
+        or '\u3400' <= char <= '\u9fff'  # Chinese characters
+        for char in unit
+    )
+)
+CJK_UNIT_PATTERN = '|'.join(
+    re.escape(unit)
+    for unit in sorted(CJK_UNITS, key=len, reverse=True)
+)
+SPACED_UNIT_PATTERN = '|'.join(
+    re.escape(unit)
+    for unit in sorted(
+        set(UNIT_ALIASES) - CJK_UNITS,
+        key=len,
+        reverse=True
+    )
+)
+VULGAR_FRACTIONS = {
+    '¼': Fraction(1, 4),
+    '½': Fraction(1, 2),
+    '¾': Fraction(3, 4),
+    '⅓': Fraction(1, 3),
+    '⅔': Fraction(2, 3),
+    '⅛': Fraction(1, 8),
+    '⅜': Fraction(3, 8),
+    '⅝': Fraction(5, 8),
+    '⅞': Fraction(7, 8),
+}
+VULGAR_FRACTION_CHARS = ''.join(VULGAR_FRACTIONS)
+FRACTION_SLASH_PATTERN = r'[/／⁄]'
+AMOUNT_PATTERN = (
+    rf'(?:'
+    rf'\d+\s+\d+{FRACTION_SLASH_PATTERN}\d+'  # 1 1/2
+    rf'|\d+\s*[{VULGAR_FRACTION_CHARS}]'     # 1½ or 1 ½
+    rf'|\d+{FRACTION_SLASH_PATTERN}\d+'      # 1/2
+    rf'|[{VULGAR_FRACTION_CHARS}]'           # ½
+    rf'|\d+(?:[.,．，]\d+)?'                  # 1.5 or 1,5
+    rf')'
+)
+INGREDIENT_PATTERN = re.compile(
+    rf'^\s*(?P<amount>{AMOUNT_PATTERN})'
+    r'(?P<separator>\s*)'
+    rf'(?P<unit>'
+        rf'(?P<cjk_unit>{CJK_UNIT_PATTERN})'
+        rf'|(?P<spaced_unit>{SPACED_UNIT_PATTERN})'
+    r')'
+    # CJK units may be immediately followed by the ingredient name.
+    # Other languages still require a word boundary after the unit.
+    r'(?(cjk_unit)\.?|\b\.?)'
+    r'(?P<post_unit_separator>\s*)'
+    r'(?P<tail>.+?)\s*$',
+    re.IGNORECASE
+)
+def parse_ingredient_amount(amount_text):
+    amount_text = amount_text.strip()
+    # Handle vulgar Unicode fractions, including mixed values like 1½.
+    for character, fraction in VULGAR_FRACTIONS.items():
+        if character in amount_text:
+            whole_text = amount_text.replace(character, '').strip()
+
+            if not whole_text:
+                return fraction
+
+            whole_text = normalize('NFKC', whole_text)
+            whole_text = whole_text.replace('，', '.').replace(',', '.')
+            return Fraction(whole_text) + fraction
+    # Normalize full-width digits and fraction slashes before parsing.
+    normalized = normalize('NFKC', amount_text)
+    normalized = normalized.replace('⁄', '/')
+    normalized = normalized.replace('，', '.').replace(',', '.')
+    # Handle space-separated mixed fractions such as “1 1/2”
+    parts = normalized.split()
+    if len(parts) == 2:
+        return Fraction(parts[0]) + Fraction(parts[1])
+    return Fraction(normalized)
 def parse_combinable_ingredient(text):
     match = INGREDIENT_PATTERN.match(text)
     if not match:
         return None
     try:
-        amount_text = match.group('amount')
-        amount = Fraction(UNICODE_FRACTIONS.get(amount_text, amount_text))
+        amount = parse_ingredient_amount(match.group('amount'))
     except (ValueError, ZeroDivisionError):
         return None
     tail = match.group('tail').rstrip()
@@ -729,12 +873,18 @@ def parse_combinable_ingredient(text):
         'unit': match.group('unit'),
         'unit_key': UNIT_ALIASES[match.group('unit').casefold()],
         'tail': tail,
+        'post_unit_separator': match.group('post_unit_separator'),
         'name_key': name_key,
     }
 def format_ingredient_amount(amount):
-    if amount.denominator == 1:
-        return str(amount.numerator)
-    return f'{amount.numerator}/{amount.denominator}'
+    whole = amount.numerator // amount.denominator
+    remainder = amount.numerator % amount.denominator
+    if remainder == 0:
+        return str(whole)
+    fraction = f'{remainder}/{amount.denominator}'
+    if whole:
+        return f'{whole} {fraction}'
+    return fraction
 def pluralize_unit(unit, amount):
     if amount == 1:
         return unit
@@ -758,7 +908,8 @@ def combine_ingredients(existing_text, incoming_text):
     unit = pluralize_unit(existing['unit'], total)
     combined = (
         f"{format_ingredient_amount(total)}"
-        f"{existing['separator']}{unit}{existing['tail']}"
+        f"{existing['separator']}{unit}"
+        f"{existing['post_unit_separator']}{existing['tail']}"
     )
     # Listitem.item is maximum 100 characters
     return combined if len(combined) <= 100 else None

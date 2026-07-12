@@ -23,6 +23,16 @@ class RegistrationForm(FlaskForm):
         if user is not None:
             raise ValidationError(_l('Please use a different email address.'))
 
+class RegistrationWithVerificationForm(FlaskForm):
+    email = StringField(_l('Email'), validators=[DataRequired(), Email()])
+    submit = SubmitField(_l('Send Link to Set Password'))
+
+    # Automatically called for email field because matches pattern validate_fieldname
+    def validate_email(self, email):
+        user = User.query.filter_by(email=email.data).first()
+        if user is not None:
+            raise ValidationError(_l('Please use a different email address.'))
+
 class AccountForm(FlaskForm):
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
     password = PasswordField(_l('New Password'))

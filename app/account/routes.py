@@ -1,10 +1,10 @@
 from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
 from flask_babel import _
 from app import app, db, limiter
-from app.account.forms import LoginForm, RegistrationForm, AccountForm, EmptyForm, ResetPasswordRequestForm, ResetPasswordForm, AccountPrefsForm
+from app.account.forms import LoginForm, RegistrationForm, RegistrationWithVerificationForm, AccountForm, EmptyForm, ResetPasswordRequestForm, ResetPasswordForm, AccountPrefsForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
-from app.account.email import send_password_reset_email
+from app.account.email import send_password_reset_email, send_registration_set_password_email
 from app.account.demo import reset_demo_account
 from werkzeug.urls import url_parse
 from io import StringIO, BytesIO, TextIOWrapper
@@ -95,73 +95,105 @@ def register():
     if current_user.is_authenticated:
         return redirect(url_for('myrecipes.allRecipes'))
     reg_disabled = app.config['REGISTRATION_DISABLED']
-    form = RegistrationForm()
-    if form.validate_on_submit() and not reg_disabled:
-        # Call rate limited function to effectively impose rate limit on registration attempts
-        if rate_limited_registration():
-            # Check if email is already registered
-            checkemail = User.query.filter_by(email=form.email.data.strip()).first()
-            # Check if email in lowercase is already registered
-            # This redundant check exists because account emails were originally case sensitive
-            # It is necessary to check whether either variant exists in database
-            email_lower = form.email.data.lower().strip()
-            checkemail2 = User.query.filter_by(email=email_lower).first()
-            # Validate email
-            regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-            emailisvalid = re.fullmatch(regex, form.email.data.strip())
-            # Check length of email
-            if len(form.email.data.strip()) < 3 or len(form.email.data.strip()) > 254:
-                emailisvalid = False        
-            # Error if email is registered
-            if checkemail or checkemail2:
-                flash('Error: ' + _('email is already taken.'))
-            # Error if email is invalid for any reason
-            elif emailisvalid is None or emailisvalid == False:
-                flash('Error: ' + _('email is invalid.'))
-            # Error if passwords do not match
-            elif form.password.data.strip() != form.password2.data.strip():
-                flash('Error: ' + _('passwords do not match.'))
-            # Error if password length out of range
-            elif len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64:
-                flash('Error: ' + _('password must be 3-64 characters.'))
-            # Process registration
-            else:
-                logout_user()
-                user = User(email=email_lower)
-                user.set_password(form.password.data.strip())
-                user.reg_time = datetime.utcnow()
-                user.pref_size = 0
-                user.pref_sort = 0
-                user.pref_picture = 0
-                user.pref_color = 0
-                user.pref_theme = 0
-                user.pref_scaling = 0
-                db.session.add(user)
-                cats = ['Miscellaneous', 'Entrees', 'Sides']
-                for cat in cats:
-                    hex_valid = 0
-                    while hex_valid == 0:
-                        hex_string = secrets.token_hex(4)
-                        hex_exist = Category.query.filter_by(hex_id=hex_string).first()
-                        if hex_exist is None:
-                            hex_valid = 1
-                    new_cat = Category(hex_id=hex_string, label=cat, user=user)
-                    db.session.add(new_cat)
-                lists = ['Miscellaneous']
-                for list in lists:
-                    hex_valid2 = 0
-                    while hex_valid2 == 0:
-                        hex_string2 = secrets.token_hex(4)
-                        hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
-                        if hex_exist2 is None:
-                            hex_valid2 = 1
-                    new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
-                    db.session.add(new_list)
-                db.session.commit()
-                flash(_('You have been registered! Please sign in.'))
-                return redirect(url_for('account.login'))
-    return render_template('register.html', title=_('Register'),
-        mdescription=_('Register an account with the Tamari web app.'), form=form, reg_disabled=reg_disabled)
+    if app.config['REGISTRATION_VERIFICATION_REQUIRED']:
+        form = RegistrationWithVerificationForm()
+        if form.validate_on_submit() and not reg_disabled:
+            # Call rate limited function to effectively impose rate limit on registration attempts
+            if rate_limited_registration():
+                # Check if email is already registered
+                checkemail = User.query.filter_by(email=form.email.data.strip()).first()
+                # Check if email in lowercase is already registered
+                # This redundant check exists because account emails were originally case sensitive
+                # It is necessary to check whether either variant exists in database
+                email_lower = form.email.data.lower().strip()
+                checkemail2 = User.query.filter_by(email=email_lower).first()
+                # Validate email
+                regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+                emailisvalid = re.fullmatch(regex, form.email.data.strip())
+                # Check length of email
+                if len(form.email.data.strip()) < 3 or len(form.email.data.strip()) > 254:
+                    emailisvalid = False
+                # Error if email is registered
+                if checkemail or checkemail2:
+                    flash('Error: ' + _('email is already taken.'))
+                # Error if email is invalid for any reason
+                elif emailisvalid is None or emailisvalid == False:
+                    flash('Error: ' + _('email is invalid.'))
+                # Send registration email
+                else:
+                    send_registration_set_password_email(email_lower)
+                    flash(_('Check your email for instructions.'))
+                    return redirect(url_for('account.login'))
+        return render_template('register-verification.html', title=_('Register'),
+            mdescription=_('Register an account with the Tamari web app.'), form=form, reg_disabled=reg_disabled)
+    else:
+        form = RegistrationForm()
+        if form.validate_on_submit() and not reg_disabled:
+            # Call rate limited function to effectively impose rate limit on registration attempts
+            if rate_limited_registration():
+                # Check if email is already registered
+                checkemail = User.query.filter_by(email=form.email.data.strip()).first()
+                # Check if email in lowercase is already registered
+                # This redundant check exists because account emails were originally case sensitive
+                # It is necessary to check whether either variant exists in database
+                email_lower = form.email.data.lower().strip()
+                checkemail2 = User.query.filter_by(email=email_lower).first()
+                # Validate email
+                regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
+                emailisvalid = re.fullmatch(regex, form.email.data.strip())
+                # Check length of email
+                if len(form.email.data.strip()) < 3 or len(form.email.data.strip()) > 254:
+                    emailisvalid = False        
+                # Error if email is registered
+                if checkemail or checkemail2:
+                    flash('Error: ' + _('email is already taken.'))
+                # Error if email is invalid for any reason
+                elif emailisvalid is None or emailisvalid == False:
+                    flash('Error: ' + _('email is invalid.'))
+                # Error if passwords do not match
+                elif form.password.data.strip() != form.password2.data.strip():
+                    flash('Error: ' + _('passwords do not match.'))
+                # Error if password length out of range
+                elif len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64:
+                    flash('Error: ' + _('password must be 3-64 characters.'))
+                # Process registration
+                else:
+                    logout_user()
+                    user = User(email=email_lower)
+                    user.set_password(form.password.data.strip())
+                    user.reg_time = datetime.utcnow()
+                    user.pref_size = 0
+                    user.pref_sort = 0
+                    user.pref_picture = 0
+                    user.pref_color = 0
+                    user.pref_theme = 0
+                    user.pref_scaling = 0
+                    db.session.add(user)
+                    cats = ['Miscellaneous', 'Entrees', 'Sides']
+                    for cat in cats:
+                        hex_valid = 0
+                        while hex_valid == 0:
+                            hex_string = secrets.token_hex(4)
+                            hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                            if hex_exist is None:
+                                hex_valid = 1
+                        new_cat = Category(hex_id=hex_string, label=cat, user=user)
+                        db.session.add(new_cat)
+                    lists = ['Miscellaneous']
+                    for list in lists:
+                        hex_valid2 = 0
+                        while hex_valid2 == 0:
+                            hex_string2 = secrets.token_hex(4)
+                            hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
+                            if hex_exist2 is None:
+                                hex_valid2 = 1
+                        new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
+                        db.session.add(new_list)
+                    db.session.commit()
+                    flash(_('You have been registered! Please sign in.'))
+                    return redirect(url_for('account.login'))
+        return render_template('register.html', title=_('Register'),
+            mdescription=_('Register an account with the Tamari web app.'), form=form, reg_disabled=reg_disabled)
 
 def clean_csv(text):
     try:
@@ -727,3 +759,71 @@ def set_password(token):
         return redirect(url_for('account.login'))
     return render_template('set-password.html', title=_('Set Password'),
         mdescription=_('Set a new password for your Tamari account.'), form=form)
+
+@bp.route('/register/set-password/<token>', methods=['GET', 'POST'])
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def register_set_password(token):
+    # Don't display page if user is signed in
+    if current_user.is_authenticated:
+        flash(_('Please sign out before setting a new password.'))
+        return redirect(url_for('myrecipes.allRecipes'))
+    email = User.verify_registration_token(token)
+    if not email:
+        flash(_('Registration token is invalid.'))
+        return redirect(url_for('account.login'))
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        # Check if email is already registered
+        checkemail = User.query.filter_by(email=email.strip()).first()
+        # Check if email in lowercase is already registered
+        # This redundant check exists because account emails were originally case sensitive
+        # It is necessary to check whether either variant exists in database
+        email_lower = email.lower().strip()
+        checkemail2 = User.query.filter_by(email=email_lower).first()
+        # Error if email is registered
+        if checkemail or checkemail2:
+            flash('Error: ' + _('email is already taken.'))
+        # Error if passwords do not match
+        elif form.password.data.strip() != form.password2.data.strip():
+            flash('Error: ' + _('passwords do not match.'))
+        # Error if password length out of range
+        elif len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64:
+            flash('Error: ' + _('password must be 3-64 characters.'))
+        # Process registration
+        else:
+            logout_user()
+            user = User(email=email_lower)
+            user.set_password(form.password.data.strip())
+            user.reg_time = datetime.utcnow()
+            user.pref_size = 0
+            user.pref_sort = 0
+            user.pref_picture = 0
+            user.pref_color = 0
+            user.pref_theme = 0
+            user.pref_scaling = 0
+            db.session.add(user)
+            cats = ['Miscellaneous', 'Entrees', 'Sides']
+            for cat in cats:
+                hex_valid = 0
+                while hex_valid == 0:
+                    hex_string = secrets.token_hex(4)
+                    hex_exist = Category.query.filter_by(hex_id=hex_string).first()
+                    if hex_exist is None:
+                        hex_valid = 1
+                new_cat = Category(hex_id=hex_string, label=cat, user=user)
+                db.session.add(new_cat)
+            lists = ['Miscellaneous']
+            for list in lists:
+                hex_valid2 = 0
+                while hex_valid2 == 0:
+                    hex_string2 = secrets.token_hex(4)
+                    hex_exist2 = Shoplist.query.filter_by(hex_id=hex_string2).first()
+                    if hex_exist2 is None:
+                        hex_valid2 = 1
+                new_list = Shoplist(hex_id=hex_string2, label=list, user=user)
+                db.session.add(new_list)
+            db.session.commit()
+            flash(_('You have been registered! Please sign in.'))
+            return redirect(url_for('account.login'))
+    return render_template('set-password.html', title=_('Set Password'),
+        mdescription=_('Set a password for your new Tamari account.'), form=form)

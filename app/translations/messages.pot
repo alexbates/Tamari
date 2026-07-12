@@ -1948,3 +1948,6 @@ msgstr ""
 
 msgid "API Info"
 msgstr ""
+
+msgid "Registration token is invalid."
+msgstr ""

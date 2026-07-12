@@ -725,6 +725,7 @@ def request_reset():
         return redirect(url_for('myrecipes.allRecipes'))
     form = ResetPasswordRequestForm()
     if form.validate_on_submit():
+        app.logger.info('Password reset request received')
         user = User.query.filter_by(email=form.email.data.strip()).first()
         if not user:
             email_lower = form.email.data.lower().strip()
@@ -734,7 +735,10 @@ def request_reset():
             if user.email.lower() == 'demo@tamariapp.com':
                 flash(_('Password reset disabled for demo.'))
                 return redirect(url_for('account.login'))
+            app.logger.info('Password reset request matched an account')
             send_password_reset_email(user)
+        else:
+            app.logger.warning('Password reset request did not match an account')
         flash(_('Check your email for instructions.'))
         return redirect(url_for('account.login'))
     return render_template('request-reset.html', title=_('Reset Password'),

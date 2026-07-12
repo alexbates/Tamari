@@ -21,6 +21,10 @@ class Config(object):
     # To disable registration, change "('REG_DISABLED', 'False')" to "('REG_DISABLED', 'True')"
     # or set environment variable with Docker run command
     REGISTRATION_DISABLED = os.environ.get('REG_DISABLED', 'False') == 'True'
+    # Registration Email Verification (not required by default, sends email link to set password)
+    # To enable email verification, change "('REGISTRATION_VERIFICATION_REQUIRED', 'False')" to 
+    # "('REGISTRATION_VERIFICATION_REQUIRED', 'True')"
+    REGISTRATION_VERIFICATION_REQUIRED = os.environ.get('REGISTRATION_VERIFICATION_REQUIRED', 'False') == 'True'
     # For My Recipes > All Recipes and My Recipes > Favorites
     MAIN_RECIPES_PER_PAGE = 100
     ADV_SEARCH_RECIPES_PER_PAGE = 50

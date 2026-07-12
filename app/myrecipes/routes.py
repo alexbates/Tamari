@@ -660,15 +660,26 @@ def printRecipe(hexid):
 
 # Ingredient parsing and combining functions
 # These are used by the recipe detail page to combine ingredients when adding to a shopping list
+UNICODE_FRACTIONS = {
+    '¼': '1/4',
+    '½': '1/2',
+    '¾': '3/4',
+    '⅓': '1/3',
+    '⅔': '2/3',
+    '⅛': '1/8',
+    '⅜': '3/8',
+    '⅝': '5/8',
+    '⅞': '7/8',
+}
 INGREDIENT_PATTERN = re.compile(
     r'^\s*'
-    r'(?P<amount>\d+(?:\.\d+)?|\d+/\d+)'
+    r'(?P<amount>\d+(?:\.\d+)?|\d+/\d+|[¼½¾⅓⅔⅛⅜⅝⅞])'
     r'(?P<separator>\s*)'
     r'(?P<unit>'
         r'kilograms?|kgs?|kg|grams?|g|'
         r'millilit(?:er|re)s?|ml|lit(?:er|re)s?|l|'
         r'cups?|tablespoons?|tbsp|teaspoons?|tsp'
-    r')\b'
+    r')\b\.?'
     r'(?P<tail>\s+.+?)\s*$',
     re.IGNORECASE
 )
@@ -704,7 +715,8 @@ def parse_combinable_ingredient(text):
     if not match:
         return None
     try:
-        amount = Fraction(match.group('amount'))
+        amount_text = match.group('amount')
+        amount = Fraction(UNICODE_FRACTIONS.get(amount_text, amount_text))
     except (ValueError, ZeroDivisionError):
         return None
     tail = match.group('tail').rstrip()

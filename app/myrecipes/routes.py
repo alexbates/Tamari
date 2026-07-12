@@ -7,6 +7,7 @@ from flask_paginate import Pagination
 from app.models import User, Recipe, Category, Shoplist, Listitem, MealRecipe, NutritionalInfo
 from werkzeug.urls import url_parse
 from datetime import datetime
+from fractions import Fraction
 from PIL import Image
 from sqlalchemy import func, and_, or_
 from sqlalchemy.sql import false
@@ -657,6 +658,114 @@ def printRecipe(hexid):
         owner=owner, ingredients=ingredients, instructions=instructions,
         nutrition=nutrition, hexid=hexid) 
 
+# Ingredient parsing and combining functions
+# These are used by the recipe detail page to combine ingredients when adding to a shopping list
+INGREDIENT_PATTERN = re.compile(
+    r'^\s*'
+    r'(?P<amount>\d+(?:\.\d+)?|\d+/\d+)'
+    r'(?P<separator>\s*)'
+    r'(?P<unit>'
+        r'kilograms?|kgs?|kg|grams?|g|'
+        r'millilit(?:er|re)s?|ml|lit(?:er|re)s?|l|'
+        r'cups?|tablespoons?|tbsp|teaspoons?|tsp'
+    r')\b'
+    r'(?P<tail>\s+.+?)\s*$',
+    re.IGNORECASE
+)
+UNIT_ALIASES = {
+    'g': 'g',
+    'gram': 'g',
+    'grams': 'g',
+    'kg': 'kg',
+    'kgs': 'kg',
+    'kilogram': 'kg',
+    'kilograms': 'kg',
+    'ml': 'ml',
+    'milliliter': 'ml',
+    'milliliters': 'ml',
+    'millilitre': 'ml',
+    'millilitres': 'ml',
+    'l': 'l',
+    'liter': 'l',
+    'liters': 'l',
+    'litre': 'l',
+    'litres': 'l',
+    'cup': 'cup',
+    'cups': 'cup',
+    'tbsp': 'tbsp',
+    'tablespoon': 'tbsp',
+    'tablespoons': 'tbsp',
+    'tsp': 'tsp',
+    'teaspoon': 'tsp',
+    'teaspoons': 'tsp',
+}
+def parse_combinable_ingredient(text):
+    match = INGREDIENT_PATTERN.match(text)
+    if not match:
+        return None
+    try:
+        amount = Fraction(match.group('amount'))
+    except (ValueError, ZeroDivisionError):
+        return None
+    tail = match.group('tail').rstrip()
+    name_key = ' '.join(tail.strip().casefold().split())
+    if name_key.startswith('of '):
+        name_key = name_key[3:]
+    return {
+        'amount': amount,
+        'separator': match.group('separator'),
+        'unit': match.group('unit'),
+        'unit_key': UNIT_ALIASES[match.group('unit').casefold()],
+        'tail': tail,
+        'name_key': name_key,
+    }
+def format_ingredient_amount(amount):
+    if amount.denominator == 1:
+        return str(amount.numerator)
+    return f'{amount.numerator}/{amount.denominator}'
+def pluralize_unit(unit, amount):
+    if amount == 1:
+        return unit
+    plurals = {
+        'cup': 'cups',
+        'tablespoon': 'tablespoons',
+        'teaspoon': 'teaspoons',
+    }
+    return plurals.get(unit.casefold(), unit)
+def combine_ingredients(existing_text, incoming_text):
+    existing = parse_combinable_ingredient(existing_text)
+    incoming = parse_combinable_ingredient(incoming_text)
+    if not existing or not incoming:
+        return None
+    if (
+        existing['unit_key'] != incoming['unit_key']
+        or existing['name_key'] != incoming['name_key']
+    ):
+        return None
+    total = existing['amount'] + incoming['amount']
+    unit = pluralize_unit(existing['unit'], total)
+    combined = (
+        f"{format_ingredient_amount(total)}"
+        f"{existing['separator']}{unit}{existing['tail']}"
+    )
+    # Listitem.item is maximum 100 characters
+    return combined if len(combined) <= 100 else None
+def recipe_titles(rec_title):
+    if not rec_title or rec_title == 'Multiple recipes':
+        return []
+    return [title.strip() for title in rec_title.split(',')]
+def append_recipe_title(existing_title, new_title):
+    if not existing_title:
+        return new_title
+    if existing_title == 'Multiple recipes':
+        return existing_title
+    if new_title in recipe_titles(existing_title):
+        return existing_title
+    combined = f'{existing_title}, {new_title}'
+    # Listitem.rec_title is maximum 80 characters
+    # If too long, just indicate the ingredients come from multiple recipes
+    return combined if len(combined) <= 80 else 'Multiple recipes'
+
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipeDetail(hexid):
@@ -820,22 +929,43 @@ def recipeDetail(hexid):
     if form.validate_on_submit():
         list = Shoplist.query.filter_by(user_id=current_user.id, label=form.selectlist.data).first()
         listitems = list.list_items.all()
-        a_listitems = []
-        for item in listitems:
-            curr_item = item.item
-            a_listitems.append(curr_item)
         count = 0
         for ingred_item in ingredients:
-            if ingred_item.strip() != '' and ingred_item not in a_listitems:
-                hex_valid = 0
-                while hex_valid == 0:
-                    hex_string = secrets.token_hex(5)
-                    hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
-                    if hex_exist is None:
-                        hex_valid = 1
-                listitem = Listitem(hex_id=hex_string, item=ingred_item, rec_title=recipe.title, user_id=current_user.id, complete=0, list_id=list.id)
-                db.session.add(listitem)
+            ingred_item = ingred_item.strip()
+            if not ingred_item:
+                continue
+            matched_item = False
+            for existing_item in listitems:
+                combined_text = combine_ingredients(existing_item.item, ingred_item)
+                if not combined_text:
+                    continue
+                # Don't add the same recipe's ingredient twice
+                if recipe.title in recipe_titles(existing_item.rec_title):
+                    matched_item = True
+                    break
+                existing_item.item = combined_text
+                existing_item.rec_title = append_recipe_title(existing_item.rec_title, recipe.title)
+                # Updated ingredients should no longer be marked as complete
+                existing_item.complete = 0
                 count += 1
+                matched_item = True
+                break
+            if matched_item:
+                continue
+            # Preserve the current behavior for exact duplicate non-measured text.
+            if any(item.item.strip().casefold() == ingred_item.casefold() for item in listitems):
+                continue
+            hex_valid = 0
+            while hex_valid == 0:
+                hex_string = secrets.token_hex(5)
+                hex_exist = Listitem.query.filter_by(hex_id=hex_string).first()
+                if hex_exist is None:
+                    hex_valid = 1
+            listitem = Listitem(hex_id=hex_string, item=ingred_item, rec_title=recipe.title, user_id=current_user.id, complete=0, list_id=list.id)
+            db.session.add(listitem)
+            # Enable later ingredients to find the new row
+            listitems.append(listitem)
+            count += 1
         db.session.commit()
         if count != 0:
             message = str(count) + _(' items have been added to ') + str(list.label) + _(' shopping list.')

@@ -170,9 +170,9 @@
 	cursor: pointer;
 	font-size: 16px;
 	height: 40px;
-	padding: 0;
+	padding-left: 10px;
+	padding-right: 10px;
 	transition: background-color 0.08s linear, border 0.08s linear;
-	width: 140px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
 }

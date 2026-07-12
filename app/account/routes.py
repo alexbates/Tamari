@@ -4,7 +4,7 @@ from app import app, db, limiter
 from app.account.forms import LoginForm, RegistrationForm, RegistrationWithVerificationForm, AccountForm, EmptyForm, ResetPasswordRequestForm, ResetPasswordForm, AccountPrefsForm
 from flask_login import current_user, login_user, logout_user, login_required
 from app.models import User, Recipe, NutritionalInfo, Category, Shoplist, Listitem, MealRecipe
-from app.account.email import send_password_reset_email, send_registration_set_password_email
+from app.account.email import send_password_reset_email, send_registration_set_password_email, send_email_change_verification_email
 from app.account.demo import reset_demo_account
 from werkzeug.urls import url_parse
 from io import StringIO, BytesIO, TextIOWrapper
@@ -258,16 +258,28 @@ def user():
             flash('Error: ' + _('password must be between 3 and 64 characters.'))
         # Process changes
         elif has_passwords or newemail != current_user.email:
+            email_change_requested = newemail != current_user.email
+            verification_required = app.config['REGISTRATION_VERIFICATION_REQUIRED']
             if has_passwords:
                 user.set_password(form.password.data.strip())
                 # Update time in database for account password change
                 user.p_change_time = datetime.utcnow()
-            if current_user.email != newemail:
-                current_user.email = newemail
+            # Do not update the email until its verification link is opened
+            if email_change_requested and not verification_required:
+                user.email = newemail
                 # Update time in database for account email change
                 user.e_change_time = datetime.utcnow()
             db.session.commit()
-            flash(_('Your changes have been saved.'))
+            if email_change_requested and verification_required:
+                send_email_change_verification_email(user, newemail)
+                if has_passwords:
+                    flash(_('Check your email for instructions.') + ' ' + _('Your changes have been saved.'))
+                else:
+                    flash(_('Check your email for instructions.'))
+            # If verification is disabled, report the email change
+            # If verification is enabled, only report saved changes for a password update
+            elif has_passwords or (email_change_requested and not verification_required):
+                flash(_('Your changes have been saved.'))
             # Redirect to current page so form email will be updated following change
             return redirect(url_for('account.user'))
         # Notify if there are no errors or changes
@@ -663,6 +675,22 @@ def accountHistory():
         mdescription=_('Account History displays a timeline of events, or changes to your account.'),
         user=user, sorted_events=sorted_events, first_event_year=first_event_year, last_event_year=last_event_year,
         events_by_year=events_by_year, sorted_events_paginated=sorted_events_paginated, next_url=next_url, prev_url=prev_url)
+
+@bp.route('/account/verify-email-change/<token>')
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def verify_email_change(token):
+    token_data = User.verify_email_change_token(token)
+    if not token_data:
+        return 'Email change link is invalid or has expired.', 400
+    user, new_email = token_data
+    # If address claimed after the link was sent
+    existing_user = User.query.filter_by(email=new_email).first()
+    if existing_user and existing_user.id != user.id:
+        return 'This email address is already taken.', 400
+    user.email = new_email
+    user.e_change_time = datetime.utcnow()
+    db.session.commit()
+    return 'Your email address has been changed.'
 
 @bp.route('/account/process-delete')
 @login_required

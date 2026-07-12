@@ -1,0 +1,9 @@
+{{ _('Dear User,') }}
+
+{{ _('You requested to change the email address associated with your Tamari account.') }}
+
+{{ _('To confirm this change, click this link:') }}
+
+{{ url_for('account.verify_email_change', token=token, _external=True) }}
+
+{{ _('You can ignore this message if you did not request an email change.') }}

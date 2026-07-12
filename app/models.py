@@ -64,6 +64,37 @@ class User(UserMixin, db.Model):
             return
         return email
 
+    def get_email_change_token(self, new_email, expires_in=600):
+        return jwt.encode(
+            {
+                'email_change': self.id,
+                'old_email': self.email,
+                'new_email': new_email,
+                'exp': time() + expires_in
+            },
+            app.config['SECRET_KEY'],
+            algorithm='HS256'
+        )
+
+    @staticmethod
+    def verify_email_change_token(token):
+        try:
+            payload = jwt.decode(
+                token,
+                app.config['SECRET_KEY'],
+                algorithms=['HS256']
+            )
+            user_id = payload['email_change']
+            old_email = payload['old_email']
+            new_email = payload['new_email']
+        except:
+            return
+        user = User.query.get(user_id)
+        # Prevent reusing link after successful email change
+        if user is None or user.email != old_email:
+            return
+        return user, new_email
+
 class Recipe(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     hex_id = db.Column(db.String(8), nullable=False, unique=True)

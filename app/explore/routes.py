@@ -191,6 +191,66 @@ def exploreGroup(group):
     elif group == "vegetarian":
         group_title = _('Vegetarian')
         readfile = open(app.root_path + "/static/explore-vegetarian-randomized.txt", "r")
+    elif group == "australia":
+        group_title = _('Australia')
+        readfile = open(app.root_path + "/static/explore-australia-randomized.txt", "r")
+    elif group == "austria":
+        group_title = _('Austria')
+        readfile = open(app.root_path + "/static/explore-austria-randomized.txt", "r")
+    elif group == "belgium":
+        group_title = _('Belgium')
+        readfile = open(app.root_path + "/static/explore-belgium-randomized.txt", "r")
+    elif group == "canada":
+        group_title = _('Canada')
+        readfile = open(app.root_path + "/static/explore-canada-randomized.txt", "r")
+    elif group == "denmark":
+        group_title = _('Denmark')
+        readfile = open(app.root_path + "/static/explore-denmark-randomized.txt", "r")
+    elif group == "france":
+        group_title = _('France')
+        readfile = open(app.root_path + "/static/explore-france-randomized.txt", "r")
+    elif group == "germany":
+        group_title = _('Germany')
+        readfile = open(app.root_path + "/static/explore-germany-randomized.txt", "r")
+    elif group == "greece":
+        group_title = _('Greece')
+        readfile = open(app.root_path + "/static/explore-greece-randomized.txt", "r")
+    elif group == "india":
+        group_title = _('India')
+        readfile = open(app.root_path + "/static/explore-india-randomized.txt", "r")
+    elif group == "ireland":
+        group_title = _('Ireland')
+        readfile = open(app.root_path + "/static/explore-ireland-randomized.txt", "r")
+    elif group == "italy":
+        group_title = _('Italy')
+        readfile = open(app.root_path + "/static/explore-italy-randomized.txt", "r")
+    elif group == "japan":
+        group_title = _('Japan')
+        readfile = open(app.root_path + "/static/explore-japan-randomized.txt", "r")
+    elif group == "netherlands":
+        group_title = _('Netherlands')
+        readfile = open(app.root_path + "/static/explore-netherlands-randomized.txt", "r")
+    elif group == "philippines":
+        group_title = _('Philippines')
+        readfile = open(app.root_path + "/static/explore-philippines-randomized.txt", "r")
+    elif group == "poland":
+        group_title = _('Poland')
+        readfile = open(app.root_path + "/static/explore-poland-randomized.txt", "r")
+    elif group == "spain":
+        group_title = _('Spain')
+        readfile = open(app.root_path + "/static/explore-spain-randomized.txt", "r")
+    elif group == "sweden":
+        group_title = _('Sweden')
+        readfile = open(app.root_path + "/static/explore-sweden-randomized.txt", "r")
+    elif group == "switzerland":
+        group_title = _('Switzerland')
+        readfile = open(app.root_path + "/static/explore-switzerland-randomized.txt", "r")
+    elif group == "unitedkingdom":
+        group_title = _('United Kingdom')
+        readfile = open(app.root_path + "/static/explore-unitedkingdom-randomized.txt", "r")
+    elif group == "unitedstates":
+        group_title = _('United States')
+        readfile = open(app.root_path + "/static/explore-unitedstates-randomized.txt", "r")
     else:
         group_title = _('Error')
         readfile = open(app.root_path + "/static/explore-blank.txt", "r")
@@ -521,6 +581,46 @@ def exploreRecipeDetail(rec_group, recnum):
         file_path = app.root_path + '/static/explore-soup-randomized.txt'
     elif rec_group == "vegetarian":
         file_path = app.root_path + '/static/explore-vegetarian-randomized.txt'
+    elif rec_group == "australia":
+        file_path = app.root_path + '/static/explore-australia-randomized.txt'
+    elif rec_group == "austria":
+        file_path = app.root_path + '/static/explore-austria-randomized.txt'
+    elif rec_group == "belgium":
+        file_path = app.root_path + '/static/explore-belgium-randomized.txt'
+    elif rec_group == "canada":
+        file_path = app.root_path + '/static/explore-canada-randomized.txt'
+    elif rec_group == "denmark":
+        file_path = app.root_path + '/static/explore-denmark-randomized.txt'
+    elif rec_group == "france":
+        file_path = app.root_path + '/static/explore-france-randomized.txt'
+    elif rec_group == "germany":
+        file_path = app.root_path + '/static/explore-germany-randomized.txt'
+    elif rec_group == "greece":
+        file_path = app.root_path + '/static/explore-greece-randomized.txt'
+    elif rec_group == "india":
+        file_path = app.root_path + '/static/explore-india-randomized.txt'
+    elif rec_group == "ireland":
+        file_path = app.root_path + '/static/explore-ireland-randomized.txt'
+    elif rec_group == "italy":
+        file_path = app.root_path + '/static/explore-italy-randomized.txt'
+    elif rec_group == "japan":
+        file_path = app.root_path + '/static/explore-japan-randomized.txt'
+    elif rec_group == "netherlands":
+        file_path = app.root_path + '/static/explore-netherlands-randomized.txt'
+    elif rec_group == "philippines":
+        file_path = app.root_path + '/static/explore-philippines-randomized.txt'
+    elif rec_group == "poland":
+        file_path = app.root_path + '/static/explore-poland-randomized.txt'
+    elif rec_group == "spain":
+        file_path = app.root_path + '/static/explore-spain-randomized.txt'
+    elif rec_group == "sweden":
+        file_path = app.root_path + '/static/explore-sweden-randomized.txt'
+    elif rec_group == "switzerland":
+        file_path = app.root_path + '/static/explore-switzerland-randomized.txt'
+    elif rec_group == "unitedkingdom":
+        file_path = app.root_path + '/static/explore-unitedkingdom-randomized.txt'
+    elif rec_group == "unitedstates":
+        file_path = app.root_path + '/static/explore-unitedstates-randomized.txt'
     else:
         file_path = app.root_path + '/static/explore-blank.txt'
     rec_url = ''

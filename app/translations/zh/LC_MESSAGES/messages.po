@@ -1925,3 +1925,93 @@ msgstr "月份"
 
 msgid "Days"
 msgstr "天"
+
+msgid "API Status"
+msgstr "API 状态"
+
+msgid "ENABLED"
+msgstr "已启用"
+
+msgid "DISABLED"
+msgstr "已禁用"
+
+msgid "General Info"
+msgstr "常规信息"
+
+msgid "This is a REST API which can be used to interact with the Tamari application."
+msgstr "此 REST API 可用于与 Tamari 应用交互。"
+
+msgid "X-App-Name and X-App-Key headers are required for all endpoints, as configured in config.py."
+msgstr "根据 config.py 的配置，所有端点都需要 X-App-Name 和 X-App-Key 请求头。"
+
+msgid "X-App-Name and X-App-Key headers are not required, as configured in config.py."
+msgstr "根据 config.py 的配置，无需 X-App-Name 和 X-App-Key 请求头。"
+
+msgid "API Info"
+msgstr "API 信息"
+
+msgid "Registration token is invalid."
+msgstr "注册令牌无效。"
+
+msgid "Search 400,000+ Recipes"
+msgstr "搜索 400,000+ 个食谱"
+
+msgid "Australia"
+msgstr "澳大利亚"
+
+msgid "Austria"
+msgstr "奥地利"
+
+msgid "Belgium"
+msgstr "比利时"
+
+msgid "Canada"
+msgstr "加拿大"
+
+msgid "Denmark"
+msgstr "丹麦"
+
+msgid "France"
+msgstr "法国"
+
+msgid "Germany"
+msgstr "德国"
+
+msgid "Greece"
+msgstr "希腊"
+
+msgid "India"
+msgstr "印度"
+
+msgid "Ireland"
+msgstr "爱尔兰"
+
+msgid "Italy"
+msgstr "意大利"
+
+msgid "Japan"
+msgstr "日本"
+
+msgid "Netherlands"
+msgstr "荷兰"
+
+msgid "Philippines"
+msgstr "菲律宾"
+
+msgid "Poland"
+msgstr "波兰"
+
+msgid "Spain"
+msgstr "西班牙"
+
+msgid "Sweden"
+msgstr "瑞典"
+
+msgid "Switzerland"
+msgstr "瑞士"
+
+msgid "United Kingdom"
+msgstr "英国"
+
+msgid "United States"
+msgstr "美国"

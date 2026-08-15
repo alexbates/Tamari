@@ -1925,3 +1925,93 @@ msgstr "Monate"
 
 msgid "Days"
 msgstr "Tage"
+
+msgid "API Status"
+msgstr "API-Status"
+
+msgid "ENABLED"
+msgstr "AKTIVIERT"
+
+msgid "DISABLED"
+msgstr "DEAKTIVIERT"
+
+msgid "General Info"
+msgstr "Allgemeines"
+
+msgid "This is a REST API which can be used to interact with the Tamari application."
+msgstr "Diese REST-API ermöglicht die Interaktion mit der Tamari-Anwendung."
+
+msgid "X-App-Name and X-App-Key headers are required for all endpoints, as configured in config.py."
+msgstr "Die Header X-App-Name und X-App-Key sind laut config.py für alle Endpunkte erforderlich."
+
+msgid "X-App-Name and X-App-Key headers are not required, as configured in config.py."
+msgstr "Die Header X-App-Name und X-App-Key sind laut config.py nicht erforderlich."
+
+msgid "API Info"
+msgstr "API-Info"
+
+msgid "Registration token is invalid."
+msgstr "Das Registrierungstoken ist ungültig."
+
+msgid "Search 400,000+ Recipes"
+msgstr "Über 400.000 Rezepte durchsuchen"
+
+msgid "Australia"
+msgstr "Australien"
+
+msgid "Austria"
+msgstr "Österreich"
+
+msgid "Belgium"
+msgstr "Belgien"
+
+msgid "Canada"
+msgstr "Kanada"
+
+msgid "Denmark"
+msgstr "Dänemark"
+
+msgid "France"
+msgstr "Frankreich"
+
+msgid "Germany"
+msgstr "Deutschland"
+
+msgid "Greece"
+msgstr "Griechenland"
+
+msgid "India"
+msgstr "Indien"
+
+msgid "Ireland"
+msgstr "Irland"
+
+msgid "Italy"
+msgstr "Italien"
+
+msgid "Japan"
+msgstr "Japan"
+
+msgid "Netherlands"
+msgstr "Niederlande"
+
+msgid "Philippines"
+msgstr "Philippinen"
+
+msgid "Poland"
+msgstr "Polen"
+
+msgid "Spain"
+msgstr "Spanien"
+
+msgid "Sweden"
+msgstr "Schweden"
+
+msgid "Switzerland"
+msgstr "Schweiz"
+
+msgid "United Kingdom"
+msgstr "Vereinigtes Königreich"
+
+msgid "United States"
+msgstr "Vereinigte Staaten"

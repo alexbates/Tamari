@@ -1951,3 +1951,69 @@ msgstr ""
 
 msgid "Registration token is invalid."
 msgstr ""
+
+msgid "Search 400,000+ Recipes"
+msgstr ""
+
+msgid "Browse By Category"
+msgstr ""
+
+msgid "Australia"
+msgstr ""
+
+msgid "Austria"
+msgstr ""
+
+msgid "Belgium"
+msgstr ""
+
+msgid "Canada"
+msgstr ""
+
+msgid "Denmark"
+msgstr ""
+
+msgid "France"
+msgstr ""
+
+msgid "Germany"
+msgstr ""
+
+msgid "Greece"
+msgstr ""
+
+msgid "India"
+msgstr ""
+
+msgid "Ireland"
+msgstr ""
+
+msgid "Italy"
+msgstr ""
+
+msgid "Japan"
+msgstr ""
+
+msgid "Netherlands"
+msgstr ""
+
+msgid "Philippines"
+msgstr ""
+
+msgid "Poland"
+msgstr ""
+
+msgid "Spain"
+msgstr ""
+
+msgid "Sweden"
+msgstr ""
+
+msgid "Switzerland"
+msgstr ""
+
+msgid "United Kingdom"
+msgstr ""
+
+msgid "United States"
+msgstr ""

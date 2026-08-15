@@ -241,6 +241,19 @@
 	transition: 0.15s;
 }
 .iconcontainer img {width: 68%;}
+.country-icon-link,
+.country-icon-link:hover,
+.country-icon-link:focus,
+.country-icon-link:active {
+	text-decoration: none;
+}
+.flag-iconcontainer {
+	font-size: clamp(30px, 4vw, 56px);
+	line-height: 1;
+}
+.country-icon-link:focus-visible .flag-iconcontainer {
+	outline-color: var(--color-darker);
+}
 .expcatlabel {
 	display: block;
 	white-space: nowrap;

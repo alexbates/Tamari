@@ -1955,7 +1955,7 @@ msgstr ""
 msgid "Search 400,000+ Recipes"
 msgstr ""
 
-msgid "Browse By Category"
+msgid "Browse By Country"
 msgstr ""
 
 msgid "Australia"

@@ -1956,6 +1956,9 @@ msgstr "Le jeton d'inscription est invalide."
 msgid "Search 400,000+ Recipes"
 msgstr "Rechercher parmi plus de 400 000 recettes"
 
+msgid "Browse By Country"
+msgstr "Parcourir par pays"
+
 msgid "Australia"
 msgstr "Australie"
 

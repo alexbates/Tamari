@@ -1956,6 +1956,9 @@ msgstr "登録トークンが無効です。"
 msgid "Search 400,000+ Recipes"
 msgstr "40万件以上のレシピを検索"
 
+msgid "Browse By Country"
+msgstr "国別に見る"
+
 msgid "Australia"
 msgstr "オーストラリア"
 

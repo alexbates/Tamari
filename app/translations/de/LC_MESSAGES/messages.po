@@ -1956,6 +1956,9 @@ msgstr "Das Registrierungstoken ist ungültig."
 msgid "Search 400,000+ Recipes"
 msgstr "Über 400.000 Rezepte durchsuchen"
 
+msgid "Browse By Country"
+msgstr "Nach Land suchen"
+
 msgid "Australia"
 msgstr "Australien"
 

@@ -1956,6 +1956,9 @@ msgstr "Недействительный токен регистрации."
 msgid "Search 400,000+ Recipes"
 msgstr "Поиск среди 400 000+ рецептов"
 
+msgid "Browse By Country"
+msgstr "Просмотр по странам"
+
 msgid "Australia"
 msgstr "Австралия"
 

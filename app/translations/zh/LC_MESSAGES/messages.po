@@ -1956,6 +1956,9 @@ msgstr "注册令牌无效。"
 msgid "Search 400,000+ Recipes"
 msgstr "搜索 400,000+ 个食谱"
 
+msgid "Browse By Country"
+msgstr "按国家浏览"
+
 msgid "Australia"
 msgstr "澳大利亚"
 

@@ -34,7 +34,8 @@ def explore():
             newline_all = [x_all[1], new_url_all, x_all[0], count_all, x_all[2]]
             recipes_all.append(newline_all)
             count_all += 1
-            if count_all > 15:
+            # Show 25 recipes on the Explore page
+            if count_all > 25:
                 break
     rec_all = recipes_all
     defaults = ['default01.png', 'default02.png', 'default03.png', 'default04.png', 'default05.png', 'default06.png', 'default07.png',

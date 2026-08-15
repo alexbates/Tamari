@@ -12,6 +12,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from weasyprint import HTML
+from recipe_scrapers import scrape_html
 import secrets, time, random, os, imghdr, requests, re, urllib.request, io, base64, cloudscraper
 from app.explore import bp
 from config import Config
@@ -1385,7 +1386,8 @@ def exploreRecipeDetail(rec_group, recnum):
         # Extract ingredients and instructions
         ingredients = get_wprm_ingredients(soup)
         instructions = get_wprm_instructions(soup)
-    # If website is not implemented we will display parse failure error on page
+    # If a website is not manually implemented above, will use recipe-scrapers
+    # This is currently used by all country specific groups as well as explore-randomized-all
     else:
         page = None
         preptime = ''
@@ -1404,6 +1406,149 @@ def exploreRecipeDetail(rec_group, recnum):
         fiber = None
         ingredients = []
         instructions = []
+        headers = {
+            'User-Agent': UserAgent().random,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+        }
+        try:
+            page = requests.get(rec_url, timeout=16, headers=headers)
+            page.raise_for_status()
+            scraper = scrape_html(page.text, org_url=page.url, supported_only=False)
+            scraped = scraper.to_json()
+			# Extraction
+            preptime = scraped.get('prep_time') or ''
+            cooktime = scraped.get('cook_time') or ''
+            totaltime = scraped.get('total_time') or ''
+            description = scraped.get('description') or ''
+            photo = scraped.get('image') or ''
+            # Converting what is returned by recipe-scrapers for yields to an integer
+            raw_servings = scraped.get('yields')
+            if raw_servings is not None:
+                servings_match = re.search(
+                    r'-?\d+(?:[.,]\d+)?',
+                    str(raw_servings),
+                )
+                if servings_match:
+                    try:
+                        servings_number = servings_match.group(0).replace(',', '.')
+                        servings = int(round(float(servings_number)))
+                    except (TypeError, ValueError):
+                        servings = None
+            ingredients = scraped.get('ingredients') or []
+            if isinstance(ingredients, str):
+                ingredients = [
+                    ingredient.strip()
+                    for ingredient in ingredients.splitlines()
+                    if ingredient.strip()
+                ]
+			# Instructions
+            # Using instructions_list as the primary, fall back to instructions if necessary
+            instructions = scraped.get('instructions_list') or []
+            if isinstance(instructions, str):
+                instructions = [
+                    instruction.strip()
+                    for instruction in instructions.splitlines()
+                    if instruction.strip()
+                ]
+            if not instructions:
+                raw_instructions = scraped.get('instructions') or ''
+                instructions = [
+                    instruction.strip()
+                    for instruction in raw_instructions.splitlines()
+                    if instruction.strip()
+                ]
+            # Nutrients 
+			# This includes handling for units that recipe-scrapers returns
+			# All nutrient values need to be converted to integers
+            nutrients = scraped.get('nutrients') or {}
+            nutrient_specs = {
+                'calories': (('calories', 'calorieContent'), 'kcal'),
+                'carbs': (('carbohydrateContent',), 'g'),
+                'protein': (('proteinContent',), 'g'),
+                'fat': (('fatContent',), 'g'),
+                'sugar': (('sugarContent',), 'g'),
+                'cholesterol': (('cholesterolContent',), 'mg'),
+                'sodium': (('sodiumContent',), 'mg'),
+                'fiber': (('fiberContent',), 'g'),
+            }
+            nutrition_values = {
+                'calories': None,
+                'carbs': None,
+                'protein': None,
+                'fat': None,
+                'sugar': None,
+                'cholesterol': None,
+                'sodium': None,
+                'fiber': None,
+            }
+            for nutrient_name, nutrient_spec in nutrient_specs.items():
+                nutrient_keys, target_unit = nutrient_spec
+                raw_value = None
+                for nutrient_key in nutrient_keys:
+                    if nutrients.get(nutrient_key) is not None:
+                        raw_value = nutrients.get(nutrient_key)
+                        break
+                if raw_value is None:
+                    continue
+                value_text = str(raw_value).strip().lower()
+                number_match = re.search(r'-?\d[\d.,]*', value_text)
+                if not number_match:
+                    continue
+                number_text = number_match.group(0).rstrip('.,')
+                # Some values such as thousands may include both commas and periods
+                if ',' in number_text and '.' in number_text:
+                    if number_text.rfind(',') > number_text.rfind('.'):
+                        number_text = number_text.replace('.', '')
+                        number_text = number_text.replace(',', '.')
+                    else:
+                        number_text = number_text.replace(',', '')
+                elif ',' in number_text:
+                    before_comma, after_comma = number_text.rsplit(',', 1)
+                    if (
+                        len(after_comma) == 3
+                        and before_comma.lstrip('-') not in ('', '0')
+                    ):
+                        number_text = number_text.replace(',', '')
+                    else:
+                        number_text = number_text.replace(',', '.')
+                try:
+                    amount = float(number_text)
+                except:
+                    continue
+                # Converting to the correct units
+                normalized_unit_text = value_text.replace('μ', 'µ')
+                if target_unit == 'g':
+                    if 'mcg' in normalized_unit_text or 'µg' in normalized_unit_text:
+                        amount /= 1_000_000
+                    elif 'mg' in normalized_unit_text:
+                        amount /= 1_000
+                    elif 'kg' in normalized_unit_text:
+                        amount *= 1_000
+                elif target_unit == 'mg':
+                    if 'mcg' in normalized_unit_text or 'µg' in normalized_unit_text:
+                        amount /= 1_000
+                    elif 'kg' in normalized_unit_text:
+                        amount *= 1_000_000
+                    elif re.search(r'\bg\b', normalized_unit_text):
+                        amount *= 1_000
+                elif target_unit == 'kcal':
+                    if 'kj' in normalized_unit_text:
+                        amount /= 4.184
+                nutrition_values[nutrient_name] = int(round(amount))
+            calories = nutrition_values['calories']
+            carbs = nutrition_values['carbs']
+            protein = nutrition_values['protein']
+            fat = nutrition_values['fat']
+            sugar = nutrition_values['sugar']
+            cholesterol = nutrition_values['cholesterol']
+            sodium = nutrition_values['sodium']
+            fiber = nutrition_values['fiber']
+        except:
+            page = None
     if calories or carbs or protein or fat or sugar or cholesterol or sodium or fiber:
         nutrition = True
     else:

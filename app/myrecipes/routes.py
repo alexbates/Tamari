@@ -38,11 +38,42 @@ def validate_image(stream):
     except:
         return None
 
+# Reusable function to restrict access to private recipes
+def get_visible_recipe(hexid):
+    recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    if recipe is None:
+        abort(404)
+    if recipe.public != 1:
+        if not current_user.is_authenticated:
+            abort(404)
+        if recipe.user_id != current_user.id:
+            abort(404)
+    return recipe
+
 @bp.route('/recipe-photos/<path:filename>')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipePhotos(filename):
+    photo_name = filename.lower()
+    starts_with_default = photo_name.startswith('default')
+    starts_with_demo = photo_name.startswith('demo')
+    has_valid_extension = (photo_name.endswith('.png') or photo_name.endswith('.jpg'))
+    built_in_photo = ((starts_with_default or starts_with_demo) and has_valid_extension)
+    if not built_in_photo:
+        recipe = Recipe.query.filter_by(photo=filename).first()
+        if recipe is None:
+            abort(404)
+        if recipe.public != 1:
+            if not current_user.is_authenticated:
+                abort(404)
+            if recipe.user_id != current_user.id:
+                abort(404)
     response = make_response(send_from_directory(app.root_path + '/appdata/recipe-photos/', filename))
-    response.headers['Cache-Control'] = 'public, max-age=864000' # Cache for 1 month
+    # Cache for 1 month if built in or public recipe
+    if built_in_photo or recipe.public == 1:
+        response.headers['Cache-Control'] = 'public, max-age=864000'
+    # Otherwise don't cache
+    else:
+        response.headers['Cache-Control'] = 'private, no-store'
     return response
 
 # The get_recipe_info function is used by All Recipes, Favorites, Categories, and Mobile Category routes
@@ -573,7 +604,7 @@ def makePrivate(hexid):
 @limiter.limit(Config.PDF_RATE_LIMIT)
 def generatePDF(hexid):
     # Retrieve recipe data
-    recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    recipe = get_visible_recipe(hexid)
     if recipe is None:
         recipe_title = 'Recipe Not Found'
         owner = 0
@@ -622,7 +653,7 @@ def generatePDF(hexid):
 @bp.route('/recipe/<hexid>/print', methods=['GET'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def printRecipe(hexid):
-    recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    recipe = get_visible_recipe(hexid)
     if recipe is None:
         recipe_title = 'Recipe Not Found'
         owner = 0
@@ -933,7 +964,7 @@ def append_recipe_title(existing_title, new_title):
 @bp.route('/recipe/<hexid>', methods=['GET', 'POST'])
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def recipeDetail(hexid):
-    recipe = Recipe.query.filter_by(hex_id=hexid).first()
+    recipe = get_visible_recipe(hexid)
     # Ensure editedtime exists even when recipe doesn't exist
     editedtime = None
     form = AddToListForm()
@@ -2580,6 +2611,7 @@ def advancedSearch():
 # The following page is used to debug photo uploads
 # Much of the same photo upload code is used in the Add Recipe and Edit Recipe Routes
 @bp.route('/photo-test', methods=['GET', 'POST'])
+@login_required
 @limiter.limit(Config.DEBUG_RATE_LIMIT)
 def photoTest():
     if not app.config['DEBUG_MODE']:

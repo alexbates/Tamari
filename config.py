@@ -50,7 +50,7 @@ class Config(object):
     REGISTRATION_RATE_LIMIT = None
     # API CONFIGURATION (disabled by default)
     API_ENABLED = os.environ.get('API_ENABLED', 'False') == 'True'
-    APP_KEY = os.environ.get('APP_KEY') or 'AANmeooubvOOB3LQQeny8e900q35ee804'
+    APP_KEY = getSecret('APP_KEY')
     # If True, X-App-Name header must have value 'tamari' and X-App-Key must equal APP_KEY
     # Default is False if env variable not set, can change ", 'False')" to ", 'True')"
     REQUIRE_HEADERS = os.environ.get('REQUIRE_HEADERS', 'False') == 'True'

@@ -1,2 +1,9 @@
+.env
 .DS_Store
 app/appdata/secrets/
+app/appdata/*.db*
+app/appdata/recipe-photos/
+!app/appdata/recipe-photos/default*.png
+!app/appdata/recipe-photos/default*.jpg
+!app/appdata/recipe-photos/demo*.png
+!app/appdata/recipe-photos/demo*.jpg

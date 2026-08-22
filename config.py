@@ -22,6 +22,19 @@ class Config(object):
     # Optional, but required if using email verification or password reset emails
     # Must include http:// or https://, such as https://tamari.example.com
     PUBLIC_URL = os.environ.get('PUBLIC_URL')
+    # XSS Protection for cookies, leave these as default
+    SESSION_COOKIE_HTTPONLY = True
+    REMEMBER_COOKIE_HTTPONLY = True
+    SESSION_COOKIE_SAMESITE = 'Lax'
+    REMEMBER_COOKIE_SAMESITE = 'Lax'
+    # Secure Cookie Support
+    # Disable by default, change False to True to enable
+    # If using a reverse proxy and hosting Tamari on HTTPS such as https://tamari.example.com 
+    # If this is not enabled and you visit http://tamari.example.com, cookies may be sent over HTTP (a security risk)
+    # This is an optional hardening step
+    SECURE_COOKIES = os.environ.get('SECURE_COOKIES', 'False') == 'True'
+    SESSION_COOKIE_SECURE = SECURE_COOKIES
+    REMEMBER_COOKIE_SECURE = SECURE_COOKIES
     # Mail server settings
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
@@ -52,7 +65,7 @@ class Config(object):
     # For dynamic loading of images
     # Distance from viewport that image will start to load in My Recipes
     DYNAMIC_ROOT_MARGIN = '120px'
-    # Rate Limit
+    # Rate Limit Settings
     # Enabled by default
     # If you wish to disable rate limiting, set all equal to None - for example, DEFAULT_RATE_LIMIT = None
     # Note that rate limit will be multiplied by the number of gunicorn worker threads (usually 4)

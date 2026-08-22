@@ -154,8 +154,8 @@ def register():
                 elif form.password.data.strip() != form.password2.data.strip():
                     flash('Error: ' + _('passwords do not match.'))
                 # Error if password length out of range
-                elif len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64:
-                    flash('Error: ' + _('password must be 3-64 characters.'))
+                elif len(form.password.data.strip()) < 8 or len(form.password.data.strip()) > 128:
+                    flash('Error: ' + _('password must be 8-128 characters.'))
                 # Process registration
                 else:
                     logout_user()
@@ -254,8 +254,8 @@ def user():
         elif emailisvalid == False:
             flash('Error: ' + _('email is invalid.'))
         # Error if password length out of range
-        elif has_passwords and (len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64):
-            flash('Error: ' + _('password must be between 3 and 64 characters.'))
+        elif has_passwords and (len(form.password.data.strip()) < 8 or len(form.password.data.strip()) > 128):
+            flash('Error: ' + _('password must be between 8 and 128 characters.'))
         # Process changes
         elif has_passwords or newemail != current_user.email:
             email_change_requested = newemail != current_user.email
@@ -785,10 +785,14 @@ def set_password(token):
         return redirect(url_for('account.login'))
     form = ResetPasswordForm()
     if form.validate_on_submit():
-        user.set_password(form.password.data.strip())
-        db.session.commit()
-        flash(_('Your new password has been set.'))
-        return redirect(url_for('account.login'))
+        password = form.password.data.strip()
+        if len(password) < 8 or len(password) > 128:
+            flash('Error: ' + _('password must be 8-128 characters.'))
+        else:
+            user.set_password(form.password.data.strip())
+            db.session.commit()
+            flash(_('Your new password has been set.'))
+            return redirect(url_for('account.login'))
     return render_template('set-password.html', title=_('Set Password'),
         mdescription=_('Set a new password for your Tamari account.'), form=form)
 
@@ -819,8 +823,8 @@ def register_set_password(token):
         elif form.password.data.strip() != form.password2.data.strip():
             flash('Error: ' + _('passwords do not match.'))
         # Error if password length out of range
-        elif len(form.password.data.strip()) < 3 or len(form.password.data.strip()) > 64:
-            flash('Error: ' + _('password must be 3-64 characters.'))
+        elif len(form.password.data.strip()) < 8 or len(form.password.data.strip()) > 128:
+            flash('Error: ' + _('password must be 8-128 characters.'))
         # Process registration
         else:
             logout_user()

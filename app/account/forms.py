@@ -13,7 +13,7 @@ class LoginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     email = StringField(_l('Email'), validators=[DataRequired(), Email()])
-    password = PasswordField(_l('Password'), validators=[DataRequired(), Length(3,64,message=_l('Must be 3-64 characters long.'))])
+    password = PasswordField(_l('Password'), validators=[DataRequired(), Length(8,128,message=_l('Must be 8-128 characters long.'))])
     password2 = PasswordField(_l('Repeat Password'), validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField(_l('Register'))
 
@@ -60,7 +60,7 @@ class ResetPasswordRequestForm(FlaskForm):
     submit = SubmitField(_l('Request Reset'))
 
 class ResetPasswordForm(FlaskForm):
-    password = PasswordField(_l('Password'), validators=[DataRequired(), Length(3,64,message=_l('Must be 3-64 characters long.'))])
+    password = PasswordField(_l('Password'), validators=[DataRequired(), Length(8,128,message=_l('Must be 8-128 characters long.'))])
     password2 = PasswordField(_l('Repeat Password'), validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField(_l('Set Password'))
 

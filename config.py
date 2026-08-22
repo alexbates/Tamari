@@ -9,6 +9,11 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app/appdata/app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LANGUAGES = ['en', 'es', 'de', 'zh', 'fr', 'ru', 'ja']
+    # Public URL
+    # Optional, but required if using email verification or password reset emails
+    # Must include http:// or https://, such as https://tamari.example.com
+    PUBLIC_URL = os.environ.get('PUBLIC_URL')
+    # Mail server settings
     MAIL_SERVER = os.environ.get('MAIL_SERVER')
     MAIL_PORT = int(os.environ.get('MAIL_PORT') or 25)
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS') is not None

@@ -3,12 +3,12 @@
 <p>{{ _('You requested to change the email address associated with your Tamari account.') }}</p>
 
 <p>
-	<a href="{{ url_for('account.verify_email_change', token=token, _external=True) }}">{{ _('Click here') }}</a>
+	<a href="{{ email_change_url }}">{{ _('Click here') }}</a>
 	{{ _('to confirm this change.') }}
 </p>
 
 <p>{{ _('Alternatively, you can copy and paste this link directly:') }}</p>
 
-<p>{{ url_for('account.verify_email_change', token=token, _external=True) }}</p>
+<p>{{ email_change_url }}</p>
 
 <p>{{ _('You can ignore this message if you did not request an email change.') }}</p>

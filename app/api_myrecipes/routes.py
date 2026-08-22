@@ -805,16 +805,11 @@ def apiRecipeEdit(hexid):
         current_user = get_jwt_identity()
         user = User.query.filter_by(id=current_user).first_or_404()
         if user:
-            recipe = Recipe.query.filter_by(hex_id=hexid).first()
-            try:
-                nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
-            except:
-                nutrition = None
-            # Verify that recipe belongs to current user or is public
-            if not recipe:
-                return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
-            if recipe.user_id != current_user and recipe.public != 1:
-                return jsonify(message="The requested recipe either cannot be found or you do not have permission to view it."), 404
+            # Look for recipe owned by the authenticated user
+            recipe = Recipe.query.filter_by(hex_id=hexid, user_id=current_user).first()
+            if recipe is None:
+                return jsonify(message="The requested recipe either cannot be found or you do not have permission to modify it."), 404
+            nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id, user_id=current_user).first()
             # List is used to validate submitted data
             dis_chars = {'<', '>', '{', '}', '/*', '*/', ';'}
             if title:

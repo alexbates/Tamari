@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, make_response
+from flask import render_template, flash, redirect, url_for, request, make_response, abort
 from flask_babel import _
 from app import app, db, limiter
 from app.explore.forms import ExploreSearchForm, EmptyForm
@@ -1724,11 +1724,15 @@ def none_to_empty(val):
 
 # Displays a print-friendly version of explore page
 @bp.route('/explore/recipe/print', methods=['GET', 'POST'])
-@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@limiter.limit(Config.PDF_RATE_LIMIT)
 def explorePrintRecipe():
     if request.method == 'GET':
         # If someone visits directly (no POST data), just show an error in the template
         return render_template('explore-print.html', error=True), 400
+    if request.content_length is None:
+        abort(413)
+    if request.content_length > Config.PDF_MAX_REQUEST_SIZE:
+        abort(413)
     # Handle POST data received, prepare for display on template
     rec_title = none_to_empty(request.form.get('rec_title', ''))
     description = none_to_empty(request.form.get('description', ''))
@@ -1766,10 +1770,14 @@ def explorePrintRecipe():
         servings=servings, rec_url=rec_url, ingredients=ingredients, instructions=instructions, nutrition=nutrition)
         
 @bp.route("/explore/recipe/pdf", methods=['GET', 'POST'])
-@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@limiter.limit(Config.PDF_RATE_LIMIT)
 def exploreGeneratePDF():
     if request.method == 'GET':
         return "Invalid access: PDF generation requires POST data.", 400
+    if request.content_length is None:
+        abort(413)
+    if request.content_length > Config.PDF_MAX_REQUEST_SIZE:
+        abort(413)
     # Handle POST data received, prepare for display on template
     rec_title = none_to_empty(request.form.get('rec_title', ''))
     description = none_to_empty(request.form.get('description', ''))

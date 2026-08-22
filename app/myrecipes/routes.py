@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
+from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response, abort
 from flask_babel import _
 from app import app, db, limiter
 from app.myrecipes.forms import AddCategoryForm, AddRecipeForm, AutofillRecipeForm, EditRecipeForm, AddToListForm, AddToMealPlannerForm, DisplaySettingsForm, EmptyForm, AdvancedSearchForm
@@ -570,6 +570,7 @@ def makePrivate(hexid):
     return redirect(url_for('myrecipes.recipeDetail', hexid=hexid))
 
 @bp.route("/recipe/<hexid>/pdf")
+@limiter.limit(Config.PDF_RATE_LIMIT)
 def generatePDF(hexid):
     # Retrieve recipe data
     recipe = Recipe.query.filter_by(hex_id=hexid).first()
@@ -2579,8 +2580,10 @@ def advancedSearch():
 # The following page is used to debug photo uploads
 # Much of the same photo upload code is used in the Add Recipe and Edit Recipe Routes
 @bp.route('/photo-test', methods=['GET', 'POST'])
-@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+@limiter.limit(Config.DEBUG_RATE_LIMIT)
 def photoTest():
+    if not app.config['DEBUG_MODE']:
+        abort(404)
     if request.method == 'POST':
         image = request.files['image']
         if image and image.filename != '':

@@ -9,6 +9,9 @@ class Config(object):
         'sqlite:///' + os.path.join(basedir, 'app/appdata/app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     LANGUAGES = ['en', 'es', 'de', 'zh', 'fr', 'ru', 'ja']
+    # Debug Mode
+    # Disabled by default, this is only for development, change False to True to enable
+    DEBUG_MODE = os.environ.get('DEBUG_MODE', 'False') == 'True'
     # Public URL
     # Optional, but required if using email verification or password reset emails
     # Must include http:// or https://, such as https://tamari.example.com
@@ -53,6 +56,11 @@ class Config(object):
     LOGIN_RATE_LIMIT = None
     # Enabled example: REGISTRATION_RATE_LIMIT = '3 per 10 minutes'
     REGISTRATION_RATE_LIMIT = None
+    # Enabled example: DEBUG_RATE_LIMIT = '5 per minute'
+    DEBUG_RATE_LIMIT = None
+    # Enabled example: PDF_RATE_LIMIT = '10 per minute'
+    PDF_RATE_LIMIT = None
+    PDF_MAX_REQUEST_SIZE = 1024 * 1024
     # API CONFIGURATION (disabled by default)
     API_ENABLED = os.environ.get('API_ENABLED', 'False') == 'True'
     APP_KEY = getSecret('APP_KEY')

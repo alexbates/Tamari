@@ -9,6 +9,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask_babel import Babel, lazy_gettext as _l
 from flask_jwt_extended import JWTManager
+from werkzeug.middleware.proxy_fix import ProxyFix
 import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 from os.path import join, dirname, realpath
@@ -21,6 +22,11 @@ def get_locale():
 
 app = Flask(__name__)
 app.config.from_object(Config)
+
+# Trust the client address only when reverse proxy support is enabled
+if app.config['USE_PROXY_FIX']:
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)
+
 db = SQLAlchemy(app)
 migrate = Migrate(app, db, directory='app/appdata/migrations', render_as_batch=True)
 login = LoginManager(app)

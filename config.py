@@ -12,6 +12,12 @@ class Config(object):
     # Debug Mode
     # Disabled by default, this is only for development, change False to True to enable
     DEBUG_MODE = os.environ.get('DEBUG_MODE', 'False') == 'True'
+    # Reverse Proxy Support
+    # Disabled by default, change False to True to enable
+    # Only enable when users are accessing Tamari through a reverse proxy, instead of directly
+    # When enabled, Tamari trusts the client IP address provided by reverse proxy (making rate limiting possible)
+    # Do not enable if users can connect directly to Gunicorn, because they could spoof their IP address
+    USE_PROXY_FIX = os.environ.get('USE_PROXY_FIX', 'False') == 'True'
     # Public URL
     # Optional, but required if using email verification or password reset emails
     # Must include http:// or https://, such as https://tamari.example.com
@@ -46,20 +52,17 @@ class Config(object):
     # For dynamic loading of images
     # Distance from viewport that image will start to load in My Recipes
     DYNAMIC_ROOT_MARGIN = '120px'
-    # Rate Limit Settings
-    # If you wish to disable rate limiting, set all equal to None (no single quotes)
+    # Rate Limit
+    # Enabled by default
+    # If you wish to disable rate limiting, set all equal to None - for example, DEFAULT_RATE_LIMIT = None
     # Note that rate limit will be multiplied by the number of gunicorn worker threads (usually 4)
     # This issue can be mitigated by used a shared storage backend like redis (configure in __init__.py)
-    # Enabled example: DEFAULT_RATE_LIMIT = '1000 per minute'
-    DEFAULT_RATE_LIMIT = None
-    # Enabled example: LOGIN_RATE_LIMIT = '25 per 10 minutes'
-    LOGIN_RATE_LIMIT = None
-    # Enabled example: REGISTRATION_RATE_LIMIT = '3 per 10 minutes'
-    REGISTRATION_RATE_LIMIT = None
-    # Enabled example: DEBUG_RATE_LIMIT = '5 per minute'
-    DEBUG_RATE_LIMIT = None
-    # Enabled example: PDF_RATE_LIMIT = '10 per minute'
-    PDF_RATE_LIMIT = None
+    # Enabled examples: '1000 per minute', '25 per 10 minutes', '3 per 10 minutes', '5 per minute'
+    DEFAULT_RATE_LIMIT = '1000 per minute'
+    LOGIN_RATE_LIMIT = '10 per 10 minutes'
+    REGISTRATION_RATE_LIMIT = '3 per 10 minutes'
+    DEBUG_RATE_LIMIT = '5 per minute'
+    PDF_RATE_LIMIT = '5 per minute'
     PDF_MAX_REQUEST_SIZE = 1024 * 1024
     # API CONFIGURATION (disabled by default)
     API_ENABLED = os.environ.get('API_ENABLED', 'False') == 'True'

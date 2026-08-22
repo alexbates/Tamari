@@ -1,5 +1,5 @@
 .env
-.DS_Store
+.git
 __pycache__/
 logs/
 app/appdata/secrets/

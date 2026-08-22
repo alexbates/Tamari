@@ -2342,8 +2342,8 @@ def addRecipe():
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def editRecipe(hexid):
     # Query the requested recipe as well as its nutritional info
-    recipe = Recipe.query.filter_by(hex_id=hexid).first()
-    nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id).first()
+    recipe = Recipe.query.filter_by(hex_id=hexid, user_id=current_user.id).first_or_404()
+    nutrition = NutritionalInfo.query.filter_by(recipe_id=recipe.id, user_id=current_user.id).first()
     form = EditRecipeForm()
     choices = []
     user = User.query.filter_by(email=current_user.email).first_or_404()
@@ -2352,8 +2352,6 @@ def editRecipe(hexid):
         curr_cat = cat.label
         choices.append(curr_cat)
     form.category.choices = choices
-    if recipe.user_id != current_user.id:
-        flash('Error: ' + _('recipe does not exist or you do not have permission to edit it.'))
     if form.validate_on_submit():
         recipe.title = form.recipe_name.data
         recipe.category = form.category.data

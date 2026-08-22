@@ -1,9 +1,10 @@
 import os
 from datetime import timedelta
+from secretkeys import getSecret
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
-    SECRET_KEY = os.environ.get('SECRET_KEY') or '8AFD4E1BC23A6F927E5B'
+    SECRET_KEY = getSecret('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
         'sqlite:///' + os.path.join(basedir, 'app/appdata/app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -53,6 +54,6 @@ class Config(object):
     # If True, X-App-Name header must have value 'tamari' and X-App-Key must equal APP_KEY
     # Default is False if env variable not set, can change ", 'False')" to ", 'True')"
     REQUIRE_HEADERS = os.environ.get('REQUIRE_HEADERS', 'False') == 'True'
-    JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or '1C0D290AC6CF8DC1A9A4'
+    JWT_SECRET_KEY = getSecret('JWT_SECRET_KEY')
     ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
     REFRESH_TOKEN_EXPIRES = timedelta(days=60)

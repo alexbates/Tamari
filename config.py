@@ -72,6 +72,7 @@ class Config(object):
     # This issue can be mitigated by used a shared storage backend like redis (configure in __init__.py)
     # Enabled examples: '1000 per minute', '25 per 10 minutes', '3 per 10 minutes', '5 per minute'
     DEFAULT_RATE_LIMIT = '1000 per minute'
+    # If this is set to None, an attacker could attempt login over 1 million times in 12 hours from one IP address
     LOGIN_RATE_LIMIT = '10 per 10 minutes'
     REGISTRATION_RATE_LIMIT = '3 per 10 minutes'
     DEBUG_RATE_LIMIT = '5 per minute'

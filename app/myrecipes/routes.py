@@ -17,7 +17,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from weasyprint import HTML
-import secrets, time, random, os, imghdr, requests, re, urllib.request
+import secrets, time, random, os, imghdr, requests, re, urllib.request, ipaddress, socket
 from app.myrecipes import bp
 from config import Config
 
@@ -49,6 +49,34 @@ def get_visible_recipe(hexid):
         if recipe.user_id != current_user.id:
             abort(404)
     return recipe
+
+# Helper used by addRecipe to validate urls and prevent SSRF
+def is_safe_autofill_url(url):
+    try:
+        parsed = urlparse(url)
+        if parsed.scheme not in ("http", "https"):
+            return False
+        if not parsed.hostname:
+            return False
+        # Do not permit URLs containing embedded credentials, then check every address hostname
+        if parsed.username or parsed.password:
+            return False
+        port = parsed.port or (443 if parsed.scheme == "https" else 80)
+        addresses = socket.getaddrinfo(
+            parsed.hostname,
+            port,
+            type=socket.SOCK_STREAM
+        )
+        if not addresses:
+            return False
+        for address in addresses:
+            ip = ipaddress.ip_address(address[4][0])
+            # If IP address is not a normal public address, reject the URL
+            if not ip.is_global:
+                return False
+        return True
+    except (ValueError, OSError, socket.gaierror):
+        return False
 
 @bp.route('/recipe-photos/<path:filename>')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -1738,9 +1766,13 @@ def addRecipe():
                 'Upgrade-Insecure-Requests': '1',
             }
             try:
-                page = requests.get(autofill_url, timeout=16, headers=headers)
+                # URL validation
+                if not is_safe_autofill_url(autofill_url):
+                    raise ValueError("Unsafe autofill URL")
+                page = requests.get(autofill_url, timeout=16, headers=headers, allow_redirects=False)
+                page.raise_for_status()
                 soup = BeautifulSoup(page.text, 'html.parser')
-            except:
+            except (ValueError, requests.RequestException):
                 page = None
                 soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
             # INITIALIZE VARIABLES PRIOR TO EXTRACTION

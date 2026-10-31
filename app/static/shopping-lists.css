@@ -516,6 +516,31 @@
 .btn-delete:hover {background: var(--color-flashed-err-lighter);}
 .btn-delete:active, .btn-delete.active {background: var(--color-flashed-err-darker);}
 .btn-delete:active, .btn-delete.active, .btn-delete:hover, .btn-delete:focus {outline: none;}
+.clear-completed-form {
+    margin: 14px 0 10px 12px;
+}
+.btn-clear-completed {
+    background-color: var(--color);
+    border: none;
+    border-radius: 7px;
+    color: var(--color-block1);
+    cursor: pointer;
+    font-size: var(--font-block1);
+    height: calc(var(--font-block1) + 18px);
+    padding: 0 12px;
+    transition: background-color 0.08s linear;
+    white-space: nowrap;
+}
+.btn-clear-completed:hover {
+    background-color: var(--color-lighter);
+}
+.btn-clear-completed:active {
+    background-color: var(--color-darker);
+}
+.btn-clear-completed:focus-visible {
+    outline: 2px solid var(--color-block1);
+    outline-offset: 2px;
+}
 
 /* RESPONSIVE */
 @media screen and (max-width: 1300px) { 

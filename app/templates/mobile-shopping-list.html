@@ -73,6 +73,13 @@
 				</div>
 				{% endfor %}
 			</div>
+			<form class="clear-completed-form" method="post" action="{{ url_for('shoplists.clearCompleted', hexid=list.hex_id) }}" onsubmit='return confirm({{ _("Clear all completed items from this list?")|tojson }});'>
+				{{ form2.hidden_tag() }}
+				<input type="hidden" name="view" value="mobile">
+				<button type="submit" class="btn-clear-completed">
+					{{ _('Clear Completed') }}
+				</button>
+			</form>
 			{% endif %}
 			{% else %}
 			<p id="listhowto">{{ _('This list has no items saved. Add one below or from a Recipe Detail page.') }}</p>

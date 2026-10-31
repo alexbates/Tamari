@@ -21,5 +21,6 @@ python-dotenv
 recipe-scrapers==15.12.0
 requests
 standard-imghdr
+urllib3
 WeasyPrint==64.1
 werkzeug==2.3.0

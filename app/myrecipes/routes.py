@@ -17,7 +17,7 @@ from urllib.request import urlopen, Request
 from bs4 import BeautifulSoup
 from fake_useragent import UserAgent
 from weasyprint import HTML
-import secrets, time, random, os, imghdr, requests, re, urllib.request, ipaddress, socket
+import secrets, time, random, os, imghdr, requests, re, urllib.request, ipaddress, socket, urllib3
 from app.myrecipes import bp
 from config import Config
 
@@ -50,33 +50,68 @@ def get_visible_recipe(hexid):
             abort(404)
     return recipe
 
-# Helper used by addRecipe to validate urls and prevent SSRF
-def is_safe_autofill_url(url):
-    try:
-        parsed = urlparse(url)
-        if parsed.scheme not in ("http", "https"):
-            return False
-        if not parsed.hostname:
-            return False
-        # Do not permit URLs containing embedded credentials, then check every address hostname
-        if parsed.username or parsed.password:
-            return False
-        port = parsed.port or (443 if parsed.scheme == "https" else 80)
-        addresses = socket.getaddrinfo(
-            parsed.hostname,
-            port,
-            type=socket.SOCK_STREAM
+# Helper used by addRecipe to fetch urls (autofill) and prevent SSRF
+def fetch_safe_autofill_html(url, headers):
+    parsed = urlparse(url)
+    if parsed.scheme not in ("http", "https") or not parsed.hostname:
+        raise ValueError("Unsafe autofill URL")
+    if parsed.username is not None or parsed.password is not None:
+        raise ValueError("Unsafe autofill URL")
+    hostname = parsed.hostname.encode("idna").decode("ascii")
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    addresses = socket.getaddrinfo(
+        hostname, port, type=socket.SOCK_STREAM
+    )
+    if not addresses:
+        raise ValueError("Unsafe autofill URL")
+    ips = [ipaddress.ip_address(address[4][0]) for address in addresses]
+    if any(not ip.is_global for ip in ips):
+        raise ValueError("Unsafe autofill URL")
+    # Avoid DNS rebinding attack by using first resolved IP
+    checked_ip = str(ips[0])
+    host_header = f"[{hostname}]" if ":" in hostname else hostname
+    if parsed.port is not None:
+        host_header += f":{port}"
+    request_headers = {**headers, "Host": host_header}
+    path = parsed.path or "/"
+    if parsed.query:
+        path += "?" + parsed.query
+    options = {
+        "host": checked_ip,
+        "port": port,
+        "timeout": urllib3.Timeout(connect=16, read=16),
+        "retries": False,
+    }
+    if parsed.scheme == "https":
+        pool = urllib3.HTTPSConnectionPool(
+            **options,
+            server_hostname=hostname,
+            assert_hostname=hostname,
+            cert_reqs="CERT_REQUIRED",
         )
-        if not addresses:
-            return False
-        for address in addresses:
-            ip = ipaddress.ip_address(address[4][0])
-            # If IP address is not a normal public address, reject the URL
-            if not ip.is_global:
-                return False
-        return True
-    except (ValueError, OSError, socket.gaierror):
-        return False
+    else:
+        pool = urllib3.HTTPConnectionPool(**options)
+    try:
+        response = pool.urlopen(
+            "GET",
+            path,
+            headers=request_headers,
+            redirect=False,
+            assert_same_host=False,
+            preload_content=False,
+        )
+        try:
+            if response.status >= 400:
+                raise ValueError("Autofill request failed")
+            # Limit page size to prevent memory exhaustion
+            html = response.read(2_000_001)
+            if len(html) > 2_000_000:
+                raise ValueError("Autofill page too large")
+            return html
+        finally:
+            response.close()
+    finally:
+        pool.close()
 
 @bp.route('/recipe-photos/<path:filename>')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
@@ -1766,13 +1801,9 @@ def addRecipe():
                 'Upgrade-Insecure-Requests': '1',
             }
             try:
-                # URL validation
-                if not is_safe_autofill_url(autofill_url):
-                    raise ValueError("Unsafe autofill URL")
-                page = requests.get(autofill_url, timeout=16, headers=headers, allow_redirects=False)
-                page.raise_for_status()
-                soup = BeautifulSoup(page.text, 'html.parser')
-            except (ValueError, requests.RequestException):
+                html = fetch_safe_autofill_html(autofill_url, headers)
+                soup = BeautifulSoup(html, 'html.parser')
+            except (ValueError, OSError, urllib3.exceptions.HTTPError):
                 page = None
                 soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
             # INITIALIZE VARIABLES PRIOR TO EXTRACTION

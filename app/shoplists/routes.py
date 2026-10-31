@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, abort
 from flask_babel import _
 from app import app, db, limiter
 from app.shoplists.forms import AddListForm, AddListItemForm, EmptyForm
@@ -33,6 +33,7 @@ def shoppingLists():
         items_comp = []
     form = AddListForm()
     form2 = AddListItemForm(prefix='a')
+    form3 = EmptyForm(prefix='b')
     lists_arr = []
     for thing in lists:
         curr_list = thing.label
@@ -78,7 +79,7 @@ def shoppingLists():
     return render_template('shopping-lists.html', title=_('Shopping Lists'),
         mdescription=_('Display all saved shopping lists and list items for the selected list.'), lists=lists,
         query_string=query_string, list=list, lists_arr=lists_arr, items=items, items_tobuy=items_tobuy,
-        items_comp=items_comp, form=form, form2=form2)
+        items_comp=items_comp, form=form, form2=form2, form3=form3)
 
 @bp.route('/m/shopping-list/<listname>', methods=['GET', 'POST'])
 @login_required
@@ -92,6 +93,7 @@ def mobileList(listname):
     items_tobuy = user.list_items.filter_by(list_id=list.id, complete=0).all()
     items_comp = user.list_items.filter_by(list_id=list.id, complete=1).all()
     form = AddListItemForm(prefix='a')
+    form2 = EmptyForm(prefix='b')
     items_arr = []
     for thing in items:
         curr_item = thing.item
@@ -115,7 +117,27 @@ def mobileList(listname):
         return redirect(url_for('shoplists.mobileList', listname=list.label))
     return render_template('mobile-shopping-list.html', title=listname,
         mdescription=_('Display all list items for the selected shopping list.'), list=list, items=items,
-        items_tobuy=items_tobuy, items_comp=items_comp, form=form)
+        items_tobuy=items_tobuy, items_comp=items_comp, form=form, form2=form2)
+
+@bp.route('/shopping-lists/<hexid>/clear-completed', methods=['POST'])
+@login_required
+@limiter.limit(Config.DEFAULT_RATE_LIMIT)
+def clearCompleted(hexid):
+    shopping_list = Shoplist.query.filter_by(hex_id=hexid, user_id=current_user.id).first_or_404()
+    form = EmptyForm(prefix='b')
+    if not form.validate_on_submit():
+        abort(400)
+    completed_items = Listitem.query.filter_by(list_id=shopping_list.id, user_id=current_user.id, complete=1).all()
+    for item in completed_items:
+        db.session.delete(item)
+    db.session.commit()
+    if completed_items:
+        flash(_('Completed items have been cleared.'))
+    else:
+        flash(_('There are no completed items to clear.'))
+    if request.form.get('view') == 'mobile':
+        return redirect(url_for('shoplists.mobileList', listname=shopping_list.label))
+    return redirect(url_for('shoplists.shoppingLists', list=shopping_list.label))
 
 @bp.route('/remove-list/<mobile>/<hexid>')
 @login_required

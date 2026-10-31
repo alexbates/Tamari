@@ -2035,3 +2035,15 @@ msgstr ""
 
 msgid "Could not connect to the recipe website."
 msgstr ""
+
+msgid "Clear all completed items from this list?"
+msgstr ""
+
+msgid "Clear Completed"
+msgstr ""
+
+msgid "Completed items have been cleared."
+msgstr ""
+
+msgid "There are no completed items to clear."
+msgstr ""

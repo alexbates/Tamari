@@ -416,7 +416,7 @@
 .btn-delete:active, .btn-delete.active {background: var(--color-flashed-err-darker);}
 .btn-delete:active, .btn-delete.active, .btn-delete:hover, .btn-delete:focus {outline: none;}
 .clear-completed-form {
-    margin: 14px 0 10px 12px;
+    margin: 14px 0 10px 0px;
 }
 .btn-clear-completed {
     background-color: var(--color);

@@ -101,6 +101,8 @@ def fetch_safe_autofill_html(url, headers):
             preload_content=False,
         )
         try:
+            if 300 <= response.status < 400:
+                raise ValueError("Autofill redirected")
             if response.status >= 400:
                 raise ValueError("Autofill request failed")
             # Limit page size to prevent memory exhaustion
@@ -1791,6 +1793,8 @@ def addRecipe():
     # Autofill the Add to Recipe form from URL
     if form2.submit.data and form2.validate_on_submit():
         autofill_url = request.form['a-autofillurl']
+        if not autofill_url:
+            flash('Error: ' + _('Please enter a recipe URL.'))
         if autofill_url:
             headers = {
                 'User-Agent': UserAgent().random,
@@ -1800,11 +1804,25 @@ def addRecipe():
                 'Connection': 'keep-alive',
                 'Upgrade-Insecure-Requests': '1',
             }
+            autofill_error = None
             try:
                 html = fetch_safe_autofill_html(autofill_url, headers)
                 soup = BeautifulSoup(html, 'html.parser')
-            except (ValueError, OSError, urllib3.exceptions.HTTPError):
-                page = None
+            except ValueError as error:
+                reason = str(error)
+                if reason == "Unsafe autofill URL":
+                    autofill_error = _('Enter a public http:// or https:// recipe URL.')
+                elif reason == "Autofill redirected":
+                    autofill_error = _('This URL redirects. Paste the final recipe URL instead.')
+                elif reason == "Autofill page too large":
+                    autofill_error = _('This recipe page is too large to autofill.')
+                elif reason == "Autofill request failed":
+                    autofill_error = _('The recipe website returned an error.')
+                else:
+                    autofill_error = _('Could not read this recipe URL.')
+                soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
+            except (OSError, urllib3.exceptions.HTTPError):
+                autofill_error = _('Could not connect to the recipe website.')
                 soup = BeautifulSoup('<html><body></body></html>', 'html.parser')
             # INITIALIZE VARIABLES PRIOR TO EXTRACTION
             title = None
@@ -2325,7 +2343,9 @@ def addRecipe():
                 form.instructions.data = i_instructions
             if title or i_description or servings or i_ingredients or i_instructions:
                 form.url.data = autofill_url
-            if title and i_ingredients and i_instructions:
+            if autofill_error:
+                flash('Error: ' + autofill_error)
+            elif title and i_ingredients and i_instructions:
                 flash(_('The form was autofilled successfully.'))
             elif title or i_description or servings or i_ingredients or i_instructions:
                 flash(_('Some fields have been autofilled, please manually complete the remaining.'))

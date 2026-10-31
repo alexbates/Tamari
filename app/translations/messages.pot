@@ -2017,3 +2017,21 @@ msgstr ""
 
 msgid "United States"
 msgstr ""
+
+msgid "Enter a public http:// or https:// recipe URL."
+msgstr ""
+
+msgid "This URL redirects. Paste the final recipe URL instead."
+msgstr ""
+
+msgid "This recipe page is too large to autofill."
+msgstr ""
+
+msgid "The recipe website returned an error."
+msgstr ""
+
+msgid "Could not read this recipe URL."
+msgstr ""
+
+msgid "Could not connect to the recipe website."
+msgstr ""

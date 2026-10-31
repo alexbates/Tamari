@@ -31,6 +31,17 @@ def validate_image(stream):
         return None
     return '.' + format
 
+# Email Validation
+# Regex pattern and length checking
+# Used by registration and account preferences
+EMAIL_PATTERN = re.compile(
+    r'([A-Za-z0-9]+[._-])*[A-Za-z0-9]+@[A-Za-z0-9-]+(?:\.[A-Za-z]{2,})+'
+)
+def is_valid_email(email):
+    if not 3 <= len(email) <= 254:
+        return False
+    return EMAIL_PATTERN.fullmatch(email) is not None
+
 @bp.route('/favicon.ico')
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def favicon():
@@ -108,11 +119,7 @@ def register():
                 email_lower = form.email.data.lower().strip()
                 checkemail2 = User.query.filter_by(email=email_lower).first()
                 # Validate email
-                regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-                emailisvalid = re.fullmatch(regex, form.email.data.strip())
-                # Check length of email
-                if len(form.email.data.strip()) < 3 or len(form.email.data.strip()) > 254:
-                    emailisvalid = False
+                emailisvalid = is_valid_email(form.email.data.strip())
                 # Error if email is registered
                 if checkemail or checkemail2:
                     flash('Error: ' + _('email is already taken.'))
@@ -139,11 +146,7 @@ def register():
                 email_lower = form.email.data.lower().strip()
                 checkemail2 = User.query.filter_by(email=email_lower).first()
                 # Validate email
-                regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-                emailisvalid = re.fullmatch(regex, form.email.data.strip())
-                # Check length of email
-                if len(form.email.data.strip()) < 3 or len(form.email.data.strip()) > 254:
-                    emailisvalid = False        
+                emailisvalid = is_valid_email(form.email.data.strip())       
                 # Error if email is registered
                 if checkemail or checkemail2:
                     flash('Error: ' + _('email is already taken.'))
@@ -235,13 +238,7 @@ def user():
                 passwords_match = True
         # Validate email, convert to lowercase
         newemail = request.form.get('email').lower().strip()
-        regex = re.compile(r'([A-Za-z0-9]+[.-_])*[A-Za-z0-9]+@[A-Za-z0-9-]+(\.[A-Z|a-z]{2,})+')
-        emailisvalid = re.fullmatch(regex, newemail)
-        if emailisvalid is None:
-            emailisvalid = False
-        # Check length of email
-        if len(newemail) < 3 or len(newemail) > 254:
-            emailisvalid = False
+        emailisvalid = is_valid_email(newemail)
         # Check if new email exists in database
         if emailisvalid and newemail != current_user.email:
             checkuser = User.query.filter_by(email=newemail).first()

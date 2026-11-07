@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response
+from flask import render_template, flash, redirect, url_for, request, send_from_directory, jsonify, make_response, abort
 from flask_babel import _
 from app import app, db, limiter
 from app.account.forms import LoginForm, RegistrationForm, RegistrationWithVerificationForm, AccountForm, EmptyForm, ResetPasswordRequestForm, ResetPasswordForm, AccountPrefsForm
@@ -211,11 +211,12 @@ def clean_csv(text):
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def user():
-    form = AccountForm(current_user.email)
+    form = AccountForm(current_user.email) # Email/pass change
     form.email.data = current_user.email
-    form2 = AccountPrefsForm(prefix='a')
-    form3 = EmptyForm(prefix='b')
-    form4 = EmptyForm(prefix='c')
+    form2 = AccountPrefsForm(prefix='a') # Theme change form
+    form3 = EmptyForm(prefix='b') # Export account form
+    form4 = EmptyForm(prefix='c') # Import account form
+    form5 = EmptyForm(prefix='d') # Delete account form
     user = User.query.filter_by(email=current_user.email).first_or_404()
     recipes = user.recipes.order_by(Recipe.title)
     rec_count = 0
@@ -553,7 +554,7 @@ def user():
                     flash('Error: ' + _('backup is invalid, _recipes.csv is missing from ZIP.'))
     return render_template('account-preferences.html', title=_('Account Preferences'),
         mdescription=_('View and modify account preferences for your Tamari account.'),
-        user=user, form=form, form2=form2, form3=form3, form4=form4, rec_count=rec_count)
+        user=user, form=form, form2=form2, form3=form3, form4=form4, form5=form5, rec_count=rec_count)
     
 @bp.route('/account/history')
 @login_required
@@ -689,10 +690,14 @@ def verify_email_change(token):
     db.session.commit()
     return 'Your email address has been changed.'
 
-@bp.route('/account/process-delete')
+@bp.route('/account/process-delete', methods=['POST'])
 @login_required
 @limiter.limit(Config.DEFAULT_RATE_LIMIT)
 def deleteAccount():
+    # Prevent CSRF, now using a form to verify that a user intends for account deletion
+    form5 = EmptyForm(prefix='d')
+    if not form5.validate_on_submit():
+        abort(400)
     # If Demo Account, users cannot delete account
     if current_user.email == 'demo@tamariapp.com':
         flash('Error: ' + _('account deletion restricted for demo account.'))

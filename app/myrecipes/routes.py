@@ -1445,7 +1445,7 @@ def categories():
                 Recipe.total_time,
                 Recipe.time_created,
                 NutritionalInfo.calories
-            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(func.lower(Recipe.title.desc()))
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(func.lower(Recipe.title).desc())
         elif user.pref_sort == 2:
             recipes_query = db.session.query(
                 Recipe.id,
@@ -1471,7 +1471,7 @@ def categories():
                 Recipe.total_time,
                 Recipe.time_created,
                 NutritionalInfo.calories
-            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(func.lower(Recipe.category.desc()))
+            ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == query_string).order_by(func.lower(Recipe.category).desc())
         elif user.pref_sort == 4:
             recipes_query = db.session.query(
                 Recipe.id,
@@ -1649,7 +1649,7 @@ def mobileCategory(catname):
             Recipe.total_time,
             Recipe.time_created,
             NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(func.lower(Recipe.title.desc()))
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(func.lower(Recipe.title).desc())
     elif user.pref_sort == 2:
         recipes_query = db.session.query(
             Recipe.id,
@@ -1675,7 +1675,7 @@ def mobileCategory(catname):
             Recipe.total_time,
             Recipe.time_created,
             NutritionalInfo.calories
-        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(func.lower(Recipe.category.desc()))
+        ).outerjoin(NutritionalInfo, Recipe.id == NutritionalInfo.recipe_id).filter(Recipe.user_id == user.id, Recipe.category == catname).order_by(func.lower(Recipe.category).desc())
     elif user.pref_sort == 4:
         recipes_query = db.session.query(
             Recipe.id,

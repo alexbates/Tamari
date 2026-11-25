@@ -41,6 +41,17 @@ Use this command instead if you wish to enable password reset requests via email
 docker run -d -e MAIL_SERVER=mail.example.com -e MAIL_PORT=587 -e MAIL_USE_TLS=1 -e MAIL_USERNAME=youremail@example.com -e MAIL_PASSWORD=yourpassword --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.7.4
 ```
 
+### HTTPS Reverse Proxy
+If Tamari is behind an HTTPS reverse proxy that terminates TLS, the connection from the proxy to Tamari may use plain HTTP. Without the original scheme, Tamari can generate absolute URLs for CSS, JavaScript, and images using `http://`, which browsers may block as mixed content on an HTTPS site.
+
+Enable proxy support by adding `-e USE_PROXY_FIX=True` to your Docker command:
+```
+docker run -d -e USE_PROXY_FIX=True --restart=always -p 4888:4888 -v tamariappdata:/app/appdata --name tamari alexbates/tamari:1.7.4
+```
+The reverse proxy must send the `X-Forwarded-Proto` header for Tamari to recognize the original HTTPS scheme. This setting is off by default; if the header is not sent, behavior is unchanged.
+
+Only enable this option when all access to Tamari goes through a trusted reverse proxy and the app cannot be reached directly. Tamari trusts forwarded headers when this option is enabled.
+
 ## Manual Installation
 
 ### Instructions for Debian 12 and Ubuntu 24.10

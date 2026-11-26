@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		searchTimer = setTimeout(function() {
 			searchTimer = null;
 			loadRecipePage();
-		}, 250);
+		}, 150);
 	}
 	if (search) {
 		search.addEventListener('input', function(event) {

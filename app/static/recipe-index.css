@@ -773,7 +773,10 @@
 	padding: 6px;
 }
 /* IF NO SAVED RECIPES */
-#norecipes {
+#norecipes,
+#norecipematches,
+#recipenojs,
+#recipeloaderror {
 	background: var(--color-norecipes);
 	margin-top: 0px;
 	padding: 10px;
@@ -1119,7 +1122,14 @@
 	}
 	.btn2 {margin-right: 10px;}
 	.settingsbtn {margin-right: 10px;}
-	#norecipes {margin-left: 10px; margin-right: 10px; width: calc(100% - 40px);}
+	#norecipes,
+	#norecipematches,
+	#recipenojs,
+	#recipeloaderror {
+		margin-left: 10px;
+		margin-right: 10px;
+		width: calc(100% - 40px);
+	}
 	.recipe3continner {margin-left: 0px; width: 100%;}
 }
 @media screen and (max-width: 1290px) { 

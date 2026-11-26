@@ -45,36 +45,6 @@ $(function(){
 		}
 	});
 });
-	
-$("#search").on("input", function () {
-	// Normalize query
-	var q = $(this).val()
-		.toLowerCase()
-		.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-		.replace(/[^a-z0-9]+/g, ' ')
-		.replace(/\s+/g, ' ')
-		.trim();
-	var terms = q ? q.split(' ') : [];
-	var count = 0;
-	$('#recipecont a').each(function () {
-		var cached = $(this).data('matchtext');
-		if (!cached) {
-			cached = $(this).text()
-				.toLowerCase()
-				.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
-				.replace(/[^a-z0-9]+/g, ' ')
-				.replace(/\s+/g, ' ')
-				.trim();
-			$(this).data('matchtext', cached);
-		}
-		// All reccipes are shown if no search term entered
-		var isMatch = (terms.length === 0) || terms.every(function (t) {
-			return cached.indexOf(t) !== -1;
-		});
-		$(this).toggle(isMatch);
-		if (isMatch) count++;
-	});
-});
 
 if ('IntersectionObserver' in window) { // if IntersectionObserver support in browser
 	document.addEventListener("DOMContentLoaded", function() {

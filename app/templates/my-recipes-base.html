@@ -1,0 +1,6 @@
+{% extends "navbar.html" %}
+
+{% block scripts %}
+	{{ super() }}
+	<script src="{{ url_for('static', filename='my-recipes.js') }}" defer></script>
+{% endblock %}

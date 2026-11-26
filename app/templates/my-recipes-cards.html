@@ -1,0 +1,59 @@
+{% for item in recipes %}
+{% set recipe_url = url_for('myrecipes.recipeDetail', hexid=item.hex_id) %}
+{% set photo_url = url_for('myrecipes.recipePhotos', filename=item.photo or 'default01.png', _external=True) %}
+{% if recipe_size == 0 %}
+<a href="{{ recipe_url }}" data-recipe-id="{{ item.hex_id }}" tabindex="-1">
+	<div class="recipe1" data-bgimage="{{ photo_url }}">
+		<div class="r1bottom">
+			<div class="recipe1-text">
+				<div tabindex="0">{{ item.title }}</div>
+			</div>
+		</div>
+	</div>
+</a>
+{% elif recipe_size == 1 %}
+<a href="{{ recipe_url }}" class="r2a" data-recipe-id="{{ item.hex_id }}" tabindex="-1"{% if recipe_collection == 'category' %} style="display: contents;"{% endif %}>
+	<div class="recipe2">
+		<div class="recipe2inner">
+			<div class="r2top" data-bgimage="{{ photo_url }}"></div>
+			<div class="r2bottom">
+				<div tabindex="0">{{ item.title }}</div>
+				<span>{{ item.category }}</span>
+			</div>
+		</div>
+	</div>
+</a>
+{% else %}
+{% set scheduled, prepared = recipe_info.get(item.id, ('', '')) %}
+<a href="{{ recipe_url }}" class="r3a" data-recipe-id="{{ item.hex_id }}" tabindex="-1">
+	<div class="recipe3">
+		<div class="r3inner" data-bgimage="{{ photo_url }}">
+			<div class="r3bottom">
+				<div class="r3binner">
+					<div tabindex="0">{{ item.title }}</div>
+					<span class="r3category r3span">{{ item.category }}</span>
+					<br>
+					{% if item.prep_time or item.cook_time or item.total_time %}
+					{% if item.prep_time %}<span class="r3time r3span">{{ _('Prep') }}: {{ item.prep_time }}m</span>{% endif %}
+					{% if item.cook_time %}<span class="r3time r3span">{{ _('Cook') }}: {{ item.cook_time }}m</span>{% endif %}
+					{% if item.total_time %}<span class="r3time r3span">{{ _('Total') }}: {{ item.total_time }}m</span>{% endif %}
+					<br>
+					{% endif %}
+					{% if item.calories and (recipe_collection == 'recents' or not (item.prep_time or item.cook_time or item.total_time)) %}
+					<span class="r3calories r3span">{{ _('Calories') }}: {{ item.calories }}</span>
+					<br>
+					{% endif %}
+					{% if scheduled %}
+					<span class="r3created r3spanscheduled">{{ _('Scheduled For') }}: {{ scheduled }}</span>
+					{% elif prepared %}
+					<span class="r3created r3span">{{ _('Last Prepared') }}: {{ prepared }}</span>
+					{% elif item.time_created %}
+					<span class="r3created r3span">{{ _('Created') }}: {{ item.time_created.strftime('%m/%d/%Y') }}</span>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</a>
+{% endif %}
+{% endfor %}

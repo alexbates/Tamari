@@ -1,0 +1,40 @@
+{% set recipe_size = user.pref_size if user.pref_size in (0, 1) else 2 %}
+{% set card_number = recipe_size + 1 %}
+{% set has_inner = recipe_size == 2 or (recipe_size == 1 and recipe_collection != 'category') %}
+
+<div id="my-recipes-results"
+	    data-fetch-url="{{ url_for('myrecipes.fetchRecipes', collection=recipe_collection, c=recipe_category|default(none), size=recipe_size) }}"
+	    data-load-error="{{ _('Could not load recipes.') }}"
+	    data-session-error="{{ _('Please sign in again to load recipes.') }}">
+
+	{% if recipe_collection == 'category' %}
+	<div class="category-recipe-search">
+		<input type="search" id="search" name="search" maxlength="200"
+			   placeholder="{{ _('Search') }}" aria-label="{{ _('Search recipes') }}">
+	</div>
+	{% endif %}
+
+	<div id="recipecont" class="recipe{{ card_number }}cont"
+		 {% if not has_inner %}data-recipe-grid aria-busy="false"{% endif %}>
+		{% if has_inner %}
+		<div class="recipe{{ card_number }}continner" data-recipe-grid aria-busy="false"></div>
+		{% endif %}
+	</div>
+	<div id="recipe-page-end" aria-hidden="true"></div>
+	<div id="recipe-loader" role="status" aria-label="{{ _('Loading recipes') }}" hidden></div>
+	<p id="recipeloaderror" role="alert" hidden></p>
+	<button type="button" id="recipe-load-more" data-more="{{ _('Load more') }}" data-retry="{{ _('Try again') }}" hidden>{{ _('Load more') }}</button>
+	<p id="norecipes" hidden>
+		{% if recipe_collection == 'all' %}
+			{{ _('Welcome to Tamari!<br><br>There are no recipes to display.<br><br>Click the "Add Recipe" button above to get started.') }}
+		{% elif recipe_collection == 'favorites' %}
+			{{ _('There are no recipes to display.<br><br>On the recipe detail page, click the "Favorite" button to add a recipe to your favorites.') }}
+		{% elif recipe_collection == 'recents' %}
+			{{ _('There are no recents to display.<br><br>Go to the All Recipes page and click on a recipe.') }}
+		{% else %}
+			{{ _('There are no recipes in this category.') }}
+		{% endif %}
+	</p>
+	<p id="norecipematches" role="status" hidden>{{ _('No matching recipes.') }}</p>
+	<noscript><p id="recipenojs">{{ _('Enable JavaScript to view your recipes.') }}</p></noscript>
+</div>

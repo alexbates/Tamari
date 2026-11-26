@@ -65,7 +65,7 @@ class Config(object):
     # For dynamic loading of images
     # Distance from viewport that image will start to load in My Recipes
     # Also controls when batches of recipes will be loaded from API route in My Recipes
-    DYNAMIC_ROOT_MARGIN = '120px'
+    DYNAMIC_ROOT_MARGIN = '400px'
     # Rate Limit Settings
     # Enabled by default
     # If you wish to disable rate limiting, set all equal to None - for example, DEFAULT_RATE_LIMIT = None
@@ -80,6 +80,7 @@ class Config(object):
     PDF_RATE_LIMIT = '5 per minute'
     PDF_MAX_REQUEST_SIZE = 1024 * 1024
     # API CONFIGURATION (disabled by default)
+    # Change 'API_ENABLED', 'False' to 'API_ENABLED', 'True' to enable
     API_ENABLED = os.environ.get('API_ENABLED', 'False') == 'True'
     APP_KEY = getSecret('APP_KEY')
     # If True, X-App-Name header must have value 'tamari' and X-App-Key must equal APP_KEY

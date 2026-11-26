@@ -53,8 +53,8 @@ class Config(object):
     # To enable email verification, change "('REGISTRATION_VERIFICATION_REQUIRED', 'False')" to 
     # "('REGISTRATION_VERIFICATION_REQUIRED', 'True')"
     REGISTRATION_VERIFICATION_REQUIRED = os.environ.get('REGISTRATION_VERIFICATION_REQUIRED', 'False') == 'True'
-    # For My Recipes > All Recipes and My Recipes > Favorites
-    MAIN_RECIPES_PER_PAGE = 100
+    # Number of recipes returned by each My Recipes fetch
+    MY_RECIPES_FETCH_SIZE = 32
     ADV_SEARCH_RECIPES_PER_PAGE = 50
     CAT_RECIPES_PER_PAGE = 50
     EXPLORE_RECIPES_PER_PAGE = 32
@@ -64,6 +64,7 @@ class Config(object):
     ACCOUNT_EVENTS_PER_PAGE = 30
     # For dynamic loading of images
     # Distance from viewport that image will start to load in My Recipes
+    # Also controls when batches of recipes will be loaded from API route in My Recipes
     DYNAMIC_ROOT_MARGIN = '120px'
     # Rate Limit Settings
     # Enabled by default

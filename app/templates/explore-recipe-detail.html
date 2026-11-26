@@ -98,7 +98,13 @@
 			{% if rec_url %}
 			<p><a class="urla" href="{{ rec_url }}" target="_blank" aria-label="{{ _('Original recipe URL') }}">{{ rec_url }}</a></p>
 			{% endif %}
-			{% if current_user.is_authenticated %}
+			{% if saved_recipe %}
+			<form action="{{ url_for('myrecipes.recipeDetail', hexid=saved_recipe.hex_id) }}" method="get" class="buttonform">
+				<button class="btn btn-default" type="submit">
+					<span class="btn-text">{{ _('Open in My Recipes') }}</span>
+				</button>
+			</form>
+			{% elif current_user.is_authenticated %}
 			<form method="post" class="buttonform" novalidate>
 				{{ form.hidden_tag() }}
 				<button class="btn btn-default" name="submit" type="submit" aria-label="{{ _('Save Recipe') }}">
@@ -161,6 +167,13 @@
 		<p class="recipe-error">{{ _('The retrieval or parsing of data for the requested recipe failed.') }}</p>
 		<p class="recipe-error">{{ _('Sometimes, refreshing the page will fix it.') }}</p>
 		<p class="recipe-error">{{ _('If you see this error frequently, opening an Issue Report on Github may help get it resolved.') }}</p>
+		{% if saved_recipe %}
+		<form action="{{ url_for('myrecipes.recipeDetail', hexid=saved_recipe.hex_id) }}" method="get" class="buttonform">
+			<button class="btn btn-default" type="submit">
+				<span class="btn-text">{{ _('Open in My Recipes') }}</span>
+			</button>
+		</form>
+		{% endif %}
 		{% endif %}
 		{% else %}
 		<h2 class="recipe-error">{{ _('Error') }}</h2>

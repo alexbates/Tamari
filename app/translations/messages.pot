@@ -2047,3 +2047,6 @@ msgstr ""
 
 msgid "There are no completed items to clear."
 msgstr ""
+
+msgid "Open in My Recipes"
+msgstr ""

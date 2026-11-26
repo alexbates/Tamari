@@ -4,7 +4,7 @@ from app import app, db, limiter
 from app.explore.forms import ExploreSearchForm, EmptyForm
 from flask_login import current_user, login_user, logout_user, login_required
 from flask_paginate import Pagination
-from app.models import User, Recipe, NutritionalInfo
+from app.models import Recipe, NutritionalInfo
 from werkzeug.urls import url_parse
 from PIL import Image
 from urllib.parse import urlparse
@@ -1598,11 +1598,12 @@ def exploreRecipeDetail(rec_group, recnum):
     else:
         photo_server = None
     form = EmptyForm()
+    saved_recipe = None
+    if current_user.is_authenticated and rec_url:
+        saved_recipe = current_user.recipes.filter_by(url=rec_url).first()
     # Save recipe to My Recipes
-    if form.validate_on_submit():
-        user = User.query.filter_by(email=current_user.email).first_or_404()
-        rec_exist = user.recipes.filter_by(url=rec_url).first()
-        if rec_exist is None:
+    if current_user.is_authenticated and form.validate_on_submit():
+        if saved_recipe is None:
             if ingredients and instructions:
                 hex_valid = 0
                 while hex_valid == 0:
@@ -1703,6 +1704,7 @@ def exploreRecipeDetail(rec_group, recnum):
                         carbs=carbs, protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber)
                     db.session.add(new_nutrition)
                     db.session.commit()
+                saved_recipe = recipe
                 flash(_('The recipe has been saved to My Recipes.'))
             else:
                 flash(_('The recipe is missing ingredients or instructions and cannot be imported.'))
@@ -1713,7 +1715,7 @@ def exploreRecipeDetail(rec_group, recnum):
         rec_url=rec_url, rec_title=rec_title, preptime=preptime, cooktime=cooktime, totaltime=totaltime, description=description,
         photo=photo, ingredients=ingredients, instructions=instructions, form=form, calories=calories, carbs=carbs,
         protein=protein, fat=fat, sugar=sugar, cholesterol=cholesterol, sodium=sodium, fiber=fiber, nutrition=nutrition,
-        servings=servings, photo_server=photo_server, responsecode=responsecode)
+        servings=servings, photo_server=photo_server, responsecode=responsecode, saved_recipe=saved_recipe)
 
 # The function is used by explorePrintRecipe and exploreGeneratePDF routes
 # to transform variables from None to empty string if data not provided

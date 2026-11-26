@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	if (!results) return;
 	const grid = results.querySelector('[data-recipe-grid]');
 	const search = document.getElementById('search');
-	const categoryCount = document.getElementById('recipecount');
 	const sentinel = document.getElementById('recipe-page-end');
 	const loader = document.getElementById('recipe-loader');
 	const errorMessage = document.getElementById('recipeloaderror');
@@ -80,12 +79,37 @@ document.addEventListener('DOMContentLoaded', function() {
 		empty.hidden = true;
 		noMatches.hidden = true;
 	}
+	// Retry instead of immediately displaying error message
+	async function fetchRecipesWithRetry(url, signal) {
+		const maxRetries = 3;
+		for (let attempt = 0; attempt <= maxRetries; attempt++) {
+			if (signal.aborted) throw new DOMException('Request cancelled', 'AbortError');
+			// Give each attempt its own timeout and cancel it when the search changes
+			const request = new AbortController();
+			const cancelRequest = function() { request.abort(); };
+			signal.addEventListener('abort', cancelRequest, { once: true });
+			const timeout = setTimeout(cancelRequest, 15000);
+			try {
+				const response = await fetch(url, {
+					credentials: 'same-origin',
+					signal: request.signal
+				});
+				if (response.status < 500 || attempt === maxRetries) return response;
+			} catch (error) {
+				if (signal.aborted || attempt === maxRetries) throw error;
+			} finally {
+				clearTimeout(timeout);
+				signal.removeEventListener('abort', cancelRequest);
+			}
+			// Wait one second before retrying the same batch
+			await new Promise(resolve => setTimeout(resolve, 1000));
+		}
+	}
 	async function loadRecipePage() {
 		if (controller || searchTimer !== null || !hasMore || !results.getClientRects().length) return;
 		const activeRequest = new AbortController();
 		controller = activeRequest;
-		const timeout = setTimeout(function() { activeRequest.abort(); }, 15000);
-		const query = search.value.trim();
+		const query = search ? search.value.trim() : '';
 		if (pageObserver) pageObserver.unobserve(sentinel);
 		grid.setAttribute('aria-busy', 'true');
 		loader.hidden = false;
@@ -96,10 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 			const url = new URL(results.dataset.fetchUrl, window.location.href);
 			if (query) url.searchParams.set('q', query);
 			if (cursor) url.searchParams.set('cursor', cursor);
-			const response = await fetch(url, {
-				credentials: 'same-origin',
-				signal: activeRequest.signal
-			});
+			const response = await fetchRecipesWithRetry(url, activeRequest.signal);
 			if (controller !== activeRequest) return;
 			if (response.status === 401) {
 				errorMessage.textContent = results.dataset.sessionError;
@@ -123,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
 			loadMore.textContent = loadMore.dataset.retry;
 			loadMore.hidden = false;
 		} finally {
-			clearTimeout(timeout);
 			if (controller === activeRequest) {
 				controller = null;
 				grid.setAttribute('aria-busy', 'false');
@@ -145,17 +165,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	function searchRecipes() {
 		clearTimeout(searchTimer);
 		resetRecipes();
-		if (categoryCount) categoryCount.hidden = search.value.trim() !== '';
 
 		searchTimer = setTimeout(function() {
 			searchTimer = null;
 			loadRecipePage();
 		}, 250);
 	}
-	search.addEventListener('input', function(event) {
-		if (!event.isComposing) searchRecipes();
-	});
-	search.addEventListener('compositionend', searchRecipes);
+	if (search) {
+		search.addEventListener('input', function(event) {
+			if (!event.isComposing) searchRecipes();
+		});
+		search.addEventListener('compositionend', searchRecipes);
+	}
 	loadMore.addEventListener('click', function() {
 		if (restartOnRetry) resetRecipes();
 		loadRecipePage();
@@ -164,7 +185,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	function startRecipes() {
 		if (!results.getClientRects().length) return;
 		window.removeEventListener('resize', startRecipes);
-		if (categoryCount) categoryCount.hidden = search.value.trim() !== '';
 		loadRecipePage();
 	}
 	window.addEventListener('resize', startRecipes);

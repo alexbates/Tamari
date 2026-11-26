@@ -7,13 +7,6 @@
 	    data-load-error="{{ _('Could not load recipes.') }}"
 	    data-session-error="{{ _('Please sign in again to load recipes.') }}">
 
-	{% if recipe_collection == 'category' %}
-	<div class="category-recipe-search">
-		<input type="search" id="search" name="search" maxlength="200"
-			   placeholder="{{ _('Search') }}" aria-label="{{ _('Search recipes') }}">
-	</div>
-	{% endif %}
-
 	<div id="recipecont" class="recipe{{ card_number }}cont"
 		 {% if not has_inner %}data-recipe-grid aria-busy="false"{% endif %}>
 		{% if has_inner %}

@@ -755,7 +755,11 @@
 	float: left;
 	width: calc(100% - 280px);
 }
-#recipecount {
+#recipecount,
+#norecipes,
+#norecipematches,
+#recipenojs,
+#recipeloaderror {
 	background: var(--color-recipecount); 
 	font-size: var(--font-recipe-count);
 	min-height: var(--height-recipe-count);

@@ -135,6 +135,8 @@
 	--height-recipe1-text: 56px;
 	--font-recipe1-text: 22px;
 	--padding-top-recipe1-text: 34px;
+	--font-recipe-message: 14px;
+	--height-recipe-message: 17px;
 	--w1290-padding-top-recipe1-text: 25px;
 	--w1200-padding-top-recipe1-text: 19px;
 	--w1150-font-recipe1-text: 20px;
@@ -228,6 +230,8 @@
 	--height-recipe1-text: 56px;
 	--font-recipe1-text: 22px;
 	--padding-top-recipe1-text: 34px;
+	--font-recipe-message: 14px;
+	--height-recipe-message: 17px;
 	--w1290-padding-top-recipe1-text: 25px;
 	--w1200-padding-top-recipe1-text: 19px;
 	--w1150-font-recipe1-text: 20px;
@@ -321,6 +325,8 @@
 	--height-recipe1-text: 60px;
 	--font-recipe1-text: 24px;
 	--padding-top-recipe1-text: 30px;
+	--font-recipe-message: 16px;
+	--height-recipe-message: 19px;
 	--w1290-padding-top-recipe1-text: 23px;
 	--w1200-padding-top-recipe1-text: 19px;
 	--w1150-font-recipe1-text: 22px;
@@ -778,8 +784,11 @@
 #recipenojs,
 #recipeloaderror {
 	background: var(--color-norecipes);
+	font-size: var(--font-recipe-message);
+	min-height: var(--height-recipe-message);
 	margin-top: 0px;
-	padding: 10px;
+	margin-bottom: 12px;
+	padding: 6px;
 }
 /* RECIPE LIST */
 .recipe1cont {margin-bottom: 20px;}

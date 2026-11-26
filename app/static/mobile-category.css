@@ -309,17 +309,12 @@
 	margin-top: 0px;
 	padding: 6px;
 }
-/* IF NO SAVED RECIPES */
+/* RECIPE LIST */
+#recipecount,
 #norecipes,
 #norecipematches,
 #recipenojs,
 #recipeloaderror {
-	background: var(--color-norecipes);
-	margin-top: 0px;
-	padding: 10px;
-}
-/* RECIPE LIST */
-#recipecount {
 	background: var(--color-recipecount); 
 	font-size: var(--font-recipe-count);
 	min-height: var(--height-recipe-count);
@@ -632,15 +627,14 @@
 @media screen and (max-width: 1300px) { 
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
+	#recipecount,
 	#norecipes,
 	#norecipematches,
 	#recipenojs,
 	#recipeloaderror {
 		margin-left: 10px;
 		margin-right: 10px;
-		width: calc(100% - 40px);
 	}
-	#recipecount {margin-left: 10px; margin-right: 10px;}
 	.recipe2cont {margin: 0 auto; width: calc(100% - 20px);}
 	.recipe3continner {margin-left: 0px; width: 100%;}
 }

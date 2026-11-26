@@ -2050,3 +2050,36 @@ msgstr ""
 
 msgid "Open in My Recipes"
 msgstr ""
+
+msgid "Please sign in again."
+msgstr ""
+
+msgid "Invalid recipe filters."
+msgstr ""
+
+msgid "The recipe list has changed. Please try again."
+msgstr ""
+
+msgid "Could not load recipes."
+msgstr ""
+
+msgid "Please sign in again to load recipes."
+msgstr ""
+
+msgid "Loading recipes"
+msgstr ""
+
+msgid "Load more"
+msgstr ""
+
+msgid "Try again"
+msgstr ""
+
+msgid "There are no recipes in this category."
+msgstr ""
+
+msgid "No matching recipes."
+msgstr ""
+
+msgid "Enable JavaScript to view your recipes."
+msgstr ""

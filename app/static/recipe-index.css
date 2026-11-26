@@ -1139,6 +1139,9 @@
 		margin-right: 10px;
 		width: calc(100% - 40px);
 	}
+	#my-recipes-results {
+		--margin-left-recipe-load-more: 10px;
+	}
 	.recipe3continner {margin-left: 0px; width: 100%;}
 }
 @media screen and (max-width: 1290px) { 

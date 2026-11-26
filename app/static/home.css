@@ -57,8 +57,6 @@
 	padding-bottom: 0px;
 	padding-left: 10px;
 	padding-right: 10px;
-	margin-left: 10px;
-	margin-right: 10px;
 	transition: background-color 0.08s linear, border 0.08s linear;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-transition: background-color 0.08s linear, border 0.08s linear;
@@ -71,6 +69,7 @@
 	.block1inner {width: 100%;}
 	#block1 p {padding-left: 10px; padding-right: 10px;}
 	#block1 h2 {padding-left: 10px; padding-right: 10px;}
+	.btn-default {margin-left: 10px; margin-right: 10px;}
 }
 @media screen and (max-width: 700px) { 
 	#block1 {

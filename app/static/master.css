@@ -320,7 +320,7 @@ select {font-family: Inter-Regular;}
 	--margin-bottom-recipe-controls: 24px;
 	--font-recipe-load-more: 16px;
 	--height-recipe-load-more: 34px;
-	--margin-left-recipe-load-more: 12px;
+	--margin-left-recipe-load-more: 0px;
 	--padding-recipe-load-more: 12px;
 	--radius-recipe-load-more: 7px;
 	--transition-recipe-load-more: 0.08s;

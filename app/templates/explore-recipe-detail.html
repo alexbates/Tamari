@@ -166,7 +166,12 @@
 		<h2 class="recipe-error">{{ _('Error') }}</h2>
 		<p class="recipe-error">{{ _('The retrieval or parsing of data for the requested recipe failed.') }}</p>
 		<p class="recipe-error">{{ _('Sometimes, refreshing the page will fix it.') }}</p>
-		<p class="recipe-error">{{ _('If you see this error frequently, opening an Issue Report on Github may help get it resolved.') }}</p>
+		<button class="btn btn-default open-original-recipe"
+				type="button"
+				data-recipe-url="{{ rec_url }}"
+				onclick="window.open(this.dataset.recipeUrl, '_blank', 'noopener,noreferrer');">
+			{{ _('Open Original Recipe') }}
+		</button>
 		{% if saved_recipe %}
 		<form action="{{ url_for('myrecipes.recipeDetail', hexid=saved_recipe.hex_id) }}" method="get" class="buttonform">
 			<button class="btn btn-default" type="submit">

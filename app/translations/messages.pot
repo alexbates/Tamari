@@ -2083,3 +2083,6 @@ msgstr ""
 
 msgid "Enable JavaScript to view your recipes."
 msgstr ""
+
+msgid "Open Original Recipe"
+msgstr ""

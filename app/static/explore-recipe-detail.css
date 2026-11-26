@@ -312,6 +312,19 @@ tr:nth-child(odd) {
 }
 .steps b {color: var(--color-steps-b);}
 .steps p {margin-bottom: 0; margin-top: 6px;}
+.btn-default.open-original-recipe {
+    border-radius: 7px;
+    font-size: 16px;
+    height: 40px;
+    margin: 0;
+    padding: 0 10px;
+}
+.btn-default.open-original-recipe:active {
+    background: var(--color);
+}
+.btn-default.open-original-recipe:hover {
+    background: var(--color-lighter);
+}
 
 /* RESPONSIVE */
 @media screen and (max-width: 1300px) {
@@ -323,6 +336,10 @@ tr:nth-child(odd) {
 	#ingredients {padding-left: 10px; width: calc(50% - 30px);}
 	#instructions {padding-right: 10px; width: calc(50% - 10px);}
 	.recipe-error {padding-left: 10px; padding-right: 10px;}
+	.btn-default.open-original-recipe {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
 }
 @media screen and (max-width: 830px) {
 	.t-col-4 {display: none;}

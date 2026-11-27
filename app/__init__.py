@@ -25,7 +25,7 @@ app.config.from_object(Config)
 
 # Trust the client address only when reverse proxy support is enabled
 if app.config['USE_PROXY_FIX']:
-    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1)
+    app.wsgi_app = ProxyFix(app.wsgi_app, x_for=1, x_proto=1)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db, directory='app/appdata/migrations', render_as_batch=True)
